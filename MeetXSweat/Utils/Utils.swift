@@ -341,4 +341,12 @@ class Utils {
         }
         return urlString
     }
+    
+    
+    class func addTapGestureToView(view: UIView, target: AnyObject, selectorString: String) {
+    
+        let tapGesture = UITapGestureRecognizer(target: target, action: NSSelectorFromString(selectorString))
+        view.userInteractionEnabled = true
+        view.addGestureRecognizer(tapGesture)
+    }
 }

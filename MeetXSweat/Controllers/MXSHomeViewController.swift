@@ -10,12 +10,13 @@ import UIKit
 
 private let reuseIdentifier = "MXSHomeCollectionCell"
 
+private let numberOfSections =  4
 private let cell1Text = "Trouver un profil professionel"
 private let cell2Text = "Trouver un sport"
 private let cell3Text = "Trouver une date de disponnible"
 private let cell4Text = "Trouver ce qu'il y'as autour de moi"
 
-private let numberOfSections =  4
+private let findProfileViewController1 = UIStoryboard(name: "MXSFindProfile", bundle: nil).instantiateViewControllerWithIdentifier("MXSFindProfileViewController1")
 
 
 
@@ -87,6 +88,13 @@ class MXSHomeViewController: MXSViewController, UICollectionViewDelegate, UIColl
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
+        switch indexPath.section {
+        case 0:
+            self.navigationController?.pushViewController(findProfileViewController1, animated: true)
+            break
+        default:
+            break
+        }
     }
     
     internal func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
