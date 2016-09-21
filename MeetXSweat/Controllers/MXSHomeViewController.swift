@@ -12,10 +12,11 @@ private let reuseIdentifier = "MXSHomeCollectionCell"
 
 private let cell1Text = "Trouver un profil professionel"
 private let cell2Text = "Trouver un sport"
-private let cell3Text = "Trouver une date de dispo"
+private let cell3Text = "Trouver une date de disponnible"
 private let cell4Text = "Trouver ce qu'il y'as autour de moi"
 
 private let numberOfSections =  4
+
 
 
 class MXSHomeViewController: MXSViewController, UICollectionViewDelegate, UICollectionViewDataSource {

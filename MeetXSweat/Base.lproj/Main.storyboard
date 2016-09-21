@@ -177,6 +177,12 @@
                                     <outlet property="delegate" destination="Vtu-Zy-Hdf" id="DQB-cC-0pE"/>
                                 </connections>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sweatworker, quel est votre besoin ?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V6e-vB-YWB">
+                                <rect key="frame" x="160" y="30" width="280" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -184,6 +190,8 @@
                             <constraint firstItem="Z11-vx-3qS" firstAttribute="top" secondItem="5aB-R4-2L7" secondAttribute="bottom" id="LqX-Oi-NNB"/>
                             <constraint firstItem="5aB-R4-2L7" firstAttribute="leading" secondItem="Fbc-jY-6e9" secondAttribute="leadingMargin" constant="-20" id="Sep-Ho-qGo"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5aB-R4-2L7" secondAttribute="trailing" constant="-20" id="TnZ-ZJ-Grt"/>
+                            <constraint firstItem="V6e-vB-YWB" firstAttribute="top" secondItem="xoh-G0-fRH" secondAttribute="bottom" constant="10" id="Xh6-6n-LcS"/>
+                            <constraint firstItem="V6e-vB-YWB" firstAttribute="centerX" secondItem="Fbc-jY-6e9" secondAttribute="centerX" id="k40-KU-Sww"/>
                         </constraints>
                     </view>
                     <connections>

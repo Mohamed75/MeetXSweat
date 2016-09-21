@@ -197,6 +197,10 @@
 		D926BAD11D8DA11F00E3878C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D959B3C71D92CF1600981105 /* FindArroundMe */,
+				D959B3C81D92CF1600981105 /* FindDate */,
+				D959B3C91D92CF1600981105 /* FindSport */,
+				D959B3C61D92CF0C00981105 /* FindProfile */,
 				D9AAA2AA1D8F0F12004CE80C /* MXSViewController.swift */,
 				D926BAE11D8DD5CB00E3878C /* UINavigationController+Connection.swift */,
 				D926BAD21D8DA11F00E3878C /* MXSAllLoginsViewController.swift */,
@@ -232,6 +236,34 @@
 				D926BADF1D8DBC5100E3878C /* User.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D959B3C61D92CF0C00981105 /* FindProfile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FindProfile;
+			sourceTree = "<group>";
+		};
+		D959B3C71D92CF1600981105 /* FindArroundMe */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FindArroundMe;
+			sourceTree = "<group>";
+		};
+		D959B3C81D92CF1600981105 /* FindDate */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FindDate;
+			sourceTree = "<group>";
+		};
+		D959B3C91D92CF1600981105 /* FindSport */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FindSport;
 			sourceTree = "<group>";
 		};
 		D9BEC5561D9063F8006DAAAC /* UIElements */ = {

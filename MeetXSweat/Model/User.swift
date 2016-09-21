@@ -78,9 +78,14 @@ class User: Person, NSCoding {
     
     func initFromTWData(data: NSDictionary) {
         
-        let fullName = data["name"] as! String
-        self.name = fullName.componentsSeparatedByString(" ")[0]
-        self.lastName = fullName.componentsSeparatedByString(" ")[1]
+        if let fullName = data["name"] as? String  {
+            let nameArray = fullName.componentsSeparatedByString(" ")
+            self.name = nameArray[0]
+            if nameArray.count > 2 {
+                self.lastName = nameArray[1]
+            }
+        }
+        
         self.email = data["email"] as? String
         
         self.pictureUrl = data["profile_image_url"] as? String

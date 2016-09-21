@@ -25,8 +25,11 @@ class Person: NSObject {
     
     func allParams() -> String {
         
-        var basicInfo = self.name! + " " + self.lastName!
+        var basicInfo = self.name!
         
+        if let lastName = self.lastName {
+            basicInfo = basicInfo + " " + lastName
+        }
         if let email = self.email {
             basicInfo = basicInfo + " " + email
         }
