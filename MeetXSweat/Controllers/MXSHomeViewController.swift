@@ -31,7 +31,7 @@ class MXSHomeViewController: MXSViewController, UICollectionViewDelegate, UIColl
         if User.currentUser.isConnected {
             
             let profileImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 38, height: 38))
-            profileImageView.image = UIImage(named: "Profile_placeholder")
+            profileImageView.image = UIImage(named: Ressources.Images.profilePlaceHolder)
             if let pictureUrl = User.currentUser.pictureUrl {
                 
                 profileImageView.af_setImageWithURL(NSURL(string: Utils.makeHttpsUrlFromString(pictureUrl))!)
@@ -60,8 +60,7 @@ class MXSHomeViewController: MXSViewController, UICollectionViewDelegate, UIColl
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! MXSHomeCollectionCell
-        cell.backgroundColor = UIColor.whiteColor()
-        cell.imageView.image = UIImage(named: "ProfessionalProfile")
+        cell.imageView.image = UIImage(named: Ressources.Images.ProfessionalProfile)
         if indexPath.section != numberOfSections-1 {
             cell.addLine()
         }

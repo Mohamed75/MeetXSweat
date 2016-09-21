@@ -15,6 +15,9 @@ private let professions = ["Developer", "Project Manager", "Medecin", "Professeu
 private let experiences = ["0-2", "2-5", "5-10", ">10"]
 
 
+private let endEditingSelectorString = "endEditing"
+
+
 class MXSFindProfileViewController1: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var domaineTextField: UITextField!
@@ -26,9 +29,11 @@ class MXSFindProfileViewController1: UIViewController, UIPickerViewDataSource, U
     var selectedTextField = 1
     let pickerView = UIPickerView()
     
+    
+    
     override func viewDidLoad() {
         
-        Utils.addTapGestureToView(self.view, target: self, selectorString: "endEditing")
+        Utils.addTapGestureToView(self.view, target: self, selectorString: endEditingSelectorString)
         super.viewDidLoad()
         self.view.addSubview(emptyTextField)
         
@@ -76,27 +81,45 @@ class MXSFindProfileViewController1: UIViewController, UIPickerViewDataSource, U
     }
     
     
+    @IBAction func validerButtonClicked(sender: AnyObject) {
+        
+        if let domaine = domaineTextField.text {
+            FindProfileManager.sharedInstance.domaine = domaine
+        }
+        if let profession = professionTextField.text {
+            FindProfileManager.sharedInstance.profession = profession
+        }
+        if let experience = experienceTextField.text {
+            FindProfileManager.sharedInstance.experience = experience
+        }
+    }
+    
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         
         switch textField {
         case domaineTextField:
             selectedTextField = 1
             dataArray = domaines
+            domaineTextField.text = dataArray[0]
             break
         case professionTextField:
             selectedTextField = 2
             dataArray = professions
+            professionTextField.text = dataArray[0]
             break
         case experienceTextField:
             selectedTextField = 3
             dataArray = experiences
+            experienceTextField.text = dataArray[0]
             break
         default:
             selectedTextField = 1
             dataArray = domaines
             break
         }
+        pickerView.selectRow(0, inComponent: 0, animated: false)
         pickerView.reloadAllComponents()
+        
         
         emptyTextField.becomeFirstResponder()
         
