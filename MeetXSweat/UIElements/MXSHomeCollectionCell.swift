@@ -24,6 +24,7 @@ class MXSHomeCollectionCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         
+        self.label.text = ""
         super.prepareForReuse()
     }
     

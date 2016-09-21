@@ -16,6 +16,9 @@ private let reuseIdentifier = "MXSFindProfile2CollectionCell"
 private let names = ["Tony", "Alex", "Sedik", "John", "Alcapon"]
 private let lastNames = ["Montana", "LeCon", "Bendi", "Halliday", "Themaster"]
 private let professions = ["Developer", "Project Manager", "Medecin", "Professeur", "Developer"]
+private let sports = ["foot \ntennis", "foot \nbasket", "", "volley", "hand \nbasket"]
+
+
 
 
 class MXSFindProfileViewController2: UIViewController {
@@ -33,6 +36,7 @@ class MXSFindProfileViewController2: UIViewController {
             person.name = names[i]
             person.lastName = lastNames[i]
             person.profession = professions[i]
+            person.sport = sports[i]
             returnArray.append(person)
         }
         return returnArray
@@ -55,13 +59,14 @@ class MXSFindProfileViewController2: UIViewController {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! MXSFindProfile2CollectionCell
         let person = self.dataArray[indexPath.section]
+        var text = ""
         if let name = person.name {
-            var text = name
+            text = name
             if let lastName = person.lastName {
                 text = name + " " + lastName
             }
-            cell.label.text = text + "\n" + FindProfileManager.sharedInstance.profession
         }
+        cell.label.text = text + "\n" + FindProfileManager.sharedInstance.profession
         cell.imageView.image = UIImage(named: Ressources.Images.profilePlaceHolder)
         
         return cell
@@ -69,7 +74,9 @@ class MXSFindProfileViewController2: UIViewController {
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
-        
+        let profileViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.profile, viewControllerId: Ressources.StoryBooardsIdentifiers.profileId) as! MXSProfileViewController
+        profileViewController.person = self.dataArray[indexPath.section]
+        self.navigationController?.pushViewController(profileViewController, animated: false)
     }
     
     internal func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

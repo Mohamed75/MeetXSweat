@@ -8,9 +8,6 @@
 
 import UIKit
 
-private let homeViewController = UIStoryboard(name: Ressources.StoryBooards.main, bundle: nil).instantiateViewControllerWithIdentifier(Ressources.StoryBooardsIdentifiers.homeId)
-
-private let allLoginsViewController = UIStoryboard(name: Ressources.StoryBooards.main, bundle: nil).instantiateViewControllerWithIdentifier(Ressources.StoryBooardsIdentifiers.logInId)
 
 
 extension UINavigationController {
@@ -21,6 +18,7 @@ extension UINavigationController {
             
             if self.viewControllers.count > 0 {
                 dispatch_async(dispatch_get_main_queue()){
+                   let homeViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.main, viewControllerId: Ressources.StoryBooardsIdentifiers.homeId)
                     self.viewControllers = [homeViewController]
                 }
             }
@@ -29,6 +27,7 @@ extension UINavigationController {
             
             if self.viewControllers.count > 0 {
                 dispatch_async(dispatch_get_main_queue()){
+                    let allLoginsViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.main, viewControllerId: Ressources.StoryBooardsIdentifiers.logInId)
                     self.viewControllers = [allLoginsViewController]
                 }
             }

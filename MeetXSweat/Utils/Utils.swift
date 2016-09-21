@@ -349,4 +349,8 @@ class Utils {
         view.userInteractionEnabled = true
         view.addGestureRecognizer(tapGesture)
     }
+    
+    class func loadViewControllerFromStoryBoard(stroyBoard: String, viewControllerId: String) -> UIViewController {
+        return UIStoryboard(name: stroyBoard, bundle: nil).instantiateViewControllerWithIdentifier(viewControllerId)
+    }
 }
