@@ -16,7 +16,7 @@ private let cell2Text = "Trouver un sport"
 private let cell3Text = "Trouver une date de disponnible"
 private let cell4Text = "Trouver ce qu'il y'as autour de moi"
 
-private let findProfileViewController1 = UIStoryboard(name: "MXSFindProfile", bundle: nil).instantiateViewControllerWithIdentifier("MXSFindProfileViewController1")
+private let findProfileViewController1 = UIStoryboard(name: Ressources.StoryBooards.findProfile, bundle: nil).instantiateViewControllerWithIdentifier(Ressources.StoryBooardsIdentifiers.findProfileId)
 
 
 

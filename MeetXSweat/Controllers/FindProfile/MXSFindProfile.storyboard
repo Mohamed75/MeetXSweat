@@ -188,35 +188,5 @@
             </objects>
             <point key="canvasLocation" x="1091" y="329"/>
         </scene>
-        <!--Find Profile View Controller3-->
-        <scene sceneID="dpf-KL-tAX">
-            <objects>
-                <viewController storyboardIdentifier="MXSFindProfileViewController3" id="RAd-tv-FSw" customClass="MXSFindProfileViewController3" customModule="MeetXSweat" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="XcV-nr-CX9"/>
-                        <viewControllerLayoutGuide type="bottom" id="vTG-0g-5hL"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="pjV-WP-7XP">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sweatworker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vfo-Hg-uOw">
-                                <rect key="frame" x="250.5" y="30" width="99" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Vfo-Hg-uOw" firstAttribute="centerX" secondItem="pjV-WP-7XP" secondAttribute="centerX" id="MpM-Jv-nfB"/>
-                            <constraint firstItem="Vfo-Hg-uOw" firstAttribute="top" secondItem="XcV-nr-CX9" secondAttribute="bottom" constant="10" id="OCV-gh-OAg"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PN8-9f-EdD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1819" y="369"/>
-        </scene>
     </scenes>
 </document>

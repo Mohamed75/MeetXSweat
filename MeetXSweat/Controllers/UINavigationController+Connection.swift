@@ -8,9 +8,9 @@
 
 import UIKit
 
-private let homeViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("MXSHomeViewController")
+private let homeViewController = UIStoryboard(name: Ressources.StoryBooards.main, bundle: nil).instantiateViewControllerWithIdentifier(Ressources.StoryBooardsIdentifiers.homeId)
 
-private let allLoginsViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("MXSAllLoginsViewController")
+private let allLoginsViewController = UIStoryboard(name: Ressources.StoryBooards.main, bundle: nil).instantiateViewControllerWithIdentifier(Ressources.StoryBooardsIdentifiers.logInId)
 
 
 extension UINavigationController {

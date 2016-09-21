@@ -20,4 +20,26 @@ enum Ressources {
         static let profilePlaceHolder    = "Profile_placeholder"
         static let ProfessionalProfile   = "ProfessionalProfile"
     }
+    
+    /**
+     *  A struct of constants about the StoryBoards.
+     */
+    struct StoryBooards {
+        
+        static let main    = "Main"
+        static let findProfile   = "MXSFindProfile"
+    }
+    
+    /**
+     *  A struct of constants about the StoryBoard Identifiers.
+     */
+    struct StoryBooardsIdentifiers {
+        
+        // Main StoryBoard
+        static let homeId       = "MXSHomeViewController"
+        static let logInId      = "MXSAllLoginsViewController"
+        
+        // FindProfile StoryBoard
+        static let findProfileId   = "MXSFindProfileViewController1"
+    }
 }
