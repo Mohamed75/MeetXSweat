@@ -29,6 +29,7 @@ enum Ressources {
         static let main    = "Main"
         static let findProfile   = "MXSFindProfile"
         static let profile = "MXSProfile"
+        static let event = "MXSEvent"
     }
     
     /**
@@ -45,5 +46,8 @@ enum Ressources {
         
         // Profile StoryBoard
         static let profileId = "MXSProfileViewController"
+        
+        // Events StoryBoard
+        static let eventId = "MXSEventViewController"
     }
 }

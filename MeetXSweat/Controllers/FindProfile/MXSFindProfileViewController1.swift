@@ -9,12 +9,6 @@
 import UIKit
 
 
-// Dummy Data
-private let domaines = ["Informatique", "Medical", "Social", "bancaire"]
-private let professions = ["Developer", "Project Manager", "Medecin", "Professeur"]
-private let experiences = ["0-2", "2-5", "5-10", ">10"]
-
-
 private let endEditingSelectorString = "endEditing"
 
 
@@ -25,7 +19,7 @@ class MXSFindProfileViewController1: UIViewController, UIPickerViewDataSource, U
     @IBOutlet weak var experienceTextField: UITextField!
     let emptyTextField = UITextField()
     
-    var dataArray = domaines
+    var dataArray = DummyData.getDomaines()
     var selectedTextField = 1
     let pickerView = UIPickerView()
     
@@ -99,22 +93,22 @@ class MXSFindProfileViewController1: UIViewController, UIPickerViewDataSource, U
         switch textField {
         case domaineTextField:
             selectedTextField = 1
-            dataArray = domaines
+            dataArray = DummyData.getDomaines()
             domaineTextField.text = dataArray[0]
             break
         case professionTextField:
             selectedTextField = 2
-            dataArray = professions
+            dataArray = DummyData.getProfessions()
             professionTextField.text = dataArray[0]
             break
         case experienceTextField:
             selectedTextField = 3
-            dataArray = experiences
+            dataArray = DummyData.getExperiences()
             experienceTextField.text = dataArray[0]
             break
         default:
             selectedTextField = 1
-            dataArray = domaines
+            dataArray = DummyData.getDomaines()
             break
         }
         pickerView.selectRow(0, inComponent: 0, animated: false)

@@ -12,46 +12,18 @@ import UIKit
 private let reuseIdentifier = "MXSFindProfile2CollectionCell"
 
 
-// Dummy Data
-private let names = ["Tony", "Alex", "Sedik", "John", "Alcapon"]
-private let lastNames = ["Montana", "LeCon", "Bendi", "Halliday", "Themaster"]
-private let professions = ["Developer", "Project Manager", "Medecin", "Professeur", "Developer"]
-private let sports = ["foot \ntennis", "foot \nbasket", "", "volley", "hand \nbasket"]
-
-
-
 
 class MXSFindProfileViewController2: UIViewController {
 
     var dataArray = [Person]()
     
-    // Dummy Data
-    func getPerons() -> [Person] {
-        
-        var returnArray: [Person] = []
-        
-        for i in 0...4 {
-            
-            let person = Person()
-            person.name = names[i]
-            person.lastName = lastNames[i]
-            person.profession = professions[i]
-            person.sport = sports[i]
-            returnArray.append(person)
-        }
-        return returnArray
-    }
     
-    
-    
-    
-
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         self.automaticallyAdjustsScrollViewInsets = false
-        self.dataArray = FindProfileManager.filterBy(getPerons(), filter: FindProfileManager.sharedInstance.profession)
+        self.dataArray = FindProfileManager.filterBy(DummyData.getPerons(), filter: FindProfileManager.sharedInstance.profession)
     }
     
     

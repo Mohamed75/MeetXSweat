@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Event View Controller-->
+        <scene sceneID="ooT-q7-JKi">
+            <objects>
+                <viewController storyboardIdentifier="MXSEventViewController" id="fUr-qR-Xlu" customClass="MXSEventViewController" customModule="MeetXSweat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="riU-Ww-oIY"/>
+                        <viewControllerLayoutGuide type="bottom" id="aXf-Xu-liq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="i8Z-Zp-cso">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KEG-Kr-oDx">
+                                <rect key="frame" x="271" y="214" width="30" height="30"/>
+                                <state key="normal" title="Map"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KEG-Kr-oDx" firstAttribute="centerX" secondItem="i8Z-Zp-cso" secondAttribute="centerX" id="SBk-4W-Ur8"/>
+                            <constraint firstItem="KEG-Kr-oDx" firstAttribute="top" secondItem="riU-Ww-oIY" secondAttribute="bottom" constant="194" id="gbl-VN-XxT"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="64g-o8-iMJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="344" y="285"/>
+        </scene>
+    </scenes>
+</document>

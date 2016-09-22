@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		1E73987874C73DEE6D84DFE3 /* Pods_MeetXSweatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF2D9D79CD6E67071DA136A4 /* Pods_MeetXSweatTests.framework */; };
 		26168A058FAF4B8C39C1342F /* Pods_MeetXSweat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2994B391032B351D94FC1B09 /* Pods_MeetXSweat.framework */; };
+		D90AB56F1D93E275003DCA75 /* MXSEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D90AB56E1D93E275003DCA75 /* MXSEvent.storyboard */; };
+		D90AB5711D93E28F003DCA75 /* MXSEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5701D93E28F003DCA75 /* MXSEventViewController.swift */; };
+		D90AB5731D93E4D9003DCA75 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5721D93E4D9003DCA75 /* Event.swift */; };
+		D90AB5751D93E650003DCA75 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5741D93E650003DCA75 /* DummyData.swift */; };
+		D90AB5771D93ED1C003DCA75 /* MXSEventsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5761D93ED1C003DCA75 /* MXSEventsCollectionViewController.swift */; };
+		D90AB5791D93EEE7003DCA75 /* MXSEventsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5781D93EEE7003DCA75 /* MXSEventsCollectionCell.swift */; };
 		D926BAA01D8D6A6400E3878C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D926BA9F1D8D6A6400E3878C /* AppDelegate.swift */; };
 		D926BAA51D8D6A6400E3878C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D926BAA31D8D6A6400E3878C /* Main.storyboard */; };
 		D926BAA71D8D6A6400E3878C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D926BAA61D8D6A6400E3878C /* Assets.xcassets */; };
@@ -64,6 +70,12 @@
 		2994B391032B351D94FC1B09 /* Pods_MeetXSweat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetXSweat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		31432F17C675D4F9FF0518AF /* Pods-MeetXSweat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetXSweat.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeetXSweat/Pods-MeetXSweat.release.xcconfig"; sourceTree = "<group>"; };
 		AF2D9D79CD6E67071DA136A4 /* Pods_MeetXSweatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetXSweatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D90AB56E1D93E275003DCA75 /* MXSEvent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MXSEvent.storyboard; sourceTree = "<group>"; };
+		D90AB5701D93E28F003DCA75 /* MXSEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSEventViewController.swift; sourceTree = "<group>"; };
+		D90AB5721D93E4D9003DCA75 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		D90AB5741D93E650003DCA75 /* DummyData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DummyData.swift; path = MeetXSweat/Model/DummyData.swift; sourceTree = SOURCE_ROOT; };
+		D90AB5761D93ED1C003DCA75 /* MXSEventsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSEventsCollectionViewController.swift; sourceTree = "<group>"; };
+		D90AB5781D93EEE7003DCA75 /* MXSEventsCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSEventsCollectionCell.swift; sourceTree = "<group>"; };
 		D926BA9C1D8D6A6400E3878C /* MeetXSweat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetXSweat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D926BA9F1D8D6A6400E3878C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D926BAA41D8D6A6400E3878C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -155,6 +167,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D90AB56D1D93E262003DCA75 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				D90AB5701D93E28F003DCA75 /* MXSEventViewController.swift */,
+				D90AB56E1D93E275003DCA75 /* MXSEvent.storyboard */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
 		D926BA931D8D6A6400E3878C = {
 			isa = PBXGroup;
 			children = (
@@ -220,6 +241,7 @@
 		D926BAD11D8DA11F00E3878C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D90AB56D1D93E262003DCA75 /* Events */,
 				D959B3E21D931FF300981105 /* Profile */,
 				D959B3C71D92CF1600981105 /* FindArroundMe */,
 				D959B3C81D92CF1600981105 /* FindDate */,
@@ -250,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				D959B3E01D931AB900981105 /* FindProfileManager.swift */,
+				D90AB5741D93E650003DCA75 /* DummyData.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -259,6 +282,7 @@
 			children = (
 				D926BADB1D8DAF3900E3878C /* Person.swift */,
 				D926BADF1D8DBC5100E3878C /* User.swift */,
+				D90AB5721D93E4D9003DCA75 /* Event.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -298,6 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				D959B3E31D93200E00981105 /* MXSProfileViewController.swift */,
+				D90AB5761D93ED1C003DCA75 /* MXSEventsCollectionViewController.swift */,
 				D959B3E51D93202200981105 /* MXSProfile.storyboard */,
 			);
 			path = Profile;
@@ -308,6 +333,7 @@
 			children = (
 				D9BEC5571D90641E006DAAAC /* MXSHomeCollectionCell.swift */,
 				D959B3D31D93115F00981105 /* MXSFindProfile2CollectionCell.swift */,
+				D90AB5781D93EEE7003DCA75 /* MXSEventsCollectionCell.swift */,
 			);
 			path = UIElements;
 			sourceTree = "<group>";
@@ -423,6 +449,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D90AB56F1D93E275003DCA75 /* MXSEvent.storyboard in Resources */,
 				D926BAAA1D8D6A6400E3878C /* LaunchScreen.storyboard in Resources */,
 				D9BB48231D8EF1F400C12541 /* GoogleService-Info.plist in Resources */,
 				D926BAA71D8D6A6400E3878C /* Assets.xcassets in Resources */,
@@ -559,13 +586,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D90AB5711D93E28F003DCA75 /* MXSEventViewController.swift in Sources */,
 				D926BADC1D8DAF3900E3878C /* Person.swift in Sources */,
 				D959B3D81D93185000981105 /* MXSStrings.swift in Sources */,
 				D959B3CD1D92D1DD00981105 /* MXSFindProfileViewController2.swift in Sources */,
 				D9BB48251D8EF2E000C12541 /* GoogleLogInHelper.swift in Sources */,
 				D926BAE21D8DD5CB00E3878C /* UINavigationController+Connection.swift in Sources */,
+				D90AB5791D93EEE7003DCA75 /* MXSEventsCollectionCell.swift in Sources */,
 				D959B3D41D93115F00981105 /* MXSFindProfile2CollectionCell.swift in Sources */,
 				D926BAA01D8D6A6400E3878C /* AppDelegate.swift in Sources */,
+				D90AB5751D93E650003DCA75 /* DummyData.swift in Sources */,
 				D926BAE41D8DD6AA00E3878C /* MXSHomeViewController.swift in Sources */,
 				D926BAE01D8DBC5100E3878C /* User.swift in Sources */,
 				D9BB48131D8EB48000C12541 /* UtilsLinkedInHelper.swift in Sources */,
@@ -574,9 +604,11 @@
 				D94C63E61D8DE4BB00ECD7FD /* FaceBookHelper.swift in Sources */,
 				D959B3E41D93200E00981105 /* MXSProfileViewController.swift in Sources */,
 				D926BAD31D8DA11F00E3878C /* MXSAllLoginsViewController.swift in Sources */,
+				D90AB5731D93E4D9003DCA75 /* Event.swift in Sources */,
 				D959B3DE1D9318E000981105 /* MXSRessources.swift in Sources */,
 				D926BAD81D8DA92400E3878C /* Utils.swift in Sources */,
 				D94C63E91D8E914F00ECD7FD /* TwitterHelper.swift in Sources */,
+				D90AB5771D93ED1C003DCA75 /* MXSEventsCollectionViewController.swift in Sources */,
 				D9BEC5581D90641E006DAAAC /* MXSHomeCollectionCell.swift in Sources */,
 				D959B3DD1D9318E000981105 /* MXSConstants.swift in Sources */,
 				D959B3E11D931AB900981105 /* FindProfileManager.swift in Sources */,

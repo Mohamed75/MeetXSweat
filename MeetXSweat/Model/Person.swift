@@ -20,7 +20,8 @@ class Person: NSObject {
     var pictureUrl: String?
     var gender: String?
     var birthday: String?
-    
+    var events: [Event]?
+    var adress: String?
     
     
     func allParams() -> String {

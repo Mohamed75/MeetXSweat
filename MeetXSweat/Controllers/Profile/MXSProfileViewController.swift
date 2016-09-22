@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 class MXSProfileViewController: UIViewController {
 
 
@@ -15,7 +17,6 @@ class MXSProfileViewController: UIViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var sportsLabel: UILabel!
     
     var person: Person!
     
@@ -35,8 +36,6 @@ class MXSProfileViewController: UIViewController {
         self.nameLabel.text = text + "\n" + FindProfileManager.sharedInstance.profession
         
         self.descriptionLabel.text = "My temporary description"
-        
-        self.sportsLabel.text = person.sport
     }
     
     
