@@ -31,6 +31,9 @@ enum Ressources {
         static let findProfile   = "MXSFindProfile"
         static let profile = "MXSProfile"
         static let event = "MXSEvent"
+        static let findSport = "MXSFindSport"
+        static let findDate = "MXSFindDate"
+        static let findArroundMe = "MXSFindArroundMe"
     }
     
     /**
@@ -50,5 +53,14 @@ enum Ressources {
         
         // Events StoryBoard
         static let eventId = "MXSEventViewController"
+        
+        // FindSport StoryBoard
+        static let findSportId = "MXSFindSportViewController"
+        
+        // FindDate StoryBoard
+        static let findDateId = "MXSFindDateViewController"
+        
+        // FindArroudMe StoryBoard
+        static let findArroundMeId = "MXSFindArroundMeViewController"
     }
 }

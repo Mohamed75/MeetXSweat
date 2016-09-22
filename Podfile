@@ -23,6 +23,10 @@ pod 'Alamofire'
 pod 'AlamofireImage'
 
 
+pod 'DLRadioButton', '~> 1.4'
+
+
+
 target 'MeetXSweat' do
 
 end

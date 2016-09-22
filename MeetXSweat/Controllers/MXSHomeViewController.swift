@@ -91,6 +91,12 @@ class MXSHomeViewController: MXSViewController, UICollectionViewDelegate, UIColl
             let findProfileViewController1 = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findProfile, viewControllerId: Ressources.StoryBooardsIdentifiers.findProfileId)
             self.navigationController?.pushViewController(findProfileViewController1, animated: true)
             break
+            
+        case 1:
+            let findSportViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findSport, viewControllerId: Ressources.StoryBooardsIdentifiers.findSportId)
+            self.navigationController?.pushViewController(findSportViewController, animated: true)
+            break
+            
         default:
             break
         }
