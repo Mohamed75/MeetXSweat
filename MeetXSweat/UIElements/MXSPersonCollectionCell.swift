@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MXSFindProfile2CollectionCell: UICollectionViewCell {
+class MXSPersonCollectionCell: UICollectionViewCell {
     
     @IBOutlet internal weak var imageView: UIImageView!
     @IBOutlet internal weak var label: UILabel!

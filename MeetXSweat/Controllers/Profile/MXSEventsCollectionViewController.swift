@@ -28,7 +28,7 @@ class MXSEventsCollectionViewController: UICollectionViewController {
             }
         }
         cell.label.text = text
-        cell.imageView.image = UIImage(named: Ressources.Images.profilePlaceHolder)
+        cell.imageView.image = UIImage(named: Ressources.Images.event)
         
         return cell
     }

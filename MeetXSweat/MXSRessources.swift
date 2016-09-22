@@ -19,6 +19,7 @@ enum Ressources {
         
         static let profilePlaceHolder    = "Profile_placeholder"
         static let ProfessionalProfile   = "ProfessionalProfile"
+        static let event = "Event"
     }
     
     /**

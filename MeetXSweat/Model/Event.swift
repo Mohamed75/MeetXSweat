@@ -17,6 +17,8 @@ class Event {
     var imageUrlString: String?
     var persons: [Person]?
     var adress: String?
+    var sport: String?
+    
     
     init() {
         

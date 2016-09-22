@@ -81,7 +81,7 @@ class User: Person, NSCoding {
         if let fullName = data["name"] as? String  {
             let nameArray = fullName.componentsSeparatedByString(" ")
             self.name = nameArray[0]
-            if nameArray.count > 2 {
+            if nameArray.count > 1 {
                 self.lastName = nameArray[1]
             }
         }

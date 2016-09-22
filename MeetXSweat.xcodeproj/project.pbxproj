@@ -15,6 +15,7 @@
 		D90AB5751D93E650003DCA75 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5741D93E650003DCA75 /* DummyData.swift */; };
 		D90AB5771D93ED1C003DCA75 /* MXSEventsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5761D93ED1C003DCA75 /* MXSEventsCollectionViewController.swift */; };
 		D90AB5791D93EEE7003DCA75 /* MXSEventsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5781D93EEE7003DCA75 /* MXSEventsCollectionCell.swift */; };
+		D90AB57C1D940522003DCA75 /* MXSPersonsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB57B1D940522003DCA75 /* MXSPersonsCollectionViewController.swift */; };
 		D926BAA01D8D6A6400E3878C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D926BA9F1D8D6A6400E3878C /* AppDelegate.swift */; };
 		D926BAA51D8D6A6400E3878C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D926BAA31D8D6A6400E3878C /* Main.storyboard */; };
 		D926BAA71D8D6A6400E3878C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D926BAA61D8D6A6400E3878C /* Assets.xcassets */; };
@@ -33,7 +34,7 @@
 		D959B3CB1D92D1D200981105 /* MXSFindProfileViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3CA1D92D1D200981105 /* MXSFindProfileViewController1.swift */; };
 		D959B3CD1D92D1DD00981105 /* MXSFindProfileViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3CC1D92D1DD00981105 /* MXSFindProfileViewController2.swift */; };
 		D959B3D11D92D24500981105 /* MXSFindProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D959B3D01D92D24500981105 /* MXSFindProfile.storyboard */; };
-		D959B3D41D93115F00981105 /* MXSFindProfile2CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3D31D93115F00981105 /* MXSFindProfile2CollectionCell.swift */; };
+		D959B3D41D93115F00981105 /* MXSPersonCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3D31D93115F00981105 /* MXSPersonCollectionCell.swift */; };
 		D959B3D81D93185000981105 /* MXSStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3D71D93185000981105 /* MXSStrings.swift */; };
 		D959B3DD1D9318E000981105 /* MXSConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3DB1D9318E000981105 /* MXSConstants.swift */; };
 		D959B3DE1D9318E000981105 /* MXSRessources.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3DC1D9318E000981105 /* MXSRessources.swift */; };
@@ -74,8 +75,9 @@
 		D90AB5701D93E28F003DCA75 /* MXSEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSEventViewController.swift; sourceTree = "<group>"; };
 		D90AB5721D93E4D9003DCA75 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		D90AB5741D93E650003DCA75 /* DummyData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DummyData.swift; path = MeetXSweat/Model/DummyData.swift; sourceTree = SOURCE_ROOT; };
-		D90AB5761D93ED1C003DCA75 /* MXSEventsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSEventsCollectionViewController.swift; sourceTree = "<group>"; };
+		D90AB5761D93ED1C003DCA75 /* MXSEventsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MXSEventsCollectionViewController.swift; path = ../Profile/MXSEventsCollectionViewController.swift; sourceTree = "<group>"; };
 		D90AB5781D93EEE7003DCA75 /* MXSEventsCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSEventsCollectionCell.swift; sourceTree = "<group>"; };
+		D90AB57B1D940522003DCA75 /* MXSPersonsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSPersonsCollectionViewController.swift; sourceTree = "<group>"; };
 		D926BA9C1D8D6A6400E3878C /* MeetXSweat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetXSweat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D926BA9F1D8D6A6400E3878C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D926BAA41D8D6A6400E3878C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -101,7 +103,7 @@
 		D959B3CA1D92D1D200981105 /* MXSFindProfileViewController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSFindProfileViewController1.swift; sourceTree = "<group>"; };
 		D959B3CC1D92D1DD00981105 /* MXSFindProfileViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSFindProfileViewController2.swift; sourceTree = "<group>"; };
 		D959B3D01D92D24500981105 /* MXSFindProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MXSFindProfile.storyboard; sourceTree = "<group>"; };
-		D959B3D31D93115F00981105 /* MXSFindProfile2CollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSFindProfile2CollectionCell.swift; sourceTree = "<group>"; };
+		D959B3D31D93115F00981105 /* MXSPersonCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSPersonCollectionCell.swift; sourceTree = "<group>"; };
 		D959B3D71D93185000981105 /* MXSStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSStrings.swift; sourceTree = "<group>"; };
 		D959B3DB1D9318E000981105 /* MXSConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSConstants.swift; sourceTree = "<group>"; };
 		D959B3DC1D9318E000981105 /* MXSRessources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSRessources.swift; sourceTree = "<group>"; };
@@ -167,13 +169,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D90AB56D1D93E262003DCA75 /* Events */ = {
+		D90AB56D1D93E262003DCA75 /* Event */ = {
 			isa = PBXGroup;
 			children = (
 				D90AB5701D93E28F003DCA75 /* MXSEventViewController.swift */,
 				D90AB56E1D93E275003DCA75 /* MXSEvent.storyboard */,
 			);
+			name = Event;
 			path = Events;
+			sourceTree = "<group>";
+		};
+		D90AB57A1D9404FF003DCA75 /* ConllectionControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D90AB5761D93ED1C003DCA75 /* MXSEventsCollectionViewController.swift */,
+				D90AB57B1D940522003DCA75 /* MXSPersonsCollectionViewController.swift */,
+			);
+			path = ConllectionControllers;
 			sourceTree = "<group>";
 		};
 		D926BA931D8D6A6400E3878C = {
@@ -241,7 +253,8 @@
 		D926BAD11D8DA11F00E3878C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D90AB56D1D93E262003DCA75 /* Events */,
+				D90AB57A1D9404FF003DCA75 /* ConllectionControllers */,
+				D90AB56D1D93E262003DCA75 /* Event */,
 				D959B3E21D931FF300981105 /* Profile */,
 				D959B3C71D92CF1600981105 /* FindArroundMe */,
 				D959B3C81D92CF1600981105 /* FindDate */,
@@ -322,7 +335,6 @@
 			isa = PBXGroup;
 			children = (
 				D959B3E31D93200E00981105 /* MXSProfileViewController.swift */,
-				D90AB5761D93ED1C003DCA75 /* MXSEventsCollectionViewController.swift */,
 				D959B3E51D93202200981105 /* MXSProfile.storyboard */,
 			);
 			path = Profile;
@@ -332,7 +344,7 @@
 			isa = PBXGroup;
 			children = (
 				D9BEC5571D90641E006DAAAC /* MXSHomeCollectionCell.swift */,
-				D959B3D31D93115F00981105 /* MXSFindProfile2CollectionCell.swift */,
+				D959B3D31D93115F00981105 /* MXSPersonCollectionCell.swift */,
 				D90AB5781D93EEE7003DCA75 /* MXSEventsCollectionCell.swift */,
 			);
 			path = UIElements;
@@ -593,7 +605,7 @@
 				D9BB48251D8EF2E000C12541 /* GoogleLogInHelper.swift in Sources */,
 				D926BAE21D8DD5CB00E3878C /* UINavigationController+Connection.swift in Sources */,
 				D90AB5791D93EEE7003DCA75 /* MXSEventsCollectionCell.swift in Sources */,
-				D959B3D41D93115F00981105 /* MXSFindProfile2CollectionCell.swift in Sources */,
+				D959B3D41D93115F00981105 /* MXSPersonCollectionCell.swift in Sources */,
 				D926BAA01D8D6A6400E3878C /* AppDelegate.swift in Sources */,
 				D90AB5751D93E650003DCA75 /* DummyData.swift in Sources */,
 				D926BAE41D8DD6AA00E3878C /* MXSHomeViewController.swift in Sources */,
@@ -606,6 +618,7 @@
 				D926BAD31D8DA11F00E3878C /* MXSAllLoginsViewController.swift in Sources */,
 				D90AB5731D93E4D9003DCA75 /* Event.swift in Sources */,
 				D959B3DE1D9318E000981105 /* MXSRessources.swift in Sources */,
+				D90AB57C1D940522003DCA75 /* MXSPersonsCollectionViewController.swift in Sources */,
 				D926BAD81D8DA92400E3878C /* Utils.swift in Sources */,
 				D94C63E91D8E914F00ECD7FD /* TwitterHelper.swift in Sources */,
 				D90AB5771D93ED1C003DCA75 /* MXSEventsCollectionViewController.swift in Sources */,
