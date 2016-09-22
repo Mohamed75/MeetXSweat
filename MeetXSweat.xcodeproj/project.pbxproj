@@ -16,6 +16,12 @@
 		D90AB5771D93ED1C003DCA75 /* MXSEventsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5761D93ED1C003DCA75 /* MXSEventsCollectionViewController.swift */; };
 		D90AB5791D93EEE7003DCA75 /* MXSEventsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5781D93EEE7003DCA75 /* MXSEventsCollectionCell.swift */; };
 		D90AB57C1D940522003DCA75 /* MXSPersonsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB57B1D940522003DCA75 /* MXSPersonsCollectionViewController.swift */; };
+		D90AB57E1D940CA9003DCA75 /* MXSFindSport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D90AB57D1D940CA9003DCA75 /* MXSFindSport.storyboard */; };
+		D90AB5801D940CC4003DCA75 /* MXSFindDate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D90AB57F1D940CC4003DCA75 /* MXSFindDate.storyboard */; };
+		D90AB5821D940CD2003DCA75 /* FindArroundMe.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D90AB5811D940CD2003DCA75 /* FindArroundMe.storyboard */; };
+		D90AB5841D940CEA003DCA75 /* MXSFindSportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5831D940CEA003DCA75 /* MXSFindSportViewController.swift */; };
+		D90AB5861D940CFC003DCA75 /* MXSFindDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5851D940CFC003DCA75 /* MXSFindDateViewController.swift */; };
+		D90AB5881D940D18003DCA75 /* MXSFindArroundMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5871D940D18003DCA75 /* MXSFindArroundMeViewController.swift */; };
 		D926BAA01D8D6A6400E3878C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D926BA9F1D8D6A6400E3878C /* AppDelegate.swift */; };
 		D926BAA51D8D6A6400E3878C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D926BAA31D8D6A6400E3878C /* Main.storyboard */; };
 		D926BAA71D8D6A6400E3878C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D926BAA61D8D6A6400E3878C /* Assets.xcassets */; };
@@ -78,6 +84,12 @@
 		D90AB5761D93ED1C003DCA75 /* MXSEventsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MXSEventsCollectionViewController.swift; path = ../Profile/MXSEventsCollectionViewController.swift; sourceTree = "<group>"; };
 		D90AB5781D93EEE7003DCA75 /* MXSEventsCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSEventsCollectionCell.swift; sourceTree = "<group>"; };
 		D90AB57B1D940522003DCA75 /* MXSPersonsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSPersonsCollectionViewController.swift; sourceTree = "<group>"; };
+		D90AB57D1D940CA9003DCA75 /* MXSFindSport.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MXSFindSport.storyboard; sourceTree = "<group>"; };
+		D90AB57F1D940CC4003DCA75 /* MXSFindDate.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MXSFindDate.storyboard; sourceTree = "<group>"; };
+		D90AB5811D940CD2003DCA75 /* FindArroundMe.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FindArroundMe.storyboard; sourceTree = "<group>"; };
+		D90AB5831D940CEA003DCA75 /* MXSFindSportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSFindSportViewController.swift; sourceTree = "<group>"; };
+		D90AB5851D940CFC003DCA75 /* MXSFindDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSFindDateViewController.swift; sourceTree = "<group>"; };
+		D90AB5871D940D18003DCA75 /* MXSFindArroundMeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSFindArroundMeViewController.swift; sourceTree = "<group>"; };
 		D926BA9C1D8D6A6400E3878C /* MeetXSweat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetXSweat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D926BA9F1D8D6A6400E3878C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D926BAA41D8D6A6400E3878C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -313,6 +325,8 @@
 		D959B3C71D92CF1600981105 /* FindArroundMe */ = {
 			isa = PBXGroup;
 			children = (
+				D90AB5871D940D18003DCA75 /* MXSFindArroundMeViewController.swift */,
+				D90AB5811D940CD2003DCA75 /* FindArroundMe.storyboard */,
 			);
 			path = FindArroundMe;
 			sourceTree = "<group>";
@@ -320,6 +334,8 @@
 		D959B3C81D92CF1600981105 /* FindDate */ = {
 			isa = PBXGroup;
 			children = (
+				D90AB5851D940CFC003DCA75 /* MXSFindDateViewController.swift */,
+				D90AB57F1D940CC4003DCA75 /* MXSFindDate.storyboard */,
 			);
 			path = FindDate;
 			sourceTree = "<group>";
@@ -327,6 +343,8 @@
 		D959B3C91D92CF1600981105 /* FindSport */ = {
 			isa = PBXGroup;
 			children = (
+				D90AB5831D940CEA003DCA75 /* MXSFindSportViewController.swift */,
+				D90AB57D1D940CA9003DCA75 /* MXSFindSport.storyboard */,
 			);
 			path = FindSport;
 			sourceTree = "<group>";
@@ -463,11 +481,14 @@
 			files = (
 				D90AB56F1D93E275003DCA75 /* MXSEvent.storyboard in Resources */,
 				D926BAAA1D8D6A6400E3878C /* LaunchScreen.storyboard in Resources */,
+				D90AB5801D940CC4003DCA75 /* MXSFindDate.storyboard in Resources */,
 				D9BB48231D8EF1F400C12541 /* GoogleService-Info.plist in Resources */,
 				D926BAA71D8D6A6400E3878C /* Assets.xcassets in Resources */,
 				D959B3E61D93202200981105 /* MXSProfile.storyboard in Resources */,
+				D90AB5821D940CD2003DCA75 /* FindArroundMe.storyboard in Resources */,
 				D959B3D11D92D24500981105 /* MXSFindProfile.storyboard in Resources */,
 				D926BAA51D8D6A6400E3878C /* Main.storyboard in Resources */,
+				D90AB57E1D940CA9003DCA75 /* MXSFindSport.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -611,7 +632,9 @@
 				D926BAE41D8DD6AA00E3878C /* MXSHomeViewController.swift in Sources */,
 				D926BAE01D8DBC5100E3878C /* User.swift in Sources */,
 				D9BB48131D8EB48000C12541 /* UtilsLinkedInHelper.swift in Sources */,
+				D90AB5841D940CEA003DCA75 /* MXSFindSportViewController.swift in Sources */,
 				D9AAA2AD1D8F1550004CE80C /* MXSMainViewController.swift in Sources */,
+				D90AB5881D940D18003DCA75 /* MXSFindArroundMeViewController.swift in Sources */,
 				D9AAA2AB1D8F0F12004CE80C /* MXSViewController.swift in Sources */,
 				D94C63E61D8DE4BB00ECD7FD /* FaceBookHelper.swift in Sources */,
 				D959B3E41D93200E00981105 /* MXSProfileViewController.swift in Sources */,
@@ -619,6 +642,7 @@
 				D90AB5731D93E4D9003DCA75 /* Event.swift in Sources */,
 				D959B3DE1D9318E000981105 /* MXSRessources.swift in Sources */,
 				D90AB57C1D940522003DCA75 /* MXSPersonsCollectionViewController.swift in Sources */,
+				D90AB5861D940CFC003DCA75 /* MXSFindDateViewController.swift in Sources */,
 				D926BAD81D8DA92400E3878C /* Utils.swift in Sources */,
 				D94C63E91D8E914F00ECD7FD /* TwitterHelper.swift in Sources */,
 				D90AB5771D93ED1C003DCA75 /* MXSEventsCollectionViewController.swift in Sources */,
