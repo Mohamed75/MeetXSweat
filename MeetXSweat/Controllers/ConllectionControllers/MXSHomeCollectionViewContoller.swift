@@ -8,13 +8,10 @@
 
 import UIKit
 
-private let reuseIdentifier = "MXSHomeCollectionCell"
 
-private let numberOfSections =  4
-private let cell1Text = "Trouver un profil professionel"
-private let cell2Text = "Trouver un sport"
-private let cell3Text = "Trouver une date de disponnible"
-private let cell4Text = "Trouver ce qu'il y'as autour de moi"
+
+
+
 
 
 class MXSHomeCollectionViewContoller: UICollectionViewController {
@@ -22,24 +19,24 @@ class MXSHomeCollectionViewContoller: UICollectionViewController {
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! MXSHomeCollectionCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Ressources.CellReuseIdentifier.home, forIndexPath: indexPath) as! MXSHomeCollectionCell
         cell.imageView.image = UIImage(named: Ressources.Images.ProfessionalProfile)
-        if indexPath.section != numberOfSections-1 {
+        if indexPath.section != Strings.Home.numberOfSections-1 {
             cell.addLine()
         }
         
         switch indexPath.section {
         case 0:
-            cell.label.text = cell1Text
+            cell.label.text = Strings.Home.cell1Text
             break
         case 1:
-            cell.label.text = cell2Text
+            cell.label.text = Strings.Home.cell2Text
             break
         case 2:
-            cell.label.text = cell3Text
+            cell.label.text = Strings.Home.cell3Text
             break
         case 3:
-            cell.label.text = cell4Text
+            cell.label.text = Strings.Home.cell4Text
             break
         default:
             break
@@ -64,6 +61,8 @@ class MXSHomeCollectionViewContoller: UICollectionViewController {
             break
             
         case 2:
+            let findDateViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findDate, viewControllerId: Ressources.StoryBooardsIdentifiers.findDateId)
+            self.navigationController?.pushViewController(findDateViewController, animated: true)
             (self.parentViewController as! MXSHomeViewController).findBy = FindBy.Date
             break
         case 3:
@@ -80,7 +79,7 @@ class MXSHomeCollectionViewContoller: UICollectionViewController {
     }
     
     internal override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return numberOfSections
+        return Strings.Home.numberOfSections
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {

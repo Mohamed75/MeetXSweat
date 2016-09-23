@@ -28,6 +28,10 @@
 		D90AB5991D943BA5003DCA75 /* FindSportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5981D943BA5003DCA75 /* FindSportManager.swift */; };
 		D90AB59B1D95220C003DCA75 /* MXSHomeCollectionViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB59A1D95220C003DCA75 /* MXSHomeCollectionViewContoller.swift */; };
 		D90AB59D1D9523C0003DCA75 /* MXSSportsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB59C1D9523C0003DCA75 /* MXSSportsCollectionViewController.swift */; };
+		D90AB59F1D955F20003DCA75 /* MXSCalendarCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D90AB59E1D955F20003DCA75 /* MXSCalendarCellView.xib */; };
+		D90AB5A11D955F6F003DCA75 /* MXSCalendarCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5A01D955F6F003DCA75 /* MXSCalendarCellView.swift */; };
+		D90AB5A31D9562E1003DCA75 /* MXSCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5A21D9562E1003DCA75 /* MXSCalendarViewController.swift */; };
+		D90AB5A51D957AE6003DCA75 /* AnimationClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5A41D957AE6003DCA75 /* AnimationClass.swift */; };
 		D926BAA01D8D6A6400E3878C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D926BA9F1D8D6A6400E3878C /* AppDelegate.swift */; };
 		D926BAA51D8D6A6400E3878C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D926BAA31D8D6A6400E3878C /* Main.storyboard */; };
 		D926BAA71D8D6A6400E3878C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D926BAA61D8D6A6400E3878C /* Assets.xcassets */; };
@@ -100,6 +104,10 @@
 		D90AB5981D943BA5003DCA75 /* FindSportManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FindSportManager.swift; path = MeetXSweat/UIElements/FindSportManager.swift; sourceTree = SOURCE_ROOT; };
 		D90AB59A1D95220C003DCA75 /* MXSHomeCollectionViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSHomeCollectionViewContoller.swift; sourceTree = "<group>"; };
 		D90AB59C1D9523C0003DCA75 /* MXSSportsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSSportsCollectionViewController.swift; sourceTree = "<group>"; };
+		D90AB59E1D955F20003DCA75 /* MXSCalendarCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MXSCalendarCellView.xib; sourceTree = "<group>"; };
+		D90AB5A01D955F6F003DCA75 /* MXSCalendarCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSCalendarCellView.swift; sourceTree = "<group>"; };
+		D90AB5A21D9562E1003DCA75 /* MXSCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSCalendarViewController.swift; sourceTree = "<group>"; };
+		D90AB5A41D957AE6003DCA75 /* AnimationClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationClass.swift; sourceTree = "<group>"; };
 		D926BA9C1D8D6A6400E3878C /* MeetXSweat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetXSweat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D926BA9F1D8D6A6400E3878C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D926BAA41D8D6A6400E3878C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -306,6 +314,7 @@
 		D926BAD41D8DA12800E3878C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				D90AB5A41D957AE6003DCA75 /* AnimationClass.swift */,
 				D926BAD71D8DA92400E3878C /* Utils.swift */,
 				D94C63E51D8DE4BB00ECD7FD /* FaceBookHelper.swift */,
 				D94C63E81D8E914F00ECD7FD /* TwitterHelper.swift */,
@@ -356,6 +365,7 @@
 		D959B3C81D92CF1600981105 /* FindDate */ = {
 			isa = PBXGroup;
 			children = (
+				D90AB5A21D9562E1003DCA75 /* MXSCalendarViewController.swift */,
 				D90AB5851D940CFC003DCA75 /* MXSFindDateViewController.swift */,
 				D90AB57F1D940CC4003DCA75 /* MXSFindDate.storyboard */,
 			);
@@ -384,6 +394,8 @@
 			isa = PBXGroup;
 			children = (
 				D90AB58C1D9412A5003DCA75 /* CollectionCells */,
+				D90AB59E1D955F20003DCA75 /* MXSCalendarCellView.xib */,
+				D90AB5A01D955F6F003DCA75 /* MXSCalendarCellView.swift */,
 			);
 			path = UIElements;
 			sourceTree = "<group>";
@@ -499,6 +511,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D90AB59F1D955F20003DCA75 /* MXSCalendarCellView.xib in Resources */,
 				D90AB56F1D93E275003DCA75 /* MXSEvent.storyboard in Resources */,
 				D926BAAA1D8D6A6400E3878C /* LaunchScreen.storyboard in Resources */,
 				D90AB5801D940CC4003DCA75 /* MXSFindDate.storyboard in Resources */,
@@ -662,13 +675,16 @@
 				D959B3E41D93200E00981105 /* MXSProfileViewController.swift in Sources */,
 				D90AB5941D9412A5003DCA75 /* MXSSportCollectionCell.swift in Sources */,
 				D926BAD31D8DA11F00E3878C /* MXSAllLoginsViewController.swift in Sources */,
+				D90AB5A31D9562E1003DCA75 /* MXSCalendarViewController.swift in Sources */,
 				D90AB5731D93E4D9003DCA75 /* Event.swift in Sources */,
 				D959B3DE1D9318E000981105 /* MXSRessources.swift in Sources */,
 				D90AB57C1D940522003DCA75 /* MXSPersonsCollectionViewController.swift in Sources */,
 				D90AB5861D940CFC003DCA75 /* MXSFindDateViewController.swift in Sources */,
 				D926BAD81D8DA92400E3878C /* Utils.swift in Sources */,
+				D90AB5A51D957AE6003DCA75 /* AnimationClass.swift in Sources */,
 				D94C63E91D8E914F00ECD7FD /* TwitterHelper.swift in Sources */,
 				D90AB5771D93ED1C003DCA75 /* MXSEventsCollectionViewController.swift in Sources */,
+				D90AB5A11D955F6F003DCA75 /* MXSCalendarCellView.swift in Sources */,
 				D959B3DD1D9318E000981105 /* MXSConstants.swift in Sources */,
 				D90AB5921D9412A5003DCA75 /* MXSHomeCollectionCell.swift in Sources */,
 				D90AB59D1D9523C0003DCA75 /* MXSSportsCollectionViewController.swift in Sources */,

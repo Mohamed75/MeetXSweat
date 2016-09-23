@@ -9,10 +9,10 @@
 import UIKit
 import DLRadioButton
 
-
+// Dummy Data
 private let sports = ["RAFTING", "BOOTCAMP", "FOOT", "BASKET", "VELO", "BOX", "NATATION", "MUSCULATION", "GOLF"]
 
-private let reuseIdentifier = "MXSSportCollectionCell"
+
 
 
 
@@ -23,7 +23,7 @@ class MXSSportsCollectionViewController: UICollectionViewController {
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! MXSSportCollectionCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Ressources.CellReuseIdentifier.sport, forIndexPath: indexPath) as! MXSSportCollectionCell
         cell.initColors()
         
         let index = (indexPath.section*2)+indexPath.row

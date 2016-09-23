@@ -20,6 +20,7 @@ enum Ressources {
         static let profilePlaceHolder    = "Profile_placeholder"
         static let ProfessionalProfile   = "ProfessionalProfile"
         static let event = "Event"
+        static let calendar = "Calendar"
     }
     
     /**
@@ -62,5 +63,20 @@ enum Ressources {
         
         // FindArroudMe StoryBoard
         static let findArroundMeId = "MXSFindArroundMeViewController"
+    }
+    
+    
+    struct Xibs {
+        
+        static let calendarCellView = "MXSCalendarCellView"
+    }
+    
+    
+    struct CellReuseIdentifier {
+        
+        static let event  = "MXSEventsCollectionCell"
+        static let person = "MXSPersonCollectionCell"
+        static let home = "MXSHomeCollectionCell"
+        static let sport = "MXSSportCollectionCell"
     }
 }

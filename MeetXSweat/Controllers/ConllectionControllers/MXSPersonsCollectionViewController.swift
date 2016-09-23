@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let reuseIdentifier = "MXSPersonCollectionCell"
+
 
 
 class MXSPersonsCollectionViewController: UICollectionViewController {
@@ -28,7 +28,7 @@ class MXSPersonsCollectionViewController: UICollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! MXSPersonCollectionCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Ressources.CellReuseIdentifier.person, forIndexPath: indexPath) as! MXSPersonCollectionCell
         let person = self.persons[indexPath.section]
         var text = ""
         if let name = person.name {

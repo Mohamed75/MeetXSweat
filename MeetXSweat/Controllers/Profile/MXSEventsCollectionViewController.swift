@@ -9,7 +9,7 @@
 import UIKit
 
 
-private let reuseIdentifier = "MXSEventsCollectionCell"
+
 
 
 class MXSEventsCollectionViewController: UICollectionViewController {
@@ -27,7 +27,7 @@ class MXSEventsCollectionViewController: UICollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! MXSEventsCollectionCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Ressources.CellReuseIdentifier.event, forIndexPath: indexPath) as! MXSEventsCollectionCell
         let event = self.events[indexPath.section]
         var text = ""
         if let name = event.name {
