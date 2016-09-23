@@ -54,11 +54,20 @@ class MXSHomeCollectionViewContoller: UICollectionViewController {
         case 0:
             let findProfileViewController1 = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findProfile, viewControllerId: Ressources.StoryBooardsIdentifiers.findProfileId)
             self.navigationController?.pushViewController(findProfileViewController1, animated: true)
+            (self.parentViewController as! MXSHomeViewController).findBy = FindBy.Profile
             break
             
         case 1:
             let findSportViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findSport, viewControllerId: Ressources.StoryBooardsIdentifiers.findSportId)
             self.navigationController?.pushViewController(findSportViewController, animated: true)
+            (self.parentViewController as! MXSHomeViewController).findBy = FindBy.Sport
+            break
+            
+        case 2:
+            (self.parentViewController as! MXSHomeViewController).findBy = FindBy.Date
+            break
+        case 3:
+            (self.parentViewController as! MXSHomeViewController).findBy = FindBy.ArroundMe
             break
             
         default:

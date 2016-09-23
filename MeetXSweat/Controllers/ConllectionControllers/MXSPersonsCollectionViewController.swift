@@ -13,7 +13,7 @@ private let reuseIdentifier = "MXSPersonCollectionCell"
 
 class MXSPersonsCollectionViewController: UICollectionViewController {
     
-    var persons = FindProfileManager.filterBy(DummyData.getPerons(), filter: FindProfileManager.sharedInstance.profession)
+    var persons: [Person]!
     
     
     
@@ -45,7 +45,7 @@ class MXSPersonsCollectionViewController: UICollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
-        if !isEmbdedInEventViewController() {
+        if !(isEmbdedInEventViewController() && MXSHomeViewController.sharedInstance.findBy == FindBy.Profile) {
             
             let profileViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.profile, viewControllerId: Ressources.StoryBooardsIdentifiers.profileId) as! MXSProfileViewController
             profileViewController.person = self.persons[indexPath.section]

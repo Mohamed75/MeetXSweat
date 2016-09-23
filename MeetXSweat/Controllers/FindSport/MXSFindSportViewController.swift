@@ -23,6 +23,9 @@ class MXSFindSportViewController: MXSViewController {
     
     @IBAction func validerButtonClicked(sender: AnyObject) {
         
+        if let sportsCollectionViewController = self.childViewControllers[0] as? MXSSportsCollectionViewController {
+            sportsCollectionViewController.validateSelections()
+        }
         
     }
     

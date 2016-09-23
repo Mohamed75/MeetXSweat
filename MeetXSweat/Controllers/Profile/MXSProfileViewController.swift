@@ -36,6 +36,11 @@ class MXSProfileViewController: MXSViewController {
         self.nameLabel.text = text + "\n" + FindProfileManager.sharedInstance.profession
         
         self.descriptionLabel.text = "My temporary description"
+        
+        if let eventsCollectionViewController = self.childViewControllers[0] as? MXSEventsCollectionViewController {
+            // should filter events personne (to be done)
+            eventsCollectionViewController.events = DummyData.getEvents()
+        }
     }
     
     

@@ -10,16 +10,17 @@ import UIKit
 
 
 
+
 extension UINavigationController {
 
+    
     public override func viewDidLoad() {
         
         if User.currentUser.isConnected {
             
             if self.viewControllers.count > 0 {
                 dispatch_async(dispatch_get_main_queue()){
-                   let homeViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.main, viewControllerId: Ressources.StoryBooardsIdentifiers.homeId)
-                    self.viewControllers = [homeViewController]
+                    self.viewControllers = [MXSHomeViewController.sharedInstance]
                 }
             }
             
@@ -34,5 +35,11 @@ extension UINavigationController {
         }
         
         super.viewDidLoad()
+    }
+    
+    
+    func getPreviousViewController() -> UIViewController {
+        let indexCurrentViewController = self.viewControllers.indexOf(self.visibleViewController!)
+        return self.viewControllers[indexCurrentViewController!-1]
     }
 }

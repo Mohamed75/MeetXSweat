@@ -14,7 +14,16 @@ private let reuseIdentifier = "MXSEventsCollectionCell"
 
 class MXSEventsCollectionViewController: UICollectionViewController {
     
-    var events = DummyData.getEvents()
+    var events: [Event]!
+    
+    
+    func isEmbdedInProfileViewController() -> Bool {
+        
+        if let parentViewController = self.parentViewController where parentViewController.isKindOfClass(MXSProfileViewController) {
+            return true
+        }
+        return false
+    }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
@@ -35,9 +44,12 @@ class MXSEventsCollectionViewController: UICollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
-        let eventViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.event, viewControllerId: Ressources.StoryBooardsIdentifiers.eventId) as! MXSEventViewController
-        eventViewController.event = self.events[indexPath.section]
-        self.navigationController?.pushViewController(eventViewController, animated: true)
+        if MXSHomeViewController.sharedInstance.findBy == FindBy.Profile || !isEmbdedInProfileViewController() {
+            
+            let eventViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.event, viewControllerId: Ressources.StoryBooardsIdentifiers.eventId) as! MXSEventViewController
+            eventViewController.event = self.events[indexPath.section]
+            self.navigationController?.pushViewController(eventViewController, animated: true)
+        }
     }
     
     internal override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -45,7 +57,7 @@ class MXSEventsCollectionViewController: UICollectionViewController {
     }
     
     internal override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 3
+        return self.events.count
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {

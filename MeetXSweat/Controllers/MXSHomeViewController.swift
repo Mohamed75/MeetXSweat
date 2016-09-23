@@ -9,10 +9,21 @@
 import UIKit
 
 
+enum FindBy: Int {
+    case Profile
+    case Sport
+    case Date
+    case ArroundMe
+}
+
 
 
 class MXSHomeViewController: MXSViewController {
     
+    
+    static let sharedInstance = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.main, viewControllerId: Ressources.StoryBooardsIdentifiers.homeId) as! MXSHomeViewController
+    
+    var findBy: FindBy?
     
     
     func loadProfileImage() {

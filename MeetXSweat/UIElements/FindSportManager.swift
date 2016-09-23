@@ -12,9 +12,23 @@ import Foundation
 class FindSportManager {
     
     
-    var sports = []
+    var sports = [AnyObject]()
     
     
     static let sharedInstance = FindSportManager()
+    
+    
+    class func filterEventsBySports(sports: [AnyObject]) -> [Event] {
+    
+        var returnArray: [Event] = []
+        for event in DummyData.getEvents() {
+            for sport in sports {
+                if event.sport == sport as? String {
+                    returnArray.append(event)
+                }
+            }
+        }
+        return returnArray
+    }
 
 }

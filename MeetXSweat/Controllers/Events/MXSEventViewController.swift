@@ -41,6 +41,9 @@ class MXSEventViewController: MXSViewController {
             participantsNumberLabel.text = String(persons.count) + " " + "participants"
         }
         
+        
+        let personsCollectionViewController = self.childViewControllers[0] as? MXSPersonsCollectionViewController
+        personsCollectionViewController?.persons = event.persons
     }
     
     
