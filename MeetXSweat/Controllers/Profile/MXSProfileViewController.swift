@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class MXSProfileViewController: UIViewController {
+class MXSProfileViewController: MXSViewController {
 
 
     @IBOutlet weak var imageView: UIImageView!

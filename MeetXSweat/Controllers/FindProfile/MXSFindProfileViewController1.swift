@@ -12,7 +12,7 @@ import UIKit
 private let endEditingSelectorString = "endEditing"
 
 
-class MXSFindProfileViewController1: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
+class MXSFindProfileViewController1: MXSViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var domaineTextField: UITextField!
     @IBOutlet weak var professionTextField: UITextField!

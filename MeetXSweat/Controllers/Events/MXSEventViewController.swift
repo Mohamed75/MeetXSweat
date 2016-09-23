@@ -9,7 +9,7 @@
 import UIKit
 
 
-class MXSEventViewController: UIViewController {
+class MXSEventViewController: MXSViewController {
     
     var event: Event!
     

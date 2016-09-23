@@ -9,12 +9,11 @@
 import UIKit
 
 
-class MXSFindProfileViewController2: UIViewController {
+class MXSEmbedCollectionViewController: MXSViewController {
     
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
     }
 }

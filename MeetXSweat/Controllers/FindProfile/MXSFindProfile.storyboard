@@ -102,10 +102,10 @@
             </objects>
             <point key="canvasLocation" x="332" y="329"/>
         </scene>
-        <!--Find Profile View Controller2-->
+        <!--Embed Collection View Controller-->
         <scene sceneID="Q2Q-p5-AnM">
             <objects>
-                <viewController storyboardIdentifier="MXSFindProfileViewController2" id="a5f-J0-mXy" customClass="MXSFindProfileViewController2" customModule="MeetXSweat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="a5f-J0-mXy" customClass="MXSEmbedCollectionViewController" customModule="MeetXSweat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2bh-sd-Gp5"/>
                         <viewControllerLayoutGuide type="bottom" id="s8e-RW-N3Z"/>
@@ -145,7 +145,7 @@
         <!--Persons Collection View Controller-->
         <scene sceneID="aNG-8V-kYt">
             <objects>
-                <collectionViewController storyboardIdentifier="MXSPersonsCollectionViewController" id="kaf-rt-Bpn" customClass="MXSPersonsCollectionViewController" customModule="MeetXSweat" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="kaf-rt-Bpn" customClass="MXSPersonsCollectionViewController" customModule="MeetXSweat" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="MvT-0t-0zj">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="529"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

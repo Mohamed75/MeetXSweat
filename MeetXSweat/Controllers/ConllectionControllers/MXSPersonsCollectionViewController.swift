@@ -49,7 +49,7 @@ class MXSPersonsCollectionViewController: UICollectionViewController {
             
             let profileViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.profile, viewControllerId: Ressources.StoryBooardsIdentifiers.profileId) as! MXSProfileViewController
             profileViewController.person = self.persons[indexPath.section]
-            self.navigationController?.pushViewController(profileViewController, animated: false)
+            self.navigationController?.pushViewController(profileViewController, animated: true)
         }
     }
     
