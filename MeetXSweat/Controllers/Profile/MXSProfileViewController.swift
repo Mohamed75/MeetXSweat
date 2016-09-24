@@ -28,10 +28,7 @@ class MXSProfileViewController: MXSViewController {
         self.imageView.image = UIImage(named: Ressources.Images.profilePlaceHolder)
         var text = ""
         if let name = person.name {
-            text = name
-            if let lastName = person.lastName {
-                text = name + " " + lastName
-            }
+            text = name + " " + person.lastName
         }
         self.nameLabel.text = text + "\n" + FindProfileManager.sharedInstance.profession
         
@@ -39,7 +36,7 @@ class MXSProfileViewController: MXSViewController {
         
         if let eventsCollectionViewController = self.childViewControllers[0] as? MXSEventsCollectionViewController {
             // should filter events personne (to be done)
-            eventsCollectionViewController.events = DummyData.getEvents()
+            eventsCollectionViewController.events = FireBaseDataManager.sharedInstance.events
         }
     }
     

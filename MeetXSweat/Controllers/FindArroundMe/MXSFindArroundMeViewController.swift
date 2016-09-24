@@ -20,7 +20,7 @@ class  MXSFindArroundMeViewController: UIViewController, CLLocationManagerDelega
     
     var locationManager: CLLocationManager?
     
-    var events = DummyData.getEvents()
+    var events = FireBaseDataManager.sharedInstance.events
     
     
     override func viewDidLoad() {

@@ -32,9 +32,8 @@ class MXSHomeViewController: MXSViewController {
             
             let profileImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 38, height: 38))
             profileImageView.image = UIImage(named: Ressources.Images.profilePlaceHolder)
-            if let pictureUrl = User.currentUser.pictureUrl {
-                
-                profileImageView.af_setImageWithURL(NSURL(string: Utils.makeHttpsUrlFromString(pictureUrl))!)
+            if let imageUrl = NSURL(string: Utils.makeHttpsUrlFromString(User.currentUser.pictureUrl)) {
+                profileImageView.af_setImageWithURL(imageUrl)
             }
             profileImageView.layer.cornerRadius = 19
             profileImageView.layer.masksToBounds = true
@@ -48,6 +47,8 @@ class MXSHomeViewController: MXSViewController {
         
         self.loadProfileImage()
         super.viewDidLoad()
+        
+        FireBaseDataManager.sharedInstance
     }
     
     func profileRightButtonClicked() {

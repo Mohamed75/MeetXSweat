@@ -30,7 +30,7 @@ class MXSEmbedCollectionViewController: MXSViewController {
         
         if MXSHomeViewController.sharedInstance.findBy == FindBy.Profile {
             let personsCollectionViewController = self.childViewControllers[0] as? MXSPersonsCollectionViewController
-            personsCollectionViewController?.persons = FindProfileManager.filterBy(DummyData.getPerons(), filter: FindProfileManager.sharedInstance.profession)
+            personsCollectionViewController?.persons = FindProfileManager.filterBy(FireBaseDataManager.sharedInstance.persons, filter: FindProfileManager.sharedInstance.profession)
         }
     }
 }

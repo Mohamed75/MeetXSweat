@@ -20,7 +20,7 @@ class FindDateManager {
     class func filterEventsByDates(dates: [AnyObject]) -> [Event] {
         
         var returnArray: [Event] = []
-        for event in DummyData.getEvents() {
+        for event in FireBaseDataManager.sharedInstance.events {
             for date in dates {
                 let eventDate = event.date?.componentsSeparatedByString(" - ")[0]
                 

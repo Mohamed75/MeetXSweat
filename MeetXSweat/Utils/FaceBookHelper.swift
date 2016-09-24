@@ -41,6 +41,8 @@ class FaceBookHelper {
     }
     
     
+    // avoid multiple click on the login button
+    var isLoginBlock = false
     
     func logIn(delegate: LogInFBDelegate) {
         
@@ -66,15 +68,25 @@ class FaceBookHelper {
                 guard let this = self else {
                     return
                 }
-                this.faceBookWebLogin(delegate)
+                if this.isLoginBlock == false {
+                    this.faceBookWebLogin(delegate)
+                    // For first launch sometimes the loginWebView dont pop up, so this code force the loginWebview
+                    this.isLoginBlock = true
+                    NSThread.sleepForTimeInterval(1)
+                    if getVisibleViewController().isKindOfClass(MXSViewController) {
+                        this.faceBookWebLogin(delegate)
+                    }
+                    this.isLoginBlock = false
+                }
+                
             }
         }
     }
     
     func faceBookWebLogin(delegate: LogInFBDelegate) {
         
-        
         FBSDKLoginManager().logInWithReadPermissions(permessionArray, fromViewController: getVisibleViewController()) { [weak self] (result: FBSDKLoginManagerLoginResult!, error: NSError!) in
+            
             if ((error) != nil) {
                 NSLog("Facebook web signIn Process error");
             } else if (result.isCancelled) {

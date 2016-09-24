@@ -59,6 +59,7 @@ class MXSAddEventViewController: MXSViewController,  UIPickerViewDataSource, UIP
         event.aDescription = self.descriptionTextField.text
         event.sport = self.sportTextField.text
         event.persons = [User.currentUser]
+        event.saveEventToDataBase()
     }
     
     
@@ -88,6 +89,7 @@ class MXSAddEventViewController: MXSViewController,  UIPickerViewDataSource, UIP
             return
         }
         
+        creatEvent()
         self.dismissViewControllerAnimated(false, completion: nil)
     }
     

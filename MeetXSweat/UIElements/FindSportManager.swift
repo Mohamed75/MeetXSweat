@@ -21,7 +21,7 @@ class FindSportManager {
     class func filterEventsBySports(sports: [AnyObject]) -> [Event] {
     
         var returnArray: [Event] = []
-        for event in DummyData.getEvents() {
+        for event in FireBaseDataManager.sharedInstance.events {
             for sport in sports {
                 if event.sport == sport as? String {
                     returnArray.append(event)
