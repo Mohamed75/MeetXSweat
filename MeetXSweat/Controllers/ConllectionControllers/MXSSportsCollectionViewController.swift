@@ -9,8 +9,6 @@
 import UIKit
 import DLRadioButton
 
-// Dummy Data
-private let sports = ["RAFTING", "BOOTCAMP", "FOOT", "BASKET", "VELO", "BOX", "NATATION", "MUSCULATION", "GOLF"]
 
 
 
@@ -20,7 +18,9 @@ class MXSSportsCollectionViewController: UICollectionViewController {
 
     var allSelectedRadioButtonsIndexs = [Int]()
     
-
+    var sports = DummyData.getSports()
+    
+    
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Ressources.CellReuseIdentifier.sport, forIndexPath: indexPath) as! MXSSportCollectionCell

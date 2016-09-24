@@ -28,7 +28,7 @@ class MXSCalendarCellView: JTAppleDayCellView {
         }()
     lazy var c : NSDateFormatter = {
         let f = NSDateFormatter()
-        f.dateFormat = "yyyy-MM-dd"
+        f.dateFormat = calendarCellDateFormat
         
         return f
     }()
@@ -43,8 +43,11 @@ class MXSCalendarCellView: JTAppleDayCellView {
         self.backgroundColor = c.stringFromDate(date) == todayDate ? todayColor : normalDayCellColor
         
         // Setup cell selection status
-        delayRunOnMainThread(0.0) {
-            self.configueViewIntoBubbleView(cellState)
+        delayRunOnMainThread(0.0) { [weak self] in
+            guard let this = self else {
+                return
+            }
+            this.configueViewIntoBubbleView(cellState)
         }
         
         // Configure Visibility
@@ -94,10 +97,13 @@ class MXSCalendarCellView: JTAppleDayCellView {
             if animateDeselection {
                 configureTextColor(cellState)
                 if selectedView.hidden == false {
-                    unowned let weakSelf = self
-                    selectedView.animateWithFadeEffect(withCompletionHandler: { () -> Void in
-                        weakSelf.selectedView.hidden = true
-                        weakSelf.selectedView.alpha = 1
+                    
+                    selectedView.animateWithFadeEffect(withCompletionHandler: { [weak self] () -> Void in
+                        guard let this = self else {
+                            return
+                        }
+                        this.selectedView.hidden = true
+                        this.selectedView.alpha = 1
                     })
                 }
             } else {

@@ -49,27 +49,32 @@ class FaceBookHelper {
         let accountStore = ACAccountStore()
         let facebookAccountType = accountStore.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierFacebook)
         
-        unowned let weakSelf = self
-        accountStore.requestAccessToAccountsWithType(facebookAccountType, options: options) { (granted, error) -> Void in
+        
+        accountStore.requestAccessToAccountsWithType(facebookAccountType, options: options) { [weak self] (granted, error) -> Void in
             if granted
             {
                 let accounts = accountStore.accountsWithAccountType(facebookAccountType)
                 if let facebookAccount = accounts.last as? ACAccount {
-                
-                    weakSelf.getUserInfo(facebookAccount.credential.oauthToken!, delegate: delegate)
+                    guard let this = self else {
+                        return
+                    }
+                    this.getUserInfo(facebookAccount.credential.oauthToken!, delegate: delegate)
                 }
             }
             else
             {
-                weakSelf.faceBookWebLogin(delegate)
+                guard let this = self else {
+                    return
+                }
+                this.faceBookWebLogin(delegate)
             }
         }
     }
     
     func faceBookWebLogin(delegate: LogInFBDelegate) {
         
-        unowned let weakSelf = self
-        FBSDKLoginManager().logInWithReadPermissions(permessionArray, fromViewController: getVisibleViewController()) { (result: FBSDKLoginManagerLoginResult!, error: NSError!) in
+        
+        FBSDKLoginManager().logInWithReadPermissions(permessionArray, fromViewController: getVisibleViewController()) { [weak self] (result: FBSDKLoginManagerLoginResult!, error: NSError!) in
             if ((error) != nil) {
                 NSLog("Facebook web signIn Process error");
             } else if (result.isCancelled) {
@@ -78,7 +83,10 @@ class FaceBookHelper {
                 NSLog("Facebook web signIn Logged in");
                 
                 if (FBSDKAccessToken.currentAccessToken() != nil) {
-                    weakSelf.getUserInfo(FBSDKAccessToken.currentAccessToken().tokenString, delegate: delegate)
+                    guard let this = self else {
+                        return
+                    }
+                    this.getUserInfo(FBSDKAccessToken.currentAccessToken().tokenString, delegate: delegate)
                 }
                 
             }

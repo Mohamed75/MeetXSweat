@@ -11,11 +11,11 @@ import MapKit
 
 
 
-class Event {
+class Event: NSObject {
 
     var name: String?
     var date: String?
-    var description: String?
+    var aDescription: String?
     var imageUrlString: String?
     var persons: [Person]?
     var sport: String?
@@ -24,18 +24,17 @@ class Event {
     var adress: String? {
         didSet {
             
-            //unowned let weakSelf = self
-            CLGeocoder().geocodeAddressString(adress!, completionHandler: {(placemarks: [CLPlacemark]?, error: NSError?) -> Void in
+            CLGeocoder().geocodeAddressString(adress!, completionHandler: { [weak self] (placemarks: [CLPlacemark]?, error: NSError?) -> Void in
                 if (placemarks?.count > 0) {
-                    // should be a weakSelf
-                    self.placeMark = MKPlacemark(placemark: (placemarks?[0])!)
+                    guard let this = self else {
+                        return
+                    }
+                    this.placeMark = MKPlacemark(placemark: (placemarks?[0])!)
                 }
             })
         }
     }
     
     
-    init() {
-        
-    }
+
 }

@@ -38,7 +38,7 @@ class MXSHomeViewController: MXSViewController {
             }
             profileImageView.layer.cornerRadius = 19
             profileImageView.layer.masksToBounds = true
-            profileImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(profileRightButtonClicked)))
+            profileImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(MXSHomeViewController.profileRightButtonClicked)))
             
             navigationItem.rightBarButtonItem = UIBarButtonItem(customView: profileImageView)
         }
@@ -55,4 +55,11 @@ class MXSHomeViewController: MXSViewController {
        NSLog("profileRightButtonClicked")
     }
     
+    
+    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
+        if motion == .MotionShake {
+            let addEventViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.main, viewControllerId: Ressources.StoryBooardsIdentifiers.addEvent)
+            self.presentViewController(addEventViewController, animated: true, completion: nil)
+        }
+    }
 }

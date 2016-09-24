@@ -47,6 +47,7 @@ enum Ressources {
         // Main StoryBoard
         static let homeId       = "MXSHomeViewController"
         static let logInId      = "MXSAllLoginsViewController"
+        static let addEvent     = "MXSAddEventViewController"
         
         // FindProfile StoryBoard
         static let findProfileId   = "MXSFindProfileViewController1"

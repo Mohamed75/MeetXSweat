@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+let endEditingSelectorString = "endEditing"
+
+let dateFormat = "dd MM yyyy - HH:mm"
+let calendarCellDateFormat = "yyyy-MM-dd"

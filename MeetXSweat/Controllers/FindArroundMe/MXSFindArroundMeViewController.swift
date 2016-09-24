@@ -39,17 +39,19 @@ class  MXSFindArroundMeViewController: UIViewController, CLLocationManagerDelega
         
         MXSActivityIndicator.startAnimating()
         
-        unowned let weakSelf = self
-        delayRunOnMainThread(4.0) {
+        delayRunOnMainThread(4.0) { [weak self] in
         
+            guard let this = self else {
+                return
+            }
             var i = 0
-            for event in weakSelf.events {
+            for event in this.events {
                 if let placeMark = event.placeMark {
                     let myPlaceMark = MKPointAnnotation()
                     myPlaceMark.coordinate = placeMark.coordinate
                     myPlaceMark.title = event.name
-                    weakSelf.mapView.addAnnotation(myPlaceMark)
-                    let anotationView = weakSelf.mapView.viewForAnnotation(myPlaceMark)
+                    this.mapView.addAnnotation(myPlaceMark)
+                    let anotationView = this.mapView.viewForAnnotation(myPlaceMark)
                     anotationView?.tag = i
                     i += 1
                 }

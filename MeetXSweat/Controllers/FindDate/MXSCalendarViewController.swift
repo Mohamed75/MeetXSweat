@@ -19,7 +19,7 @@ class MXSCalendarViewController: MXSViewController, JTAppleCalendarViewDataSourc
     func configureCalendar(calendar: JTAppleCalendarView) -> (startDate: NSDate, endDate: NSDate, numberOfRows: Int, calendar: NSCalendar) {
         
         testCalendar.timeZone = NSTimeZone(abbreviation: "GMT")!
-        MXSCalendarViewController.formatter.dateFormat = "dd MM yyyy"
+        MXSCalendarViewController.formatter.dateFormat = dateFormat
         
         let firstDate = NSDate()
         let secondDate = firstDate.dateByAddingTimeInterval(12*31*24*60*60)

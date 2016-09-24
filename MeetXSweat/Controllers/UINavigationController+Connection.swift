@@ -19,19 +19,25 @@ extension UINavigationController {
         if User.currentUser.isConnected {
             
             if self.viewControllers.count > 0 {
-                unowned let weakSelf = self
-                dispatch_async(dispatch_get_main_queue()){
-                    weakSelf.viewControllers = [MXSHomeViewController.sharedInstance]
+                
+                dispatch_async(dispatch_get_main_queue()){ [weak self] in
+                    guard let this = self else {
+                        return
+                    }
+                    this.viewControllers = [MXSHomeViewController.sharedInstance]
                 }
             }
             
         } else {
             
             if self.viewControllers.count > 0 {
-                unowned let weakSelf = self
-                dispatch_async(dispatch_get_main_queue()){
+                
+                dispatch_async(dispatch_get_main_queue()){ [weak self] in
+                    guard let this = self else {
+                        return
+                    }
                     let allLoginsViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.main, viewControllerId: Ressources.StoryBooardsIdentifiers.logInId)
-                    weakSelf.viewControllers = [allLoginsViewController]
+                    this.viewControllers = [allLoginsViewController]
                 }
             }
         }

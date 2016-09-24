@@ -58,8 +58,7 @@ class GoogleLogInHelper: NSObject, GIDSignInDelegate, GIDSignInUIDelegate {
             let url = NSURL(string: getUserInfoUrlString+user.authentication.accessToken)
             let session = NSURLSession.sharedSession()
             
-            unowned let weakSelf = self
-            session.dataTaskWithURL(url!) {(data, response, error) -> Void in
+            session.dataTaskWithURL(url!) { [weak self] (data, response, error) -> Void in
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 do {
                     let userData = try NSJSONSerialization.JSONObjectWithData(data!, options:[])
@@ -67,8 +66,10 @@ class GoogleLogInHelper: NSObject, GIDSignInDelegate, GIDSignInUIDelegate {
                     guard let JSONDictionary: NSDictionary = userData as? NSDictionary else {
                         return
                     }
-                    
-                    weakSelf.controllerDelegate.logInGoogleSuccess(JSONDictionary)
+                    guard let this = self else {
+                        return
+                    }
+                    this.controllerDelegate.logInGoogleSuccess(JSONDictionary)
                     
                 } catch {
                     NSLog("Google LogIn Account Information could not be loaded")

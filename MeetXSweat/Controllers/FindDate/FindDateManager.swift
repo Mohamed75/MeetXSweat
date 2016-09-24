@@ -22,10 +22,11 @@ class FindDateManager {
         var returnArray: [Event] = []
         for event in DummyData.getEvents() {
             for date in dates {
-                var eventDate = event.date?.componentsSeparatedByString(" - ")[0]
-                eventDate = eventDate?.stringByReplacingOccurrencesOfString("/", withString: " ")
+                let eventDate = event.date?.componentsSeparatedByString(" - ")[0]
                 
-                let selectedDate = MXSCalendarViewController.formatter.stringFromDate(date as! NSDate)
+                var selectedDate = MXSCalendarViewController.formatter.stringFromDate(date as! NSDate)
+                selectedDate = selectedDate.componentsSeparatedByString(" - ")[0]
+                
                 if eventDate == selectedDate {
                     returnArray.append(event)
                 }

@@ -9,7 +9,6 @@
 import UIKit
 
 
-private let endEditingSelectorString = "endEditing"
 
 
 class MXSFindProfileViewController1: MXSViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
@@ -28,11 +27,12 @@ class MXSFindProfileViewController1: MXSViewController, UIPickerViewDataSource, 
     override func viewDidLoad() {
         
         Utils.addTapGestureToView(self.view, target: self, selectorString: endEditingSelectorString)
+        
         super.viewDidLoad()
-        self.view.addSubview(emptyTextField)
         
         pickerView.delegate = self
         emptyTextField.inputView = pickerView
+        self.view.addSubview(emptyTextField)
         
         
         domaineTextField.delegate = self
