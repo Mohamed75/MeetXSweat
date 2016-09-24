@@ -48,7 +48,17 @@ class MXSEventViewController: MXSViewController {
     
     
     @IBAction func mapButtonClicked(sender: AnyObject) {
-        
+       
+        if self.event.placeMark != nil {
+            
+            let findArroundMeViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findArroundMe, viewControllerId: Ressources.StoryBooardsIdentifiers.findArroundMeId) as! MXSFindArroundMeViewController
+            findArroundMeViewController.events = [self.event]
+            self.navigationController?.pushViewController(findArroundMeViewController, animated: true)
+            
+        } else {
+            // to force reload of geoloc adress
+            self.event.adress = self.event.adress
+        }
     }
     
     @IBAction func inscriptionButtonClicked(sender: AnyObject) {

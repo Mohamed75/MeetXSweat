@@ -7,11 +7,8 @@
 //
 
 import Foundation
-import CoreLocation
 import MapKit
 
-
-private let geocoder = CLGeocoder()
 
 
 class Event {
@@ -27,10 +24,11 @@ class Event {
     var adress: String? {
         didSet {
             
-            unowned let weakSelf = self
-            geocoder.geocodeAddressString(adress!, completionHandler: {(placemarks: [CLPlacemark]?, error: NSError?) -> Void in
+            //unowned let weakSelf = self
+            CLGeocoder().geocodeAddressString(adress!, completionHandler: {(placemarks: [CLPlacemark]?, error: NSError?) -> Void in
                 if (placemarks?.count > 0) {
-                    weakSelf.placeMark = MKPlacemark(placemark: (placemarks?[0])!)
+                    // should be a weakSelf
+                    self.placeMark = MKPlacemark(placemark: (placemarks?[0])!)
                 }
             })
         }

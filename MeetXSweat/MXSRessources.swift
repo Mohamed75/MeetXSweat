@@ -21,6 +21,8 @@ enum Ressources {
         static let ProfessionalProfile   = "ProfessionalProfile"
         static let event = "Event"
         static let calendar = "Calendar"
+        static let logo = "Logo"
+        static let clearLogo = "Logo-clearBg"
     }
     
     /**

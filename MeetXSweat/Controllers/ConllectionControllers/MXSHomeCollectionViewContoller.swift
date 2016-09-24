@@ -66,6 +66,8 @@ class MXSHomeCollectionViewContoller: UICollectionViewController {
             (self.parentViewController as! MXSHomeViewController).findBy = FindBy.Date
             break
         case 3:
+            let findArroundMeViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findArroundMe, viewControllerId: Ressources.StoryBooardsIdentifiers.findArroundMeId)
+            self.navigationController?.pushViewController(findArroundMeViewController, animated: true)
             (self.parentViewController as! MXSHomeViewController).findBy = FindBy.ArroundMe
             break
             

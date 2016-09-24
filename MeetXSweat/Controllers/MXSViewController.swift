@@ -14,7 +14,7 @@ class MXSViewController: UIViewController {
     
     override func viewDidLoad() {
         
-        let imageView = UIImageView(image: UIImage(named: "Logo"))
+        let imageView = UIImageView(image: UIImage(named: Ressources.Images.logo))
         imageView.frame = CGRect(x: 0, y: 20, width: 40, height: 40)
         imageView.contentMode = .ScaleAspectFit
         navigationItem.titleView = imageView

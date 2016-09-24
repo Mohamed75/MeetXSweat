@@ -7,6 +7,12 @@
 //
 
 import UIKit
+
+private let rotationRightInfiniKey = "rotationRightInfini"
+private let zPath   = "transform.rotation.z"
+private let fullRotation = Float(2*M_PI)
+
+
 class AnimationClass {
     
     class func BounceEffect() -> (UIView, Bool -> Void) -> () {
@@ -50,5 +56,19 @@ class AnimationClass {
             }) { (finished) -> Void in
                 completion?()
         }
+    }
+    
+    
+    class func rotateImageToRightInfinie(view: UIView, speed: Float) {
+        
+        if view.layer.animationForKey(rotationRightInfiniKey) != nil {
+            return
+        }
+        let rotationAnimation = CABasicAnimation(keyPath:zPath)
+        rotationAnimation.toValue = NSNumber(float: fullRotation)
+        rotationAnimation.speed = speed
+        rotationAnimation.repeatCount = Float.infinity
+        
+        view.layer.addAnimation(rotationAnimation, forKey:rotationRightInfiniKey)
     }
 }

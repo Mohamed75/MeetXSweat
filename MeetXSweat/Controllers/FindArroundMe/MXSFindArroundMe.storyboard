@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Find Arround Me View Controller-->
@@ -16,8 +17,25 @@
                     <view key="view" contentMode="scaleToFill" id="Lss-Qf-SEM">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aFY-IT-iFW">
+                                <rect key="frame" x="0.0" y="60" width="600" height="530"/>
+                                <connections>
+                                    <outlet property="delegate" destination="dEl-km-Pzy" id="nIc-Qa-Mdd"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="aFY-IT-iFW" firstAttribute="leading" secondItem="Lss-Qf-SEM" secondAttribute="leadingMargin" constant="-20" id="6J7-JS-Ewz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="aFY-IT-iFW" secondAttribute="trailing" constant="-20" id="ACx-IA-M1B"/>
+                            <constraint firstItem="aFY-IT-iFW" firstAttribute="top" secondItem="Le4-MO-9Vh" secondAttribute="bottom" constant="40" id="i6T-I2-4Rx"/>
+                            <constraint firstItem="CuD-ZI-jOu" firstAttribute="top" secondItem="aFY-IT-iFW" secondAttribute="bottom" constant="10" id="q5c-lZ-cPB"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="aFY-IT-iFW" id="dvu-SB-Nzk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8VN-BL-Rsg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
