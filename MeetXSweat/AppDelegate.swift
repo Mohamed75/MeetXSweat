@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 
 @UIApplicationMain
@@ -14,14 +15,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        FIRApp.configure()
+        
         TwitterHelper.application(application, didFinishLaunchingWithOptions: launchOptions)
         GoogleLogInHelper.initConfig()
+        
         return FaceBookHelper.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
+    
+
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         return FaceBookHelper.application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation) || GoogleLogInHelper.application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)

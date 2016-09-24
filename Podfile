@@ -26,6 +26,9 @@ pod 'AlamofireImage'
 pod 'DLRadioButton', '~> 1.4'
 pod 'JTAppleCalendar'
 
+pod 'Firebase/Core'
+pod 'Firebase/Database'
+pod 'Firebase/Auth'
 
 
 target 'MeetXSweat' do
