@@ -32,6 +32,7 @@
 		D90AB5A11D955F6F003DCA75 /* MXSCalendarCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5A01D955F6F003DCA75 /* MXSCalendarCellView.swift */; };
 		D90AB5A31D9562E1003DCA75 /* MXSCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5A21D9562E1003DCA75 /* MXSCalendarViewController.swift */; };
 		D90AB5A51D957AE6003DCA75 /* AnimationClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5A41D957AE6003DCA75 /* AnimationClass.swift */; };
+		D90AB5A71D968E2E003DCA75 /* FindDateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5A61D968E2E003DCA75 /* FindDateManager.swift */; };
 		D926BAA01D8D6A6400E3878C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D926BA9F1D8D6A6400E3878C /* AppDelegate.swift */; };
 		D926BAA51D8D6A6400E3878C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D926BAA31D8D6A6400E3878C /* Main.storyboard */; };
 		D926BAA71D8D6A6400E3878C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D926BAA61D8D6A6400E3878C /* Assets.xcassets */; };
@@ -108,6 +109,7 @@
 		D90AB5A01D955F6F003DCA75 /* MXSCalendarCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSCalendarCellView.swift; sourceTree = "<group>"; };
 		D90AB5A21D9562E1003DCA75 /* MXSCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSCalendarViewController.swift; sourceTree = "<group>"; };
 		D90AB5A41D957AE6003DCA75 /* AnimationClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationClass.swift; sourceTree = "<group>"; };
+		D90AB5A61D968E2E003DCA75 /* FindDateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FindDateManager.swift; path = MeetXSweat/Controllers/FindDate/FindDateManager.swift; sourceTree = SOURCE_ROOT; };
 		D926BA9C1D8D6A6400E3878C /* MeetXSweat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetXSweat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D926BA9F1D8D6A6400E3878C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D926BAA41D8D6A6400E3878C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 				D959B3E01D931AB900981105 /* FindProfileManager.swift */,
 				D90AB5741D93E650003DCA75 /* DummyData.swift */,
 				D90AB5981D943BA5003DCA75 /* FindSportManager.swift */,
+				D90AB5A61D968E2E003DCA75 /* FindDateManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -676,6 +679,7 @@
 				D90AB5941D9412A5003DCA75 /* MXSSportCollectionCell.swift in Sources */,
 				D926BAD31D8DA11F00E3878C /* MXSAllLoginsViewController.swift in Sources */,
 				D90AB5A31D9562E1003DCA75 /* MXSCalendarViewController.swift in Sources */,
+				D90AB5A71D968E2E003DCA75 /* FindDateManager.swift in Sources */,
 				D90AB5731D93E4D9003DCA75 /* Event.swift in Sources */,
 				D959B3DE1D9318E000981105 /* MXSRessources.swift in Sources */,
 				D90AB57C1D940522003DCA75 /* MXSPersonsCollectionViewController.swift in Sources */,

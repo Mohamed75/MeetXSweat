@@ -24,7 +24,7 @@ private let personSports = ["foot \ntennis", "foot \nbasket", "", "volley", "han
 
 // Dummy Data
 private let eventNames = ["MEET X SWEAT #RAFTING", "MEET X SWEAT #FOOT", "MEET X SWEAT #BOOTCAMP", "MEET X SWEAT #BASKET"]
-private let eventDates = ["09/07/2016 - 14h00 à 17h00", "04/09/2016 - 15h00 à 18h00", "14/09/2016 - 15h00 à 18h00", "24/09/2016 - 15h00 à 18h00"]
+private let eventDates = ["09/10/2016 - 14h00 à 17h00", "04/10/2016 - 15h00 à 18h00", "14/10/2016 - 15h00 à 18h00", "24/10/2016 - 15h00 à 18h00"]
 private let eventAdresses = ["Base de loisir Cergy Rue des Étangs 95000 Cergy-Pontoise", "Bois de boulogne 75016 Paris", "Bois Colombes 92270", "Base de loisir Cergy Rue des Étangs 95000 Cergy-Pontoise"]
 private let eventSports = ["RAFTING", "BOOTCAMP", "FOOT", "BASKET"]
 

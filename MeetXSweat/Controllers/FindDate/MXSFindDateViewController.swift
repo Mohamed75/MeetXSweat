@@ -41,6 +41,10 @@ class MXSFindDateViewController: MXSCalendarViewController {
         self.automaticallyAdjustsScrollViewInsets = false
     }
     
+    @IBAction func validerButtonClicked(sender: AnyObject) {
+        
+        FindDateManager.sharedInstance.dates = calendarView.selectedDates
+    }
     
     override func setupViewsOfCalendar(startDate: NSDate, endDate: NSDate) {
         let month = testCalendar.component(NSCalendarUnit.Month, fromDate: startDate)

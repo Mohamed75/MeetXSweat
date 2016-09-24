@@ -94,9 +94,10 @@ class MXSCalendarCellView: JTAppleDayCellView {
             if animateDeselection {
                 configureTextColor(cellState)
                 if selectedView.hidden == false {
+                    unowned let weakSelf = self
                     selectedView.animateWithFadeEffect(withCompletionHandler: { () -> Void in
-                        self.selectedView.hidden = true
-                        self.selectedView.alpha = 1
+                        weakSelf.selectedView.hidden = true
+                        weakSelf.selectedView.alpha = 1
                     })
                 }
             } else {

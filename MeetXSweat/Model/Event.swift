@@ -7,6 +7,11 @@
 //
 
 import Foundation
+import CoreLocation
+import MapKit
+
+
+private let geocoder = CLGeocoder()
 
 
 class Event {
@@ -16,8 +21,20 @@ class Event {
     var description: String?
     var imageUrlString: String?
     var persons: [Person]?
-    var adress: String?
     var sport: String?
+    var placeMark: MKPlacemark?
+    
+    var adress: String? {
+        didSet {
+            
+            unowned let weakSelf = self
+            geocoder.geocodeAddressString(adress!, completionHandler: {(placemarks: [CLPlacemark]?, error: NSError?) -> Void in
+                if (placemarks?.count > 0) {
+                    weakSelf.placeMark = MKPlacemark(placemark: (placemarks?[0])!)
+                }
+            })
+        }
+    }
     
     
     init() {

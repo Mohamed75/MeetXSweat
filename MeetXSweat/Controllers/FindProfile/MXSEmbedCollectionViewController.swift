@@ -21,7 +21,11 @@ class MXSEmbedCollectionViewController: MXSViewController {
         if MXSHomeViewController.sharedInstance.findBy == FindBy.Sport {
             let eventsCollectionViewController = self.childViewControllers[0] as? MXSEventsCollectionViewController
             eventsCollectionViewController?.events = FindSportManager.filterEventsBySports(FindSportManager.sharedInstance.sports)
-            
+        }
+        
+        if MXSHomeViewController.sharedInstance.findBy == FindBy.Date {
+            let eventsCollectionViewController = self.childViewControllers[0] as? MXSEventsCollectionViewController
+            eventsCollectionViewController?.events = FindDateManager.filterEventsByDates(FindDateManager.sharedInstance.dates)
         }
         
         if MXSHomeViewController.sharedInstance.findBy == FindBy.Profile {

@@ -44,31 +44,31 @@ class FaceBookHelper {
     
     func logIn(delegate: LogInFBDelegate) {
         
-        
-        
         let options: [NSObject : AnyObject] = [ACFacebookAppIdKey: faceBookApiKey, ACFacebookPermissionsKey: permessionArray, ACFacebookAudienceKey:ACFacebookAudienceFriends]
         
         let accountStore = ACAccountStore()
         let facebookAccountType = accountStore.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierFacebook)
         
+        unowned let weakSelf = self
         accountStore.requestAccessToAccountsWithType(facebookAccountType, options: options) { (granted, error) -> Void in
             if granted
             {
                 let accounts = accountStore.accountsWithAccountType(facebookAccountType)
                 if let facebookAccount = accounts.last as? ACAccount {
                 
-                    self.getUserInfo(facebookAccount.credential.oauthToken!, delegate: delegate)
+                    weakSelf.getUserInfo(facebookAccount.credential.oauthToken!, delegate: delegate)
                 }
             }
             else
             {
-                self.faceBookWebLogin(delegate)
+                weakSelf.faceBookWebLogin(delegate)
             }
         }
     }
     
     func faceBookWebLogin(delegate: LogInFBDelegate) {
         
+        unowned let weakSelf = self
         FBSDKLoginManager().logInWithReadPermissions(permessionArray, fromViewController: getVisibleViewController()) { (result: FBSDKLoginManagerLoginResult!, error: NSError!) in
             if ((error) != nil) {
                 NSLog("Facebook web signIn Process error");
@@ -78,7 +78,7 @@ class FaceBookHelper {
                 NSLog("Facebook web signIn Logged in");
                 
                 if (FBSDKAccessToken.currentAccessToken() != nil) {
-                    self.getUserInfo(FBSDKAccessToken.currentAccessToken().tokenString, delegate: delegate)
+                    weakSelf.getUserInfo(FBSDKAccessToken.currentAccessToken().tokenString, delegate: delegate)
                 }
                 
             }

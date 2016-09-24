@@ -104,8 +104,12 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gcw-7A-Tef">
                                 <rect key="frame" x="276.5" y="550" width="47" height="30"/>
                                 <state key="normal" title="Valider"/>
+                                <connections>
+                                    <action selector="validerButtonClicked:" destination="laz-Ag-Cp3" eventType="touchUpInside" id="BA5-65-K8s"/>
+                                    <segue destination="UbN-mO-kKS" kind="show" id="652-G8-maF"/>
+                                </connections>
                             </button>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G5K-0Y-mz8" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G5K-0Y-mz8" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
                                 <rect key="frame" x="20" y="374.5" width="560" height="155.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -151,6 +155,108 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GN2-ZU-zmb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="359" y="436"/>
+        </scene>
+        <!--Embed Collection View Controller-->
+        <scene sceneID="hdh-RZ-dar">
+            <objects>
+                <viewController id="UbN-mO-kKS" customClass="MXSEmbedCollectionViewController" customModule="MeetXSweat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LsA-ca-uf9"/>
+                        <viewControllerLayoutGuide type="bottom" id="46X-VO-YPI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RLA-9b-C1T">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Les events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cp7-eu-wkt">
+                                <rect key="frame" x="258" y="30" width="82" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T7E-pO-dAm">
+                                <rect key="frame" x="0.0" y="71" width="600" height="529"/>
+                                <connections>
+                                    <segue destination="gG7-UI-F9y" kind="embed" id="DnP-9O-ZZK"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="46X-VO-YPI" firstAttribute="top" secondItem="T7E-pO-dAm" secondAttribute="bottom" id="8st-Nq-Wta"/>
+                            <constraint firstItem="cp7-eu-wkt" firstAttribute="top" secondItem="LsA-ca-uf9" secondAttribute="bottom" constant="10" id="MuG-uj-qgn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="T7E-pO-dAm" secondAttribute="trailing" constant="-20" id="QdY-JT-17E"/>
+                            <constraint firstItem="T7E-pO-dAm" firstAttribute="top" secondItem="cp7-eu-wkt" secondAttribute="bottom" constant="20" id="SFk-pO-MeB"/>
+                            <constraint firstItem="T7E-pO-dAm" firstAttribute="leading" secondItem="RLA-9b-C1T" secondAttribute="leadingMargin" constant="-20" id="Ucx-xs-XUI"/>
+                            <constraint firstItem="cp7-eu-wkt" firstAttribute="centerX" secondItem="RLA-9b-C1T" secondAttribute="centerX" id="gs0-tl-ILS"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0ap-xa-jRj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1111" y="353"/>
+        </scene>
+        <!--Events Collection View Controller-->
+        <scene sceneID="IQw-Ho-d1b">
+            <objects>
+                <collectionViewController storyboardIdentifier="MXSEventsCollectionViewController" id="gG7-UI-F9y" customClass="MXSEventsCollectionViewController" customModule="MeetXSweat" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Id7-yh-CcQ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="529"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5Ns-ZJ-8qB">
+                            <size key="itemSize" width="531.5" height="109"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MXSEventsCollectionCell" id="ttb-KU-7bB" customClass="MXSEventsCollectionCell" customModule="MeetXSweat" customModuleProvider="target">
+                                <rect key="frame" x="34.5" y="0.0" width="531.5" height="109"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="531.5" height="109"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6WF-Jh-Hl4">
+                                            <rect key="frame" x="18" y="18" width="73" height="73"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="6WF-Jh-Hl4" secondAttribute="height" multiplier="1:1" id="xTE-Lx-Leb"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pn2-8t-JGA">
+                                            <rect key="frame" x="111" y="44" width="402.5" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailingMargin" secondItem="pn2-8t-JGA" secondAttribute="trailing" constant="10" id="9iK-gt-fst"/>
+                                    <constraint firstItem="6WF-Jh-Hl4" firstAttribute="top" secondItem="ttb-KU-7bB" secondAttribute="topMargin" constant="10" id="DaW-8S-gDn"/>
+                                    <constraint firstItem="pn2-8t-JGA" firstAttribute="centerY" secondItem="ttb-KU-7bB" secondAttribute="centerY" id="H6u-no-wNC"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="6WF-Jh-Hl4" secondAttribute="bottom" constant="10" id="eiq-We-KFm"/>
+                                    <constraint firstItem="6WF-Jh-Hl4" firstAttribute="leading" secondItem="ttb-KU-7bB" secondAttribute="leadingMargin" constant="10" id="nxV-vn-Xhq"/>
+                                    <constraint firstItem="pn2-8t-JGA" firstAttribute="leading" secondItem="6WF-Jh-Hl4" secondAttribute="trailing" constant="20" id="saM-si-T0p"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="imageView" destination="6WF-Jh-Hl4" id="Fes-v2-Acg"/>
+                                    <outlet property="label" destination="pn2-8t-JGA" id="Ngt-fR-V60"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="gG7-UI-F9y" id="4Ja-s6-od8"/>
+                            <outlet property="delegate" destination="gG7-UI-F9y" id="zKO-65-HwI"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C21-4e-XJG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1813" y="394"/>
         </scene>
     </scenes>
     <resources>

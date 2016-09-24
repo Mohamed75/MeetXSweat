@@ -12,14 +12,14 @@ import JTAppleCalendar
 
 class MXSCalendarViewController: MXSViewController, JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate  {
     
-    let formatter = NSDateFormatter()
+    static let formatter = NSDateFormatter()
     let testCalendar: NSCalendar! = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
     
     
     func configureCalendar(calendar: JTAppleCalendarView) -> (startDate: NSDate, endDate: NSDate, numberOfRows: Int, calendar: NSCalendar) {
         
         testCalendar.timeZone = NSTimeZone(abbreviation: "GMT")!
-        formatter.dateFormat = "yyyy MM dd"
+        MXSCalendarViewController.formatter.dateFormat = "dd MM yyyy"
         
         let firstDate = NSDate()
         let secondDate = firstDate.dateByAddingTimeInterval(12*31*24*60*60)
