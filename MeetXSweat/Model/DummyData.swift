@@ -9,29 +9,21 @@
 import Foundation
 
 
-// Dummy Data
-private let domaines = ["Informatique", "Medical", "Social", "bancaire"]
-private let professions = ["Developer", "Project Manager", "Medecin", "Professeur"]
-private let experiences = ["0-2", "2-5", "5-10", ">10"]
-
-
-
-
 
 
 class DummyData {
     
     
     class func getDomaines() -> [String] {
-        return domaines
+        return ["Informatique", "Medical", "Social", "bancaire"]
     }
     
     class func getProfessions() -> [String] {
-        return professions
+        return ["Developer", "Project Manager", "Medecin", "Professeur"]
     }
     
     class func getExperiences() -> [String] {
-        return experiences
+        return ["0-2", "2-5", "5-10", ">10"]
     }
     
     class func getSports()  -> [String] {
