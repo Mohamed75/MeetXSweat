@@ -10,7 +10,7 @@ import Foundation
 import Firebase
 
 
-class Person: NSObject {
+class Person: MXSObject {
     
     
     var name: String?
@@ -22,7 +22,7 @@ class Person: NSObject {
     var gender = ""
     var birthday = ""
     var events: [Event]?
-    var adress: String?
+    var adress = ""
     var ref: FIRDatabaseReference?
     
     func allParams() -> String {
@@ -65,17 +65,17 @@ class Person: NSObject {
         ref = snapshot.ref
     }
     
-    func toAnyObject() -> [String: String] {
+    func savePersonToDataBase() {
         
-        return [
-            "name": name!,
-            "lastName": lastName,
-            "email": email,
-            "profession": profession,
-            "sport": sport,
-            "pictureUrl": pictureUrl,
-            "gender": gender,
-            "birthday": birthday
-        ]
+        let personRef = FIRDatabase.database().reference().child("person-items")
+        /*
+        personRef.once("value", function(snap) {
+            var result = snap.val() === null? 'is not' : 'is';
+            console.log('Mary ' + result + ' a member of alpha group');
+            });
+        
+        */
+        
+        personRef.childByAutoId().setValue(self.asJson(["isConnected"]))
     }
 }

@@ -169,8 +169,10 @@ class User: Person, NSCoding {
     }
     
     
-    class func saveCustomObject(object: User)
+    class func saveCustomObject(object: Person)
     {
+        object.savePersonToDataBase()
+        
         let myEncodedObject = NSKeyedArchiver.archivedDataWithRootObject(object)
         NSUserDefaults.standardUserDefaults().setObject(myEncodedObject, forKey:"SAVED_USER")
     }

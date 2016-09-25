@@ -85,22 +85,25 @@ class FaceBookHelper {
     
     func faceBookWebLogin(delegate: LogInFBDelegate) {
         
-        FBSDKLoginManager().logInWithReadPermissions(permessionArray, fromViewController: getVisibleViewController()) { [weak self] (result: FBSDKLoginManagerLoginResult!, error: NSError!) in
+        delayRunOnMainThread(0.0) {
             
-            if ((error) != nil) {
-                NSLog("Facebook web signIn Process error");
-            } else if (result.isCancelled) {
-                NSLog("Facebook web signIn Cancelled");
-            } else {
-                NSLog("Facebook web signIn Logged in");
+            FBSDKLoginManager().logInWithReadPermissions(permessionArray, fromViewController: getVisibleViewController()) { [weak self] (result: FBSDKLoginManagerLoginResult!, error: NSError!) in
                 
-                if (FBSDKAccessToken.currentAccessToken() != nil) {
-                    guard let this = self else {
-                        return
+                if ((error) != nil) {
+                    NSLog("Facebook web signIn Process error");
+                } else if (result.isCancelled) {
+                    NSLog("Facebook web signIn Cancelled");
+                } else {
+                    NSLog("Facebook web signIn Logged in");
+                    
+                    if (FBSDKAccessToken.currentAccessToken() != nil) {
+                        guard let this = self else {
+                            return
+                        }
+                        this.getUserInfo(FBSDKAccessToken.currentAccessToken().tokenString, delegate: delegate)
                     }
-                    this.getUserInfo(FBSDKAccessToken.currentAccessToken().tokenString, delegate: delegate)
+                    
                 }
-                
             }
         }
     }

@@ -12,7 +12,7 @@ import Firebase
 
 
 
-class Event: NSObject {
+class Event: MXSObject {
 
     var name: String?
     var date: String?
@@ -62,29 +62,12 @@ class Event: NSObject {
     }
     
     
-    func toAnyObject() -> [String: AnyObject] {
-    
-        var anyPersons: [AnyObject] = []
-        for person in persons! {
-            anyPersons.append(person.toAnyObject())
-        }
-        return [
-            "name": name!,
-            "date": date!,
-            "aDescription": aDescription!,
-            "imageUrlString": imageUrlString,
-            "persons": anyPersons,
-            "sport": sport!,
-            "adress": adress!
-        ]
-    }
-    
     
     
     func saveEventToDataBase() {
         
         let eventRef = FIRDatabase.database().reference().child("event-items")
-        eventRef.childByAutoId().setValue(self.toAnyObject())
+        eventRef.childByAutoId().setValue(self.asJson([]))
     }
 
 }

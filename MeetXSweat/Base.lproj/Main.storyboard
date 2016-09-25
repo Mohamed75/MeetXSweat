@@ -83,6 +83,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PfX-nT-5ml" customClass="GIDSignInButton">
                                 <rect key="frame" x="158" y="301" width="284" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ilh-Pb-UAZ"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -90,7 +93,6 @@
                             <constraint firstItem="i5A-vP-YF9" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="71" id="8Fj-Fm-VJA"/>
                             <constraint firstItem="BGf-GJ-hRs" firstAttribute="width" secondItem="9e0-mC-YNx" secondAttribute="width" id="BYQ-4W-Shk"/>
                             <constraint firstItem="9e0-mC-YNx" firstAttribute="height" secondItem="i5A-vP-YF9" secondAttribute="height" id="EpT-oj-Io1"/>
-                            <constraint firstItem="PfX-nT-5ml" firstAttribute="height" secondItem="BGf-GJ-hRs" secondAttribute="height" id="KWt-tD-oPh"/>
                             <constraint firstItem="BGf-GJ-hRs" firstAttribute="leading" secondItem="9e0-mC-YNx" secondAttribute="leading" id="Kd9-4b-JUT"/>
                             <constraint firstItem="i5A-vP-YF9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="MB2-uB-Jfd"/>
                             <constraint firstItem="9e0-mC-YNx" firstAttribute="leading" secondItem="i5A-vP-YF9" secondAttribute="leading" id="Okw-Or-rcs"/>

@@ -63,6 +63,7 @@
 		D998B5DC1D96E63400A045F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D998B5DB1D96E63400A045F4 /* GoogleService-Info.plist */; };
 		D998B5DE1D96E88F00A045F4 /* MXSAddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D998B5DD1D96E88F00A045F4 /* MXSAddEventViewController.swift */; };
 		D998B5E01D972CAF00A045F4 /* FireBaseDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D998B5DF1D972CAF00A045F4 /* FireBaseDataManager.swift */; };
+		D998B5E51D97FFE000A045F4 /* MXSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D998B5E41D97FFE000A045F4 /* MXSObject.swift */; };
 		D9AAA2AB1D8F0F12004CE80C /* MXSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA2AA1D8F0F12004CE80C /* MXSViewController.swift */; };
 		D9AAA2AD1D8F1550004CE80C /* MXSMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA2AC1D8F1550004CE80C /* MXSMainViewController.swift */; };
 		D9BB48131D8EB48000C12541 /* UtilsLinkedInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB48121D8EB48000C12541 /* UtilsLinkedInHelper.swift */; };
@@ -152,6 +153,7 @@
 		D998B5DB1D96E63400A045F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D998B5DD1D96E88F00A045F4 /* MXSAddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSAddEventViewController.swift; sourceTree = "<group>"; };
 		D998B5DF1D972CAF00A045F4 /* FireBaseDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FireBaseDataManager.swift; path = MeetXSweat/Controllers/FireBaseDataManager.swift; sourceTree = SOURCE_ROOT; };
+		D998B5E41D97FFE000A045F4 /* MXSObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSObject.swift; sourceTree = "<group>"; };
 		D9AAA2AA1D8F0F12004CE80C /* MXSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSViewController.swift; sourceTree = "<group>"; };
 		D9AAA2AC1D8F1550004CE80C /* MXSMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSMainViewController.swift; sourceTree = "<group>"; };
 		D9BB48121D8EB48000C12541 /* UtilsLinkedInHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilsLinkedInHelper.swift; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 		D926BAD41D8DA12800E3878C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				D998B5E11D97F06B00A045F4 /* Extensions */,
 				D90AB5A41D957AE6003DCA75 /* AnimationClass.swift */,
 				D926BAD71D8DA92400E3878C /* Utils.swift */,
 				D94C63E51D8DE4BB00ECD7FD /* FaceBookHelper.swift */,
@@ -355,6 +358,7 @@
 		D926BADA1D8DAF1400E3878C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D998B5E41D97FFE000A045F4 /* MXSObject.swift */,
 				D926BADB1D8DAF3900E3878C /* Person.swift */,
 				D926BADF1D8DBC5100E3878C /* User.swift */,
 				D90AB5721D93E4D9003DCA75 /* Event.swift */,
@@ -406,6 +410,13 @@
 				D959B3E51D93202200981105 /* MXSProfile.storyboard */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		D998B5E11D97F06B00A045F4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		D9BEC5561D9063F8006DAAAC /* UIElements */ = {
@@ -698,6 +709,7 @@
 				D9AAA2AB1D8F0F12004CE80C /* MXSViewController.swift in Sources */,
 				D94C63E61D8DE4BB00ECD7FD /* FaceBookHelper.swift in Sources */,
 				D998B5DE1D96E88F00A045F4 /* MXSAddEventViewController.swift in Sources */,
+				D998B5E51D97FFE000A045F4 /* MXSObject.swift in Sources */,
 				D959B3E41D93200E00981105 /* MXSProfileViewController.swift in Sources */,
 				D90AB5941D9412A5003DCA75 /* MXSSportCollectionCell.swift in Sources */,
 				D926BAD31D8DA11F00E3878C /* MXSAllLoginsViewController.swift in Sources */,
