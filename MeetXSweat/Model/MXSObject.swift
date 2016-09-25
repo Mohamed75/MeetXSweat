@@ -7,21 +7,147 @@
 //
 
 import Foundation
+import Firebase
+
+extension NSObject {
+    
+    class func fromClassName(className : String) -> NSObject {
+        let className = NSBundle.mainBundle().infoDictionary!["CFBundleName"] as! String + "." + className
+        let aClass = NSClassFromString(className) as! NSObject.Type
+        return aClass.init()
+    }
+}
 
 
-
-class MXSObject: NSObject {
+class MXSObject: NSObject, NSCoding {
+    
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        
+        for keyName in propertyNames() {
+            if (respondsToSelector(NSSelectorFromString(keyName))) {
+                aCoder.encodeObject(valueForKey(keyName), forKey: keyName)
+            }
+        }
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        
+        super.init()
+        
+        for keyName in propertyNames() {
+            if (respondsToSelector(NSSelectorFromString(keyName))) {
+                setValue(aDecoder.decodeObjectForKey(keyName), forKey: keyName)
+            }
+        }
+    }
+    
     
     // Retrieves an array of property names found on the current object
     // using Objective-C runtime functions for introspection:
     
-    private func arrayAsJson(name: String, value: AnyObject) -> AnyObject {
+    override init() {
+        
+    }
+    
+    func allParams() -> String {
+        
+        var basicInfo = ""
+        for keyName in propertyNames() {
+            if (respondsToSelector(NSSelectorFromString(keyName))) {
+                basicInfo = basicInfo + " " + String(valueForKey(keyName))
+            }
+        }
+        return basicInfo
+    }
+    
+    
+    init(dictionary: [String : AnyObject]) {
+        
+        super.init()
+        
+        for (key, value) in dictionary {
+            let keyName = key 
+            
+            if (respondsToSelector(NSSelectorFromString(keyName))) {
+                setValue(value, forKey: keyName)
+            }
+        }
+    }
+    
+    init(snapshot: FIRDataSnapshot) {
+        super.init()
+        for keyName in propertyNames() {
+            if (respondsToSelector(NSSelectorFromString(keyName))) {
+                
+                if let value = snapshot.value![keyName] {
+                    if let aValue = value {
+                        
+                        if aValue.isKindOfClass(NSArray) && (aValue as! NSArray).count > 0 {
+                            
+                            let array = createArrayObjectForProperty(keyName, array: (value as! NSArray) as Array)
+                            setValue(array, forKey: keyName)
+                        } else {
+                            setValue(aValue, forKey: keyName)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    // used only by the init snapshot
+    func createArrayObjectForProperty(propety: String, array: [AnyObject]) -> [AnyObject] {
+        
+        var returnArray: [AnyObject] = []
+        if let className = getTypeOfProperty(propety)?.stringByReplacingOccurrencesOfString("Optional<Array<", withString: "").stringByReplacingOccurrencesOfString(">", withString: "") {
+            
+            for object: AnyObject in array {
+                
+                let clazz: MXSObject = NSObject.fromClassName(className) as! MXSObject
+                for (key, v) in (object as! [String: AnyObject]) {
+                    
+                    if (clazz.respondsToSelector(NSSelectorFromString(key))) {
+                        clazz.setValue(v, forKey: key)
+                    }
+                }
+                returnArray.append(clazz)
+            }
+        } else {
+            return array
+        }
+        
+        return returnArray
+    }
+    
+    
+    func asJson() -> [String: AnyObject] {
+        
+        var json = [String: AnyObject]()
+        for keyName in propertyNames() {
+            
+            if (respondsToSelector(NSSelectorFromString(keyName))) {
+                
+                if let value = valueForKey(keyName) {
+                    if value.isKindOfClass(NSArray) && (value as! NSArray).count > 0 {
+                        json[keyName] = arrayAsJson(value)
+                    } else {
+                        json[keyName] = value
+                    }
+                }
+            }
+        }
+        return json
+    }
+    // return json array 
+    // value is an array wich could have simple type as String or complexe object
+    private func arrayAsJson(value: AnyObject) -> AnyObject {
         
         let firstElement = (value as! NSArray).firstObject as! NSObject
         if firstElement.isKindOfClass(MXSObject) {
             var jsonArray: [AnyObject] = []
             for elemnt: MXSObject in (value as! [MXSObject]) {
-                jsonArray.append(elemnt.asJson([]))
+                jsonArray.append(elemnt.asJson())
             }
             return jsonArray
         }
@@ -30,27 +156,33 @@ class MXSObject: NSObject {
         }
     }
     
-    func asJson(ignoreAttributes: [String]) -> [String: AnyObject] {
+    
+}
+
+
+
+extension MXSObject {
+    
+    // Returns the property type
+    private func getTypeOfProperty (name: String) -> String? {
         
-        var json = [String: AnyObject]()
-        var properties = propertyNames()
-        for property in ignoreAttributes {
-            let index = properties.indexOf(property)
-            properties.removeAtIndex(index!)
-        }
-        for name in properties {
-            
-            if let value = valueForKey(name) {
-                if value.isKindOfClass(NSArray) && (value as! NSArray).count > 0 {
-                    json[name] = arrayAsJson(name, value: value)
-                } else {
-                    json[name] = value
-                }
+        var type: Mirror = Mirror(reflecting: self)
+        
+        for child in type.children {
+            if child.label! == name {
+                return String(child.value.dynamicType)
             }
         }
-        return json
+        while let parent = type.superclassMirror() {
+            for child in parent.children {
+                if child.label! == name {
+                    return String(child.value.dynamicType)
+                }
+            }
+            type = parent
+        }
+        return nil
     }
-    
     
     private func propertyNames() -> Array<String> {
         
@@ -91,5 +223,4 @@ class MXSObject: NSObject {
         
         return results;
     }
-    
 }

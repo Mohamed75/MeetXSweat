@@ -37,37 +37,30 @@ class Event: MXSObject {
     
     var imageUrlString = ""
     var placeMark: MKPlacemark?
-    let ref: FIRDatabaseReference?
+    var ref: FIRDatabaseReference?
     
     override init() {
+        
         ref = nil
+        super.init()
     }
     
-    init(snapshot: FIRDataSnapshot) {
+    override init(snapshot: FIRDataSnapshot) {
         
-        name = snapshot.value!["name"] as? String
-        date = snapshot.value!["date"] as? String
-        aDescription = snapshot.value!["aDescription"] as? String
-        imageUrlString = (snapshot.value!["imageUrlString"] as? String)!
-        
-        let personsArray = snapshot.value!["persons"] as? [AnyObject]
-        persons = []
-        for person in personsArray! {
-            persons?.append(Person(dictionary: person as! [String : AnyObject]))
-        }
-        
-        sport = snapshot.value!["sport"] as? String
-        adress = snapshot.value!["adress"] as? String
+        super.init(snapshot: snapshot)
         ref = snapshot.ref
     }
     
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     
     
     
     func saveEventToDataBase() {
         
         let eventRef = FIRDatabase.database().reference().child("event-items")
-        eventRef.childByAutoId().setValue(self.asJson([]))
+        eventRef.childByAutoId().setValue(self.asJson())
     }
 
 }

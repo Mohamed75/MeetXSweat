@@ -13,7 +13,7 @@ import UIKit
 
 class MXSPersonsCollectionViewController: UICollectionViewController {
     
-    var persons: [Person]!
+    var persons: [Person]?
     
     
     
@@ -29,12 +29,15 @@ class MXSPersonsCollectionViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Ressources.CellReuseIdentifier.person, forIndexPath: indexPath) as! MXSPersonCollectionCell
-        let person = self.persons[indexPath.section]
-        var text = ""
-        if let name = person.name {
-            text = name + " " + person.lastName
+        if let persons = self.persons {
+            
+            let person = persons[indexPath.section]
+            var text = ""
+            if let name = person.name {
+                text = name + " " + person.lastName
+            }
+            cell.label.text = text + "\n" + FindProfileManager.sharedInstance.profession
         }
-        cell.label.text = text + "\n" + FindProfileManager.sharedInstance.profession
         cell.imageView.image = UIImage(named: Ressources.Images.profilePlaceHolder)
         
         return cell
@@ -45,7 +48,9 @@ class MXSPersonsCollectionViewController: UICollectionViewController {
         if !(isEmbdedInEventViewController() && MXSHomeViewController.sharedInstance.findBy == FindBy.Profile) {
             
             let profileViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.profile, viewControllerId: Ressources.StoryBooardsIdentifiers.profileId) as! MXSProfileViewController
-            profileViewController.person = self.persons[indexPath.section]
+            if let persons = self.persons {
+                profileViewController.person = persons[indexPath.section]
+            }
             self.navigationController?.pushViewController(profileViewController, animated: true)
         }
     }
@@ -55,7 +60,10 @@ class MXSPersonsCollectionViewController: UICollectionViewController {
     }
     
     internal override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return persons.count
+        if let persons = self.persons {
+            return persons.count
+        }
+        return 0
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {

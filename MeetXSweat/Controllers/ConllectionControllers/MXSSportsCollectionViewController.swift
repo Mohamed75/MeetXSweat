@@ -65,8 +65,9 @@ class MXSSportsCollectionViewController: UICollectionViewController {
             allSelectedRadioButtonsIndexs.append(radioButton.tag)
         }
         else {
-            let index = allSelectedRadioButtonsIndexs.indexOf(radioButton.tag)
-            allSelectedRadioButtonsIndexs.removeAtIndex(index!)
+            if let index = allSelectedRadioButtonsIndexs.indexOf(radioButton.tag) {
+                allSelectedRadioButtonsIndexs.removeAtIndex(index)
+            }
         }
     }
     

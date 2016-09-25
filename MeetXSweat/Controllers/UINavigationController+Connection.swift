@@ -47,7 +47,9 @@ extension UINavigationController {
     
     
     func getPreviousViewController() -> UIViewController {
-        let indexCurrentViewController = self.viewControllers.indexOf(self.visibleViewController!)
-        return self.viewControllers[indexCurrentViewController!-1]
+        if let indexCurrentViewController = self.viewControllers.indexOf(self.visibleViewController!) {
+            return self.viewControllers[indexCurrentViewController-1]
+        }
+        return UIViewController()
     }
 }

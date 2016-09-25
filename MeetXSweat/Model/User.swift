@@ -10,7 +10,7 @@ import Foundation
 
 
 
-class User: Person, NSCoding {
+class User: Person {
     
     
     var isConnected: Bool = false
@@ -18,36 +18,12 @@ class User: Person, NSCoding {
     static let currentUser = User.loadCustomObjectWithKey("SAVED_USER")
     
     
-    func encodeWithCoder(aCoder: NSCoder) {
-        
-        aCoder.encodeObject(self.name, forKey: "name")
-        aCoder.encodeObject(self.lastName, forKey: "lastName")
-        aCoder.encodeObject(self.email, forKey: "email")
-        aCoder.encodeObject(self.profession, forKey: "profession")
-        aCoder.encodeObject(self.sport, forKey: "sport")
-        aCoder.encodeObject(self.pictureUrl, forKey: "pictureUrl")
-        aCoder.encodeObject(self.gender, forKey: "gender")
-        aCoder.encodeObject(self.birthday, forKey: "birthday")
-        aCoder.encodeObject(self.isConnected, forKey: "isConnected")
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        
-        super.init()
-        
-        self.name = aDecoder.decodeObjectForKey("name") as? String
-        self.lastName = aDecoder.decodeObjectForKey("lastName") as! String
-        self.email = aDecoder.decodeObjectForKey("email") as! String
-        self.profession = aDecoder.decodeObjectForKey("profession") as! String
-        self.sport = aDecoder.decodeObjectForKey("sport") as! String
-        self.pictureUrl = aDecoder.decodeObjectForKey("pictureUrl") as! String
-        self.gender = aDecoder.decodeObjectForKey("gender") as! String
-        self.birthday = aDecoder.decodeObjectForKey("birthday") as! String
-        self.isConnected = aDecoder.decodeObjectForKey("isConnected") as! Bool
-    }
-    
     override init () {
         super.init()
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
     
     func initFromFBData(data: NSDictionary) {
