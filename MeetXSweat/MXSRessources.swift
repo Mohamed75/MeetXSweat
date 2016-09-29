@@ -81,5 +81,7 @@ enum Ressources {
         static let person = "MXSPersonCollectionCell"
         static let home = "MXSHomeCollectionCell"
         static let sport = "MXSSportCollectionCell"
+        
+        static let menu = "MXSMenuTableViewCell"
     }
 }

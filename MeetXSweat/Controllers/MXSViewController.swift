@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DrawerController
 
 
 class MXSViewController: UIViewController {
@@ -22,5 +23,18 @@ class MXSViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    func addBarButtonItem() {
+        navigationItem.leftBarButtonItem = DrawerBarButtonItem(target: self, action: #selector(togleMenuButton))
+    }
+    
+    func togleMenuButton() {
+        
+        if self.evo_drawerController!.openSide == .None {
+            
+            self.evo_drawerController?.openDrawerSide(DrawerSide.Left, animated: true, completion: nil)
+        } else {
+            self.evo_drawerController?.closeDrawerAnimated(true, completion: nil)
+        }
+    }
     
 }

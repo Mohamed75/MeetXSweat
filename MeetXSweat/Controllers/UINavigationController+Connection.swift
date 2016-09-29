@@ -16,6 +16,7 @@ extension UINavigationController {
     
     public override func viewDidLoad() {
         
+        
         if User.currentUser.isConnected {
             
             if self.viewControllers.count > 0 {

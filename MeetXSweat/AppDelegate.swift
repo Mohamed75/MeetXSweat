@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import DrawerController
+
 
 
 @UIApplicationMain
@@ -16,6 +18,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     
+    
+    func initTheDrawerController() {
+        
+        let center = self.window?.rootViewController;
+        
+        let drawerController = DrawerController(centerViewController: center!, leftDrawerViewController: MXSMenuViewController())
+        drawerController.closeDrawerGestureModeMask = CloseDrawerGestureMode.PanningCenterView
+        self.window!.rootViewController = drawerController
+        self.window!.makeKeyAndVisible()
+    }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -25,6 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         TwitterHelper.application(application, didFinishLaunchingWithOptions: launchOptions)
         GoogleLogInHelper.initConfig()
+        
+        self.initTheDrawerController()
         
         return FaceBookHelper.application(application, didFinishLaunchingWithOptions: launchOptions)
     }

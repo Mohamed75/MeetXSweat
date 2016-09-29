@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import DrawerController
 
 enum FindBy: Int {
     case Profile
@@ -49,6 +49,9 @@ class MXSHomeViewController: MXSViewController {
         super.viewDidLoad()
         
         FireBaseDataManager.sharedInstance
+        
+        self.evo_drawerController!.openDrawerGestureModeMask = OpenDrawerGestureMode.PanningCenterView
+        self.addBarButtonItem()
     }
     
     func profileRightButtonClicked() {

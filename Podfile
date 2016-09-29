@@ -30,6 +30,9 @@ pod 'Firebase/Core'
 pod 'Firebase/Database'
 pod 'Firebase/Auth'
 
+pod 'DrawerController', '~> 1.0'
+
+
 
 target 'MeetXSweat' do
 

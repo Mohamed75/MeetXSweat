@@ -21,6 +21,8 @@ class MXSAllLoginsViewController: MXSViewController, LogInFBDelegate, LogInTWDel
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         GoogleLogInHelper.sharedInstance.controllerDelegate = self
+        
+        self.evo_drawerController!.openDrawerGestureModeMask = []
     }
     
     

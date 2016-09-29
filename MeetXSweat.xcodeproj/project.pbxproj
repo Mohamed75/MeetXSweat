@@ -66,6 +66,7 @@
 		D998B5E51D97FFE000A045F4 /* MXSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D998B5E41D97FFE000A045F4 /* MXSObject.swift */; };
 		D9AAA2AB1D8F0F12004CE80C /* MXSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA2AA1D8F0F12004CE80C /* MXSViewController.swift */; };
 		D9AAA2AD1D8F1550004CE80C /* MXSMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA2AC1D8F1550004CE80C /* MXSMainViewController.swift */; };
+		D9B64CD91D9D6C28008C5D34 /* MXSMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64CD81D9D6C28008C5D34 /* MXSMenuViewController.swift */; };
 		D9BB48131D8EB48000C12541 /* UtilsLinkedInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB48121D8EB48000C12541 /* UtilsLinkedInHelper.swift */; };
 		D9BB48251D8EF2E000C12541 /* GoogleLogInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB48241D8EF2E000C12541 /* GoogleLogInHelper.swift */; };
 /* End PBXBuildFile section */
@@ -156,6 +157,7 @@
 		D998B5E41D97FFE000A045F4 /* MXSObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSObject.swift; sourceTree = "<group>"; };
 		D9AAA2AA1D8F0F12004CE80C /* MXSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSViewController.swift; sourceTree = "<group>"; };
 		D9AAA2AC1D8F1550004CE80C /* MXSMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSMainViewController.swift; sourceTree = "<group>"; };
+		D9B64CD81D9D6C28008C5D34 /* MXSMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSMenuViewController.swift; sourceTree = "<group>"; };
 		D9BB48121D8EB48000C12541 /* UtilsLinkedInHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilsLinkedInHelper.swift; sourceTree = "<group>"; };
 		D9BB48241D8EF2E000C12541 /* GoogleLogInHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleLogInHelper.swift; sourceTree = "<group>"; };
 		F04A0BDA1CBA2F76A3C5E1B3 /* Pods-MeetXSweatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetXSweatTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetXSweatTests/Pods-MeetXSweatTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 				D9AAA2AC1D8F1550004CE80C /* MXSMainViewController.swift */,
 				D90AB5B01D96DB0C003DCA75 /* SignInViewController.swift */,
 				D998B5DD1D96E88F00A045F4 /* MXSAddEventViewController.swift */,
+				D9B64CD81D9D6C28008C5D34 /* MXSMenuViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -729,6 +732,7 @@
 				D90AB5B11D96DB0C003DCA75 /* SignInViewController.swift in Sources */,
 				D90AB5921D9412A5003DCA75 /* MXSHomeCollectionCell.swift in Sources */,
 				D90AB59D1D9523C0003DCA75 /* MXSSportsCollectionViewController.swift in Sources */,
+				D9B64CD91D9D6C28008C5D34 /* MXSMenuViewController.swift in Sources */,
 				D959B3E11D931AB900981105 /* FindProfileManager.swift in Sources */,
 				D959B3CB1D92D1D200981105 /* MXSFindProfileViewController1.swift in Sources */,
 			);
