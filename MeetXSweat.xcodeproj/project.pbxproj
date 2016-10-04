@@ -12,7 +12,6 @@
 		D90AB56F1D93E275003DCA75 /* MXSEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D90AB56E1D93E275003DCA75 /* MXSEvent.storyboard */; };
 		D90AB5711D93E28F003DCA75 /* MXSEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5701D93E28F003DCA75 /* MXSEventViewController.swift */; };
 		D90AB5731D93E4D9003DCA75 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5721D93E4D9003DCA75 /* Event.swift */; };
-		D90AB5751D93E650003DCA75 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5741D93E650003DCA75 /* DummyData.swift */; };
 		D90AB5771D93ED1C003DCA75 /* MXSEventsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5761D93ED1C003DCA75 /* MXSEventsCollectionViewController.swift */; };
 		D90AB57C1D940522003DCA75 /* MXSPersonsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB57B1D940522003DCA75 /* MXSPersonsCollectionViewController.swift */; };
 		D90AB57E1D940CA9003DCA75 /* MXSFindSport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D90AB57D1D940CA9003DCA75 /* MXSFindSport.storyboard */; };
@@ -25,14 +24,12 @@
 		D90AB5921D9412A5003DCA75 /* MXSHomeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB58E1D9412A5003DCA75 /* MXSHomeCollectionCell.swift */; };
 		D90AB5931D9412A5003DCA75 /* MXSPersonCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB58F1D9412A5003DCA75 /* MXSPersonCollectionCell.swift */; };
 		D90AB5941D9412A5003DCA75 /* MXSSportCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5901D9412A5003DCA75 /* MXSSportCollectionCell.swift */; };
-		D90AB5991D943BA5003DCA75 /* FindSportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5981D943BA5003DCA75 /* FindSportManager.swift */; };
 		D90AB59B1D95220C003DCA75 /* MXSHomeCollectionViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB59A1D95220C003DCA75 /* MXSHomeCollectionViewContoller.swift */; };
 		D90AB59D1D9523C0003DCA75 /* MXSSportsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB59C1D9523C0003DCA75 /* MXSSportsCollectionViewController.swift */; };
 		D90AB59F1D955F20003DCA75 /* MXSCalendarCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D90AB59E1D955F20003DCA75 /* MXSCalendarCellView.xib */; };
 		D90AB5A11D955F6F003DCA75 /* MXSCalendarCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5A01D955F6F003DCA75 /* MXSCalendarCellView.swift */; };
 		D90AB5A31D9562E1003DCA75 /* MXSCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5A21D9562E1003DCA75 /* MXSCalendarViewController.swift */; };
 		D90AB5A51D957AE6003DCA75 /* AnimationClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5A41D957AE6003DCA75 /* AnimationClass.swift */; };
-		D90AB5A71D968E2E003DCA75 /* FindDateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5A61D968E2E003DCA75 /* FindDateManager.swift */; };
 		D90AB5A91D969EF5003DCA75 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90AB5A81D969EF5003DCA75 /* MapKit.framework */; };
 		D90AB5AF1D96BE1E003DCA75 /* MXSActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5AE1D96BE1E003DCA75 /* MXSActivityIndicator.swift */; };
 		D90AB5B11D96DB0C003DCA75 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5B01D96DB0C003DCA75 /* SignInViewController.swift */; };
@@ -57,16 +54,21 @@
 		D959B3D81D93185000981105 /* MXSStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3D71D93185000981105 /* MXSStrings.swift */; };
 		D959B3DD1D9318E000981105 /* MXSConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3DB1D9318E000981105 /* MXSConstants.swift */; };
 		D959B3DE1D9318E000981105 /* MXSRessources.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3DC1D9318E000981105 /* MXSRessources.swift */; };
-		D959B3E11D931AB900981105 /* FindProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3E01D931AB900981105 /* FindProfileManager.swift */; };
 		D959B3E41D93200E00981105 /* MXSProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3E31D93200E00981105 /* MXSProfileViewController.swift */; };
 		D959B3E61D93202200981105 /* MXSProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D959B3E51D93202200981105 /* MXSProfile.storyboard */; };
 		D998B5DC1D96E63400A045F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D998B5DB1D96E63400A045F4 /* GoogleService-Info.plist */; };
 		D998B5DE1D96E88F00A045F4 /* MXSAddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D998B5DD1D96E88F00A045F4 /* MXSAddEventViewController.swift */; };
-		D998B5E01D972CAF00A045F4 /* FireBaseDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D998B5DF1D972CAF00A045F4 /* FireBaseDataManager.swift */; };
 		D998B5E51D97FFE000A045F4 /* MXSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D998B5E41D97FFE000A045F4 /* MXSObject.swift */; };
 		D9AAA2AB1D8F0F12004CE80C /* MXSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA2AA1D8F0F12004CE80C /* MXSViewController.swift */; };
 		D9AAA2AD1D8F1550004CE80C /* MXSMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA2AC1D8F1550004CE80C /* MXSMainViewController.swift */; };
 		D9B64CD91D9D6C28008C5D34 /* MXSMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64CD81D9D6C28008C5D34 /* MXSMenuViewController.swift */; };
+		D9B64D261DA3AA2D008C5D34 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64D211DA3AA2D008C5D34 /* DummyData.swift */; };
+		D9B64D271DA3AA2D008C5D34 /* FindDateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64D221DA3AA2D008C5D34 /* FindDateManager.swift */; };
+		D9B64D281DA3AA2D008C5D34 /* FindProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64D231DA3AA2D008C5D34 /* FindProfileManager.swift */; };
+		D9B64D291DA3AA2D008C5D34 /* FindSportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64D241DA3AA2D008C5D34 /* FindSportManager.swift */; };
+		D9B64D2A1DA3AA2D008C5D34 /* FireBaseDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64D251DA3AA2D008C5D34 /* FireBaseDataManager.swift */; };
+		D9B64D2C1DA3AA62008C5D34 /* ConversationsDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64D2B1DA3AA62008C5D34 /* ConversationsDataManager.swift */; };
+		D9B64D2E1DA3AACF008C5D34 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64D2D1DA3AACF008C5D34 /* Conversation.swift */; };
 		D9BB48131D8EB48000C12541 /* UtilsLinkedInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB48121D8EB48000C12541 /* UtilsLinkedInHelper.swift */; };
 		D9BB48251D8EF2E000C12541 /* GoogleLogInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB48241D8EF2E000C12541 /* GoogleLogInHelper.swift */; };
 /* End PBXBuildFile section */
@@ -96,7 +98,6 @@
 		D90AB56E1D93E275003DCA75 /* MXSEvent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MXSEvent.storyboard; sourceTree = "<group>"; };
 		D90AB5701D93E28F003DCA75 /* MXSEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSEventViewController.swift; sourceTree = "<group>"; };
 		D90AB5721D93E4D9003DCA75 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		D90AB5741D93E650003DCA75 /* DummyData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DummyData.swift; path = MeetXSweat/Model/DummyData.swift; sourceTree = SOURCE_ROOT; };
 		D90AB5761D93ED1C003DCA75 /* MXSEventsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MXSEventsCollectionViewController.swift; path = ../Profile/MXSEventsCollectionViewController.swift; sourceTree = "<group>"; };
 		D90AB57B1D940522003DCA75 /* MXSPersonsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSPersonsCollectionViewController.swift; sourceTree = "<group>"; };
 		D90AB57D1D940CA9003DCA75 /* MXSFindSport.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MXSFindSport.storyboard; sourceTree = "<group>"; };
@@ -109,14 +110,12 @@
 		D90AB58E1D9412A5003DCA75 /* MXSHomeCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSHomeCollectionCell.swift; sourceTree = "<group>"; };
 		D90AB58F1D9412A5003DCA75 /* MXSPersonCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSPersonCollectionCell.swift; sourceTree = "<group>"; };
 		D90AB5901D9412A5003DCA75 /* MXSSportCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSSportCollectionCell.swift; sourceTree = "<group>"; };
-		D90AB5981D943BA5003DCA75 /* FindSportManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FindSportManager.swift; path = MeetXSweat/UIElements/FindSportManager.swift; sourceTree = SOURCE_ROOT; };
 		D90AB59A1D95220C003DCA75 /* MXSHomeCollectionViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSHomeCollectionViewContoller.swift; sourceTree = "<group>"; };
 		D90AB59C1D9523C0003DCA75 /* MXSSportsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSSportsCollectionViewController.swift; sourceTree = "<group>"; };
 		D90AB59E1D955F20003DCA75 /* MXSCalendarCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MXSCalendarCellView.xib; sourceTree = "<group>"; };
 		D90AB5A01D955F6F003DCA75 /* MXSCalendarCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSCalendarCellView.swift; sourceTree = "<group>"; };
 		D90AB5A21D9562E1003DCA75 /* MXSCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSCalendarViewController.swift; sourceTree = "<group>"; };
 		D90AB5A41D957AE6003DCA75 /* AnimationClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationClass.swift; sourceTree = "<group>"; };
-		D90AB5A61D968E2E003DCA75 /* FindDateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FindDateManager.swift; path = MeetXSweat/Controllers/FindDate/FindDateManager.swift; sourceTree = SOURCE_ROOT; };
 		D90AB5A81D969EF5003DCA75 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D90AB5AE1D96BE1E003DCA75 /* MXSActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSActivityIndicator.swift; sourceTree = "<group>"; };
 		D90AB5B01D96DB0C003DCA75 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -148,16 +147,21 @@
 		D959B3D71D93185000981105 /* MXSStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSStrings.swift; sourceTree = "<group>"; };
 		D959B3DB1D9318E000981105 /* MXSConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSConstants.swift; sourceTree = "<group>"; };
 		D959B3DC1D9318E000981105 /* MXSRessources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSRessources.swift; sourceTree = "<group>"; };
-		D959B3E01D931AB900981105 /* FindProfileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FindProfileManager.swift; path = MeetXSweat/Controllers/FindProfileManager.swift; sourceTree = SOURCE_ROOT; };
 		D959B3E31D93200E00981105 /* MXSProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSProfileViewController.swift; sourceTree = "<group>"; };
 		D959B3E51D93202200981105 /* MXSProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MXSProfile.storyboard; sourceTree = "<group>"; };
 		D998B5DB1D96E63400A045F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D998B5DD1D96E88F00A045F4 /* MXSAddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSAddEventViewController.swift; sourceTree = "<group>"; };
-		D998B5DF1D972CAF00A045F4 /* FireBaseDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FireBaseDataManager.swift; path = MeetXSweat/Controllers/FireBaseDataManager.swift; sourceTree = SOURCE_ROOT; };
 		D998B5E41D97FFE000A045F4 /* MXSObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSObject.swift; sourceTree = "<group>"; };
 		D9AAA2AA1D8F0F12004CE80C /* MXSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSViewController.swift; sourceTree = "<group>"; };
 		D9AAA2AC1D8F1550004CE80C /* MXSMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSMainViewController.swift; sourceTree = "<group>"; };
 		D9B64CD81D9D6C28008C5D34 /* MXSMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSMenuViewController.swift; sourceTree = "<group>"; };
+		D9B64D211DA3AA2D008C5D34 /* DummyData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
+		D9B64D221DA3AA2D008C5D34 /* FindDateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindDateManager.swift; sourceTree = "<group>"; };
+		D9B64D231DA3AA2D008C5D34 /* FindProfileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindProfileManager.swift; sourceTree = "<group>"; };
+		D9B64D241DA3AA2D008C5D34 /* FindSportManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindSportManager.swift; sourceTree = "<group>"; };
+		D9B64D251DA3AA2D008C5D34 /* FireBaseDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireBaseDataManager.swift; sourceTree = "<group>"; };
+		D9B64D2B1DA3AA62008C5D34 /* ConversationsDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationsDataManager.swift; sourceTree = "<group>"; };
+		D9B64D2D1DA3AACF008C5D34 /* Conversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 		D9BB48121D8EB48000C12541 /* UtilsLinkedInHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilsLinkedInHelper.swift; sourceTree = "<group>"; };
 		D9BB48241D8EF2E000C12541 /* GoogleLogInHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleLogInHelper.swift; sourceTree = "<group>"; };
 		F04A0BDA1CBA2F76A3C5E1B3 /* Pods-MeetXSweatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetXSweatTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetXSweatTests/Pods-MeetXSweatTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -273,9 +277,9 @@
 			isa = PBXGroup;
 			children = (
 				D926BAD41D8DA12800E3878C /* Utils */,
-				D926BAD11D8DA11F00E3878C /* Controllers */,
 				D9BEC5561D9063F8006DAAAC /* UIElements */,
-				D926BAD91D8DAED900E3878C /* Managers */,
+				D926BAD11D8DA11F00E3878C /* Controllers */,
+				D9B64D201DA3AA2D008C5D34 /* Managers */,
 				D926BADA1D8DAF1400E3878C /* Model */,
 				D926BA9F1D8D6A6400E3878C /* AppDelegate.swift */,
 				D926BAA31D8D6A6400E3878C /* Main.storyboard */,
@@ -346,18 +350,6 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		D926BAD91D8DAED900E3878C /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				D959B3E01D931AB900981105 /* FindProfileManager.swift */,
-				D90AB5741D93E650003DCA75 /* DummyData.swift */,
-				D90AB5981D943BA5003DCA75 /* FindSportManager.swift */,
-				D90AB5A61D968E2E003DCA75 /* FindDateManager.swift */,
-				D998B5DF1D972CAF00A045F4 /* FireBaseDataManager.swift */,
-			);
-			path = Managers;
-			sourceTree = "<group>";
-		};
 		D926BADA1D8DAF1400E3878C /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -365,6 +357,7 @@
 				D926BADB1D8DAF3900E3878C /* Person.swift */,
 				D926BADF1D8DBC5100E3878C /* User.swift */,
 				D90AB5721D93E4D9003DCA75 /* Event.swift */,
+				D9B64D2D1DA3AACF008C5D34 /* Conversation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -420,6 +413,19 @@
 			children = (
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D9B64D201DA3AA2D008C5D34 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				D9B64D211DA3AA2D008C5D34 /* DummyData.swift */,
+				D9B64D221DA3AA2D008C5D34 /* FindDateManager.swift */,
+				D9B64D231DA3AA2D008C5D34 /* FindProfileManager.swift */,
+				D9B64D241DA3AA2D008C5D34 /* FindSportManager.swift */,
+				D9B64D251DA3AA2D008C5D34 /* FireBaseDataManager.swift */,
+				D9B64D2B1DA3AA62008C5D34 /* ConversationsDataManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		D9BEC5561D9063F8006DAAAC /* UIElements */ = {
@@ -692,32 +698,33 @@
 			files = (
 				D90AB5711D93E28F003DCA75 /* MXSEventViewController.swift in Sources */,
 				D926BADC1D8DAF3900E3878C /* Person.swift in Sources */,
-				D90AB5991D943BA5003DCA75 /* FindSportManager.swift in Sources */,
 				D959B3D81D93185000981105 /* MXSStrings.swift in Sources */,
 				D959B3CD1D92D1DD00981105 /* MXSEmbedCollectionViewController.swift in Sources */,
+				D9B64D2A1DA3AA2D008C5D34 /* FireBaseDataManager.swift in Sources */,
 				D90AB5911D9412A5003DCA75 /* MXSEventsCollectionCell.swift in Sources */,
 				D9BB48251D8EF2E000C12541 /* GoogleLogInHelper.swift in Sources */,
 				D926BAE21D8DD5CB00E3878C /* UINavigationController+Connection.swift in Sources */,
 				D926BAA01D8D6A6400E3878C /* AppDelegate.swift in Sources */,
 				D90AB59B1D95220C003DCA75 /* MXSHomeCollectionViewContoller.swift in Sources */,
-				D90AB5751D93E650003DCA75 /* DummyData.swift in Sources */,
 				D926BAE41D8DD6AA00E3878C /* MXSHomeViewController.swift in Sources */,
 				D90AB5931D9412A5003DCA75 /* MXSPersonCollectionCell.swift in Sources */,
 				D926BAE01D8DBC5100E3878C /* User.swift in Sources */,
 				D9BB48131D8EB48000C12541 /* UtilsLinkedInHelper.swift in Sources */,
-				D998B5E01D972CAF00A045F4 /* FireBaseDataManager.swift in Sources */,
+				D9B64D291DA3AA2D008C5D34 /* FindSportManager.swift in Sources */,
+				D9B64D2E1DA3AACF008C5D34 /* Conversation.swift in Sources */,
 				D90AB5841D940CEA003DCA75 /* MXSFindSportViewController.swift in Sources */,
 				D9AAA2AD1D8F1550004CE80C /* MXSMainViewController.swift in Sources */,
+				D9B64D261DA3AA2D008C5D34 /* DummyData.swift in Sources */,
 				D90AB5881D940D18003DCA75 /* MXSFindArroundMeViewController.swift in Sources */,
 				D9AAA2AB1D8F0F12004CE80C /* MXSViewController.swift in Sources */,
 				D94C63E61D8DE4BB00ECD7FD /* FaceBookHelper.swift in Sources */,
 				D998B5DE1D96E88F00A045F4 /* MXSAddEventViewController.swift in Sources */,
 				D998B5E51D97FFE000A045F4 /* MXSObject.swift in Sources */,
+				D9B64D2C1DA3AA62008C5D34 /* ConversationsDataManager.swift in Sources */,
 				D959B3E41D93200E00981105 /* MXSProfileViewController.swift in Sources */,
 				D90AB5941D9412A5003DCA75 /* MXSSportCollectionCell.swift in Sources */,
 				D926BAD31D8DA11F00E3878C /* MXSAllLoginsViewController.swift in Sources */,
 				D90AB5A31D9562E1003DCA75 /* MXSCalendarViewController.swift in Sources */,
-				D90AB5A71D968E2E003DCA75 /* FindDateManager.swift in Sources */,
 				D90AB5731D93E4D9003DCA75 /* Event.swift in Sources */,
 				D959B3DE1D9318E000981105 /* MXSRessources.swift in Sources */,
 				D90AB57C1D940522003DCA75 /* MXSPersonsCollectionViewController.swift in Sources */,
@@ -729,11 +736,12 @@
 				D90AB5771D93ED1C003DCA75 /* MXSEventsCollectionViewController.swift in Sources */,
 				D90AB5A11D955F6F003DCA75 /* MXSCalendarCellView.swift in Sources */,
 				D959B3DD1D9318E000981105 /* MXSConstants.swift in Sources */,
+				D9B64D271DA3AA2D008C5D34 /* FindDateManager.swift in Sources */,
 				D90AB5B11D96DB0C003DCA75 /* SignInViewController.swift in Sources */,
 				D90AB5921D9412A5003DCA75 /* MXSHomeCollectionCell.swift in Sources */,
 				D90AB59D1D9523C0003DCA75 /* MXSSportsCollectionViewController.swift in Sources */,
 				D9B64CD91D9D6C28008C5D34 /* MXSMenuViewController.swift in Sources */,
-				D959B3E11D931AB900981105 /* FindProfileManager.swift in Sources */,
+				D9B64D281DA3AA2D008C5D34 /* FindProfileManager.swift in Sources */,
 				D959B3CB1D92D1D200981105 /* MXSFindProfileViewController1.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

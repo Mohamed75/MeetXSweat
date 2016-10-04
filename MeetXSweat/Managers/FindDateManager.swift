@@ -8,8 +8,8 @@
 
 import Foundation
 
+
 class FindDateManager {
-    
     
     var dates = [AnyObject]()
     
