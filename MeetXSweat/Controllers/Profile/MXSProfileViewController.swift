@@ -43,11 +43,21 @@ class MXSProfileViewController: MXSViewController {
     
     @IBAction func contacterButtonClicked(sender: AnyObject) {
         
-        let conversation = Conversation()
-        conversation.persons = [User.currentUser, self.person]
+        
+        let between:[Person] = [User.currentUser, self.person]
+        let conversation: Conversation!
+        
         
         let chatViewController = ChatViewController()
+        
+        if let aConversation = ConversationsDataManager.sharedInstance.getPersonsConversation(between) {
+            conversation = aConversation
+        } else {
+           conversation = Conversation()
+        }
+        conversation.persons = between
         chatViewController.conversation = conversation
-        self.presentViewController(chatViewController, animated: true, completion: nil)
+        self.navigationController?.pushViewController(chatViewController, animated: true)
+        //self.presentViewController(chatViewController, animated: true, completion: nil)
     }
 }

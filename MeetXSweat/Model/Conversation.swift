@@ -14,7 +14,7 @@ import JSQMessagesViewController
 class Conversation: MXSObject {
 
     var persons: [Person]?
-    var messages = [Message]()
+    var messages: [Message]?
     var ref: FIRDatabaseReference?
     
     override init() {
@@ -38,11 +38,14 @@ class Conversation: MXSObject {
         
         if let conversationRef = self.ref {
             
+            self.messages = []
             let messagesQuery = conversationRef.child("messages").queryLimitedToLast(25)
             messagesQuery.observeEventType(.ChildAdded, withBlock: { (snapshot) in
                 
-                self.messages.append(Message(snapshot: snapshot))
-                completionHandler(messages: self.messages)
+                let message = Message(snapshot: snapshot)
+                self.messages?.append(message)
+                
+                completionHandler(messages: self.messages!)
             })
         }
     }

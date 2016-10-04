@@ -20,10 +20,6 @@
 		D90AB5841D940CEA003DCA75 /* MXSFindSportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5831D940CEA003DCA75 /* MXSFindSportViewController.swift */; };
 		D90AB5861D940CFC003DCA75 /* MXSFindDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5851D940CFC003DCA75 /* MXSFindDateViewController.swift */; };
 		D90AB5881D940D18003DCA75 /* MXSFindArroundMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5871D940D18003DCA75 /* MXSFindArroundMeViewController.swift */; };
-		D90AB5911D9412A5003DCA75 /* MXSEventsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB58D1D9412A5003DCA75 /* MXSEventsCollectionCell.swift */; };
-		D90AB5921D9412A5003DCA75 /* MXSHomeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB58E1D9412A5003DCA75 /* MXSHomeCollectionCell.swift */; };
-		D90AB5931D9412A5003DCA75 /* MXSPersonCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB58F1D9412A5003DCA75 /* MXSPersonCollectionCell.swift */; };
-		D90AB5941D9412A5003DCA75 /* MXSSportCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5901D9412A5003DCA75 /* MXSSportCollectionCell.swift */; };
 		D90AB59B1D95220C003DCA75 /* MXSHomeCollectionViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB59A1D95220C003DCA75 /* MXSHomeCollectionViewContoller.swift */; };
 		D90AB59D1D9523C0003DCA75 /* MXSSportsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB59C1D9523C0003DCA75 /* MXSSportsCollectionViewController.swift */; };
 		D90AB59F1D955F20003DCA75 /* MXSCalendarCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D90AB59E1D955F20003DCA75 /* MXSCalendarCellView.xib */; };
@@ -48,6 +44,14 @@
 		D926BAE41D8DD6AA00E3878C /* MXSHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D926BAE31D8DD6AA00E3878C /* MXSHomeViewController.swift */; };
 		D94A3E3A1DA3C2270090A7A4 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E391DA3C2270090A7A4 /* ChatViewController.swift */; };
 		D94A3E3C1DA3E6220090A7A4 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E3B1DA3E6220090A7A4 /* Message.swift */; };
+		D94A3E3F1DA3FA240090A7A4 /* MXSConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E3E1DA3FA240090A7A4 /* MXSConversationsViewController.swift */; };
+		D94A3E411DA3FB1B0090A7A4 /* MXSConversationsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E401DA3FB1B0090A7A4 /* MXSConversationsCollectionViewController.swift */; };
+		D94A3E471DA3FC840090A7A4 /* MXSEventsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E431DA3FC840090A7A4 /* MXSEventsCollectionCell.swift */; };
+		D94A3E481DA3FC840090A7A4 /* MXSHomeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E441DA3FC840090A7A4 /* MXSHomeCollectionCell.swift */; };
+		D94A3E491DA3FC840090A7A4 /* MXSPersonCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E451DA3FC840090A7A4 /* MXSPersonCollectionCell.swift */; };
+		D94A3E4A1DA3FC840090A7A4 /* MXSSportCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E461DA3FC840090A7A4 /* MXSSportCollectionCell.swift */; };
+		D94A3E4C1DA3FCEF0090A7A4 /* MXSConversationCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E4B1DA3FCEF0090A7A4 /* MXSConversationCollectionCell.swift */; };
+		D94A3E4E1DA3FD6C0090A7A4 /* MXSConversation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D94A3E4D1DA3FD6C0090A7A4 /* MXSConversation.storyboard */; };
 		D94C63E61D8DE4BB00ECD7FD /* FaceBookHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94C63E51D8DE4BB00ECD7FD /* FaceBookHelper.swift */; };
 		D94C63E91D8E914F00ECD7FD /* TwitterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94C63E81D8E914F00ECD7FD /* TwitterHelper.swift */; };
 		D959B3CB1D92D1D200981105 /* MXSFindProfileViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3CA1D92D1D200981105 /* MXSFindProfileViewController1.swift */; };
@@ -108,10 +112,6 @@
 		D90AB5831D940CEA003DCA75 /* MXSFindSportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSFindSportViewController.swift; sourceTree = "<group>"; };
 		D90AB5851D940CFC003DCA75 /* MXSFindDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSFindDateViewController.swift; sourceTree = "<group>"; };
 		D90AB5871D940D18003DCA75 /* MXSFindArroundMeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSFindArroundMeViewController.swift; sourceTree = "<group>"; };
-		D90AB58D1D9412A5003DCA75 /* MXSEventsCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSEventsCollectionCell.swift; sourceTree = "<group>"; };
-		D90AB58E1D9412A5003DCA75 /* MXSHomeCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSHomeCollectionCell.swift; sourceTree = "<group>"; };
-		D90AB58F1D9412A5003DCA75 /* MXSPersonCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSPersonCollectionCell.swift; sourceTree = "<group>"; };
-		D90AB5901D9412A5003DCA75 /* MXSSportCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSSportCollectionCell.swift; sourceTree = "<group>"; };
 		D90AB59A1D95220C003DCA75 /* MXSHomeCollectionViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSHomeCollectionViewContoller.swift; sourceTree = "<group>"; };
 		D90AB59C1D9523C0003DCA75 /* MXSSportsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSSportsCollectionViewController.swift; sourceTree = "<group>"; };
 		D90AB59E1D955F20003DCA75 /* MXSCalendarCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MXSCalendarCellView.xib; sourceTree = "<group>"; };
@@ -142,6 +142,14 @@
 		D926BAE31D8DD6AA00E3878C /* MXSHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSHomeViewController.swift; sourceTree = "<group>"; };
 		D94A3E391DA3C2270090A7A4 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		D94A3E3B1DA3E6220090A7A4 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		D94A3E3E1DA3FA240090A7A4 /* MXSConversationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSConversationsViewController.swift; sourceTree = "<group>"; };
+		D94A3E401DA3FB1B0090A7A4 /* MXSConversationsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSConversationsCollectionViewController.swift; sourceTree = "<group>"; };
+		D94A3E431DA3FC840090A7A4 /* MXSEventsCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSEventsCollectionCell.swift; sourceTree = "<group>"; };
+		D94A3E441DA3FC840090A7A4 /* MXSHomeCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSHomeCollectionCell.swift; sourceTree = "<group>"; };
+		D94A3E451DA3FC840090A7A4 /* MXSPersonCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSPersonCollectionCell.swift; sourceTree = "<group>"; };
+		D94A3E461DA3FC840090A7A4 /* MXSSportCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSSportCollectionCell.swift; sourceTree = "<group>"; };
+		D94A3E4B1DA3FCEF0090A7A4 /* MXSConversationCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSConversationCollectionCell.swift; sourceTree = "<group>"; };
+		D94A3E4D1DA3FD6C0090A7A4 /* MXSConversation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MXSConversation.storyboard; sourceTree = "<group>"; };
 		D94C63E51D8DE4BB00ECD7FD /* FaceBookHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceBookHelper.swift; sourceTree = "<group>"; };
 		D94C63E71D8DE88A00ECD7FD /* MeetXSweat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MeetXSweat-Bridging-Header.h"; sourceTree = "<group>"; };
 		D94C63E81D8E914F00ECD7FD /* TwitterHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterHelper.swift; sourceTree = "<group>"; };
@@ -236,23 +244,14 @@
 		D90AB57A1D9404FF003DCA75 /* ConllectionControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D94A3E421DA3FC840090A7A4 /* CollectionCells */,
 				D90AB5761D93ED1C003DCA75 /* MXSEventsCollectionViewController.swift */,
 				D90AB57B1D940522003DCA75 /* MXSPersonsCollectionViewController.swift */,
 				D90AB59A1D95220C003DCA75 /* MXSHomeCollectionViewContoller.swift */,
 				D90AB59C1D9523C0003DCA75 /* MXSSportsCollectionViewController.swift */,
+				D94A3E401DA3FB1B0090A7A4 /* MXSConversationsCollectionViewController.swift */,
 			);
 			path = ConllectionControllers;
-			sourceTree = "<group>";
-		};
-		D90AB58C1D9412A5003DCA75 /* CollectionCells */ = {
-			isa = PBXGroup;
-			children = (
-				D90AB58D1D9412A5003DCA75 /* MXSEventsCollectionCell.swift */,
-				D90AB58E1D9412A5003DCA75 /* MXSHomeCollectionCell.swift */,
-				D90AB58F1D9412A5003DCA75 /* MXSPersonCollectionCell.swift */,
-				D90AB5901D9412A5003DCA75 /* MXSSportCollectionCell.swift */,
-			);
-			path = CollectionCells;
 			sourceTree = "<group>";
 		};
 		D926BA931D8D6A6400E3878C = {
@@ -320,6 +319,8 @@
 		D926BAD11D8DA11F00E3878C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D94A3E3E1DA3FA240090A7A4 /* MXSConversationsViewController.swift */,
+				D94A3E4D1DA3FD6C0090A7A4 /* MXSConversation.storyboard */,
 				D94A3E391DA3C2270090A7A4 /* ChatViewController.swift */,
 				D90AB57A1D9404FF003DCA75 /* ConllectionControllers */,
 				D90AB56D1D93E262003DCA75 /* Event */,
@@ -366,6 +367,18 @@
 				D94A3E3B1DA3E6220090A7A4 /* Message.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D94A3E421DA3FC840090A7A4 /* CollectionCells */ = {
+			isa = PBXGroup;
+			children = (
+				D94A3E431DA3FC840090A7A4 /* MXSEventsCollectionCell.swift */,
+				D94A3E441DA3FC840090A7A4 /* MXSHomeCollectionCell.swift */,
+				D94A3E451DA3FC840090A7A4 /* MXSPersonCollectionCell.swift */,
+				D94A3E461DA3FC840090A7A4 /* MXSSportCollectionCell.swift */,
+				D94A3E4B1DA3FCEF0090A7A4 /* MXSConversationCollectionCell.swift */,
+			);
+			path = CollectionCells;
 			sourceTree = "<group>";
 		};
 		D959B3C61D92CF0C00981105 /* FindProfile */ = {
@@ -437,7 +450,6 @@
 		D9BEC5561D9063F8006DAAAC /* UIElements */ = {
 			isa = PBXGroup;
 			children = (
-				D90AB58C1D9412A5003DCA75 /* CollectionCells */,
 				D90AB59E1D955F20003DCA75 /* MXSCalendarCellView.xib */,
 				D90AB5A01D955F6F003DCA75 /* MXSCalendarCellView.swift */,
 				D90AB5AE1D96BE1E003DCA75 /* MXSActivityIndicator.swift */,
@@ -561,6 +573,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D94A3E4E1DA3FD6C0090A7A4 /* MXSConversation.storyboard in Resources */,
 				D90AB59F1D955F20003DCA75 /* MXSCalendarCellView.xib in Resources */,
 				D90AB56F1D93E275003DCA75 /* MXSEvent.storyboard in Resources */,
 				D926BAAA1D8D6A6400E3878C /* LaunchScreen.storyboard in Resources */,
@@ -704,18 +717,20 @@
 			files = (
 				D90AB5711D93E28F003DCA75 /* MXSEventViewController.swift in Sources */,
 				D926BADC1D8DAF3900E3878C /* Person.swift in Sources */,
+				D94A3E411DA3FB1B0090A7A4 /* MXSConversationsCollectionViewController.swift in Sources */,
 				D959B3D81D93185000981105 /* MXSStrings.swift in Sources */,
 				D959B3CD1D92D1DD00981105 /* MXSEmbedCollectionViewController.swift in Sources */,
 				D9B64D2A1DA3AA2D008C5D34 /* FireBaseDataManager.swift in Sources */,
-				D90AB5911D9412A5003DCA75 /* MXSEventsCollectionCell.swift in Sources */,
 				D9BB48251D8EF2E000C12541 /* GoogleLogInHelper.swift in Sources */,
 				D926BAE21D8DD5CB00E3878C /* UINavigationController+Connection.swift in Sources */,
 				D926BAA01D8D6A6400E3878C /* AppDelegate.swift in Sources */,
+				D94A3E4C1DA3FCEF0090A7A4 /* MXSConversationCollectionCell.swift in Sources */,
 				D90AB59B1D95220C003DCA75 /* MXSHomeCollectionViewContoller.swift in Sources */,
 				D926BAE41D8DD6AA00E3878C /* MXSHomeViewController.swift in Sources */,
-				D90AB5931D9412A5003DCA75 /* MXSPersonCollectionCell.swift in Sources */,
+				D94A3E481DA3FC840090A7A4 /* MXSHomeCollectionCell.swift in Sources */,
 				D926BAE01D8DBC5100E3878C /* User.swift in Sources */,
 				D9BB48131D8EB48000C12541 /* UtilsLinkedInHelper.swift in Sources */,
+				D94A3E4A1DA3FC840090A7A4 /* MXSSportCollectionCell.swift in Sources */,
 				D9B64D291DA3AA2D008C5D34 /* FindSportManager.swift in Sources */,
 				D9B64D2E1DA3AACF008C5D34 /* Conversation.swift in Sources */,
 				D90AB5841D940CEA003DCA75 /* MXSFindSportViewController.swift in Sources */,
@@ -728,12 +743,13 @@
 				D998B5E51D97FFE000A045F4 /* MXSObject.swift in Sources */,
 				D9B64D2C1DA3AA62008C5D34 /* ConversationsDataManager.swift in Sources */,
 				D959B3E41D93200E00981105 /* MXSProfileViewController.swift in Sources */,
-				D90AB5941D9412A5003DCA75 /* MXSSportCollectionCell.swift in Sources */,
 				D94A3E3C1DA3E6220090A7A4 /* Message.swift in Sources */,
 				D926BAD31D8DA11F00E3878C /* MXSAllLoginsViewController.swift in Sources */,
+				D94A3E491DA3FC840090A7A4 /* MXSPersonCollectionCell.swift in Sources */,
 				D90AB5A31D9562E1003DCA75 /* MXSCalendarViewController.swift in Sources */,
 				D90AB5731D93E4D9003DCA75 /* Event.swift in Sources */,
 				D959B3DE1D9318E000981105 /* MXSRessources.swift in Sources */,
+				D94A3E3F1DA3FA240090A7A4 /* MXSConversationsViewController.swift in Sources */,
 				D90AB57C1D940522003DCA75 /* MXSPersonsCollectionViewController.swift in Sources */,
 				D90AB5861D940CFC003DCA75 /* MXSFindDateViewController.swift in Sources */,
 				D926BAD81D8DA92400E3878C /* Utils.swift in Sources */,
@@ -741,12 +757,12 @@
 				D90AB5A51D957AE6003DCA75 /* AnimationClass.swift in Sources */,
 				D90AB5AF1D96BE1E003DCA75 /* MXSActivityIndicator.swift in Sources */,
 				D94C63E91D8E914F00ECD7FD /* TwitterHelper.swift in Sources */,
+				D94A3E471DA3FC840090A7A4 /* MXSEventsCollectionCell.swift in Sources */,
 				D90AB5771D93ED1C003DCA75 /* MXSEventsCollectionViewController.swift in Sources */,
 				D90AB5A11D955F6F003DCA75 /* MXSCalendarCellView.swift in Sources */,
 				D959B3DD1D9318E000981105 /* MXSConstants.swift in Sources */,
 				D9B64D271DA3AA2D008C5D34 /* FindDateManager.swift in Sources */,
 				D90AB5B11D96DB0C003DCA75 /* SignInViewController.swift in Sources */,
-				D90AB5921D9412A5003DCA75 /* MXSHomeCollectionCell.swift in Sources */,
 				D90AB59D1D9523C0003DCA75 /* MXSSportsCollectionViewController.swift in Sources */,
 				D9B64CD91D9D6C28008C5D34 /* MXSMenuViewController.swift in Sources */,
 				D9B64D281DA3AA2D008C5D34 /* FindProfileManager.swift in Sources */,

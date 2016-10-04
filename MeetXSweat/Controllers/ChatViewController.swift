@@ -63,10 +63,11 @@ class ChatViewController: JSQMessagesViewController {
         self.messages = allMessages
         self.finishReceivingMessage()
     })
+    /*
     self.conversation.observeTyping(self.senderId) { (isTyping) in
         self.showTypingIndicator = isTyping
         self.scrollToBottomAnimated(true)
-    }
+    }*/
   }
   
   override func viewDidDisappear(animated: Bool) {

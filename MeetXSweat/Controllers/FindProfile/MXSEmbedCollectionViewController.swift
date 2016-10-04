@@ -33,4 +33,6 @@ class MXSEmbedCollectionViewController: MXSViewController {
             personsCollectionViewController?.persons = FindProfileManager.filterBy(FireBaseDataManager.sharedInstance.persons, filter: FindProfileManager.sharedInstance.profession)
         }
     }
+    
+    
 }

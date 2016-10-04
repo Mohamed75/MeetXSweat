@@ -30,13 +30,14 @@ enum Ressources {
      */
     struct StoryBooards {
         
-        static let main    = "Main"
-        static let findProfile   = "MXSFindProfile"
-        static let profile = "MXSProfile"
-        static let event = "MXSEvent"
-        static let findSport = "MXSFindSport"
-        static let findDate = "MXSFindDate"
-        static let findArroundMe = "MXSFindArroundMe"
+        static let main             = "Main"
+        static let findProfile      = "MXSFindProfile"
+        static let profile          = "MXSProfile"
+        static let event            = "MXSEvent"
+        static let findSport        = "MXSFindSport"
+        static let findDate         = "MXSFindDate"
+        static let findArroundMe    = "MXSFindArroundMe"
+        static let conversation     = "MXSConversation"
     }
     
     /**
@@ -45,27 +46,30 @@ enum Ressources {
     struct StoryBooardsIdentifiers {
         
         // Main StoryBoard
-        static let homeId       = "MXSHomeViewController"
-        static let logInId      = "MXSAllLoginsViewController"
-        static let addEvent     = "MXSAddEventViewController"
+        static let homeId           = "MXSHomeViewController"
+        static let logInId          = "MXSAllLoginsViewController"
+        static let addEvent         = "MXSAddEventViewController"
         
         // FindProfile StoryBoard
-        static let findProfileId   = "MXSFindProfileViewController1"
+        static let findProfileId    = "MXSFindProfileViewController1"
         
         // Profile StoryBoard
-        static let profileId = "MXSProfileViewController"
+        static let profileId        = "MXSProfileViewController"
         
         // Events StoryBoard
-        static let eventId = "MXSEventViewController"
+        static let eventId          = "MXSEventViewController"
         
         // FindSport StoryBoard
-        static let findSportId = "MXSFindSportViewController"
+        static let findSportId      = "MXSFindSportViewController"
         
         // FindDate StoryBoard
-        static let findDateId = "MXSFindDateViewController"
+        static let findDateId       = "MXSFindDateViewController"
         
         // FindArroudMe StoryBoard
-        static let findArroundMeId = "MXSFindArroundMeViewController"
+        static let findArroundMeId  = "MXSFindArroundMeViewController"
+        
+        // Conversation StoryBoard
+        static let conversationId   = "MXSConversationsViewController"
     }
     
     
@@ -77,11 +81,12 @@ enum Ressources {
     
     struct CellReuseIdentifier {
         
-        static let event  = "MXSEventsCollectionCell"
-        static let person = "MXSPersonCollectionCell"
-        static let home = "MXSHomeCollectionCell"
-        static let sport = "MXSSportCollectionCell"
+        static let event        = "MXSEventsCollectionCell"
+        static let person       = "MXSPersonCollectionCell"
+        static let home         = "MXSHomeCollectionCell"
+        static let sport        = "MXSSportCollectionCell"
+        static let conversation = "MXSConversationCollectionCell"
         
-        static let menu = "MXSMenuTableViewCell"
+        static let menu         = "MXSMenuTableViewCell"
     }
 }

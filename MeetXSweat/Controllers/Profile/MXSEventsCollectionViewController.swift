@@ -10,8 +10,6 @@ import UIKit
 
 
 
-
-
 class MXSEventsCollectionViewController: UICollectionViewController {
     
     var events: [Event]!

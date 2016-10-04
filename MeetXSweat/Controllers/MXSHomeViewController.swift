@@ -49,6 +49,7 @@ class MXSHomeViewController: MXSViewController {
         super.viewDidLoad()
         
         FireBaseDataManager.sharedInstance
+        ConversationsDataManager.sharedInstance
         
         self.evo_drawerController!.openDrawerGestureModeMask = OpenDrawerGestureMode.PanningCenterView
         self.addBarButtonItem()
