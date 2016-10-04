@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import JSQMessagesViewController
 
 
 class ConversationsDataManager {
@@ -15,14 +16,18 @@ class ConversationsDataManager {
     
     static let sharedInstance = ConversationsDataManager()
     
-    var conversations: [Event] = []
+    var conversations: [Conversation] = []
     //var persons: [Person] = []
     
     init() {
         
-        let eventRef = FIRDatabase.database().reference().child("event-items")
-        eventRef.observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
-            //self.events.append(Event(snapshot: snapshot))
+        let conversationRef = FIRDatabase.database().reference().child("conversation-items")
+        conversationRef.observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
+            self.conversations.append(Conversation(snapshot: snapshot))
         })
     }
+    /*
+    let rootRef = FIRDatabase.database().reference().child("messages")
+    var messageRef: FIRDatabaseReference!
+    */
 }

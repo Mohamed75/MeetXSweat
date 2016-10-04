@@ -46,6 +46,8 @@
 		D926BAE01D8DBC5100E3878C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D926BADF1D8DBC5100E3878C /* User.swift */; };
 		D926BAE21D8DD5CB00E3878C /* UINavigationController+Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D926BAE11D8DD5CB00E3878C /* UINavigationController+Connection.swift */; };
 		D926BAE41D8DD6AA00E3878C /* MXSHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D926BAE31D8DD6AA00E3878C /* MXSHomeViewController.swift */; };
+		D94A3E3A1DA3C2270090A7A4 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E391DA3C2270090A7A4 /* ChatViewController.swift */; };
+		D94A3E3C1DA3E6220090A7A4 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E3B1DA3E6220090A7A4 /* Message.swift */; };
 		D94C63E61D8DE4BB00ECD7FD /* FaceBookHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94C63E51D8DE4BB00ECD7FD /* FaceBookHelper.swift */; };
 		D94C63E91D8E914F00ECD7FD /* TwitterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94C63E81D8E914F00ECD7FD /* TwitterHelper.swift */; };
 		D959B3CB1D92D1D200981105 /* MXSFindProfileViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3CA1D92D1D200981105 /* MXSFindProfileViewController1.swift */; };
@@ -138,6 +140,8 @@
 		D926BADF1D8DBC5100E3878C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D926BAE11D8DD5CB00E3878C /* UINavigationController+Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Connection.swift"; sourceTree = "<group>"; };
 		D926BAE31D8DD6AA00E3878C /* MXSHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSHomeViewController.swift; sourceTree = "<group>"; };
+		D94A3E391DA3C2270090A7A4 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		D94A3E3B1DA3E6220090A7A4 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		D94C63E51D8DE4BB00ECD7FD /* FaceBookHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceBookHelper.swift; sourceTree = "<group>"; };
 		D94C63E71D8DE88A00ECD7FD /* MeetXSweat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MeetXSweat-Bridging-Header.h"; sourceTree = "<group>"; };
 		D94C63E81D8E914F00ECD7FD /* TwitterHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterHelper.swift; sourceTree = "<group>"; };
@@ -316,6 +320,7 @@
 		D926BAD11D8DA11F00E3878C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D94A3E391DA3C2270090A7A4 /* ChatViewController.swift */,
 				D90AB57A1D9404FF003DCA75 /* ConllectionControllers */,
 				D90AB56D1D93E262003DCA75 /* Event */,
 				D959B3E21D931FF300981105 /* Profile */,
@@ -358,6 +363,7 @@
 				D926BADF1D8DBC5100E3878C /* User.swift */,
 				D90AB5721D93E4D9003DCA75 /* Event.swift */,
 				D9B64D2D1DA3AACF008C5D34 /* Conversation.swift */,
+				D94A3E3B1DA3E6220090A7A4 /* Message.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -723,6 +729,7 @@
 				D9B64D2C1DA3AA62008C5D34 /* ConversationsDataManager.swift in Sources */,
 				D959B3E41D93200E00981105 /* MXSProfileViewController.swift in Sources */,
 				D90AB5941D9412A5003DCA75 /* MXSSportCollectionCell.swift in Sources */,
+				D94A3E3C1DA3E6220090A7A4 /* Message.swift in Sources */,
 				D926BAD31D8DA11F00E3878C /* MXSAllLoginsViewController.swift in Sources */,
 				D90AB5A31D9562E1003DCA75 /* MXSCalendarViewController.swift in Sources */,
 				D90AB5731D93E4D9003DCA75 /* Event.swift in Sources */,
@@ -730,6 +737,7 @@
 				D90AB57C1D940522003DCA75 /* MXSPersonsCollectionViewController.swift in Sources */,
 				D90AB5861D940CFC003DCA75 /* MXSFindDateViewController.swift in Sources */,
 				D926BAD81D8DA92400E3878C /* Utils.swift in Sources */,
+				D94A3E3A1DA3C2270090A7A4 /* ChatViewController.swift in Sources */,
 				D90AB5A51D957AE6003DCA75 /* AnimationClass.swift in Sources */,
 				D90AB5AF1D96BE1E003DCA75 /* MXSActivityIndicator.swift in Sources */,
 				D94C63E91D8E914F00ECD7FD /* TwitterHelper.swift in Sources */,

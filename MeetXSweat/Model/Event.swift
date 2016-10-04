@@ -60,7 +60,8 @@ class Event: MXSObject {
     func saveEventToDataBase() {
         
         let eventRef = FIRDatabase.database().reference().child("event-items")
-        eventRef.childByAutoId().setValue(self.asJson())
+        self.ref = eventRef.childByAutoId()
+        self.ref!.setValue(self.asJson())
     }
 
 }

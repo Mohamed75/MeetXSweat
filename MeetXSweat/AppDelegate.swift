@@ -34,6 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FIRApp.configure()
         FIRDatabase.database().persistenceEnabled = true
+        FIRAuth.auth()?.signInAnonymouslyWithCompletion({ (user, error) in
+        })
         
         TwitterHelper.application(application, didFinishLaunchingWithOptions: launchOptions)
         GoogleLogInHelper.initConfig()

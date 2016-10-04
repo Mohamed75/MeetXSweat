@@ -41,7 +41,13 @@ class MXSProfileViewController: MXSViewController {
     }
     
     
-    @IBAction func ContacterButtonClicked(sender: AnyObject) {
+    @IBAction func contacterButtonClicked(sender: AnyObject) {
         
+        let conversation = Conversation()
+        conversation.persons = [User.currentUser, self.person]
+        
+        let chatViewController = ChatViewController()
+        chatViewController.conversation = conversation
+        self.presentViewController(chatViewController, animated: true, completion: nil)
     }
 }

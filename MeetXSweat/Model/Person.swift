@@ -48,14 +48,14 @@ class Person: MXSObject {
     func savePersonToDataBase() {
         
         let personRef = FIRDatabase.database().reference().child("person-items")
-        /*
-        personRef.once("value", function(snap) {
-            var result = snap.val() === null? 'is not' : 'is';
-            console.log('Mary ' + result + ' a member of alpha group');
-            });
         
-        */
-        
-        personRef.childByAutoId().setValue(self.asJson())
+        personRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            if snapshot.hasChild(self.email){
+                print("user already exist")
+            }else{
+                // save user
+                personRef.childByAutoId().setValue(self.asJson())
+            }
+        });
     }
 }
