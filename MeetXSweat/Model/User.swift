@@ -15,7 +15,7 @@ class User: Person {
     
     var isConnected: Bool = false
     
-    static let currentUser = User.loadCustomObjectWithKey("SAVED_USER")
+    static let currentUser = User.loadCustomObject()
     
     
     
@@ -141,13 +141,12 @@ class User: Person {
     class func saveCustomObject(object: Person)
     {
         object.savePersonToDataBase()
-        
-        //self.saveToNSUserDefaults()
+        object.saveToNSUserDefaults()
     }
     
-    class func loadCustomObjectWithKey(key: NSString) -> User
+    class func loadCustomObject() -> User
     {
-        if let myEncodedObject = NSUserDefaults.standardUserDefaults().objectForKey(key as String) as? NSData {
+        if let myEncodedObject = NSUserDefaults.standardUserDefaults().objectForKey(FireBaseObject.className(String(self))) as? NSData {
             return NSKeyedUnarchiver.unarchiveObjectWithData(myEncodedObject) as! User
         } else {
            return User()

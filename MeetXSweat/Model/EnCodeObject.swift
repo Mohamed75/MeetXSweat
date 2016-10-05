@@ -53,7 +53,7 @@ class EnCodeObject: NSObject, NSCoding {
     func saveToNSUserDefaults() {
         
         let myEncodedObject = NSKeyedArchiver.archivedDataWithRootObject(self)
-        NSUserDefaults.standardUserDefaults().setObject(myEncodedObject, forKey:String(self))
+        NSUserDefaults.standardUserDefaults().setObject(myEncodedObject, forKey:self.classForCoder.description())
     }
     
 }

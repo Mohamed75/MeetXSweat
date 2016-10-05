@@ -140,8 +140,11 @@ extension FireBaseObject {
     
     // get Object from a defined class in the project
     class func fromClassName(className : String) -> NSObject {
-        let className   = NSBundle.mainBundle().infoDictionary!["CFBundleName"] as! String + "." + className
-        let aClass      = NSClassFromString(className) as! NSObject.Type
+        let aClass      = NSClassFromString(FireBaseObject.className(className)) as! NSObject.Type
         return aClass.init()
+    }
+    
+    class func className(className : String) -> String {
+        return NSBundle.mainBundle().infoDictionary!["CFBundleName"] as! String + "." + className
     }
 }

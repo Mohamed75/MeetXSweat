@@ -54,6 +54,7 @@ class Person: FireBaseObject {
     }
     
     
+    
     // email withoutSpecialCharacters
     func getEmailAsId() -> String {
         
