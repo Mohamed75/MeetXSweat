@@ -12,7 +12,7 @@ import Firebase
 
 
 
-class Event: MXSObject {
+class Event: FireBaseObject {
 
     var name: String?
     var date: String?
@@ -37,18 +37,15 @@ class Event: MXSObject {
     
     var imageUrlString = ""
     var placeMark: MKPlacemark?
-    var ref: FIRDatabaseReference?
+    
     
     override init() {
-        
-        ref = nil
         super.init()
     }
     
     override init(snapshot: FIRDataSnapshot) {
         
         super.init(snapshot: snapshot)
-        ref = snapshot.ref
     }
     
     required init(coder aDecoder: NSCoder) {

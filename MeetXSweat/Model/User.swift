@@ -18,13 +18,6 @@ class User: Person {
     static let currentUser = User.loadCustomObjectWithKey("SAVED_USER")
     
     
-    override init () {
-        super.init()
-    }
-    
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
     
     func initFromFBData(data: NSDictionary) {
         
@@ -149,8 +142,7 @@ class User: Person {
     {
         object.savePersonToDataBase()
         
-        let myEncodedObject = NSKeyedArchiver.archivedDataWithRootObject(object)
-        NSUserDefaults.standardUserDefaults().setObject(myEncodedObject, forKey:"SAVED_USER")
+        //self.saveToNSUserDefaults()
     }
     
     class func loadCustomObjectWithKey(key: NSString) -> User

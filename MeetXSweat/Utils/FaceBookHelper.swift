@@ -73,7 +73,7 @@ class FaceBookHelper {
                     // For first launch sometimes the loginWebView dont pop up, so this code force the loginWebview
                     this.isLoginBlock = true
                     NSThread.sleepForTimeInterval(1)
-                    if getVisibleViewController().isKindOfClass(MXSViewController) {
+                    if getVisibleViewController().isKindOfClass(UIViewController) {
                         this.faceBookWebLogin(delegate)
                     }
                     this.isLoginBlock = false

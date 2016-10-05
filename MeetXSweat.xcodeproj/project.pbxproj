@@ -54,6 +54,7 @@
 		D94A3E4E1DA3FD6C0090A7A4 /* MXSConversation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D94A3E4D1DA3FD6C0090A7A4 /* MXSConversation.storyboard */; };
 		D94C63E61D8DE4BB00ECD7FD /* FaceBookHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94C63E51D8DE4BB00ECD7FD /* FaceBookHelper.swift */; };
 		D94C63E91D8E914F00ECD7FD /* TwitterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94C63E81D8E914F00ECD7FD /* TwitterHelper.swift */; };
+		D959581B1DA57F2500481167 /* FireBaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959581A1DA57F2500481167 /* FireBaseObject.swift */; };
 		D959B3CB1D92D1D200981105 /* MXSFindProfileViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3CA1D92D1D200981105 /* MXSFindProfileViewController1.swift */; };
 		D959B3CD1D92D1DD00981105 /* MXSEmbedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3CC1D92D1DD00981105 /* MXSEmbedCollectionViewController.swift */; };
 		D959B3D11D92D24500981105 /* MXSFindProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D959B3D01D92D24500981105 /* MXSFindProfile.storyboard */; };
@@ -64,7 +65,7 @@
 		D959B3E61D93202200981105 /* MXSProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D959B3E51D93202200981105 /* MXSProfile.storyboard */; };
 		D998B5DC1D96E63400A045F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D998B5DB1D96E63400A045F4 /* GoogleService-Info.plist */; };
 		D998B5DE1D96E88F00A045F4 /* MXSAddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D998B5DD1D96E88F00A045F4 /* MXSAddEventViewController.swift */; };
-		D998B5E51D97FFE000A045F4 /* MXSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D998B5E41D97FFE000A045F4 /* MXSObject.swift */; };
+		D998B5E51D97FFE000A045F4 /* EnCodeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D998B5E41D97FFE000A045F4 /* EnCodeObject.swift */; };
 		D9AAA2AB1D8F0F12004CE80C /* MXSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA2AA1D8F0F12004CE80C /* MXSViewController.swift */; };
 		D9AAA2AD1D8F1550004CE80C /* MXSMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA2AC1D8F1550004CE80C /* MXSMainViewController.swift */; };
 		D9B64CD91D9D6C28008C5D34 /* MXSMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64CD81D9D6C28008C5D34 /* MXSMenuViewController.swift */; };
@@ -153,6 +154,7 @@
 		D94C63E51D8DE4BB00ECD7FD /* FaceBookHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceBookHelper.swift; sourceTree = "<group>"; };
 		D94C63E71D8DE88A00ECD7FD /* MeetXSweat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MeetXSweat-Bridging-Header.h"; sourceTree = "<group>"; };
 		D94C63E81D8E914F00ECD7FD /* TwitterHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterHelper.swift; sourceTree = "<group>"; };
+		D959581A1DA57F2500481167 /* FireBaseObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireBaseObject.swift; sourceTree = "<group>"; };
 		D959B3CA1D92D1D200981105 /* MXSFindProfileViewController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSFindProfileViewController1.swift; sourceTree = "<group>"; };
 		D959B3CC1D92D1DD00981105 /* MXSEmbedCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MXSEmbedCollectionViewController.swift; path = FindProfile/MXSEmbedCollectionViewController.swift; sourceTree = "<group>"; };
 		D959B3D01D92D24500981105 /* MXSFindProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MXSFindProfile.storyboard; sourceTree = "<group>"; };
@@ -163,7 +165,7 @@
 		D959B3E51D93202200981105 /* MXSProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MXSProfile.storyboard; sourceTree = "<group>"; };
 		D998B5DB1D96E63400A045F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D998B5DD1D96E88F00A045F4 /* MXSAddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSAddEventViewController.swift; sourceTree = "<group>"; };
-		D998B5E41D97FFE000A045F4 /* MXSObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSObject.swift; sourceTree = "<group>"; };
+		D998B5E41D97FFE000A045F4 /* EnCodeObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnCodeObject.swift; path = ../Model/EnCodeObject.swift; sourceTree = "<group>"; };
 		D9AAA2AA1D8F0F12004CE80C /* MXSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSViewController.swift; sourceTree = "<group>"; };
 		D9AAA2AC1D8F1550004CE80C /* MXSMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSMainViewController.swift; sourceTree = "<group>"; };
 		D9B64CD81D9D6C28008C5D34 /* MXSMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSMenuViewController.swift; sourceTree = "<group>"; };
@@ -351,6 +353,8 @@
 				D94C63E51D8DE4BB00ECD7FD /* FaceBookHelper.swift */,
 				D94C63E81D8E914F00ECD7FD /* TwitterHelper.swift */,
 				D9BB48121D8EB48000C12541 /* UtilsLinkedInHelper.swift */,
+				D998B5E41D97FFE000A045F4 /* EnCodeObject.swift */,
+				D959581A1DA57F2500481167 /* FireBaseObject.swift */,
 				D9BB48241D8EF2E000C12541 /* GoogleLogInHelper.swift */,
 			);
 			path = Utils;
@@ -359,7 +363,6 @@
 		D926BADA1D8DAF1400E3878C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D998B5E41D97FFE000A045F4 /* MXSObject.swift */,
 				D926BADB1D8DAF3900E3878C /* Person.swift */,
 				D926BADF1D8DBC5100E3878C /* User.swift */,
 				D90AB5721D93E4D9003DCA75 /* Event.swift */,
@@ -740,13 +743,14 @@
 				D9AAA2AB1D8F0F12004CE80C /* MXSViewController.swift in Sources */,
 				D94C63E61D8DE4BB00ECD7FD /* FaceBookHelper.swift in Sources */,
 				D998B5DE1D96E88F00A045F4 /* MXSAddEventViewController.swift in Sources */,
-				D998B5E51D97FFE000A045F4 /* MXSObject.swift in Sources */,
+				D998B5E51D97FFE000A045F4 /* EnCodeObject.swift in Sources */,
 				D9B64D2C1DA3AA62008C5D34 /* ConversationsDataManager.swift in Sources */,
 				D959B3E41D93200E00981105 /* MXSProfileViewController.swift in Sources */,
 				D94A3E3C1DA3E6220090A7A4 /* Message.swift in Sources */,
 				D926BAD31D8DA11F00E3878C /* MXSAllLoginsViewController.swift in Sources */,
 				D94A3E491DA3FC840090A7A4 /* MXSPersonCollectionCell.swift in Sources */,
 				D90AB5A31D9562E1003DCA75 /* MXSCalendarViewController.swift in Sources */,
+				D959581B1DA57F2500481167 /* FireBaseObject.swift in Sources */,
 				D90AB5731D93E4D9003DCA75 /* Event.swift in Sources */,
 				D959B3DE1D9318E000981105 /* MXSRessources.swift in Sources */,
 				D94A3E3F1DA3FA240090A7A4 /* MXSConversationsViewController.swift in Sources */,

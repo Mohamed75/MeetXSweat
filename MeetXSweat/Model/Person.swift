@@ -10,7 +10,7 @@ import Foundation
 import Firebase
 
 
-class Person: MXSObject {
+class Person: FireBaseObject {
     
     var name = ""
     var lastName = ""
@@ -22,22 +22,15 @@ class Person: MXSObject {
     var birthday = ""
     var events: [Event]?
     var adress = ""
-    var ref: FIRDatabaseReference?
     
     
     
     override init() {
         super.init()
-        ref = nil
-    }
-    
-    override init(dictionary: [String : AnyObject]) {
-        super.init(dictionary: dictionary)
     }
     
     override init(snapshot: FIRDataSnapshot) {
         super.init(snapshot: snapshot)
-        ref = snapshot.ref
     }
     
     required init(coder aDecoder: NSCoder) {

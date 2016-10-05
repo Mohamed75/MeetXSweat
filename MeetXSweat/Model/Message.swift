@@ -11,23 +11,18 @@ import Firebase
 import JSQMessagesViewController
 
 
-class Message: MXSObject {
+class Message: FireBaseObject {
 
     var text: String!
     var senderId: String!
-    var ref: FIRDatabaseReference?
-    
+
     
     override init() {
-        
-        ref = nil
         super.init()
     }
     
     override init(snapshot: FIRDataSnapshot) {
-        
         super.init(snapshot: snapshot)
-        ref = snapshot.ref
     }
     
     required init(coder aDecoder: NSCoder) {
