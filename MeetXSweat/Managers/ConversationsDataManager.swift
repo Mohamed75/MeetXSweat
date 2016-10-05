@@ -22,11 +22,15 @@ class ConversationsDataManager {
         
         let conversationRef = FIRDatabase.database().reference().child("conversation-items")
         conversationRef.observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
-            self.conversations.append(Conversation(snapshot: snapshot))
+            
+            let conversation = Conversation(snapshot: snapshot)
+            if conversation.isCurrentUserConversation() {
+                self.conversations.append(conversation)
+            }
         })
     }
     
-    func getPersonsConversation(persons: [Person]) -> Conversation? {
+    func getConversationBetweenPersons(persons: [Person]) -> Conversation? {
         
         for conversation in self.conversations {
             var existingPersonNumber = 0

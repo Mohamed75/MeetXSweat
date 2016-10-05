@@ -126,7 +126,7 @@ class MXSObject: NSObject, NSCoding {
         var json = [String: AnyObject]()
         for keyName in propertyNames() {
             
-            if (respondsToSelector(NSSelectorFromString(keyName))) {
+            if (keyName != "ref" && respondsToSelector(NSSelectorFromString(keyName))) {
                 
                 if let value = valueForKey(keyName) {
                     if value.isKindOfClass(NSArray) && (value as! NSArray).count > 0 {

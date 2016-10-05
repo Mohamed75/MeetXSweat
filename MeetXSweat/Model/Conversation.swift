@@ -111,6 +111,14 @@ class Conversation: MXSObject {
         }
     }
     
-    
+    func isCurrentUserConversation() -> Bool {
+        
+        for person in self.persons! {
+            if person.email == User.currentUser.email {
+                return true
+            }
+        }
+        return false
+    }
     
 }

@@ -35,7 +35,7 @@ class MXSConversationsCollectionViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
         let chatViewController = ChatViewController()
-        chatViewController.conversation = conversations[indexPath.row]
+        chatViewController.conversation = conversations[indexPath.section]
         self.navigationController?.pushViewController(chatViewController, animated: true)
     }
     

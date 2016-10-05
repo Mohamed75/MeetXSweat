@@ -47,7 +47,7 @@ class MXSProfileViewController: MXSViewController {
         
         let chatViewController = ChatViewController()
         
-        if let aConversation = ConversationsDataManager.sharedInstance.getPersonsConversation(between) {
+        if let aConversation = ConversationsDataManager.sharedInstance.getConversationBetweenPersons(between) {
             conversation = aConversation
         } else {
            conversation = Conversation()
