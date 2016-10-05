@@ -28,7 +28,7 @@ class User: Person {
     
     func initFromFBData(data: NSDictionary) {
         
-        self.name = data["first_name"] as? String
+        self.name = data["first_name"] as! String
         if let lastName = data["last_name"] {
             self.lastName = lastName as! String
         }
@@ -92,7 +92,7 @@ class User: Person {
     
     func initFromLKData(data: NSDictionary) {
         
-        self.name = data["firstName"] as? String
+        self.name = data["firstName"] as! String
         if let lastName = data["lastName"] {
             self.lastName = lastName as! String
         }
@@ -123,7 +123,7 @@ class User: Person {
     
     func initFromGoogleData(data: NSDictionary) {
         
-        self.name = data["given_name"] as? String
+        self.name = data["given_name"] as! String
         if let lastName = data["family_name"] {
             self.lastName = lastName as! String
         }

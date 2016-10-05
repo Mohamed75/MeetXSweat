@@ -32,10 +32,7 @@ class MXSPersonsCollectionViewController: UICollectionViewController {
         if let persons = self.persons {
             
             let person = persons[indexPath.section]
-            var text = ""
-            if let name = person.name {
-                text = name + " " + person.lastName
-            }
+            let text = person.name  + " " + person.lastName
             cell.label.text = text + "\n" + FindProfileManager.sharedInstance.profession
         }
         cell.imageView.image = UIImage(named: Ressources.Images.profilePlaceHolder)

@@ -38,8 +38,7 @@ class ChatViewController: JSQMessagesViewController {
     
   override func viewDidLoad() {
     
-    self.senderId = User.currentUser.email.stringByReplacingOccurrencesOfString("@", withString: "")
-    self.senderId = self.senderId.stringByReplacingOccurrencesOfString(".", withString: "")
+    self.senderId = User.currentUser.getEmailAsId()
     self.senderDisplayName = User.currentUser.lastName
     
     super.viewDidLoad()

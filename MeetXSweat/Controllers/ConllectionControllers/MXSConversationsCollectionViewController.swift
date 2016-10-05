@@ -22,11 +22,9 @@ class MXSConversationsCollectionViewController: UICollectionViewController {
         var text = ""
         if conversation.persons?.count > 0 {
             let person1 = conversation.persons![0]
-            text = person1.name!
+            text = person1.name
             let person2 = conversation.persons![1]
-            if let name2 = person2.name {
-                text = text + " / " + name2
-            }
+            text = text + " / " + person2.name
         }
         cell.label.text = text
         //cell.imageView.image = UIImage(named: Ressources.Images.event)
