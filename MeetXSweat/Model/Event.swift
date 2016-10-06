@@ -14,12 +14,12 @@ import Firebase
 
 class Event: FireBaseObject {
 
-    var name: String?
-    var date: String?
-    var aDescription: String?
+    var name    = ""
+    var date    = ""
+    var aDescription = ""
     
-    var persons: [Person]?
-    var sport: String?
+    var persons: [Person] = []
+    var sport   = ""
     
     var adress: String? {
         didSet {

@@ -12,16 +12,16 @@ import Firebase
 
 class Person: FireBaseObject {
     
-    var name = ""
-    var lastName = ""
-    var email = ""
-    var profession = ""
-    var sport = ""
-    var pictureUrl = ""
-    var gender = ""
-    var birthday = ""
-    var events: [Event]?
-    var adress = ""
+    var name        = ""
+    var lastName    = ""
+    var email       = ""
+    var profession  = ""
+    var sport       = ""
+    var pictureUrl  = ""
+    var gender      = ""
+    var birthday    = ""
+    var events: [Event] = []
+    var adress      = ""
     
     
     

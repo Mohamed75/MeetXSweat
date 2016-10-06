@@ -22,5 +22,9 @@ enum Strings {
         static let cell4Text = "Trouver ce qu'il y'as autour de moi"
         static let numberOfSections =  4
     }
+    
+    struct AlertAskingData {
+        static let email = "Please enter your email"
+    }
 }
 

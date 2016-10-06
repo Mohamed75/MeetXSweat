@@ -13,8 +13,8 @@ import TwitterKit
 import Twitter
 
 
-private let getUserInfoUrlString    = "https://api.twitter.com/1.1/account/verify_credentials.json"
-private let getUserInfoParameters   = ["include_email": "true", "skip_status": "true"]
+private let getUserInfoUrlString    = "https://api.twitter.com/1.1/users/show.json"
+
 
 
 protocol LogInTWDelegate {
@@ -47,7 +47,7 @@ class TwitterHelper {
         let client = TWTRAPIClient.clientWithCurrentUser()
         let request = client.URLRequestWithMethod("GET",
                                                   URL: getUserInfoUrlString,
-                                                  parameters: getUserInfoParameters,
+                                                  parameters: ["user_id": client.userID!],
                                                   error: nil)
         
         client.sendTwitterRequest(request) { response, data, connectionError in

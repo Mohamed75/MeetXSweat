@@ -53,11 +53,19 @@ class MXSAddEventViewController: MXSViewController,  UIPickerViewDataSource, UIP
     func creatEvent() {
         
         let event = Event()
-        event.name = self.nameTextField.text
+        if let name = self.nameTextField.text {
+            event.name = name
+        }
         event.adress = self.adressTextField.text
-        event.date = self.dateTextField.text
-        event.aDescription = self.descriptionTextField.text
-        event.sport = self.sportTextField.text
+        if let date = self.dateTextField.text {
+            event.date = date
+        }
+        if let description = self.descriptionTextField.text {
+            event.aDescription = description
+        }
+        if let sport = self.sportTextField.text {
+            event.sport = sport
+        }
         event.persons = [User.currentUser]
         event.saveEventToDataBase()
     }

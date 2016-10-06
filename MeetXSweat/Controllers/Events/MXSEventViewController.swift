@@ -28,18 +28,14 @@ class MXSEventViewController: MXSViewController {
         imageView.image = UIImage(named: Ressources.Images.event)
         topLabel.text = self.event.adress
         
-        var text = ""
-        if let dateArray = self.event.date?.componentsSeparatedByString(" - ") {
-            text = dateArray[0]
-            text = text + "       " + self.event.sport! + "\n"
-            if dateArray.count > 1 {
-                text = text + dateArray[1]
-            }
+        let dateArray = self.event.date.componentsSeparatedByString(" - ")
+        var text = dateArray[0]
+        text = text + "       " + self.event.sport + "\n"
+        if dateArray.count > 1 {
+            text = text + dateArray[1]
         }
         midLabel.text = text
-        if let persons = self.event.persons {
-            participantsNumberLabel.text = String(persons.count) + " " + "participants"
-        }
+        participantsNumberLabel.text = String(self.event.persons.count) + " " + "participants"
         
         
         let personsCollectionViewController = self.childViewControllers[0] as? MXSPersonsCollectionViewController

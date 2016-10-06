@@ -13,8 +13,8 @@ import JSQMessagesViewController
 
 class Message: FireBaseObject {
 
-    var text: String!
-    var senderId: String!
+    var text        = ""
+    var senderId    = ""
 
     
     override init() {

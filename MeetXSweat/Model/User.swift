@@ -49,8 +49,7 @@ class User: Person {
             self.profession = work as! String
         }
         
-        self.isConnected = true
-        User.saveCustomObject(self)
+        saveCustomObject()
     }
     
     
@@ -79,8 +78,7 @@ class User: Person {
             self.birthday = birthday as! String
         }
         
-        self.isConnected = true
-        User.saveCustomObject(self)
+        saveCustomObject()
     }
     
     func initFromLKData(data: NSDictionary) {
@@ -109,8 +107,7 @@ class User: Person {
             }
         }
 
-        self.isConnected = true
-        User.saveCustomObject(self)
+        saveCustomObject()
     }
     
     
@@ -133,15 +130,32 @@ class User: Person {
             self.gender = gender as! String
         }
         
-        self.isConnected = true
-        User.saveCustomObject(self)
+        saveCustomObject()
     }
     
     
-    class func saveCustomObject(object: Person)
+    func saveCustomObject()
     {
-        object.savePersonToDataBase()
-        object.saveToNSUserDefaults()
+        self.isConnected = true
+        
+        let object: Person = self
+        if object.email.characters.count < 2 {
+        
+            MXSViewController.getInformationPopUp(Strings.AlertAskingData.email, withCancelButton: false) { (email) in
+                
+                if email.isValidEmail {
+                    object.savePersonToDataBase()
+                    object.saveToNSUserDefaults()
+                }else {
+                    (object as! User).saveCustomObject()
+                }
+            }
+            
+        } else {
+            
+            object.savePersonToDataBase()
+            object.saveToNSUserDefaults()
+        }
     }
     
     class func loadCustomObject() -> User

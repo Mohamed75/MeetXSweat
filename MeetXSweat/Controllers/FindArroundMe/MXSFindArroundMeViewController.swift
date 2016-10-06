@@ -61,6 +61,11 @@ class  MXSFindArroundMeViewController: UIViewController, CLLocationManagerDelega
 
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        MXSActivityIndicator.stopAnimating()
+        super.viewWillDisappear(animated)
+    }
+    
     func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
         
         var region: MKCoordinateRegion = self.mapView.region

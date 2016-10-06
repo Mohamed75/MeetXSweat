@@ -59,7 +59,7 @@ class MXSMenuViewController: UITableViewController {
             break
         case 2:
             User.currentUser.isConnected = false
-            User.saveCustomObject(User.currentUser)
+            User.currentUser.saveCustomObject()
             self.evo_drawerController?.centerViewController!.viewDidLoad()
             break
         default:

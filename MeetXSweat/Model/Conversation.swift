@@ -13,8 +13,8 @@ import JSQMessagesViewController
 
 class Conversation: FireBaseObject {
 
-    var persons: [Person]?
-    var messages: [Message]?
+    var persons: [Person] = []
+    var messages: [Message] = []
     
     override init() {
         super.init()
@@ -38,9 +38,9 @@ class Conversation: FireBaseObject {
             messagesQuery.observeEventType(.ChildAdded, withBlock: { (snapshot) in
                 
                 let message = Message(snapshot: snapshot)
-                self.messages?.append(message)
+                self.messages.append(message)
                 
-                completionHandler(messages: self.messages!)
+                completionHandler(messages: self.messages)
             })
         }
     }
@@ -108,7 +108,7 @@ class Conversation: FireBaseObject {
     
     func isCurrentUserConversation() -> Bool {
         
-        for person in self.persons! {
+        for person in self.persons {
             if person.email == User.currentUser.email {
                 return true
             }

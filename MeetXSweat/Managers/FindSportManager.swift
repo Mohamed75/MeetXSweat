@@ -12,7 +12,7 @@ import Foundation
 class FindSportManager {
     
     
-    var sports = [AnyObject]()
+    var sports: [AnyObject] = []
     
     
     static let sharedInstance = FindSportManager()

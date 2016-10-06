@@ -26,7 +26,14 @@ class EnCodeObject: NSObject, NSCoding {
     }
     
     func typeOfProperty (name: String) -> String? {
-        return getTypeOfProperty(name)
+        
+        if let returnString = getTypeOfProperty(name) {
+            if returnString.containsString("Optional<Array<") {
+                return returnString.stringByReplacingOccurrencesOfString("Optional<Array<", withString: "").stringByReplacingOccurrencesOfString(">", withString: "")
+            }
+            return returnString.stringByReplacingOccurrencesOfString("Array<", withString: "").stringByReplacingOccurrencesOfString(">", withString: "")
+        }
+        return nil
     }
     
     

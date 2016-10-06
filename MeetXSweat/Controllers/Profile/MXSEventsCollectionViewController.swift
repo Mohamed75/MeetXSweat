@@ -27,12 +27,9 @@ class MXSEventsCollectionViewController: UICollectionViewController {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Ressources.CellReuseIdentifier.event, forIndexPath: indexPath) as! MXSEventsCollectionCell
         let event = self.events[indexPath.section]
-        var text = ""
-        if let name = event.name {
-            text = name
-            if let date = event.date {
-                text = name + " " + date
-            }
+        var text = event.name
+        if event.date.characters.count > 1 {
+                text = text + " " + event.date
         }
         cell.label.text = text
         cell.imageView.image = UIImage(named: Ressources.Images.event)

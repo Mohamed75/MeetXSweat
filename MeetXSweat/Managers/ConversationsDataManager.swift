@@ -36,13 +36,13 @@ class ConversationsDataManager {
             var existingPersonNumber = 0
             for person in persons {
                 
-                for aPerson in conversation.persons! {
+                for aPerson in conversation.persons {
                     if person.email == aPerson.email {
                         existingPersonNumber += 1
                     }
                 }
             }
-            if existingPersonNumber == conversation.persons?.count {
+            if existingPersonNumber == conversation.persons.count {
                 return conversation
             }
         }

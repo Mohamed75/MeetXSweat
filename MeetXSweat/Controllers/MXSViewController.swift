@@ -37,4 +37,28 @@ class MXSViewController: UIViewController {
         }
     }
     
+    class func getInformationPopUp(title: String, withCancelButton: Bool, completion: (String) -> Void) {
+        
+        var inputTextField: UITextField?
+        
+        let actionSheetController: UIAlertController = UIAlertController(title: title, message: "", preferredStyle: .Alert)
+        
+        if withCancelButton {
+            let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
+            }
+            actionSheetController.addAction(cancelAction)
+        }
+        
+        let nextAction: UIAlertAction = UIAlertAction(title: "OK", style: .Default) { action -> Void in
+            completion((inputTextField?.text)!)
+        }
+        actionSheetController.addAction(nextAction)
+        
+        actionSheetController.addTextFieldWithConfigurationHandler { textField -> Void in
+            inputTextField = textField
+        }
+        
+        getVisibleViewController().presentViewController(actionSheetController, animated: true, completion: nil)
+    }
+    
 }

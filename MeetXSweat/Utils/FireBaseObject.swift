@@ -77,7 +77,7 @@ class FireBaseObject: EnCodeObject {
     func createArrayObjectForProperty(propety: String, array: [AnyObject]) -> [AnyObject] {
         
         var returnArray: [AnyObject] = []
-        if let className = typeOfProperty(propety)?.stringByReplacingOccurrencesOfString("Optional<Array<", withString: "").stringByReplacingOccurrencesOfString(">", withString: "") {
+        if let className = typeOfProperty(propety) {
             
             for object: AnyObject in array {
                 
