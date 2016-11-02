@@ -6,9 +6,12 @@
 //  Copyright © 2016 Mohamed BOUMANSOUR. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-let endEditingSelectorString = "endEditing"
+let kEndEditingSelectorString = "endEditing"
 
-let dateFormat = "dd MM yyyy - HH:mm"
-let calendarCellDateFormat = "yyyy-MM-dd"
+let kDateFormat             = "dd MM yyyy - HH:mm"
+let kCalendarCellDateFormat = "yyyy-MM-dd"
+
+let kBackGroundColor    = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
+let kDefaultTextColor   = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)

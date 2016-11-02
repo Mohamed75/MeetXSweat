@@ -28,7 +28,7 @@ class MXSCalendarCellView: JTAppleDayCellView {
         }()
     lazy var c : NSDateFormatter = {
         let f = NSDateFormatter()
-        f.dateFormat = calendarCellDateFormat
+        f.dateFormat = kCalendarCellDateFormat
         
         return f
     }()

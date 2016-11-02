@@ -30,7 +30,7 @@ class MXSAddEventViewController: MXSViewController,  UIPickerViewDataSource, UIP
     
     override func viewDidLoad() {
         
-        Utils.addTapGestureToView(self.view, target: self, selectorString: endEditingSelectorString)
+        Utils.addTapGestureToView(self.view, target: self, selectorString: kEndEditingSelectorString)
         
         super.viewDidLoad()
         
@@ -40,7 +40,7 @@ class MXSAddEventViewController: MXSViewController,  UIPickerViewDataSource, UIP
         emptySportTextField.inputView = sportPickerView
         self.view.addSubview(emptySportTextField)
         
-        dateFormatter.dateFormat = dateFormat
+        dateFormatter.dateFormat = kDateFormat
         
         datePickerView.minimumDate = NSDate()
         datePickerView.addTarget(self, action: #selector(MXSAddEventViewController.datePickerValueChanged), forControlEvents: UIControlEvents.ValueChanged)

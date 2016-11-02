@@ -243,7 +243,7 @@
 			path = Events;
 			sourceTree = "<group>";
 		};
-		D90AB57A1D9404FF003DCA75 /* ConllectionControllers */ = {
+		D90AB57A1D9404FF003DCA75 /* CollectionControllers */ = {
 			isa = PBXGroup;
 			children = (
 				D94A3E421DA3FC840090A7A4 /* CollectionCells */,
@@ -253,6 +253,7 @@
 				D90AB59C1D9523C0003DCA75 /* MXSSportsCollectionViewController.swift */,
 				D94A3E401DA3FB1B0090A7A4 /* MXSConversationsCollectionViewController.swift */,
 			);
+			name = CollectionControllers;
 			path = ConllectionControllers;
 			sourceTree = "<group>";
 		};
@@ -324,7 +325,7 @@
 				D94A3E3E1DA3FA240090A7A4 /* MXSConversationsViewController.swift */,
 				D94A3E4D1DA3FD6C0090A7A4 /* MXSConversation.storyboard */,
 				D94A3E391DA3C2270090A7A4 /* ChatViewController.swift */,
-				D90AB57A1D9404FF003DCA75 /* ConllectionControllers */,
+				D90AB57A1D9404FF003DCA75 /* CollectionControllers */,
 				D90AB56D1D93E262003DCA75 /* Event */,
 				D959B3E21D931FF300981105 /* Profile */,
 				D959B3C71D92CF1600981105 /* FindArroundMe */,

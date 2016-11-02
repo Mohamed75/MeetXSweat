@@ -9,7 +9,7 @@
 import UIKit
 import DrawerController
 
-private let menuItemsTitle = ["Home", "Messages", "Log out"]
+private let kMenuItemsTitle = ["Home", "Messages", "Log out"]
 
 
 class MXSMenuViewController: UITableViewController {
@@ -21,6 +21,7 @@ class MXSMenuViewController: UITableViewController {
         super.viewDidLoad()
         
         self.tableView.contentInset = UIEdgeInsetsMake(60, 0, 0, 0)
+        self.view.backgroundColor = kBackGroundColor
         
         mainNavigationController = self.evo_drawerController!.centerViewController as! UINavigationController
         
@@ -30,7 +31,7 @@ class MXSMenuViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return menuItemsTitle.count
+        return kMenuItemsTitle.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -39,8 +40,9 @@ class MXSMenuViewController: UITableViewController {
         if cell == nil {
             cell = UITableViewCell(style: .Default, reuseIdentifier: Ressources.CellReuseIdentifier.menu)
         }
-        cell?.textLabel?.text = menuItemsTitle[indexPath.row]
-        
+        cell?.textLabel?.text = kMenuItemsTitle[indexPath.row]
+        cell?.backgroundColor = kBackGroundColor
+        cell?.textLabel?.textColor = kDefaultTextColor
         return cell!
     }
     
@@ -66,5 +68,9 @@ class MXSMenuViewController: UITableViewController {
             break
         }
         self.evo_drawerController?.closeDrawerAnimated(true, completion: nil)
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
 }

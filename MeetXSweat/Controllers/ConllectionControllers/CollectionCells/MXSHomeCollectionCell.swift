@@ -18,8 +18,14 @@ class MXSHomeCollectionCell: UICollectionViewCell {
         
         let lineView = UIView(frame: CGRect(x: 0, y: self.frame.size.height-2, width: self.frame.size.width, height: 2))
         lineView.tag = 22
-        lineView.backgroundColor = UIColor.blackColor()
+        lineView.backgroundColor = kDefaultTextColor
         self.addSubview(lineView)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder:aDecoder)
+        //You Code here
+        self.backgroundColor = kBackGroundColor
     }
     
     override func prepareForReuse() {

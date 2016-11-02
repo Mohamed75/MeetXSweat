@@ -18,8 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     
-    
-    func initTheDrawerController() {
+    /** This methode set the DrawerController as the rootViewController with the a UINavigationViewController as centerViewController and the MXSMenuViewController as leftViewController
+     **/
+    func __initTheDrawerController() {
         
         let center = self.window?.rootViewController;
         
@@ -40,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         TwitterHelper.application(application, didFinishLaunchingWithOptions: launchOptions)
         GoogleLogInHelper.initConfig()
         
-        self.initTheDrawerController()
+        __initTheDrawerController()
         
         return FaceBookHelper.application(application, didFinishLaunchingWithOptions: launchOptions)
     }

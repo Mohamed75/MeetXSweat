@@ -21,6 +21,8 @@ class MXSViewController: UIViewController {
         navigationItem.titleView = imageView
         
         super.viewDidLoad()
+        
+        self.view.backgroundColor = kBackGroundColor
     }
     
     func addBarButtonItem() {

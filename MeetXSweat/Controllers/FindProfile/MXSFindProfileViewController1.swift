@@ -26,7 +26,7 @@ class MXSFindProfileViewController1: MXSViewController, UIPickerViewDataSource, 
     
     override func viewDidLoad() {
         
-        Utils.addTapGestureToView(self.view, target: self, selectorString: endEditingSelectorString)
+        Utils.addTapGestureToView(self.view, target: self, selectorString: kEndEditingSelectorString)
         
         super.viewDidLoad()
         

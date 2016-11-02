@@ -42,6 +42,8 @@ class MXSHomeCollectionViewContoller: UICollectionViewController {
             break
         }
         
+        cell.label.textColor = kDefaultTextColor
+        
         return cell
     }
     

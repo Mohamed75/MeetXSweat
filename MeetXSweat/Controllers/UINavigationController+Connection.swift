@@ -10,11 +10,13 @@ import UIKit
 
 
 
-
+/** This extension will replace the MWSMainViewController by MXSHomeViewController or MXSAllLoginsViewController at the start app depending of the user is connected or not
+ **/
 extension UINavigationController {
 
     
     public override func viewDidLoad() {
+        
         
         let user = User.currentUser
         if user.isConnected {
