@@ -55,16 +55,20 @@ class MXSHomeViewController: MXSViewController {
         self.addBarButtonItem()
     }
     
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
+    
     func profileRightButtonClicked() {
         
        NSLog("profileRightButtonClicked")
     }
     
-    
+    // Show the AddEventViewController when the device is shaked
     override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
         if motion == .MotionShake {
             let addEventViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.main, viewControllerId: Ressources.StoryBooardsIdentifiers.addEvent)
-            self.presentViewController(addEventViewController, animated: true, completion: nil)
+            self.evo_drawerController!.presentViewController(addEventViewController, animated: true, completion: nil)
         }
     }
 }
