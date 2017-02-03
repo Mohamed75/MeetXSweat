@@ -50,30 +50,26 @@ class MXSAllLoginsViewController: MXSViewController, LogInFBDelegate, LogInTWDel
     
     func logInFBSuccess(data: NSDictionary) {
         
-        User.currentUser.initFromFBData(data)
+        User.currentUser.initFromFBData(data, controller: self)
         NSLog("facebook login success: %@", User.currentUser.allParams())
-        self.navigationController?.viewDidLoad()
     }
     
     func logInTWSuccess(data: NSDictionary) {
         
-        User.currentUser.initFromTWData(data)
+        User.currentUser.initFromTWData(data, controller: self)
         NSLog("twitter login success: %@", User.currentUser.allParams())
-        self.navigationController?.viewDidLoad()
     }
     
     func logInLKSuccess(data: NSDictionary) {
         
-        User.currentUser.initFromLKData(data)
+        User.currentUser.initFromLKData(data, controller: self)
         NSLog("linkedIn login success: %@", User.currentUser.allParams())
-        self.navigationController?.viewDidLoad()
     }
     
     func logInGoogleSuccess(data: NSDictionary) {
         
-        User.currentUser.initFromGoogleData(data)
+        User.currentUser.initFromGoogleData(data, controller: self)
         NSLog("google login success: %@", User.currentUser.allParams())
-        self.navigationController?.viewDidLoad()
     }
 }
 

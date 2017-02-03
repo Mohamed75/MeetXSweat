@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 
 
 class User: Person {
@@ -19,7 +19,7 @@ class User: Person {
     
     
     
-    func initFromFBData(data: NSDictionary) {
+    func initFromFBData(data: NSDictionary, controller: UIViewController) {
         
         self.name = data["first_name"] as! String
         if let lastName = data["last_name"] {
@@ -49,11 +49,15 @@ class User: Person {
             self.profession = work as! String
         }
         
-        saveCustomObject()
+        saveCustomObject { (done) in
+            if done {
+                controller.navigationController?.viewDidLoad()
+            }
+        }
     }
     
     
-    func initFromTWData(data: NSDictionary) {
+    func initFromTWData(data: NSDictionary, controller: UIViewController) {
         
         if let fullName = data["name"] as? String  {
             let nameArray = fullName.componentsSeparatedByString(" ")
@@ -78,10 +82,14 @@ class User: Person {
             self.birthday = birthday as! String
         }
         
-        saveCustomObject()
+        saveCustomObject { (done) in
+            if done {
+                controller.navigationController?.viewDidLoad()
+            }
+        }
     }
     
-    func initFromLKData(data: NSDictionary) {
+    func initFromLKData(data: NSDictionary, controller: UIViewController) {
         
         self.name = data["firstName"] as! String
         if let lastName = data["lastName"] {
@@ -107,11 +115,15 @@ class User: Person {
             }
         }
 
-        saveCustomObject()
+        saveCustomObject { (done) in
+            if done {
+                controller.navigationController?.viewDidLoad()
+            }
+        }
     }
     
     
-    func initFromGoogleData(data: NSDictionary) {
+    func initFromGoogleData(data: NSDictionary, controller: UIViewController) {
         
         self.name = data["given_name"] as! String
         if let lastName = data["family_name"] {
@@ -130,24 +142,29 @@ class User: Person {
             self.gender = gender as! String
         }
         
-        saveCustomObject()
+        saveCustomObject { (success) in
+            if success {
+                controller.navigationController?.viewDidLoad()
+            }
+        }
     }
     
     
-    func saveCustomObject()
+    func saveCustomObject(completion:((success: Bool)->Void))
     {
         self.isConnected = true
         
         let object: Person = self
         if object.email.characters.count < 2 {
         
-            MXSViewController.getInformationPopUp(Strings.AlertAskingData.email, withCancelButton: false) { (email) in
+            MXSViewController.getInformationPopUp(Strings.AlertAskingData.emailMessage, withCancelButton: false) { (email) in
                 
                 if email.isValidEmail {
                     object.savePersonToDataBase()
                     object.saveToNSUserDefaults()
+                    completion(success: true)
                 }else {
-                    (object as! User).saveCustomObject()
+                    (object as! User).saveCustomObject({ (done) in})
                 }
             }
             
@@ -155,6 +172,7 @@ class User: Person {
             
             object.savePersonToDataBase()
             object.saveToNSUserDefaults()
+            completion(success: true)
         }
     }
     
