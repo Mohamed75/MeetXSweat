@@ -20,7 +20,7 @@ class MXSActivityIndicator: UIView {
     override init(frame: CGRect) {
         
         let imageView = UIImageView(frame: frame)
-        imageView.image = UIImage(named: Ressources.Images.clearLogo)
+        imageView.image = UIImage(named: Ressources.Images.mxslogo)
         super.init(frame: frame)
         super.addSubview(imageView)
         super.center = getVisibleViewController().view.center

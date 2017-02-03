@@ -65,7 +65,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Ibd-bR-kSL">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="449"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pkj-2t-YB6">
                             <size key="itemSize" width="547" height="138"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>

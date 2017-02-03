@@ -28,14 +28,15 @@ class MXSSportsCollectionViewController: UICollectionViewController {
         
         let index = (indexPath.section*2)+indexPath.row
         if sports.count > (indexPath.section*2)+indexPath.row {
-            cell.radioButton.setTitle(sports[index], forState: UIControlState.Normal)
+            cell.radioButton.setTitle(sports[index], forState: .Normal)
+            cell.radioButton.setTitleColor(kDefaultTextColor, forState: .Normal)
         }
         cell.radioButton.tag = index
         if allSelectedRadioButtonsIndexs.contains(index) {
             cell.radioButton.selected = true
         }
         cell.radioButton.addTarget(self, action: #selector(MXSSportsCollectionViewController.radioButtonSelected), forControlEvents: UIControlEvents.TouchUpInside);
-        
+        cell.backgroundColor = kBackGroundColor
         return cell
     }
     
@@ -50,6 +51,7 @@ class MXSSportsCollectionViewController: UICollectionViewController {
     }
     
     override internal func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        
         return (sports.count/2)+(sports.count%2)
     }
     
