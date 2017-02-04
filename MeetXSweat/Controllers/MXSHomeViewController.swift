@@ -25,7 +25,7 @@ class MXSHomeViewController: MXSViewController {
     
     var findBy: FindBy?
     
-    
+    /*
     func loadProfileImage() {
         
         if User.currentUser.isConnected {
@@ -41,11 +41,11 @@ class MXSHomeViewController: MXSViewController {
             
             navigationItem.rightBarButtonItem = UIBarButtonItem(customView: profileImageView)
         }
-    }
+    }*/
     
     override func viewDidLoad() {
         
-        self.loadProfileImage()
+        //self.loadProfileImage()
         super.viewDidLoad()
         
         FireBaseDataManager.sharedInstance

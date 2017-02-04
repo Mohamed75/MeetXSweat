@@ -10,7 +10,7 @@ import UIKit
 import AlamofireImage
 
 
-class MXSAllLoginsViewController: MXSViewController, LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInGoogleDelegate {
+class MXSAllLoginsViewController: MXSViewController {
 
     @IBOutlet weak var faceBookButton: UIButton!
     @IBOutlet weak var twitterButton: UIButton!
@@ -20,56 +20,36 @@ class MXSAllLoginsViewController: MXSViewController, LogInFBDelegate, LogInTWDel
         
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        GoogleLogInHelper.sharedInstance.controllerDelegate = self
-        
         self.evo_drawerController!.openDrawerGestureModeMask = []
     }
     
     
-    
-    @IBAction func faceBookLoginButtonClicked() {
-        
-        FaceBookHelper.sharedInstance.logIn(self)
-    }
-    
-    @IBAction func twitterLoginButtonClicked() {
-        
-        TwitterHelper.logIn(self)
-    }
-    
-    @IBAction func linkedInLoginButtonClicked() {
-        
-        UtilsLiknedInHelper.logIn(self)
-    }
-    
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func logInFBSuccess(data: NSDictionary) {
+    
+    // MARK: --- LogIn Buttons Clicked ---
+    
+    @IBAction func faceBookLoginButtonClicked() {
         
-        User.currentUser.initFromFBData(data, controller: self)
-        NSLog("facebook login success: %@", User.currentUser.allParams())
+        MSXLogInManager.sharedInstance.logIn(.logInTypeFB, viewController: self)
     }
     
-    func logInTWSuccess(data: NSDictionary) {
+    @IBAction func twitterLoginButtonClicked() {
         
-        User.currentUser.initFromTWData(data, controller: self)
-        NSLog("twitter login success: %@", User.currentUser.allParams())
+        MSXLogInManager.sharedInstance.logIn(.logInTypeTW, viewController: self)
     }
     
-    func logInLKSuccess(data: NSDictionary) {
+    @IBAction func linkedInLoginButtonClicked() {
         
-        User.currentUser.initFromLKData(data, controller: self)
-        NSLog("linkedIn login success: %@", User.currentUser.allParams())
+        MSXLogInManager.sharedInstance.logIn(.logInTypeLK, viewController: self)
     }
     
-    func logInGoogleSuccess(data: NSDictionary) {
+    @IBAction func googleLoginButtonClicked() {
         
-        User.currentUser.initFromGoogleData(data, controller: self)
-        NSLog("google login success: %@", User.currentUser.allParams())
+        MSXLogInManager.sharedInstance.logIn(.logInTypeGL, viewController: self)
     }
 }
 

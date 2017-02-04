@@ -19,7 +19,7 @@ class User: Person {
     
     
     
-    func initFromFBData(data: NSDictionary, controller: UIViewController) {
+    func initFromFBData(data: NSDictionary, completion:((success: Bool)->Void)) {
         
         self.name = data["first_name"] as! String
         if let lastName = data["last_name"] {
@@ -49,15 +49,11 @@ class User: Person {
             self.profession = work as! String
         }
         
-        saveCustomObject { (done) in
-            if done {
-                controller.navigationController?.viewDidLoad()
-            }
-        }
+        saveCustomObject(completion)
     }
     
     
-    func initFromTWData(data: NSDictionary, controller: UIViewController) {
+    func initFromTWData(data: NSDictionary, completion:((success: Bool)->Void)) {
         
         if let fullName = data["name"] as? String  {
             let nameArray = fullName.componentsSeparatedByString(" ")
@@ -82,14 +78,10 @@ class User: Person {
             self.birthday = birthday as! String
         }
         
-        saveCustomObject { (done) in
-            if done {
-                controller.navigationController?.viewDidLoad()
-            }
-        }
+        saveCustomObject(completion)
     }
     
-    func initFromLKData(data: NSDictionary, controller: UIViewController) {
+    func initFromLKData(data: NSDictionary, completion:((success: Bool)->Void)) {
         
         self.name = data["firstName"] as! String
         if let lastName = data["lastName"] {
@@ -115,15 +107,11 @@ class User: Person {
             }
         }
 
-        saveCustomObject { (done) in
-            if done {
-                controller.navigationController?.viewDidLoad()
-            }
-        }
+        saveCustomObject(completion)
     }
     
     
-    func initFromGoogleData(data: NSDictionary, controller: UIViewController) {
+    func initFromGoogleData(data: NSDictionary, completion:((success: Bool)->Void)) {
         
         self.name = data["given_name"] as! String
         if let lastName = data["family_name"] {
@@ -142,11 +130,7 @@ class User: Person {
             self.gender = gender as! String
         }
         
-        saveCustomObject { (success) in
-            if success {
-                controller.navigationController?.viewDidLoad()
-            }
-        }
+        saveCustomObject(completion)
     }
     
     
@@ -164,7 +148,7 @@ class User: Person {
                     object.saveToNSUserDefaults()
                     completion(success: true)
                 }else {
-                    (object as! User).saveCustomObject({ (done) in})
+                    (object as! User).saveCustomObject(completion)
                 }
             }
             
