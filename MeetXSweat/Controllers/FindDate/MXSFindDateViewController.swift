@@ -25,6 +25,10 @@ class MXSFindDateViewController: MXSCalendarViewController {
         
         super.viewDidLoad()
         
+        MSXFindManager.sharedInstance.findBy = FindBy.Date
+        
+        self.addBarButtonItem()
+        
         titleLabel.text = Strings.Calendar.titleText
         
         calendarView.dataSource = self

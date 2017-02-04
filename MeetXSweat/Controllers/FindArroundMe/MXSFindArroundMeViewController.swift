@@ -13,7 +13,7 @@ import MapKit
 private let reuseId = "MXSPlaceMark"
 
 
-class  MXSFindArroundMeViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+class  MXSFindArroundMeViewController: MXSViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     
     @IBOutlet weak var mapView: MKMapView!
@@ -26,6 +26,10 @@ class  MXSFindArroundMeViewController: UIViewController, CLLocationManagerDelega
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        MSXFindManager.sharedInstance.findBy = FindBy.ArroundMe
+        
+        self.addBarButtonItem()
         
         self.locationManager = CLLocationManager()
         self.locationManager!.delegate = self

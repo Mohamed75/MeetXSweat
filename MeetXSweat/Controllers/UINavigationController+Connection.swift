@@ -37,6 +37,10 @@ extension UINavigationController {
                         this.viewControllers = [MXSFindProfileViewController.sharedInstance]
                     case 1:
                         this.viewControllers = [Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findSport, viewControllerId: Ressources.StoryBooardsIdentifiers.findSportId)]
+                    case 2:
+                        this.viewControllers = [Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findDate, viewControllerId: Ressources.StoryBooardsIdentifiers.findDateId)]
+                    case 3:
+                        this.viewControllers = [Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findArroundMe, viewControllerId: Ressources.StoryBooardsIdentifiers.findArroundMeId)]
                     default: break
                         
                     }
