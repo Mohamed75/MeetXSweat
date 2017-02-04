@@ -1,28 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PAl-g6-mev">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fmU-Pn-7c7">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="wOE-3h-SG8">
+        <!--Item 2-->
+        <scene sceneID="vAp-Ws-WTj">
             <objects>
-                <navigationController id="PAl-g6-mev" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="iyM-iY-3Ed">
+                <navigationController id="8Uh-yC-Wzd" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item 2" id="TC2-ly-LfD"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sX6-r4-sfo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="uDL-qh-t4r" kind="relationship" relationship="rootViewController" id="pxB-gb-C5V"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OHP-tE-XjT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1220" y="832"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="a56-Vl-x4O">
+            <objects>
+                <tabBarController id="fmU-Pn-7c7" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="zOH-28-byY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="PAl-g6-mev" kind="relationship" relationship="viewControllers" id="rY8-sh-qnS"/>
+                        <segue destination="8Uh-yC-Wzd" kind="relationship" relationship="viewControllers" id="A59-Dr-U2U"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6d5-Ex-I3u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2132" y="-45"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="wOE-3h-SG8">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eWB-4f-h5b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="PAl-g6-mev" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="K7r-Tb-3nO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iyM-iY-3Ed">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <connections>
                         <segue destination="uDL-qh-t4r" kind="relationship" relationship="rootViewController" id="w6a-rF-cAW"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eWB-4f-h5b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-977" y="176"/>
+            <point key="canvasLocation" x="-1065" y="-316"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="wfV-BA-tlI">
@@ -41,7 +78,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qa1-dl-9us" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-243" y="190"/>
+            <point key="canvasLocation" x="-291" y="-316"/>
         </scene>
         <!--All Logins View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -117,109 +154,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="458" y="141"/>
-        </scene>
-        <!--Home View Controller-->
-        <scene sceneID="fuB-D2-Gnj">
-            <objects>
-                <viewController storyboardIdentifier="MXSHomeViewController" id="Vtu-Zy-Hdf" customClass="MXSHomeViewController" customModule="MeetXSweat" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="xoh-G0-fRH"/>
-                        <viewControllerLayoutGuide type="bottom" id="Z11-vx-3qS"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Fbc-jY-6e9">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sweatworker, quel est votre besoin ?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V6e-vB-YWB">
-                                <rect key="frame" x="160" y="30" width="280" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HgI-JT-CyX">
-                                <rect key="frame" x="0.0" y="71" width="600" height="529"/>
-                                <connections>
-                                    <segue destination="jce-DM-jk6" kind="embed" id="K5X-5k-lJe"/>
-                                </connections>
-                            </containerView>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Z11-vx-3qS" firstAttribute="top" secondItem="HgI-JT-CyX" secondAttribute="bottom" id="JOX-hD-nvA"/>
-                            <constraint firstItem="HgI-JT-CyX" firstAttribute="leading" secondItem="Fbc-jY-6e9" secondAttribute="leadingMargin" constant="-20" id="RU2-pi-0Ct"/>
-                            <constraint firstItem="HgI-JT-CyX" firstAttribute="top" secondItem="V6e-vB-YWB" secondAttribute="bottom" constant="20" id="Wk3-vl-GOg"/>
-                            <constraint firstItem="V6e-vB-YWB" firstAttribute="top" secondItem="xoh-G0-fRH" secondAttribute="bottom" constant="10" id="Xh6-6n-LcS"/>
-                            <constraint firstItem="V6e-vB-YWB" firstAttribute="centerX" secondItem="Fbc-jY-6e9" secondAttribute="centerX" id="k40-KU-Sww"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="HgI-JT-CyX" secondAttribute="trailing" constant="-20" id="ldj-LQ-lgJ"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="92a-43-5MB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="479" y="893"/>
-        </scene>
-        <!--Home Collection View Contoller-->
-        <scene sceneID="X1x-qY-nZm">
-            <objects>
-                <collectionViewController id="jce-DM-jk6" customClass="MXSHomeCollectionViewContoller" customModule="MeetXSweat" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Lu6-xe-pBA">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="529"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="939-HN-Lph">
-                            <size key="itemSize" width="547" height="138"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MXSHomeCollectionCell" id="G7T-BZ-hr5" customClass="MXSHomeCollectionCell" customModule="MeetXSweat" customModuleProvider="target">
-                                <rect key="frame" x="26.5" y="0.0" width="547" height="138"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="547" height="138"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="efg-BD-ga3">
-                                            <rect key="frame" x="18" y="18" width="102" height="102"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="efg-BD-ga3" secondAttribute="height" multiplier="1:1" id="FNW-kM-ri5"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SFP-Rj-zTt">
-                                            <rect key="frame" x="140" y="58.5" width="389" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="SFP-Rj-zTt" firstAttribute="leading" secondItem="efg-BD-ga3" secondAttribute="trailing" constant="20" id="9ue-Ff-i25"/>
-                                    <constraint firstItem="efg-BD-ga3" firstAttribute="top" secondItem="G7T-BZ-hr5" secondAttribute="topMargin" constant="10" id="Hm6-0T-4B8"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="efg-BD-ga3" secondAttribute="bottom" constant="10" id="Icn-fz-0ix"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="SFP-Rj-zTt" secondAttribute="trailing" constant="10" id="OgR-dw-dQU"/>
-                                    <constraint firstItem="efg-BD-ga3" firstAttribute="leading" secondItem="G7T-BZ-hr5" secondAttribute="leadingMargin" constant="10" id="Vfi-oY-Vo3"/>
-                                    <constraint firstItem="SFP-Rj-zTt" firstAttribute="centerY" secondItem="G7T-BZ-hr5" secondAttribute="centerY" id="qra-u4-s7I"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="imageView" destination="efg-BD-ga3" id="LLN-63-T67"/>
-                                    <outlet property="label" destination="SFP-Rj-zTt" id="TA1-uD-JWE"/>
-                                </connections>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="jce-DM-jk6" id="tbq-fe-IE8"/>
-                            <outlet property="delegate" destination="jce-DM-jk6" id="uCU-1X-S0R"/>
-                        </connections>
-                    </collectionView>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fHR-Vo-jW4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1268" y="869.5"/>
+            <point key="canvasLocation" x="-291" y="-999"/>
         </scene>
         <!--Add Event View Controller-->
         <scene sceneID="Rk0-ng-4sv">
@@ -361,7 +296,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HEf-yP-U1d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="879" y="1780"/>
+            <point key="canvasLocation" x="-2117" y="796"/>
         </scene>
     </scenes>
     <resources>
@@ -369,4 +304,7 @@
         <image name="LKButton" width="283" height="41"/>
         <image name="TWButton" width="283" height="41"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="w6a-rF-cAW"/>
+    </inferredMetricsTieBreakers>
 </document>

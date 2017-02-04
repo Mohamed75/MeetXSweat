@@ -39,7 +39,7 @@ class MXSEventsCollectionViewController: UICollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
-        if MXSHomeViewController.sharedInstance.findBy == FindBy.Profile || !isEmbdedInProfileViewController() {
+        if MSXFindManager.sharedInstance.findBy == FindBy.Profile || !isEmbdedInProfileViewController() {
             
             let eventViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.event, viewControllerId: Ressources.StoryBooardsIdentifiers.eventId) as! MXSEventViewController
             eventViewController.event = self.events[indexPath.section]

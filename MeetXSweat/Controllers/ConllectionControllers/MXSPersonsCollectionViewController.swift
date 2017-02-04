@@ -42,7 +42,7 @@ class MXSPersonsCollectionViewController: UICollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
-        if !(isEmbdedInEventViewController() && MXSHomeViewController.sharedInstance.findBy == FindBy.Profile) {
+        if !(isEmbdedInEventViewController() && MSXFindManager.sharedInstance.findBy == FindBy.Profile) {
             
             let profileViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.profile, viewControllerId: Ressources.StoryBooardsIdentifiers.profileId) as! MXSProfileViewController
             if let persons = self.persons {

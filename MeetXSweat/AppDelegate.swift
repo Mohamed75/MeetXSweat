@@ -43,6 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         __initTheDrawerController()
         
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
+        
         return FaceBookHelper.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     

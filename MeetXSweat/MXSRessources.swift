@@ -45,12 +45,11 @@ enum Ressources {
     struct StoryBooardsIdentifiers {
         
         // Main StoryBoard
-        static let homeId           = "MXSHomeViewController"
         static let logInId          = "MXSAllLoginsViewController"
         static let addEvent         = "MXSAddEventViewController"
         
         // FindProfile StoryBoard
-        static let findProfileId    = "MXSFindProfileViewController1"
+        static let findProfileId    = "MXSFindProfileViewController"
         
         // Profile StoryBoard
         static let profileId        = "MXSProfileViewController"
@@ -82,7 +81,6 @@ enum Ressources {
         
         static let event        = "MXSEventsCollectionCell"
         static let person       = "MXSPersonCollectionCell"
-        static let home         = "MXSHomeCollectionCell"
         static let sport        = "MXSSportCollectionCell"
         static let conversation = "MXSConversationCollectionCell"
         

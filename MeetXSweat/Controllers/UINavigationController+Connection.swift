@@ -17,6 +17,8 @@ extension UINavigationController {
     
     public override func viewDidLoad() {
         
+        self.navigationBar.barTintColor = kNavigationBarColor
+        self.navigationBar.translucent = false
         
         let user = User.currentUser
         if user.isConnected {
@@ -27,7 +29,21 @@ extension UINavigationController {
                     guard let this = self else {
                         return
                     }
-                    this.viewControllers = [MXSHomeViewController.sharedInstance]
+                    //this.viewControllers = [MXSHomeViewController.sharedInstance]
+                    let index = this.tabBarController!.selectedIndex
+                    switch index {
+                        
+                    case 0:
+                        this.viewControllers = [MXSFindProfileViewController.sharedInstance]
+                    case 1:
+                        this.viewControllers = [Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findSport, viewControllerId: Ressources.StoryBooardsIdentifiers.findSportId)]
+                    default: break
+                        
+                    }
+                    
+                    
+                    
+                    this.tabBarController?.tabBar.hidden = false
                 }
             }
             
@@ -41,6 +57,7 @@ extension UINavigationController {
                     }
                     let allLoginsViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.main, viewControllerId: Ressources.StoryBooardsIdentifiers.logInId)
                     this.viewControllers = [allLoginsViewController]
+                    this.tabBarController?.tabBar.hidden = true
                 }
             }
         }

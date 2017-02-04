@@ -63,4 +63,20 @@ class MXSViewController: UIViewController {
         getVisibleViewController().presentViewController(actionSheetController, animated: true, completion: nil)
     }
     
+    
+    
+    
+    // MARK: --- Shake Device ---
+    
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
+    
+    // Show the AddEventViewController when the device is shaked
+    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
+        if motion == .MotionShake {
+            let addEventViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.main, viewControllerId: Ressources.StoryBooardsIdentifiers.addEvent)
+            self.evo_drawerController!.presentViewController(addEventViewController, animated: true, completion: nil)
+        }
+    }
 }

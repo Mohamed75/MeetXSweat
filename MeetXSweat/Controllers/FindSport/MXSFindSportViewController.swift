@@ -14,10 +14,13 @@ import DLRadioButton
 class MXSFindSportViewController: MXSViewController {
     
     
-    
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        MSXFindManager.sharedInstance.findBy = FindBy.Sport
+        
+        self.addBarButtonItem()
     }
     
     
@@ -26,7 +29,6 @@ class MXSFindSportViewController: MXSViewController {
         if let sportsCollectionViewController = self.childViewControllers[0] as? MXSSportsCollectionViewController {
             sportsCollectionViewController.validateSelections()
         }
-        
     }
     
 }

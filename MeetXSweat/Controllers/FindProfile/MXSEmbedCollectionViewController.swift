@@ -1,5 +1,5 @@
 //
-//  MXSFindProfileViewController2.swift
+//  MXSEmbedCollectionViewController.swift
 //  MeetXSweat
 //
 //  Created by Mohamed BOUMANSOUR on 9/21/16.
@@ -18,17 +18,17 @@ class MXSEmbedCollectionViewController: MXSViewController {
         
         super.viewDidLoad()
         
-        if MXSHomeViewController.sharedInstance.findBy == FindBy.Sport {
+        if MSXFindManager.sharedInstance.findBy == FindBy.Sport {
             let eventsCollectionViewController = self.childViewControllers[0] as? MXSEventsCollectionViewController
             eventsCollectionViewController?.events = FindSportManager.filterEventsBySports(FindSportManager.sharedInstance.sports)
         }
         
-        if MXSHomeViewController.sharedInstance.findBy == FindBy.Date {
+        if MSXFindManager.sharedInstance.findBy == FindBy.Date {
             let eventsCollectionViewController = self.childViewControllers[0] as? MXSEventsCollectionViewController
             eventsCollectionViewController?.events = FindDateManager.filterEventsByDates(FindDateManager.sharedInstance.dates)
         }
         
-        if MXSHomeViewController.sharedInstance.findBy == FindBy.Profile {
+        if MSXFindManager.sharedInstance.findBy == FindBy.Profile {
             let personsCollectionViewController = self.childViewControllers[0] as? MXSPersonsCollectionViewController
             personsCollectionViewController?.persons = FindProfileManager.filterBy(FireBaseDataManager.sharedInstance.persons, filter: FindProfileManager.sharedInstance.profession)
         }

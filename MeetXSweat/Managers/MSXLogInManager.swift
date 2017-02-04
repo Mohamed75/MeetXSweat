@@ -23,6 +23,7 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
 
     
     static let sharedInstance = MSXLogInManager()
+    
     var controller: UIViewController!
     
     

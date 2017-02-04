@@ -1,5 +1,5 @@
 //
-//  MXSFindProfileViewController1.swift
+//  MXSFindProfileViewController.swift
 //  MeetXSweat
 //
 //  Created by Mohamed BOUMANSOUR on 9/21/16.
@@ -11,7 +11,7 @@ import UIKit
 
 
 
-class MXSFindProfileViewController1: MXSViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
+class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var domaineTextField: UITextField!
     @IBOutlet weak var professionTextField: UITextField!
@@ -23,12 +23,19 @@ class MXSFindProfileViewController1: MXSViewController, UIPickerViewDataSource, 
     let pickerView = UIPickerView()
     
     
+    static let sharedInstance = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findProfile, viewControllerId: Ressources.StoryBooardsIdentifiers.findProfileId)
+    
     
     override func viewDidLoad() {
         
         Utils.addTapGestureToView(self.view, target: self, selectorString: kEndEditingSelectorString)
         
         super.viewDidLoad()
+        
+        MSXFindManager.sharedInstance.findBy = FindBy.Profile
+        
+        self.addBarButtonItem()
+        
         
         pickerView.delegate = self
         emptyTextField.inputView = pickerView
