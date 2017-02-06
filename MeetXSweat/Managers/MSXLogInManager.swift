@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import GoogleSignIn
 
 
 enum LogInType {
@@ -40,7 +40,7 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
         case .logInTypeLK:
             UtilsLiknedInHelper.logIn(self)
         case .logInTypeGL:
-            GoogleLogInHelper.sharedInstance.controllerDelegate = self
+            GoogleLogInHelper.sharedInstance.logIn(self)
         }
     }
     

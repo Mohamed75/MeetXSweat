@@ -10,17 +10,21 @@ import UIKit
 import AlamofireImage
 
 
+
 class MXSAllLoginsViewController: MXSViewController {
 
     @IBOutlet weak var faceBookButton: UIButton!
     @IBOutlet weak var twitterButton: UIButton!
+    @IBOutlet weak var googleButton: UIButton!
     @IBOutlet weak var linkedInButton: UIButton!
+    
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.evo_drawerController!.openDrawerGestureModeMask = []
+        googleButton.setBackgroundImage(UIImage(named: "GLButton"), forState: .Normal)
     }
     
     

@@ -46,10 +46,12 @@ extension UINavigationController {
                     }
                     
                     
-                    
+                    this.navigationBarHidden = false
                     this.tabBarController?.tabBar.hidden = false
                 }
             }
+            
+            UIApplication.sharedApplication().statusBarStyle = .LightContent
             
         } else {
             
@@ -61,6 +63,8 @@ extension UINavigationController {
                     }
                     let allLoginsViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.main, viewControllerId: Ressources.StoryBooardsIdentifiers.logInId)
                     this.viewControllers = [allLoginsViewController]
+                    
+                    this.navigationBarHidden = true
                     this.tabBarController?.tabBar.hidden = true
                 }
             }

@@ -39,11 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         
         TwitterHelper.application(application, didFinishLaunchingWithOptions: launchOptions)
-        GoogleLogInHelper.initConfig()
         
         __initTheDrawerController()
         
-        UIApplication.sharedApplication().statusBarStyle = .LightContent
         
         return FaceBookHelper.application(application, didFinishLaunchingWithOptions: launchOptions)
     }

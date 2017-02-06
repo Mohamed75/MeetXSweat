@@ -25,17 +25,7 @@ class GoogleLogInHelper: NSObject, GIDSignInDelegate, GIDSignInUIDelegate {
     
     var controllerDelegate: LogInGoogleDelegate!
     
-    class func initConfig() {
-        
-        // Initialize sign-in
-        var configureError: NSError?
-        GGLContext.sharedInstance().configureWithError(&configureError)
-        assert(configureError == nil, "Error configuring Google services: \(configureError)")
-        
-        GIDSignIn.sharedInstance().delegate = GoogleLogInHelper.sharedInstance
-        
-        GIDSignIn.sharedInstance().uiDelegate = GoogleLogInHelper.sharedInstance
-    }
+    
     
     class func application(application: UIApplication, openURL url: NSURL, options: [String: AnyObject]) -> Bool {
         return GIDSignIn.sharedInstance().handleURL(url,
@@ -47,6 +37,26 @@ class GoogleLogInHelper: NSObject, GIDSignInDelegate, GIDSignInUIDelegate {
         return GIDSignIn.sharedInstance().handleURL(url,
                                                     sourceApplication: sourceApplication,
                                                     annotation: annotation)
+    }
+    
+    
+    private func initConfig() {
+        
+        // Initialize sign-in
+        var configureError: NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+        
+        GIDSignIn.sharedInstance().delegate     = self
+        GIDSignIn.sharedInstance().uiDelegate   = self
+    }
+    
+    
+    func logIn(delegate: LogInGoogleDelegate) {
+        
+        initConfig()
+        controllerDelegate = delegate
+        GIDSignIn.sharedInstance().signIn()
     }
     
     

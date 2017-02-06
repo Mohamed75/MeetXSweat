@@ -6,11 +6,12 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "FBButton.png",
+      "filename" : "facebook95x50.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "facebook143x75.png",
       "scale" : "3x"
     }
   ],
