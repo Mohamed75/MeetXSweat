@@ -22,6 +22,7 @@ extension UINavigationController {
         
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:kBackGroundColor]
         
+        self.view.backgroundColor = kBackGroundColor
         
         self.navigationBar.barTintColor = kNavigationBarColor
         self.navigationBar.translucent = false

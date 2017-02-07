@@ -16,6 +16,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sX6-r4-sfo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <connections>
                         <segue destination="uDL-qh-t4r" kind="relationship" relationship="rootViewController" id="pxB-gb-C5V"/>
@@ -108,7 +109,7 @@
                         <viewControllerLayoutGuide type="bottom" id="HoH-0X-72K"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="VMB-Vw-rB1">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -237,14 +238,14 @@
                                         </connections>
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="User" translatesAutoresizingMaskIntoConstraints="NO" id="Ftg-JH-dOB">
-                                        <rect key="frame" x="0.0" y="6.5" width="15" height="15"/>
+                                        <rect key="frame" x="0.0" y="6" width="15" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="15" id="KAq-sz-b9W"/>
                                             <constraint firstAttribute="height" constant="15" id="zQu-Hq-FAt"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Lock" translatesAutoresizingMaskIntoConstraints="NO" id="B92-6O-dAl">
-                                        <rect key="frame" x="0.0" y="45.5" width="15" height="15"/>
+                                        <rect key="frame" x="0.0" y="45" width="15" height="15"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -587,6 +588,6 @@
         <image name="sportClear" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="w6a-rF-cAW"/>
+        <segue reference="pxB-gb-C5V"/>
     </inferredMetricsTieBreakers>
 </document>

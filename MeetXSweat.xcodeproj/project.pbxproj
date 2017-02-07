@@ -81,6 +81,7 @@
 		D9C0863A1E48DD3100122030 /* MXSCreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086391E48DD3100122030 /* MXSCreateAccountViewController.swift */; };
 		D9C0863C1E49DCEA00122030 /* TabBar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9C0863B1E49DCEA00122030 /* TabBar.xcassets */; };
 		D9C0863E1E49E73400122030 /* Sports.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9C0863D1E49E73400122030 /* Sports.xcassets */; };
+		D9C086401E4A19D500122030 /* MapIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9C0863F1E4A19D500122030 /* MapIcons.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -182,6 +183,7 @@
 		D9C086391E48DD3100122030 /* MXSCreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSCreateAccountViewController.swift; sourceTree = "<group>"; };
 		D9C0863B1E49DCEA00122030 /* TabBar.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TabBar.xcassets; sourceTree = "<group>"; };
 		D9C0863D1E49E73400122030 /* Sports.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Sports.xcassets; sourceTree = "<group>"; };
+		D9C0863F1E4A19D500122030 /* MapIcons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MapIcons.xcassets; sourceTree = "<group>"; };
 		F04A0BDA1CBA2F76A3C5E1B3 /* Pods-MeetXSweatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetXSweatTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetXSweatTests/Pods-MeetXSweatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FD9164CA102020F4D5ED2DE5 /* Pods-MeetXSweat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetXSweat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetXSweat/Pods-MeetXSweat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -302,6 +304,7 @@
 				D94C63E71D8DE88A00ECD7FD /* MeetXSweat-Bridging-Header.h */,
 				D9C0863B1E49DCEA00122030 /* TabBar.xcassets */,
 				D9C0863D1E49E73400122030 /* Sports.xcassets */,
+				D9C0863F1E4A19D500122030 /* MapIcons.xcassets */,
 			);
 			path = MeetXSweat;
 			sourceTree = "<group>";
@@ -590,6 +593,7 @@
 				D94575951E44932100AF37F2 /* Main.storyboard in Resources */,
 				D926BAAA1D8D6A6400E3878C /* LaunchScreen.storyboard in Resources */,
 				D9C0863E1E49E73400122030 /* Sports.xcassets in Resources */,
+				D9C086401E4A19D500122030 /* MapIcons.xcassets in Resources */,
 				D90AB5801D940CC4003DCA75 /* MXSFindDate.storyboard in Resources */,
 				D926BAA71D8D6A6400E3878C /* Assets.xcassets in Resources */,
 				D959B3E61D93202200981105 /* MXSProfile.storyboard in Resources */,
