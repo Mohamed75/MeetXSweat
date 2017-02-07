@@ -11,7 +11,7 @@ import DLRadioButton
 
 
 
-
+private let numberOffCell = 3
 
 
 class MXSSportsCollectionViewController: UICollectionViewController {
@@ -20,13 +20,19 @@ class MXSSportsCollectionViewController: UICollectionViewController {
     
     var sports = DummyData.getSports()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        (self.collectionViewLayout as! UICollectionViewFlowLayout).minimumInteritemSpacing = 0
+    }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Ressources.CellReuseIdentifier.sport, forIndexPath: indexPath) as! MXSSportCollectionCell
-        cell.initColors()
         
-        let index = (indexPath.section*2)+indexPath.row
+        let index = (indexPath.section*numberOffCell)+indexPath.row
+        /*
+        cell.initColors()
         if sports.count > (indexPath.section*2)+indexPath.row {
             cell.radioButton.setTitle(sports[index], forState: .Normal)
             cell.radioButton.setTitleColor(kDefaultTextColor, forState: .Normal)
@@ -36,31 +42,55 @@ class MXSSportsCollectionViewController: UICollectionViewController {
             cell.radioButton.selected = true
         }
         cell.radioButton.addTarget(self, action: #selector(MXSSportsCollectionViewController.radioButtonSelected), forControlEvents: UIControlEvents.TouchUpInside);
-        cell.backgroundColor = kBackGroundColor
+        cell.backgroundColor = kBackGroundColor*/
+        
+        cell.initCell()
+        if sports.count > (indexPath.section*numberOffCell)+indexPath.row {
+            let sportName = sports[index]
+            cell.sportImageView.image   = UIImage(named: sportName.lowercaseString)
+            cell.sportLabel.text        = sportName
+        }
+        if allSelectedRadioButtonsIndexs.contains(index) {
+            cell.cellSelected()
+        }
+        
         return cell
     }
     
     
     override internal func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if sports.count%2 > 0 {
-            if section == sports.count/2 {
+        if sports.count%numberOffCell > 0 {
+            if section == sports.count/numberOffCell {
                 return 1
             }
         }
-        return 2
+        return numberOffCell
     }
     
     override internal func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         
-        return (sports.count/2)+(sports.count%2)
+        return (sports.count/numberOffCell)+(sports.count%numberOffCell)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
-        return CGSize(width: 150, height: 50)
+        return CGSize(width: 103, height: 120)
     }
     
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+       
+        let index = (indexPath.section*numberOffCell)+indexPath.row
+        if allSelectedRadioButtonsIndexs.contains(index) {
+            if let indexArray = allSelectedRadioButtonsIndexs.indexOf(index) {
+                allSelectedRadioButtonsIndexs.removeAtIndex(indexArray)
+            }
+        } else {
+            allSelectedRadioButtonsIndexs.append(index)
+        }
+        self.collectionView?.reloadData()
+    }
     
+    /*
     func radioButtonSelected(radioButton : DLRadioButton) {
         
         if radioButton.selected {
@@ -71,7 +101,7 @@ class MXSSportsCollectionViewController: UICollectionViewController {
                 allSelectedRadioButtonsIndexs.removeAtIndex(index)
             }
         }
-    }
+    }*/
     
     func validateSelections() {
         

@@ -15,7 +15,7 @@ private let radioButtonColor = UIColor.redColor()
 
 class MXSSportCollectionCell: UICollectionViewCell {
     
-    
+    /*
     @IBOutlet weak var radioButton: DLRadioButton!
     
     
@@ -48,6 +48,40 @@ class MXSSportCollectionCell: UICollectionViewCell {
         
         
         self.radioButton = aRadioButton
+    }*/
+    
+    @IBOutlet weak var starImageView: UIImageView!
+    @IBOutlet weak var sportImageView: UIImageView!
+    @IBOutlet weak var sportLabel: UILabel!
+    
+    
+    let yMargin = CGFloat(3)
+    let xMargin = CGFloat(3)
+    
+    func initCell() {
+        
+        let borderView = UIView(frame: CGRect(x: xMargin, y: yMargin, width: self.frame.size.width-(2*xMargin), height: self.frame.size.height-(2*yMargin)))
+        borderView.layer.borderColor    = kSpecialColor.CGColor
+        borderView.layer.borderWidth    = 1
+        borderView.layer.cornerRadius   = 5
+        self.addSubview(borderView)
+        
+        self.sportLabel.textColor = kSpecialColor
+        self.starImageView.image = UIImage(named: "starClear")
+        
+        let lineView = UIView(frame: CGRect(x: xMargin, y: self.frame.size.height-30, width: self.frame.size.width-(2*xMargin), height: 2))
+        lineView.backgroundColor = kSpecialColor
+        self.addSubview(lineView)
     }
     
+    func cellSelected() {
+        
+        self.starImageView.image = UIImage(named: "star")
+    }
+    
+    
+    override func prepareForReuse() {
+        
+        super.prepareForReuse()
+    }
 }

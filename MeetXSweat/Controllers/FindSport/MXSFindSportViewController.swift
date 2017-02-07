@@ -14,6 +14,9 @@ import DLRadioButton
 class MXSFindSportViewController: MXSViewController {
     
     
+    @IBOutlet weak var validerButton: UIButton!
+    
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -21,8 +24,19 @@ class MXSFindSportViewController: MXSViewController {
         MSXFindManager.sharedInstance.findBy = FindBy.Sport
         
         self.addBarButtonItem()
+        
+        self.title = "SPORTS"
+        
+        let validatButton = UIButton(type: .Custom)
+        validatButton.addTarget(self, action: #selector(validatButtonClicked), forControlEvents: .TouchUpInside)
+        validatButton.setBackgroundImage(UIImage(named: "validation"), forState: .Normal)
+        validatButton.frame = CGRectMake(0 ,0,30,30)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: validatButton)
     }
     
+    @IBAction func validatButtonClicked(sender: AnyObject) {
+        validerButton.sendActionsForControlEvents(.TouchUpInside)
+    }
     
     @IBAction func validerButtonClicked(sender: AnyObject) {
         

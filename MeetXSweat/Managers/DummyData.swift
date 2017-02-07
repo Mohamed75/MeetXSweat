@@ -27,7 +27,6 @@ class DummyData {
     }
     
     class func getSports()  -> [String] {
-        return ["RAFTING", "BOOTCAMP", "FOOT", "BASKET", "VELO", "BOX", "NATATION", "MUSCULATION", "GOLF"]
+        return ["CrossFit", "Yoga", "Running", "Boxe", "Golf", "Foot", "Basket", "Velo", "Natation", "Pilates", "Gym-suedoise", "Trail"]
     }
-    
 }

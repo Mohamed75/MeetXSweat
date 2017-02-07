@@ -22,6 +22,8 @@ class MXSViewController: UIViewController {
         */
         super.viewDidLoad()
         
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        
         self.view.backgroundColor = kBackGroundColor
     }
     
