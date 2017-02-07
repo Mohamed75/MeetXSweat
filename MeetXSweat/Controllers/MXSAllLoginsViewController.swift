@@ -10,6 +10,11 @@ import UIKit
 import AlamofireImage
 
 
+let placeHolderAttributes = [
+    NSForegroundColorAttributeName: UIColor.blackColor(),
+    //NSFontAttributeName : UIFont(name: "Roboto-Bold", size: 17)! // Note the !
+]
+
 
 class MXSAllLoginsViewController: MXSViewController {
 
@@ -19,19 +24,139 @@ class MXSAllLoginsViewController: MXSViewController {
     @IBOutlet weak var linkedInButton: UIButton!
     
     
+    
+    @IBOutlet weak var textFieldsView: UIView!
+    @IBOutlet weak var textFieldsViewTopConstraint: NSLayoutConstraint!
+    
+    var saveIniTextFieldsViewTopConstraint: CGFloat!
+    
+    
+    @IBOutlet weak var userNameTextField: UITextField!
+    @IBOutlet weak var passWordTextField: UITextField!
+    
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.evo_drawerController!.openDrawerGestureModeMask = []
         googleButton.setBackgroundImage(UIImage(named: "GLButton"), forState: .Normal)
+        
+        
+        
+        userNameTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes:placeHolderAttributes)
+        userNameTextField.returnKeyType = .Next
+        passWordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes:placeHolderAttributes)
+        passWordTextField.returnKeyType = .Done
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        saveIniTextFieldsViewTopConstraint = textFieldsViewTopConstraint.constant
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if UIScreen.mainScreen().bounds.size.height == 480 { //iPhone 4
+            
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow), name:UIKeyboardWillShowNotification, object: self.view.window)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide), name:UIKeyboardWillHideNotification, object: self.view.window)
+        }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if UIScreen.mainScreen().bounds.size.height == 480 { //iPhone 4
+            
+            NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: self.view.window)
+            NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: self.view.window)
+        }
+    }
+    
+    func keyboardWillHide(sender: NSNotification) {
+        
+        if self.view.frame.origin.y < 0 {
+            self.view.frame.origin.y += 50
+            self.textFieldsViewTopConstraint.constant += 30
+        }
+    }
+    
+    func keyboardWillShow(sender: NSNotification) {
+        let userInfo: [NSObject : AnyObject] = sender.userInfo!
+        
+        let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
+        let offset: CGSize = userInfo[UIKeyboardFrameEndUserInfoKey]!.CGRectValue.size
+        
+        if keyboardSize.height == offset.height {
+            if self.view.frame.origin.y == 0 {
+                UIView.animateWithDuration(0.1, animations: { [weak self] () -> Void in
+                    
+                    guard let this = self else {
+                        return
+                    }
+                    this.view.frame.origin.y -= 50
+                    this.textFieldsViewTopConstraint.constant -= 30
+                })
+            }
+        } else {
+            UIView.animateWithDuration(0.1, animations: { [weak self] () -> Void in
+                
+                guard let this = self else {
+                    return
+                }
+                this.view.frame.origin.y += 50 - offset.height
+                this.textFieldsViewTopConstraint.constant += 30 - offset.height
+            })
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    @IBAction func loginButtonClicked(sender: AnyObject) {
+        
+        guard let email = userNameTextField.text where email.characters.count > 0 else {
+            // alert
+            return
+        }
+        
+        guard let password = passWordTextField.text where password.characters.count > 0 else {
+            // alert
+            return
+        }
+        
+        User.currentUser.initFromEmailData(email, password: password, completion: { [weak self] (done) in
+            
+            guard let this = self else {
+                return
+            }
+            if done {
+                this.navigationController?.viewDidLoad()
+            }
+        })
+        NSLog("email account created success: %@", User.currentUser.allParams())
+    }
+    
+    
+    // MARK: --- TextFields Delegate ---
+    
+    func textFieldShouldReturn(textField: UITextField!) -> Bool {   //delegate method
+        
+        if textField == userNameTextField {
+            passWordTextField.becomeFirstResponder()
+        } else {
+            passWordTextField.resignFirstResponder()
+        }
+        
+        return true
+    }
+    
     
     
     // MARK: --- LogIn Buttons Clicked ---
@@ -54,6 +179,12 @@ class MXSAllLoginsViewController: MXSViewController {
     @IBAction func googleLoginButtonClicked() {
         
         MSXLogInManager.sharedInstance.logIn(.logInTypeGL, viewController: self)
+    }
+    
+    @IBAction func emailButtonClicked(sender: AnyObject) {
+        
+        let createAccountViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.main, viewControllerId: Ressources.StoryBooardsIdentifiers.createAccountId)
+        self.navigationController?.pushViewController(createAccountViewController, animated: true)
     }
 }
 

@@ -75,10 +75,11 @@
 		D9B64D2A1DA3AA2D008C5D34 /* FireBaseDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64D251DA3AA2D008C5D34 /* FireBaseDataManager.swift */; };
 		D9B64D2C1DA3AA62008C5D34 /* ConversationsDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64D2B1DA3AA62008C5D34 /* ConversationsDataManager.swift */; };
 		D9B64D2E1DA3AACF008C5D34 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64D2D1DA3AACF008C5D34 /* Conversation.swift */; };
-		D9BB48131D8EB48000C12541 /* UtilsLinkedInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB48121D8EB48000C12541 /* UtilsLinkedInHelper.swift */; };
+		D9BB48131D8EB48000C12541 /* LinkedInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB48121D8EB48000C12541 /* LinkedInHelper.swift */; };
 		D9BB48251D8EF2E000C12541 /* GoogleLogInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB48241D8EF2E000C12541 /* GoogleLogInHelper.swift */; };
 		D9C086361E464A1E00122030 /* MSXLogInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086351E464A1E00122030 /* MSXLogInManager.swift */; };
 		D9C086381E46698000122030 /* MSXFindManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086371E46698000122030 /* MSXFindManager.swift */; };
+		D9C0863A1E48DD3100122030 /* MXSCreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086391E48DD3100122030 /* MXSCreateAccountViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,10 +175,11 @@
 		D9B64D251DA3AA2D008C5D34 /* FireBaseDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireBaseDataManager.swift; sourceTree = "<group>"; };
 		D9B64D2B1DA3AA62008C5D34 /* ConversationsDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationsDataManager.swift; sourceTree = "<group>"; };
 		D9B64D2D1DA3AACF008C5D34 /* Conversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
-		D9BB48121D8EB48000C12541 /* UtilsLinkedInHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilsLinkedInHelper.swift; sourceTree = "<group>"; };
+		D9BB48121D8EB48000C12541 /* LinkedInHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkedInHelper.swift; sourceTree = "<group>"; };
 		D9BB48241D8EF2E000C12541 /* GoogleLogInHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleLogInHelper.swift; sourceTree = "<group>"; };
 		D9C086351E464A1E00122030 /* MSXLogInManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSXLogInManager.swift; sourceTree = "<group>"; };
 		D9C086371E46698000122030 /* MSXFindManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSXFindManager.swift; sourceTree = "<group>"; };
+		D9C086391E48DD3100122030 /* MXSCreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSCreateAccountViewController.swift; sourceTree = "<group>"; };
 		F04A0BDA1CBA2F76A3C5E1B3 /* Pods-MeetXSweatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetXSweatTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetXSweatTests/Pods-MeetXSweatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FD9164CA102020F4D5ED2DE5 /* Pods-MeetXSweat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetXSweat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetXSweat/Pods-MeetXSweat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -339,6 +341,7 @@
 				D90AB5B01D96DB0C003DCA75 /* SignInViewController.swift */,
 				D998B5DD1D96E88F00A045F4 /* MXSAddEventViewController.swift */,
 				D9B64CD81D9D6C28008C5D34 /* MXSMenuViewController.swift */,
+				D9C086391E48DD3100122030 /* MXSCreateAccountViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -351,7 +354,7 @@
 				D926BAD71D8DA92400E3878C /* Utils.swift */,
 				D94C63E51D8DE4BB00ECD7FD /* FaceBookHelper.swift */,
 				D94C63E81D8E914F00ECD7FD /* TwitterHelper.swift */,
-				D9BB48121D8EB48000C12541 /* UtilsLinkedInHelper.swift */,
+				D9BB48121D8EB48000C12541 /* LinkedInHelper.swift */,
 				D998B5E41D97FFE000A045F4 /* EnCodeObject.swift */,
 				D959581A1DA57F2500481167 /* FireBaseObject.swift */,
 				D9BB48241D8EF2E000C12541 /* GoogleLogInHelper.swift */,
@@ -732,7 +735,7 @@
 				D926BAA01D8D6A6400E3878C /* AppDelegate.swift in Sources */,
 				D94A3E4C1DA3FCEF0090A7A4 /* MXSConversationCollectionCell.swift in Sources */,
 				D926BAE01D8DBC5100E3878C /* User.swift in Sources */,
-				D9BB48131D8EB48000C12541 /* UtilsLinkedInHelper.swift in Sources */,
+				D9BB48131D8EB48000C12541 /* LinkedInHelper.swift in Sources */,
 				D94A3E4A1DA3FC840090A7A4 /* MXSSportCollectionCell.swift in Sources */,
 				D9B64D291DA3AA2D008C5D34 /* FindSportManager.swift in Sources */,
 				D9B64D2E1DA3AACF008C5D34 /* Conversation.swift in Sources */,
@@ -772,6 +775,7 @@
 				D90AB59D1D9523C0003DCA75 /* MXSSportsCollectionViewController.swift in Sources */,
 				D9B64CD91D9D6C28008C5D34 /* MXSMenuViewController.swift in Sources */,
 				D9B64D281DA3AA2D008C5D34 /* FindProfileManager.swift in Sources */,
+				D9C0863A1E48DD3100122030 /* MXSCreateAccountViewController.swift in Sources */,
 				D959B3CB1D92D1D200981105 /* MXSFindProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

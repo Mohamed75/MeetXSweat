@@ -43,7 +43,7 @@ class MXSCalendarCellView: JTAppleDayCellView {
         self.backgroundColor = c.stringFromDate(date) == todayDate ? todayColor : normalDayCellColor
         
         // Setup cell selection status
-        delayRunOnMainThread(0.0) { [weak self] in
+        dispatch_later(0.0) { [weak self] in
             guard let this = self else {
                 return
             }

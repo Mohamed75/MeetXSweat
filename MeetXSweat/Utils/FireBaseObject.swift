@@ -61,6 +61,21 @@ class FireBaseObject: EnCodeObject {
         ref = snapshot.ref
     }
     
+    
+    func copyFromJson(dictionary: [String : AnyObject]) {
+        
+        for (key, value) in dictionary {
+            let keyName = key
+            
+            if (respondsToSelector(NSSelectorFromString(keyName))) {
+                setValue(value, forKey: keyName)
+            }
+        }
+    }
+    
+    /*
+     return all properties value as string
+     */
     func allParams() -> String {
         
         var basicInfo = ""
@@ -74,7 +89,7 @@ class FireBaseObject: EnCodeObject {
     
     
     // used only by the init snapshot
-    func createArrayObjectForProperty(propety: String, array: [AnyObject]) -> [AnyObject] {
+    private func createArrayObjectForProperty(propety: String, array: [AnyObject]) -> [AnyObject] {
         
         var returnArray: [AnyObject] = []
         if let className = typeOfProperty(propety) {
@@ -97,7 +112,9 @@ class FireBaseObject: EnCodeObject {
         return returnArray
     }
     
-    
+    /*
+     return the current object as json dictionarry
+     */
     func asJson() -> [String: AnyObject] {
         
         var json = [String: AnyObject]()

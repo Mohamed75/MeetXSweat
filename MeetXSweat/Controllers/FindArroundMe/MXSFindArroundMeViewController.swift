@@ -43,7 +43,7 @@ class  MXSFindArroundMeViewController: MXSViewController, CLLocationManagerDeleg
         
         MXSActivityIndicator.startAnimating()
         
-        delayRunOnMainThread(4.0) { [weak self] in
+        dispatch_later(4.0) { [weak self] in
         
             guard let this = self else {
                 return

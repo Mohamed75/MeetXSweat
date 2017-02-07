@@ -53,21 +53,20 @@ class FaceBookHelper {
         
         
         accountStore.requestAccessToAccountsWithType(facebookAccountType, options: options) { [weak self] (granted, error) -> Void in
+            
+            guard let this = self else {
+                return
+            }
+            
             if granted
             {
                 let accounts = accountStore.accountsWithAccountType(facebookAccountType)
                 if let facebookAccount = accounts.last as? ACAccount {
-                    guard let this = self else {
-                        return
-                    }
                     this.getUserInfo(facebookAccount.credential.oauthToken!, delegate: delegate)
                 }
             }
             else
             {
-                guard let this = self else {
-                    return
-                }
                 if this.isLoginBlock == false {
                     this.faceBookWebLogin(delegate)
                     // For first launch sometimes the loginWebView dont pop up, so this code force the loginWebview
@@ -78,14 +77,13 @@ class FaceBookHelper {
                     }
                     this.isLoginBlock = false
                 }
-                
             }
         }
     }
     
     func faceBookWebLogin(delegate: LogInFBDelegate) {
         
-        delayRunOnMainThread(0.0) {
+        dispatch_later(0.0) {
             
             FBSDKLoginManager().logInWithReadPermissions(permessionArray, fromViewController: getVisibleViewController()) { [weak self] (result: FBSDKLoginManagerLoginResult!, error: NSError!) in
                 

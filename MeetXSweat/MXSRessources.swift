@@ -46,6 +46,7 @@ enum Ressources {
         
         // Main StoryBoard
         static let logInId          = "MXSAllLoginsViewController"
+        static let createAccountId  = "MXSCreateAccountViewController"
         static let addEvent         = "MXSAddEventViewController"
         
         // FindProfile StoryBoard

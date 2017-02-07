@@ -24,7 +24,7 @@ protocol LogInLKDelegate {
 }
 
 
-class UtilsLiknedInHelper {
+class LiknedInHelper {
     
     
     

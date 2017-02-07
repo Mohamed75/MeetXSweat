@@ -6,8 +6,13 @@
 //  Copyright © 2016 Mohamed BOUMANSOUR. All rights reserved.
 //
 
-import Foundation
-import UIKit
+import Firebase
+
+
+let okAction = UIAlertAction(title: "OK", style: .Default, handler: { (UIAlertAction) in
+    getVisibleViewController().dismissViewControllerAnimated(true, completion:nil)
+})
+
 
 
 class User: Person {
@@ -134,6 +139,60 @@ class User: Person {
     }
     
     
+    func createFromEmailData(email: String, password: String, name: String, lastName: String, completion:((success: Bool)->Void)) {
+        
+        FIRAuth.auth()?.createUserWithEmail(email, password: password) { [weak self] (user, error) in
+            
+            if (error != nil) {
+                
+                switch error!.code {
+                case 17008:
+                    
+                    let alertController: UIAlertController = UIAlertController(title: "", message: Strings.AlertUserCreateAccount.wrongEmailMesssage, preferredStyle: .Alert)
+                    alertController.addAction(okAction)
+                    getVisibleViewController().presentViewController(alertController, animated: true, completion: nil)
+                    
+                default:
+                    let alertController: UIAlertController = UIAlertController(title: "", message: error?.localizedDescription, preferredStyle: .Alert)
+                    alertController.addAction(okAction)
+                    getVisibleViewController().presentViewController(alertController, animated: true, completion: nil)
+                }
+                
+            } else {
+                
+                guard let this = self else {
+                    return
+                }
+                this.email  = email
+                this.name   = name
+                this.lastName = lastName
+                this.saveCustomObject(completion)
+            }
+        }
+    }
+    
+    func initFromEmailData(email: String, password: String, completion:((success: Bool)->Void)) {
+     
+        FIRAuth.auth()?.signInWithEmail(email, password: password, completion: { [weak self] (user, error) in
+            
+            if (error != nil) {
+                
+                let alertController: UIAlertController = UIAlertController(title: "", message: error?.localizedDescription, preferredStyle: .Alert)
+                alertController.addAction(okAction)
+                getVisibleViewController().presentViewController(alertController, animated: true, completion: nil)
+                
+            } else {
+                
+                guard let this = self else {
+                    return
+                }
+                this.email  = email
+                this.saveCustomObject(completion)
+            }
+        })
+    }
+    
+    
     func saveCustomObject(completion:((success: Bool)->Void))
     {
         self.isConnected = true
@@ -141,10 +200,10 @@ class User: Person {
         let object: Person = self
         if object.email.characters.count < 2 {
         
-            MXSViewController.getInformationPopUp(Strings.AlertAskingData.emailMessage, withCancelButton: false) { (email) in
+            MXSViewController.getInformationPopUp(Strings.AlertAskingData.enterEmailMessage, withCancelButton: false) { (email) in
                 
                 if email.isValidEmail {
-                    object.savePersonToDataBase()
+                    object.createPersonOnDataBase()
                     object.saveToNSUserDefaults()
                     completion(success: true)
                 }else {
@@ -154,7 +213,7 @@ class User: Person {
             
         } else {
             
-            object.savePersonToDataBase()
+            object.createPersonOnDataBase()
             object.saveToNSUserDefaults()
             completion(success: true)
         }

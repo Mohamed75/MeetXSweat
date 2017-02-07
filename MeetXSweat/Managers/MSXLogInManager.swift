@@ -38,7 +38,7 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
         case .logInTypeTW:
             TwitterHelper.logIn(self)
         case .logInTypeLK:
-            UtilsLiknedInHelper.logIn(self)
+            LiknedInHelper.logIn(self)
         case .logInTypeGL:
             GoogleLogInHelper.sharedInstance.logIn(self)
         }
@@ -48,41 +48,41 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
     
     func logInFBSuccess(data: NSDictionary) {
         
-        NSLog("facebook login success: %@", User.currentUser.allParams())
         User.currentUser.initFromFBData(data, completion: { (done) in
             if done {
                 self.controller.navigationController?.viewDidLoad()
             }
         })
+        NSLog("facebook login success: %@", User.currentUser.allParams())
     }
     
     func logInTWSuccess(data: NSDictionary) {
         
-        NSLog("twitter login success: %@", User.currentUser.allParams())
         User.currentUser.initFromTWData(data, completion: { (done) in
             if done {
                 self.controller.navigationController?.viewDidLoad()
             }
         })
+        NSLog("twitter login success: %@", User.currentUser.allParams())
     }
     
     func logInLKSuccess(data: NSDictionary) {
         
-        NSLog("linkedIn login success: %@", User.currentUser.allParams())
         User.currentUser.initFromLKData(data, completion: { (done) in
             if done {
                 self.controller.navigationController?.viewDidLoad()
             }
         })
+        NSLog("linkedIn login success: %@", User.currentUser.allParams())
     }
     
     func logInGoogleSuccess(data: NSDictionary) {
         
-        NSLog("google login success: %@", User.currentUser.allParams())
         User.currentUser.initFromGoogleData(data, completion: { (done) in
             if done {
                 self.controller.navigationController?.viewDidLoad()
             }
         })
+        NSLog("google login success: %@", User.currentUser.allParams())
     }
 }

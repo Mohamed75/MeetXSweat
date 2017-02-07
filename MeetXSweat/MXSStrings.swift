@@ -24,7 +24,11 @@ enum Strings {
     }
     
     struct AlertAskingData {
-        static let emailMessage = "Please enter your email"
+        static let enterEmailMessage = "Please enter your email"
+    }
+    
+    struct AlertUserCreateAccount {
+        static let wrongEmailMesssage = "Something wrong with your email"
     }
 }
 

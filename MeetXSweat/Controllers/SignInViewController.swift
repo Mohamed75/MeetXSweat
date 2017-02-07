@@ -26,39 +26,50 @@ class SignInViewController: UIViewController {
         // Sign In with credentials.
         let email = emailField.text
         let password = passwordField.text
-        FIRAuth.auth()?.signInWithEmail(email!, password: password!) { (user, error) in
+        FIRAuth.auth()?.signInWithEmail(email!, password: password!) { [weak self] (user, error) in
+            
             if let error = error {
                 print(error.localizedDescription)
                 return
             }
-            self.signedIn(user!)
+            guard let this = self else {
+                return
+            }
+            this.signedIn(user!)
         }
     }
     @IBAction func didTapSignUp(sender: AnyObject) {
         let email = emailField.text
         let password = passwordField.text
-        FIRAuth.auth()?.createUserWithEmail(email!, password: password!) { (user, error) in
+        FIRAuth.auth()?.createUserWithEmail(email!, password: password!) { [weak self] (user, error) in
             if let error = error {
                 print(error.localizedDescription)
                 return
             }
-            self.setDisplayName(user!)
+            guard let this = self else {
+                return
+            }
+            this.setDisplayName(user!)
         }
     }
 
     func setDisplayName(user: FIRUser) {
         let changeRequest = user.profileChangeRequest()
         changeRequest.displayName = user.email!.componentsSeparatedByString("@")[0]
-        changeRequest.commitChangesWithCompletion(){ (error) in
+        changeRequest.commitChangesWithCompletion(){ [weak self] (error) in
             if let error = error {
                 print(error.localizedDescription)
                 return
             }
-            self.signedIn(FIRAuth.auth()?.currentUser)
+            guard let this = self else {
+                return
+            }
+            this.signedIn(FIRAuth.auth()?.currentUser)
         }
     }
     
     @IBAction func didRequestPasswordReset(sender: AnyObject) {
+        
         let prompt = UIAlertController.init(title: nil, message: "Email:", preferredStyle: UIAlertControllerStyle.Alert)
         let okAction = UIAlertAction.init(title: "OK", style: UIAlertActionStyle.Default) { (action) in
             let userInput = prompt.textFields![0].text

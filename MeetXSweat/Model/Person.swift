@@ -37,20 +37,33 @@ class Person: FireBaseObject {
         super.init(coder: aDecoder)
     }
     
-    func savePersonToDataBase() {
+    func createPersonOnDataBase() {
         
         let personRef = FIRDatabase.database().reference().child("person-items")
         
         personRef.queryOrderedByChild("email").queryEqualToValue("\(email)")
-            .observeEventType(.Value, withBlock: { snapshot in
+            .observeEventType(.Value, withBlock: { [weak self] snapshot in
                 
+                guard let this = self else {
+                    return
+                }
                 if ( snapshot.value is NSNull ) {
                     // save user
-                    personRef.childByAutoId().setValue(self.asJson())
+                    personRef.childByAutoId().setValue(this.asJson())
                 } else {
                     print("user already exist")
+                    this.updatePerson(snapshot)
                 }
         })
+    }
+    
+    
+    func updatePerson(snapshot: FIRDataSnapshot) {
+        
+        for child in snapshot.children {
+            let snapUser = User(snapshot: child as! FIRDataSnapshot)
+            User.currentUser.copyFromJson(snapUser.asJson())
+        }
     }
     
     

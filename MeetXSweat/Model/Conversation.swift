@@ -35,12 +35,15 @@ class Conversation: FireBaseObject {
             
             self.messages = []
             let messagesQuery = conversationRef.child("messages").queryLimitedToLast(25)
-            messagesQuery.observeEventType(.ChildAdded, withBlock: { (snapshot) in
+            messagesQuery.observeEventType(.ChildAdded, withBlock: { [weak self] (snapshot) in
                 
+                guard let this = self else {
+                    return
+                }
                 let message = Message(snapshot: snapshot)
-                self.messages.append(message)
+                this.messages.append(message)
                 
-                completionHandler(messages: self.messages)
+                completionHandler(messages: this.messages)
             })
         }
     }
