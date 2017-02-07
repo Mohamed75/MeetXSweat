@@ -82,6 +82,7 @@
 		D9C0863C1E49DCEA00122030 /* TabBar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9C0863B1E49DCEA00122030 /* TabBar.xcassets */; };
 		D9C0863E1E49E73400122030 /* Sports.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9C0863D1E49E73400122030 /* Sports.xcassets */; };
 		D9C086401E4A19D500122030 /* MapIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9C0863F1E4A19D500122030 /* MapIcons.xcassets */; };
+		D9C086491E4A37AA00122030 /* JSONFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086481E4A37AA00122030 /* JSONFile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,6 +185,7 @@
 		D9C0863B1E49DCEA00122030 /* TabBar.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TabBar.xcassets; sourceTree = "<group>"; };
 		D9C0863D1E49E73400122030 /* Sports.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Sports.xcassets; sourceTree = "<group>"; };
 		D9C0863F1E4A19D500122030 /* MapIcons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MapIcons.xcassets; sourceTree = "<group>"; };
+		D9C086481E4A37AA00122030 /* JSONFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONFile.swift; sourceTree = "<group>"; };
 		F04A0BDA1CBA2F76A3C5E1B3 /* Pods-MeetXSweatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetXSweatTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetXSweatTests/Pods-MeetXSweatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FD9164CA102020F4D5ED2DE5 /* Pods-MeetXSweat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetXSweat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetXSweat/Pods-MeetXSweat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -364,6 +366,7 @@
 				D998B5E41D97FFE000A045F4 /* EnCodeObject.swift */,
 				D959581A1DA57F2500481167 /* FireBaseObject.swift */,
 				D9BB48241D8EF2E000C12541 /* GoogleLogInHelper.swift */,
+				D9C086481E4A37AA00122030 /* JSONFile.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -764,6 +767,7 @@
 				D94A3E491DA3FC840090A7A4 /* MXSPersonCollectionCell.swift in Sources */,
 				D90AB5A31D9562E1003DCA75 /* MXSCalendarViewController.swift in Sources */,
 				D959581B1DA57F2500481167 /* FireBaseObject.swift in Sources */,
+				D9C086491E4A37AA00122030 /* JSONFile.swift in Sources */,
 				D90AB5731D93E4D9003DCA75 /* Event.swift in Sources */,
 				D959B3DE1D9318E000981105 /* MXSRessources.swift in Sources */,
 				D94A3E3F1DA3FA240090A7A4 /* MXSConversationsViewController.swift in Sources */,

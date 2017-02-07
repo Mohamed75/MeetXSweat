@@ -13,6 +13,9 @@ import MapKit
 private let reuseId = "MXSPlaceMark"
 
 
+let urlTemplate = "https://api.mapbox.com/styles/v1/mohamed31/ciyvv80dh00bv2sppa6ny6sqj/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibW9oYW1lZDMxIiwiYSI6ImNpeXZ1MzE0aTAwNHkycW9lazU0YXhycGYifQ.2WLwZvBarfp1jAxjNt2miA"
+
+
 class  MXSFindArroundMeViewController: MXSViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     
@@ -36,6 +39,19 @@ class  MXSFindArroundMeViewController: MXSViewController, CLLocationManagerDeleg
         if (Float(UIDevice.currentDevice().systemVersion) >= 8) {
             self.locationManager!.requestWhenInUseAuthorization()
         }
+
+        
+        let overlay = MKTileOverlay(URLTemplate: urlTemplate)
+        overlay.canReplaceMapContent = true
+        mapView.addOverlay(overlay, level: .AboveLabels)
+    }
+    
+    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+        guard let tileOverlay = overlay as? MKTileOverlay else {
+            return MKOverlayRenderer()
+        }
+        
+        return MKTileOverlayRenderer(tileOverlay: tileOverlay)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -74,7 +90,7 @@ class  MXSFindArroundMeViewController: MXSViewController, CLLocationManagerDeleg
         
         var region: MKCoordinateRegion = self.mapView.region
         region.center = (userLocation.location?.coordinate)!
-        region.span = MKCoordinateSpanMake(0.6, 0.6)
+        region.span = MKCoordinateSpanMake(0.4, 0.4)
         self.mapView.setRegion(region, animated: false)
     }
     

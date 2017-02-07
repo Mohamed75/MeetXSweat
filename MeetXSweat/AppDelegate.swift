@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 import DrawerController
-
+import GoogleMaps
 
 
 @UIApplicationMain
@@ -46,6 +46,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         TwitterHelper.application(application, didFinishLaunchingWithOptions: launchOptions)
         
         __initTheDrawerController()
+        
+        
+        GMSServices.provideAPIKey("AIzaSyD_HmPgaGABrV7jG2n9b3SrBJUrRR6bovc")
         
         
         return FaceBookHelper.application(application, didFinishLaunchingWithOptions: launchOptions)
