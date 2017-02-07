@@ -45,6 +45,9 @@ extension UINavigationController {
                         
                     }
                     
+                    if this.tabBarController?.selectedIndex == 0 {
+                        this.tabBarController?.selectedIndex = 1
+                    }
                     
                     this.navigationBarHidden = false
                     this.tabBarController?.tabBar.hidden = false

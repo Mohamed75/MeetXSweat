@@ -76,6 +76,14 @@ class MXSAllLoginsViewController: MXSViewController {
         }
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+    // MARK: --- Show/Hide keyboard ---
+    
     func keyboardWillHide(sender: NSNotification) {
         
         if self.view.frame.origin.y < 0 {
@@ -113,10 +121,7 @@ class MXSAllLoginsViewController: MXSViewController {
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
     
     
     @IBAction func loginButtonClicked(sender: AnyObject) {
@@ -137,7 +142,7 @@ class MXSAllLoginsViewController: MXSViewController {
                 return
             }
             if done {
-                this.navigationController?.viewDidLoad()
+                MSXLogInManager.endLogin(this)
             }
         })
         NSLog("email account created success: %@", User.currentUser.allParams())

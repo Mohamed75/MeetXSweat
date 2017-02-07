@@ -48,9 +48,13 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
     
     func logInFBSuccess(data: NSDictionary) {
         
-        User.currentUser.initFromFBData(data, completion: { (done) in
+        User.currentUser.initFromFBData(data, completion: { [weak self] (done) in
+            
+            guard let this = self else {
+                return
+            }
             if done {
-                self.controller.navigationController?.viewDidLoad()
+                MSXLogInManager.endLogin(this.controller)
             }
         })
         NSLog("facebook login success: %@", User.currentUser.allParams())
@@ -58,9 +62,13 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
     
     func logInTWSuccess(data: NSDictionary) {
         
-        User.currentUser.initFromTWData(data, completion: { (done) in
+        User.currentUser.initFromTWData(data, completion: { [weak self] (done) in
+            
+            guard let this = self else {
+                return
+            }
             if done {
-                self.controller.navigationController?.viewDidLoad()
+                MSXLogInManager.endLogin(this.controller)
             }
         })
         NSLog("twitter login success: %@", User.currentUser.allParams())
@@ -68,9 +76,13 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
     
     func logInLKSuccess(data: NSDictionary) {
         
-        User.currentUser.initFromLKData(data, completion: { (done) in
+        User.currentUser.initFromLKData(data, completion: { [weak self] (done) in
+            
+            guard let this = self else {
+                return
+            }
             if done {
-                self.controller.navigationController?.viewDidLoad()
+                MSXLogInManager.endLogin(this.controller)
             }
         })
         NSLog("linkedIn login success: %@", User.currentUser.allParams())
@@ -78,11 +90,19 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
     
     func logInGoogleSuccess(data: NSDictionary) {
         
-        User.currentUser.initFromGoogleData(data, completion: { (done) in
+        User.currentUser.initFromGoogleData(data, completion: { [weak self] (done) in
+            
+            guard let this = self else {
+                return
+            }
             if done {
-                self.controller.navigationController?.viewDidLoad()
+               MSXLogInManager.endLogin(this.controller)
             }
         })
         NSLog("google login success: %@", User.currentUser.allParams())
+    }
+    
+    static func endLogin(viewController: UIViewController) {
+        viewController.navigationController?.viewDidLoad()
     }
 }

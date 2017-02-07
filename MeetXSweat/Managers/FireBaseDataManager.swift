@@ -21,13 +21,21 @@ class FireBaseDataManager {
     init() {
         
         let eventRef = FIRDatabase.database().reference().child("event-items")
-        eventRef.observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
-            self.events.append(Event(snapshot: snapshot))
+        eventRef.observeEventType(.ChildAdded, withBlock: { [weak self] (snapshot) -> Void in
+            
+            guard let this = self else {
+                return
+            }
+            this.events.append(Event(snapshot: snapshot))
         })
         
         let personRef = FIRDatabase.database().reference().child("person-items")
-        personRef.observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
-            self.persons.append(Person(snapshot: snapshot))
+        personRef.observeEventType(.ChildAdded, withBlock: { [weak self] (snapshot) -> Void in
+            
+            guard let this = self else {
+                return
+            }
+            this.persons.append(Person(snapshot: snapshot))
         })
     }
 }

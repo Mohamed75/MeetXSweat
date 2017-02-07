@@ -21,11 +21,14 @@ class ConversationsDataManager {
     init() {
         
         let conversationRef = FIRDatabase.database().reference().child("conversation-items")
-        conversationRef.observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
+        conversationRef.observeEventType(.ChildAdded, withBlock: { [weak self] (snapshot) -> Void in
             
+            guard let this = self else {
+                return
+            }
             let conversation = Conversation(snapshot: snapshot)
             if conversation.isCurrentUserConversation() {
-                self.conversations.append(conversation)
+                this.conversations.append(conversation)
             }
         })
     }

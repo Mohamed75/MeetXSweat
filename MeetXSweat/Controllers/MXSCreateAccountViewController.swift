@@ -74,10 +74,13 @@ class MXSCreateAccountViewController: MXSViewController {
         }
         
         
-        User.currentUser.createFromEmailData(email, password: password, name: name, lastName: lastName, completion: { (done) in
+        User.currentUser.createFromEmailData(email, password: password, name: name, lastName: lastName, completion: { [weak self] (done) in
+            
+            guard let this = self else {
+                return
+            }
             if done {
-                //self.navigationController?.popViewControllerAnimated(false)
-                self.navigationController?.viewDidLoad()
+                MSXLogInManager.endLogin(this)
             }
         })
         NSLog("email account created success: %@", User.currentUser.allParams())
