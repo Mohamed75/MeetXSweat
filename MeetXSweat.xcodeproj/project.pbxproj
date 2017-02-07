@@ -80,6 +80,7 @@
 		D9C086361E464A1E00122030 /* MSXLogInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086351E464A1E00122030 /* MSXLogInManager.swift */; };
 		D9C086381E46698000122030 /* MSXFindManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086371E46698000122030 /* MSXFindManager.swift */; };
 		D9C0863A1E48DD3100122030 /* MXSCreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086391E48DD3100122030 /* MXSCreateAccountViewController.swift */; };
+		D9C0863C1E49DCEA00122030 /* TabBar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9C0863B1E49DCEA00122030 /* TabBar.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -180,6 +181,7 @@
 		D9C086351E464A1E00122030 /* MSXLogInManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSXLogInManager.swift; sourceTree = "<group>"; };
 		D9C086371E46698000122030 /* MSXFindManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSXFindManager.swift; sourceTree = "<group>"; };
 		D9C086391E48DD3100122030 /* MXSCreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSCreateAccountViewController.swift; sourceTree = "<group>"; };
+		D9C0863B1E49DCEA00122030 /* TabBar.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TabBar.xcassets; sourceTree = "<group>"; };
 		F04A0BDA1CBA2F76A3C5E1B3 /* Pods-MeetXSweatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetXSweatTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetXSweatTests/Pods-MeetXSweatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FD9164CA102020F4D5ED2DE5 /* Pods-MeetXSweat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetXSweat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetXSweat/Pods-MeetXSweat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -298,6 +300,7 @@
 				D926BAAB1D8D6A6400E3878C /* Info.plist */,
 				D998B5DB1D96E63400A045F4 /* GoogleService-Info.plist */,
 				D94C63E71D8DE88A00ECD7FD /* MeetXSweat-Bridging-Header.h */,
+				D9C0863B1E49DCEA00122030 /* TabBar.xcassets */,
 			);
 			path = MeetXSweat;
 			sourceTree = "<group>";
@@ -583,6 +586,7 @@
 				D94A3E4E1DA3FD6C0090A7A4 /* MXSConversation.storyboard in Resources */,
 				D90AB59F1D955F20003DCA75 /* MXSCalendarCellView.xib in Resources */,
 				D90AB56F1D93E275003DCA75 /* MXSEvent.storyboard in Resources */,
+				D9C0863C1E49DCEA00122030 /* TabBar.xcassets in Resources */,
 				D94575951E44932100AF37F2 /* Main.storyboard in Resources */,
 				D926BAAA1D8D6A6400E3878C /* LaunchScreen.storyboard in Resources */,
 				D90AB5801D940CC4003DCA75 /* MXSFindDate.storyboard in Resources */,

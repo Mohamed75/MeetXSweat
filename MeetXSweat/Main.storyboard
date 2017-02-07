@@ -7,11 +7,11 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--Sports-->
         <scene sceneID="vAp-Ws-WTj">
             <objects>
                 <navigationController id="8Uh-yC-Wzd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 2" id="TC2-ly-LfD"/>
+                    <tabBarItem key="tabBarItem" title="Sports" image="sportClear" selectedImage="sport" id="TC2-ly-LfD"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sX6-r4-sfo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -25,11 +25,11 @@
             </objects>
             <point key="canvasLocation" x="-1065" y="396"/>
         </scene>
-        <!--Item 3-->
+        <!--Planning-->
         <scene sceneID="m7J-d6-V4j">
             <objects>
                 <navigationController id="WN0-SD-5eU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 3" id="a6e-5F-9h6"/>
+                    <tabBarItem key="tabBarItem" title="Planning" image="dateClear" selectedImage="date" id="a6e-5F-9h6"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qvO-ae-VEs">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -42,11 +42,11 @@
             </objects>
             <point key="canvasLocation" x="-1072" y="1212"/>
         </scene>
-        <!--Item 4-->
+        <!--Map-->
         <scene sceneID="nCd-UM-egX">
             <objects>
                 <navigationController id="Iod-IP-Ob7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 4" id="Bfh-r4-y0M"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="mapClear" selectedImage="map" id="Bfh-r4-y0M"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="D36-9j-iZA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -63,10 +63,11 @@
         <scene sceneID="a56-Vl-x4O">
             <objects>
                 <tabBarController id="fmU-Pn-7c7" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="zOH-28-byY">
+                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="zOH-28-byY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
                         <segue destination="PAl-g6-mev" kind="relationship" relationship="viewControllers" id="rY8-sh-qnS"/>
@@ -79,11 +80,11 @@
             </objects>
             <point key="canvasLocation" x="-2132" y="-45"/>
         </scene>
-        <!--Item-->
+        <!--Professionnel-->
         <scene sceneID="wOE-3h-SG8">
             <objects>
                 <navigationController navigationBarHidden="YES" id="PAl-g6-mev" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="K7r-Tb-3nO"/>
+                    <tabBarItem key="tabBarItem" title="Professionnel" image="proClear" selectedImage="pro" id="K7r-Tb-3nO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iyM-iY-3Ed">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -107,7 +108,7 @@
                         <viewControllerLayoutGuide type="bottom" id="HoH-0X-72K"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="VMB-Vw-rB1">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -223,13 +224,6 @@
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="b2g-No-SPh"/>
                                         </connections>
                                     </textField>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Lock" translatesAutoresizingMaskIntoConstraints="NO" id="B92-6O-dAl">
-                                        <rect key="frame" x="1" y="45" width="15" height="15"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="15" id="EuK-pZ-C7t"/>
-                                            <constraint firstAttribute="width" constant="15" id="grf-hq-1N9"/>
-                                        </constraints>
-                                    </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7j1-Ir-FcE">
                                         <rect key="frame" x="20" y="0.0" width="150" height="30"/>
                                         <constraints>
@@ -242,26 +236,34 @@
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="6C2-s0-fFn"/>
                                         </connections>
                                     </textField>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="User" translatesAutoresizingMaskIntoConstraints="NO" id="Ftg-JH-dOB">
+                                        <rect key="frame" x="0.0" y="6.5" width="15" height="15"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="15" id="KAq-sz-b9W"/>
+                                            <constraint firstAttribute="height" constant="15" id="zQu-Hq-FAt"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Lock" translatesAutoresizingMaskIntoConstraints="NO" id="B92-6O-dAl">
+                                        <rect key="frame" x="0.0" y="45.5" width="15" height="15"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="B92-6O-dAl" firstAttribute="baseline" secondItem="knL-US-fJc" secondAttribute="baseline" constant="1" id="6Em-tl-4Ug"/>
+                                    <constraint firstItem="Ftg-JH-dOB" firstAttribute="baseline" secondItem="7j1-Ir-FcE" secondAttribute="baseline" constant="2" id="5yx-LM-OYQ"/>
+                                    <constraint firstItem="B92-6O-dAl" firstAttribute="width" secondItem="Ftg-JH-dOB" secondAttribute="width" id="AU6-XL-QVf"/>
                                     <constraint firstAttribute="height" constant="75" id="DVN-3N-jto"/>
                                     <constraint firstAttribute="width" constant="170" id="MdS-KX-iHh"/>
+                                    <constraint firstItem="B92-6O-dAl" firstAttribute="height" secondItem="Ftg-JH-dOB" secondAttribute="height" id="MfR-zf-GjN"/>
                                     <constraint firstItem="knL-US-fJc" firstAttribute="top" secondItem="7j1-Ir-FcE" secondAttribute="bottom" constant="10" id="Vw7-e6-YfU"/>
-                                    <constraint firstItem="B92-6O-dAl" firstAttribute="leading" secondItem="AfG-pi-V3k" secondAttribute="leading" constant="1" id="c6L-WY-vZg"/>
+                                    <constraint firstItem="B92-6O-dAl" firstAttribute="leading" secondItem="Ftg-JH-dOB" secondAttribute="leading" id="hjc-m3-CNf"/>
                                     <constraint firstAttribute="trailing" secondItem="7j1-Ir-FcE" secondAttribute="trailing" id="j7o-CT-FpO"/>
+                                    <constraint firstItem="B92-6O-dAl" firstAttribute="baseline" secondItem="knL-US-fJc" secondAttribute="baseline" constant="1" id="niT-Th-iSn"/>
                                     <constraint firstItem="knL-US-fJc" firstAttribute="width" secondItem="7j1-Ir-FcE" secondAttribute="width" id="qHI-ls-N4H"/>
                                     <constraint firstItem="knL-US-fJc" firstAttribute="centerX" secondItem="7j1-Ir-FcE" secondAttribute="centerX" id="sj0-Zu-SiI"/>
+                                    <constraint firstItem="Ftg-JH-dOB" firstAttribute="leading" secondItem="AfG-pi-V3k" secondAttribute="leading" id="t4l-VV-lOe"/>
                                     <constraint firstItem="7j1-Ir-FcE" firstAttribute="top" secondItem="AfG-pi-V3k" secondAttribute="top" id="y7h-u3-teR"/>
                                     <constraint firstItem="knL-US-fJc" firstAttribute="height" secondItem="7j1-Ir-FcE" secondAttribute="height" id="ytO-B0-zFm"/>
-                                    <constraint firstItem="7j1-Ir-FcE" firstAttribute="centerX" secondItem="AfG-pi-V3k" secondAttribute="centerX" id="zc2-6F-VVn"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="zc2-6F-VVn"/>
-                                    </mask>
-                                </variation>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ENC-MK-0Qg">
                                 <rect key="frame" x="227" y="610" width="146" height="25"/>
@@ -574,6 +576,15 @@
         <image name="LogInButton" width="145" height="25"/>
         <image name="Logo" width="150" height="150"/>
         <image name="TWButton" width="47" height="25"/>
+        <image name="User" width="15" height="15"/>
+        <image name="date" width="25" height="25"/>
+        <image name="dateClear" width="25" height="25"/>
+        <image name="map" width="25" height="25"/>
+        <image name="mapClear" width="25" height="25"/>
+        <image name="pro" width="25" height="25"/>
+        <image name="proClear" width="25" height="25"/>
+        <image name="sport" width="25" height="25"/>
+        <image name="sportClear" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="w6a-rF-cAW"/>

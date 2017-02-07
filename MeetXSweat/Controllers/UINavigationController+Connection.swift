@@ -20,6 +20,18 @@ extension UINavigationController {
         self.navigationBar.barTintColor = kNavigationBarColor
         self.navigationBar.translucent = false
         
+        if let aTabBarController = self.tabBarController {
+            
+            for tab in aTabBarController.tabBar.items!
+            {
+                tab.image = tab.image!.imageWithRenderingMode(.AlwaysOriginal)
+                tab.selectedImage = tab.selectedImage!.imageWithRenderingMode(.AlwaysOriginal)
+            }
+            
+            UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName:kSpecialColor], forState: .Selected)
+            UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName:kSpecialColorClear], forState: .Normal)
+        }
+        
         let user = User.currentUser
         if user.isConnected {
             
