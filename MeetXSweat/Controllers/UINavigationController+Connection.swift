@@ -70,10 +70,10 @@ extension UINavigationController {
                     
                     this.navigationBarHidden = false
                     this.tabBarController?.tabBar.hidden = false
+                    
+                    UIApplication.sharedApplication().statusBarStyle = .LightContent
                 }
             }
-            
-            UIApplication.sharedApplication().statusBarStyle = .LightContent
             
         } else {
             

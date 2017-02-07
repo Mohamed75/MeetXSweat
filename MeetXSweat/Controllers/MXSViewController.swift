@@ -28,7 +28,8 @@ class MXSViewController: UIViewController {
     }
     
     func addBarButtonItem() {
-        navigationItem.leftBarButtonItem = DrawerBarButtonItem(target: self, action: #selector(togleMenuButton))
+        
+        navigationItem.leftBarButtonItem = DrawerBarButtonItem(target: self, action: #selector(togleMenuButton), menuIconColor: UIColor.whiteColor())
     }
     
     func togleMenuButton() {
