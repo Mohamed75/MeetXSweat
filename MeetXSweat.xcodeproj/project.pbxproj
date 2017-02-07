@@ -27,7 +27,6 @@
 		D90AB5A51D957AE6003DCA75 /* AnimationClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5A41D957AE6003DCA75 /* AnimationClass.swift */; };
 		D90AB5A91D969EF5003DCA75 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90AB5A81D969EF5003DCA75 /* MapKit.framework */; };
 		D90AB5AF1D96BE1E003DCA75 /* MXSActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5AE1D96BE1E003DCA75 /* MXSActivityIndicator.swift */; };
-		D90AB5B11D96DB0C003DCA75 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5B01D96DB0C003DCA75 /* SignInViewController.swift */; };
 		D926BAA01D8D6A6400E3878C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D926BA9F1D8D6A6400E3878C /* AppDelegate.swift */; };
 		D926BAA71D8D6A6400E3878C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D926BAA61D8D6A6400E3878C /* Assets.xcassets */; };
 		D926BAAA1D8D6A6400E3878C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D926BAA81D8D6A6400E3878C /* LaunchScreen.storyboard */; };
@@ -124,7 +123,6 @@
 		D90AB5A41D957AE6003DCA75 /* AnimationClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationClass.swift; sourceTree = "<group>"; };
 		D90AB5A81D969EF5003DCA75 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D90AB5AE1D96BE1E003DCA75 /* MXSActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSActivityIndicator.swift; sourceTree = "<group>"; };
-		D90AB5B01D96DB0C003DCA75 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		D926BA9C1D8D6A6400E3878C /* MeetXSweat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetXSweat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D926BA9F1D8D6A6400E3878C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D926BAA61D8D6A6400E3878C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -344,7 +342,6 @@
 				D926BAE11D8DD5CB00E3878C /* UINavigationController+Connection.swift */,
 				D926BAD21D8DA11F00E3878C /* MXSAllLoginsViewController.swift */,
 				D9AAA2AC1D8F1550004CE80C /* MXSMainViewController.swift */,
-				D90AB5B01D96DB0C003DCA75 /* SignInViewController.swift */,
 				D998B5DD1D96E88F00A045F4 /* MXSAddEventViewController.swift */,
 				D9B64CD81D9D6C28008C5D34 /* MXSMenuViewController.swift */,
 				D9C086391E48DD3100122030 /* MXSCreateAccountViewController.swift */,
@@ -779,7 +776,6 @@
 				D90AB5A11D955F6F003DCA75 /* MXSCalendarCellView.swift in Sources */,
 				D959B3DD1D9318E000981105 /* MXSConstants.swift in Sources */,
 				D9B64D271DA3AA2D008C5D34 /* FindDateManager.swift in Sources */,
-				D90AB5B11D96DB0C003DCA75 /* SignInViewController.swift in Sources */,
 				D90AB59D1D9523C0003DCA75 /* MXSSportsCollectionViewController.swift in Sources */,
 				D9B64CD91D9D6C28008C5D34 /* MXSMenuViewController.swift in Sources */,
 				D9B64D281DA3AA2D008C5D34 /* FindProfileManager.swift in Sources */,

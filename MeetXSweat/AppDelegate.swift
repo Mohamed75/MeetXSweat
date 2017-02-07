@@ -36,6 +36,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
         FIRDatabase.database().persistenceEnabled = true
         FIRAuth.auth()?.signInAnonymouslyWithCompletion({ (user, error) in
+            if (error != nil) {
+                NSLog("signInAnonymously error")
+            } else {
+               NSLog("signInAnonymously succes") 
+            }
         })
         
         TwitterHelper.application(application, didFinishLaunchingWithOptions: launchOptions)
