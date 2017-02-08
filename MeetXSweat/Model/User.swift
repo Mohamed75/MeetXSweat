@@ -54,6 +54,7 @@ class User: Person {
             self.profession = work as! String
         }
         
+        self.isConnected = true
         saveCustomObject(completion)
     }
     
@@ -83,6 +84,7 @@ class User: Person {
             self.birthday = birthday as! String
         }
         
+        self.isConnected = true
         saveCustomObject(completion)
     }
     
@@ -111,7 +113,8 @@ class User: Person {
                 }
             }
         }
-
+        
+        self.isConnected = true
         saveCustomObject(completion)
     }
     
@@ -135,6 +138,7 @@ class User: Person {
             self.gender = gender as! String
         }
         
+        self.isConnected = true
         saveCustomObject(completion)
     }
     
@@ -166,6 +170,7 @@ class User: Person {
                 this.email  = email
                 this.name   = name
                 this.lastName = lastName
+                this.isConnected = true
                 this.saveCustomObject(completion)
             }
         }
@@ -187,6 +192,7 @@ class User: Person {
                     return
                 }
                 this.email  = email
+                this.isConnected = true
                 this.saveCustomObject(completion)
             }
         })
@@ -195,8 +201,6 @@ class User: Person {
     
     func saveCustomObject(completion:((success: Bool)->Void))
     {
-        self.isConnected = true
-        
         let object: Person = self
         if object.email.characters.count < 2 {
         
