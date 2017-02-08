@@ -13,6 +13,9 @@ import DLRadioButton
 
 private let numberOffCell = 3
 
+private let cellWidth = (UIScreen.mainScreen().bounds.width/3)-3
+private let cellHeight = cellWidth*1.16
+
 
 class MXSSportsCollectionViewController: UICollectionViewController {
 
@@ -74,7 +77,7 @@ class MXSSportsCollectionViewController: UICollectionViewController {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
-        return CGSize(width: 103, height: 120)
+        return CGSize(width: cellWidth, height: cellHeight)
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {

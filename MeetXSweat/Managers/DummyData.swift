@@ -15,7 +15,7 @@ class DummyData {
     
     
     class func getDomaines() -> [String] {
-        return ["Informatique", "Medical", "Social", "bancaire"]
+        return ["Informatique", "Medical", "Social", "bancaire", "Autre", "Autre2", "Autre3", "Autre4", "Autre5"]
     }
     
     class func getProfessions() -> [String] {

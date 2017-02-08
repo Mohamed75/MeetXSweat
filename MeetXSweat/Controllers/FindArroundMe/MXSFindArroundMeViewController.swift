@@ -76,6 +76,8 @@ class  MXSFindArroundMeViewController: MXSViewController, CLLocationManagerDeleg
         
         addBarButtonItem()
         
+        self.title = Ressources.NavigationTitle.map
+        
         startUserLocation()
 
         addOverlay()

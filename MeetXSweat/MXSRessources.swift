@@ -99,6 +99,8 @@ enum Ressources {
     
     struct NavigationTitle {
         
-        static let sports = "SPORTS"
+        static let sports       = "SPORTS"
+        static let map          = "MAP"
+        static let rechercher   = "RECHERCHER"
     }
 }
