@@ -12,9 +12,9 @@ import Foundation
 class FindProfileManager {
     
     
-    var domaine = ""
-    var profession = ""
-    var experience = ""
+    var domaine     = ""
+    var profession  = ""
+    var experience  = ""
     
     
     static let sharedInstance = FindProfileManager()

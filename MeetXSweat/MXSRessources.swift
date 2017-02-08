@@ -19,9 +19,18 @@ enum Ressources {
         
         static let profilePlaceHolder    = "Profile_placeholder"
         static let ProfessionalProfile   = "ProfessionalProfile"
-        static let event = "Event"
+        static let event    = "Event"
         static let calendar = "Calendar"
-        static let mxslogo = "Logo"
+        static let mxslogo  = "Logo"
+        static let valider  = "validation"
+        static let back     = "Back"
+        static let glBtn = "GLButton"
+    }
+    
+    struct SportsImages {
+        
+        static let starSelected     = "star"
+        static let starUnSelected   = "starClear"
     }
     
     /**
@@ -86,5 +95,10 @@ enum Ressources {
         static let conversation = "MXSConversationCollectionCell"
         
         static let menu         = "MXSMenuTableViewCell"
+    }
+    
+    struct NavigationTitle {
+        
+        static let sports = "SPORTS"
     }
 }

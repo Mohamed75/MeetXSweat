@@ -91,8 +91,8 @@ class MXSAddEventViewController: MXSViewController,  UIPickerViewDataSource, UIP
         }
         
         if isAllFieldsFull == false {
-            let alert = UIAlertController(title: "Alert", message: "Please fill all fields", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            let alert = UIAlertController(title: Strings.Alert.alert, message: Strings.Alert.fillAllFieldsMessage, preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: Strings.Alert.ok, style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
             return
         }

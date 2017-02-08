@@ -17,8 +17,8 @@ extension UINavigationController {
     
     public override func viewDidLoad() {
         
-        self.navigationBar.backIndicatorImage = UIImage(named: "Back")?.imageWithRenderingMode(.AlwaysOriginal)
-        self.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "Back")?.imageWithRenderingMode(.AlwaysOriginal)
+        self.navigationBar.backIndicatorImage = UIImage(named: Ressources.Images.back)?.imageWithRenderingMode(.AlwaysOriginal)
+        self.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: Ressources.Images.back)?.imageWithRenderingMode(.AlwaysOriginal)
         
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:kBackGroundColor]
         

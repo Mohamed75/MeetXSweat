@@ -26,25 +26,76 @@ class  MXSFindArroundMeViewController: MXSViewController, CLLocationManagerDeleg
     var events = FireBaseDataManager.sharedInstance.events
     
     
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        
-        MSXFindManager.sharedInstance.findBy = FindBy.ArroundMe
-        
-        self.addBarButtonItem()
+    func startUserLocation() {
         
         self.locationManager = CLLocationManager()
         self.locationManager!.delegate = self
         if (Float(UIDevice.currentDevice().systemVersion) >= 8) {
             self.locationManager!.requestWhenInUseAuthorization()
         }
-
+    }
+    
+    func addOverlay() {
         
         let overlay = MKTileOverlay(URLTemplate: urlTemplate)
         overlay.canReplaceMapContent = true
         mapView.addOverlay(overlay, level: .AboveLabels)
     }
+    
+    func addEvent() {
+        
+        MXSActivityIndicator.startAnimating()
+        
+        dispatch_later(4.0) { [weak self] in
+            
+            guard let this = self else {
+                return
+            }
+            var i = 0
+            for event in this.events {
+                
+                if let placeMark = event.placeMark {
+                    
+                    let myPlaceMark = MKPointAnnotation()
+                    myPlaceMark.coordinate  = placeMark.coordinate
+                    myPlaceMark.title       = event.name
+                    this.mapView.addAnnotation(myPlaceMark)
+                    let anotationView = this.mapView.viewForAnnotation(myPlaceMark)
+                    anotationView!.image = UIImage(named: event.sport.l)
+                    anotationView?.tag = i
+                    i += 1
+                }
+            }
+            MXSActivityIndicator.stopAnimating()
+        }
+    }
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        MSXFindManager.sharedInstance.findBy = FindBy.ArroundMe
+        
+        addBarButtonItem()
+        
+        startUserLocation()
+
+        addOverlay()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        addEvent()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        MXSActivityIndicator.stopAnimating()
+        super.viewWillDisappear(animated)
+    }
+    
+    
+    // Mark: --- MapView ---
     
     func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
         guard let tileOverlay = overlay as? MKTileOverlay else {
@@ -52,38 +103,6 @@ class  MXSFindArroundMeViewController: MXSViewController, CLLocationManagerDeleg
         }
         
         return MKTileOverlayRenderer(tileOverlay: tileOverlay)
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        MXSActivityIndicator.startAnimating()
-        
-        dispatch_later(4.0) { [weak self] in
-        
-            guard let this = self else {
-                return
-            }
-            var i = 0
-            for event in this.events {
-                if let placeMark = event.placeMark {
-                    let myPlaceMark = MKPointAnnotation()
-                    myPlaceMark.coordinate = placeMark.coordinate
-                    myPlaceMark.title = event.name
-                    this.mapView.addAnnotation(myPlaceMark)
-                    let anotationView = this.mapView.viewForAnnotation(myPlaceMark)
-                    anotationView?.tag = i
-                    i += 1
-                }
-            }
-            MXSActivityIndicator.stopAnimating()
-        }
-
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        MXSActivityIndicator.stopAnimating()
-        super.viewWillDisappear(animated)
     }
     
     func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {

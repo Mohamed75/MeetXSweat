@@ -67,7 +67,7 @@ class MXSSportCollectionCell: UICollectionViewCell {
         self.addSubview(borderView)
         
         self.sportLabel.textColor = kSpecialColor
-        self.starImageView.image = UIImage(named: "starClear")
+        self.starImageView.image = UIImage(named: Ressources.SportsImages.starUnSelected)
         
         let lineView = UIView(frame: CGRect(x: xMargin, y: self.frame.size.height-30, width: self.frame.size.width-(2*xMargin), height: 2))
         lineView.backgroundColor = kSpecialColor
@@ -76,7 +76,7 @@ class MXSSportCollectionCell: UICollectionViewCell {
     
     func cellSelected() {
         
-        self.starImageView.image = UIImage(named: "star")
+        self.starImageView.image = UIImage(named: Ressources.SportsImages.starSelected)
     }
     
     

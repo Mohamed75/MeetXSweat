@@ -30,13 +30,13 @@ class MXSCreateAccountViewController: MXSViewController {
         super.viewDidLoad()
         
         
-        famillyNameTextField.attributedPlaceholder = NSAttributedString(string: "Nom", attributes:placeHolderAttributes)
+        famillyNameTextField.attributedPlaceholder = NSAttributedString(string: Strings.Account.name, attributes:placeHolderAttributes)
         famillyNameTextField.returnKeyType = .Next
-        lastNameTextField.attributedPlaceholder = NSAttributedString(string: "Prénom", attributes:placeHolderAttributes)
+        lastNameTextField.attributedPlaceholder = NSAttributedString(string: Strings.Account.lastName, attributes:placeHolderAttributes)
         lastNameTextField.returnKeyType = .Next
-        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes:placeHolderAttributes)
+        emailTextField.attributedPlaceholder = NSAttributedString(string: Strings.Account.email, attributes:placeHolderAttributes)
         emailTextField.returnKeyType = .Next
-        passWordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes:placeHolderAttributes)
+        passWordTextField.attributedPlaceholder = NSAttributedString(string: Strings.Account.password, attributes:placeHolderAttributes)
         passWordTextField.returnKeyType = .Done
         
         if UIScreen.mainScreen().bounds.size.height == 480 { //iPhone 4

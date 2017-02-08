@@ -49,12 +49,12 @@ class MXSViewController: UIViewController {
         let actionSheetController: UIAlertController = UIAlertController(title: title, message: "", preferredStyle: .Alert)
         
         if withCancelButton {
-            let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
+            let cancelAction: UIAlertAction = UIAlertAction(title: Strings.Alert.cancel, style: .Cancel) { action -> Void in
             }
             actionSheetController.addAction(cancelAction)
         }
         
-        let nextAction: UIAlertAction = UIAlertAction(title: "OK", style: .Default) { action -> Void in
+        let nextAction: UIAlertAction = UIAlertAction(title: Strings.Alert.ok, style: .Default) { action -> Void in
             completion((inputTextField?.text)!)
         }
         actionSheetController.addAction(nextAction)

@@ -8,8 +8,8 @@
 
 import UIKit
 
-private let rotationRightInfiniKey = "rotationRightInfini"
-private let zPath   = "transform.rotation.z"
+private let rotationRightInfiniKey  = "rotationRightInfini"
+private let zPath                   = "transform.rotation.z"
 private let fullRotation = Float(2*M_PI)
 
 

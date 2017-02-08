@@ -19,6 +19,9 @@ private let getUserInfoUrl  = NSURL(string: "https://graph.facebook.com/me")
 private let permessionArray = ["public_profile", "email", "user_friends", "user_about_me"]
 private let faceBookApiKey  = getValueFromInfoPlist("FacebookAppID") as! String
 
+private let fbController    = "FBSDKContainerViewController"
+
+
 
 protocol LogInFBDelegate {
     func logInFBSuccess(data: NSDictionary)
@@ -72,7 +75,7 @@ class FaceBookHelper {
                     // For first launch sometimes the loginWebView dont pop up, so this code force the loginWebview
                     this.isLoginBlock = true
                     NSThread.sleepForTimeInterval(1)
-                    if getVisibleViewController().classForCoder.description() != "FBSDKContainerViewController" {
+                    if getVisibleViewController().classForCoder.description() != fbController {
                         this.faceBookWebLogin(delegate)
                     }
                     this.isLoginBlock = false

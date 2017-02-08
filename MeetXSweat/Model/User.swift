@@ -148,7 +148,7 @@ class User: Person {
                 switch error!.code {
                 case 17008:
                     
-                    let alertController: UIAlertController = UIAlertController(title: "", message: Strings.AlertUserCreateAccount.wrongEmailMesssage, preferredStyle: .Alert)
+                    let alertController: UIAlertController = UIAlertController(title: "", message: Strings.Alert.wrongEmailMesssage, preferredStyle: .Alert)
                     alertController.addAction(okAction)
                     getVisibleViewController().presentViewController(alertController, animated: true, completion: nil)
                     
@@ -200,7 +200,7 @@ class User: Person {
         let object: Person = self
         if object.email.characters.count < 2 {
         
-            MXSViewController.getInformationPopUp(Strings.AlertAskingData.enterEmailMessage, withCancelButton: false) { (email) in
+            MXSViewController.getInformationPopUp(Strings.Alert.enterEmailMessage, withCancelButton: false) { (email) in
                 
                 if email.isValidEmail {
                     object.createPersonOnDataBase()

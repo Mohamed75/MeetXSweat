@@ -23,12 +23,20 @@ enum Strings {
         static let numberOfSections =  4
     }
     
-    struct AlertAskingData {
+    struct Alert {
         static let enterEmailMessage = "Please enter your email"
+        static let cancel   = "Cancel"
+        static let ok       = "OK"
+        static let alert    = "Alert"
+        static let fillAllFieldsMessage = "Please fill all fields"
+        static let wrongEmailMesssage = "Something wrong with your email"
     }
     
-    struct AlertUserCreateAccount {
-        static let wrongEmailMesssage = "Something wrong with your email"
+    struct Account {
+        static let email    = "Email"
+        static let password = "Password"
+        static let name     = "Nom"
+        static let lastName = "Prénom"
     }
 }
 

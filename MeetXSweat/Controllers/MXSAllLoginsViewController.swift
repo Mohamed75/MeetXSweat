@@ -40,13 +40,13 @@ class MXSAllLoginsViewController: MXSViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.evo_drawerController!.openDrawerGestureModeMask = []
-        googleButton.setBackgroundImage(UIImage(named: "GLButton"), forState: .Normal)
+        googleButton.setBackgroundImage(UIImage(named: Ressources.Images.glBtn), forState: .Normal)
         
         
         
-        userNameTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes:placeHolderAttributes)
+        userNameTextField.attributedPlaceholder = NSAttributedString(string: Strings.Account.email, attributes:placeHolderAttributes)
         userNameTextField.returnKeyType = .Next
-        passWordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes:placeHolderAttributes)
+        passWordTextField.attributedPlaceholder = NSAttributedString(string: Strings.Account.password, attributes:placeHolderAttributes)
         passWordTextField.returnKeyType = .Done
     }
     
