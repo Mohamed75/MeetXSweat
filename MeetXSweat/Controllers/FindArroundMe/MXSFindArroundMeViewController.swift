@@ -129,7 +129,9 @@ class  MXSFindArroundMeViewController: MXSViewController, CLLocationManagerDeleg
             
             aPinView.canShowCallout = true
             aPinView.enabled = true
-            aPinView.rightCalloutAccessoryView = UIButton(type: UIButtonType.DetailDisclosure)
+            let button = UIButton(type: UIButtonType.DetailDisclosure)
+            button.tintColor = kSpecialColor
+            aPinView.rightCalloutAccessoryView = button
             
             guard let subTitle = annotation.subtitle else {
                 return pinView
@@ -137,10 +139,11 @@ class  MXSFindArroundMeViewController: MXSViewController, CLLocationManagerDeleg
             if let index = Int(subTitle!) {
                 aPinView.tag = index
                 let event = self.events[aPinView.tag]
-                if let image = UIImage(named: event.sport.lowercaseString+"Pin") {
+                if let image = UIImage(named: event.sport.lowercaseString+"PinBlanc") {
                     aPinView.image = image
                 }
             }
+            (annotation as? MKPointAnnotation)!.subtitle = ""
         }
         
         return pinView
@@ -149,6 +152,18 @@ class  MXSFindArroundMeViewController: MXSViewController, CLLocationManagerDeleg
     
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
         print("Annotation selected")
+        let event = self.events[view.tag]
+        if let image = UIImage(named: event.sport.lowercaseString+"Pin") {
+            view.image = image
+        }
+    }
+    
+    func mapView(mapView: MKMapView, didDeselectAnnotationView view: MKAnnotationView) {
+        print("Annotation unselected")
+        let event = self.events[view.tag]
+        if let image = UIImage(named: event.sport.lowercaseString+"PinBlanc") {
+            view.image = image
+        }
     }
     
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
@@ -161,4 +176,31 @@ class  MXSFindArroundMeViewController: MXSViewController, CLLocationManagerDeleg
         eventViewController.event = self.events[view.tag]
         self.navigationController?.pushViewController(eventViewController, animated: true)
     }
+}
+
+
+extension MKAnnotationView {
+    
+    public override func layoutSubviews () {
+        
+        if (!selected) {
+            return
+        }
+        super.layoutSubviews()
+        for view in subviews {
+            searchViewHierarchy (view)
+        }
+    }
+    
+    func searchViewHierarchy(aPinView: UIView) {
+        
+        for subView in aPinView.subviews {
+            if (subView is UILabel) {
+                (subView as! UILabel).textColor = kSpecialColor
+            } else {
+                searchViewHierarchy (subView)
+            }
+        }
+    }
+
 }
