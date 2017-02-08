@@ -59,10 +59,8 @@ class  MXSFindArroundMeViewController: MXSViewController, CLLocationManagerDeleg
                     let myPlaceMark = MKPointAnnotation()
                     myPlaceMark.coordinate  = placeMark.coordinate
                     myPlaceMark.title       = event.name
+                    myPlaceMark.subtitle    = String(i)
                     this.mapView.addAnnotation(myPlaceMark)
-                    let anotationView = this.mapView.viewForAnnotation(myPlaceMark)
-                    anotationView!.image = UIImage(named: event.sport.l)
-                    anotationView?.tag = i
                     i += 1
                 }
             }
@@ -115,20 +113,35 @@ class  MXSFindArroundMeViewController: MXSViewController, CLLocationManagerDeleg
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
-        if annotation is MKUserLocation {
+        guard !(annotation is MKUserLocation) else {
             return nil
         }
         
-        var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
+        var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId)
         if pinView == nil {
-            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
         }
         else {
             pinView!.annotation = annotation
         }
-        pinView!.canShowCallout = true
-        pinView?.enabled = true
-        pinView?.rightCalloutAccessoryView = UIButton(type: UIButtonType.DetailDisclosure)
+        
+        if let aPinView = pinView {
+            
+            aPinView.canShowCallout = true
+            aPinView.enabled = true
+            aPinView.rightCalloutAccessoryView = UIButton(type: UIButtonType.DetailDisclosure)
+            
+            guard let subTitle = annotation.subtitle else {
+                return pinView
+            }
+            if let index = Int(subTitle!) {
+                aPinView.tag = index
+                let event = self.events[aPinView.tag]
+                if let image = UIImage(named: event.sport.lowercaseString+"Pin") {
+                    aPinView.image = image
+                }
+            }
+        }
         
         return pinView
     }
