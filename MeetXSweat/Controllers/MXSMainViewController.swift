@@ -24,8 +24,6 @@ class MXSMainViewController: MXSViewController {
         ConversationsDataManager.sharedInstance
         
         MSXFindManager.sharedInstance
-        
-        self.evo_drawerController!.openDrawerGestureModeMask = OpenDrawerGestureMode.PanningCenterView
     }
     
     

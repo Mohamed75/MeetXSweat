@@ -105,9 +105,9 @@ class User: Person {
         
         if let data3 = data["positions"] {
          
-            if let data2 = data3["values"] {
-                if let job = data2![0] {
-                    if let work = job["title"] {
+            if let dataValues = data3["values"] {
+                if let job = dataValues?.firstObject {
+                    if let work = job!["title"] {
                         self.profession = work as! String
                     }
                 }

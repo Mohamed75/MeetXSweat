@@ -15,7 +15,7 @@ private let getUserInfoUrlString = "https://www.googleapis.com/oauth2/v3/userinf
 
 
 protocol LogInGoogleDelegate {
-    func logInGoogleSuccess(data: NSDictionary)
+    func logInGoogleSuccess(data: NSDictionary?)
 }
 
 
@@ -88,6 +88,7 @@ class GoogleLogInHelper: NSObject, GIDSignInDelegate, GIDSignInUIDelegate {
         }
         else {
             print("google logIn \(error.localizedDescription)")
+            self.controllerDelegate.logInGoogleSuccess(nil)
         }
     }
     

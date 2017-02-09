@@ -20,7 +20,7 @@ private let closeString             = "Close"
 
 
 protocol LogInLKDelegate {
-    func logInLKSuccess(data: NSDictionary)
+    func logInLKSuccess(data: NSDictionary?)
 }
 
 
@@ -44,6 +44,7 @@ class LiknedInHelper {
             
             }) { (error) in
                 NSLog("linkedIn logIn error : %@", error.userInfo.description)
+                delegate.logInLKSuccess(nil)
                 linkedIn.showActivityIndicator = false
         }
     

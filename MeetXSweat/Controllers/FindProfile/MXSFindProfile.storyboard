@@ -80,6 +80,7 @@
                         <outlet property="domaineLabel" destination="osX-cp-KDG" id="hlT-Gh-d8b"/>
                         <outlet property="metierLabel" destination="ihl-m2-WHk" id="SLJ-Vg-MEn"/>
                         <outlet property="titleLabel" destination="95g-10-Lhk" id="7js-Hc-ptY"/>
+                        <outlet property="validerButton" destination="9gV-yh-xgc" id="bAr-7N-9Y4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lfw-39-odT" userLabel="First Responder" sceneMemberID="firstResponder"/>

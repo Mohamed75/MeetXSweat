@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import DrawerController
 
 
 /** This extension will replace the MWSMainViewController by MXSHomeViewController or MXSAllLoginsViewController at the start app depending of the user is connected or not
@@ -71,6 +71,8 @@ extension UINavigationController {
                     this.navigationBarHidden = false
                     this.tabBarController?.tabBar.hidden = false
                     
+                    this.evo_drawerController!.openDrawerGestureModeMask = OpenDrawerGestureMode.PanningCenterView
+                    
                     UIApplication.sharedApplication().statusBarStyle = .LightContent
                 }
             }
@@ -88,6 +90,8 @@ extension UINavigationController {
                     
                     this.navigationBarHidden = true
                     this.tabBarController?.tabBar.hidden = true
+                    
+                    this.evo_drawerController!.closeDrawerGestureModeMask = CloseDrawerGestureMode.PanningCenterView
                 }
             }
         }

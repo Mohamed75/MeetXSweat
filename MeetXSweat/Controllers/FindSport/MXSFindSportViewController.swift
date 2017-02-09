@@ -24,17 +24,12 @@ class MXSFindSportViewController: MXSViewController {
         MSXFindManager.sharedInstance.findBy = FindBy.Sport
         
         self.addBarButtonItem()
+        self.addValiderButton()
         
         self.title = Ressources.NavigationTitle.sports
-        
-        let validatButton = UIButton(type: .Custom)
-        validatButton.addTarget(self, action: #selector(validatButtonClicked), forControlEvents: .TouchUpInside)
-        validatButton.setBackgroundImage(UIImage(named: Ressources.Images.valider), forState: .Normal)
-        validatButton.frame = CGRectMake(0 ,0,30,30)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: validatButton)
     }
     
-    @IBAction func validatButtonClicked(sender: AnyObject) {
+    override func validatButtonClicked(sender: AnyObject) {
         validerButton.sendActionsForControlEvents(.TouchUpInside)
     }
     

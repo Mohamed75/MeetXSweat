@@ -24,7 +24,7 @@ private let fbController    = "FBSDKContainerViewController"
 
 
 protocol LogInFBDelegate {
-    func logInFBSuccess(data: NSDictionary)
+    func logInFBSuccess(data: NSDictionary?)
 }
 
 
@@ -91,11 +91,13 @@ class FaceBookHelper {
             FBSDKLoginManager().logInWithReadPermissions(permessionArray, fromViewController: getVisibleViewController()) { [weak self] (result: FBSDKLoginManagerLoginResult!, error: NSError!) in
                 
                 if ((error) != nil) {
-                    NSLog("Facebook web signIn Process error");
+                    NSLog("Facebook web signIn Process error")
+                    delegate.logInFBSuccess(nil)
                 } else if (result.isCancelled) {
-                    NSLog("Facebook web signIn Cancelled");
+                    NSLog("Facebook web signIn Cancelled")
+                    delegate.logInFBSuccess(nil)
                 } else {
-                    NSLog("Facebook web signIn Logged in");
+                    NSLog("Facebook web signIn Logged in")
                     
                     if (FBSDKAccessToken.currentAccessToken() != nil) {
                         guard let this = self else {

@@ -18,7 +18,7 @@ private let getUserInfoUrlString    = "https://api.twitter.com/1.1/users/show.js
 
 
 protocol LogInTWDelegate {
-    func logInTWSuccess(data: NSDictionary)
+    func logInTWSuccess(data: NSDictionary?)
 }
 
 
@@ -33,10 +33,11 @@ class TwitterHelper {
         
         Twitter.sharedInstance().logInWithCompletion { session, error in
             if (session != nil) {
-                print("Twitter signed in as \(session!.userName)");
+                print("Twitter signed in as \(session!.userName)")
                 getUserInfo(delegate)
             } else {
-                print("Twitter signIn error: \(error!.localizedDescription)");
+                print("Twitter signIn error: \(error!.localizedDescription)")
+                delegate.logInTWSuccess(nil)
             }
         }
     }

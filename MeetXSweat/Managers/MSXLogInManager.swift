@@ -31,6 +31,8 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
         
         self.controller = viewController
         
+        MXSActivityIndicator.startAnimating()
+        
         switch logInType {
             
         case .logInTypeFB:
@@ -46,9 +48,13 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
     
     // MARK: --- LogIn Helpers callBacks ---
     
-    func logInFBSuccess(data: NSDictionary) {
+    func logInFBSuccess(data: NSDictionary?) {
         
-        User.currentUser.initFromFBData(data, completion: { [weak self] (done) in
+        guard let aData = data else {
+            MSXLogInManager.endLogin(self.controller)
+            return
+        }
+        User.currentUser.initFromFBData(aData, completion: { [weak self] (done) in
             
             guard let this = self else {
                 return
@@ -60,9 +66,13 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
         NSLog("facebook login success: %@", User.currentUser.allParams())
     }
     
-    func logInTWSuccess(data: NSDictionary) {
+    func logInTWSuccess(data: NSDictionary?) {
         
-        User.currentUser.initFromTWData(data, completion: { [weak self] (done) in
+        guard let aData = data else {
+            MSXLogInManager.endLogin(self.controller)
+            return
+        }
+        User.currentUser.initFromTWData(aData, completion: { [weak self] (done) in
             
             guard let this = self else {
                 return
@@ -74,9 +84,13 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
         NSLog("twitter login success: %@", User.currentUser.allParams())
     }
     
-    func logInLKSuccess(data: NSDictionary) {
+    func logInLKSuccess(data: NSDictionary?) {
         
-        User.currentUser.initFromLKData(data, completion: { [weak self] (done) in
+        guard let aData = data else {
+            MSXLogInManager.endLogin(self.controller)
+            return
+        }
+        User.currentUser.initFromLKData(aData, completion: { [weak self] (done) in
             
             guard let this = self else {
                 return
@@ -88,9 +102,13 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
         NSLog("linkedIn login success: %@", User.currentUser.allParams())
     }
     
-    func logInGoogleSuccess(data: NSDictionary) {
+    func logInGoogleSuccess(data: NSDictionary?) {
         
-        User.currentUser.initFromGoogleData(data, completion: { [weak self] (done) in
+        guard let aData = data else {
+            MSXLogInManager.endLogin(self.controller)
+            return
+        }
+        User.currentUser.initFromGoogleData(aData, completion: { [weak self] (done) in
             
             guard let this = self else {
                 return
@@ -103,6 +121,10 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
     }
     
     static func endLogin(viewController: UIViewController) {
+        
+        dispatch_async(dispatch_get_main_queue()){
+            MXSActivityIndicator.stopAnimating()
+        }
         viewController.navigationController?.viewDidLoad()
     }
 }

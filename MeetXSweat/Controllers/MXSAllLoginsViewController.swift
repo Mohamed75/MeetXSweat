@@ -34,6 +34,8 @@ class MXSAllLoginsViewController: MXSViewController {
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passWordTextField: UITextField!
     
+    var savedTabBarController: UITabBarController!
+    
     
     override func viewDidLoad() {
         
@@ -64,6 +66,13 @@ class MXSAllLoginsViewController: MXSViewController {
             NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow), name:UIKeyboardWillShowNotification, object: self.view.window)
             NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide), name:UIKeyboardWillHideNotification, object: self.view.window)
         }
+        
+        savedTabBarController = self.tabBarController
+        if (savedTabBarController != nil) {
+            var frame = savedTabBarController.view.frame
+            frame.size.height += 50
+            savedTabBarController.view.frame = frame
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -73,6 +82,13 @@ class MXSAllLoginsViewController: MXSViewController {
             
             NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: self.view.window)
             NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: self.view.window)
+        }
+        
+        if (savedTabBarController != nil) {
+            var frame = savedTabBarController.view.frame
+            frame.size.height -= 50
+            savedTabBarController.view.frame = frame
+            savedTabBarController = nil
         }
     }
     
