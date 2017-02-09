@@ -26,8 +26,8 @@ class MXSProfileViewController: MXSViewController {
         super.viewDidLoad()
         
         self.imageView.image = UIImage(named: Ressources.Images.profilePlaceHolder)
-        let text = person.name  + " " + person.lastName
-        self.nameLabel.text = text + "\n" + FindProfileManager.sharedInstance.profession
+        
+        self.nameLabel.text = person.fullName() + "\n" + FindProfileManager.sharedInstance.profession
         
         self.descriptionLabel.text = "My temporary description"
         

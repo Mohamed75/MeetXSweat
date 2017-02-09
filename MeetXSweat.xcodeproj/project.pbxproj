@@ -83,6 +83,9 @@
 		D9C0863E1E49E73400122030 /* Sports.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9C0863D1E49E73400122030 /* Sports.xcassets */; };
 		D9C086401E4A19D500122030 /* MapIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9C0863F1E4A19D500122030 /* MapIcons.xcassets */; };
 		D9C086491E4A37AA00122030 /* JSONFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086481E4A37AA00122030 /* JSONFile.swift */; };
+		D9C0864F1E4C83C600122030 /* UserProfile.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9C0864E1E4C83C600122030 /* UserProfile.xcassets */; };
+		D9C086511E4C847100122030 /* MXSWellComeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086501E4C847100122030 /* MXSWellComeViewController.swift */; };
+		D9C086531E4C84B400122030 /* MXSWellCome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9C086521E4C84B400122030 /* MXSWellCome.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -186,6 +189,9 @@
 		D9C0863D1E49E73400122030 /* Sports.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Sports.xcassets; sourceTree = "<group>"; };
 		D9C0863F1E4A19D500122030 /* MapIcons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MapIcons.xcassets; sourceTree = "<group>"; };
 		D9C086481E4A37AA00122030 /* JSONFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONFile.swift; sourceTree = "<group>"; };
+		D9C0864E1E4C83C600122030 /* UserProfile.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = UserProfile.xcassets; sourceTree = "<group>"; };
+		D9C086501E4C847100122030 /* MXSWellComeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MXSWellComeViewController.swift; path = ../MXSWellComeViewController.swift; sourceTree = "<group>"; };
+		D9C086521E4C84B400122030 /* MXSWellCome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MXSWellCome.storyboard; sourceTree = "<group>"; };
 		F04A0BDA1CBA2F76A3C5E1B3 /* Pods-MeetXSweatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetXSweatTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetXSweatTests/Pods-MeetXSweatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FD9164CA102020F4D5ED2DE5 /* Pods-MeetXSweat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetXSweat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetXSweat/Pods-MeetXSweat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -307,6 +313,7 @@
 				D9C0863B1E49DCEA00122030 /* TabBar.xcassets */,
 				D9C0863D1E49E73400122030 /* Sports.xcassets */,
 				D9C0863F1E4A19D500122030 /* MapIcons.xcassets */,
+				D9C0864E1E4C83C600122030 /* UserProfile.xcassets */,
 			);
 			path = MeetXSweat;
 			sourceTree = "<group>";
@@ -434,6 +441,8 @@
 		D959B3E21D931FF300981105 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				D9C086501E4C847100122030 /* MXSWellComeViewController.swift */,
+				D9C086521E4C84B400122030 /* MXSWellCome.storyboard */,
 				D959B3E31D93200E00981105 /* MXSProfileViewController.swift */,
 				D959B3E51D93202200981105 /* MXSProfile.storyboard */,
 			);
@@ -589,6 +598,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9C086531E4C84B400122030 /* MXSWellCome.storyboard in Resources */,
+				D9C0864F1E4C83C600122030 /* UserProfile.xcassets in Resources */,
 				D94A3E4E1DA3FD6C0090A7A4 /* MXSConversation.storyboard in Resources */,
 				D90AB59F1D955F20003DCA75 /* MXSCalendarCellView.xib in Resources */,
 				D90AB56F1D93E275003DCA75 /* MXSEvent.storyboard in Resources */,
@@ -765,6 +776,7 @@
 				D94A3E3C1DA3E6220090A7A4 /* Message.swift in Sources */,
 				D926BAD31D8DA11F00E3878C /* MXSAllLoginsViewController.swift in Sources */,
 				D94A3E491DA3FC840090A7A4 /* MXSPersonCollectionCell.swift in Sources */,
+				D9C086511E4C847100122030 /* MXSWellComeViewController.swift in Sources */,
 				D90AB5A31D9562E1003DCA75 /* MXSCalendarViewController.swift in Sources */,
 				D959581B1DA57F2500481167 /* FireBaseObject.swift in Sources */,
 				D9C086491E4A37AA00122030 /* JSONFile.swift in Sources */,

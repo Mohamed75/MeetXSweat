@@ -75,4 +75,8 @@ class Person: FireBaseObject {
         returnString = returnString.stringByReplacingOccurrencesOfString(".", withString: "")
         return returnString
     }
+    
+    func fullName() -> String {
+        return self.name + " " + self.lastName
+    }
 }

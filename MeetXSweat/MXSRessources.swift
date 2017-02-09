@@ -24,7 +24,8 @@ enum Ressources {
         static let mxslogo  = "Logo"
         static let valider  = "validation"
         static let back     = "Back"
-        static let glBtn = "GLButton"
+        static let glBtn    = "GLButton"
+        static let userSansPhoto    = "UserSansPhoto"
     }
     
     struct SportsImages {
@@ -41,6 +42,7 @@ enum Ressources {
         static let main             = "Main"
         static let findProfile      = "MXSFindProfile"
         static let profile          = "MXSProfile"
+        static let wellCome         = "MXSWellCome"
         static let event            = "MXSEvent"
         static let findSport        = "MXSFindSport"
         static let findDate         = "MXSFindDate"
@@ -63,6 +65,9 @@ enum Ressources {
         
         // Profile StoryBoard
         static let profileId        = "MXSProfileViewController"
+        
+        // WellCome StoryBoard
+        static let wellComeId       = "MXSWellComeViewController"
         
         // Events StoryBoard
         static let eventId          = "MXSEventViewController"
@@ -102,5 +107,6 @@ enum Ressources {
         static let sports       = "SPORTS"
         static let map          = "MAP"
         static let rechercher   = "RECHERCHER"
+        static let wellCome     = "BIENVENUE"
     }
 }

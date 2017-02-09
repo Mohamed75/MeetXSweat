@@ -48,6 +48,25 @@ extension UINavigationController {
                     guard let this = self else {
                         return
                     }
+                    
+                    if let dico = NSUserDefaults.standardUserDefaults().objectForKey("FirstTime") as? NSDictionary where (dico[user.email] as? String) == "false" {
+                        
+                        NSLog("Alleready wellcomed")
+                    } else {
+                        
+                        let wellComeViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.wellCome, viewControllerId: Ressources.StoryBooardsIdentifiers.wellComeId)
+                        this.viewControllers = [wellComeViewController]
+                        
+                        //NSUserDefaults.standardUserDefaults().setObject([user.email: "false"], forKey: "FirstTime")
+                        this.navigationBarHidden = false
+                        this.tabBarController?.tabBar.hidden = true
+                        
+                        UIApplication.sharedApplication().statusBarStyle = .LightContent
+                        
+                        return
+                    }
+                    
+                    
                     //this.viewControllers = [MXSHomeViewController.sharedInstance]
                     let index = this.tabBarController!.selectedIndex
                     switch index {

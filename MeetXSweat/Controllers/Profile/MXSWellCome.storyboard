@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Well Come View Controller-->
+        <scene sceneID="2aC-fe-pad">
+            <objects>
+                <viewController storyboardIdentifier="MXSWellComeViewController" id="g80-vI-A1c" customClass="MXSWellComeViewController" customModule="MeetXSweat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rZa-Wl-hes"/>
+                        <viewControllerLayoutGuide type="bottom" id="cMl-jE-2ww"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dZC-pX-eEF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TopMap" translatesAutoresizingMaskIntoConstraints="NO" id="7wP-Qa-RXh">
+                                <rect key="frame" x="0.0" y="20" width="600" height="174"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="7wP-Qa-RXh" secondAttribute="height" multiplier="62:18" id="Cc9-YG-U3V"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UserPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="KH5-ja-Shi">
+                                <rect key="frame" x="252" y="64" width="95" height="95"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="KH5-ja-Shi" secondAttribute="height" multiplier="1:1" id="c94-5U-VTf"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHn-jK-FoW">
+                                <rect key="frame" x="278" y="254" width="44.5" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rAL-8P-V5r">
+                                <rect key="frame" x="262" y="76" width="73.5" height="71"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="rAL-8P-V5r" secondAttribute="height" multiplier="73:71" id="DMB-5u-kIf"/>
+                                    <constraint firstAttribute="width" constant="73.5" id="da6-ld-qg3"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7wP-Qa-RXh" firstAttribute="top" secondItem="rZa-Wl-hes" secondAttribute="bottom" id="5Bb-vf-R6O"/>
+                            <constraint firstItem="rAL-8P-V5r" firstAttribute="centerY" secondItem="KH5-ja-Shi" secondAttribute="centerY" id="5St-wb-wEy"/>
+                            <constraint firstItem="jHn-jK-FoW" firstAttribute="top" secondItem="7wP-Qa-RXh" secondAttribute="bottom" constant="60" id="69w-AG-Dsi"/>
+                            <constraint firstItem="jHn-jK-FoW" firstAttribute="centerX" secondItem="dZC-pX-eEF" secondAttribute="centerX" id="9Jl-kC-5JH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7wP-Qa-RXh" secondAttribute="trailing" constant="-20" id="NAg-Vy-a6x"/>
+                            <constraint firstItem="7wP-Qa-RXh" firstAttribute="leading" secondItem="dZC-pX-eEF" secondAttribute="leadingMargin" constant="-20" id="fmL-Uu-L0P"/>
+                            <constraint firstItem="KH5-ja-Shi" firstAttribute="centerX" secondItem="dZC-pX-eEF" secondAttribute="centerX" id="jff-Qj-T3b"/>
+                            <constraint firstItem="rAL-8P-V5r" firstAttribute="centerX" secondItem="KH5-ja-Shi" secondAttribute="centerX" id="lFQ-Br-rS3"/>
+                            <constraint firstItem="KH5-ja-Shi" firstAttribute="top" secondItem="rZa-Wl-hes" secondAttribute="bottom" constant="44" id="pSY-Y7-rk1"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="nameLabel" destination="jHn-jK-FoW" id="6Vj-8n-qT2"/>
+                        <outlet property="userImageView" destination="rAL-8P-V5r" id="s7Q-hb-bso"/>
+                        <outlet property="userImageWidthConst" destination="da6-ld-qg3" id="2PP-o9-7Qh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FaF-BM-zAp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="312" y="303"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="TopMap" width="310" height="90"/>
+        <image name="UserPhoto" width="95" height="95"/>
+    </resources>
+</document>
