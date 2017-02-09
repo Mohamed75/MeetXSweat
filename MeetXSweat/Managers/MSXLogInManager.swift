@@ -122,9 +122,7 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
     
     static func endLogin(viewController: UIViewController) {
         
-        dispatch_async(dispatch_get_main_queue()){
-            MXSActivityIndicator.stopAnimating()
-        }
+        MXSActivityIndicator.stopAnimating()
         viewController.navigationController?.viewDidLoad()
     }
 }
