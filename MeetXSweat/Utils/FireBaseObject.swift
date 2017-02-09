@@ -15,7 +15,6 @@ class FireBaseObject: EnCodeObject {
     
     var ref: FIRDatabaseReference?
     
-    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }

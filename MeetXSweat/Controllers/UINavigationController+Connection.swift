@@ -57,7 +57,6 @@ extension UINavigationController {
                         let wellComeViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.wellCome, viewControllerId: Ressources.StoryBooardsIdentifiers.wellComeId)
                         this.viewControllers = [wellComeViewController]
                         
-                        //NSUserDefaults.standardUserDefaults().setObject([user.email: "false"], forKey: "FirstTime")
                         this.navigationBarHidden = false
                         this.tabBarController?.tabBar.hidden = true
                         

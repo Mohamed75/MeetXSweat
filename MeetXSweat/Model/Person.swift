@@ -49,20 +49,53 @@ class Person: FireBaseObject {
                 }
                 if ( snapshot.value is NSNull ) {
                     // save user
-                    personRef.childByAutoId().setValue(this.asJson())
+                    this.ref = personRef.childByAutoId()
+                    this.ref!.setValue(this.asJson())
+                    this.saveToNSUserDefaults()
+                    
                 } else {
                     print("user already exist")
-                    this.updatePerson(snapshot)
+                    this.updateCurrentPersonFromDB(snapshot)
                 }
         })
     }
     
     
-    func updatePerson(snapshot: FIRDataSnapshot) {
+    func updateCurrentPersonFromDB(snapshot: FIRDataSnapshot) {
         
         for child in snapshot.children {
             let snapUser = User(snapshot: child as! FIRDataSnapshot)
-            User.currentUser.copyFromJson(snapUser.asJson())
+            self.copyFromJson(snapUser.asJson())
+            self.saveToNSUserDefaults()
+        }
+    }
+    
+    func updatePersonOnDataBase() {
+        
+        self.saveToNSUserDefaults()
+        
+        if let aRef = self.ref {
+            
+            aRef.updateChildValues(["profession": self.profession])
+            aRef.updateChildValues(["sport": self.sport])
+        } else {
+            
+            let personRef = FIRDatabase.database().reference().child("person-items")
+            
+            personRef.queryOrderedByChild("email").queryEqualToValue("\(email)")
+                .observeEventType(.Value, withBlock: { [weak self] snapshot in
+                    
+                    guard let this = self else {
+                        return
+                    }
+                    if !( snapshot.value is NSNull ) {
+                      
+                        print("user finded")
+                        this.ref = snapshot.ref
+                        this.ref!.updateChildValues(["profession": this.profession])
+                        this.ref!.updateChildValues(["sport": this.sport])
+                    }
+            })
         }
     }
     

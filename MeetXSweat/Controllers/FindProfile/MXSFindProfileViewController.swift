@@ -7,10 +7,8 @@
 //
 
 import UIKit
-import DrawerController
 
 
-private let kPickerViewScale = (((UIScreen.mainScreen().bounds.size.height/480)-1)*2)+1
 
 
 class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, UIPickerViewDelegate {
@@ -22,7 +20,7 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
     
     @IBOutlet weak var validerButton: UIButton!
     
-    let emptyTextField = UITextField()
+    
     
     var savedDomaine = ""
     var savedMetier  = ""
@@ -34,6 +32,14 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
     
     static let sharedInstance = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findProfile, viewControllerId: Ressources.StoryBooardsIdentifiers.findProfileId)
     
+    
+    func customLabel(label: UILabel) {
+        
+        label.layer.borderColor = kSpecialColor.CGColor
+        label.layer.borderWidth = 1
+        label.layer.cornerRadius = 4
+        label.clipsToBounds = true
+    }
     
     override func viewDidLoad() {
         
@@ -50,48 +56,14 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
         titleLabel.layer.borderColor = kSpecialColor.CGColor
         titleLabel.layer.borderWidth = 1
         
-        metierLabel.layer.borderColor = kSpecialColor.CGColor
-        metierLabel.layer.borderWidth = 1
-        metierLabel.layer.cornerRadius = 4
-        metierLabel.clipsToBounds = true
+        customLabel(metierLabel)
         Utils.addTapGestureToView(metierLabel, target: self, selectorString: "selectMetierLabel")
         
-        domaineLabel.layer.borderColor = kSpecialColor.CGColor
-        domaineLabel.layer.borderWidth = 1
-        domaineLabel.layer.cornerRadius = 4
-        domaineLabel.clipsToBounds = true
+        customLabel(domaineLabel)
         Utils.addTapGestureToView(domaineLabel, target: self, selectorString: "selectDomaineLabel")
         
         
-        pickerView.delegate = self
-        pickerView.showsSelectionIndicator = false
-        
-        emptyTextField.inputView = pickerView
-        
-        pickerView.transform = CGAffineTransformMakeScale(kPickerViewScale, kPickerViewScale);
-        
-        
-        if let drawerController = getAppDelegateWindow().rootViewController as? DrawerController {
-            /*
-            drawerController.drawerVisualStateBlock = { (drawerController, gestureRecognizer, value) -> Void in
-                if drawerController.openSide == .Left {
-                    self.subViewPanned()
-                }
-            }*/
-            
-            drawerController.gestureCompletionBlock = { (drawerController, gestureRecognizer) -> Void in
-            
-                if self.tabBarController?.selectedIndex != 0 {
-                    return
-                }
-                if drawerController.openSide == .None {
-                    self.showPickerView()
-                } else {
-                    self.subViewPanned()
-                }
-            }
-        }
-        
+        MXSPickerView.initPickerView(pickerView, controller: self, scale: true)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -103,36 +75,12 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
-        subViewPanned()
+        MXSPickerView.subViewPanned(pickerView, controller: self)
     }
     
-    
-    func showPickerView() {
-        
-        emptyTextField.becomeFirstResponder()
-        self.tabBarController?.view.addSubview(pickerView)
-        
-        let x = (pickerView.frame.size.width-UIScreen.mainScreen().bounds.size.width)/2
-        pickerView.frame = CGRectMake(-x, UIScreen.mainScreen().bounds.size.height - pickerView.frame.size.height - 50, pickerView.frame.size.width, pickerView.frame.size.height)
-        
-        if pickerView.subviews.count > 2 {
-            pickerView.subviews[2].removeFromSuperview()
-            let selectorIndicator = pickerView.subviews[1]
-            selectorIndicator.frame = CGRect(x: x*(1/kPickerViewScale), y: selectorIndicator.frame.origin.y, width: 320, height: 35)
-            selectorIndicator.backgroundColor = kSpecialColor
-            pickerView.insertSubview(selectorIndicator, atIndex: 0)
-        }
-    }
-    
-    func subViewPanned() {
-        pickerView.removeFromSuperview()
-        self.view.endEditing(true)
-    }
     
     
     func selectMetierLabel() {
-        
-        showPickerView()
         
         metierLabel.textColor = UIColor.whiteColor()
         metierLabel.backgroundColor = kSpecialColor
@@ -141,13 +89,10 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
         domaineLabel.backgroundColor = UIColor.whiteColor()
         
         dataArray = DummyData.getProfessions()
-        pickerView.selectRow(0, inComponent: 0, animated: false)
-        pickerView.reloadAllComponents()
+        MXSPickerView.showPickerView(pickerView, controller: self, scale: true)
     }
     
     func selectDomaineLabel() {
-        
-        showPickerView()
         
         domaineLabel.textColor = UIColor.whiteColor()
         domaineLabel.backgroundColor = kSpecialColor
@@ -156,8 +101,7 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
         metierLabel.backgroundColor = UIColor.whiteColor()
         
         dataArray = DummyData.getDomaines()
-        pickerView.selectRow(0, inComponent: 0, animated: false)
-        pickerView.reloadAllComponents()
+        MXSPickerView.showPickerView(pickerView, controller: self, scale: true)
     }
     
     
@@ -165,9 +109,9 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
     override func togleMenuButton() {
         
         if self.evo_drawerController!.openSide == .None {
-            subViewPanned()
+            MXSPickerView.subViewPanned(pickerView, controller: self)
         } else {
-            showPickerView()
+            MXSPickerView.showPickerView(pickerView, controller: self, scale: true)
         }
         
         super.togleMenuButton()
@@ -200,10 +144,6 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
     func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         
         let string = dataArray[row]
-        
-        if row == pickerView.selectedRowInComponent(0) {
-            return NSAttributedString(string: string, attributes: [NSForegroundColorAttributeName:UIColor.whiteColor()])
-        }
         return NSAttributedString(string: string, attributes: [NSForegroundColorAttributeName:UIColor.darkGrayColor()])
     }
     

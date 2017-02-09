@@ -36,14 +36,17 @@ class EnCodeObject: NSObject, NSCoding {
         return nil
     }
     
-    
+    // To save
     func encodeWithCoder(aCoder: NSCoder) {
         
         for keyName in properties() {
-            aCoder.encodeObject(valueForKey(keyName), forKey: keyName)
+            if keyName != "ref" {
+                aCoder.encodeObject(valueForKey(keyName), forKey: keyName)
+            }
         }
     }
     
+    // To load
     required init(coder aDecoder: NSCoder) {
         
         super.init()
@@ -63,6 +66,13 @@ class EnCodeObject: NSObject, NSCoding {
         NSUserDefaults.standardUserDefaults().setObject(myEncodedObject, forKey:self.classForCoder.description())
     }
     
+    class func loadCustomObjectClassName(value: String) -> AnyObject?
+    {
+        if let myEncodedObject = NSUserDefaults.standardUserDefaults().objectForKey(value) as? NSData {
+            return NSKeyedUnarchiver.unarchiveObjectWithData(myEncodedObject)
+        }
+        return nil
+    }
 }
 
 
@@ -95,7 +105,7 @@ extension EnCodeObject {
     // Returns the properties names
     private func propertyNames() -> Array<String> {
         
-        let klass: AnyClass = object_getClass(self)
+        var klass: AnyClass = object_getClass(self)
         var results: Array<String> = []
         
         // get the attributes of the current class
@@ -113,9 +123,10 @@ extension EnCodeObject {
         }
         
         // get the attributes of the super class if its not the NSObject
-        if klass.superclass() != NSObject().classForCoder {
+        while klass.superclass() != NSObject().classForCoder {
+            klass = klass.superclass()!
             var superCount: UInt32 = 0
-            let superProperties = class_copyPropertyList(klass.superclass(), &superCount)
+            let superProperties = class_copyPropertyList(klass, &superCount)
             if superCount > 0 {
                 for i: UInt32 in 0...superCount-1 {
                     

@@ -208,7 +208,6 @@ class User: Person {
                 
                 if email.isValidEmail {
                     object.createPersonOnDataBase()
-                    object.saveToNSUserDefaults()
                     completion(success: true)
                 }else {
                     (object as! User).saveCustomObject(completion)
@@ -218,15 +217,15 @@ class User: Person {
         } else {
             
             object.createPersonOnDataBase()
-            object.saveToNSUserDefaults()
             completion(success: true)
         }
     }
     
     class func loadCustomObject() -> User
     {
-        if let myEncodedObject = NSUserDefaults.standardUserDefaults().objectForKey(FireBaseObject.className(String(self))) as? NSData {
-            return NSKeyedUnarchiver.unarchiveObjectWithData(myEncodedObject) as! User
+        let className = FireBaseObject.className(String(self))
+        if let user = FireBaseObject.loadCustomObjectClassName(className) {
+            return user as! User
         } else {
            return User()
         }
