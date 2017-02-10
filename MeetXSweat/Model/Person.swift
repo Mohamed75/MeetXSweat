@@ -67,6 +67,7 @@ class Person: FireBaseObject {
             let snapUser = User(snapshot: child as! FIRDataSnapshot)
             self.ref = child.ref
             self.copyFromJson(snapUser.asJson())
+            User.currentUser.isConnected = true
             self.saveToNSUserDefaults()
         }
     }

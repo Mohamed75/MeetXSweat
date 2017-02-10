@@ -207,6 +207,7 @@ class User: Person {
             MXSViewController.getInformationPopUp(Strings.Alert.enterEmailMessage, withCancelButton: false) { (email) in
                 
                 if email.isValidEmail {
+                    self.updatePersonOnDataBase()
                     object.createPersonOnDataBase()
                     completion(success: true)
                 }else {
@@ -216,6 +217,7 @@ class User: Person {
             
         } else {
             
+            self.updatePersonOnDataBase()
             object.createPersonOnDataBase()
             completion(success: true)
         }
