@@ -79,7 +79,21 @@ class MXSViewController: UIViewController {
         getVisibleViewController().presentViewController(actionSheetController, animated: true, completion: nil)
     }
     
+    // MARK: --- Others ---
     
+    class func customButton(button: UIButton) {
+        
+        button.backgroundColor = Constants.MainColor.kSpecialColor
+        button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        button.layer.cornerRadius = 5
+    }
+    
+    class func underLineView(view: UIView) {
+    
+        let line = UIView(frame: CGRect(x: 0, y: view.frame.size.height-1, width: view.frame.size.width, height: 1))
+        line.backgroundColor = UIColor.blackColor()
+        view.addSubview(line)
+    }
     
     
     // MARK: --- Shake Device ---

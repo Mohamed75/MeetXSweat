@@ -34,7 +34,7 @@ class Conversation: FireBaseObject {
         if let conversationRef = self.ref {
             
             self.messages = []
-            let messagesQuery = conversationRef.child("messages").queryLimitedToLast(25)
+            let messagesQuery = conversationRef.child("messages").queryLimitedToLast(100)
             messagesQuery.observeEventType(.ChildAdded, withBlock: { [weak self] (snapshot) in
                 
                 guard let this = self else {

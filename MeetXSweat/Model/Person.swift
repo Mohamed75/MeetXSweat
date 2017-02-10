@@ -61,7 +61,7 @@ class Person: FireBaseObject {
     }
     
     
-    func updateCurrentPersonFromDB(snapshot: FIRDataSnapshot) {
+    private func updateCurrentPersonFromDB(snapshot: FIRDataSnapshot) {
         
         for child in snapshot.children {
             let snapUser = User(snapshot: child as! FIRDataSnapshot)
@@ -77,8 +77,7 @@ class Person: FireBaseObject {
         
         if let aRef = self.ref {
             
-            aRef.updateChildValues(["profession": self.profession])
-            aRef.updateChildValues(["sport": self.sport])
+            aRef.updateChildValues(self.asJson())
             
         } else {
             
@@ -94,8 +93,7 @@ class Person: FireBaseObject {
                         print("user finded")
                         for child in snapshot.children {
                             this.ref = child.ref
-                            this.ref!.updateChildValues(["profession": this.profession])
-                            this.ref!.updateChildValues(["sport": this.sport])
+                            this.ref!.updateChildValues(this.asJson())
                         }
                     }
             })

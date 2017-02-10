@@ -62,11 +62,10 @@ class MXSMenuViewController: UITableViewController {
             break
         case 2:
             User.currentUser.isConnected = false
-            User.currentUser.saveCustomObject({ (done) in
-                if let tabBar = self.evo_drawerController?.centerViewController as? UITabBarController where done {
-                    tabBar.selectedViewController!.viewDidLoad()
-                }
-            })
+            User.currentUser.updatePersonOnDataBase()
+            if let tabBar = self.evo_drawerController?.centerViewController as? UITabBarController {
+                tabBar.selectedViewController!.viewDidLoad()
+            }
             break
         default:
             break

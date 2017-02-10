@@ -48,8 +48,11 @@ class MXSAllLoginsViewController: MXSViewController {
         
         userNameTextField.attributedPlaceholder = NSAttributedString(string: Strings.Account.email, attributes:placeHolderAttributes)
         userNameTextField.returnKeyType = .Next
+        MXSViewController.underLineView(userNameTextField)
+        
         passWordTextField.attributedPlaceholder = NSAttributedString(string: Strings.Account.password, attributes:placeHolderAttributes)
         passWordTextField.returnKeyType = .Done
+        MXSViewController.underLineView(passWordTextField)
     }
     
     override func viewDidAppear(animated: Bool) {

@@ -17,12 +17,15 @@ class MXSCreateAccountViewController: MXSViewController {
     
     
     @IBOutlet weak var famillyNameTextField: UITextField!
-    @IBOutlet weak var lastNameTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passWordTextField: UITextField!
+    @IBOutlet weak var lastNameTextField:   UITextField!
+    @IBOutlet weak var emailTextField:      UITextField!
+    @IBOutlet weak var passWordTextField:   UITextField!
     
     
     @IBOutlet weak var widthLogoConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var validerButton:   UIButton!
+    @IBOutlet weak var cancelButton:    UIButton!
     
     
     override func viewDidLoad() {
@@ -32,16 +35,27 @@ class MXSCreateAccountViewController: MXSViewController {
         
         famillyNameTextField.attributedPlaceholder = NSAttributedString(string: Strings.Account.name, attributes:placeHolderAttributes)
         famillyNameTextField.returnKeyType = .Next
+        MXSViewController.underLineView(famillyNameTextField)
+        
         lastNameTextField.attributedPlaceholder = NSAttributedString(string: Strings.Account.lastName, attributes:placeHolderAttributes)
         lastNameTextField.returnKeyType = .Next
+        MXSViewController.underLineView(lastNameTextField)
+        
         emailTextField.attributedPlaceholder = NSAttributedString(string: Strings.Account.email, attributes:placeHolderAttributes)
         emailTextField.returnKeyType = .Next
+        MXSViewController.underLineView(emailTextField)
+        
         passWordTextField.attributedPlaceholder = NSAttributedString(string: Strings.Account.password, attributes:placeHolderAttributes)
         passWordTextField.returnKeyType = .Done
+        MXSViewController.underLineView(passWordTextField)
+        
         
         if UIScreen.mainScreen().bounds.size.height == 480 { //iPhone 4
             widthLogoConstraint.constant = 0
         }
+        
+        MXSViewController.customButton(validerButton)
+        MXSViewController.customButton(cancelButton)
     }
     
 

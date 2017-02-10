@@ -41,15 +41,12 @@
 		D94575951E44932100AF37F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D94575941E44932100AF37F2 /* Main.storyboard */; };
 		D94575961E44932100AF37F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D94575941E44932100AF37F2 /* Main.storyboard */; };
 		D94575971E44932100AF37F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D94575941E44932100AF37F2 /* Main.storyboard */; };
-		D94A3E3A1DA3C2270090A7A4 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E391DA3C2270090A7A4 /* ChatViewController.swift */; };
 		D94A3E3C1DA3E6220090A7A4 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E3B1DA3E6220090A7A4 /* Message.swift */; };
-		D94A3E3F1DA3FA240090A7A4 /* MXSConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E3E1DA3FA240090A7A4 /* MXSConversationsViewController.swift */; };
 		D94A3E411DA3FB1B0090A7A4 /* MXSConversationsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E401DA3FB1B0090A7A4 /* MXSConversationsCollectionViewController.swift */; };
 		D94A3E471DA3FC840090A7A4 /* MXSEventsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E431DA3FC840090A7A4 /* MXSEventsCollectionCell.swift */; };
 		D94A3E491DA3FC840090A7A4 /* MXSPersonCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E451DA3FC840090A7A4 /* MXSPersonCollectionCell.swift */; };
 		D94A3E4A1DA3FC840090A7A4 /* MXSSportCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E461DA3FC840090A7A4 /* MXSSportCollectionCell.swift */; };
 		D94A3E4C1DA3FCEF0090A7A4 /* MXSConversationCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E4B1DA3FCEF0090A7A4 /* MXSConversationCollectionCell.swift */; };
-		D94A3E4E1DA3FD6C0090A7A4 /* MXSConversation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D94A3E4D1DA3FD6C0090A7A4 /* MXSConversation.storyboard */; };
 		D94C63E61D8DE4BB00ECD7FD /* FaceBookHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94C63E51D8DE4BB00ECD7FD /* FaceBookHelper.swift */; };
 		D94C63E91D8E914F00ECD7FD /* TwitterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94C63E81D8E914F00ECD7FD /* TwitterHelper.swift */; };
 		D959581B1DA57F2500481167 /* FireBaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959581A1DA57F2500481167 /* FireBaseObject.swift */; };
@@ -62,7 +59,6 @@
 		D959B3E41D93200E00981105 /* MXSProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3E31D93200E00981105 /* MXSProfileViewController.swift */; };
 		D959B3E61D93202200981105 /* MXSProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D959B3E51D93202200981105 /* MXSProfile.storyboard */; };
 		D998B5DC1D96E63400A045F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D998B5DB1D96E63400A045F4 /* GoogleService-Info.plist */; };
-		D998B5DE1D96E88F00A045F4 /* MXSAddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D998B5DD1D96E88F00A045F4 /* MXSAddEventViewController.swift */; };
 		D998B5E51D97FFE000A045F4 /* EnCodeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D998B5E41D97FFE000A045F4 /* EnCodeObject.swift */; };
 		D9AAA2AB1D8F0F12004CE80C /* MXSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA2AA1D8F0F12004CE80C /* MXSViewController.swift */; };
 		D9AAA2AD1D8F1550004CE80C /* MXSMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA2AC1D8F1550004CE80C /* MXSMainViewController.swift */; };
@@ -78,15 +74,19 @@
 		D9BB48251D8EF2E000C12541 /* GoogleLogInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB48241D8EF2E000C12541 /* GoogleLogInHelper.swift */; };
 		D9C086361E464A1E00122030 /* MSXLogInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086351E464A1E00122030 /* MSXLogInManager.swift */; };
 		D9C086381E46698000122030 /* MSXFindManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086371E46698000122030 /* MSXFindManager.swift */; };
-		D9C0863A1E48DD3100122030 /* MXSCreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086391E48DD3100122030 /* MXSCreateAccountViewController.swift */; };
 		D9C0863C1E49DCEA00122030 /* TabBar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9C0863B1E49DCEA00122030 /* TabBar.xcassets */; };
 		D9C0863E1E49E73400122030 /* Sports.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9C0863D1E49E73400122030 /* Sports.xcassets */; };
 		D9C086401E4A19D500122030 /* MapIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9C0863F1E4A19D500122030 /* MapIcons.xcassets */; };
 		D9C086491E4A37AA00122030 /* JSONFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086481E4A37AA00122030 /* JSONFile.swift */; };
 		D9C0864F1E4C83C600122030 /* UserProfile.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9C0864E1E4C83C600122030 /* UserProfile.xcassets */; };
-		D9C086511E4C847100122030 /* MXSWellComeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086501E4C847100122030 /* MXSWellComeViewController.swift */; };
-		D9C086531E4C84B400122030 /* MXSWellCome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9C086521E4C84B400122030 /* MXSWellCome.storyboard */; };
 		D9C086551E4C9FC000122030 /* MXSPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086541E4C9FC000122030 /* MXSPickerView.swift */; };
+		D9C0865C1E4DFBDA00122030 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086591E4DFBDA00122030 /* ChatViewController.swift */; };
+		D9C0865D1E4DFBDA00122030 /* MXSConversation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9C0865A1E4DFBDA00122030 /* MXSConversation.storyboard */; };
+		D9C0865E1E4DFBDA00122030 /* MXSConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C0865B1E4DFBDA00122030 /* MXSConversationsViewController.swift */; };
+		D9C086641E4DFC8100122030 /* MXSAddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086601E4DFC8100122030 /* MXSAddEventViewController.swift */; };
+		D9C086651E4DFC8100122030 /* MXSCreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086611E4DFC8100122030 /* MXSCreateAccountViewController.swift */; };
+		D9C086661E4DFC8100122030 /* MXSWellCome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9C086621E4DFC8100122030 /* MXSWellCome.storyboard */; };
+		D9C086671E4DFC8100122030 /* MXSWellComeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086631E4DFC8100122030 /* MXSWellComeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,15 +147,12 @@
 		D926BADF1D8DBC5100E3878C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D926BAE11D8DD5CB00E3878C /* UINavigationController+Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Connection.swift"; sourceTree = "<group>"; };
 		D94575941E44932100AF37F2 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		D94A3E391DA3C2270090A7A4 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		D94A3E3B1DA3E6220090A7A4 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		D94A3E3E1DA3FA240090A7A4 /* MXSConversationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSConversationsViewController.swift; sourceTree = "<group>"; };
 		D94A3E401DA3FB1B0090A7A4 /* MXSConversationsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSConversationsCollectionViewController.swift; sourceTree = "<group>"; };
 		D94A3E431DA3FC840090A7A4 /* MXSEventsCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSEventsCollectionCell.swift; sourceTree = "<group>"; };
 		D94A3E451DA3FC840090A7A4 /* MXSPersonCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSPersonCollectionCell.swift; sourceTree = "<group>"; };
 		D94A3E461DA3FC840090A7A4 /* MXSSportCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSSportCollectionCell.swift; sourceTree = "<group>"; };
 		D94A3E4B1DA3FCEF0090A7A4 /* MXSConversationCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSConversationCollectionCell.swift; sourceTree = "<group>"; };
-		D94A3E4D1DA3FD6C0090A7A4 /* MXSConversation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MXSConversation.storyboard; sourceTree = "<group>"; };
 		D94C63E51D8DE4BB00ECD7FD /* FaceBookHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceBookHelper.swift; sourceTree = "<group>"; };
 		D94C63E71D8DE88A00ECD7FD /* MeetXSweat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MeetXSweat-Bridging-Header.h"; sourceTree = "<group>"; };
 		D94C63E81D8E914F00ECD7FD /* TwitterHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterHelper.swift; sourceTree = "<group>"; };
@@ -169,7 +166,6 @@
 		D959B3E31D93200E00981105 /* MXSProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSProfileViewController.swift; sourceTree = "<group>"; };
 		D959B3E51D93202200981105 /* MXSProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MXSProfile.storyboard; sourceTree = "<group>"; };
 		D998B5DB1D96E63400A045F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		D998B5DD1D96E88F00A045F4 /* MXSAddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSAddEventViewController.swift; sourceTree = "<group>"; };
 		D998B5E41D97FFE000A045F4 /* EnCodeObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnCodeObject.swift; path = ../Model/EnCodeObject.swift; sourceTree = "<group>"; };
 		D9AAA2AA1D8F0F12004CE80C /* MXSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSViewController.swift; sourceTree = "<group>"; };
 		D9AAA2AC1D8F1550004CE80C /* MXSMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSMainViewController.swift; sourceTree = "<group>"; };
@@ -185,15 +181,19 @@
 		D9BB48241D8EF2E000C12541 /* GoogleLogInHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleLogInHelper.swift; sourceTree = "<group>"; };
 		D9C086351E464A1E00122030 /* MSXLogInManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSXLogInManager.swift; sourceTree = "<group>"; };
 		D9C086371E46698000122030 /* MSXFindManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSXFindManager.swift; sourceTree = "<group>"; };
-		D9C086391E48DD3100122030 /* MXSCreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSCreateAccountViewController.swift; sourceTree = "<group>"; };
 		D9C0863B1E49DCEA00122030 /* TabBar.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TabBar.xcassets; sourceTree = "<group>"; };
 		D9C0863D1E49E73400122030 /* Sports.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Sports.xcassets; sourceTree = "<group>"; };
 		D9C0863F1E4A19D500122030 /* MapIcons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MapIcons.xcassets; sourceTree = "<group>"; };
 		D9C086481E4A37AA00122030 /* JSONFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONFile.swift; sourceTree = "<group>"; };
 		D9C0864E1E4C83C600122030 /* UserProfile.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = UserProfile.xcassets; sourceTree = "<group>"; };
-		D9C086501E4C847100122030 /* MXSWellComeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MXSWellComeViewController.swift; path = ../MXSWellComeViewController.swift; sourceTree = "<group>"; };
-		D9C086521E4C84B400122030 /* MXSWellCome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MXSWellCome.storyboard; sourceTree = "<group>"; };
 		D9C086541E4C9FC000122030 /* MXSPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSPickerView.swift; sourceTree = "<group>"; };
+		D9C086591E4DFBDA00122030 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		D9C0865A1E4DFBDA00122030 /* MXSConversation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MXSConversation.storyboard; sourceTree = "<group>"; };
+		D9C0865B1E4DFBDA00122030 /* MXSConversationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSConversationsViewController.swift; sourceTree = "<group>"; };
+		D9C086601E4DFC8100122030 /* MXSAddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSAddEventViewController.swift; sourceTree = "<group>"; };
+		D9C086611E4DFC8100122030 /* MXSCreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSCreateAccountViewController.swift; sourceTree = "<group>"; };
+		D9C086621E4DFC8100122030 /* MXSWellCome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MXSWellCome.storyboard; sourceTree = "<group>"; };
+		D9C086631E4DFC8100122030 /* MXSWellComeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSWellComeViewController.swift; sourceTree = "<group>"; };
 		F04A0BDA1CBA2F76A3C5E1B3 /* Pods-MeetXSweatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetXSweatTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetXSweatTests/Pods-MeetXSweatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FD9164CA102020F4D5ED2DE5 /* Pods-MeetXSweat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetXSweat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetXSweat/Pods-MeetXSweat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -341,9 +341,8 @@
 		D926BAD11D8DA11F00E3878C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D94A3E3E1DA3FA240090A7A4 /* MXSConversationsViewController.swift */,
-				D94A3E4D1DA3FD6C0090A7A4 /* MXSConversation.storyboard */,
-				D94A3E391DA3C2270090A7A4 /* ChatViewController.swift */,
+				D9C0865F1E4DFC8100122030 /* Other */,
+				D9C086581E4DFBDA00122030 /* Conversation */,
 				D90AB57A1D9404FF003DCA75 /* CollectionControllers */,
 				D90AB56D1D93E262003DCA75 /* Event */,
 				D959B3E21D931FF300981105 /* Profile */,
@@ -356,9 +355,7 @@
 				D926BAE11D8DD5CB00E3878C /* UINavigationController+Connection.swift */,
 				D926BAD21D8DA11F00E3878C /* MXSAllLoginsViewController.swift */,
 				D9AAA2AC1D8F1550004CE80C /* MXSMainViewController.swift */,
-				D998B5DD1D96E88F00A045F4 /* MXSAddEventViewController.swift */,
 				D9B64CD81D9D6C28008C5D34 /* MXSMenuViewController.swift */,
-				D9C086391E48DD3100122030 /* MXSCreateAccountViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -443,8 +440,6 @@
 		D959B3E21D931FF300981105 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				D9C086501E4C847100122030 /* MXSWellComeViewController.swift */,
-				D9C086521E4C84B400122030 /* MXSWellCome.storyboard */,
 				D959B3E31D93200E00981105 /* MXSProfileViewController.swift */,
 				D959B3E51D93202200981105 /* MXSProfile.storyboard */,
 			);
@@ -482,6 +477,27 @@
 				D9C086541E4C9FC000122030 /* MXSPickerView.swift */,
 			);
 			path = UIElements;
+			sourceTree = "<group>";
+		};
+		D9C086581E4DFBDA00122030 /* Conversation */ = {
+			isa = PBXGroup;
+			children = (
+				D9C086591E4DFBDA00122030 /* ChatViewController.swift */,
+				D9C0865A1E4DFBDA00122030 /* MXSConversation.storyboard */,
+				D9C0865B1E4DFBDA00122030 /* MXSConversationsViewController.swift */,
+			);
+			path = Conversation;
+			sourceTree = "<group>";
+		};
+		D9C0865F1E4DFC8100122030 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				D9C086601E4DFC8100122030 /* MXSAddEventViewController.swift */,
+				D9C086611E4DFC8100122030 /* MXSCreateAccountViewController.swift */,
+				D9C086621E4DFC8100122030 /* MXSWellCome.storyboard */,
+				D9C086631E4DFC8100122030 /* MXSWellComeViewController.swift */,
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -601,12 +617,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9C086531E4C84B400122030 /* MXSWellCome.storyboard in Resources */,
+				D9C086661E4DFC8100122030 /* MXSWellCome.storyboard in Resources */,
 				D9C0864F1E4C83C600122030 /* UserProfile.xcassets in Resources */,
-				D94A3E4E1DA3FD6C0090A7A4 /* MXSConversation.storyboard in Resources */,
 				D90AB59F1D955F20003DCA75 /* MXSCalendarCellView.xib in Resources */,
 				D90AB56F1D93E275003DCA75 /* MXSEvent.storyboard in Resources */,
 				D9C0863C1E49DCEA00122030 /* TabBar.xcassets in Resources */,
+				D9C0865D1E4DFBDA00122030 /* MXSConversation.storyboard in Resources */,
 				D94575951E44932100AF37F2 /* Main.storyboard in Resources */,
 				D926BAAA1D8D6A6400E3878C /* LaunchScreen.storyboard in Resources */,
 				D9C0863E1E49E73400122030 /* Sports.xcassets in Resources */,
@@ -756,6 +772,7 @@
 				D959B3D81D93185000981105 /* MXSStrings.swift in Sources */,
 				D959B3CD1D92D1DD00981105 /* MXSEmbedCollectionViewController.swift in Sources */,
 				D9B64D2A1DA3AA2D008C5D34 /* FireBaseDataManager.swift in Sources */,
+				D9C086641E4DFC8100122030 /* MXSAddEventViewController.swift in Sources */,
 				D9BB48251D8EF2E000C12541 /* GoogleLogInHelper.swift in Sources */,
 				D926BAE21D8DD5CB00E3878C /* UINavigationController+Connection.swift in Sources */,
 				D926BAA01D8D6A6400E3878C /* AppDelegate.swift in Sources */,
@@ -772,7 +789,6 @@
 				D90AB5881D940D18003DCA75 /* MXSFindArroundMeViewController.swift in Sources */,
 				D9AAA2AB1D8F0F12004CE80C /* MXSViewController.swift in Sources */,
 				D94C63E61D8DE4BB00ECD7FD /* FaceBookHelper.swift in Sources */,
-				D998B5DE1D96E88F00A045F4 /* MXSAddEventViewController.swift in Sources */,
 				D998B5E51D97FFE000A045F4 /* EnCodeObject.swift in Sources */,
 				D9B64D2C1DA3AA62008C5D34 /* ConversationsDataManager.swift in Sources */,
 				D959B3E41D93200E00981105 /* MXSProfileViewController.swift in Sources */,
@@ -780,30 +796,30 @@
 				D926BAD31D8DA11F00E3878C /* MXSAllLoginsViewController.swift in Sources */,
 				D94A3E491DA3FC840090A7A4 /* MXSPersonCollectionCell.swift in Sources */,
 				D9C086551E4C9FC000122030 /* MXSPickerView.swift in Sources */,
-				D9C086511E4C847100122030 /* MXSWellComeViewController.swift in Sources */,
 				D90AB5A31D9562E1003DCA75 /* MXSCalendarViewController.swift in Sources */,
+				D9C0865E1E4DFBDA00122030 /* MXSConversationsViewController.swift in Sources */,
 				D959581B1DA57F2500481167 /* FireBaseObject.swift in Sources */,
 				D9C086491E4A37AA00122030 /* JSONFile.swift in Sources */,
 				D90AB5731D93E4D9003DCA75 /* Event.swift in Sources */,
 				D959B3DE1D9318E000981105 /* MXSRessources.swift in Sources */,
-				D94A3E3F1DA3FA240090A7A4 /* MXSConversationsViewController.swift in Sources */,
 				D90AB57C1D940522003DCA75 /* MXSPersonsCollectionViewController.swift in Sources */,
 				D90AB5861D940CFC003DCA75 /* MXSFindDateViewController.swift in Sources */,
 				D926BAD81D8DA92400E3878C /* Utils.swift in Sources */,
-				D94A3E3A1DA3C2270090A7A4 /* ChatViewController.swift in Sources */,
 				D90AB5A51D957AE6003DCA75 /* AnimationClass.swift in Sources */,
 				D90AB5AF1D96BE1E003DCA75 /* MXSActivityIndicator.swift in Sources */,
 				D94C63E91D8E914F00ECD7FD /* TwitterHelper.swift in Sources */,
 				D94A3E471DA3FC840090A7A4 /* MXSEventsCollectionCell.swift in Sources */,
 				D9C086361E464A1E00122030 /* MSXLogInManager.swift in Sources */,
 				D90AB5771D93ED1C003DCA75 /* MXSEventsCollectionViewController.swift in Sources */,
+				D9C086651E4DFC8100122030 /* MXSCreateAccountViewController.swift in Sources */,
 				D90AB5A11D955F6F003DCA75 /* MXSCalendarCellView.swift in Sources */,
 				D959B3DD1D9318E000981105 /* MXSConstants.swift in Sources */,
+				D9C086671E4DFC8100122030 /* MXSWellComeViewController.swift in Sources */,
 				D9B64D271DA3AA2D008C5D34 /* FindDateManager.swift in Sources */,
 				D90AB59D1D9523C0003DCA75 /* MXSSportsCollectionViewController.swift in Sources */,
 				D9B64CD91D9D6C28008C5D34 /* MXSMenuViewController.swift in Sources */,
 				D9B64D281DA3AA2D008C5D34 /* FindProfileManager.swift in Sources */,
-				D9C0863A1E48DD3100122030 /* MXSCreateAccountViewController.swift in Sources */,
+				D9C0865C1E4DFBDA00122030 /* ChatViewController.swift in Sources */,
 				D959B3CB1D92D1D200981105 /* MXSFindProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

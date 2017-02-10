@@ -32,11 +32,7 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
     let jobButtonText   = "MON JOB"
     let sportButtonText = "MES SPORTS"
     
-    func customButton(button: UIButton) {
-        button.backgroundColor = Constants.MainColor.kSpecialColor
-        button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        button.layer.cornerRadius = 5
-    }
+    
     
     override func viewDidLoad() {
      
@@ -50,11 +46,11 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
             addValiderButton()
         }
         
-        customButton(jobButton)
+        MXSViewController.customButton(jobButton)
         jobButton.setTitle(jobButtonText, forState: .Normal)
-        customButton(sportButton)
+        MXSViewController.customButton(sportButton)
         sportButton.setTitle(sportButtonText, forState: .Normal)
-        customButton(letsGoButton)
+        MXSViewController.customButton(letsGoButton)
         
         MXSPickerView.initPickerView(pickerView, controller: self, scale: false)
         
