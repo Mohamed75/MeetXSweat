@@ -112,7 +112,12 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
         if self.evo_drawerController!.openSide == .None {
             MXSPickerView.subViewPanned(pickerView, controller: self)
         } else {
-            MXSPickerView.showPickerView(pickerView, controller: self, scale: true)
+            dispatch_later(1, closure: { [weak self] in
+                guard let this = self else {
+                    return
+                }
+                MXSPickerView.showPickerView(this.pickerView, controller: this, scale: true)
+            })
         }
         
         super.togleMenuButton()

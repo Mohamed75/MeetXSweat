@@ -17,6 +17,7 @@ class MXSPickerView {
     
     static private let emptyTextField = UITextField()
     
+    
     static func initPickerView(pickerView: UIPickerView, controller: UIViewController, scale: Bool) {
     
         emptyTextField.inputView = pickerView
@@ -36,12 +37,12 @@ class MXSPickerView {
         }
         
         if let drawerController = getAppDelegateWindow().rootViewController as? DrawerController {
-            /*
+            
              drawerController.drawerVisualStateBlock = { (drawerController, gestureRecognizer, value) -> Void in
-             if drawerController.openSide == .Left {
-             self.subViewPanned()
+                if drawerController.openSide == .Left {
+                    subViewPanned(pickerView, controller: controller)
+                }
              }
-             }*/
             
             drawerController.gestureCompletionBlock = { (drawerController, gestureRecognizer) -> Void in
                 
