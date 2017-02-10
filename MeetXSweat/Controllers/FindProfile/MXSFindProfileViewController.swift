@@ -155,7 +155,7 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
     func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         
         let string = dataArray[row]
-        return NSAttributedString(string: string, attributes: [NSForegroundColorAttributeName:UIColor.darkGrayColor()])
+        return NSAttributedString(string: string, attributes: [NSForegroundColorAttributeName:UIColor.blackColor()])
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

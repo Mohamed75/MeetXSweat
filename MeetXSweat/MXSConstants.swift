@@ -45,7 +45,7 @@ enum Constants {
         static let kBackGroundColor    = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1) //white
         static let kDefaultTextColor   = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1) // black
         static let kSpecialColor       = UIColor(red: 146/255, green: 39/255, blue: 143/255, alpha: 1)
-        static let kSpecialColorClear  = UIColor(red: 146/255, green: 39/255, blue: 143/255, alpha: 0.5)
+        static let kSpecialColorClear  = UIColor(red: 146/255, green: 39/255, blue: 143/255, alpha: 0.9)
     }
 }
 
