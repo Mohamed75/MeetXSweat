@@ -27,6 +27,6 @@ class DummyData {
     }
     
     class func getTuttorials()  -> [String] {
-        return ["CrossFit\n dsfqsdfqsdf sdfqsdf sqdgqgqf \n ergzertzert", "Yoga zzzzzzzzzzzze \n ergzeeeeeeeeeeeeeeeertzert", "Running zzzzzzzzzzzze", "Boxe zzzzzzzzzzzze", "Golf qdsfqsdfdfqsdf", "Foot  qdsfdsqfsdq", "Basket \n qsdfqdsfds\n aeartsgqsdgq", "Velo \nqart", "Natation \n aezfazefaze", "Pilates \nvsdsdfqsdf", "Gym-suedoise", "Trail"]
+        return ["CrossFit\n dsfqsdfqsdf sdfqsdf sqdgqgqf \n ergzertzert", "Yoga zzzzzzzzzzzze \n ergzeeeeeeeeeeeeeeeertzert", "Running zzzzzzzzzzzze", "Boxe zzzzzzzzzzzze", "Golf qdsfqsdfdfqsdf", "Foot  qdsfdsqfsdq", "Basket \n qsdfqdsfds\n aeartsgqsdgq"]
     }
 }

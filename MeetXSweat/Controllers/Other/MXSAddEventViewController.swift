@@ -17,15 +17,15 @@ class MXSAddEventViewController: MXSViewController,  UIPickerViewDataSource, UIP
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var sportTextField: UITextField!
     
-    let datePickerView = UIDatePicker()
-    let sportPickerView = UIPickerView()
+    private let datePickerView  = UIDatePicker()
+    private let sportPickerView = UIPickerView()
     
-    let dateFormatter = NSDateFormatter()
+    private let dateFormatter = NSDateFormatter()
     
-    let emptyDateTextField = UITextField()
-    let emptySportTextField = UITextField()
+    private let emptyDateTextField  = UITextField()
+    private let emptySportTextField = UITextField()
     
-    var sports = FireBaseDataManager.sharedInstance.sports
+    private var sports = FireBaseDataManager.sharedInstance.sports
     
     
     override func viewDidLoad() {

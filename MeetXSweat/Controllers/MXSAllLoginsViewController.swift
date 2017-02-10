@@ -28,13 +28,13 @@ class MXSAllLoginsViewController: MXSViewController {
     @IBOutlet weak var textFieldsView: UIView!
     @IBOutlet weak var textFieldsViewTopConstraint: NSLayoutConstraint!
     
-    var saveIniTextFieldsViewTopConstraint: CGFloat!
+    private var saveIniTextFieldsViewTopConstraint: CGFloat!
     
     
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passWordTextField: UITextField!
     
-    var savedTabBarController: UITabBarController!
+    private var savedTabBarController: UITabBarController!
     
     
     override func viewDidLoad() {

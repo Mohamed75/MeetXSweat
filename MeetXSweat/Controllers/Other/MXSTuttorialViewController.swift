@@ -12,19 +12,39 @@ import UIKit
 class MXSTuttorialViewController: MXSViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     
-    var tuttorials = DummyData.getTuttorials()
+    private var tuttorials = DummyData.getTuttorials()
     
-    var savedTabBarController: UITabBarController!
+    private var savedTabBarController: UITabBarController!
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    
+    private var pageControl = UIPageControl(frame: .zero)
+    
+    private func setupPageControl() {
         
+        pageControl.numberOfPages = tuttorials.count
+        pageControl.translatesAutoresizingMaskIntoConstraints = false
+        pageControl.currentPageIndicatorTintColor = Constants.MainColor.kSpecialColor
+        pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
+        
+        let leading = NSLayoutConstraint(item: pageControl, attribute: .Leading, relatedBy: .Equal, toItem: view, attribute: .Leading, multiplier: 1, constant: 0)
+        let trailing = NSLayoutConstraint(item: pageControl, attribute: .Trailing, relatedBy: .Equal, toItem: view, attribute: .Trailing, multiplier: 1, constant: 0)
+        let bottom = NSLayoutConstraint(item: pageControl, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1, constant: -30)
+        
+        view.addSubview(pageControl)
+        view.addConstraints([leading, trailing, bottom])
+        
+        pageControl.transform = CGAffineTransformMakeScale(1.7, 1.7)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = Ressources.NavigationTitle.tuttorial
         
         addValiderButton()
+        setupPageControl()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -50,6 +70,8 @@ class MXSTuttorialViewController: MXSViewController, UICollectionViewDelegate, U
     }
     
     
+    
+    
     override func validatButtonClicked(sender: AnyObject) {
         
         NSUserDefaults.standardUserDefaults().setObject([User.currentUser.email: "false"], forKey: "FirstTime")
@@ -57,6 +79,14 @@ class MXSTuttorialViewController: MXSViewController, UICollectionViewDelegate, U
     }
     
     
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
+        pageControl.currentPage = Int(pageNumber)
+    }
+    
+    
+    
+    // MARK: --- collectionView ---
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         

@@ -45,7 +45,7 @@ class FaceBookHelper {
     
     
     // avoid multiple click on the login button
-    var isLoginBlock = false
+    private var isLoginBlock = false
     
     func logIn(delegate: LogInFBDelegate) {
         

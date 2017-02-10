@@ -12,9 +12,10 @@ import DrawerController
 private let kPickerViewScale        = (((UIScreen.mainScreen().bounds.size.height/480)-1)*2)+1
 private let kPickerViewScaleWidth   = (((UIScreen.mainScreen().bounds.size.width/320)-1)*2)+1
 
+
 class MXSPickerView {
     
-    static let emptyTextField = UITextField()
+    static private let emptyTextField = UITextField()
     
     static func initPickerView(pickerView: UIPickerView, controller: UIViewController, scale: Bool) {
     

@@ -55,8 +55,8 @@ class MXSSportCollectionCell: UICollectionViewCell {
     @IBOutlet weak var sportLabel: UILabel!
     
     
-    let yMargin = CGFloat(3)
-    let xMargin = CGFloat(3)
+    private let yMargin = CGFloat(3)
+    private let xMargin = CGFloat(3)
     
     func initCell() {
         

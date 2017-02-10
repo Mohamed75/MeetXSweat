@@ -21,6 +21,10 @@ class Event: FireBaseObject {
     var persons: [Person] = []
     var sport   = ""
     
+    var imageUrlString = ""
+    var placeMark: MKPlacemark?
+    
+    
     var adress: String? {
         didSet {
             
@@ -34,9 +38,6 @@ class Event: FireBaseObject {
             })
         }
     }
-    
-    var imageUrlString = ""
-    var placeMark: MKPlacemark?
     
     
     override init() {

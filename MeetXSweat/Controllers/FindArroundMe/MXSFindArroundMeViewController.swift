@@ -13,7 +13,7 @@ import MapKit
 private let reuseId = "MXSPlaceMark"
 
 
-let urlTemplate = "https://api.mapbox.com/styles/v1/mohamed31/ciyvv80dh00bv2sppa6ny6sqj/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibW9oYW1lZDMxIiwiYSI6ImNpeXZ1MzE0aTAwNHkycW9lazU0YXhycGYifQ.2WLwZvBarfp1jAxjNt2miA"
+private let urlTemplate = "https://api.mapbox.com/styles/v1/mohamed31/ciyvv80dh00bv2sppa6ny6sqj/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibW9oYW1lZDMxIiwiYSI6ImNpeXZ1MzE0aTAwNHkycW9lazU0YXhycGYifQ.2WLwZvBarfp1jAxjNt2miA"
 
 
 class  MXSFindArroundMeViewController: MXSViewController, CLLocationManagerDelegate, MKMapViewDelegate {
@@ -21,7 +21,7 @@ class  MXSFindArroundMeViewController: MXSViewController, CLLocationManagerDeleg
     
     @IBOutlet weak var mapView: MKMapView!
     
-    var locationManager: CLLocationManager?
+    private var locationManager: CLLocationManager?
     
     var events = FireBaseDataManager.sharedInstance.events
     

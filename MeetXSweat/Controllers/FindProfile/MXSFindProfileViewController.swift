@@ -22,12 +22,12 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
     
     
     
-    var savedDomaine = ""
-    var savedMetier  = ""
+    private var savedDomaine = ""
+    private var savedMetier  = ""
     
-    var dataArray       = FireBaseDataManager.sharedInstance.domaines
-    var selectedLabel   = 1
-    let pickerView      = UIPickerView()
+    private var dataArray       = FireBaseDataManager.sharedInstance.domaines
+    private var selectedLabel   = 1
+    private let pickerView      = UIPickerView()
     
     
     static let sharedInstance = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findProfile, viewControllerId: Ressources.StoryBooardsIdentifiers.findProfileId)

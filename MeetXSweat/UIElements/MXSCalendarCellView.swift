@@ -15,9 +15,8 @@ class MXSCalendarCellView: JTAppleDayCellView {
     @IBOutlet var selectedView: AnimationView!
     @IBOutlet var dayLabel: UILabel!
     
-    var normalDayCellColor = UIColor.whiteColor()
-    
-    var perviousMonthTextColor = UIColor.grayColor()
+    private var normalDayCellColor      = UIColor.whiteColor()
+    private var perviousMonthTextColor  = UIColor.grayColor()
     
     @IBInspectable var todayColor: UIColor!
     

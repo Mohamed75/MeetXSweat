@@ -18,6 +18,7 @@ class MXSMenuViewController: UITableViewController {
     var mainNavigationController: UITabBarController!
     var conversationsNavigationController: UINavigationController!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

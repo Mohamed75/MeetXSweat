@@ -19,9 +19,10 @@ private let cellHeight = cellWidth*1.16
 
 class MXSSportsCollectionViewController: UICollectionViewController {
 
-    var allSelectedRadioButtonsIndexs = [Int]()
+    private var allSelectedRadioButtonsIndexs = [Int]()
     
-    var sports = FireBaseDataManager.sharedInstance.sports
+    private var sports = FireBaseDataManager.sharedInstance.sports
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

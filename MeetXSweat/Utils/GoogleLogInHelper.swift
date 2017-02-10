@@ -23,7 +23,7 @@ class GoogleLogInHelper: NSObject, GIDSignInDelegate, GIDSignInUIDelegate {
     
     static let sharedInstance = GoogleLogInHelper()
     
-    var controllerDelegate: LogInGoogleDelegate!
+    private var controllerDelegate: LogInGoogleDelegate!
     
     
     

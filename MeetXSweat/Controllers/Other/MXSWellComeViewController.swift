@@ -8,6 +8,9 @@
 
 import UIKit
 
+private let jobButtonText   = "MON JOB"
+private let sportButtonText = "MES SPORTS"
+
 
 class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
@@ -24,13 +27,9 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
     @IBOutlet weak var letsGoButton: UIButton!
     
     
-    var dataArray       = FireBaseDataManager.sharedInstance.professions
-    var selectedButton  = 1
-    let pickerView      = UIPickerView()
-    
-    
-    let jobButtonText   = "MON JOB"
-    let sportButtonText = "MES SPORTS"
+    private var dataArray       = FireBaseDataManager.sharedInstance.professions
+    private var selectedButton  = 1
+    private let pickerView      = UIPickerView()
     
     
     
