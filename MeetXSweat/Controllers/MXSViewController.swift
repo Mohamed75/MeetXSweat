@@ -24,7 +24,7 @@ class MXSViewController: UIViewController {
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         
-        self.view.backgroundColor = kBackGroundColor
+        self.view.backgroundColor = Constants.MainColor.kBackGroundColor
     }
     
     func addBarButtonItem() {

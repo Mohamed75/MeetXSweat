@@ -24,7 +24,7 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
     @IBOutlet weak var letsGoButton: UIButton!
     
     
-    var dataArray       = DummyData.getProfessions()
+    var dataArray       = FireBaseDataManager.sharedInstance.professions
     var selectedButton  = 1
     let pickerView      = UIPickerView()
     
@@ -33,7 +33,7 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
     let sportButtonText = "MES SPORTS"
     
     func customButton(button: UIButton) {
-        button.backgroundColor = kSpecialColor
+        button.backgroundColor = Constants.MainColor.kSpecialColor
         button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         button.layer.cornerRadius = 5
     }
@@ -71,6 +71,9 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
             userImageView.layer.cornerRadius = userImageView.frame.width/2
             userImageView.clipsToBounds = true
         }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Constants.FBNotificationSelector.sports, name: Constants.FBNotificationName.sports, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Constants.FBNotificationSelector.professions, name: Constants.FBNotificationName.professions, object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -85,17 +88,34 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
         MXSPickerView.subViewPanned(pickerView, controller: self)
     }
     
+    // Mark: --- Notifications Observer ---
+    
+    func selectorSportUpdated() {
+        if selectedButton == 2 {
+            sportButtonClicked(NSObject())
+        }
+    }
+    
+    func selectorProfessionUpdated() {
+        
+        if selectedButton == 1 {
+            jobButtonClicked(NSObject())
+        }
+    }
+    
+    // Mark: --- Button Clicked ---
+    
     @IBAction func jobButtonClicked(sender: AnyObject) {
         
         selectedButton  = 1
-        dataArray = DummyData.getProfessions()
+        dataArray = FireBaseDataManager.sharedInstance.professions
         MXSPickerView.showPickerView(pickerView, controller: self, scale: false)
     }
     
     @IBAction func sportButtonClicked(sender: AnyObject) {
         
         selectedButton  = 2
-        dataArray = DummyData.getSports()
+        dataArray = FireBaseDataManager.sharedInstance.sports
         MXSPickerView.showPickerView(pickerView, controller: self, scale: false)
     }
     

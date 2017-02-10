@@ -21,14 +21,24 @@ class MXSSportsCollectionViewController: UICollectionViewController {
 
     var allSelectedRadioButtonsIndexs = [Int]()
     
-    var sports = DummyData.getSports()
+    var sports = FireBaseDataManager.sharedInstance.sports
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         (self.collectionViewLayout as! UICollectionViewFlowLayout).minimumInteritemSpacing = 0
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Constants.FBNotificationSelector.sports, name: Constants.FBNotificationName.sports, object: nil)
     }
     
+    // Mark: --- Notifications Observer ---
+    func selectorSportUpdated() {
+        sports = FireBaseDataManager.sharedInstance.sports
+        self.collectionView?.reloadData()
+    }
+    
+    
+    // Mark: --- collectionView Delegate ---
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Ressources.CellReuseIdentifier.sport, forIndexPath: indexPath) as! MXSSportCollectionCell

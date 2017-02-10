@@ -25,7 +25,7 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
     var savedDomaine = ""
     var savedMetier  = ""
     
-    var dataArray       = DummyData.getDomaines()
+    var dataArray       = FireBaseDataManager.sharedInstance.domaines
     var selectedLabel   = 1
     let pickerView      = UIPickerView()
     
@@ -35,7 +35,7 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
     
     func customLabel(label: UILabel) {
         
-        label.layer.borderColor = kSpecialColor.CGColor
+        label.layer.borderColor = Constants.MainColor.kSpecialColor.CGColor
         label.layer.borderWidth = 1
         label.layer.cornerRadius = 4
         label.clipsToBounds = true
@@ -52,8 +52,8 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
         
         self.title = Ressources.NavigationTitle.rechercher
         
-        titleLabel.textColor = kSpecialColor
-        titleLabel.layer.borderColor = kSpecialColor.CGColor
+        titleLabel.textColor = Constants.MainColor.kSpecialColor
+        titleLabel.layer.borderColor = Constants.MainColor.kSpecialColor.CGColor
         titleLabel.layer.borderWidth = 1
         
         customLabel(metierLabel)
@@ -64,6 +64,9 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
         
         
         MXSPickerView.initPickerView(pickerView, controller: self, scale: true)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Constants.FBNotificationSelector.domaines, name: Constants.FBNotificationName.domaines, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Constants.FBNotificationSelector.professions, name: Constants.FBNotificationName.professions, object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -78,29 +81,27 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
         MXSPickerView.subViewPanned(pickerView, controller: self)
     }
     
-    
-    
     func selectMetierLabel() {
         
         metierLabel.textColor = UIColor.whiteColor()
-        metierLabel.backgroundColor = kSpecialColor
+        metierLabel.backgroundColor = Constants.MainColor.kSpecialColor
         selectedLabel = 1
-        domaineLabel.textColor = kSpecialColor
+        domaineLabel.textColor = Constants.MainColor.kSpecialColor
         domaineLabel.backgroundColor = UIColor.whiteColor()
         
-        dataArray = DummyData.getProfessions()
+        dataArray = FireBaseDataManager.sharedInstance.professions
         MXSPickerView.showPickerView(pickerView, controller: self, scale: true)
     }
     
     func selectDomaineLabel() {
         
         domaineLabel.textColor = UIColor.whiteColor()
-        domaineLabel.backgroundColor = kSpecialColor
+        domaineLabel.backgroundColor = Constants.MainColor.kSpecialColor
         selectedLabel = 2
-        metierLabel.textColor = kSpecialColor
+        metierLabel.textColor = Constants.MainColor.kSpecialColor
         metierLabel.backgroundColor = UIColor.whiteColor()
         
-        dataArray = DummyData.getDomaines()
+        dataArray = FireBaseDataManager.sharedInstance.domaines
         MXSPickerView.showPickerView(pickerView, controller: self, scale: true)
     }
     
@@ -118,19 +119,24 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
     }
     
     
-    // Mark: --- PickerView ---
-    /*
-    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
+    // Mark: --- Notifications Observer ---
+    
+    func selectorDomaineUpdated() {
         
-        let aView = UIView(frame: CGRect(x:0, y:0, width: 320, height: 30))
-        aView.backgroundColor = UIColor.whiteColor()
-        let label = UILabel(frame: aView.frame)
-        label.textColor = UIColor.blackColor()
-        label.text = dataArray[row]
-        label.textAlignment = .Center
-        aView.addSubview(label)
-        return aView
-    }*/
+        if selectedLabel == 2 {
+            selectDomaineLabel()
+        }
+    }
+    
+    func selectorProfessionUpdated() {
+        
+        if selectedLabel == 1 {
+            selectMetierLabel()
+        }
+    }
+    
+    
+    // Mark: --- PickerView ---
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1

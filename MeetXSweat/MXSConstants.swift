@@ -14,8 +14,38 @@ let kDateFormat             = "dd MM yyyy - HH:mm"
 let kCalendarCellDateFormat = "yyyy-MM-dd"
 
 
-let kNavigationBarColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1) // black
-let kBackGroundColor    = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1) //white
-let kDefaultTextColor   = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1) // black
-let kSpecialColor       = UIColor(red: 146/255, green: 39/255, blue: 143/255, alpha: 1)
-let kSpecialColorClear  = UIColor(red: 146/255, green: 39/255, blue: 143/255, alpha: 0.5)
+
+
+
+enum Constants {
+    
+    /**
+     *  A struct of constants about firebase Notification.
+     */
+    struct FBNotificationName {
+        static let sports       = "sportNotification"
+        static let domaines     = "domaineNotification"
+        static let professions  = "professionNotification"
+    }
+    
+    /**
+     *  A struct of constants about firebase Notification.
+     */
+    struct FBNotificationSelector {
+        static let sports   = NSSelectorFromString("selectorSportUpdated")
+        static let domaines = NSSelectorFromString("selectorDomaineUpdated")
+        static let professions = NSSelectorFromString("selectorProfessionUpdated")
+    }
+
+    /**
+     *  A struct of constants about the main colors.
+     */
+    struct MainColor {
+        static let kNavigationBarColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1) // black
+        static let kBackGroundColor    = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1) //white
+        static let kDefaultTextColor   = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1) // black
+        static let kSpecialColor       = UIColor(red: 146/255, green: 39/255, blue: 143/255, alpha: 1)
+        static let kSpecialColorClear  = UIColor(red: 146/255, green: 39/255, blue: 143/255, alpha: 0.5)
+    }
+}
+

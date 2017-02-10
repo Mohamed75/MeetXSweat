@@ -22,10 +22,6 @@ class DummyData {
         return ["Developer", "Project Manager", "Medecin", "Professeur"]
     }
     
-    class func getExperiences() -> [String] {
-        return ["0-2", "2-5", "5-10", ">10"]
-    }
-    
     class func getSports()  -> [String] {
         return ["CrossFit", "Yoga", "Running", "Boxe", "Golf", "Foot", "Basket", "Velo", "Natation", "Pilates", "Gym-suedoise", "Trail"]
     }

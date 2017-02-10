@@ -25,7 +25,7 @@ class MXSAddEventViewController: MXSViewController,  UIPickerViewDataSource, UIP
     let emptyDateTextField = UITextField()
     let emptySportTextField = UITextField()
     
-    var sports = DummyData.getSports()
+    var sports = FireBaseDataManager.sharedInstance.sports
     
     
     override func viewDidLoad() {
@@ -46,8 +46,8 @@ class MXSAddEventViewController: MXSViewController,  UIPickerViewDataSource, UIP
         datePickerView.addTarget(self, action: #selector(MXSAddEventViewController.datePickerValueChanged), forControlEvents: UIControlEvents.ValueChanged)
         dateTextField.delegate = self
         
-        sportPickerView.delegate = self
-        sportTextField.delegate = self
+        sportPickerView.delegate    = self
+        sportTextField.delegate     = self
     }
     
     func creatEvent() {

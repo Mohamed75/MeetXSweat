@@ -22,7 +22,7 @@ class MXSMenuViewController: UITableViewController {
         super.viewDidLoad()
         
         self.tableView.contentInset = UIEdgeInsetsMake(60, 0, 0, 0)
-        self.view.backgroundColor = kBackGroundColor
+        self.view.backgroundColor = Constants.MainColor.kBackGroundColor
         
         mainNavigationController = self.evo_drawerController!.centerViewController as! UITabBarController
         
@@ -42,8 +42,8 @@ class MXSMenuViewController: UITableViewController {
             cell = UITableViewCell(style: .Default, reuseIdentifier: Ressources.CellReuseIdentifier.menu)
         }
         cell?.textLabel?.text = kMenuItemsTitle[indexPath.row]
-        cell?.backgroundColor = kBackGroundColor
-        cell?.textLabel?.textColor = kDefaultTextColor
+        cell?.backgroundColor = Constants.MainColor.kBackGroundColor
+        cell?.textLabel?.textColor = Constants.MainColor.kDefaultTextColor
         return cell!
     }
     

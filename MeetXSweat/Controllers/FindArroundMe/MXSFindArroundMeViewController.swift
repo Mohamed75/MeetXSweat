@@ -132,7 +132,7 @@ class  MXSFindArroundMeViewController: MXSViewController, CLLocationManagerDeleg
             aPinView.canShowCallout = true
             aPinView.enabled = true
             let button = UIButton(type: UIButtonType.DetailDisclosure)
-            button.tintColor = kSpecialColor
+            button.tintColor = Constants.MainColor.kSpecialColor
             aPinView.rightCalloutAccessoryView = button
             
             guard let subTitle = annotation.subtitle else {
@@ -198,7 +198,7 @@ extension MKAnnotationView {
         
         for subView in aPinView.subviews {
             if (subView is UILabel) {
-                (subView as! UILabel).textColor = kSpecialColor
+                (subView as! UILabel).textColor = Constants.MainColor.kSpecialColor
             } else {
                 searchViewHierarchy (subView)
             }

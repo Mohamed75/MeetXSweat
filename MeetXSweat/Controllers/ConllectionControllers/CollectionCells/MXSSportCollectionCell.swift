@@ -61,16 +61,16 @@ class MXSSportCollectionCell: UICollectionViewCell {
     func initCell() {
         
         let borderView = UIView(frame: CGRect(x: xMargin, y: yMargin, width: self.frame.size.width-(2*xMargin), height: self.frame.size.height-(2*yMargin)))
-        borderView.layer.borderColor    = kSpecialColor.CGColor
+        borderView.layer.borderColor    = Constants.MainColor.kSpecialColor.CGColor
         borderView.layer.borderWidth    = 1
         borderView.layer.cornerRadius   = 5
         self.addSubview(borderView)
         
-        self.sportLabel.textColor = kSpecialColor
+        self.sportLabel.textColor = Constants.MainColor.kSpecialColor
         self.starImageView.image = UIImage(named: Ressources.SportsImages.starUnSelected)
         
         let lineView = UIView(frame: CGRect(x: xMargin, y: self.frame.size.height-30, width: self.frame.size.width-(2*xMargin), height: 2))
-        lineView.backgroundColor = kSpecialColor
+        lineView.backgroundColor = Constants.MainColor.kSpecialColor
         self.addSubview(lineView)
     }
     

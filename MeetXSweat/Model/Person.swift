@@ -40,7 +40,6 @@ class Person: FireBaseObject {
     func createPersonOnDataBase() {
         
         let personRef = FIRDatabase.database().reference().child("person-items")
-        
         personRef.queryOrderedByChild("email").queryEqualToValue("\(email)")
             .observeEventType(.Value, withBlock: { [weak self] snapshot in
                 
@@ -81,7 +80,6 @@ class Person: FireBaseObject {
         } else {
             
             let personRef = FIRDatabase.database().reference().child("person-items")
-            
             personRef.queryOrderedByChild("email").queryEqualToValue("\(email)")
                 .observeEventType(.Value, withBlock: { [weak self] snapshot in
                     

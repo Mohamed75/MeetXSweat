@@ -82,7 +82,7 @@ class MXSPickerView {
             pickerView.subviews[2].removeFromSuperview()
             let selectorIndicator = pickerView.subviews[1]
             selectorIndicator.frame = CGRect(x: x*(1/kPickerViewScale), y: selectorIndicator.frame.origin.y, width: pickerView.frame.size.width, height: 35)
-            selectorIndicator.backgroundColor = kSpecialColor
+            selectorIndicator.backgroundColor = Constants.MainColor.kSpecialColor
             pickerView.insertSubview(selectorIndicator, atIndex: 0)
         }
         
