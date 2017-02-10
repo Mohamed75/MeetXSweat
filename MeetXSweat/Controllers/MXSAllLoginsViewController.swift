@@ -152,6 +152,7 @@ class MXSAllLoginsViewController: MXSViewController {
             return
         }
         
+        MXSActivityIndicator.startAnimating()
         User.currentUser.initFromEmailData(email, password: password, completion: { [weak self] (done) in
             
             guard let this = self else {

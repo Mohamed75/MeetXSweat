@@ -40,7 +40,7 @@ class Person: FireBaseObject {
     func createPersonOnDataBase() {
         
         let personRef = FIRDatabase.database().reference().child("person-items")
-        personRef.queryOrderedByChild("email").queryEqualToValue("\(email)")
+        let handle = personRef.queryOrderedByChild("email").queryEqualToValue("\(email)")
             .observeEventType(.Value, withBlock: { [weak self] snapshot in
                 
                 guard let this = self else {
@@ -57,6 +57,7 @@ class Person: FireBaseObject {
                     this.updateCurrentPersonFromDB(snapshot)
                 }
         })
+        personRef.removeObserverWithHandle(handle)
     }
     
     
@@ -64,6 +65,7 @@ class Person: FireBaseObject {
         
         for child in snapshot.children {
             let snapUser = User(snapshot: child as! FIRDataSnapshot)
+            self.ref = child.ref
             self.copyFromJson(snapUser.asJson())
             self.saveToNSUserDefaults()
         }
@@ -77,10 +79,11 @@ class Person: FireBaseObject {
             
             aRef.updateChildValues(["profession": self.profession])
             aRef.updateChildValues(["sport": self.sport])
+            
         } else {
             
             let personRef = FIRDatabase.database().reference().child("person-items")
-            personRef.queryOrderedByChild("email").queryEqualToValue("\(email)")
+            let handle = personRef.queryOrderedByChild("email").queryEqualToValue("\(email)")
                 .observeEventType(.Value, withBlock: { [weak self] snapshot in
                     
                     guard let this = self else {
@@ -89,11 +92,14 @@ class Person: FireBaseObject {
                     if !( snapshot.value is NSNull ) {
                       
                         print("user finded")
-                        this.ref = snapshot.ref
-                        this.ref!.updateChildValues(["profession": this.profession])
-                        this.ref!.updateChildValues(["sport": this.sport])
+                        for child in snapshot.children {
+                            this.ref = child.ref
+                            this.ref!.updateChildValues(["profession": this.profession])
+                            this.ref!.updateChildValues(["sport": this.sport])
+                        }
                     }
             })
+            personRef.removeObserverWithHandle(handle)
         }
     }
     
