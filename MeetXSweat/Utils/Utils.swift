@@ -37,7 +37,7 @@ struct ScreenWidth {
 func dispatch_later(delay: Double, closure:()->()) {
     
     dispatch_after(
-        dispatch_time(DISPATCH_TIME_NOW, Int64(UInt64(delay) * (NSEC_PER_SEC))),
+        dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))),
         dispatch_get_main_queue(), closure)
 }
 

@@ -112,7 +112,7 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
         if self.evo_drawerController!.openSide == .None {
             MXSPickerView.subViewPanned(pickerView, controller: self)
         } else {
-            dispatch_later(1, closure: { [weak self] in
+            dispatch_later(0.2, closure: { [weak self] in
                 guard let this = self else {
                     return
                 }
