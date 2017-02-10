@@ -87,6 +87,8 @@
 		D9C086651E4DFC8100122030 /* MXSCreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086611E4DFC8100122030 /* MXSCreateAccountViewController.swift */; };
 		D9C086661E4DFC8100122030 /* MXSWellCome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9C086621E4DFC8100122030 /* MXSWellCome.storyboard */; };
 		D9C086671E4DFC8100122030 /* MXSWellComeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086631E4DFC8100122030 /* MXSWellComeViewController.swift */; };
+		D9C086691E4E026800122030 /* MXSTuttorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086681E4E026800122030 /* MXSTuttorialViewController.swift */; };
+		D9C0866B1E4E094500122030 /* MXSTuttorialCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C0866A1E4E094500122030 /* MXSTuttorialCollectionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -194,6 +196,8 @@
 		D9C086611E4DFC8100122030 /* MXSCreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSCreateAccountViewController.swift; sourceTree = "<group>"; };
 		D9C086621E4DFC8100122030 /* MXSWellCome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MXSWellCome.storyboard; sourceTree = "<group>"; };
 		D9C086631E4DFC8100122030 /* MXSWellComeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSWellComeViewController.swift; sourceTree = "<group>"; };
+		D9C086681E4E026800122030 /* MXSTuttorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSTuttorialViewController.swift; sourceTree = "<group>"; };
+		D9C0866A1E4E094500122030 /* MXSTuttorialCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSTuttorialCollectionCell.swift; sourceTree = "<group>"; };
 		F04A0BDA1CBA2F76A3C5E1B3 /* Pods-MeetXSweatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetXSweatTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetXSweatTests/Pods-MeetXSweatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FD9164CA102020F4D5ED2DE5 /* Pods-MeetXSweat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetXSweat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetXSweat/Pods-MeetXSweat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -396,6 +400,7 @@
 				D94A3E451DA3FC840090A7A4 /* MXSPersonCollectionCell.swift */,
 				D94A3E461DA3FC840090A7A4 /* MXSSportCollectionCell.swift */,
 				D94A3E4B1DA3FCEF0090A7A4 /* MXSConversationCollectionCell.swift */,
+				D9C0866A1E4E094500122030 /* MXSTuttorialCollectionCell.swift */,
 			);
 			path = CollectionCells;
 			sourceTree = "<group>";
@@ -496,6 +501,7 @@
 				D9C086611E4DFC8100122030 /* MXSCreateAccountViewController.swift */,
 				D9C086621E4DFC8100122030 /* MXSWellCome.storyboard */,
 				D9C086631E4DFC8100122030 /* MXSWellComeViewController.swift */,
+				D9C086681E4E026800122030 /* MXSTuttorialViewController.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -778,8 +784,10 @@
 				D926BAA01D8D6A6400E3878C /* AppDelegate.swift in Sources */,
 				D94A3E4C1DA3FCEF0090A7A4 /* MXSConversationCollectionCell.swift in Sources */,
 				D926BAE01D8DBC5100E3878C /* User.swift in Sources */,
+				D9C086691E4E026800122030 /* MXSTuttorialViewController.swift in Sources */,
 				D9BB48131D8EB48000C12541 /* LinkedInHelper.swift in Sources */,
 				D94A3E4A1DA3FC840090A7A4 /* MXSSportCollectionCell.swift in Sources */,
+				D9C0866B1E4E094500122030 /* MXSTuttorialCollectionCell.swift in Sources */,
 				D9B64D291DA3AA2D008C5D34 /* FindSportManager.swift in Sources */,
 				D9B64D2E1DA3AACF008C5D34 /* Conversation.swift in Sources */,
 				D90AB5841D940CEA003DCA75 /* MXSFindSportViewController.swift in Sources */,

@@ -22,7 +22,7 @@ enum Ressources {
         static let event    = "Event"
         static let calendar = "Calendar"
         static let mxslogo  = "Logo"
-        static let valider  = "validation"
+        static let valider  = "Validation"
         static let back     = "Back"
         static let glBtn    = "GLButton"
         static let userSansPhoto    = "UserSansPhoto"
@@ -68,6 +68,7 @@ enum Ressources {
         
         // WellCome StoryBoard
         static let wellComeId       = "MXSWellComeViewController"
+        static let tuttorialId      = "MXSTuttorialViewController"
         
         // Events StoryBoard
         static let eventId          = "MXSEventViewController"
@@ -98,6 +99,7 @@ enum Ressources {
         static let person       = "MXSPersonCollectionCell"
         static let sport        = "MXSSportCollectionCell"
         static let conversation = "MXSConversationCollectionCell"
+        static let tuttorial    = "MXSTuttorialCollectionCell"
         
         static let menu         = "MXSMenuTableViewCell"
     }
@@ -108,5 +110,6 @@ enum Ressources {
         static let map          = "MAP"
         static let rechercher   = "RECHERCHER"
         static let wellCome     = "BIENVENUE"
+        static let tuttorial     = "TUTTORIAL"
     }
 }

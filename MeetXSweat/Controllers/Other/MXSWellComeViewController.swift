@@ -129,8 +129,8 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
             User.currentUser.sport = sport
             User.currentUser.updatePersonOnDataBase()
             
-            NSUserDefaults.standardUserDefaults().setObject([User.currentUser.email: "false"], forKey: "FirstTime")
-            self.navigationController?.viewDidLoad()
+            let tuttorialViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.wellCome, viewControllerId: Ressources.StoryBooardsIdentifiers.tuttorialId)
+            self.navigationController?.viewControllers = [tuttorialViewController]
         }
     }
     
