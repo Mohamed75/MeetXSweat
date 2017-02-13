@@ -137,10 +137,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="497" height="517"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yfc-mb-Lla">
-                                                    <rect key="frame" x="153.5" y="38" width="190" height="172.5"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TuttorialTop" translatesAutoresizingMaskIntoConstraints="NO" id="yfc-mb-Lla">
+                                                    <rect key="frame" x="162" y="38" width="172.5" height="172.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="yfc-mb-Lla" secondAttribute="height" multiplier="1.1:1" id="1tW-In-uZb"/>
+                                                        <constraint firstAttribute="width" secondItem="yfc-mb-Lla" secondAttribute="height" multiplier="1:1" id="1tW-In-uZb"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TuttorialBottom" translatesAutoresizingMaskIntoConstraints="NO" id="uYi-yO-Vs7">
@@ -148,8 +148,8 @@
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Bq-8Y-qAc">
-                                                    <rect key="frame" x="227" y="369.5" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="229" y="350.5" width="38.5" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -158,7 +158,7 @@
                                         </view>
                                         <constraints>
                                             <constraint firstItem="yfc-mb-Lla" firstAttribute="top" secondItem="A25-IE-Lcm" secondAttribute="topMargin" constant="30" id="2yp-um-mJs"/>
-                                            <constraint firstItem="4Bq-8Y-qAc" firstAttribute="centerY" secondItem="uYi-yO-Vs7" secondAttribute="centerY" id="ENb-bU-y4O"/>
+                                            <constraint firstItem="4Bq-8Y-qAc" firstAttribute="centerY" secondItem="uYi-yO-Vs7" secondAttribute="centerY" constant="-20" id="ENb-bU-y4O"/>
                                             <constraint firstItem="uYi-yO-Vs7" firstAttribute="height" secondItem="A25-IE-Lcm" secondAttribute="height" multiplier="1:2" id="MYO-8P-xiH"/>
                                             <constraint firstItem="4Bq-8Y-qAc" firstAttribute="centerX" secondItem="uYi-yO-Vs7" secondAttribute="centerX" id="Tca-Qu-vgz"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="uYi-yO-Vs7" secondAttribute="bottom" id="XWC-Fd-9YC"/>
@@ -199,6 +199,7 @@
     <resources>
         <image name="TopMap" width="310" height="90"/>
         <image name="TuttorialBottom" width="404" height="315"/>
+        <image name="TuttorialTop" width="165" height="165"/>
         <image name="UserPhoto" width="95" height="95"/>
     </resources>
 </document>

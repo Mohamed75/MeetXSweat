@@ -27,6 +27,9 @@ class DummyData {
     }
     
     class func getTuttorials()  -> [String] {
-        return ["CrossFit\n dsfqsdfqsdf sdfqsdf sqdgqgqf \n ergzertzert", "Yoga zzzzzzzzzzzze \n ergzeeeeeeeeeeeeeeeertzert", "Running zzzzzzzzzzzze", "Boxe zzzzzzzzzzzze", "Golf qdsfqsdfdfqsdf", "Foot  qdsfdsqfsdq", "Basket \n qsdfqdsfds\n aeartsgqsdgq"]
+        return ["Trouvez un profil professionnel et \n rencontrez le pendant un \n entrainement",
+                "Choisissez votre Sport et profitez en \n pour rencontrer des profils \n professionnels",
+                "Choisissez vos dates \n pour networker et s'entrainer",
+                "Trouvez les événements de sport et \n networking autour de vous!"]
     }
 }

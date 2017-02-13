@@ -30,7 +30,7 @@ class MXSTuttorialViewController: MXSViewController, UICollectionViewDelegate, U
         
         let leading = NSLayoutConstraint(item: pageControl, attribute: .Leading, relatedBy: .Equal, toItem: view, attribute: .Leading, multiplier: 1, constant: 0)
         let trailing = NSLayoutConstraint(item: pageControl, attribute: .Trailing, relatedBy: .Equal, toItem: view, attribute: .Trailing, multiplier: 1, constant: 0)
-        let bottom = NSLayoutConstraint(item: pageControl, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1, constant: -30)
+        let bottom = NSLayoutConstraint(item: pageControl, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1, constant: -40)
         
         view.addSubview(pageControl)
         view.addConstraints([leading, trailing, bottom])
@@ -94,7 +94,8 @@ class MXSTuttorialViewController: MXSViewController, UICollectionViewDelegate, U
         
         cell.initCell()
         cell.label.text = tuttorials[indexPath.section]
-        cell.imageView.image = UIImage(named: "TuttorialTop")
+        let imageName = String(format: "Tutto%d", indexPath.section)
+        cell.imageView.image = UIImage(named: imageName)
         
         return cell
     }
