@@ -173,14 +173,18 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
     }
     
     override func validatButtonClicked(sender: AnyObject) {
-        validerButton.sendActionsForControlEvents(.TouchUpInside)
+        if !savedMetier.isEmpty || !savedDomaine.isEmpty {
+            validerButton.sendActionsForControlEvents(.TouchUpInside)
+        }
     }
     
     @IBAction func validerButtonClicked(sender: AnyObject) {
         
         if selectedLabel == 1 {
             FindProfileManager.sharedInstance.profession = savedMetier
+            FindProfileManager.sharedInstance.domaine = ""
         } else {
+            FindProfileManager.sharedInstance.profession = ""
             FindProfileManager.sharedInstance.domaine = savedDomaine
         }
     }

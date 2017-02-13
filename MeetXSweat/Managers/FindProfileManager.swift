@@ -14,7 +14,6 @@ class FindProfileManager {
     
     var domaine     = ""
     var profession  = ""
-    var experience  = ""
     
     
     static let sharedInstance = FindProfileManager()

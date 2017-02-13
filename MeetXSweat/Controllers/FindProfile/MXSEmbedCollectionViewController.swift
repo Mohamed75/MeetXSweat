@@ -12,11 +12,14 @@ import UIKit
 class MXSEmbedCollectionViewController: MXSViewController {
     
     
+    @IBOutlet weak var titleLabel: UILabel!
     
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        self.titleLabel.backgroundColor = Constants.MainColor.kSpecialColor
         
         if MSXFindManager.sharedInstance.findBy == FindBy.Sport {
             let eventsCollectionViewController = self.childViewControllers[0] as? MXSEventsCollectionViewController
@@ -31,6 +34,13 @@ class MXSEmbedCollectionViewController: MXSViewController {
         if MSXFindManager.sharedInstance.findBy == FindBy.Profile {
             let personsCollectionViewController = self.childViewControllers[0] as? MXSPersonsCollectionViewController
             personsCollectionViewController?.persons = FindProfileManager.filterBy(FireBaseDataManager.sharedInstance.persons, filter: FindProfileManager.sharedInstance.profession)
+            
+            if !FindProfileManager.sharedInstance.domaine.isEmpty {
+                self.titleLabel.text = FindProfileManager.sharedInstance.domaine
+            }
+            if !FindProfileManager.sharedInstance.profession.isEmpty {
+                self.titleLabel.text = FindProfileManager.sharedInstance.profession
+            }
         }
     }
     
