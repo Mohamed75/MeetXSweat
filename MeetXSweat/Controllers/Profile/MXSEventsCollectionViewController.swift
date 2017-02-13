@@ -70,7 +70,12 @@ class MXSEventsCollectionViewController: UICollectionViewController {
         if let coordinate = event.placeMark?.coordinate {
             let km = GPSLocationManager.getDistanceFor(coordinate)/1000
             if km > 0 {
-                text = text + String(format: "    %.1fKM", km)
+                let distance  = String(format: "%.1fKM", km)
+                if distance.characters.count > 5 {
+                    text = text + "    " + distance
+                } else {
+                    text = text + "     " + distance
+                }
             }
         }
         
