@@ -9,9 +9,6 @@
 import Firebase
 
 
-let okAction = UIAlertAction(title: "OK", style: .Default, handler: { (UIAlertAction) in
-    getVisibleViewController().dismissViewControllerAnimated(true, completion:nil)
-})
 
 
 
@@ -71,6 +68,10 @@ class User: Person {
         
         if let email = data["email"] {
             self.email = email as! String
+        } else {
+            if let screenName = data["screen_name"] {
+                self.email = (screenName as! String)+"@twitter.fr"
+            }
         }
         
         if let pictureUrl = data["profile_image_url"] {
@@ -151,15 +152,11 @@ class User: Person {
                 
                 switch error!.code {
                 case 17008:
-                    
-                    let alertController: UIAlertController = UIAlertController(title: "", message: Strings.Alert.wrongEmailMesssage, preferredStyle: .Alert)
-                    alertController.addAction(okAction)
-                    getVisibleViewController().presentViewController(alertController, animated: true, completion: nil)
-                    
+                    MXSViewController.showInformatifPopUp(Strings.Alert.wrongEmailMesssage)
                 default:
-                    let alertController: UIAlertController = UIAlertController(title: "", message: error?.localizedDescription, preferredStyle: .Alert)
-                    alertController.addAction(okAction)
-                    getVisibleViewController().presentViewController(alertController, animated: true, completion: nil)
+                    if let errorString = error?.localizedDescription {
+                        MXSViewController.showInformatifPopUp(errorString)
+                    }
                 }
                 
             } else {
@@ -182,9 +179,9 @@ class User: Person {
             
             if (error != nil) {
                 
-                let alertController: UIAlertController = UIAlertController(title: "", message: error?.localizedDescription, preferredStyle: .Alert)
-                alertController.addAction(okAction)
-                getVisibleViewController().presentViewController(alertController, animated: true, completion: nil)
+                if let errorString = error?.localizedDescription {
+                    MXSViewController.showInformatifPopUp(errorString)
+                }
                 
             } else {
                 
@@ -198,18 +195,25 @@ class User: Person {
         })
     }
     
-    
-    func saveCustomObject(completion:((success: Bool)->Void))
+   
+    // Called when create an new account or logIn
+    private func saveCustomObject(completion:((success: Bool)->Void))
     {
         let object: Person = self
-        if object.email.characters.count < 2 {
-        
-            MXSViewController.getInformationPopUp(Strings.Alert.enterEmailMessage, withCancelButton: false) { (email) in
+        if object.email.characters.count < 2 { // Should Not happen
+            
+            MXSViewController.getInformationPopUp(Strings.Alert.enterEmailMessage, withCancelButton: false) { [weak self] (email) in
                 
+                guard let this = self else {
+                    return
+                }
                 if email.isValidEmail {
-                    self.updatePersonOnDataBase()
-                    object.createPersonOnDataBase()
-                    completion(success: true)
+                    this.email = email
+                    object.createPersonOnDataBase({ (done) in
+                        this.updatePersonOnDataBase({ (done) in
+                        })
+                        completion(success: true)
+                    })
                 }else {
                     (object as! User).saveCustomObject(completion)
                 }
@@ -217,9 +221,11 @@ class User: Person {
             
         } else {
             
-            self.updatePersonOnDataBase()
-            object.createPersonOnDataBase()
-            completion(success: true)
+            object.createPersonOnDataBase({ (done) in
+                self.updatePersonOnDataBase({ (done) in
+                })
+                completion(success: true)
+            })
         }
     }
     
@@ -231,5 +237,24 @@ class User: Person {
         } else {
            return User()
         }
+    }
+    
+    
+    func logOut() {
+        
+        User.currentUser.isConnected = false
+        User.currentUser.updatePersonOnDataBase({ (done) in
+            User.currentUser.pictureUrl = ""
+            User.currentUser.name       = ""
+            User.currentUser.lastName   = ""
+            User.currentUser.email      = ""
+            User.currentUser.profession = ""
+            User.currentUser.sport      = ""
+            User.currentUser.gender     = ""
+            User.currentUser.birthday   = ""
+            User.currentUser.events     = []
+            User.currentUser.adress     = ""
+            User.currentUser.saveToNSUserDefaults()
+        })
     }
 }

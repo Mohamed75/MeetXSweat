@@ -10,6 +10,10 @@ import UIKit
 import DrawerController
 
 
+
+
+
+
 class MXSViewController: UIViewController {
     
     
@@ -78,6 +82,21 @@ class MXSViewController: UIViewController {
         
         getVisibleViewController().presentViewController(actionSheetController, animated: true, completion: nil)
     }
+    
+    
+    
+    class func showInformatifPopUp(message: String) {
+        
+        let alertController: UIAlertController = UIAlertController(title: "", message: message, preferredStyle: .Alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .Default, handler: { (UIAlertAction) in
+            getVisibleViewController().dismissViewControllerAnimated(true, completion:nil)
+        })
+        alertController.addAction(okAction)
+        
+        getVisibleViewController().presentViewController(alertController, animated: true, completion: nil)
+    }
+    
     
     // MARK: --- Others ---
     

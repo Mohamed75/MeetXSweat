@@ -126,7 +126,8 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
         
             User.currentUser.profession = job
             User.currentUser.sport = sport
-            User.currentUser.updatePersonOnDataBase()
+            User.currentUser.updatePersonOnDataBase({ (done) in
+            })
             
             let tuttorialViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.wellCome, viewControllerId: Ressources.StoryBooardsIdentifiers.tuttorialId)
             self.navigationController?.viewControllers = [tuttorialViewController]

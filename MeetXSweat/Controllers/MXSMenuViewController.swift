@@ -62,8 +62,7 @@ class MXSMenuViewController: UITableViewController {
             self.evo_drawerController!.centerViewController = conversationsNavigationController
             break
         case 2:
-            User.currentUser.isConnected = false
-            User.currentUser.updatePersonOnDataBase()
+            User.currentUser.logOut()
             if let tabBar = self.evo_drawerController?.centerViewController as? UITabBarController {
                 tabBar.selectedViewController!.viewDidLoad()
             }

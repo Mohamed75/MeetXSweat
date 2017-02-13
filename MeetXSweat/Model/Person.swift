@@ -37,7 +37,7 @@ class Person: FireBaseObject {
         super.init(coder: aDecoder)
     }
     
-    func createPersonOnDataBase() {
+    func createPersonOnDataBase(completion:((done: Bool)->Void)) {
         
         let personRef = FIRDatabase.database().reference().child("person-items")
         let handle = personRef.queryOrderedByChild("email").queryEqualToValue("\(email)")
@@ -51,10 +51,12 @@ class Person: FireBaseObject {
                     this.ref = personRef.childByAutoId()
                     this.ref!.setValue(this.asJson())
                     this.saveToNSUserDefaults()
+                    completion(done: true)
                     
                 } else {
                     print("user already exist")
                     this.updateCurrentPersonFromDB(snapshot)
+                    completion(done: true)
                 }
         })
         personRef.removeObserverWithHandle(handle)
@@ -72,7 +74,7 @@ class Person: FireBaseObject {
         }
     }
     
-    func updatePersonOnDataBase() {
+    func updatePersonOnDataBase(completion:((done: Bool)->Void)) {
         
         self.saveToNSUserDefaults()
         
@@ -95,6 +97,7 @@ class Person: FireBaseObject {
                         for child in snapshot.children {
                             this.ref = child.ref
                             this.ref!.updateChildValues(this.asJson())
+                            completion(done: true)
                         }
                     }
             })

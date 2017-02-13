@@ -74,9 +74,10 @@ class FaceBookHelper {
                     this.faceBookWebLogin(delegate)
                     // For first launch sometimes the loginWebView dont pop up, so this code force the loginWebview
                     this.isLoginBlock = true
-                    NSThread.sleepForTimeInterval(1)
+                    NSThread.sleepForTimeInterval(1.5)
                     if getVisibleViewController().classForCoder.description() != fbController {
                         this.faceBookWebLogin(delegate)
+                        NSLog("#faceBookWebLogin")
                     }
                     this.isLoginBlock = false
                 }
@@ -86,7 +87,7 @@ class FaceBookHelper {
     
     func faceBookWebLogin(delegate: LogInFBDelegate) {
         
-        dispatch_later(0.0) {
+        dispatch_later(0.1) {
             
             FBSDKLoginManager().logInWithReadPermissions(permessionArray, fromViewController: getVisibleViewController()) { [weak self] (result: FBSDKLoginManagerLoginResult!, error: NSError!) in
                 
