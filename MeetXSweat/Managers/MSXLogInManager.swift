@@ -61,6 +61,8 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
             }
             if done {
                 MSXLogInManager.endLogin(this.controller)
+            } else {
+                MXSActivityIndicator.stopAnimating()
             }
         })
         NSLog("facebook login success: %@", User.currentUser.allParams())
@@ -79,6 +81,8 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
             }
             if done {
                 MSXLogInManager.endLogin(this.controller)
+            } else {
+                MXSActivityIndicator.stopAnimating()
             }
         })
         NSLog("twitter login success: %@", User.currentUser.allParams())
@@ -97,6 +101,8 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
             }
             if done {
                 MSXLogInManager.endLogin(this.controller)
+            } else {
+                MXSActivityIndicator.stopAnimating()
             }
         })
         NSLog("linkedIn login success: %@", User.currentUser.allParams())
@@ -115,6 +121,8 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
             }
             if done {
                MSXLogInManager.endLogin(this.controller)
+            } else {
+                MXSActivityIndicator.stopAnimating()
             }
         })
         NSLog("google login success: %@", User.currentUser.allParams())

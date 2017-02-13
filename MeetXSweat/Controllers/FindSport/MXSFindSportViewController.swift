@@ -21,12 +21,15 @@ class MXSFindSportViewController: MXSViewController {
         
         super.viewDidLoad()
         
-        MSXFindManager.sharedInstance.findBy = FindBy.Sport
-        
         self.addBarButtonItem()
         self.addValiderButton()
         
         self.title = Ressources.NavigationTitle.sports
+    }
+    override func viewWillAppear(animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        MSXFindManager.sharedInstance.findBy = FindBy.Sport
     }
     
     override func validatButtonClicked(sender: AnyObject) {

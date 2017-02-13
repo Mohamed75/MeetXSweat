@@ -58,7 +58,12 @@ class MXSPersonsCollectionViewController: UICollectionViewController {
             
             cell.layoutIfNeeded()
             
+            if let existingUserImageView = cell.imageView.viewWithTag(33) {
+                existingUserImageView.removeFromSuperview()
+            }
+            
             let userImageView = UIImageView(frame: CGRect(x: 3, y: 2.5, width: cell.imageView.frame.size.width-6, height: cell.imageView.frame.size.height-6))
+            userImageView.tag = 33
             cell.imageView.addSubview(userImageView)
             
             if !person.pictureUrl.isEmpty {

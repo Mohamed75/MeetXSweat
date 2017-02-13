@@ -58,6 +58,7 @@
 		D959B3DE1D9318E000981105 /* MXSRessources.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3DC1D9318E000981105 /* MXSRessources.swift */; };
 		D959B3E41D93200E00981105 /* MXSProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3E31D93200E00981105 /* MXSProfileViewController.swift */; };
 		D959B3E61D93202200981105 /* MXSProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D959B3E51D93202200981105 /* MXSProfile.storyboard */; };
+		D963AE7A1E522C8000FF5B85 /* GPSLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D963AE791E522C8000FF5B85 /* GPSLocationManager.swift */; };
 		D998B5DC1D96E63400A045F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D998B5DB1D96E63400A045F4 /* GoogleService-Info.plist */; };
 		D998B5E51D97FFE000A045F4 /* EnCodeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D998B5E41D97FFE000A045F4 /* EnCodeObject.swift */; };
 		D9AAA2AB1D8F0F12004CE80C /* MXSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA2AA1D8F0F12004CE80C /* MXSViewController.swift */; };
@@ -167,6 +168,7 @@
 		D959B3DC1D9318E000981105 /* MXSRessources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSRessources.swift; sourceTree = "<group>"; };
 		D959B3E31D93200E00981105 /* MXSProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSProfileViewController.swift; sourceTree = "<group>"; };
 		D959B3E51D93202200981105 /* MXSProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MXSProfile.storyboard; sourceTree = "<group>"; };
+		D963AE791E522C8000FF5B85 /* GPSLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPSLocationManager.swift; sourceTree = "<group>"; };
 		D998B5DB1D96E63400A045F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D998B5E41D97FFE000A045F4 /* EnCodeObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnCodeObject.swift; path = ../Model/EnCodeObject.swift; sourceTree = "<group>"; };
 		D9AAA2AA1D8F0F12004CE80C /* MXSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSViewController.swift; sourceTree = "<group>"; };
@@ -469,6 +471,7 @@
 				D9B64D2B1DA3AA62008C5D34 /* ConversationsDataManager.swift */,
 				D9C086351E464A1E00122030 /* MSXLogInManager.swift */,
 				D9C086371E46698000122030 /* MSXFindManager.swift */,
+				D963AE791E522C8000FF5B85 /* GPSLocationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -781,6 +784,7 @@
 				D9C086641E4DFC8100122030 /* MXSAddEventViewController.swift in Sources */,
 				D9BB48251D8EF2E000C12541 /* GoogleLogInHelper.swift in Sources */,
 				D926BAE21D8DD5CB00E3878C /* UINavigationController+Connection.swift in Sources */,
+				D963AE7A1E522C8000FF5B85 /* GPSLocationManager.swift in Sources */,
 				D926BAA01D8D6A6400E3878C /* AppDelegate.swift in Sources */,
 				D94A3E4C1DA3FCEF0090A7A4 /* MXSConversationCollectionCell.swift in Sources */,
 				D926BAE01D8DBC5100E3878C /* User.swift in Sources */,

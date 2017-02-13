@@ -45,8 +45,6 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
         
         super.viewDidLoad()
         
-        MSXFindManager.sharedInstance.findBy = FindBy.Profile
-        
         addBarButtonItem()
         addValiderButton()
         
@@ -72,6 +70,7 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        MSXFindManager.sharedInstance.findBy = FindBy.Profile
         selectMetierLabel()
     }
     

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MapKit
 
 
 enum FindBy: Int {
@@ -23,5 +24,5 @@ class MSXFindManager {
     static let sharedInstance = MSXFindManager()
 
     var findBy: FindBy?
-
+    
 }

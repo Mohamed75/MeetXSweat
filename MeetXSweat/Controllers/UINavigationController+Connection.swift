@@ -83,6 +83,7 @@ extension UINavigationController {
                     }
                     
                     if this.tabBarController?.selectedIndex == 0 {
+                        GPSLocationManager.sharedInstance.startUserLocation()
                         this.tabBarController?.selectedIndex = 1
                     }
                     

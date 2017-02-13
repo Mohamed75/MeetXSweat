@@ -23,7 +23,7 @@ class FindSportManager {
         var returnArray: [Event] = []
         for event in FireBaseDataManager.sharedInstance.events {
             for sport in sports {
-                if event.sport == sport as? String {
+                if event.sport == sport as? String || event.sport == (sport as? String)?.uppercaseString {
                     returnArray.append(event)
                 }
             }

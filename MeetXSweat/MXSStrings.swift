@@ -38,5 +38,9 @@ enum Strings {
         static let name     = "Nom"
         static let lastName = "Prénom"
     }
+    
+    struct LabelTitel {
+        static let sports    = "TOUS LES PLANS"
+    }
 }
 

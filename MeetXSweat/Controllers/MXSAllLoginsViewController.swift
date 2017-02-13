@@ -163,6 +163,8 @@ class MXSAllLoginsViewController: MXSViewController {
             }
             if done {
                 MSXLogInManager.endLogin(this)
+            } else {
+                MXSActivityIndicator.stopAnimating()
             }
         })
         NSLog("email account created success: %@", User.currentUser.allParams())

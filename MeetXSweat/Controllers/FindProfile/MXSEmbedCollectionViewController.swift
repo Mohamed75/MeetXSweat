@@ -24,6 +24,11 @@ class MXSEmbedCollectionViewController: MXSViewController {
         if MSXFindManager.sharedInstance.findBy == FindBy.Sport {
             let eventsCollectionViewController = self.childViewControllers[0] as? MXSEventsCollectionViewController
             eventsCollectionViewController?.events = FindSportManager.filterEventsBySports(FindSportManager.sharedInstance.sports)
+            
+            self.titleLabel.text = Strings.LabelTitel.sports
+            for sport in FindSportManager.sharedInstance.sports {
+                self.titleLabel.text = self.titleLabel.text! + " " + (sport as! String).uppercaseString
+            }
         }
         
         if MSXFindManager.sharedInstance.findBy == FindBy.Date {

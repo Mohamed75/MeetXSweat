@@ -16,24 +16,15 @@ private let reuseId = "MXSPlaceMark"
 private let urlTemplate = "https://api.mapbox.com/styles/v1/mohamed31/ciyvv80dh00bv2sppa6ny6sqj/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibW9oYW1lZDMxIiwiYSI6ImNpeXZ1MzE0aTAwNHkycW9lazU0YXhycGYifQ.2WLwZvBarfp1jAxjNt2miA"
 
 
-class  MXSFindArroundMeViewController: MXSViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
     
     
     @IBOutlet weak var mapView: MKMapView!
     
-    private var locationManager: CLLocationManager?
+    
     
     var events = FireBaseDataManager.sharedInstance.events
     
-    
-    func startUserLocation() {
-        
-        self.locationManager = CLLocationManager()
-        self.locationManager!.delegate = self
-        if (Float(UIDevice.currentDevice().systemVersion) >= 8) {
-            self.locationManager!.requestWhenInUseAuthorization()
-        }
-    }
     
     func addOverlay() {
         
@@ -72,13 +63,11 @@ class  MXSFindArroundMeViewController: MXSViewController, CLLocationManagerDeleg
         
         super.viewDidLoad()
         
-        MSXFindManager.sharedInstance.findBy = FindBy.ArroundMe
-        
         addBarButtonItem()
         
         self.title = Ressources.NavigationTitle.map
         
-        startUserLocation()
+        //startUserLocation()
 
         addOverlay()
     }
@@ -86,6 +75,7 @@ class  MXSFindArroundMeViewController: MXSViewController, CLLocationManagerDeleg
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        MSXFindManager.sharedInstance.findBy = FindBy.ArroundMe
         addEvent()
     }
     
@@ -111,6 +101,8 @@ class  MXSFindArroundMeViewController: MXSViewController, CLLocationManagerDeleg
         region.center = (userLocation.location?.coordinate)!
         region.span = MKCoordinateSpanMake(0.4, 0.4)
         self.mapView.setRegion(region, animated: false)
+        
+        GPSLocationManager.sharedInstance.userLocation = userLocation.location
     }
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {

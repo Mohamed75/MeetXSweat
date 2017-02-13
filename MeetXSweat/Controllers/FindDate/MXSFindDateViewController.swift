@@ -28,8 +28,6 @@ class MXSFindDateViewController: MXSCalendarViewController {
         
         super.viewDidLoad()
         
-        MSXFindManager.sharedInstance.findBy = FindBy.Date
-        
         addBarButtonItem()
         addValiderButton()
         
@@ -59,6 +57,12 @@ class MXSFindDateViewController: MXSCalendarViewController {
         self.setupViewsOfCalendar(currentDate.dateRange.start, endDate: currentDate.dateRange.end)
         
         self.automaticallyAdjustsScrollViewInsets = false
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        MSXFindManager.sharedInstance.findBy = FindBy.Date
     }
     
     
