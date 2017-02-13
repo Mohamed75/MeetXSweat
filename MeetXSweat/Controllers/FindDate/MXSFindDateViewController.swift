@@ -20,6 +20,9 @@ class MXSFindDateViewController: MXSCalendarViewController {
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     
+    @IBOutlet weak var stackView: UIStackView!
+    
+    @IBOutlet weak var validerButton: UIButton!
     
     override func viewDidLoad() {
         
@@ -27,9 +30,22 @@ class MXSFindDateViewController: MXSCalendarViewController {
         
         MSXFindManager.sharedInstance.findBy = FindBy.Date
         
-        self.addBarButtonItem()
+        addBarButtonItem()
+        addValiderButton()
         
         titleLabel.text = Strings.Calendar.titleText
+        titleLabel.textColor = UIColor.whiteColor()
+        titleLabel.backgroundColor = Constants.MainColor.kSpecialColor
+        
+        let topLine = UIView(frame: CGRect(x: 10, y: titleLabel.frame.size.height+15, width: view.frame.size.width-20, height: 1))
+        topLine.backgroundColor = Constants.MainColor.kSpecialColor
+        view.addSubview(topLine)
+        
+        
+        let bottomLine = UIView(frame: CGRect(x: 7, y: stackView.frame.origin.y-1, width: view.frame.size.width-14, height: 1))
+        bottomLine.backgroundColor = Constants.MainColor.kSpecialColor
+        view.addSubview(bottomLine)
+        
         
         calendarView.dataSource = self
         calendarView.delegate = self
@@ -43,6 +59,11 @@ class MXSFindDateViewController: MXSCalendarViewController {
         self.setupViewsOfCalendar(currentDate.dateRange.start, endDate: currentDate.dateRange.end)
         
         self.automaticallyAdjustsScrollViewInsets = false
+    }
+    
+    
+    override func validatButtonClicked(sender: AnyObject) {
+        validerButton.sendActionsForControlEvents(.TouchUpInside)
     }
     
     @IBAction func validerButtonClicked(sender: AnyObject) {

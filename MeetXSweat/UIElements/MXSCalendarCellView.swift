@@ -15,8 +15,13 @@ class MXSCalendarCellView: JTAppleDayCellView {
     @IBOutlet var selectedView: AnimationView!
     @IBOutlet var dayLabel: UILabel!
     
+    @IBOutlet weak var imageView: UIImageView!
+    
+    
+    
     private var normalDayCellColor      = UIColor.whiteColor()
-    private var perviousMonthTextColor  = UIColor.grayColor()
+    private var previousDayCellColor    = UIColor(red: 0, green: 0, blue: 0, alpha: 0.05)
+    private var perviousMonthTextColor  = UIColor.blackColor()
     
     @IBInspectable var todayColor: UIColor!
     
@@ -32,7 +37,23 @@ class MXSCalendarCellView: JTAppleDayCellView {
         return f
     }()
     
+    
+    // This function was added by me
+    private func myCutoms(cellState: CellState, date: NSDate) {
+        if cellState.dateBelongsTo != .ThisMonth {
+            self.backgroundColor = previousDayCellColor
+        }
+        
+        self.layer.cornerRadius = 0
+        if (c.stringFromDate(date) == todayDate) {
+            self.layer.cornerRadius = self.frame.size.width/2
+            dayLabel.textColor = UIColor.whiteColor()
+        }
+    }
+    
     func setupCellBeforeDisplay(cellState: CellState, date: NSDate) {
+        
+        todayColor = Constants.MainColor.kSpecialColor
         
         dayLabel.text =  cellState.text
         
@@ -40,6 +61,8 @@ class MXSCalendarCellView: JTAppleDayCellView {
         
         // Setup Cell Background color
         self.backgroundColor = c.stringFromDate(date) == todayDate ? todayColor : normalDayCellColor
+        
+        myCutoms(cellState, date: date)
         
         // Setup cell selection status
         dispatch_later(0.0) { [weak self] in
@@ -88,15 +111,16 @@ class MXSCalendarCellView: JTAppleDayCellView {
     
     private func configueViewIntoBubbleView(cellState: CellState, animateDeselection: Bool = false) {
         if cellState.isSelected {
-            self.selectedView.layer.cornerRadius =  self.selectedView.frame.width  / 2
-            self.selectedView.hidden = false
+            //self.selectedView.layer.cornerRadius =  self.selectedView.frame.width  / 2
+            //self.selectedView.hidden = false
             configureTextColor(cellState)
+            self.imageView.image = UIImage(named: Ressources.SportsImages.starSelected)
             
         } else {
+            self.imageView.image = nil
             if animateDeselection {
                 configureTextColor(cellState)
                 if selectedView.hidden == false {
-                    
                     selectedView.animateWithFadeEffect(withCompletionHandler: { [weak self] () -> Void in
                         guard let this = self else {
                             return

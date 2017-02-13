@@ -41,7 +41,7 @@ class MXSViewController: UIViewController {
         let validatButton = UIButton(type: .Custom)
         validatButton.addTarget(self, action: #selector(validatButtonClicked), forControlEvents: .TouchUpInside)
         validatButton.setBackgroundImage(UIImage(named: Ressources.Images.valider), forState: .Normal)
-        validatButton.frame = CGRectMake(0 ,0,30,30)
+        validatButton.frame = CGRectMake(0 , 0, 30, 30)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: validatButton)
     }
     
