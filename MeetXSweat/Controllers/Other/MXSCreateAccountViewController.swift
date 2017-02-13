@@ -68,22 +68,27 @@ class MXSCreateAccountViewController: MXSViewController {
     @IBAction func vailderButtonClicked(sender: AnyObject) {
         
         guard let name = famillyNameTextField.text where name.characters.count > 0 else {
-            // alert
+            MXSViewController.showInformatifPopUp(Strings.Alert.fillAllFieldsMessage)
             return
         }
         
         guard let lastName = lastNameTextField.text where lastName.characters.count > 0 else {
-            // alert
+            MXSViewController.showInformatifPopUp(Strings.Alert.fillAllFieldsMessage)
             return
         }
         
         guard let email = emailTextField.text where email.characters.count > 0 else {
-            // alert
+            MXSViewController.showInformatifPopUp(Strings.Alert.fillAllFieldsMessage)
             return
         }
         
         guard let password = passWordTextField.text where password.characters.count > 0 else {
-            // alert
+            MXSViewController.showInformatifPopUp(Strings.Alert.fillAllFieldsMessage)
+            return
+        }
+        
+        guard let emailValidation = emailTextField.text where emailValidation.isValidEmail else {
+            MXSViewController.showInformatifPopUp(Strings.Alert.wrongEmailMesssage)
             return
         }
         

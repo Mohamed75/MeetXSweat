@@ -24,12 +24,12 @@ enum Strings {
     }
     
     struct Alert {
-        static let enterEmailMessage = "Please enter your email"
+        static let enterEmailMessage = "Veuillez saisir votre email"
         static let cancel   = "Cancel"
         static let ok       = "OK"
         static let alert    = "Alert"
-        static let fillAllFieldsMessage = "Please fill all fields"
-        static let wrongEmailMesssage = "Something wrong with your email"
+        static let fillAllFieldsMessage = "Veuillez remplir tous les champs!"
+        static let wrongEmailMesssage   = "Votre email n'est pas valide!"
     }
     
     struct Account {
