@@ -24,6 +24,8 @@ private let professionAttributes = [
 class MXSPersonsCollectionViewController: UICollectionViewController {
     
     var persons: [Person]?
+    var fromEventViewController = false
+    
     
     
     override func viewDidLoad() {
@@ -31,13 +33,6 @@ class MXSPersonsCollectionViewController: UICollectionViewController {
     }
     
     
-    func isEmbdedInEventViewController() -> Bool {
-        
-        if let parentViewController = self.parentViewController where parentViewController.isKindOfClass(MXSEventViewController) {
-            return true
-        }
-        return false
-    }
     
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -86,7 +81,7 @@ class MXSPersonsCollectionViewController: UICollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
-        if !(isEmbdedInEventViewController() && MSXFindManager.sharedInstance.findBy == FindBy.Profile) {
+        if !(MSXFindManager.sharedInstance.findBy == FindBy.Profile) {
             
             let profileViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.profile, viewControllerId: Ressources.StoryBooardsIdentifiers.profileId) as! MXSProfileViewController
             if let persons = self.persons {
@@ -109,12 +104,7 @@ class MXSPersonsCollectionViewController: UICollectionViewController {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
-        var cellHeight: CGFloat = 60
-        if isEmbdedInEventViewController() {
-            cellHeight = 40
-        }
-        
-        return CGSize(width: self.view.frame.size.width, height: cellHeight)
+        return CGSize(width: self.view.frame.size.width, height: 60)
     }
     
 }

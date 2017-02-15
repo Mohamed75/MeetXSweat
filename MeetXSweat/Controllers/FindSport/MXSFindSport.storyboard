@@ -213,15 +213,9 @@
                                     <constraint firstItem="gHd-1e-S50" firstAttribute="top" secondItem="WKn-OL-HJU" secondAttribute="topMargin" constant="10" id="Gww-Dw-GbR"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="gHd-1e-S50" secondAttribute="trailing" constant="10" id="OcE-9C-e3A"/>
                                     <constraint firstItem="dxA-z3-Emy" firstAttribute="leading" secondItem="WKn-OL-HJU" secondAttribute="leadingMargin" constant="10" id="bPw-I2-uBo"/>
-                                    <constraint firstItem="dxA-z3-Emy" firstAttribute="leading" secondItem="gHd-1e-S50" secondAttribute="leading" id="w7q-dO-wYl"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="gHd-1e-S50" secondAttribute="bottom" constant="10" id="wxX-em-rpe"/>
                                     <constraint firstItem="dxA-z3-Emy" firstAttribute="centerY" secondItem="WKn-OL-HJU" secondAttribute="centerY" id="yQb-ph-pOo"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="w7q-dO-wYl"/>
-                                    </mask>
-                                </variation>
                                 <connections>
                                     <outlet property="imageView" destination="gHd-1e-S50" id="ytm-iX-uJr"/>
                                     <outlet property="label" destination="dxA-z3-Emy" id="Oai-oU-4Jx"/>

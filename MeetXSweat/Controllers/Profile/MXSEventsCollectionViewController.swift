@@ -13,15 +13,14 @@ import UIKit
 class MXSEventsCollectionViewController: UICollectionViewController {
     
     var events: [Event]!
+    var fromProfileViewController = false
     
     
-    func isEmbdedInProfileViewController() -> Bool {
-        
-        if let parentViewController = self.parentViewController where parentViewController.isKindOfClass(MXSProfileViewController) {
-            return true
-        }
-        return false
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
+    
+    
     
     func customizeFirstCell(cell: UICollectionViewCell) {
         
@@ -87,11 +86,14 @@ class MXSEventsCollectionViewController: UICollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
-        if MSXFindManager.sharedInstance.findBy == FindBy.Profile || !isEmbdedInProfileViewController() {
+        if MSXFindManager.sharedInstance.findBy == FindBy.Profile || !fromProfileViewController {
             
-            let eventViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.event, viewControllerId: Ressources.StoryBooardsIdentifiers.eventId) as! MXSEventViewController
-            eventViewController.event = self.events[indexPath.section-1]
-            self.navigationController?.pushViewController(eventViewController, animated: true)
+            if indexPath.section > 0 {
+             
+                let eventViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.event, viewControllerId: Ressources.StoryBooardsIdentifiers.eventId) as! MXSEventViewController
+                eventViewController.event = self.events[indexPath.section-1]
+                self.navigationController?.pushViewController(eventViewController, animated: true)
+            }
         }
     }
     

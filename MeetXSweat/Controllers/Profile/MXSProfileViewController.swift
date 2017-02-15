@@ -34,6 +34,7 @@ class MXSProfileViewController: MXSViewController {
         if let eventsCollectionViewController = self.childViewControllers[0] as? MXSEventsCollectionViewController {
             // should filter events personne (to be done)
             eventsCollectionViewController.events = FireBaseDataManager.sharedInstance.events
+            eventsCollectionViewController.fromProfileViewController = true
         }
     }
     

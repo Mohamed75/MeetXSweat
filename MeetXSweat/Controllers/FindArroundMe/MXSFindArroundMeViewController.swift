@@ -10,10 +10,9 @@ import UIKit
 import MapKit
 
 
-private let reuseId = "MXSPlaceMark"
 
 
-private let urlTemplate = "https://api.mapbox.com/styles/v1/mohamed31/ciyvv80dh00bv2sppa6ny6sqj/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibW9oYW1lZDMxIiwiYSI6ImNpeXZ1MzE0aTAwNHkycW9lazU0YXhycGYifQ.2WLwZvBarfp1jAxjNt2miA"
+
 
 
 class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
@@ -28,12 +27,12 @@ class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
     
     func addOverlay() {
         
-        let overlay = MKTileOverlay(URLTemplate: urlTemplate)
+        let overlay = MKTileOverlay(URLTemplate: Constants.URL.mapTemplate)
         overlay.canReplaceMapContent = true
         mapView.addOverlay(overlay, level: .AboveLabels)
     }
     
-    func addEvent() {
+    func addEvents() {
         
         MXSActivityIndicator.startAnimating()
         
@@ -74,7 +73,7 @@ class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
         super.viewWillAppear(animated)
         
         MSXFindManager.sharedInstance.findBy = FindBy.ArroundMe
-        addEvent()
+        addEvents()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -109,9 +108,9 @@ class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
             return nil
         }
         
-        var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId)
+        var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(Ressources.MapPinIdentifier.eventsId)
         if pinView == nil {
-            pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: Ressources.MapPinIdentifier.eventsId)
             pinView!.transform = CGAffineTransformMakeScale(1.5, 1.5)
         }
         else {

@@ -104,12 +104,22 @@ enum Ressources {
         static let menu         = "MXSMenuTableViewCell"
     }
     
+    struct MapPinIdentifier {
+        static let eventsId     = "MXSPlaceMarkEvents"
+        static let eventId      = "MXSPlaceMarkEvent"
+    }
+    
     struct NavigationTitle {
         
         static let sports       = "SPORTS"
         static let map          = "MAP"
         static let rechercher   = "RECHERCHER"
         static let wellCome     = "BIENVENUE"
-        static let tuttorial     = "TUTTORIAL"
+        static let tuttorial    = "TUTTORIAL"
+        
+        static let sportsParticipants       = "PARTICIPANTS"
+        static let profiles     = "Profiles"
+        static let events       = "VOS SPORTS"
+        static let event        = "PRESENTATION DE L'EVENT"
     }
 }

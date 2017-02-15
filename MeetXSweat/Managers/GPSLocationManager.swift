@@ -34,7 +34,11 @@ class GPSLocationManager: UIViewController, CLLocationManagerDelegate {
     }
     
     class func getDistanceFor(coordinate: CLLocationCoordinate2D) -> Double {
-        let distance = GPSLocationManager.sharedInstance.userLocation!.distanceFromLocation(CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude))
+        
+        guard let location = GPSLocationManager.sharedInstance.userLocation else {
+            return -1
+        }
+        let distance = location.distanceFromLocation(CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude))
         return distance
     }
 }
