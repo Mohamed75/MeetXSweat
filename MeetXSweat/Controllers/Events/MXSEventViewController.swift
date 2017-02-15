@@ -21,6 +21,10 @@ class MXSEventViewController: MXSViewController {
     @IBOutlet weak var participantsButton: UIButton!
     @IBOutlet weak var inscriptionButton: UIButton!
     
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var heurLabel: UILabel!
+    @IBOutlet weak var mapLabel: UILabel!
+    @IBOutlet weak var sportLabel: UILabel!
     
     func addOverlay() {
         
@@ -32,6 +36,24 @@ class MXSEventViewController: MXSViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        if UIScreen.mainScreen().bounds.width < 375 {
+            self.sportLabel.hidden = true
+        }
+        
+        if event.date.characters.count > 1 {
+            let dates = event.date.componentsSeparatedByString(" - ")
+            dateLabel.text = dates.first!
+            heurLabel.text = dates.last!
+        }
+        if let coordinate = event.placeMark?.coordinate {
+            let km = GPSLocationManager.getDistanceFor(coordinate)/1000
+            if km > 0 {
+                mapLabel.text = String(format: "%.1fKM", km)
+            }
+        }
+        
+        sportLabel.text = event.sport
         
         self.title = Ressources.NavigationTitle.event
             

@@ -20,7 +20,6 @@ enum Ressources {
         static let profilePlaceHolder    = "Profile_placeholder"
         static let ProfessionalProfile   = "ProfessionalProfile"
         static let event    = "Event"
-        static let calendar = "Calendar"
         static let mxslogo  = "Logo"
         static let valider  = "Validation"
         static let back     = "Back"
@@ -118,7 +117,7 @@ enum Ressources {
         static let tuttorial    = "TUTTORIAL"
         
         static let sportsParticipants       = "PARTICIPANTS"
-        static let profiles     = "Profiles"
+        static let profiles     = "PROFILES"
         static let events       = "VOS SPORTS"
         static let event        = "PRESENTATION DE L'EVENT"
     }

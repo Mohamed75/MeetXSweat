@@ -13,8 +13,8 @@ import DLRadioButton
 
 private let numberOffCell = 3
 
-private let cellWidth = (UIScreen.mainScreen().bounds.width/3)-4
-private let cellHeight = cellWidth*1.16
+private let cellWidth   = (UIScreen.mainScreen().bounds.width/3)-4
+private let cellHeight  = cellWidth*1.16
 
 
 

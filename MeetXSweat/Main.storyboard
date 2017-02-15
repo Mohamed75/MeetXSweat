@@ -422,8 +422,8 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="IPP-ri-Aq4"/>
                                 <exclude reference="zP1-sG-51h"/>
+                                <exclude reference="IPP-ri-Aq4"/>
                             </mask>
                         </variation>
                     </view>
@@ -526,7 +526,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="OPP-KR-C7Y" firstAttribute="leading" secondItem="Nxb-09-w2w" secondAttribute="leading" id="6XG-KR-05r"/>
                             <constraint firstItem="bKm-0A-3v2" firstAttribute="trailing" secondItem="89j-kS-1xr" secondAttribute="trailing" id="7eo-yo-f7D"/>

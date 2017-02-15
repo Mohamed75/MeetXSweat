@@ -28,19 +28,37 @@ class MXSEventsCollectionViewController: UICollectionViewController {
         eventImageView.image = UIImage(named: "EventIcon")
         cell.addSubview(eventImageView)
         
-        let clockImageView = UIImageView(frame: CGRect(x: 120, y: 15, width: 30, height: 30))
+        let clockImageView = UIImageView(frame: CGRect(x: 117, y: 15, width: 30, height: 30))
         clockImageView.image = UIImage(named: "Clock")
         cell.addSubview(clockImageView)
         
-        let participantImageView = UIImageView(frame: CGRect(x: 170, y: 15, width: 30, height: 30))
+        var xParticip = 170
+        if UIScreen.mainScreen().bounds.width > 375 {
+            xParticip = 195
+        }
+        if UIScreen.mainScreen().bounds.width == 375 {
+            xParticip = 180
+        }
+        let participantImageView = UIImageView(frame: CGRect(x: xParticip, y: 15, width: 30, height: 30))
         participantImageView.image = UIImage(named: "Participants")
         cell.addSubview(participantImageView)
         
-        let mapView = UIImageView(frame: CGRect(x: 215, y: 15, width: 30, height: 30))
+        var xMap = 215
+        if UIScreen.mainScreen().bounds.width > 375 {
+            xMap = 260
+        }
+        if UIScreen.mainScreen().bounds.width == 375 {
+            xMap = 235
+        }
+        let mapView = UIImageView(frame: CGRect(x: xMap, y: 15, width: 30, height: 30))
         mapView.image = UIImage(named: "MapIcon")
         cell.addSubview(mapView)
         
-        let sportImageView = UIImageView(frame: CGRect(x: 260, y: 15, width: 30, height: 30))
+        var xSport = self.view.frame.size.width - 50
+        if UIScreen.mainScreen().bounds.width >= 375 {
+            xSport = self.view.frame.size.width - 60
+        }
+        let sportImageView = UIImageView(frame: CGRect(x: xSport, y: 15, width: 30, height: 30))
         sportImageView.image = UIImage(named: "SportIcon")
         cell.addSubview(sportImageView)
     }
@@ -64,16 +82,28 @@ class MXSEventsCollectionViewController: UICollectionViewController {
             let dates = event.date.componentsSeparatedByString(" - ")
             text = dates.first! + "      " + dates.last!
         }
-        text = text + "        " + String(event.persons.count)
+        
+        
+        var mapSpace        = "    "
+        var personsSpace    = "        "
+        if UIScreen.mainScreen().bounds.width > 375 {
+            mapSpace = mapSpace + "      "
+            personsSpace = personsSpace + "       "
+        }
+        if UIScreen.mainScreen().bounds.width == 375 {
+            mapSpace = mapSpace + "   "
+            personsSpace = personsSpace + "   "
+        }
+        text = text + personsSpace + String(event.persons.count)
         
         if let coordinate = event.placeMark?.coordinate {
             let km = GPSLocationManager.getDistanceFor(coordinate)/1000
             if km > 0 {
                 let distance  = String(format: "%.1fKM", km)
                 if distance.characters.count > 5 {
-                    text = text + "    " + distance
+                    text = text + mapSpace + distance
                 } else {
-                    text = text + "     " + distance
+                    text = text + mapSpace + " " + distance
                 }
             }
         }

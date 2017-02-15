@@ -46,10 +46,10 @@ class MXSFindDateViewController: MXSCalendarViewController {
         
         
         calendarView.dataSource = self
-        calendarView.delegate = self
+        calendarView.delegate   = self
         calendarView.registerCellViewXib(fileName: Ressources.Xibs.calendarCellView)
         calendarView.firstDayOfWeek = .Monday
-        calendarView.cellInset = CGPoint(x: 0, y: 0)
+        calendarView.cellInset  = CGPoint(x: 0, y: 0)
         calendarView.allowsMultipleSelection = true
         calendarView.reloadData()
         

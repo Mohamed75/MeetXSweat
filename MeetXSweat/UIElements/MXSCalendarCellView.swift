@@ -44,16 +44,20 @@ class MXSCalendarCellView: JTAppleDayCellView {
             self.backgroundColor = previousDayCellColor
         }
         
-        self.layer.cornerRadius = 0
+        selectedView.hidden = true
+        selectedView.layer.cornerRadius = 0
         if (c.stringFromDate(date) == todayDate) {
-            self.layer.cornerRadius = self.frame.size.width/2
+            selectedView.layoutIfNeeded()
+            selectedView.layer.cornerRadius = selectedView.frame.size.width / 2
             dayLabel.textColor = UIColor.whiteColor()
+            selectedView.hidden = false
+            selectedView.backgroundColor = Constants.MainColor.kSpecialColor
         }
     }
     
     func setupCellBeforeDisplay(cellState: CellState, date: NSDate) {
         
-        todayColor = Constants.MainColor.kSpecialColor
+        todayColor = UIColor.whiteColor()
         
         dayLabel.text =  cellState.text
         
@@ -114,10 +118,16 @@ class MXSCalendarCellView: JTAppleDayCellView {
             //self.selectedView.layer.cornerRadius =  self.selectedView.frame.width  / 2
             //self.selectedView.hidden = false
             configureTextColor(cellState)
-            self.imageView.image = UIImage(named: Ressources.SportsImages.starSelected)
+            
+            if !self.selectedView.hidden == false {
+                self.imageView.image = UIImage(named: Ressources.SportsImages.starSelected)
+            } else {
+                dayLabel.textColor = UIColor.whiteColor()
+            }
             
         } else {
             self.imageView.image = nil
+            /*
             if animateDeselection {
                 configureTextColor(cellState)
                 if selectedView.hidden == false {
@@ -126,12 +136,11 @@ class MXSCalendarCellView: JTAppleDayCellView {
                             return
                         }
                         this.selectedView.hidden = true
-                        this.selectedView.alpha = 1
                     })
                 }
             } else {
                 selectedView.hidden = true
-            }
+            }*/
         }
     }
 }
