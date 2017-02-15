@@ -66,8 +66,6 @@ class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
         addBarButtonItem()
         
         self.title = Ressources.NavigationTitle.map
-        
-        //startUserLocation()
 
         addOverlay()
     }
@@ -114,6 +112,7 @@ class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
         var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId)
         if pinView == nil {
             pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView!.transform = CGAffineTransformMakeScale(1.5, 1.5)
         }
         else {
             pinView!.annotation = annotation

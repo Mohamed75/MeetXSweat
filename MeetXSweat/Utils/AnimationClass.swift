@@ -65,8 +65,8 @@ class AnimationClass {
             return
         }
         let rotationAnimation = CABasicAnimation(keyPath:zPath)
-        rotationAnimation.toValue = NSNumber(float: fullRotation)
-        rotationAnimation.speed = speed
+        rotationAnimation.toValue   = NSNumber(float: fullRotation)
+        rotationAnimation.speed     = speed
         rotationAnimation.repeatCount = Float.infinity
         
         view.layer.addAnimation(rotationAnimation, forKey:rotationRightInfiniKey)
