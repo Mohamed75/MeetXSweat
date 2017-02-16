@@ -22,7 +22,7 @@ class MXSFindDateViewController: MXSCalendarViewController {
     
     @IBOutlet weak var stackView: UIStackView!
     
-    @IBOutlet weak var validerButton: UIButton!
+    
     
     override func viewDidLoad() {
         
@@ -67,13 +67,13 @@ class MXSFindDateViewController: MXSCalendarViewController {
     
     
     override func validatButtonClicked(sender: AnyObject) {
-        validerButton.sendActionsForControlEvents(.TouchUpInside)
-    }
-    
-    @IBAction func validerButtonClicked(sender: AnyObject) {
         
         FindDateManager.sharedInstance.dates = calendarView.selectedDates
+        
+        let viewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findSport, viewControllerId: Ressources.StoryBooardsIdentifiers.embedSportsId)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
+    
     
     override func setupViewsOfCalendar(startDate: NSDate, endDate: NSDate) {
         let month = testCalendar.component(NSCalendarUnit.Month, fromDate: startDate)

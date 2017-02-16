@@ -74,6 +74,7 @@ enum Ressources {
         
         // FindSport StoryBoard
         static let findSportId      = "MXSFindSportViewController"
+        static let embedSportsId    = "MXSSportsEmbedCollectionViewController"
         
         // FindDate StoryBoard
         static let findDateId       = "MXSFindDateViewController"

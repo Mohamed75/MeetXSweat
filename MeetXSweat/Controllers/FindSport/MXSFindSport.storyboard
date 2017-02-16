@@ -127,7 +127,7 @@
         <!--Embed Collection View Controller-->
         <scene sceneID="JHY-eQ-c1K">
             <objects>
-                <viewController id="RKt-2D-umY" customClass="MXSEmbedCollectionViewController" customModule="MeetXSweat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MXSSportsEmbedCollectionViewController" id="RKt-2D-umY" customClass="MXSEmbedCollectionViewController" customModule="MeetXSweat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0h5-Dl-ASC"/>
                         <viewControllerLayoutGuide type="bottom" id="E9T-VB-A5g"/>

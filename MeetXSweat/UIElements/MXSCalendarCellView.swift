@@ -17,6 +17,7 @@ class MXSCalendarCellView: JTAppleDayCellView {
     
     @IBOutlet weak var imageView: UIImageView!
     
+    @IBOutlet weak var imageViewConstraint: NSLayoutConstraint!
     
     
     private var normalDayCellColor      = UIColor.whiteColor()
@@ -52,6 +53,10 @@ class MXSCalendarCellView: JTAppleDayCellView {
             dayLabel.textColor = UIColor.whiteColor()
             selectedView.hidden = false
             selectedView.backgroundColor = Constants.MainColor.kSpecialColor
+        }
+        
+        if UIScreen.mainScreen().bounds.width >= 375 {
+            imageViewConstraint.constant = 8
         }
     }
     

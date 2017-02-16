@@ -39,10 +39,8 @@
                 <constraint firstItem="UzI-aI-ZN5" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="0D6-Yw-wNX"/>
                 <constraint firstItem="bup-vE-qqB" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="0na-Vh-DLB"/>
                 <constraint firstItem="UzI-aI-ZN5" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.7" id="DAo-j9-8He"/>
-                <constraint firstItem="Mbf-Ly-StP" firstAttribute="leading" secondItem="bup-vE-qqB" secondAttribute="leading" constant="5" id="KAG-a5-DcX"/>
                 <constraint firstItem="bup-vE-qqB" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="MIB-cR-5J7"/>
                 <constraint firstItem="Mbf-Ly-StP" firstAttribute="centerX" secondItem="bup-vE-qqB" secondAttribute="centerX" id="Nls-wZ-tfh"/>
-                <constraint firstItem="Mbf-Ly-StP" firstAttribute="trailing" secondItem="bup-vE-qqB" secondAttribute="trailing" constant="-5" id="W6w-AX-gVB"/>
                 <constraint firstItem="UzI-aI-ZN5" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="rDb-R6-9AX"/>
                 <constraint firstAttribute="bottom" secondItem="Mbf-Ly-StP" secondAttribute="bottom" id="wCg-zY-Ykb"/>
             </constraints>
@@ -51,15 +49,10 @@
                     <color key="value" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="KAG-a5-DcX"/>
-                    <exclude reference="W6w-AX-gVB"/>
-                </mask>
-            </variation>
             <connections>
                 <outlet property="dayLabel" destination="bup-vE-qqB" id="RCB-qf-OIA"/>
                 <outlet property="imageView" destination="Mbf-Ly-StP" id="Q6q-iU-bht"/>
+                <outlet property="imageViewConstraint" destination="wCg-zY-Ykb" id="R6K-DW-ayE"/>
                 <outlet property="selectedView" destination="UzI-aI-ZN5" id="39L-DV-yl3"/>
             </connections>
         </view>
