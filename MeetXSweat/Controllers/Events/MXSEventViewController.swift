@@ -26,6 +26,59 @@ class MXSEventViewController: MXSViewController {
     @IBOutlet weak var mapLabel: UILabel!
     @IBOutlet weak var sportLabel: UILabel!
     
+    
+    // stackView
+    @IBOutlet weak var jourLabel: UILabel!
+    @IBOutlet weak var hourLabel: UILabel!
+    @IBOutlet weak var minuteLabel: UILabel!
+    @IBOutlet weak var secondLabel: UILabel!
+    
+    @IBOutlet weak var stackView: UIStackView!
+    
+    
+    @IBOutlet weak var stackWidthConstraint: NSLayoutConstraint!
+    
+    
+    
+    func timeLeft() {
+        
+        MXSCalendarViewController.formatter.dateFormat = kDateFormat
+        if let timeLeft = MXSCalendarViewController.formatter.dateFromString(event.date)?.timeIntervalSinceNow {
+        
+            let joures = Int(timeLeft/86400)
+            jourLabel.text  = String(joures)
+            if joures < 10 {
+                jourLabel.text = " " + String(joures)
+            }
+            
+            let houres = Int(timeLeft/3600.0)%24
+            hourLabel.text  = String(houres)
+            if houres < 10 {
+                hourLabel.text = " " + String(houres)
+            }
+            
+            let minutes = Int(timeLeft/60.0)%60
+            minuteLabel.text = String(minutes)
+            if minutes < 10 {
+                minuteLabel.text = " " + String(minutes)
+            }
+            
+            let seconds = Int(timeLeft%60)
+            secondLabel.text = String(seconds)
+            if seconds < 10 {
+                secondLabel.text = " " + String(seconds)
+            }
+        }
+        
+        dispatch_later(1) { [weak self] in
+            guard let this = self else {
+                return
+            }
+            this.timeLeft()
+        }
+    }
+    
+    
     func addOverlay() {
         
         let overlay = MKTileOverlay(URLTemplate: Constants.URL.mapTemplate)
@@ -39,12 +92,21 @@ class MXSEventViewController: MXSViewController {
         
         if UIScreen.mainScreen().bounds.width < 375 {
             self.sportLabel.hidden = true
+        } else {
+            if UIScreen.mainScreen().bounds.width == 375 {
+                stackWidthConstraint.constant = -54
+            } else {
+                stackWidthConstraint.constant = -90
+            }
         }
         
         if event.date.characters.count > 1 {
             let dates = event.date.componentsSeparatedByString(" - ")
-            dateLabel.text = dates.first!
-            heurLabel.text = dates.last!
+            if let jour = dates.first, heure = dates.last {
+                dateLabel.text = jour.stringByReplacingOccurrencesOfString(" ", withString: "/")
+                heurLabel.text = heure.stringByReplacingOccurrencesOfString(":", withString: "H")
+            }
+            timeLeft()
         }
         if let coordinate = event.placeMark?.coordinate {
             let km = GPSLocationManager.getDistanceFor(coordinate)/1000
@@ -54,6 +116,11 @@ class MXSEventViewController: MXSViewController {
         }
         
         sportLabel.text = event.sport
+        
+        jourLabel.textColor = Constants.MainColor.kSpecialColor
+        hourLabel.textColor = Constants.MainColor.kSpecialColor
+        minuteLabel.textColor = Constants.MainColor.kSpecialColor
+        secondLabel.textColor = Constants.MainColor.kSpecialColor
         
         self.title = Ressources.NavigationTitle.event
             

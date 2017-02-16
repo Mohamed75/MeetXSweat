@@ -80,7 +80,9 @@ class MXSEventsCollectionViewController: UICollectionViewController {
         var text = ""
         if event.date.characters.count > 1 {
             let dates = event.date.componentsSeparatedByString(" - ")
-            text = dates.first! + "      " + dates.last!
+            if let jour = dates.first, heure = dates.last {
+                text = jour.stringByReplacingOccurrencesOfString(" ", withString: "/") + "      " + heure.stringByReplacingOccurrencesOfString(":", withString: "H")
+            }
         }
         
         
