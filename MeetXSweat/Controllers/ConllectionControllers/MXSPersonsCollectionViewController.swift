@@ -24,7 +24,6 @@ private let professionAttributes = [
 class MXSPersonsCollectionViewController: UICollectionViewController {
     
     var persons: [Person]?
-    var fromEventViewController = false
     
     
     
@@ -81,7 +80,7 @@ class MXSPersonsCollectionViewController: UICollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
-        if !(MSXFindManager.sharedInstance.findBy == FindBy.Profile) {
+        if MSXFindManager.sharedInstance.findBy == FindBy.Profile {
             
             let profileViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.profile, viewControllerId: Ressources.StoryBooardsIdentifiers.profileId) as! MXSProfileViewController
             if let persons = self.persons {

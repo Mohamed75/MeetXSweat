@@ -23,6 +23,9 @@ class MSXFindManager {
     
     static let sharedInstance = MSXFindManager()
 
-    var findBy: FindBy?
+    var findBy: FindBy
     
+    init() {
+        findBy = FindBy.Sport
+    }
 }

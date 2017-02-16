@@ -78,11 +78,8 @@ class MXSEventsCollectionViewController: UICollectionViewController {
         
         let event = self.events[indexPath.section-1]
         var text = ""
-        if event.date.characters.count > 1 {
-            let dates = event.date.componentsSeparatedByString(" - ")
-            if let jour = dates.first, heure = dates.last {
-                text = jour.stringByReplacingOccurrencesOfString(" ", withString: "/") + "      " + heure.stringByReplacingOccurrencesOfString(":", withString: "H")
-            }
+        if let jour = event.getJour(), heure = event.getHeure() {
+            text = jour + "      " + heure
         }
         
         
@@ -110,8 +107,8 @@ class MXSEventsCollectionViewController: UICollectionViewController {
             }
         }
         
-        cell.label.text = text
-        cell.imageView.image = UIImage(named: event.sport.lowercaseString)
+        cell.label.text         = text
+        cell.imageView.image    = UIImage(named: event.sport.lowercaseString)
         
         return cell
     }

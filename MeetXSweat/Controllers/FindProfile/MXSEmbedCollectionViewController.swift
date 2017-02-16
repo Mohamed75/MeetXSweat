@@ -21,7 +21,9 @@ class MXSEmbedCollectionViewController: MXSViewController {
         
         self.titleLabel.backgroundColor = Constants.MainColor.kSpecialColor
         
-        if MSXFindManager.sharedInstance.findBy == FindBy.Sport {
+        switch MSXFindManager.sharedInstance.findBy {
+            
+        case FindBy.Sport :
             if let eventsCollectionViewController = self.childViewControllers[0] as? MXSEventsCollectionViewController {
                 
                 eventsCollectionViewController.events = FindSportManager.filterEventsBySports(FindSportManager.sharedInstance.sports)
@@ -36,18 +38,16 @@ class MXSEmbedCollectionViewController: MXSViewController {
                     self.title = Ressources.NavigationTitle.events
                 }
             }
-        }
-        
-        if MSXFindManager.sharedInstance.findBy == FindBy.Date {
+            break
+          
+        case FindBy.Date :
             if let eventsCollectionViewController = self.childViewControllers[0] as? MXSEventsCollectionViewController {
                 
                 eventsCollectionViewController.events = FindDateManager.filterEventsByDates(FindDateManager.sharedInstance.dates)
             }
-            
-        }
+            break
         
-        if MSXFindManager.sharedInstance.findBy == FindBy.Profile {
-            
+        case FindBy.Profile :
             if let personsCollectionViewController = self.childViewControllers[0] as? MXSPersonsCollectionViewController {
                 
                 personsCollectionViewController.persons = FindProfileManager.filterBy(FireBaseDataManager.sharedInstance.persons, filter: FindProfileManager.sharedInstance.profession)
@@ -58,15 +58,14 @@ class MXSEmbedCollectionViewController: MXSViewController {
                 if !FindProfileManager.sharedInstance.profession.isEmpty {
                     self.titleLabel.text = FindProfileManager.sharedInstance.profession
                 }
-                
-                if personsCollectionViewController.fromEventViewController {
-                    self.title = Ressources.NavigationTitle.sportsParticipants
-                } else {
-                    self.title = Ressources.NavigationTitle.profiles
-                }
+                self.title = Ressources.NavigationTitle.profiles
             }
+            break
             
+        default:
+            break
         }
+        
     }
     
     

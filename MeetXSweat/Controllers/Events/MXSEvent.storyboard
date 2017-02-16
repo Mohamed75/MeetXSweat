@@ -131,6 +131,9 @@
                                 <rect key="frame" x="10" y="555" width="285" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="participantsButtonClicked:" destination="fUr-qR-Xlu" eventType="touchUpInside" id="6bP-Qg-jCP"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DEBUT DANS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WUt-Tm-vXN">
                                 <rect key="frame" x="240" y="480" width="125.5" height="30"/>
@@ -246,68 +249,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="64g-o8-iMJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="344" y="285"/>
-        </scene>
-        <!--Persons Collection View Controller-->
-        <scene sceneID="dxc-dK-zna">
-            <objects>
-                <collectionViewController storyboardIdentifier="MXSPersonsCollectionViewController" id="tZM-tO-Ylg" customClass="MXSPersonsCollectionViewController" customModule="MeetXSweat" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="mEk-sX-1Qc">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dVh-65-Sa3">
-                            <size key="itemSize" width="547" height="138"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MXSPersonCollectionCell" id="OWy-pe-CsJ" customClass="MXSPersonCollectionCell" customModule="MeetXSweat" customModuleProvider="target">
-                                <rect key="frame" x="26.5" y="0.0" width="547" height="138"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="547" height="138"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="csl-T1-LxD">
-                                            <rect key="frame" x="18" y="18" width="102" height="102"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="csl-T1-LxD" secondAttribute="height" multiplier="1:1" id="6k7-xM-uvr"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5n3-GA-yYb">
-                                            <rect key="frame" x="140" y="58.5" width="389" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="csl-T1-LxD" firstAttribute="top" secondItem="OWy-pe-CsJ" secondAttribute="topMargin" constant="10" id="CBS-zc-QLr"/>
-                                    <constraint firstItem="5n3-GA-yYb" firstAttribute="centerY" secondItem="OWy-pe-CsJ" secondAttribute="centerY" id="KMP-Lb-gdG"/>
-                                    <constraint firstItem="5n3-GA-yYb" firstAttribute="leading" secondItem="csl-T1-LxD" secondAttribute="trailing" constant="20" id="PMc-Lb-Q8A"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="csl-T1-LxD" secondAttribute="bottom" constant="10" id="PWx-2k-juz"/>
-                                    <constraint firstItem="csl-T1-LxD" firstAttribute="leading" secondItem="OWy-pe-CsJ" secondAttribute="leadingMargin" constant="10" id="WmB-iv-Acb"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="5n3-GA-yYb" secondAttribute="trailing" constant="10" id="ku7-9y-td5"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="imageView" destination="csl-T1-LxD" id="IP9-Zi-SwG"/>
-                                    <outlet property="label" destination="5n3-GA-yYb" id="XGX-fb-Sfc"/>
-                                </connections>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="tZM-tO-Ylg" id="YcJ-he-G6P"/>
-                            <outlet property="delegate" destination="tZM-tO-Ylg" id="c83-gX-BOo"/>
-                        </connections>
-                    </collectionView>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bQd-ck-AKO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1125" y="268"/>
         </scene>
     </scenes>
     <resources>

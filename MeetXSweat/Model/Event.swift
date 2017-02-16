@@ -39,6 +39,38 @@ class Event: FireBaseObject {
         }
     }
     
+    func getJour() -> String? {
+        if date.characters.count > 1 {
+            let array = date.componentsSeparatedByString(" - ")
+            if let jour = array.first {
+                return jour.stringByReplacingOccurrencesOfString(" ", withString: "/")
+            }
+        }
+        return ""
+    }
+
+    func getHeure() -> String? {
+        if date.characters.count > 1 {
+            let array = date.componentsSeparatedByString(" - ")
+            if let heure = array.last {
+                return heure.stringByReplacingOccurrencesOfString(":", withString: "H")
+            }
+        }
+        return ""
+    }
+    
+    func isCurrentPersonAlreadyIn() -> Bool {
+        
+        if persons.count <= 0  {
+            return false
+        }
+        for person in persons {
+            if person.email == User.currentUser.email {
+                return true
+            }
+        }
+        return false
+    }
     
     override init() {
         super.init()
@@ -51,6 +83,16 @@ class Event: FireBaseObject {
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    func addCurrentUserToEvent() {
+        
+        if !isCurrentPersonAlreadyIn() {
+            persons.append(User.currentUser)
+            if let aRef = self.ref {
+                aRef.child("persons").setValue(arrayAsJson(persons))
+            }
+        }
     }
     
     

@@ -100,14 +100,12 @@ class MXSEventViewController: MXSViewController {
             }
         }
         
-        if event.date.characters.count > 1 {
-            let dates = event.date.componentsSeparatedByString(" - ")
-            if let jour = dates.first, heure = dates.last {
-                dateLabel.text = jour.stringByReplacingOccurrencesOfString(" ", withString: "/")
-                heurLabel.text = heure.stringByReplacingOccurrencesOfString(":", withString: "H")
-            }
+        if let jour = event.getJour(), heure = event.getHeure() {
+            dateLabel.text = jour
+            heurLabel.text = heure
             timeLeft()
         }
+        
         if let coordinate = event.placeMark?.coordinate {
             let km = GPSLocationManager.getDistanceFor(coordinate)/1000
             if km > 0 {
@@ -135,8 +133,8 @@ class MXSEventViewController: MXSViewController {
         participantsButton.layer.borderWidth = 1
         participantsButton.setTitleColor(Constants.MainColor.kSpecialColor, forState: .Normal)
         
-        participantsButton.setTitle(String(self.event.persons.count) + " PARTICIPANTS", forState: .Normal)
-        
+        updateParticipantsButtonText()
+        updateInscriptionButton()
         
         let dateArray = self.event.date.componentsSeparatedByString(" - ")
         var text = dateArray[0]
@@ -156,6 +154,18 @@ class MXSEventViewController: MXSViewController {
             
         } else {
             self.event.adress = self.event.adress
+        }
+    }
+    
+    func updateParticipantsButtonText() {
+        participantsButton.setTitle(String(self.event.persons.count) + " PARTICIPANTS", forState: .Normal)
+    }
+    
+    func updateInscriptionButton() {
+        
+        if self.event.isCurrentPersonAlreadyIn() {
+            inscriptionButton.enabled = false
+            inscriptionButton.alpha = 0.4
         }
     }
     
@@ -226,7 +236,38 @@ class MXSEventViewController: MXSViewController {
         }
     }
     
+    @IBAction func participantsButtonClicked(sender: AnyObject) {
+        
+        if event.persons.count <= 0 {
+            return
+        }
+        
+        if let viewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findProfile, viewControllerId: Ressources.StoryBooardsIdentifiers.embedProfilesId) as? MXSEmbedCollectionViewController
+        {
+            viewController.title = Ressources.NavigationTitle.sportsParticipants
+            self.navigationController?.pushViewController(viewController, animated: false)
+            
+            
+            dispatch_later(0.1, closure: { [weak self] in
+                guard let this = self else {
+                    return
+                }
+                if let personsCollectionViewController = viewController.childViewControllers[0] as? MXSPersonsCollectionViewController {
+                    viewController.titleLabel.text = this.event.sport.uppercaseString
+                    if let jour = this.event.getJour(), heure = this.event.getHeure() {
+                        viewController.titleLabel.text = this.event.sport.uppercaseString + " - " + jour + " - " + heure
+                    }
+                    personsCollectionViewController.persons = this.event.persons
+                    personsCollectionViewController.collectionView?.reloadData()
+                }
+            })
+        }
+    }
     
     @IBAction func inscriptionButtonClicked(sender: AnyObject) {
+        event.addCurrentUserToEvent()
+        participantsButtonClicked(NSObject())
+        updateParticipantsButtonText()
+        updateInscriptionButton()
     }
 }

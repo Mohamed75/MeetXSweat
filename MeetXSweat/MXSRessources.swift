@@ -64,6 +64,7 @@ enum Ressources {
         
         // Profile StoryBoard
         static let profileId        = "MXSProfileViewController"
+        static let embedProfilesId  = "MXSEmbedProfilesCollectionViewController"
         
         // WellCome StoryBoard
         static let wellComeId       = "MXSWellComeViewController"

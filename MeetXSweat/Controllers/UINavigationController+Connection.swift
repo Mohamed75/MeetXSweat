@@ -119,6 +119,23 @@ extension UINavigationController {
     }
     
     
+    override public func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+        let firstViewController = self.viewControllers.first
+        if firstViewController is MXSFindProfileViewController {
+            MSXFindManager.sharedInstance.findBy = FindBy.Profile
+        }
+        if firstViewController is MXSFindSportViewController || firstViewController is MXSFindArroundMeViewController {
+            MSXFindManager.sharedInstance.findBy = FindBy.Sport
+        }
+        if firstViewController is MXSFindDateViewController {
+            MSXFindManager.sharedInstance.findBy = FindBy.Date
+        }
+    }
+    
+    
     func getPreviousViewController() -> UIViewController {
         if let indexCurrentViewController = self.viewControllers.indexOf(self.visibleViewController!) {
             return self.viewControllers[indexCurrentViewController-1]

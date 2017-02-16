@@ -95,14 +95,17 @@ class FireBaseObject: EnCodeObject {
             
             for object: AnyObject in array {
                 
-                let clazz: FireBaseObject = FireBaseObject.fromClassName(className) as! FireBaseObject
-                for (key, v) in (object as! [String: AnyObject]) {
+                if object is NSDictionary {
                     
-                    if (clazz.respondsToSelector(NSSelectorFromString(key))) {
-                        clazz.setValue(v, forKey: key)
+                    let clazz: FireBaseObject = FireBaseObject.fromClassName(className) as! FireBaseObject
+                    for (key, v) in (object as! [String: AnyObject]) {
+                        
+                        if (clazz.respondsToSelector(NSSelectorFromString(key))) {
+                            clazz.setValue(v, forKey: key)
+                        }
                     }
+                    returnArray.append(clazz)
                 }
-                returnArray.append(clazz)
             }
         } else {
             return array
@@ -134,7 +137,7 @@ class FireBaseObject: EnCodeObject {
     }
     // return json array
     // value is an array wich could have simple type as String or complexe object
-    private func arrayAsJson(value: AnyObject) -> AnyObject {
+    func arrayAsJson(value: AnyObject) -> AnyObject {
         
         let firstElement = (value as! NSArray).firstObject as! NSObject
         if firstElement.isKindOfClass(FireBaseObject) {

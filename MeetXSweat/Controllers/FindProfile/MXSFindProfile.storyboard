@@ -90,7 +90,7 @@
         <!--Embed Collection View Controller-->
         <scene sceneID="Q2Q-p5-AnM">
             <objects>
-                <viewController id="a5f-J0-mXy" customClass="MXSEmbedCollectionViewController" customModule="MeetXSweat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MXSEmbedProfilesCollectionViewController" id="a5f-J0-mXy" customClass="MXSEmbedCollectionViewController" customModule="MeetXSweat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2bh-sd-Gp5"/>
                         <viewControllerLayoutGuide type="bottom" id="s8e-RW-N3Z"/>
@@ -104,7 +104,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="JEp-Pk-dtI"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
