@@ -117,40 +117,39 @@
                             <inset key="sectionInset" minX="0.0" minY="5" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MXSEventsCollectionCell" id="fcr-jd-V2g" customClass="MXSEventsCollectionCell" customModule="MeetXSweat" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MXSEventsCollectionCell" id="hOP-4n-2K7" customClass="MXSEventsCollectionCell" customModule="MeetXSweat" customModuleProvider="target">
                                 <rect key="frame" x="24.5" y="5" width="531.5" height="109"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="531.5" height="109"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vcc-Wf-hAm">
-                                            <rect key="frame" x="18" y="18" width="73" height="73"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="vcc-Wf-hAm" secondAttribute="height" multiplier="1:1" id="HrX-ol-ZvZ"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BdY-s1-Pdj">
-                                            <rect key="frame" x="111" y="44" width="402.5" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JhB-DJ-jEc">
+                                            <rect key="frame" x="18" y="46" width="35.5" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zQM-jt-FUJ">
+                                            <rect key="frame" x="440.5" y="18" width="73" height="73"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="zQM-jt-FUJ" secondAttribute="height" multiplier="1:1" id="pih-Rs-Q7V"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottomMargin" secondItem="vcc-Wf-hAm" secondAttribute="bottom" constant="10" id="5b9-2V-w8V"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="BdY-s1-Pdj" secondAttribute="trailing" constant="10" id="8ez-Uf-8Wk"/>
-                                    <constraint firstItem="vcc-Wf-hAm" firstAttribute="top" secondItem="fcr-jd-V2g" secondAttribute="topMargin" constant="10" id="CDl-Cd-qf8"/>
-                                    <constraint firstItem="vcc-Wf-hAm" firstAttribute="leading" secondItem="fcr-jd-V2g" secondAttribute="leadingMargin" constant="10" id="FKe-gy-Qgs"/>
-                                    <constraint firstItem="BdY-s1-Pdj" firstAttribute="centerY" secondItem="fcr-jd-V2g" secondAttribute="centerY" id="I47-Og-Czh"/>
-                                    <constraint firstItem="BdY-s1-Pdj" firstAttribute="leading" secondItem="vcc-Wf-hAm" secondAttribute="trailing" constant="20" id="bVp-vW-wP1"/>
+                                    <constraint firstItem="JhB-DJ-jEc" firstAttribute="centerY" secondItem="hOP-4n-2K7" secondAttribute="centerY" id="7pB-Kr-ZxD"/>
+                                    <constraint firstItem="zQM-jt-FUJ" firstAttribute="top" secondItem="hOP-4n-2K7" secondAttribute="topMargin" constant="10" id="Laa-ZA-KE4"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="zQM-jt-FUJ" secondAttribute="bottom" constant="10" id="kHd-XD-uCf"/>
+                                    <constraint firstItem="JhB-DJ-jEc" firstAttribute="leading" secondItem="hOP-4n-2K7" secondAttribute="leadingMargin" constant="10" id="oYe-np-5rf"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="zQM-jt-FUJ" secondAttribute="trailing" constant="10" id="te3-HV-kh8"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="imageView" destination="vcc-Wf-hAm" id="qAX-RV-n2u"/>
-                                    <outlet property="label" destination="BdY-s1-Pdj" id="AdW-M1-KJy"/>
+                                    <outlet property="imageView" destination="zQM-jt-FUJ" id="Vxt-DD-UQ4"/>
+                                    <outlet property="label" destination="JhB-DJ-jEc" id="fuM-8N-wah"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

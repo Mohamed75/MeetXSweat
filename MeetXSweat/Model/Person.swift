@@ -105,6 +105,37 @@ class Person: FireBaseObject {
         }
     }
     
+    func setUserImage(image: UIImage) {
+        
+        FireBaseHelper.saveImage(image, fileName: email, completion:  { [weak self] url in
+            
+            guard let this = self else {
+                return
+            }
+            if let aRef = this.ref {
+                aRef.updateChildValues(["pictureUrl": url])
+            }
+            else {
+                
+                let personRef = FIRDatabase.database().reference().child("person-items")
+                let handle = personRef.queryOrderedByChild("email").queryEqualToValue("\(this.email)")
+                    .observeEventType(.Value, withBlock: { snapshot in
+                        if !( snapshot.value is NSNull ) {
+                            
+                            print("user finded")
+                            for child in snapshot.children {
+                                this.ref = child.ref
+                                this.ref!.updateChildValues(["pictureUrl": url])
+                            }
+                        }
+                })
+                personRef.removeObserverWithHandle(handle)
+            }
+        })
+        
+        
+    }
+    
     
     
     // email withoutSpecialCharacters
@@ -115,7 +146,7 @@ class Person: FireBaseObject {
         return returnString
     }
     
-    func fullName() -> String {
+    func aFullName() -> String {
         return self.name + " " + self.lastName
     }
 }

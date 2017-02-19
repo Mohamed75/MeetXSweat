@@ -43,7 +43,7 @@ class MXSProfileViewController: MXSViewController {
         imageView.image = UIImage(named: Ressources.Images.userSansPhoto)
         if !User.currentUser.pictureUrl.isEmpty {
             imageView.af_setImageWithURL(
-                NSURL(string: User.currentUser.pictureUrl)!,
+                NSURL(string: person.pictureUrl)!,
                 placeholderImage: nil,
                 filter: nil,
                 imageTransition: .None
@@ -52,7 +52,7 @@ class MXSProfileViewController: MXSViewController {
             imageView.clipsToBounds = true
         }
         
-        let text = person.fullName()
+        let text = person.aFullName()
         let string = NSMutableAttributedString(string: text + "\n" + FindProfileManager.sharedInstance.profession)
         string.addAttributes(nameAttributes, range: NSRange(location: 0,length: text.characters.count))
         if !FindProfileManager.sharedInstance.profession.isEmpty {

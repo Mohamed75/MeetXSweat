@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SDWebImage
 
 
 private let nameAttributes = [
@@ -42,7 +42,7 @@ class MXSPersonsCollectionViewController: UICollectionViewController {
             
             let person = persons[indexPath.section]
             
-            let text = person.fullName()
+            let text = person.aFullName()
             let string = NSMutableAttributedString(string: text + "\n" + FindProfileManager.sharedInstance.profession)
             string.addAttributes(nameAttributes, range: NSRange(location: 0,length: text.characters.count))
             if !FindProfileManager.sharedInstance.profession.isEmpty {
@@ -62,7 +62,7 @@ class MXSPersonsCollectionViewController: UICollectionViewController {
             
             if !person.pictureUrl.isEmpty {
                 userImageView.af_setImageWithURL(
-                    NSURL(string: User.currentUser.pictureUrl)!,
+                    NSURL(string: person.pictureUrl)!,
                     placeholderImage: nil,
                     filter: nil,
                     imageTransition: .None
@@ -77,6 +77,7 @@ class MXSPersonsCollectionViewController: UICollectionViewController {
         
         return cell
     }
+    
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         

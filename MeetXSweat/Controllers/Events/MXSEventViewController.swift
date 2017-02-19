@@ -155,6 +155,10 @@ class MXSEventViewController: MXSViewController {
         } else {
             self.event.adress = self.event.adress
         }
+        
+        if self.tabBarController?.selectedIndex == 0 {
+            participantsButton.hidden = true
+        }
     }
     
     func updateParticipantsButtonText() {
@@ -266,7 +270,9 @@ class MXSEventViewController: MXSViewController {
     
     @IBAction func inscriptionButtonClicked(sender: AnyObject) {
         event.addCurrentUserToEvent()
-        participantsButtonClicked(NSObject())
+        if self.tabBarController?.selectedIndex != 0 {
+            participantsButtonClicked(NSObject())
+        }
         updateParticipantsButtonText()
         updateInscriptionButton()
     }

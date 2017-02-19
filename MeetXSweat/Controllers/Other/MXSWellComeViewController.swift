@@ -30,18 +30,19 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
     private let pickerView      = UIPickerView()
     
     
-    let imagePicker = UIImagePickerController()
+    private let imagePicker = UIImagePickerController()
+    private var updateUserImage = false
+    
     
     
     override func viewDidLoad() {
      
         super.viewDidLoad()
         
-        imagePicker.delegate = self
-        
-        nameLabel.text = User.currentUser.fullName()
+        nameLabel.text = User.currentUser.aFullName()
         
         self.title = Ressources.NavigationTitle.wellCome
+        imagePicker.delegate = self
         
         if UIScreen.mainScreen().bounds.size.height == 480 { //iPhone 4
             addValiderButton()
@@ -168,7 +169,14 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
         
             User.currentUser.profession = job
             User.currentUser.sport = sport
-            User.currentUser.updatePersonOnDataBase({ (done) in
+            User.currentUser.updatePersonOnDataBase({ [weak self] done in
+                
+                guard let this = self else {
+                    return
+                }
+                if let image = this.userImageView.image where this.updateUserImage {
+                    User.currentUser.setUserImage(image)
+                }
             })
             
             let tuttorialViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.wellCome, viewControllerId: Ressources.StoryBooardsIdentifiers.tuttorialId)
@@ -187,6 +195,7 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             userImageView.contentMode = .ScaleAspectFit
             userImageView.image = pickedImage
+            updateUserImage = true
         }
         
         dismissViewControllerAnimated(true, completion: nil)
