@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SDWebImage
+
 
 
 private let nameAttributes = [
