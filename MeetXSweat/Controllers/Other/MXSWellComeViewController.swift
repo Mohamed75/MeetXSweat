@@ -67,12 +67,10 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
             userImageView.layer.cornerRadius = userImageView.frame.width/2
             userImageView.clipsToBounds = true
         } 
-            
+        Utils.addTapGestureToView(userImageView, target: self, selectorString: "userImageViewClicked")   
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Constants.FBNotificationSelector.sports, name: Constants.FBNotificationName.sports, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Constants.FBNotificationSelector.professions, name: Constants.FBNotificationName.professions, object: nil)
-        
-        Utils.addTapGestureToView(userImageView, target: self, selectorString: "userImageViewClicked")
     }
     
     override func viewWillAppear(animated: Bool) {

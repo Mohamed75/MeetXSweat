@@ -22,7 +22,7 @@ private let professionAttributes = [
 
 
 
-class MXSProfileViewController: MXSViewController {
+class MXSProfileViewController: MXSViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate {
 
 
     @IBOutlet weak var imageView: UIImageView!
@@ -33,12 +33,20 @@ class MXSProfileViewController: MXSViewController {
     @IBOutlet weak var contactButton: UIButton!
     
     var person: Person!
+    var editable: Bool = false
+    
+    private let imagePicker = UIImagePickerController()
+    private var updateUserImage = false
+    
     
     
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        imagePicker.delegate = self
+        
         
         imageView.image = UIImage(named: Ressources.Images.userSansPhoto)
         if !User.currentUser.pictureUrl.isEmpty {
@@ -50,6 +58,10 @@ class MXSProfileViewController: MXSViewController {
             )
             imageView.layer.cornerRadius = imageView.frame.width/2
             imageView.clipsToBounds = true
+        }
+        
+        if editable {
+            Utils.addTapGestureToView(imageView, target: self, selectorString: "userImageViewClicked")
         }
         
         let text = person.aFullName()
@@ -70,6 +82,63 @@ class MXSProfileViewController: MXSViewController {
         }
         contactButton.setTitleColor(Constants.MainColor.kSpecialColor, forState: .Normal)
     }
+    
+    func userImageViewClicked() {
+        
+        let actionSheet = UIAlertController(title: "Image Source", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
+        
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: UIAlertActionStyle.Default, handler: { [weak self] action -> Void in
+            guard let this = self else {
+                return
+            }
+            this.promptForCamera()
+            }))
+        actionSheet.addAction(UIAlertAction(title: "Photo Roll", style: UIAlertActionStyle.Default, handler: { [weak self] action -> Void in
+            guard let this = self else {
+                return
+            }
+            this.promptForPhotoRoll()
+            }))
+        
+        self.presentViewController(actionSheet, animated: true, completion: nil)
+    }
+    
+    
+    func promptForPhotoRoll() {
+        
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .PhotoLibrary
+        
+        presentViewController(imagePicker, animated: true, completion: nil)
+    }
+    
+    func promptForCamera() {
+        
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .Camera
+        
+        presentViewController(imagePicker, animated: true, completion: nil)
+    }
+    
+    // Mark: --- ImagePickerController ---
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            imageView.contentMode = .ScaleAspectFit
+            imageView.image = pickedImage
+            updateUserImage = true
+        }
+        
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     
     
     @IBAction func contacterButtonClicked(sender: AnyObject) {
