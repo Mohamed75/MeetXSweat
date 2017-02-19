@@ -33,10 +33,10 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rAL-8P-V5r">
-                                <rect key="frame" x="262" y="76" width="73.5" height="71"/>
+                                <rect key="frame" x="268" y="82.5" width="62" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="rAL-8P-V5r" secondAttribute="height" multiplier="73:71" id="DMB-5u-kIf"/>
-                                    <constraint firstAttribute="width" constant="73.5" id="da6-ld-qg3"/>
+                                    <constraint firstAttribute="width" constant="62" id="da6-ld-qg3"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lca-Ii-znG">
@@ -78,7 +78,7 @@
                             <constraint firstItem="lca-Ii-znG" firstAttribute="top" secondItem="jHn-jK-FoW" secondAttribute="bottom" constant="20" id="2fr-Q1-U84"/>
                             <constraint firstItem="FgL-Is-kKy" firstAttribute="height" secondItem="lca-Ii-znG" secondAttribute="height" id="2tg-Ra-zjX"/>
                             <constraint firstItem="7wP-Qa-RXh" firstAttribute="top" secondItem="rZa-Wl-hes" secondAttribute="bottom" id="5Bb-vf-R6O"/>
-                            <constraint firstItem="rAL-8P-V5r" firstAttribute="centerY" secondItem="KH5-ja-Shi" secondAttribute="centerY" id="5St-wb-wEy"/>
+                            <constraint firstItem="rAL-8P-V5r" firstAttribute="centerY" secondItem="KH5-ja-Shi" secondAttribute="centerY" constant="1" id="5St-wb-wEy"/>
                             <constraint firstItem="jHn-jK-FoW" firstAttribute="top" secondItem="7wP-Qa-RXh" secondAttribute="bottom" constant="60" id="69w-AG-Dsi"/>
                             <constraint firstItem="jHn-jK-FoW" firstAttribute="centerX" secondItem="dZC-pX-eEF" secondAttribute="centerX" id="9Jl-kC-5JH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="7wP-Qa-RXh" secondAttribute="trailing" constant="-20" id="NAg-Vy-a6x"/>
@@ -101,7 +101,6 @@
                         <outlet property="nameLabel" destination="jHn-jK-FoW" id="6Vj-8n-qT2"/>
                         <outlet property="sportButton" destination="FgL-Is-kKy" id="cDC-0g-Zda"/>
                         <outlet property="userImageView" destination="rAL-8P-V5r" id="s7Q-hb-bso"/>
-                        <outlet property="userImageWidthConst" destination="da6-ld-qg3" id="2PP-o9-7Qh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FaF-BM-zAp" userLabel="First Responder" sceneMemberID="firstResponder"/>

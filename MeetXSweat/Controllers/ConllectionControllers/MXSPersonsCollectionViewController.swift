@@ -41,8 +41,8 @@ class MXSPersonsCollectionViewController: UICollectionViewController {
         if let persons = self.persons {
             
             let person = persons[indexPath.section]
-            let text = person.name  + " " + person.lastName
             
+            let text = person.fullName()
             let string = NSMutableAttributedString(string: text + "\n" + FindProfileManager.sharedInstance.profession)
             string.addAttributes(nameAttributes, range: NSRange(location: 0,length: text.characters.count))
             if !FindProfileManager.sharedInstance.profession.isEmpty {

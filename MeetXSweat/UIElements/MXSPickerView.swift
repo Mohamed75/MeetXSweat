@@ -46,8 +46,15 @@ class MXSPickerView {
             
             drawerController.gestureCompletionBlock = { (drawerController, gestureRecognizer) -> Void in
                 
-                if controller.tabBarController?.selectedIndex != 0 {
-                    return
+                if let tabBarController = controller.tabBarController {
+                    if tabBarController.selectedIndex != 0 {
+                        return
+                    }
+                    if let navigationController = tabBarController.viewControllers![tabBarController.selectedIndex] as? UINavigationController {
+                        if navigationController.viewControllers.count > 1 {
+                            return
+                        }
+                    }
                 }
                 if drawerController.openSide == .None {
                     showPickerView(pickerView, controller: controller, scale: scale)

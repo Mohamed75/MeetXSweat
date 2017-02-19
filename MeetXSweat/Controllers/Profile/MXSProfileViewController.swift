@@ -9,6 +9,18 @@
 import UIKit
 
 
+private let nameAttributes = [
+    NSForegroundColorAttributeName: Constants.MainColor.kSpecialColor,
+    NSFontAttributeName : UIFont.boldSystemFontOfSize(17)
+]
+
+private let professionAttributes = [
+    NSForegroundColorAttributeName: UIColor.blackColor(),
+    NSFontAttributeName : UIFont.systemFontOfSize(16)
+]
+
+
+
 
 class MXSProfileViewController: MXSViewController {
 
@@ -18,16 +30,36 @@ class MXSProfileViewController: MXSViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    @IBOutlet weak var contactButton: UIButton!
+    
     var person: Person!
+    
     
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        self.imageView.image = UIImage(named: Ressources.Images.profilePlaceHolder)
+        imageView.image = UIImage(named: Ressources.Images.userSansPhoto)
+        if !User.currentUser.pictureUrl.isEmpty {
+            imageView.af_setImageWithURL(
+                NSURL(string: User.currentUser.pictureUrl)!,
+                placeholderImage: nil,
+                filter: nil,
+                imageTransition: .None
+            )
+            imageView.layer.cornerRadius = imageView.frame.width/2
+            imageView.clipsToBounds = true
+        }
         
-        self.nameLabel.text = person.fullName() + "\n" + FindProfileManager.sharedInstance.profession
+        let text = person.fullName()
+        let string = NSMutableAttributedString(string: text + "\n" + FindProfileManager.sharedInstance.profession)
+        string.addAttributes(nameAttributes, range: NSRange(location: 0,length: text.characters.count))
+        if !FindProfileManager.sharedInstance.profession.isEmpty {
+            string.addAttributes(professionAttributes, range: NSRange(location: text.characters.count,length: FindProfileManager.sharedInstance.profession.characters.count))
+        }
+        nameLabel.attributedText = string
+        
         
         self.descriptionLabel.text = "My temporary description"
         
@@ -36,6 +68,7 @@ class MXSProfileViewController: MXSViewController {
             eventsCollectionViewController.events = FireBaseDataManager.sharedInstance.events
             eventsCollectionViewController.fromProfileViewController = true
         }
+        contactButton.setTitleColor(Constants.MainColor.kSpecialColor, forState: .Normal)
     }
     
     

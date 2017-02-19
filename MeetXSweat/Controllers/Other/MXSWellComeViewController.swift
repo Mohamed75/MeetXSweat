@@ -12,14 +12,12 @@ private let jobButtonText   = "MON JOB"
 private let sportButtonText = "MES SPORTS"
 
 
-class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate {
     
     
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
-    
-    @IBOutlet weak var userImageWidthConst: NSLayoutConstraint!
     
     
     @IBOutlet weak var jobButton: UIButton!
@@ -32,10 +30,14 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
     private let pickerView      = UIPickerView()
     
     
+    let imagePicker = UIImagePickerController()
+    
     
     override func viewDidLoad() {
      
         super.viewDidLoad()
+        
+        imagePicker.delegate = self
         
         nameLabel.text = User.currentUser.fullName()
         
@@ -61,14 +63,15 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
                 filter: nil,
                 imageTransition: .None
             )
-            //userImageWidthConst.constant -= 10
-            //userImageView.layer.cornerRadius = (userImageView.frame.width-10)/2
             userImageView.layer.cornerRadius = userImageView.frame.width/2
             userImageView.clipsToBounds = true
-        }
+        } 
+            
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Constants.FBNotificationSelector.sports, name: Constants.FBNotificationName.sports, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Constants.FBNotificationSelector.professions, name: Constants.FBNotificationName.professions, object: nil)
+        
+        Utils.addTapGestureToView(userImageView, target: self, selectorString: "userImageViewClicked")
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -81,6 +84,45 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
         super.viewWillDisappear(animated)
         
         MXSPickerView.subViewPanned(pickerView, controller: self)
+    }
+    
+    func userImageViewClicked() {
+        
+        let actionSheet = UIAlertController(title: "Image Source", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
+        
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: UIAlertActionStyle.Default, handler: { [weak self] action -> Void in
+            guard let this = self else {
+                return
+            }
+            this.promptForCamera()
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Photo Roll", style: UIAlertActionStyle.Default, handler: { [weak self] action -> Void in
+            guard let this = self else {
+                return
+            }
+            this.promptForPhotoRoll()
+        }))
+        
+        self.presentViewController(actionSheet, animated: true, completion: nil)
+    }
+    
+    
+    func promptForPhotoRoll() {
+        
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .PhotoLibrary
+        
+        presentViewController(imagePicker, animated: true, completion: nil)
+    }
+    
+    func promptForCamera() {
+        
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .Camera
+        
+        presentViewController(imagePicker, animated: true, completion: nil)
     }
     
     // Mark: --- Notifications Observer ---
@@ -136,6 +178,23 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
     
     override func validatButtonClicked(sender: AnyObject) {
         MXSPickerView.subViewPanned(pickerView, controller: self)
+    }
+    
+    
+    // Mark: --- ImagePickerController ---
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            userImageView.contentMode = .ScaleAspectFit
+            userImageView.image = pickedImage
+        }
+        
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     
