@@ -45,10 +45,10 @@ class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
             var i = 0
             for event in this.events {
                 
-                if let placeMark = event.placeMark {
+                if let coordinate = event.getCoordinate() {
                     
                     let myPlaceMark = MKPointAnnotation()
-                    myPlaceMark.coordinate  = placeMark.coordinate
+                    myPlaceMark.coordinate  = coordinate
                     myPlaceMark.title       = event.name
                     myPlaceMark.subtitle    = String(i)
                     this.mapView.addAnnotation(myPlaceMark)

@@ -120,6 +120,8 @@
 		D949BB561E5C872A00BCF3A0 /* MXSFindProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D959B3D01D92D24500981105 /* MXSFindProfile.storyboard */; };
 		D949BB581E5C872A00BCF3A0 /* MXSFindSport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D90AB57D1D940CA9003DCA75 /* MXSFindSport.storyboard */; };
 		D949BB661E5C92B700BCF3A0 /* GoogleServiceProd-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D949BB651E5C92B700BCF3A0 /* GoogleServiceProd-Info.plist */; };
+		D949BB6B1E5CE03300BCF3A0 /* EventPersons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D949BB6A1E5CE03300BCF3A0 /* EventPersons.swift */; };
+		D949BB6C1E5CE03300BCF3A0 /* EventPersons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D949BB6A1E5CE03300BCF3A0 /* EventPersons.swift */; };
 		D94A3E3C1DA3E6220090A7A4 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E3B1DA3E6220090A7A4 /* Message.swift */; };
 		D94A3E411DA3FB1B0090A7A4 /* MXSConversationsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E401DA3FB1B0090A7A4 /* MXSConversationsCollectionViewController.swift */; };
 		D94A3E471DA3FC840090A7A4 /* MXSEventsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E431DA3FC840090A7A4 /* MXSEventsCollectionCell.swift */; };
@@ -235,6 +237,7 @@
 		D949BB5F1E5C872A00BCF3A0 /* MeetXSweat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetXSweat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D949BB601E5C872A00BCF3A0 /* MeetXSweatProd-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "MeetXSweatProd-Info.plist"; path = "/Users/mohamed/MeetXSweat/MeetXSweatProd-Info.plist"; sourceTree = "<absolute>"; };
 		D949BB651E5C92B700BCF3A0 /* GoogleServiceProd-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleServiceProd-Info.plist"; sourceTree = "<group>"; };
+		D949BB6A1E5CE03300BCF3A0 /* EventPersons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPersons.swift; sourceTree = "<group>"; };
 		D94A3E3B1DA3E6220090A7A4 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		D94A3E401DA3FB1B0090A7A4 /* MXSConversationsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSConversationsCollectionViewController.swift; sourceTree = "<group>"; };
 		D94A3E431DA3FC840090A7A4 /* MXSEventsCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSEventsCollectionCell.swift; sourceTree = "<group>"; };
@@ -491,6 +494,7 @@
 				D90AB5721D93E4D9003DCA75 /* Event.swift */,
 				D9B64D2D1DA3AACF008C5D34 /* Conversation.swift */,
 				D94A3E3B1DA3E6220090A7A4 /* Message.swift */,
+				D949BB6A1E5CE03300BCF3A0 /* EventPersons.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -564,13 +568,13 @@
 			isa = PBXGroup;
 			children = (
 				D9B64D211DA3AA2D008C5D34 /* DummyData.swift */,
+				D9B64D251DA3AA2D008C5D34 /* FireBaseDataManager.swift */,
+				D9C086371E46698000122030 /* MSXFindManager.swift */,
 				D9B64D221DA3AA2D008C5D34 /* FindDateManager.swift */,
 				D9B64D231DA3AA2D008C5D34 /* FindProfileManager.swift */,
 				D9B64D241DA3AA2D008C5D34 /* FindSportManager.swift */,
-				D9B64D251DA3AA2D008C5D34 /* FireBaseDataManager.swift */,
 				D9B64D2B1DA3AA62008C5D34 /* ConversationsDataManager.swift */,
 				D9C086351E464A1E00122030 /* MSXLogInManager.swift */,
-				D9C086371E46698000122030 /* MSXFindManager.swift */,
 				D963AE791E522C8000FF5B85 /* GPSLocationManager.swift */,
 			);
 			path = Managers;
@@ -1031,6 +1035,7 @@
 				D90AB5A51D957AE6003DCA75 /* AnimationClass.swift in Sources */,
 				D90AB5AF1D96BE1E003DCA75 /* MXSActivityIndicator.swift in Sources */,
 				D94C63E91D8E914F00ECD7FD /* TwitterHelper.swift in Sources */,
+				D949BB6B1E5CE03300BCF3A0 /* EventPersons.swift in Sources */,
 				D94A3E471DA3FC840090A7A4 /* MXSEventsCollectionCell.swift in Sources */,
 				D9C086361E464A1E00122030 /* MSXLogInManager.swift in Sources */,
 				D907C5131E5A23CB009856E6 /* FireBaseHelper.swift in Sources */,
@@ -1113,6 +1118,7 @@
 				D949BB321E5C872A00BCF3A0 /* AnimationClass.swift in Sources */,
 				D949BB331E5C872A00BCF3A0 /* MXSActivityIndicator.swift in Sources */,
 				D949BB341E5C872A00BCF3A0 /* TwitterHelper.swift in Sources */,
+				D949BB6C1E5CE03300BCF3A0 /* EventPersons.swift in Sources */,
 				D949BB351E5C872A00BCF3A0 /* MXSEventsCollectionCell.swift in Sources */,
 				D949BB361E5C872A00BCF3A0 /* MSXLogInManager.swift in Sources */,
 				D949BB371E5C872A00BCF3A0 /* FireBaseHelper.swift in Sources */,

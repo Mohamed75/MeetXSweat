@@ -76,8 +76,8 @@ class MXSProfileViewController: MXSViewController, UIImagePickerControllerDelega
         self.descriptionLabel.text = "My temporary description"
         
         if let eventsCollectionViewController = self.childViewControllers[0] as? MXSEventsCollectionViewController {
-            // should filter events personne (to be done)
-            eventsCollectionViewController.events = FireBaseDataManager.sharedInstance.events
+            
+            eventsCollectionViewController.events = person.getEvents()
             eventsCollectionViewController.fromProfileViewController = true
         }
         contactButton.setTitleColor(Constants.MainColor.kSpecialColor, forState: .Normal)
@@ -94,13 +94,13 @@ class MXSProfileViewController: MXSViewController, UIImagePickerControllerDelega
                 return
             }
             this.promptForCamera()
-            }))
+        }))
         actionSheet.addAction(UIAlertAction(title: "Photo Roll", style: UIAlertActionStyle.Default, handler: { [weak self] action -> Void in
             guard let this = self else {
                 return
             }
             this.promptForPhotoRoll()
-            }))
+        }))
         
         self.presentViewController(actionSheet, animated: true, completion: nil)
     }

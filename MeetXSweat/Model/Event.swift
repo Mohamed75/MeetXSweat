@@ -18,25 +18,43 @@ class Event: FireBaseObject {
     var date    = ""
     var aDescription = ""
     
-    var persons: [Person] = []
+    var persons: [String] = []
     var sport   = ""
     
-    var imageUrlString = ""
-    var placeMark: MKPlacemark?
+    var imageUrlString  = ""
+    var coordinate      = ""
     
     
     var adress: String? {
         didSet {
             
-            CLGeocoder().geocodeAddressString(adress!, completionHandler: { [weak self] (placemarks: [CLPlacemark]?, error: NSError?) -> Void in
-                if (placemarks?.count > 0) {
-                    guard let this = self else {
-                        return
+            if coordinate.isEmpty {
+                
+                CLGeocoder().geocodeAddressString(adress!, completionHandler: { [weak self] (placemarks: [CLPlacemark]?, error: NSError?) -> Void in
+                    
+                    if let placemarks = placemarks where placemarks.count > 0 {
+                        guard let this = self else {
+                            return
+                        }
+                        let coordinate = MKPlacemark(placemark: placemarks[0]).coordinate
+                        this.coordinate = String(coordinate.latitude) + "," + String(coordinate.longitude)
+                        this.updateCoordinateEvent()
                     }
-                    this.placeMark = MKPlacemark(placemark: (placemarks?[0])!)
-                }
-            })
+                })
+            }
         }
+    }
+    
+    
+    func getCoordinate() -> CLLocationCoordinate2D? {
+        
+        let coordinates = coordinate.componentsSeparatedByString(",")
+        if coordinates.count > 1 {
+            if let latitude    = Double(coordinates.first!), let longitude   = Double(coordinates.last!) {
+                return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            }
+        }
+        return nil
     }
     
     func getJour() -> String? {
@@ -65,7 +83,7 @@ class Event: FireBaseObject {
             return false
         }
         for person in persons {
-            if person.email == User.currentUser.email {
+            if person == User.currentUser.email {
                 return true
             }
         }
@@ -85,17 +103,31 @@ class Event: FireBaseObject {
         super.init(coder: aDecoder)
     }
     
+    
+    func getPersons() -> [Person] {
+        EventPersons.fetchPersons(self)
+        return EventPersons.sharedInstance.persons
+    }
+    
+    
+    
     func addCurrentUserToEvent() {
         
         if !isCurrentPersonAlreadyIn() {
-            persons.append(User.currentUser)
+            persons.append(User.currentUser.email)
             if let aRef = self.ref {
-                aRef.child("persons").setValue(arrayAsJson(persons))
+                aRef.child("persons").setValue(persons)
             }
         }
     }
     
     
+    func updateCoordinateEvent() {
+        
+        if let aRef = self.ref {
+            aRef.child("coordinate").setValue(coordinate)
+        }
+    }
     
     func saveEventToDataBase() {
         

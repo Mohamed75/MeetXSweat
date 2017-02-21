@@ -256,7 +256,6 @@ class User: Person {
             User.currentUser.sport      = ""
             User.currentUser.gender     = ""
             User.currentUser.birthday   = ""
-            User.currentUser.events     = []
             User.currentUser.adress     = ""
             User.currentUser.saveToNSUserDefaults()
         })

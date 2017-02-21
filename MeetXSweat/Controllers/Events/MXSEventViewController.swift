@@ -106,7 +106,7 @@ class MXSEventViewController: MXSViewController {
             timeLeft()
         }
         
-        if let coordinate = event.placeMark?.coordinate {
+        if let coordinate = event.getCoordinate() {
             let km = GPSLocationManager.getDistanceFor(coordinate)/1000
             if km > 0 {
                 mapLabel.text = String(format: "%.1fKM", km)
@@ -145,10 +145,10 @@ class MXSEventViewController: MXSViewController {
         
         addOverlay()
         
-        if let placeMark = event.placeMark {
+        if let coordinate = event.getCoordinate() {
             
             let myPlaceMark = MKPointAnnotation()
-            myPlaceMark.coordinate  = placeMark.coordinate
+            myPlaceMark.coordinate  = coordinate
             myPlaceMark.title       = event.name
             self.mapView.addAnnotation(myPlaceMark)
             
@@ -261,7 +261,7 @@ class MXSEventViewController: MXSViewController {
                     if let jour = this.event.getJour(), heure = this.event.getHeure() {
                         viewController.titleLabel.text = this.event.sport.uppercaseString + " - " + jour + " - " + heure
                     }
-                    personsCollectionViewController.persons = this.event.persons
+                    personsCollectionViewController.persons = this.event.getPersons()
                     personsCollectionViewController.collectionView?.reloadData()
                 }
             })

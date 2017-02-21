@@ -20,7 +20,6 @@ class Person: FireBaseObject {
     var pictureUrl  = ""
     var gender      = ""
     var birthday    = ""
-    var events: [Event] = []
     var adress      = ""
     
     
@@ -136,6 +135,11 @@ class Person: FireBaseObject {
         
     }
     
+    
+    func getEvents() -> [Event] {
+        EventPersons.fetchEvents(self)
+        return EventPersons.sharedInstance.events
+    }
     
     
     // email withoutSpecialCharacters

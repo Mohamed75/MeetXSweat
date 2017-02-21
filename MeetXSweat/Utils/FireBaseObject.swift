@@ -106,6 +106,9 @@ class FireBaseObject: EnCodeObject {
                     }
                     returnArray.append(clazz)
                 }
+                else {
+                    returnArray.append(object)
+                }
             }
         } else {
             return array

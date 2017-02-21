@@ -20,16 +20,23 @@ class MXSEventsCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        collectionView?.reloadData()
+    }
     
     
     func customizeFirstCell(cell: UICollectionViewCell) {
         
         let eventImageView = UIImageView(frame: CGRect(x: 35, y: 15, width: 30, height: 30))
         eventImageView.image = UIImage(named: "EventIcon")
+        eventImageView.tag = 33
         cell.addSubview(eventImageView)
         
         let clockImageView = UIImageView(frame: CGRect(x: 117, y: 15, width: 30, height: 30))
         clockImageView.image = UIImage(named: "Clock")
+        clockImageView.tag = 34
         cell.addSubview(clockImageView)
         
         var xParticip = 170
@@ -41,6 +48,7 @@ class MXSEventsCollectionViewController: UICollectionViewController {
         }
         let participantImageView = UIImageView(frame: CGRect(x: xParticip, y: 15, width: 30, height: 30))
         participantImageView.image = UIImage(named: "Participants")
+        participantImageView.tag = 35
         cell.addSubview(participantImageView)
         
         var xMap = 215
@@ -52,6 +60,7 @@ class MXSEventsCollectionViewController: UICollectionViewController {
         }
         let mapView = UIImageView(frame: CGRect(x: xMap, y: 15, width: 30, height: 30))
         mapView.image = UIImage(named: "MapIcon")
+        mapView.tag = 36
         cell.addSubview(mapView)
         
         var xSport = self.view.frame.size.width - 50
@@ -60,6 +69,7 @@ class MXSEventsCollectionViewController: UICollectionViewController {
         }
         let sportImageView = UIImageView(frame: CGRect(x: xSport, y: 15, width: 30, height: 30))
         sportImageView.image = UIImage(named: "SportIcon")
+        sportImageView.tag = 37
         cell.addSubview(sportImageView)
     }
     
@@ -69,6 +79,13 @@ class MXSEventsCollectionViewController: UICollectionViewController {
         
         cell.layer.borderWidth = 1
         cell.layer.borderColor = UIColor.blackColor().CGColor
+        
+        for v in cell.subviews {
+            if v.tag > 32 && v.tag < 38 {
+                v.removeFromSuperview()
+            }
+        }
+        cell.imageView.image = nil
         
         if indexPath.section == 0 {
             cell.label.text = ""
@@ -95,7 +112,7 @@ class MXSEventsCollectionViewController: UICollectionViewController {
         }
         text = text + personsSpace + String(event.persons.count)
         
-        if let coordinate = event.placeMark?.coordinate {
+        if let coordinate = event.getCoordinate() {
             let km = GPSLocationManager.getDistanceFor(coordinate)/1000
             if km > 0 {
                 let distance  = String(format: "%.1fKM", km)

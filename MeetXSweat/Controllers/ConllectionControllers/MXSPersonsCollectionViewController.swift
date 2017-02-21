@@ -43,10 +43,10 @@ class MXSPersonsCollectionViewController: UICollectionViewController {
             let person = persons[indexPath.section]
             
             let text = person.aFullName()
-            let string = NSMutableAttributedString(string: text + "\n" + FindProfileManager.sharedInstance.profession)
+            let string = NSMutableAttributedString(string: text + "\n" + person.profession)
             string.addAttributes(nameAttributes, range: NSRange(location: 0,length: text.characters.count))
-            if !FindProfileManager.sharedInstance.profession.isEmpty {
-                string.addAttributes(professionAttributes, range: NSRange(location: text.characters.count,length: FindProfileManager.sharedInstance.profession.characters.count))
+            if !person.profession.isEmpty {
+                string.addAttributes(professionAttributes, range: NSRange(location: text.characters.count,length: person.profession.characters.count))
             }
             cell.label.attributedText = string
             

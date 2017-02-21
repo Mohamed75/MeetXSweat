@@ -70,6 +70,8 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        savedMetier  = ""
+        savedDomaine = ""
         MSXFindManager.sharedInstance.findBy = FindBy.Profile
         selectMetierLabel()
     }
@@ -81,6 +83,7 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
     }
     
     override func refreshView() {
+        
         selectMetierLabel()
         pickerView.reloadAllComponents()
     }
@@ -94,7 +97,9 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
         domaineLabel.backgroundColor = UIColor.whiteColor()
         
         dataArray = FireBaseDataManager.sharedInstance.professions
-        MXSPickerView.showPickerView(pickerView, controller: self, scale: true)
+        if self.navigationController?.visibleViewController == self {
+            MXSPickerView.showPickerView(pickerView, controller: self, scale: true)
+        }
     }
     
     func selectDomaineLabel() {
@@ -106,7 +111,9 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
         metierLabel.backgroundColor = UIColor.whiteColor()
         
         dataArray = FireBaseDataManager.sharedInstance.domaines
-        MXSPickerView.showPickerView(pickerView, controller: self, scale: true)
+        if self.navigationController?.visibleViewController == self {
+            MXSPickerView.showPickerView(pickerView, controller: self, scale: true)
+        }
     }
     
     

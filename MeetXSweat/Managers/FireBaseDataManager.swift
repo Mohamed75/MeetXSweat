@@ -63,15 +63,24 @@ class FireBaseDataManager {
     
     init() {
         
+        loadData()
+    }
+    
+    func loadData() {
+        
+        events = []
         let eventRef = FIRDatabase.database().reference().child("event-items")
         eventRef.observeEventType(.ChildAdded, withBlock: { [weak self] (snapshot) -> Void in
             
             guard let this = self else {
                 return
             }
-            this.events.append(Event(snapshot: snapshot))
+            let event = Event(snapshot: snapshot)
+            this.events.append(event)
         })
         
+        
+        persons = []
         let personRef = FIRDatabase.database().reference().child("person-items")
         personRef.observeEventType(.ChildAdded, withBlock: { [weak self] (snapshot) -> Void in
             
@@ -81,6 +90,7 @@ class FireBaseDataManager {
             this.persons.append(Person(snapshot: snapshot))
         })
         
+        _sports = []
         let sportRef = FIRDatabase.database().reference().child("sport-items")
         sportRef.observeEventType(.ChildAdded, withBlock: { [weak self] (snapshot) -> Void in
             
@@ -93,6 +103,7 @@ class FireBaseDataManager {
             }
         })
         
+        _professions = []
         let professionRef = FIRDatabase.database().reference().child("profession-items")
         professionRef.observeEventType(.ChildAdded, withBlock: { [weak self] (snapshot) -> Void in
             
@@ -105,7 +116,7 @@ class FireBaseDataManager {
             }
         })
         
-        
+        _domaines = []
         let domaineRef = FIRDatabase.database().reference().child("domaine-items")
         domaineRef.observeEventType(.ChildAdded, withBlock: { [weak self] (snapshot) -> Void in
             
@@ -118,6 +129,8 @@ class FireBaseDataManager {
             }
         })
     }
+    
+    
 }
 
 

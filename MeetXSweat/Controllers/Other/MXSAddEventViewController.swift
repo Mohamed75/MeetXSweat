@@ -66,7 +66,7 @@ class MXSAddEventViewController: MXSViewController,  UIPickerViewDataSource, UIP
         if let sport = self.sportTextField.text {
             event.sport = sport
         }
-        event.persons = [User.currentUser]
+        event.persons = [User.currentUser.email]
         event.saveEventToDataBase()
     }
     
