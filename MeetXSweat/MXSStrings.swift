@@ -27,7 +27,6 @@ enum Strings {
         static let enterEmailMessage = "Veuillez saisir votre email"
         static let cancel   = "Cancel"
         static let ok       = "OK"
-        static let alert    = "Alert"
         static let fillAllFieldsMessage = "Veuillez remplir tous les champs!"
         static let wrongEmailMesssage   = "Votre email n'est pas valide!"
     }

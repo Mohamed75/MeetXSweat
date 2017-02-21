@@ -26,10 +26,17 @@ class MXSFindSportViewController: MXSViewController {
         
         self.title = Ressources.NavigationTitle.sports
     }
+    
     override func viewWillAppear(animated: Bool) {
         
         super.viewWillAppear(animated)
         MSXFindManager.sharedInstance.findBy = FindBy.Sport
+    }
+    
+    override func refreshView() {
+        if let sportsCollectionViewController = self.childViewControllers[0] as? MXSSportsCollectionViewController {
+            sportsCollectionViewController.collectionView?.reloadData()
+        }
     }
     
     override func validatButtonClicked(sender: AnyObject) {

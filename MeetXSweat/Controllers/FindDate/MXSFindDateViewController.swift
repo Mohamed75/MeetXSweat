@@ -65,6 +65,13 @@ class MXSFindDateViewController: MXSCalendarViewController {
         MSXFindManager.sharedInstance.findBy = FindBy.Date
     }
     
+    override func refreshView() {
+        
+        let currentDate = calendarView.currentCalendarDateSegment()
+        self.setupViewsOfCalendar(currentDate.dateRange.start, endDate: currentDate.dateRange.end)
+        calendarView.reloadData()
+    }
+    
     
     override func validatButtonClicked(sender: AnyObject) {
         

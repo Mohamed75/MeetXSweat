@@ -32,15 +32,16 @@ class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
         mapView.addOverlay(overlay, level: .AboveLabels)
     }
     
-    func addEvents() {
+    func addEvents(after: Double) {
         
         MXSActivityIndicator.startAnimating()
         
-        dispatch_later(4.0) { [weak self] in
+        dispatch_later(after) { [weak self] in
             
             guard let this = self else {
                 return
             }
+            this.mapView.removeAnnotations(this.mapView.annotations)
             var i = 0
             for event in this.events {
                 
@@ -67,18 +68,22 @@ class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
         self.title = Ressources.NavigationTitle.map
 
         addOverlay()
+        addEvents(4.0)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         MSXFindManager.sharedInstance.findBy = FindBy.ArroundMe
-        addEvents()
     }
     
     override func viewWillDisappear(animated: Bool) {
         MXSActivityIndicator.stopAnimating()
         super.viewWillDisappear(animated)
+    }
+    
+    override func refreshView() {
+        addEvents(1.0)
     }
     
     
@@ -111,11 +116,12 @@ class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
         var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(Ressources.MapPinIdentifier.eventsId)
         if pinView == nil {
             pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: Ressources.MapPinIdentifier.eventsId)
-            pinView!.transform = CGAffineTransformMakeScale(1.5, 1.5)
         }
         else {
             pinView!.annotation = annotation
         }
+        
+        pinView!.transform = CGAffineTransformMakeScale(1.5, 1.5)
         
         if let aPinView = pinView {
             

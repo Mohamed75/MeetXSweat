@@ -70,7 +70,7 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-         MSXFindManager.sharedInstance.findBy = FindBy.Profile
+        MSXFindManager.sharedInstance.findBy = FindBy.Profile
         selectMetierLabel()
     }
     
@@ -78,6 +78,11 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
         super.viewWillDisappear(animated)
         
         MXSPickerView.subViewPanned(pickerView, controller: self)
+    }
+    
+    override func refreshView() {
+        selectMetierLabel()
+        pickerView.reloadAllComponents()
     }
     
     func selectMetierLabel() {

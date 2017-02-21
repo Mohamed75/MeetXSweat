@@ -122,16 +122,23 @@ extension UINavigationController {
     override public func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        
-        let firstViewController = self.viewControllers.first
-        if firstViewController is MXSFindProfileViewController {
-            MSXFindManager.sharedInstance.findBy = FindBy.Profile
-        }
-        if firstViewController is MXSFindSportViewController || firstViewController is MXSFindArroundMeViewController {
-            MSXFindManager.sharedInstance.findBy = FindBy.Sport
-        }
-        if firstViewController is MXSFindDateViewController {
-            MSXFindManager.sharedInstance.findBy = FindBy.Date
+        if let firstViewController = self.viewControllers.first as? MXSViewController {
+            
+            if firstViewController is MXSFindProfileViewController {
+                MSXFindManager.sharedInstance.findBy = FindBy.Profile
+            }
+            if firstViewController is MXSFindSportViewController {
+                MSXFindManager.sharedInstance.findBy = FindBy.Sport
+            }
+            if firstViewController is MXSFindDateViewController {
+                MSXFindManager.sharedInstance.findBy = FindBy.Date
+            }
+            if firstViewController is MXSFindArroundMeViewController {
+                MSXFindManager.sharedInstance.findBy = FindBy.ArroundMe
+            }
+            if firstViewController.isViewLoaded() {
+               firstViewController.refreshView()
+            }
         }
     }
     

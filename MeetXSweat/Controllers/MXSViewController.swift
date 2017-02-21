@@ -59,6 +59,10 @@ class MXSViewController: UIViewController {
         }
     }
     
+    func refreshView() {
+        
+    }
+    
     class func getInformationPopUp(title: String, withCancelButton: Bool, completion: (String) -> Void) {
         
         var inputTextField: UITextField?
@@ -87,9 +91,9 @@ class MXSViewController: UIViewController {
     
     class func showInformatifPopUp(message: String) {
         
-        let alertController: UIAlertController = UIAlertController(title: "", message: message, preferredStyle: .Alert)
+        let alertController = UIAlertController(title: "", message: message, preferredStyle: .Alert)
         
-        let okAction = UIAlertAction(title: "OK", style: .Default, handler: { (UIAlertAction) in
+        let okAction = UIAlertAction(title: Strings.Alert.ok, style: .Default, handler: { (UIAlertAction) in
             getVisibleViewController().dismissViewControllerAnimated(true, completion:nil)
         })
         alertController.addAction(okAction)
