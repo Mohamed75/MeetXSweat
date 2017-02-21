@@ -84,8 +84,10 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
     
     override func refreshView() {
         
-        selectMetierLabel()
-        pickerView.reloadAllComponents()
+        dispatch_later(0.01) {
+            self.selectMetierLabel()
+            self.pickerView.reloadAllComponents()
+        }
     }
     
     func selectMetierLabel() {
@@ -97,7 +99,7 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
         domaineLabel.backgroundColor = UIColor.whiteColor()
         
         dataArray = FireBaseDataManager.sharedInstance.professions
-        if self.navigationController?.visibleViewController == self {
+        if self.navigationController?.visibleViewController == self  && self.tabBarController?.selectedIndex == 0 {
             MXSPickerView.showPickerView(pickerView, controller: self, scale: true)
         }
     }
@@ -111,7 +113,7 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
         metierLabel.backgroundColor = UIColor.whiteColor()
         
         dataArray = FireBaseDataManager.sharedInstance.domaines
-        if self.navigationController?.visibleViewController == self {
+        if self.navigationController?.visibleViewController == self && self.tabBarController?.selectedIndex == 0 {
             MXSPickerView.showPickerView(pickerView, controller: self, scale: true)
         }
     }

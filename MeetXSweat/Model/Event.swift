@@ -97,6 +97,7 @@ class Event: FireBaseObject {
     override init(snapshot: FIRDataSnapshot) {
         
         super.init(snapshot: snapshot)
+        addPersonsObserver()
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -109,6 +110,23 @@ class Event: FireBaseObject {
         return EventPersons.sharedInstance.persons
     }
     
+    
+    func addPersonsObserver() {
+        
+        if let aRef = self.ref {
+            aRef.child("persons").observeEventType(.ChildAdded, withBlock: { [weak self] snapshot in
+                
+                guard let this = self else {
+                    return
+                }
+                if let person = snapshot.value as? String {
+                    if !this.persons.contains(person) {
+                        this.persons.append(person)
+                    }
+                }
+            })
+        }
+    }
     
     
     func addCurrentUserToEvent() {
