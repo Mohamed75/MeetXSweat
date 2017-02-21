@@ -119,7 +119,7 @@
 		D949BB551E5C872A00BCF3A0 /* MXSFindArroundMe.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D90AB5811D940CD2003DCA75 /* MXSFindArroundMe.storyboard */; };
 		D949BB561E5C872A00BCF3A0 /* MXSFindProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D959B3D01D92D24500981105 /* MXSFindProfile.storyboard */; };
 		D949BB581E5C872A00BCF3A0 /* MXSFindSport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D90AB57D1D940CA9003DCA75 /* MXSFindSport.storyboard */; };
-		D949BB621E5C8ACA00BCF3A0 /* GoogleServiceProd-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D949BB611E5C8ACA00BCF3A0 /* GoogleServiceProd-Info.plist */; };
+		D949BB661E5C92B700BCF3A0 /* GoogleServiceProd-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D949BB651E5C92B700BCF3A0 /* GoogleServiceProd-Info.plist */; };
 		D94A3E3C1DA3E6220090A7A4 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E3B1DA3E6220090A7A4 /* Message.swift */; };
 		D94A3E411DA3FB1B0090A7A4 /* MXSConversationsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E401DA3FB1B0090A7A4 /* MXSConversationsCollectionViewController.swift */; };
 		D94A3E471DA3FC840090A7A4 /* MXSEventsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E431DA3FC840090A7A4 /* MXSEventsCollectionCell.swift */; };
@@ -234,7 +234,7 @@
 		D94575941E44932100AF37F2 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		D949BB5F1E5C872A00BCF3A0 /* MeetXSweat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetXSweat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D949BB601E5C872A00BCF3A0 /* MeetXSweatProd-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "MeetXSweatProd-Info.plist"; path = "/Users/mohamed/MeetXSweat/MeetXSweatProd-Info.plist"; sourceTree = "<absolute>"; };
-		D949BB611E5C8ACA00BCF3A0 /* GoogleServiceProd-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleServiceProd-Info.plist"; sourceTree = "<group>"; };
+		D949BB651E5C92B700BCF3A0 /* GoogleServiceProd-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleServiceProd-Info.plist"; sourceTree = "<group>"; };
 		D94A3E3B1DA3E6220090A7A4 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		D94A3E401DA3FB1B0090A7A4 /* MXSConversationsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSConversationsCollectionViewController.swift; sourceTree = "<group>"; };
 		D94A3E431DA3FC840090A7A4 /* MXSEventsCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSEventsCollectionCell.swift; sourceTree = "<group>"; };
@@ -415,7 +415,7 @@
 				D926BAAB1D8D6A6400E3878C /* Info.plist */,
 				D949BB601E5C872A00BCF3A0 /* MeetXSweatProd-Info.plist */,
 				D998B5DB1D96E63400A045F4 /* GoogleService-Info.plist */,
-				D949BB611E5C8ACA00BCF3A0 /* GoogleServiceProd-Info.plist */,
+				D949BB651E5C92B700BCF3A0 /* GoogleServiceProd-Info.plist */,
 				D94C63E71D8DE88A00ECD7FD /* MeetXSweat-Bridging-Header.h */,
 				D9C0863B1E49DCEA00122030 /* TabBar.xcassets */,
 				D9C0863D1E49E73400122030 /* Sports.xcassets */,
@@ -796,6 +796,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D949BB481E5C872A00BCF3A0 /* MXSWellCome.storyboard in Resources */,
+				D949BB661E5C92B700BCF3A0 /* GoogleServiceProd-Info.plist in Resources */,
 				D949BB491E5C872A00BCF3A0 /* UserProfile.xcassets in Resources */,
 				D949BB4A1E5C872A00BCF3A0 /* MXSCalendarCellView.xib in Resources */,
 				D949BB4B1E5C872A00BCF3A0 /* MXSEvent.storyboard in Resources */,
@@ -803,7 +804,6 @@
 				D949BB4D1E5C872A00BCF3A0 /* MXSConversation.storyboard in Resources */,
 				D949BB4E1E5C872A00BCF3A0 /* Main.storyboard in Resources */,
 				D949BB4F1E5C872A00BCF3A0 /* LaunchScreen.storyboard in Resources */,
-				D949BB621E5C8ACA00BCF3A0 /* GoogleServiceProd-Info.plist in Resources */,
 				D949BB501E5C872A00BCF3A0 /* Sports.xcassets in Resources */,
 				D949BB511E5C872A00BCF3A0 /* MapIcons.xcassets in Resources */,
 				D949BB521E5C872A00BCF3A0 /* MXSFindDate.storyboard in Resources */,
@@ -1261,7 +1261,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MeetXSweat.MeetXSweat;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = MeetXSweat;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MeetXSweat/MeetXSweat-Bridging-Header.h";
 			};
@@ -1285,7 +1285,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MeetXSweat.MeetXSweat;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = MeetXSweat;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MeetXSweat/MeetXSweat-Bridging-Header.h";
 			};
@@ -1357,6 +1357,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
+					"PROD=1",
 				);
 				INFOPLIST_FILE = "MeetXSweatProd-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1386,6 +1387,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
+					"PROD=1",
 				);
 				INFOPLIST_FILE = "MeetXSweatProd-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

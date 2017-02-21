@@ -11,12 +11,6 @@ import Firebase
 import DrawerController
 
 
-#if PROD
-let SERVER_URL = "GoogleServiceProd-Info"
-#else
-let SERVER_URL = "GoogleService-Info"
-#endif
-
 
 
 @UIApplicationMain
@@ -40,9 +34,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        let filePath = NSBundle.mainBundle().pathForResource(SERVER_URL, ofType: "plist")
-        let options = FIROptions(contentsOfFile: filePath)
-        FIRApp.configureWithOptions(options)
+        #if PROD
+            let filePath = NSBundle.mainBundle().pathForResource("GoogleServiceProd-Info", ofType: "plist")
+            let options = FIROptions(contentsOfFile: filePath)
+            FIRApp.configureWithOptions(options)
+        #else
+            FIRApp.configure()
+        #endif
         FIRDatabase.database().persistenceEnabled = true
         FIRAuth.auth()?.signInAnonymouslyWithCompletion({ (user, error) in
             if (error != nil) {
