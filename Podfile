@@ -41,6 +41,10 @@ target 'MeetXSweat' do
 
 end
 
+target 'MeetXSweatProd' do
+    
+end
+
 target 'MeetXSweatTests' do
     
 end

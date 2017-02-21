@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1E73987874C73DEE6D84DFE3 /* Pods_MeetXSweatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF2D9D79CD6E67071DA136A4 /* Pods_MeetXSweatTests.framework */; };
 		26168A058FAF4B8C39C1342F /* Pods_MeetXSweat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2994B391032B351D94FC1B09 /* Pods_MeetXSweat.framework */; };
+		2CCF3C49D9C522B66D0B1E4D /* Pods_MeetXSweatProd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD0F30286484448AC09BB5CC /* Pods_MeetXSweatProd.framework */; };
 		D907C5131E5A23CB009856E6 /* FireBaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D907C5121E5A23CB009856E6 /* FireBaseHelper.swift */; };
 		D90AB56F1D93E275003DCA75 /* MXSEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D90AB56E1D93E275003DCA75 /* MXSEvent.storyboard */; };
 		D90AB5711D93E28F003DCA75 /* MXSEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5701D93E28F003DCA75 /* MXSEventViewController.swift */; };
@@ -26,7 +27,6 @@
 		D90AB5A11D955F6F003DCA75 /* MXSCalendarCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5A01D955F6F003DCA75 /* MXSCalendarCellView.swift */; };
 		D90AB5A31D9562E1003DCA75 /* MXSCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5A21D9562E1003DCA75 /* MXSCalendarViewController.swift */; };
 		D90AB5A51D957AE6003DCA75 /* AnimationClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5A41D957AE6003DCA75 /* AnimationClass.swift */; };
-		D90AB5A91D969EF5003DCA75 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90AB5A81D969EF5003DCA75 /* MapKit.framework */; };
 		D90AB5AF1D96BE1E003DCA75 /* MXSActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5AE1D96BE1E003DCA75 /* MXSActivityIndicator.swift */; };
 		D926BAA01D8D6A6400E3878C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D926BA9F1D8D6A6400E3878C /* AppDelegate.swift */; };
 		D926BAA71D8D6A6400E3878C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D926BAA61D8D6A6400E3878C /* Assets.xcassets */; };
@@ -42,6 +42,84 @@
 		D94575951E44932100AF37F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D94575941E44932100AF37F2 /* Main.storyboard */; };
 		D94575961E44932100AF37F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D94575941E44932100AF37F2 /* Main.storyboard */; };
 		D94575971E44932100AF37F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D94575941E44932100AF37F2 /* Main.storyboard */; };
+		D949BB081E5C872A00BCF3A0 /* MXSEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5701D93E28F003DCA75 /* MXSEventViewController.swift */; };
+		D949BB091E5C872A00BCF3A0 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = D926BADB1D8DAF3900E3878C /* Person.swift */; };
+		D949BB0A1E5C872A00BCF3A0 /* MXSConversationsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E401DA3FB1B0090A7A4 /* MXSConversationsCollectionViewController.swift */; };
+		D949BB0B1E5C872A00BCF3A0 /* MXSStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3D71D93185000981105 /* MXSStrings.swift */; };
+		D949BB0C1E5C872A00BCF3A0 /* MXSEmbedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3CC1D92D1DD00981105 /* MXSEmbedCollectionViewController.swift */; };
+		D949BB0D1E5C872A00BCF3A0 /* FireBaseDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64D251DA3AA2D008C5D34 /* FireBaseDataManager.swift */; };
+		D949BB0E1E5C872A00BCF3A0 /* MXSAddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086601E4DFC8100122030 /* MXSAddEventViewController.swift */; };
+		D949BB0F1E5C872A00BCF3A0 /* GoogleLogInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB48241D8EF2E000C12541 /* GoogleLogInHelper.swift */; };
+		D949BB101E5C872A00BCF3A0 /* UINavigationController+Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D926BAE11D8DD5CB00E3878C /* UINavigationController+Connection.swift */; };
+		D949BB111E5C872A00BCF3A0 /* GPSLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D963AE791E522C8000FF5B85 /* GPSLocationManager.swift */; };
+		D949BB121E5C872A00BCF3A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D926BA9F1D8D6A6400E3878C /* AppDelegate.swift */; };
+		D949BB131E5C872A00BCF3A0 /* MXSConversationCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E4B1DA3FCEF0090A7A4 /* MXSConversationCollectionCell.swift */; };
+		D949BB141E5C872A00BCF3A0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D926BADF1D8DBC5100E3878C /* User.swift */; };
+		D949BB151E5C872A00BCF3A0 /* MXSTuttorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086681E4E026800122030 /* MXSTuttorialViewController.swift */; };
+		D949BB161E5C872A00BCF3A0 /* LinkedInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB48121D8EB48000C12541 /* LinkedInHelper.swift */; };
+		D949BB171E5C872A00BCF3A0 /* MXSSportCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E461DA3FC840090A7A4 /* MXSSportCollectionCell.swift */; };
+		D949BB181E5C872A00BCF3A0 /* MXSTuttorialCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C0866A1E4E094500122030 /* MXSTuttorialCollectionCell.swift */; };
+		D949BB191E5C872A00BCF3A0 /* FindSportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64D241DA3AA2D008C5D34 /* FindSportManager.swift */; };
+		D949BB1A1E5C872A00BCF3A0 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64D2D1DA3AACF008C5D34 /* Conversation.swift */; };
+		D949BB1B1E5C872A00BCF3A0 /* MXSFindSportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5831D940CEA003DCA75 /* MXSFindSportViewController.swift */; };
+		D949BB1C1E5C872A00BCF3A0 /* MXSMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA2AC1D8F1550004CE80C /* MXSMainViewController.swift */; };
+		D949BB1D1E5C872A00BCF3A0 /* MSXFindManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086371E46698000122030 /* MSXFindManager.swift */; };
+		D949BB1E1E5C872A00BCF3A0 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64D211DA3AA2D008C5D34 /* DummyData.swift */; };
+		D949BB1F1E5C872A00BCF3A0 /* MXSFindArroundMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5871D940D18003DCA75 /* MXSFindArroundMeViewController.swift */; };
+		D949BB201E5C872A00BCF3A0 /* MXSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA2AA1D8F0F12004CE80C /* MXSViewController.swift */; };
+		D949BB211E5C872A00BCF3A0 /* FaceBookHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94C63E51D8DE4BB00ECD7FD /* FaceBookHelper.swift */; };
+		D949BB221E5C872A00BCF3A0 /* EnCodeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D998B5E41D97FFE000A045F4 /* EnCodeObject.swift */; };
+		D949BB231E5C872A00BCF3A0 /* ConversationsDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64D2B1DA3AA62008C5D34 /* ConversationsDataManager.swift */; };
+		D949BB241E5C872A00BCF3A0 /* MXSProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3E31D93200E00981105 /* MXSProfileViewController.swift */; };
+		D949BB251E5C872A00BCF3A0 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E3B1DA3E6220090A7A4 /* Message.swift */; };
+		D949BB261E5C872A00BCF3A0 /* MXSAllLoginsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D926BAD21D8DA11F00E3878C /* MXSAllLoginsViewController.swift */; };
+		D949BB271E5C872A00BCF3A0 /* MXSPersonCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E451DA3FC840090A7A4 /* MXSPersonCollectionCell.swift */; };
+		D949BB281E5C872A00BCF3A0 /* MXSPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086541E4C9FC000122030 /* MXSPickerView.swift */; };
+		D949BB291E5C872A00BCF3A0 /* MXSCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5A21D9562E1003DCA75 /* MXSCalendarViewController.swift */; };
+		D949BB2A1E5C872A00BCF3A0 /* MXSConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C0865B1E4DFBDA00122030 /* MXSConversationsViewController.swift */; };
+		D949BB2B1E5C872A00BCF3A0 /* FireBaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959581A1DA57F2500481167 /* FireBaseObject.swift */; };
+		D949BB2C1E5C872A00BCF3A0 /* JSONFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086481E4A37AA00122030 /* JSONFile.swift */; };
+		D949BB2D1E5C872A00BCF3A0 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5721D93E4D9003DCA75 /* Event.swift */; };
+		D949BB2E1E5C872A00BCF3A0 /* MXSRessources.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3DC1D9318E000981105 /* MXSRessources.swift */; };
+		D949BB2F1E5C872A00BCF3A0 /* MXSPersonsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB57B1D940522003DCA75 /* MXSPersonsCollectionViewController.swift */; };
+		D949BB301E5C872A00BCF3A0 /* MXSFindDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5851D940CFC003DCA75 /* MXSFindDateViewController.swift */; };
+		D949BB311E5C872A00BCF3A0 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D926BAD71D8DA92400E3878C /* Utils.swift */; };
+		D949BB321E5C872A00BCF3A0 /* AnimationClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5A41D957AE6003DCA75 /* AnimationClass.swift */; };
+		D949BB331E5C872A00BCF3A0 /* MXSActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5AE1D96BE1E003DCA75 /* MXSActivityIndicator.swift */; };
+		D949BB341E5C872A00BCF3A0 /* TwitterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94C63E81D8E914F00ECD7FD /* TwitterHelper.swift */; };
+		D949BB351E5C872A00BCF3A0 /* MXSEventsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E431DA3FC840090A7A4 /* MXSEventsCollectionCell.swift */; };
+		D949BB361E5C872A00BCF3A0 /* MSXLogInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086351E464A1E00122030 /* MSXLogInManager.swift */; };
+		D949BB371E5C872A00BCF3A0 /* FireBaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D907C5121E5A23CB009856E6 /* FireBaseHelper.swift */; };
+		D949BB381E5C872A00BCF3A0 /* MXSEventsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5761D93ED1C003DCA75 /* MXSEventsCollectionViewController.swift */; };
+		D949BB391E5C872A00BCF3A0 /* MXSCreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086611E4DFC8100122030 /* MXSCreateAccountViewController.swift */; };
+		D949BB3A1E5C872A00BCF3A0 /* MXSCalendarCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5A01D955F6F003DCA75 /* MXSCalendarCellView.swift */; };
+		D949BB3B1E5C872A00BCF3A0 /* MXSConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3DB1D9318E000981105 /* MXSConstants.swift */; };
+		D949BB3C1E5C872A00BCF3A0 /* MXSWellComeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086631E4DFC8100122030 /* MXSWellComeViewController.swift */; };
+		D949BB3D1E5C872A00BCF3A0 /* FindDateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64D221DA3AA2D008C5D34 /* FindDateManager.swift */; };
+		D949BB3E1E5C872A00BCF3A0 /* MXSSportsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB59C1D9523C0003DCA75 /* MXSSportsCollectionViewController.swift */; };
+		D949BB3F1E5C872A00BCF3A0 /* MXSMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64CD81D9D6C28008C5D34 /* MXSMenuViewController.swift */; };
+		D949BB401E5C872A00BCF3A0 /* FindProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64D231DA3AA2D008C5D34 /* FindProfileManager.swift */; };
+		D949BB411E5C872A00BCF3A0 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086591E4DFBDA00122030 /* ChatViewController.swift */; };
+		D949BB421E5C872A00BCF3A0 /* MXSFindProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3CA1D92D1D200981105 /* MXSFindProfileViewController.swift */; };
+		D949BB441E5C872A00BCF3A0 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D926BACD1D8D8C8600E3878C /* Social.framework */; };
+		D949BB461E5C872A00BCF3A0 /* Pods_MeetXSweat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2994B391032B351D94FC1B09 /* Pods_MeetXSweat.framework */; };
+		D949BB481E5C872A00BCF3A0 /* MXSWellCome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9C086621E4DFC8100122030 /* MXSWellCome.storyboard */; };
+		D949BB491E5C872A00BCF3A0 /* UserProfile.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9C0864E1E4C83C600122030 /* UserProfile.xcassets */; };
+		D949BB4A1E5C872A00BCF3A0 /* MXSCalendarCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D90AB59E1D955F20003DCA75 /* MXSCalendarCellView.xib */; };
+		D949BB4B1E5C872A00BCF3A0 /* MXSEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D90AB56E1D93E275003DCA75 /* MXSEvent.storyboard */; };
+		D949BB4C1E5C872A00BCF3A0 /* TabBar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9C0863B1E49DCEA00122030 /* TabBar.xcassets */; };
+		D949BB4D1E5C872A00BCF3A0 /* MXSConversation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9C0865A1E4DFBDA00122030 /* MXSConversation.storyboard */; };
+		D949BB4E1E5C872A00BCF3A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D94575941E44932100AF37F2 /* Main.storyboard */; };
+		D949BB4F1E5C872A00BCF3A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D926BAA81D8D6A6400E3878C /* LaunchScreen.storyboard */; };
+		D949BB501E5C872A00BCF3A0 /* Sports.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9C0863D1E49E73400122030 /* Sports.xcassets */; };
+		D949BB511E5C872A00BCF3A0 /* MapIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9C0863F1E4A19D500122030 /* MapIcons.xcassets */; };
+		D949BB521E5C872A00BCF3A0 /* MXSFindDate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D90AB57F1D940CC4003DCA75 /* MXSFindDate.storyboard */; };
+		D949BB531E5C872A00BCF3A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D926BAA61D8D6A6400E3878C /* Assets.xcassets */; };
+		D949BB541E5C872A00BCF3A0 /* MXSProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D959B3E51D93202200981105 /* MXSProfile.storyboard */; };
+		D949BB551E5C872A00BCF3A0 /* MXSFindArroundMe.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D90AB5811D940CD2003DCA75 /* MXSFindArroundMe.storyboard */; };
+		D949BB561E5C872A00BCF3A0 /* MXSFindProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D959B3D01D92D24500981105 /* MXSFindProfile.storyboard */; };
+		D949BB581E5C872A00BCF3A0 /* MXSFindSport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D90AB57D1D940CA9003DCA75 /* MXSFindSport.storyboard */; };
+		D949BB621E5C8ACA00BCF3A0 /* GoogleServiceProd-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D949BB611E5C8ACA00BCF3A0 /* GoogleServiceProd-Info.plist */; };
 		D94A3E3C1DA3E6220090A7A4 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E3B1DA3E6220090A7A4 /* Message.swift */; };
 		D94A3E411DA3FB1B0090A7A4 /* MXSConversationsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E401DA3FB1B0090A7A4 /* MXSConversationsCollectionViewController.swift */; };
 		D94A3E471DA3FC840090A7A4 /* MXSEventsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E431DA3FC840090A7A4 /* MXSEventsCollectionCell.swift */; };
@@ -112,9 +190,12 @@
 
 /* Begin PBXFileReference section */
 		187326795C00B62EA5F40D4B /* Pods-MeetXSweatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetXSweatTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeetXSweatTests/Pods-MeetXSweatTests.release.xcconfig"; sourceTree = "<group>"; };
+		1A5D3A7424A337CE14A9730B /* Pods-MeetXSweatProd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetXSweatProd.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeetXSweatProd/Pods-MeetXSweatProd.release.xcconfig"; sourceTree = "<group>"; };
 		2994B391032B351D94FC1B09 /* Pods_MeetXSweat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetXSweat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		31432F17C675D4F9FF0518AF /* Pods-MeetXSweat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetXSweat.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeetXSweat/Pods-MeetXSweat.release.xcconfig"; sourceTree = "<group>"; };
+		AD0F30286484448AC09BB5CC /* Pods_MeetXSweatProd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetXSweatProd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF2D9D79CD6E67071DA136A4 /* Pods_MeetXSweatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetXSweatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3B786CFF81DADC6EBBEA894 /* Pods-MeetXSweatProd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetXSweatProd.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetXSweatProd/Pods-MeetXSweatProd.debug.xcconfig"; sourceTree = "<group>"; };
 		D907C5121E5A23CB009856E6 /* FireBaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireBaseHelper.swift; sourceTree = "<group>"; };
 		D90AB56E1D93E275003DCA75 /* MXSEvent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MXSEvent.storyboard; sourceTree = "<group>"; };
 		D90AB5701D93E28F003DCA75 /* MXSEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSEventViewController.swift; sourceTree = "<group>"; };
@@ -132,7 +213,6 @@
 		D90AB5A01D955F6F003DCA75 /* MXSCalendarCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSCalendarCellView.swift; sourceTree = "<group>"; };
 		D90AB5A21D9562E1003DCA75 /* MXSCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSCalendarViewController.swift; sourceTree = "<group>"; };
 		D90AB5A41D957AE6003DCA75 /* AnimationClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationClass.swift; sourceTree = "<group>"; };
-		D90AB5A81D969EF5003DCA75 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D90AB5AE1D96BE1E003DCA75 /* MXSActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSActivityIndicator.swift; sourceTree = "<group>"; };
 		D926BA9C1D8D6A6400E3878C /* MeetXSweat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetXSweat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D926BA9F1D8D6A6400E3878C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -152,6 +232,9 @@
 		D926BADF1D8DBC5100E3878C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D926BAE11D8DD5CB00E3878C /* UINavigationController+Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Connection.swift"; sourceTree = "<group>"; };
 		D94575941E44932100AF37F2 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		D949BB5F1E5C872A00BCF3A0 /* MeetXSweat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetXSweat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D949BB601E5C872A00BCF3A0 /* MeetXSweatProd-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "MeetXSweatProd-Info.plist"; path = "/Users/mohamed/MeetXSweat/MeetXSweatProd-Info.plist"; sourceTree = "<absolute>"; };
+		D949BB611E5C8ACA00BCF3A0 /* GoogleServiceProd-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleServiceProd-Info.plist"; sourceTree = "<group>"; };
 		D94A3E3B1DA3E6220090A7A4 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		D94A3E401DA3FB1B0090A7A4 /* MXSConversationsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSConversationsCollectionViewController.swift; sourceTree = "<group>"; };
 		D94A3E431DA3FC840090A7A4 /* MXSEventsCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSEventsCollectionCell.swift; sourceTree = "<group>"; };
@@ -212,7 +295,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D926BACE1D8D8C8600E3878C /* Social.framework in Frameworks */,
-				D90AB5A91D969EF5003DCA75 /* MapKit.framework in Frameworks */,
 				26168A058FAF4B8C39C1342F /* Pods_MeetXSweat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -232,6 +314,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D949BB431E5C872A00BCF3A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D949BB441E5C872A00BCF3A0 /* Social.framework in Frameworks */,
+				D949BB461E5C872A00BCF3A0 /* Pods_MeetXSweat.framework in Frameworks */,
+				2CCF3C49D9C522B66D0B1E4D /* Pods_MeetXSweatProd.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -242,6 +334,8 @@
 				31432F17C675D4F9FF0518AF /* Pods-MeetXSweat.release.xcconfig */,
 				F04A0BDA1CBA2F76A3C5E1B3 /* Pods-MeetXSweatTests.debug.xcconfig */,
 				187326795C00B62EA5F40D4B /* Pods-MeetXSweatTests.release.xcconfig */,
+				B3B786CFF81DADC6EBBEA894 /* Pods-MeetXSweatProd.debug.xcconfig */,
+				1A5D3A7424A337CE14A9730B /* Pods-MeetXSweatProd.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -249,10 +343,10 @@
 		BE7C0B832DB5C6689A2CC7E2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D90AB5A81D969EF5003DCA75 /* MapKit.framework */,
 				D926BACD1D8D8C8600E3878C /* Social.framework */,
 				2994B391032B351D94FC1B09 /* Pods_MeetXSweat.framework */,
 				AF2D9D79CD6E67071DA136A4 /* Pods_MeetXSweatTests.framework */,
+				AD0F30286484448AC09BB5CC /* Pods_MeetXSweatProd.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -298,6 +392,7 @@
 				D926BA9C1D8D6A6400E3878C /* MeetXSweat.app */,
 				D926BAB01D8D6A6400E3878C /* MeetXSweatTests.xctest */,
 				D926BABB1D8D6A6400E3878C /* MeetXSweatUITests.xctest */,
+				D949BB5F1E5C872A00BCF3A0 /* MeetXSweat.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -318,7 +413,9 @@
 				D926BAA61D8D6A6400E3878C /* Assets.xcassets */,
 				D926BAA81D8D6A6400E3878C /* LaunchScreen.storyboard */,
 				D926BAAB1D8D6A6400E3878C /* Info.plist */,
+				D949BB601E5C872A00BCF3A0 /* MeetXSweatProd-Info.plist */,
 				D998B5DB1D96E63400A045F4 /* GoogleService-Info.plist */,
+				D949BB611E5C8ACA00BCF3A0 /* GoogleServiceProd-Info.plist */,
 				D94C63E71D8DE88A00ECD7FD /* MeetXSweat-Bridging-Header.h */,
 				D9C0863B1E49DCEA00122030 /* TabBar.xcassets */,
 				D9C0863D1E49E73400122030 /* Sports.xcassets */,
@@ -575,6 +672,27 @@
 			productReference = D926BABB1D8D6A6400E3878C /* MeetXSweatUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		D949BB051E5C872A00BCF3A0 /* MeetXSweatProd */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D949BB5C1E5C872A00BCF3A0 /* Build configuration list for PBXNativeTarget "MeetXSweatProd" */;
+			buildPhases = (
+				D949BB061E5C872A00BCF3A0 /* [CP] Check Pods Manifest.lock */,
+				D949BB071E5C872A00BCF3A0 /* Sources */,
+				D949BB431E5C872A00BCF3A0 /* Frameworks */,
+				D949BB471E5C872A00BCF3A0 /* Resources */,
+				D949BB591E5C872A00BCF3A0 /* [CP] Embed Pods Frameworks */,
+				D949BB5A1E5C872A00BCF3A0 /* [CP] Copy Pods Resources */,
+				D949BB5B1E5C872A00BCF3A0 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MeetXSweatProd;
+			productName = MeetXSweat;
+			productReference = D949BB5F1E5C872A00BCF3A0 /* MeetXSweat.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -602,6 +720,13 @@
 						CreatedOnToolsVersion = 7.3.1;
 						TestTargetID = D926BA9B1D8D6A6400E3878C;
 					};
+					D949BB051E5C872A00BCF3A0 = {
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
+					};
 				};
 			};
 			buildConfigurationList = D926BA971D8D6A6400E3878C /* Build configuration list for PBXProject "MeetXSweat" */;
@@ -618,6 +743,7 @@
 			projectRoot = "";
 			targets = (
 				D926BA9B1D8D6A6400E3878C /* MeetXSweat */,
+				D949BB051E5C872A00BCF3A0 /* MeetXSweatProd */,
 				D926BAAF1D8D6A6400E3878C /* MeetXSweatTests */,
 				D926BABA1D8D6A6400E3878C /* MeetXSweatUITests */,
 			);
@@ -662,6 +788,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				D94575971E44932100AF37F2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D949BB471E5C872A00BCF3A0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D949BB481E5C872A00BCF3A0 /* MXSWellCome.storyboard in Resources */,
+				D949BB491E5C872A00BCF3A0 /* UserProfile.xcassets in Resources */,
+				D949BB4A1E5C872A00BCF3A0 /* MXSCalendarCellView.xib in Resources */,
+				D949BB4B1E5C872A00BCF3A0 /* MXSEvent.storyboard in Resources */,
+				D949BB4C1E5C872A00BCF3A0 /* TabBar.xcassets in Resources */,
+				D949BB4D1E5C872A00BCF3A0 /* MXSConversation.storyboard in Resources */,
+				D949BB4E1E5C872A00BCF3A0 /* Main.storyboard in Resources */,
+				D949BB4F1E5C872A00BCF3A0 /* LaunchScreen.storyboard in Resources */,
+				D949BB621E5C8ACA00BCF3A0 /* GoogleServiceProd-Info.plist in Resources */,
+				D949BB501E5C872A00BCF3A0 /* Sports.xcassets in Resources */,
+				D949BB511E5C872A00BCF3A0 /* MapIcons.xcassets in Resources */,
+				D949BB521E5C872A00BCF3A0 /* MXSFindDate.storyboard in Resources */,
+				D949BB531E5C872A00BCF3A0 /* Assets.xcassets in Resources */,
+				D949BB541E5C872A00BCF3A0 /* MXSProfile.storyboard in Resources */,
+				D949BB551E5C872A00BCF3A0 /* MXSFindArroundMe.storyboard in Resources */,
+				D949BB561E5C872A00BCF3A0 /* MXSFindProfile.storyboard in Resources */,
+				D949BB581E5C872A00BCF3A0 /* MXSFindSport.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -742,6 +892,64 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MeetXSweat/Pods-MeetXSweat-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		D949BB061E5C872A00BCF3A0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D949BB591E5C872A00BCF3A0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MeetXSweatProd/Pods-MeetXSweatProd-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D949BB5A1E5C872A00BCF3A0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MeetXSweatProd/Pods-MeetXSweatProd-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D949BB5B1E5C872A00BCF3A0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 62977dc8c8f12b0dde348863eb757d3007e2c01a 61af0811c6d6d49ebc29aa3bd09db050f141c44afb916a7337abd8c2e8a2235c";
 		};
 		D9BB48091D8E93C100C12541 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -853,6 +1061,72 @@
 			buildActionMask = 2147483647;
 			files = (
 				D926BAC01D8D6A6400E3878C /* MeetXSweatUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D949BB071E5C872A00BCF3A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D949BB081E5C872A00BCF3A0 /* MXSEventViewController.swift in Sources */,
+				D949BB091E5C872A00BCF3A0 /* Person.swift in Sources */,
+				D949BB0A1E5C872A00BCF3A0 /* MXSConversationsCollectionViewController.swift in Sources */,
+				D949BB0B1E5C872A00BCF3A0 /* MXSStrings.swift in Sources */,
+				D949BB0C1E5C872A00BCF3A0 /* MXSEmbedCollectionViewController.swift in Sources */,
+				D949BB0D1E5C872A00BCF3A0 /* FireBaseDataManager.swift in Sources */,
+				D949BB0E1E5C872A00BCF3A0 /* MXSAddEventViewController.swift in Sources */,
+				D949BB0F1E5C872A00BCF3A0 /* GoogleLogInHelper.swift in Sources */,
+				D949BB101E5C872A00BCF3A0 /* UINavigationController+Connection.swift in Sources */,
+				D949BB111E5C872A00BCF3A0 /* GPSLocationManager.swift in Sources */,
+				D949BB121E5C872A00BCF3A0 /* AppDelegate.swift in Sources */,
+				D949BB131E5C872A00BCF3A0 /* MXSConversationCollectionCell.swift in Sources */,
+				D949BB141E5C872A00BCF3A0 /* User.swift in Sources */,
+				D949BB151E5C872A00BCF3A0 /* MXSTuttorialViewController.swift in Sources */,
+				D949BB161E5C872A00BCF3A0 /* LinkedInHelper.swift in Sources */,
+				D949BB171E5C872A00BCF3A0 /* MXSSportCollectionCell.swift in Sources */,
+				D949BB181E5C872A00BCF3A0 /* MXSTuttorialCollectionCell.swift in Sources */,
+				D949BB191E5C872A00BCF3A0 /* FindSportManager.swift in Sources */,
+				D949BB1A1E5C872A00BCF3A0 /* Conversation.swift in Sources */,
+				D949BB1B1E5C872A00BCF3A0 /* MXSFindSportViewController.swift in Sources */,
+				D949BB1C1E5C872A00BCF3A0 /* MXSMainViewController.swift in Sources */,
+				D949BB1D1E5C872A00BCF3A0 /* MSXFindManager.swift in Sources */,
+				D949BB1E1E5C872A00BCF3A0 /* DummyData.swift in Sources */,
+				D949BB1F1E5C872A00BCF3A0 /* MXSFindArroundMeViewController.swift in Sources */,
+				D949BB201E5C872A00BCF3A0 /* MXSViewController.swift in Sources */,
+				D949BB211E5C872A00BCF3A0 /* FaceBookHelper.swift in Sources */,
+				D949BB221E5C872A00BCF3A0 /* EnCodeObject.swift in Sources */,
+				D949BB231E5C872A00BCF3A0 /* ConversationsDataManager.swift in Sources */,
+				D949BB241E5C872A00BCF3A0 /* MXSProfileViewController.swift in Sources */,
+				D949BB251E5C872A00BCF3A0 /* Message.swift in Sources */,
+				D949BB261E5C872A00BCF3A0 /* MXSAllLoginsViewController.swift in Sources */,
+				D949BB271E5C872A00BCF3A0 /* MXSPersonCollectionCell.swift in Sources */,
+				D949BB281E5C872A00BCF3A0 /* MXSPickerView.swift in Sources */,
+				D949BB291E5C872A00BCF3A0 /* MXSCalendarViewController.swift in Sources */,
+				D949BB2A1E5C872A00BCF3A0 /* MXSConversationsViewController.swift in Sources */,
+				D949BB2B1E5C872A00BCF3A0 /* FireBaseObject.swift in Sources */,
+				D949BB2C1E5C872A00BCF3A0 /* JSONFile.swift in Sources */,
+				D949BB2D1E5C872A00BCF3A0 /* Event.swift in Sources */,
+				D949BB2E1E5C872A00BCF3A0 /* MXSRessources.swift in Sources */,
+				D949BB2F1E5C872A00BCF3A0 /* MXSPersonsCollectionViewController.swift in Sources */,
+				D949BB301E5C872A00BCF3A0 /* MXSFindDateViewController.swift in Sources */,
+				D949BB311E5C872A00BCF3A0 /* Utils.swift in Sources */,
+				D949BB321E5C872A00BCF3A0 /* AnimationClass.swift in Sources */,
+				D949BB331E5C872A00BCF3A0 /* MXSActivityIndicator.swift in Sources */,
+				D949BB341E5C872A00BCF3A0 /* TwitterHelper.swift in Sources */,
+				D949BB351E5C872A00BCF3A0 /* MXSEventsCollectionCell.swift in Sources */,
+				D949BB361E5C872A00BCF3A0 /* MSXLogInManager.swift in Sources */,
+				D949BB371E5C872A00BCF3A0 /* FireBaseHelper.swift in Sources */,
+				D949BB381E5C872A00BCF3A0 /* MXSEventsCollectionViewController.swift in Sources */,
+				D949BB391E5C872A00BCF3A0 /* MXSCreateAccountViewController.swift in Sources */,
+				D949BB3A1E5C872A00BCF3A0 /* MXSCalendarCellView.swift in Sources */,
+				D949BB3B1E5C872A00BCF3A0 /* MXSConstants.swift in Sources */,
+				D949BB3C1E5C872A00BCF3A0 /* MXSWellComeViewController.swift in Sources */,
+				D949BB3D1E5C872A00BCF3A0 /* FindDateManager.swift in Sources */,
+				D949BB3E1E5C872A00BCF3A0 /* MXSSportsCollectionViewController.swift in Sources */,
+				D949BB3F1E5C872A00BCF3A0 /* MXSMenuViewController.swift in Sources */,
+				D949BB401E5C872A00BCF3A0 /* FindProfileManager.swift in Sources */,
+				D949BB411E5C872A00BCF3A0 /* ChatViewController.swift in Sources */,
+				D949BB421E5C872A00BCF3A0 /* MXSFindProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -984,6 +1258,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = MeetXSweat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MeetXSweat.MeetXSweat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1007,6 +1282,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = MeetXSweat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MeetXSweat.MeetXSweat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1063,6 +1339,65 @@
 			};
 			name = Release;
 		};
+		D949BB5D1E5C872A00BCF3A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3B786CFF81DADC6EBBEA894 /* Pods-MeetXSweatProd.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Mohamed boumansour (G728K2KM26)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mohamed boumansour (G728K2KM26)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MeetXSweat",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+				);
+				INFOPLIST_FILE = "MeetXSweatProd-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) -DPROD";
+				PRODUCT_BUNDLE_IDENTIFIER = com.meetxsweat.meetxsweat;
+				PRODUCT_NAME = MeetXSweat;
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "MeetXSweat/MeetXSweat-Bridging-Header.h";
+			};
+			name = Debug;
+		};
+		D949BB5E1E5C872A00BCF3A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A5D3A7424A337CE14A9730B /* Pods-MeetXSweatProd.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Mohamed boumansour (G728K2KM26)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mohamed boumansour (G728K2KM26)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MeetXSweat",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+				);
+				INFOPLIST_FILE = "MeetXSweatProd-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) -DPROD";
+				PRODUCT_BUNDLE_IDENTIFIER = com.meetxsweat.meetxsweat;
+				PRODUCT_NAME = MeetXSweat;
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "MeetXSweat/MeetXSweat-Bridging-Header.h";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1098,6 +1433,15 @@
 			buildConfigurations = (
 				D926BACB1D8D6A6400E3878C /* Debug */,
 				D926BACC1D8D6A6400E3878C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D949BB5C1E5C872A00BCF3A0 /* Build configuration list for PBXNativeTarget "MeetXSweatProd" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D949BB5D1E5C872A00BCF3A0 /* Debug */,
+				D949BB5E1E5C872A00BCF3A0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
