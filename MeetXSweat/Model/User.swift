@@ -221,8 +221,12 @@ class User: Person {
             
         } else {
             
-            object.createPersonOnDataBase({ (done) in
-                self.updatePersonOnDataBase({ (done) in
+            object.createPersonOnDataBase({ [weak self] (done) in
+                
+                guard let this = self else {
+                    return
+                }
+                this.updatePersonOnDataBase({ (done) in
                 })
                 completion(success: true)
             })

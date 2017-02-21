@@ -38,6 +38,14 @@ class MXSActivityIndicator: UIView {
         }
     }
     
+    class func startAnimatingInView(view: UIView) {
+        
+        dispatch_async(dispatch_get_main_queue()){
+            view.addSubview(sharedInstance)
+            AnimationClass.rotateImageToRightInfinie(sharedInstance, speed: 0.3)
+        }
+    }
+    
     class func stopAnimating() {
         
         dispatch_async(dispatch_get_main_queue()){

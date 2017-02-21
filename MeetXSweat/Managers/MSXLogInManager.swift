@@ -54,6 +54,7 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
             MSXLogInManager.endLogin(self.controller)
             return
         }
+        MXSActivityIndicator.startAnimatingInView(getAppDelegateWindow())
         User.currentUser.initFromFBData(aData, completion: { [weak self] (done) in
             
             guard let this = self else {
