@@ -41,7 +41,7 @@ class MXSTuttorialViewController: MXSViewController, UICollectionViewDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = Ressources.NavigationTitle.tuttorial
+        self.title = Strings.NavigationTitle.tuttorial
         
         addValiderButton()
         setupPageControl()

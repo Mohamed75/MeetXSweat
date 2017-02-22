@@ -30,7 +30,7 @@ class ChatViewController: JSQMessagesViewController {
     
     var conversation: Conversation?
     
-    var messages = [JSQMessage]()
+    var theMessages = [JSQMessage]()
   
     var outgoingBubbleImageView: JSQMessagesBubbleImage!
     var incomingBubbleImageView: JSQMessagesBubbleImage!
@@ -38,12 +38,13 @@ class ChatViewController: JSQMessagesViewController {
     
   override func viewDidLoad() {
     
-    self.senderId = User.currentUser.getEmailAsId()
-    self.senderDisplayName = User.currentUser.lastName
+    self.senderId           = User.currentUser.getEmailAsId()
+    self.senderDisplayName  = User.currentUser.lastName
     
     super.viewDidLoad()
     setupBubbles()
     
+    self.title = Strings.NavigationTitle.messages
     
     // No avatars
     collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSizeZero
@@ -64,7 +65,7 @@ class ChatViewController: JSQMessagesViewController {
             for message in messages {
                 allMessages.append(message.toJSQMessage())
             }
-            this.messages = allMessages
+            this.theMessages = allMessages
             this.finishReceivingMessage()
         })
         
@@ -85,15 +86,15 @@ class ChatViewController: JSQMessagesViewController {
   }
   
   override func collectionView(collectionView: JSQMessagesCollectionView!, messageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageData! {
-    return self.messages[indexPath.item]
+    return theMessages[indexPath.item]
   }
   
   override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return self.messages.count
+    return theMessages.count
   }
   
   override func collectionView(collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageBubbleImageDataSource! {
-    let message = self.messages[indexPath.item] // 1
+    let message = theMessages[indexPath.item] // 1
     if message.senderId == senderId { // 2
       return outgoingBubbleImageView
     } else { // 3
@@ -104,7 +105,7 @@ class ChatViewController: JSQMessagesViewController {
   override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
     let cell = super.collectionView(collectionView, cellForItemAtIndexPath: indexPath) as! JSQMessagesCollectionViewCell
 
-    let message = messages[indexPath.item]
+    let message = theMessages[indexPath.item]
     
     if message.senderId == senderId { // 1
       cell.textView!.textColor = UIColor.whiteColor() // 2

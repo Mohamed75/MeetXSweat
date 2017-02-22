@@ -35,7 +35,7 @@ class MXSEmbedCollectionViewController: MXSViewController {
                 
                 if eventsCollectionViewController.fromProfileViewController {
                 } else {
-                    self.title = Ressources.NavigationTitle.events
+                    self.title = Strings.NavigationTitle.events
                 }
             }
             break
@@ -58,7 +58,7 @@ class MXSEmbedCollectionViewController: MXSViewController {
                 if !FindProfileManager.sharedInstance.profession.isEmpty {
                     self.titleLabel.text = FindProfileManager.sharedInstance.profession
                 }
-                self.title = Ressources.NavigationTitle.profiles
+                self.title = Strings.NavigationTitle.profiles
             }
             break
             

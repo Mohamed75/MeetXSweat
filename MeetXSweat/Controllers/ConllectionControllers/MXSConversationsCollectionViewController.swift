@@ -8,6 +8,10 @@
 
 import UIKit
 
+private let nameAttributes = [
+    NSForegroundColorAttributeName: Constants.MainColor.kSpecialColor,
+    NSFontAttributeName : UIFont.boldSystemFontOfSize(17)
+]
 
 
 class MXSConversationsCollectionViewController: UICollectionViewController {
@@ -25,9 +29,27 @@ class MXSConversationsCollectionViewController: UICollectionViewController {
             text = person1.name
             let person2 = conversation.getFullPersons()[1]
             text = text + " / " + person2.name
+            
+            cell.layoutIfNeeded()
+            cell.imageView.image = UIImage(named: Ressources.Images.userSansPhoto)
+            if !person1.pictureUrl.isEmpty {
+                cell.imageView.af_setImageWithURL(
+                    NSURL(string: person1.pictureUrl)!,
+                    placeholderImage: nil,
+                    filter: nil,
+                    imageTransition: .None
+                )
+                cell.imageView.layer.cornerRadius = cell.imageView.frame.width/2
+                cell.imageView.clipsToBounds = true
+            }
         }
-        cell.label.text = text
-        //cell.imageView.image = UIImage(named: Ressources.Images.event)
+        
+        let string = NSMutableAttributedString(string: text)
+        string.addAttributes(nameAttributes, range: NSRange(location: 0, length: text.characters.count))
+        cell.label.attributedText = string
+        
+        cell.layer.borderWidth = 1
+        cell.layer.borderColor = UIColor.blackColor().CGColor
         
         return cell
     }

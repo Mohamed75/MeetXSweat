@@ -41,7 +41,7 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
         
         nameLabel.text = User.currentUser.aFullName()
         
-        self.title = Ressources.NavigationTitle.wellCome
+        self.title = Strings.NavigationTitle.wellCome
         imagePicker.delegate = self
         
         if UIScreen.mainScreen().bounds.size.height == 480 { //iPhone 4

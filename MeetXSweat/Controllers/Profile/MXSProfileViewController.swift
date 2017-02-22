@@ -73,9 +73,9 @@ class MXSProfileViewController: MXSViewController, UIImagePickerControllerDelega
         nameLabel.attributedText = string
         
         
-        self.descriptionLabel.text = "My temporary description"
+        descriptionLabel.text = person.personDescription
         
-        if let eventsCollectionViewController = self.childViewControllers[0] as? MXSEventsCollectionViewController {
+        if let eventsCollectionViewController = childViewControllers[0] as? MXSEventsCollectionViewController {
             
             eventsCollectionViewController.events = person.getEvents()
             eventsCollectionViewController.fromProfileViewController = true

@@ -48,7 +48,7 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
         addBarButtonItem()
         addValiderButton()
         
-        self.title = Ressources.NavigationTitle.rechercher
+        self.title = Strings.NavigationTitle.rechercher
         
         titleLabel.textColor = Constants.MainColor.kSpecialColor
         titleLabel.layer.borderColor = Constants.MainColor.kSpecialColor.CGColor

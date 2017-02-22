@@ -11,10 +11,16 @@ import UIKit
 
 class MXSConversationsViewController: MXSViewController {
     
+    @IBOutlet weak var titleLabel: UILabel!
+    
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        self.title = Strings.NavigationTitle.conversations
+        
+        self.titleLabel.backgroundColor = Constants.MainColor.kSpecialColor
         
         let conversationsCollectionViewController = self.childViewControllers.first as? MXSConversationsCollectionViewController
         conversationsCollectionViewController?.conversations = ConversationsDataManager.sharedInstance.conversations

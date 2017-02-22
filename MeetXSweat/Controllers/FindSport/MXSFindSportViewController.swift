@@ -24,7 +24,7 @@ class MXSFindSportViewController: MXSViewController {
         self.addBarButtonItem()
         self.addValiderButton()
         
-        self.title = Ressources.NavigationTitle.sports
+        self.title = Strings.NavigationTitle.sports
     }
     
     override func viewWillAppear(animated: Bool) {

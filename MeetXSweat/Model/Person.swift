@@ -21,7 +21,7 @@ class Person: FireBaseObject {
     var gender      = ""
     var birthday    = ""
     var adress      = ""
-    
+    var personDescription = ""
     
     
     override init() {

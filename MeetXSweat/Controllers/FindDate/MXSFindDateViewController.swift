@@ -31,6 +31,8 @@ class MXSFindDateViewController: MXSCalendarViewController {
         addBarButtonItem()
         addValiderButton()
         
+        self.title = Strings.NavigationTitle.planning
+        
         titleLabel.text = Strings.Calendar.titleText
         titleLabel.textColor = UIColor.whiteColor()
         titleLabel.backgroundColor = Constants.MainColor.kSpecialColor

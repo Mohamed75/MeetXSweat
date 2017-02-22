@@ -120,7 +120,7 @@ class MXSEventViewController: MXSViewController {
         minuteLabel.textColor = Constants.MainColor.kSpecialColor
         secondLabel.textColor = Constants.MainColor.kSpecialColor
         
-        self.title = Ressources.NavigationTitle.event
+        self.title = Strings.NavigationTitle.event
             
         topView.layer.borderColor = Constants.MainColor.kSpecialColor.CGColor
         topView.layer.borderWidth = 1
@@ -248,7 +248,7 @@ class MXSEventViewController: MXSViewController {
         
         if let viewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findProfile, viewControllerId: Ressources.StoryBooardsIdentifiers.embedProfilesId) as? MXSEmbedCollectionViewController
         {
-            viewController.title = Ressources.NavigationTitle.sportsParticipants
+            viewController.title = Strings.NavigationTitle.sportsParticipants
             self.navigationController?.pushViewController(viewController, animated: false)
             
             
