@@ -66,10 +66,11 @@ class MXSProfileViewController: MXSViewController, UIImagePickerControllerDelega
         }
         
         let text = person.aFullName()
-        let string = NSMutableAttributedString(string: text + "\n" + FindProfileManager.sharedInstance.profession)
-        string.addAttributes(nameAttributes, range: NSRange(location: 0,length: text.characters.count))
-        if !FindProfileManager.sharedInstance.profession.isEmpty {
-            string.addAttributes(professionAttributes, range: NSRange(location: text.characters.count,length: FindProfileManager.sharedInstance.profession.characters.count))
+        let professionDomaine = person.professionDomaine()
+        let string = NSMutableAttributedString(string: text + "\n" + professionDomaine)
+        string.addAttributes(nameAttributes, range: NSRange(location: 0, length: text.characters.count))
+        if !professionDomaine.isEmpty {
+            string.addAttributes(professionAttributes, range: NSRange(location: text.characters.count, length: professionDomaine.characters.count))
         }
         nameLabel.attributedText = string
         
@@ -143,7 +144,6 @@ class MXSProfileViewController: MXSViewController, UIImagePickerControllerDelega
     
     
     @IBAction func contacterButtonClicked(sender: AnyObject) {
-        
         
         let between:[String] = [User.currentUser.email, person.email]
         let conversation: Conversation!

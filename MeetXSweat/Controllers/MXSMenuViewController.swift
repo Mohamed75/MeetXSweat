@@ -66,6 +66,7 @@ class MXSMenuViewController: UITableViewController {
             break
         case 2:
             User.currentUser.logOut()
+            self.evo_drawerController!.centerViewController = mainNavigationController
             if let tabBar = self.evo_drawerController?.centerViewController as? UITabBarController {
                 tabBar.selectedViewController!.viewDidLoad()
             }

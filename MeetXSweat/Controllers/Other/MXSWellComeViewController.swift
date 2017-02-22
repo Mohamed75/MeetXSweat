@@ -90,6 +90,12 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
         MXSPickerView.subViewPanned(pickerView, controller: self)
     }
     
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: Constants.FBNotificationName.sports, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: Constants.FBNotificationName.professions, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: Constants.FBNotificationName.domaines, object: nil)
+    }
+    
     func userImageViewClicked() {
         
         let actionSheet = UIAlertController(title: "Image Source", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)

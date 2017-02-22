@@ -43,10 +43,11 @@ class MXSPersonsCollectionViewController: UICollectionViewController {
             let person = persons[indexPath.section]
             
             let text = person.aFullName()
-            let string = NSMutableAttributedString(string: text + "\n" + person.profession)
-            string.addAttributes(nameAttributes, range: NSRange(location: 0,length: text.characters.count))
-            if !person.profession.isEmpty {
-                string.addAttributes(professionAttributes, range: NSRange(location: text.characters.count,length: person.profession.characters.count))
+            let professionDomaine = person.professionDomaine()
+            let string = NSMutableAttributedString(string: text + "\n" + professionDomaine)
+            string.addAttributes(nameAttributes, range: NSRange(location: 0, length: text.characters.count))
+            if !professionDomaine.isEmpty {
+                string.addAttributes(professionAttributes, range: NSRange(location: text.characters.count, length: professionDomaine.characters.count))
             }
             cell.label.attributedText = string
             

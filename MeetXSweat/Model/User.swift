@@ -256,10 +256,12 @@ class User: Person {
             User.currentUser.lastName   = ""
             User.currentUser.email      = ""
             User.currentUser.profession = ""
+            User.currentUser.domaine    = ""
             User.currentUser.sport      = ""
             User.currentUser.gender     = ""
             User.currentUser.birthday   = ""
             User.currentUser.adress     = ""
+            User.currentUser.personDescription = ""
             User.currentUser.saveToNSUserDefaults()
         })
     }

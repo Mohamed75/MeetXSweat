@@ -22,27 +22,40 @@ class MXSConversationsCollectionViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Ressources.CellReuseIdentifier.conversation, forIndexPath: indexPath) as! MXSConversationCollectionCell
-        let conversation = self.conversations[indexPath.section]
+        
+        var imagePerson = Person()
+        let conversation = conversations[indexPath.section]
         var text = ""
         if conversation.persons.count > 0 {
-            let person1 = conversation.getFullPersons()[0]
-            text = person1.name
-            let person2 = conversation.getFullPersons()[1]
-            text = text + " / " + person2.name
-            
-            cell.layoutIfNeeded()
-            cell.imageView.image = UIImage(named: Ressources.Images.userSansPhoto)
-            if !person1.pictureUrl.isEmpty {
-                cell.imageView.af_setImageWithURL(
-                    NSURL(string: person1.pictureUrl)!,
-                    placeholderImage: nil,
-                    filter: nil,
-                    imageTransition: .None
-                )
-                cell.imageView.layer.cornerRadius = cell.imageView.frame.width/2
-                cell.imageView.clipsToBounds = true
+            if let person1 = conversation.getFullPersons().first {
+                text = person1.name
+                if person1.email != User.currentUser.email {
+                    imagePerson = person1
+                }
+            }
+            if let person2 = conversation.getFullPersons().last {
+                text = text + " / " + person2.name
+                if person2.email != User.currentUser.email {
+                    imagePerson = person2
+                }
             }
         }
+        
+        
+        
+        cell.layoutIfNeeded()
+        cell.imageView.image = UIImage(named: Ressources.Images.userSansPhoto)
+        if !imagePerson.pictureUrl.isEmpty {
+            cell.imageView.af_setImageWithURL(
+                NSURL(string: imagePerson.pictureUrl)!,
+                placeholderImage: nil,
+                filter: nil,
+                imageTransition: .None
+            )
+            cell.imageView.layer.cornerRadius = cell.imageView.frame.width/2
+            cell.imageView.clipsToBounds = true
+        }
+        
         
         let string = NSMutableAttributedString(string: text)
         string.addAttributes(nameAttributes, range: NSRange(location: 0, length: text.characters.count))
@@ -58,7 +71,7 @@ class MXSConversationsCollectionViewController: UICollectionViewController {
         
         let chatViewController = ChatViewController()
         chatViewController.conversation = conversations[indexPath.section]
-        self.navigationController?.pushViewController(chatViewController, animated: true)
+        navigationController?.pushViewController(chatViewController, animated: true)
     }
     
     internal override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

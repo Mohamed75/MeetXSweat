@@ -32,6 +32,7 @@ class MXSConversationsViewController: MXSViewController {
         
         if let conversationsCollectionViewController = self.childViewControllers.first as? MXSConversationsCollectionViewController {
             conversationsCollectionViewController.conversations = ConversationsDataManager.sharedInstance.conversations
+            conversationsCollectionViewController.collectionView?.reloadData()
         }
     }
 }

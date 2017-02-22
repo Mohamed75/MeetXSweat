@@ -17,14 +17,14 @@ class EventPersons {
     var events: [Event]!
     
     
-    class func fetchPersons(persons: [String]) {
+    class func fetchPersons(ppersons: [String]) {
         
         EventPersons.sharedInstance.persons = []
         
-        for personEmail in persons {
+        for personEmail in ppersons {
             
             for person in FireBaseDataManager.sharedInstance.persons {
-                if personEmail == person.email {
+                if personEmail.lowercaseString == person.email.lowercaseString {
                     EventPersons.sharedInstance.persons.append(person)
                 }
             }

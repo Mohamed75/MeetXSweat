@@ -25,6 +25,7 @@ import Firebase
 import JSQMessagesViewController
 
 
+
 class ChatViewController: JSQMessagesViewController {
   
     
@@ -43,122 +44,124 @@ class ChatViewController: JSQMessagesViewController {
         incomingBubbleImageView = bubbleImageFactory.incomingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleLightGrayColor())
     }
     
-    
-  override func viewDidLoad() {
-    
-    self.senderId           = User.currentUser.getEmailAsId()
-    self.senderDisplayName  = User.currentUser.lastName
-    
-    super.viewDidLoad()
-    setupBubbles()
-    
-    self.title = Strings.NavigationTitle.messages
-    
-    // No avatars
-    collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSizeZero
-    collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero
-    
-    inputToolbar.barTintColor    = UIColor.blackColor()
-    inputToolbar.backgroundColor = UIColor.blackColor()
-    inputToolbar.contentView.rightBarButtonItem.setImage(UIImage(named: Ressources.Images.sendMessage), forState: .Normal)
-    inputToolbar.contentView.rightBarButtonItemWidth = inputToolbar.contentView.rightBarButtonItem.frame.size.height
-  }
+    override func viewDidLoad() {
+        
+        self.senderId           = User.currentUser.getEmailAsId()
+        self.senderDisplayName  = User.currentUser.lastName
+        
+        super.viewDidLoad()
+        setupBubbles()
+        
+        self.title = Strings.NavigationTitle.messages
+        
+        // No avatars
+        collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSizeZero
+        collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero
+        
+        inputToolbar.barTintColor    = UIColor.blackColor()
+        inputToolbar.backgroundColor = UIColor.blackColor()
+        inputToolbar.contentView.rightBarButtonItem.setImage(UIImage(named: Ressources.Images.sendMessage), forState: .Normal)
+        inputToolbar.contentView.rightBarButtonItemWidth = inputToolbar.contentView.rightBarButtonItem.frame.size.height
+    }
   
-  override func viewDidAppear(animated: Bool) {
-    super.viewDidAppear(animated)
-    
-    if let aConversation = conversation {
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         
-        aConversation.observeMessages( { [weak self] (messages) in
+        if let aConversation = conversation {
             
-            guard let this = self else {
-                return
+            aConversation.observeMessages( { [weak self] (messages) in
+                
+                guard let this = self else {
+                    return
+                }
+                var allMessages = [JSQMessage]()
+                for message in messages {
+                    allMessages.append(message.toJSQMessage())
+                }
+                this.theMessages = allMessages
+                this.finishReceivingMessage()
+            })
+            
+            aConversation.observeTyping(senderId) { [weak self] (isTyping) in
+                
+                guard let this = self else {
+                    return
+                }
+                this.showTypingIndicator = isTyping
+                this.scrollToBottomAnimated(true)
             }
-            var allMessages = [JSQMessage]()
-            for message in messages {
-                allMessages.append(message.toJSQMessage())
-            }
-            this.theMessages = allMessages
-            this.finishReceivingMessage()
-        })
+        }
+    }
+  
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
         
-        aConversation.observeTyping(senderId) { [weak self] (isTyping) in
-            
-            guard let this = self else {
-                return
-            }
-            this.showTypingIndicator = isTyping
-            this.scrollToBottomAnimated(true)
+        if let aConversation = conversation {
+            aConversation.removeObservers()
         }
     }
     
-  }
   
-  override func viewDidDisappear(animated: Bool) {
-    super.viewDidDisappear(animated)
-  }
-  
-  override func collectionView(collectionView: JSQMessagesCollectionView!, messageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageData! {
-    return theMessages[indexPath.item]
-  }
-  
-  override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return theMessages.count
-  }
-  
-  override func collectionView(collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageBubbleImageDataSource! {
-    let message = theMessages[indexPath.item] // 1
-    if message.senderId == senderId { // 2
-        return outgoingBubbleImageView
-    } else { // 3
-        return incomingBubbleImageView
-    }
-  }
-  
-  override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    let cell = super.collectionView(collectionView, cellForItemAtIndexPath: indexPath) as! JSQMessagesCollectionViewCell
-
-    let message = theMessages[indexPath.item]
-    
-    if message.senderId == senderId { // 1
-      cell.textView!.textColor = UIColor.whiteColor() // 2
-    } else {
-      cell.textView!.textColor = UIColor.blackColor() // 3
+    override func collectionView(collectionView: JSQMessagesCollectionView!, messageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageData! {
+        return theMessages[indexPath.item]
     }
     
-    return cell
-  }
-  
-  override func collectionView(collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
-    return nil
-  }
-  
-  
-  
-  
-  
-  
-  
-  override func textViewDidChange(textView: UITextView) {
-    super.textViewDidChange(textView)
-    // If the text is not empty, the user is typing
-    if let aConversation = conversation {
-        aConversation.isTyping = textView.text != ""
+    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return theMessages.count
     }
-  }
   
-  override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
-    
-    if let aConversation = conversation {
-        aConversation.addMessage(text, senderId: senderId, controller: self)
+    override func collectionView(collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageBubbleImageDataSource! {
+        let message = theMessages[indexPath.item] // 1
+        if message.senderId == senderId { // 2
+            return outgoingBubbleImageView
+        } else { // 3
+            return incomingBubbleImageView
+        }
     }
-    JSQSystemSoundPlayer.jsq_playMessageSentSound()
-    
-    finishSendingMessage()
+  
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = super.collectionView(collectionView, cellForItemAtIndexPath: indexPath) as! JSQMessagesCollectionViewCell
         
-    if let aConversation = conversation {
-        aConversation.isTyping = false
+        let message = theMessages[indexPath.item]
+        
+        if message.senderId == senderId { // 1
+            cell.textView!.textColor = UIColor.whiteColor() // 2
+        } else {
+            cell.textView!.textColor = UIColor.blackColor() // 3
+        }
+        
+        return cell
     }
-  }
+  
+    override func collectionView(collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
+        return nil
+    }
+  
+  
+  
+  
+  
+  
+    override func textViewDidChange(textView: UITextView) {
+        super.textViewDidChange(textView)
+        // If the text is not empty, the user is typing
+        if let aConversation = conversation {
+            aConversation.isTyping = textView.text != ""
+        }
+    }
+  
+    override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
+        
+        if let aConversation = conversation {
+            aConversation.addMessage(text, senderId: senderId, controller: self)
+        }
+        JSQSystemSoundPlayer.jsq_playMessageSentSound()
+        
+        finishSendingMessage()
+        
+        if let aConversation = conversation {
+            aConversation.isTyping = false
+        }
+    }
   
 }

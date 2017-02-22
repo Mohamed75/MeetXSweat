@@ -82,6 +82,11 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
         MXSPickerView.subViewPanned(pickerView, controller: self)
     }
     
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: Constants.FBNotificationName.domaines, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: Constants.FBNotificationName.professions, object: nil)
+    }
+    
     override func refreshView() {
         
         dispatch_later(0.01) {

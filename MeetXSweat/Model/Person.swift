@@ -154,4 +154,11 @@ class Person: FireBaseObject {
     func aFullName() -> String {
         return name + " " + lastName
     }
+    
+    func professionDomaine() -> String {
+        if !domaine.isEmpty {
+           return profession + " - " + domaine
+        }
+        return profession
+    }
 }

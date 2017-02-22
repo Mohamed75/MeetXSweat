@@ -33,6 +33,10 @@ class MXSSportsCollectionViewController: UICollectionViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Constants.FBNotificationSelector.sports, name: Constants.FBNotificationName.sports, object: nil)
     }
     
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: Constants.FBNotificationName.sports, object: nil)
+    }
+    
     // Mark: --- Notifications Observer ---
     func selectorSportUpdated() {
         sports = FireBaseDataManager.sharedInstance.sports

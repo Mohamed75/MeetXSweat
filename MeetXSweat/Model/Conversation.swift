@@ -16,6 +16,8 @@ class Conversation: FireBaseObject {
     var persons: [String] = []
     var messages: [Message] = []
     
+    
+    
     override init() {
         super.init()
     }
@@ -33,14 +35,14 @@ class Conversation: FireBaseObject {
         return EventPersons.sharedInstance.persons
     }
     
-    
+    var messagesQuery: FIRDatabaseReference?
     func observeMessages(completionHandler:((messages: [Message])->Void)) {
         
         if let conversationRef = ref {
             
             self.messages = []
-            let messagesQuery = conversationRef.child("messages").queryLimitedToLast(100)
-            messagesQuery.observeEventType(.ChildAdded, withBlock: { [weak self] (snapshot) in
+            messagesQuery = conversationRef.child("messages")
+            messagesQuery!.queryLimitedToLast(100).observeEventType(.ChildAdded, withBlock: { [weak self] (snapshot) in
                 
                 guard let this = self else {
                     return
@@ -50,6 +52,13 @@ class Conversation: FireBaseObject {
                 
                 completionHandler(messages: this.messages)
             })
+        }
+    }
+    
+    func removeObservers() {
+        
+        if let conversationRef = messagesQuery {
+            conversationRef.removeAllObservers()
         }
     }
     
