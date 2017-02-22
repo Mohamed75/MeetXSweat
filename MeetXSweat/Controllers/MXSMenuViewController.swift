@@ -65,11 +65,17 @@ class MXSMenuViewController: UITableViewController {
             }
             break
         case 2:
-            User.currentUser.logOut()
-            self.evo_drawerController!.centerViewController = mainNavigationController
-            if let tabBar = self.evo_drawerController?.centerViewController as? UITabBarController {
-                tabBar.selectedViewController!.viewDidLoad()
-            }
+            User.currentUser.logOut({ [weak self] (done) in
+                
+                guard let this = self else {
+                    return
+                }
+                this.evo_drawerController!.centerViewController = this.mainNavigationController
+                if let tabBar = this.evo_drawerController?.centerViewController as? UITabBarController {
+                    tabBar.selectedViewController!.viewDidLoad()
+                }
+            })
+            
             break
         default:
             break

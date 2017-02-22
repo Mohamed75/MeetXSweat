@@ -247,7 +247,7 @@ class User: Person {
     }
     
     
-    func logOut() {
+    func logOut(completion:((done: Bool)->Void)) {
         
         User.currentUser.isConnected = false
         User.currentUser.updatePersonOnDataBase({ (done) in
@@ -263,6 +263,7 @@ class User: Person {
             User.currentUser.adress     = ""
             User.currentUser.personDescription = ""
             User.currentUser.saveToNSUserDefaults()
+            completion(done: done)
         })
     }
 }
