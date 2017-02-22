@@ -36,6 +36,14 @@ class ChatViewController: JSQMessagesViewController {
     var incomingBubbleImageView: JSQMessagesBubbleImage!
   
     
+    private func setupBubbles() {
+        
+        let bubbleImageFactory = JSQMessagesBubbleImageFactory()
+        outgoingBubbleImageView = bubbleImageFactory.outgoingMessagesBubbleImageWithColor(Constants.MainColor.kSpecialColor)
+        incomingBubbleImageView = bubbleImageFactory.incomingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleLightGrayColor())
+    }
+    
+    
   override func viewDidLoad() {
     
     self.senderId           = User.currentUser.getEmailAsId()
@@ -49,6 +57,11 @@ class ChatViewController: JSQMessagesViewController {
     // No avatars
     collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSizeZero
     collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero
+    
+    inputToolbar.barTintColor    = UIColor.blackColor()
+    inputToolbar.backgroundColor = UIColor.blackColor()
+    inputToolbar.contentView.rightBarButtonItem.setImage(UIImage(named: Ressources.Images.sendMessage), forState: .Normal)
+    inputToolbar.contentView.rightBarButtonItemWidth = inputToolbar.contentView.rightBarButtonItem.frame.size.height
   }
   
   override func viewDidAppear(animated: Bool) {
@@ -96,9 +109,9 @@ class ChatViewController: JSQMessagesViewController {
   override func collectionView(collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageBubbleImageDataSource! {
     let message = theMessages[indexPath.item] // 1
     if message.senderId == senderId { // 2
-      return outgoingBubbleImageView
+        return outgoingBubbleImageView
     } else { // 3
-      return incomingBubbleImageView
+        return incomingBubbleImageView
     }
   }
   
@@ -146,13 +159,6 @@ class ChatViewController: JSQMessagesViewController {
     if let aConversation = conversation {
         aConversation.isTyping = false
     }
-  }
-  
-  private func setupBubbles() {
-    
-    let bubbleImageFactory = JSQMessagesBubbleImageFactory()
-    outgoingBubbleImageView = bubbleImageFactory.outgoingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleBlueColor())
-    incomingBubbleImageView = bubbleImageFactory.incomingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleLightGrayColor())
   }
   
 }
