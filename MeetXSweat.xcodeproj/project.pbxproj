@@ -1270,6 +1270,7 @@
 				PRODUCT_NAME = MeetXSweat;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MeetXSweat/MeetXSweat-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1294,6 +1295,7 @@
 				PRODUCT_NAME = MeetXSweat;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MeetXSweat/MeetXSweat-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1373,6 +1375,7 @@
 				PRODUCT_NAME = MeetXSweat;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MeetXSweat/MeetXSweat-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1403,6 +1406,7 @@
 				PRODUCT_NAME = MeetXSweat;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MeetXSweat/MeetXSweat-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
