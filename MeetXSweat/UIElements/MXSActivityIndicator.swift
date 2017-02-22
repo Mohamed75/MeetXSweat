@@ -8,8 +8,10 @@
 
 import UIKit
 
-private let width: CGFloat = 60
+private let width: CGFloat  = 60
 private let height: CGFloat = 60
+
+private let animationSpeed: Float  = 0.3
 
 
 class MXSActivityIndicator: UIView {
@@ -34,7 +36,7 @@ class MXSActivityIndicator: UIView {
         
         dispatch_async(dispatch_get_main_queue()){
             getVisibleViewController().view.addSubview(sharedInstance)
-            AnimationClass.rotateImageToRightInfinie(sharedInstance, speed: 0.3)
+            AnimationClass.rotateImageToRightInfinie(sharedInstance, speed: animationSpeed)
         }
     }
     
@@ -42,7 +44,7 @@ class MXSActivityIndicator: UIView {
         
         dispatch_async(dispatch_get_main_queue()){
             view.addSubview(sharedInstance)
-            AnimationClass.rotateImageToRightInfinie(sharedInstance, speed: 0.3)
+            AnimationClass.rotateImageToRightInfinie(sharedInstance, speed: animationSpeed)
         }
     }
     

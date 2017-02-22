@@ -55,7 +55,7 @@ class MXSCalendarCellView: JTAppleDayCellView {
             selectedView.backgroundColor = Constants.MainColor.kSpecialColor
         }
         
-        if UIScreen.mainScreen().bounds.width >= 375 {
+        if ScreenSize.currentWidth >= ScreenSize.iphone6Width {
             imageViewConstraint.constant = 8
         }
     }

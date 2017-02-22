@@ -427,6 +427,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="bottomLogoConstraint" destination="ZSf-AU-IWb" id="BCL-oT-xD5"/>
                         <outlet property="cancelButton" destination="Oju-V4-hdy" id="OaX-SV-pJd"/>
                         <outlet property="emailTextField" destination="6mp-MP-LnW" id="6Oo-Gi-xy4"/>
                         <outlet property="famillyNameTextField" destination="KtW-Tz-nyY" id="TTE-pL-69a"/>

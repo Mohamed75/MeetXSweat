@@ -55,6 +55,7 @@ enum Strings {
         static let profiles     = "PROFILES"
         static let events       = "VOS SPORTS"
         static let event        = "PRESENTATION DE L'EVENT"
+        static let profile      = "PROFILE"
         
         static let conversations = "CONVERSATIONS"
         static let messages     = "MESSAGES"

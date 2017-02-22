@@ -23,6 +23,7 @@ class MXSCreateAccountViewController: MXSViewController {
     
     
     @IBOutlet weak var widthLogoConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomLogoConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var validerButton:   UIButton!
     @IBOutlet weak var cancelButton:    UIButton!
@@ -50,9 +51,17 @@ class MXSCreateAccountViewController: MXSViewController {
         MXSViewController.underLineView(passWordTextField)
         
         
-        if UIScreen.mainScreen().bounds.size.height == 480 { //iPhone 4
-            widthLogoConstraint.constant = 0
+        if ScreenSize.currentHeight == ScreenSize.iphone4Heigh { //iPhone 4
+            widthLogoConstraint.constant  = 70
+        } else if ScreenSize.currentHeight > ScreenSize.iphone5Heig {
+            widthLogoConstraint.constant  = 160
+            bottomLogoConstraint.constant = 60
+        }else {
+            widthLogoConstraint.constant  = 120
+            bottomLogoConstraint.constant = 40
         }
+        
+        Utils.addTapGestureToView(view, target: self, selectorString: kEndEditingSelectorString)
         
         MXSViewController.customButton(validerButton)
         MXSViewController.customButton(cancelButton)

@@ -53,6 +53,8 @@ class MXSAllLoginsViewController: MXSViewController {
         passWordTextField.attributedPlaceholder = NSAttributedString(string: Strings.Account.password, attributes:placeHolderAttributes)
         passWordTextField.returnKeyType = .Done
         MXSViewController.underLineView(passWordTextField)
+        
+        Utils.addTapGestureToView(view, target: self, selectorString: kEndEditingSelectorString)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -64,7 +66,7 @@ class MXSAllLoginsViewController: MXSViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        if UIScreen.mainScreen().bounds.size.height == 480 { //iPhone 4
+        if ScreenSize.currentHeight == ScreenSize.iphone4Heigh {
             
             NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow), name:UIKeyboardWillShowNotification, object: self.view.window)
             NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide), name:UIKeyboardWillHideNotification, object: self.view.window)
@@ -81,7 +83,7 @@ class MXSAllLoginsViewController: MXSViewController {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
-        if UIScreen.mainScreen().bounds.size.height == 480 { //iPhone 4
+        if ScreenSize.currentHeight == ScreenSize.iphone4Heigh {
             
             NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: self.view.window)
             NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: self.view.window)

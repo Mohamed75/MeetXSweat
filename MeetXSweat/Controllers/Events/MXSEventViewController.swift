@@ -10,6 +10,13 @@ import UIKit
 import MapKit
 
 
+private let daySeconds  = 86400.0
+private let hourSeconds = 3600.0
+private let minuteSeconds = 60.0
+private let hours       = 24
+
+
+
 
 class MXSEventViewController: MXSViewController {
     
@@ -45,25 +52,25 @@ class MXSEventViewController: MXSViewController {
         MXSCalendarViewController.formatter.dateFormat = kDateFormat
         if let timeLeft = MXSCalendarViewController.formatter.dateFromString(event.date)?.timeIntervalSinceNow {
         
-            let joures = Int(timeLeft/86400)
+            let joures = Int(timeLeft/daySeconds)
             jourLabel.text  = String(joures)
             if joures < 10 {
                 jourLabel.text = " " + String(joures)
             }
             
-            let houres = Int(timeLeft/3600.0)%24
+            let houres = Int(timeLeft/hourSeconds)%hours
             hourLabel.text  = String(houres)
             if houres < 10 {
                 hourLabel.text = " " + String(houres)
             }
             
-            let minutes = Int(timeLeft/60.0)%60
+            let minutes = Int(timeLeft/minuteSeconds)%Int(minuteSeconds)
             minuteLabel.text = String(minutes)
             if minutes < 10 {
                 minuteLabel.text = " " + String(minutes)
             }
             
-            let seconds = Int(timeLeft%60)
+            let seconds = Int(timeLeft%minuteSeconds)
             secondLabel.text = String(seconds)
             if seconds < 10 {
                 secondLabel.text = " " + String(seconds)
@@ -90,10 +97,10 @@ class MXSEventViewController: MXSViewController {
         
         super.viewDidLoad()
         
-        if UIScreen.mainScreen().bounds.width < 375 {
+        if ScreenSize.currentWidth < ScreenSize.iphone6Width {
             self.sportLabel.hidden = true
         } else {
-            if UIScreen.mainScreen().bounds.width == 375 {
+            if ScreenSize.currentWidth == ScreenSize.iphone6Width {
                 stackWidthConstraint.constant = -54
             } else {
                 stackWidthConstraint.constant = -90
@@ -107,7 +114,7 @@ class MXSEventViewController: MXSViewController {
         }
         
         if let coordinate = event.getCoordinate() {
-            let km = GPSLocationManager.getDistanceFor(coordinate)/1000
+            let km = GPSLocationManager.getDistanceFor(coordinate)/Constants.mToKm
             if km > 0 {
                 mapLabel.text = String(format: "%.1fKM", km)
             }

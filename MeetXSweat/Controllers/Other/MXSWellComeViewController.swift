@@ -44,9 +44,11 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
         self.title = Strings.NavigationTitle.wellCome
         imagePicker.delegate = self
         
-        if UIScreen.mainScreen().bounds.size.height == 480 { //iPhone 4
+        if ScreenSize.currentHeight == ScreenSize.iphone4Heigh {
             addValiderButton()
         }
+        
+        Utils.addTapGestureToView(view, target: self, selectorString: Constants.SelectorsString.valider)
         
         MXSViewController.customButton(jobButton)
         jobButton.setTitle(jobButtonText, forState: .Normal)

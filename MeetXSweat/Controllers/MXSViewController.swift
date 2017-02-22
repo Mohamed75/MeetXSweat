@@ -39,7 +39,7 @@ class MXSViewController: UIViewController {
     func addValiderButton() {
         
         let validatButton = UIButton(type: .Custom)
-        validatButton.addTarget(self, action: #selector(validatButtonClicked), forControlEvents: .TouchUpInside)
+        validatButton.addTarget(self, action: NSSelectorFromString(Constants.SelectorsString.valider), forControlEvents: .TouchUpInside)
         validatButton.setBackgroundImage(UIImage(named: Ressources.Images.valider), forState: .Normal)
         validatButton.frame = CGRectMake(0 , 0, 30, 30)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: validatButton)
@@ -62,6 +62,14 @@ class MXSViewController: UIViewController {
     func refreshView() {
         
     }
+    
+    func endEditing() {
+        
+        self.view.endEditing(true)
+    }
+    
+    
+    
     
     class func getInformationPopUp(title: String, withCancelButton: Bool, completion: (String) -> Void) {
         
@@ -100,6 +108,7 @@ class MXSViewController: UIViewController {
         
         getVisibleViewController().presentViewController(alertController, animated: true, completion: nil)
     }
+    
     
     
     // MARK: --- Others ---

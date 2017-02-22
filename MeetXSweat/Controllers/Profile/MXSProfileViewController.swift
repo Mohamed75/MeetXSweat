@@ -47,6 +47,7 @@ class MXSProfileViewController: MXSViewController, UIImagePickerControllerDelega
         
         imagePicker.delegate = self
         
+        self.title = Strings.NavigationTitle.profile
         
         imageView.image = UIImage(named: Ressources.Images.userSansPhoto)
         if !User.currentUser.pictureUrl.isEmpty {

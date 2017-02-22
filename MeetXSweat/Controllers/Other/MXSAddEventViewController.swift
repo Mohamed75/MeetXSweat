@@ -30,15 +30,15 @@ class MXSAddEventViewController: MXSViewController,  UIPickerViewDataSource, UIP
     
     override func viewDidLoad() {
         
-        Utils.addTapGestureToView(self.view, target: self, selectorString: kEndEditingSelectorString)
+        Utils.addTapGestureToView(view, target: self, selectorString: kEndEditingSelectorString)
         
         super.viewDidLoad()
         
         emptyDateTextField.inputView = datePickerView
-        self.view.addSubview(emptyDateTextField)
+        view.addSubview(emptyDateTextField)
         
         emptySportTextField.inputView = sportPickerView
-        self.view.addSubview(emptySportTextField)
+        view.addSubview(emptySportTextField)
         
         dateFormatter.dateFormat = kDateFormat
         
@@ -142,10 +142,5 @@ class MXSAddEventViewController: MXSViewController,  UIPickerViewDataSource, UIP
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         sportTextField.text = sports[row]
-    }
-    
-    func endEditing() {
-        
-        self.view.endEditing(true)
     }
 }

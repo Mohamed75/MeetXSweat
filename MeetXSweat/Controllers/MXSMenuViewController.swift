@@ -22,7 +22,7 @@ class MXSMenuViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.contentInset = UIEdgeInsetsMake(60, 0, 0, 0)
+        self.tableView.contentInset = UIEdgeInsetsMake(160, 0, 0, 0)
         self.view.backgroundColor = Constants.MainColor.kBackGroundColor
         
         mainNavigationController = self.evo_drawerController!.centerViewController as! UITabBarController

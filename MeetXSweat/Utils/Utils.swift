@@ -14,15 +14,24 @@ let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .Use
 
 
 /**
- *  A struct of constants about the device screen width.
+ *  A struct of constants about the device screen sizes.
  */
-struct ScreenWidth {
-    /// The current device screen width.
-    static let current = UIScreen.mainScreen().bounds.size.width
-    /// The iphone5 screen width.
-    static let iphone5 = CGFloat(568)
-    /// The iphone6 screen width.
-    static let iphone6 = CGFloat(667)
+struct ScreenSize {
+    /// The current device screen Heigh.
+    static let currentHeight    = UIScreen.mainScreen().bounds.size.height
+    static let currentWidth     = UIScreen.mainScreen().bounds.size.width
+    
+    /// The iphone5 screen Heigh.
+    static let iphone4Heigh = CGFloat(480)
+    /// The iphone5 screen Heigh.
+    static let iphone5Heig = CGFloat(568)
+    /// The iphone6 screen Heigh.
+    static let iphone6Height = CGFloat(667)
+    
+    /// The iphone4,5 screen Width.
+    static let iphone45Width = CGFloat(320)
+    /// The iphone6 screen Width.
+    static let iphone6Width = CGFloat(375)
 }
 
 
@@ -120,7 +129,7 @@ func valueForIpadInt32(ipad: Int32, iphone: Int32) -> Int32 {
  */
 func valueForIphoneUp5(up5: CGFloat, lessOr5: CGFloat) -> CGFloat {
     
-    return ScreenWidth.current > ScreenWidth.iphone5 ? up5 : lessOr5
+    return ScreenSize.currentHeight > ScreenSize.iphone5Heig ? up5 : lessOr5
 }
 
 

@@ -9,8 +9,8 @@
 import UIKit
 import DrawerController
 
-private let kPickerViewScale        = (((UIScreen.mainScreen().bounds.size.height/480)-1)*2)+1
-private let kPickerViewScaleWidth   = (((UIScreen.mainScreen().bounds.size.width/320)-1)*2)+1
+private let kPickerViewScale        = (((ScreenSize.currentHeight/ScreenSize.iphone4Heigh)-1)*2)+1
+private let kPickerViewScaleWidth   = (((ScreenSize.currentWidth/ScreenSize.iphone45Width)-1)*2)+1
 
 
 class MXSPickerView {
@@ -24,7 +24,7 @@ class MXSPickerView {
         pickerView.delegate = controller as? UIPickerViewDelegate
         pickerView.showsSelectionIndicator = false
         
-        if !scale && UIScreen.mainScreen().bounds.size.height == 480 { //iPhone 4
+        if !scale && ScreenSize.currentHeight == ScreenSize.iphone4Heigh {
             pickerView.backgroundColor = UIColor.whiteColor()
         }
         
@@ -71,20 +71,20 @@ class MXSPickerView {
         emptyTextField.becomeFirstResponder()
         controller.tabBarController?.view.addSubview(pickerView)
         
-        let x = (UIScreen.mainScreen().bounds.size.width-pickerView.frame.size.width)/2
+        let x = (ScreenSize.currentWidth-pickerView.frame.size.width)/2
         if (scale) {
-            pickerView.frame = CGRectMake(x, UIScreen.mainScreen().bounds.size.height - pickerView.frame.size.height - 50, pickerView.frame.size.width, pickerView.frame.size.height)
+            pickerView.frame = CGRectMake(x, ScreenSize.currentHeight - pickerView.frame.size.height - 50, pickerView.frame.size.width, pickerView.frame.size.height)
         }
         else {
             var pickerViewHeight = pickerView.frame.size.height
-            if UIScreen.mainScreen().bounds.size.height == 480 {
-                pickerViewHeight = UIScreen.mainScreen().bounds.size.height/2.4
+            if ScreenSize.currentHeight == ScreenSize.iphone4Heigh {
+                pickerViewHeight = ScreenSize.currentHeight/2.4
             } else {
                 if pickerView.subviews.count > 2 { // make sure is done juste one time
                     pickerViewHeight = pickerViewHeight - 14
                 }
             }
-            pickerView.frame = CGRectMake(x, UIScreen.mainScreen().bounds.size.height - pickerViewHeight + 20, pickerView.frame.size.width, pickerViewHeight)
+            pickerView.frame = CGRectMake(x, ScreenSize.currentHeight - pickerViewHeight + 20, pickerView.frame.size.width, pickerViewHeight)
         }
         
         if pickerView.subviews.count > 2 {
