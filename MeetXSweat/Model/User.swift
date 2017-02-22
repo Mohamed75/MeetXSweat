@@ -181,6 +181,7 @@ class User: Person {
                 
                 if let errorString = error?.localizedDescription {
                     MXSViewController.showInformatifPopUp(errorString)
+                    completion(success: false)
                 }
                 
             } else {

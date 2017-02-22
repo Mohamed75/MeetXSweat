@@ -133,5 +133,6 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
         
         MXSActivityIndicator.stopAnimating()
         viewController.navigationController?.viewDidLoad()
+        ConversationsDataManager.sharedInstance.loadData()
     }
 }

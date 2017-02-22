@@ -25,6 +25,7 @@ class ConversationsDataManager {
     
     func loadData() {
         
+        conversations = []
         let conversationRef = FIRDatabase.database().reference().child("conversation-items")
         conversationRef.observeEventType(.ChildAdded, withBlock: { [weak self] (snapshot) -> Void in
             

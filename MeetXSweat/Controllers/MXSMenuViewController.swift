@@ -60,6 +60,9 @@ class MXSMenuViewController: UITableViewController {
             break
         case 1:
             self.evo_drawerController!.centerViewController = conversationsNavigationController
+            if let conversationVC = conversationsNavigationController.viewControllers.first as? MXSViewController {
+                conversationVC.refreshView()
+            }
             break
         case 2:
             User.currentUser.logOut()

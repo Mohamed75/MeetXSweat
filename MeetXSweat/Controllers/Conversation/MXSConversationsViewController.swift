@@ -16,9 +16,16 @@ class MXSConversationsViewController: MXSViewController {
         
         super.viewDidLoad()
         
-        let conversationsCollectionViewController = self.childViewControllers[0] as? MXSConversationsCollectionViewController
+        let conversationsCollectionViewController = self.childViewControllers.first as? MXSConversationsCollectionViewController
         conversationsCollectionViewController?.conversations = ConversationsDataManager.sharedInstance.conversations
         
         self.addBarButtonItem()
+    }
+    
+    override func refreshView() {
+        
+        if let conversationsCollectionViewController = self.childViewControllers.first as? MXSConversationsCollectionViewController {
+            conversationsCollectionViewController.conversations = ConversationsDataManager.sharedInstance.conversations
+        }
     }
 }
