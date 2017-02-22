@@ -67,10 +67,17 @@ class FireBaseDataManager {
         loadData()
     }
     
+    var eventRef    = FIRDatabaseReference()
+    var personRef   = FIRDatabaseReference()
+    var sportRef    = FIRDatabaseReference()
+    var professionRef = FIRDatabaseReference()
+    var domaineRef  = FIRDatabaseReference()
+    
     func loadData() {
         
         events = []
-        let eventRef = FIRDatabase.database().reference().child("event-items")
+        eventRef.removeAllObservers()
+        eventRef = FIRDatabase.database().reference().child("event-items")
         eventRef.observeEventType(.ChildAdded, withBlock: { [weak self] (snapshot) -> Void in
             
             guard let this = self else {
@@ -82,7 +89,8 @@ class FireBaseDataManager {
         
         
         persons = []
-        let personRef = FIRDatabase.database().reference().child("person-items")
+        personRef.removeAllObservers()
+        personRef = FIRDatabase.database().reference().child("person-items")
         personRef.observeEventType(.ChildAdded, withBlock: { [weak self] (snapshot) -> Void in
             
             guard let this = self else {
@@ -92,7 +100,8 @@ class FireBaseDataManager {
         })
         
         _sports = []
-        let sportRef = FIRDatabase.database().reference().child("sport-items")
+        sportRef.removeAllObservers()
+        sportRef = FIRDatabase.database().reference().child("sport-items")
         sportRef.observeEventType(.ChildAdded, withBlock: { [weak self] (snapshot) -> Void in
             
             guard let this = self else {
@@ -105,7 +114,8 @@ class FireBaseDataManager {
         })
         
         _professions = []
-        let professionRef = FIRDatabase.database().reference().child("profession-items")
+        professionRef.removeAllObservers()
+        professionRef = FIRDatabase.database().reference().child("profession-items")
         professionRef.observeEventType(.ChildAdded, withBlock: { [weak self] (snapshot) -> Void in
             
             guard let this = self else {
@@ -118,7 +128,8 @@ class FireBaseDataManager {
         })
         
         _domaines = []
-        let domaineRef = FIRDatabase.database().reference().child("domaine-items")
+        domaineRef.removeAllObservers()
+        domaineRef = FIRDatabase.database().reference().child("domaine-items")
         domaineRef.observeEventType(.ChildAdded, withBlock: { [weak self] (snapshot) -> Void in
             
             guard let this = self else {
