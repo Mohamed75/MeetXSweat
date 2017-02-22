@@ -66,20 +66,20 @@ class Person: FireBaseObject {
         
         for child in snapshot.children {
             let snapUser = User(snapshot: child as! FIRDataSnapshot)
-            self.ref = child.ref
-            self.copyFromJson(snapUser.asJson())
+            ref = child.ref
+            copyFromJson(snapUser.asJson())
             User.currentUser.isConnected = true
-            self.saveToNSUserDefaults()
+            saveToNSUserDefaults()
         }
     }
     
     func updatePersonOnDataBase(completion:((done: Bool)->Void)) {
         
-        self.saveToNSUserDefaults()
+        saveToNSUserDefaults()
         
-        if let aRef = self.ref {
+        if let aRef = ref {
             
-            aRef.updateChildValues(self.asJson())
+            aRef.updateChildValues(asJson())
             
         } else {
             
@@ -145,12 +145,12 @@ class Person: FireBaseObject {
     // email withoutSpecialCharacters
     func getEmailAsId() -> String {
         
-        var returnString = self.email.stringByReplacingOccurrencesOfString("@", withString: "")
+        var returnString = email.stringByReplacingOccurrencesOfString("@", withString: "")
         returnString = returnString.stringByReplacingOccurrencesOfString(".", withString: "")
         return returnString
     }
     
     func aFullName() -> String {
-        return self.name + " " + self.lastName
+        return name + " " + lastName
     }
 }

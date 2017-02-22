@@ -20,6 +20,11 @@ class ConversationsDataManager {
     
     init() {
         
+        loadData()
+    }
+    
+    func loadData() {
+        
         let conversationRef = FIRDatabase.database().reference().child("conversation-items")
         conversationRef.observeEventType(.ChildAdded, withBlock: { [weak self] (snapshot) -> Void in
             
@@ -33,14 +38,14 @@ class ConversationsDataManager {
         })
     }
     
-    func getConversationBetweenPersons(persons: [Person]) -> Conversation? {
+    func getConversationBetweenPersons(persons: [String]) -> Conversation? {
         
-        for conversation in self.conversations {
+        for conversation in conversations {
             var existingPersonNumber = 0
             for person in persons {
                 
                 for aPerson in conversation.persons {
-                    if person.email == aPerson.email {
+                    if person == aPerson {
                         existingPersonNumber += 1
                     }
                 }

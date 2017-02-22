@@ -13,7 +13,7 @@ import JSQMessagesViewController
 
 class Conversation: FireBaseObject {
 
-    var persons: [Person] = []
+    var persons: [String] = []
     var messages: [Message] = []
     
     override init() {
@@ -28,10 +28,15 @@ class Conversation: FireBaseObject {
         super.init(coder: aDecoder)
     }
     
+    func getFullPersons() -> [Person] {
+        EventPersons.fetchPersons(persons)
+        return EventPersons.sharedInstance.persons
+    }
+    
     
     func observeMessages(completionHandler:((messages: [Message])->Void)) {
         
-        if let conversationRef = self.ref {
+        if let conversationRef = ref {
             
             self.messages = []
             let messagesQuery = conversationRef.child("messages").queryLimitedToLast(100)
@@ -50,7 +55,7 @@ class Conversation: FireBaseObject {
     
     func addMessage(text: String, senderId: String, controller: ChatViewController?) {
         
-        if let conversationRef = self.ref {
+        if let conversationRef = ref { // add message to current conversation
             
             let itemRef = conversationRef.child("messages").childByAutoId()
             let message = Message()
@@ -58,13 +63,13 @@ class Conversation: FireBaseObject {
             message.senderId = senderId
             itemRef.setValue(message.asJson())
             
-        } else {
+        } else { // create conversation if doesn't exist
             
             let conversationRef = FIRDatabase.database().reference().child("conversation-items")
             let aRef = conversationRef.childByAutoId()
-            aRef.setValue(self.asJson())
-            self.ref = aRef
-            [self.addMessage(text, senderId: senderId, controller: nil)];
+            aRef.setValue(asJson())
+            ref = aRef
+            addMessage(text, senderId: senderId, controller: nil)
             controller!.viewDidAppear(false)//to restart the observers
         }
     }
@@ -90,17 +95,20 @@ class Conversation: FireBaseObject {
     
     func observeTyping(senderId: String, completionHandler:((isTyping: Bool)->Void)) {
         
-        if let conversationRef = self.ref {
+        if let conversationRef = ref {
         
             let typingIndicatorRef = conversationRef.child("typingIndicator")
             userIsTypingRef = typingIndicatorRef.child(senderId)
             userIsTypingRef.onDisconnectRemoveValue()
             usersTypingQuery = typingIndicatorRef.queryOrderedByValue().queryEqualToValue(true)
             
-            usersTypingQuery.observeEventType(.Value, withBlock: { (data) in
+            usersTypingQuery.observeEventType(.Value, withBlock: { [weak self] (data) in
                 
+                guard let this = self else {
+                    return
+                }
                 // You're the only typing, don't show the indicator
-                if data.childrenCount == 1 && self.isTyping {
+                if data.childrenCount == 1 && this.isTyping {
                     return
                 }
                 
@@ -111,8 +119,8 @@ class Conversation: FireBaseObject {
     
     func isCurrentUserConversation() -> Bool {
         
-        for person in self.persons {
-            if person.email == User.currentUser.email {
+        for person in persons {
+            if person == User.currentUser.email {
                 return true
             }
         }

@@ -105,8 +105,8 @@ class Event: FireBaseObject {
     }
     
     
-    func getPersons() -> [Person] {
-        EventPersons.fetchPersons(self)
+    func getFullPersons() -> [Person] {
+        EventPersons.fetchPersons(persons)
         return EventPersons.sharedInstance.persons
     }
     
@@ -133,7 +133,7 @@ class Event: FireBaseObject {
         
         if !isCurrentPersonAlreadyIn() {
             persons.append(User.currentUser.email)
-            if let aRef = self.ref {
+            if let aRef = ref {
                 aRef.child("persons").setValue(persons)
             }
         }
@@ -142,7 +142,7 @@ class Event: FireBaseObject {
     
     func updateCoordinateEvent() {
         
-        if let aRef = self.ref {
+        if let aRef = ref {
             aRef.child("coordinate").setValue(coordinate)
         }
     }
@@ -150,8 +150,8 @@ class Event: FireBaseObject {
     func saveEventToDataBase() {
         
         let eventRef = FIRDatabase.database().reference().child("event-items")
-        self.ref = eventRef.childByAutoId()
-        self.ref!.setValue(self.asJson())
+        ref = eventRef.childByAutoId()
+        ref!.setValue(asJson())
     }
 
 }

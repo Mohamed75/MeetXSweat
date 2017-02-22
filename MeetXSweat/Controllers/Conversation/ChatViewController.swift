@@ -28,7 +28,7 @@ import JSQMessagesViewController
 class ChatViewController: JSQMessagesViewController {
   
     
-    var conversation: Conversation!
+    var conversation: Conversation?
     
     var messages = [JSQMessage]()
   
@@ -53,20 +53,31 @@ class ChatViewController: JSQMessagesViewController {
   override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
     
-    self.conversation.observeMessages( { (messages) in
+    if let aConversation = conversation {
         
-        var allMessages = [JSQMessage]()
-        for message in messages {
-            allMessages.append(message.toJSQMessage())
+        aConversation.observeMessages( { [weak self] (messages) in
+            
+            guard let this = self else {
+                return
+            }
+            var allMessages = [JSQMessage]()
+            for message in messages {
+                allMessages.append(message.toJSQMessage())
+            }
+            this.messages = allMessages
+            this.finishReceivingMessage()
+        })
+        
+        aConversation.observeTyping(senderId) { [weak self] (isTyping) in
+            
+            guard let this = self else {
+                return
+            }
+            this.showTypingIndicator = isTyping
+            this.scrollToBottomAnimated(true)
         }
-        self.messages = allMessages
-        self.finishReceivingMessage()
-    })
-    
-    self.conversation.observeTyping(self.senderId) { (isTyping) in
-        self.showTypingIndicator = isTyping
-        self.scrollToBottomAnimated(true)
     }
+    
   }
   
   override func viewDidDisappear(animated: Bool) {
@@ -93,7 +104,7 @@ class ChatViewController: JSQMessagesViewController {
   override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
     let cell = super.collectionView(collectionView, cellForItemAtIndexPath: indexPath) as! JSQMessagesCollectionViewCell
 
-    let message = self.messages[indexPath.item]
+    let message = messages[indexPath.item]
     
     if message.senderId == senderId { // 1
       cell.textView!.textColor = UIColor.whiteColor() // 2
@@ -117,17 +128,23 @@ class ChatViewController: JSQMessagesViewController {
   override func textViewDidChange(textView: UITextView) {
     super.textViewDidChange(textView)
     // If the text is not empty, the user is typing
-    self.conversation.isTyping = textView.text != ""
+    if let aConversation = conversation {
+        aConversation.isTyping = textView.text != ""
+    }
   }
   
   override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
     
-    self.conversation.addMessage(text, senderId: senderId, controller: self)
-    
+    if let aConversation = conversation {
+        aConversation.addMessage(text, senderId: senderId, controller: self)
+    }
     JSQSystemSoundPlayer.jsq_playMessageSentSound()
     
     finishSendingMessage()
-    self.conversation.isTyping = false
+        
+    if let aConversation = conversation {
+        aConversation.isTyping = false
+    }
   }
   
   private func setupBubbles() {

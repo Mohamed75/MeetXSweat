@@ -21,9 +21,9 @@ class MXSConversationsCollectionViewController: UICollectionViewController {
         let conversation = self.conversations[indexPath.section]
         var text = ""
         if conversation.persons.count > 0 {
-            let person1 = conversation.persons[0]
+            let person1 = conversation.getFullPersons()[0]
             text = person1.name
-            let person2 = conversation.persons[1]
+            let person2 = conversation.getFullPersons()[1]
             text = text + " / " + person2.name
         }
         cell.label.text = text

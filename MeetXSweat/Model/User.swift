@@ -23,12 +23,12 @@ class User: Person {
     
     func initFromFBData(data: NSDictionary, completion:((success: Bool)->Void)) {
         
-        self.name = data["first_name"] as! String
-        if let lastName = data["last_name"] {
-            self.lastName = lastName as! String
+        name = data["first_name"] as! String
+        if let alastName = data["last_name"] {
+            lastName = alastName as! String
         }
-        if let email = data["email"] {
-            self.email = email as! String
+        if let anemail = data["email"] {
+            email = anemail as! String
         }
         
         if let data3 = data["picture"] {
@@ -36,22 +36,22 @@ class User: Person {
             if let data2 = data3["data"] {
                 
                 if let url = data2!["url"] {
-                    self.pictureUrl = url as! String
+                    pictureUrl = url as! String
                 }
             }
         }
         
-        if let gender = data["gender"] {
-            self.gender = gender as! String
+        if let agender = data["gender"] {
+            gender = agender as! String
         }
-        if let birthday = data["birthday"] {
-            self.birthday = birthday as! String
+        if let abirthday = data["birthday"] {
+            birthday = abirthday as! String
         }
         if let work = data["work"] {
-            self.profession = work as! String
+            profession = work as! String
         }
         
-        self.isConnected = true
+        isConnected = true
         saveCustomObject(completion)
     }
     
@@ -60,48 +60,48 @@ class User: Person {
         
         if let fullName = data["name"] as? String  {
             let nameArray = fullName.componentsSeparatedByString(" ")
-            self.name = nameArray[0]
+            name = nameArray[0]
             if nameArray.count > 1 {
-                self.lastName = nameArray[1]
+                lastName = nameArray[1]
             }
         }
         
-        if let email = data["email"] {
-            self.email = email as! String
+        if let anemail = data["email"] {
+            email = anemail as! String
         } else {
             if let screenName = data["screen_name"] {
-                self.email = (screenName as! String)+"@twitter.fr"
+                email = (screenName as! String)+"@twitter.fr"
             }
         }
         
-        if let pictureUrl = data["profile_image_url"] {
-            self.pictureUrl = pictureUrl as! String
+        if let apictureUrl = data["profile_image_url"] {
+            pictureUrl = apictureUrl as! String
         }
         
-        if let gender = data["gender"] {
-            self.gender = gender as! String
+        if let agender = data["gender"] {
+            gender = agender as! String
         }
-        if let birthday = data["birthday"] {
-            self.birthday = birthday as! String
+        if let abirthday = data["birthday"] {
+            birthday = abirthday as! String
         }
         
-        self.isConnected = true
+        isConnected = true
         saveCustomObject(completion)
     }
     
     func initFromLKData(data: NSDictionary, completion:((success: Bool)->Void)) {
         
-        self.name = data["firstName"] as! String
-        if let lastName = data["lastName"] {
-            self.lastName = lastName as! String
+        name = data["firstName"] as! String
+        if let alastName = data["lastName"] {
+            lastName = alastName as! String
         }
         
-        if let email = data["emailAddress"] {
-            self.email = email as! String
+        if let anemail = data["emailAddress"] {
+            email = anemail as! String
         }
         
-        if let pictureUrl = data["pictureUrl"] {
-            self.pictureUrl = pictureUrl as! String
+        if let apictureUrl = data["pictureUrl"] {
+            pictureUrl = apictureUrl as! String
         }
         
         if let data3 = data["positions"] {
@@ -109,37 +109,37 @@ class User: Person {
             if let dataValues = data3["values"] {
                 if let job = dataValues?.firstObject {
                     if let work = job!["title"] {
-                        self.profession = work as! String
+                        profession = work as! String
                     }
                 }
             }
         }
         
-        self.isConnected = true
+        isConnected = true
         saveCustomObject(completion)
     }
     
     
     func initFromGoogleData(data: NSDictionary, completion:((success: Bool)->Void)) {
         
-        self.name = data["given_name"] as! String
-        if let lastName = data["family_name"] {
-            self.lastName = lastName as! String
+        name = data["given_name"] as! String
+        if let alastName = data["family_name"] {
+            lastName = alastName as! String
         }
         
-        if let email = data["email"] {
-            self.email = email as! String
+        if let anemail = data["email"] {
+            email = anemail as! String
         }
         
-        if let pictureUrl = data["picture"] {
-            self.pictureUrl = pictureUrl as! String
+        if let apictureUrl = data["picture"] {
+            pictureUrl = apictureUrl as! String
         }
         
-        if let gender = data["gender"] {
-            self.gender = gender as! String
+        if let agender = data["gender"] {
+            gender = agender as! String
         }
         
-        self.isConnected = true
+        isConnected = true
         saveCustomObject(completion)
     }
     
@@ -215,7 +215,9 @@ class User: Person {
                         completion(success: true)
                     })
                 }else {
-                    (object as! User).saveCustomObject(completion)
+                    if let aUser = object as? User {
+                        aUser.saveCustomObject(completion)
+                    }
                 }
             }
             

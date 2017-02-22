@@ -97,19 +97,22 @@ class FireBaseObject: EnCodeObject {
                 
                 if object is NSDictionary {
                     
-                    let clazz: FireBaseObject = FireBaseObject.fromClassName(className) as! FireBaseObject
-                    for (key, v) in (object as! [String: AnyObject]) {
+                    if let clazz: FireBaseObject = FireBaseObject.fromClassName(className) as? FireBaseObject {
                         
-                        if (clazz.respondsToSelector(NSSelectorFromString(key))) {
-                            clazz.setValue(v, forKey: key)
+                        for (key, v) in (object as! [String: AnyObject]) {
+                            
+                            if clazz.respondsToSelector(NSSelectorFromString(key)) {
+                                clazz.setValue(v, forKey: key)
+                            }
                         }
+                        returnArray.append(clazz)
                     }
-                    returnArray.append(clazz)
-                }
-                else {
+                    
+                } else {
                     returnArray.append(object)
                 }
             }
+            
         } else {
             return array
         }
@@ -158,12 +161,16 @@ class FireBaseObject: EnCodeObject {
 }
 
 
+
+
 extension FireBaseObject {
     
     // get Object from a defined class in the project
-    class func fromClassName(className : String) -> NSObject {
-        let aClass      = NSClassFromString(FireBaseObject.className(className)) as! NSObject.Type
-        return aClass.init()
+    class func fromClassName(className : String) -> NSObject? {
+        if let aClass      = NSClassFromString(FireBaseObject.className(className)) as? NSObject.Type {
+            return aClass.init()
+        }
+        return nil
     }
     
     class func className(className : String) -> String {

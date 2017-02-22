@@ -31,7 +31,7 @@ class Message: FireBaseObject {
     
     
     func toJSQMessage() -> JSQMessage {
-        return JSQMessage(senderId: self.senderId, displayName: "", text: self.text)
+        return JSQMessage(senderId: senderId, displayName: "", text: text)
     }
     
 }

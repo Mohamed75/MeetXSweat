@@ -63,6 +63,7 @@ class FireBaseDataManager {
     
     init() {
         
+        FIRDatabase.database().reference().keepSynced(true)
         loadData()
     }
     

@@ -144,7 +144,7 @@ class MXSProfileViewController: MXSViewController, UIImagePickerControllerDelega
     @IBAction func contacterButtonClicked(sender: AnyObject) {
         
         
-        let between:[Person] = [User.currentUser, self.person]
+        let between:[String] = [User.currentUser.email, person.email]
         let conversation: Conversation!
         
         

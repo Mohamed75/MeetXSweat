@@ -261,7 +261,7 @@ class MXSEventViewController: MXSViewController {
                     if let jour = this.event.getJour(), heure = this.event.getHeure() {
                         viewController.titleLabel.text = this.event.sport.uppercaseString + " - " + jour + " - " + heure
                     }
-                    personsCollectionViewController.persons = this.event.getPersons()
+                    personsCollectionViewController.persons = this.event.getFullPersons()
                     personsCollectionViewController.collectionView?.reloadData()
                 }
             })
