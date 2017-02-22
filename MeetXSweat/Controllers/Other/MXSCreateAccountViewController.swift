@@ -51,9 +51,9 @@ class MXSCreateAccountViewController: MXSViewController {
         MXSViewController.underLineView(passWordTextField)
         
         
-        if ScreenSize.currentHeight == ScreenSize.iphone4Heigh { //iPhone 4
+        if ScreenSize.currentHeight == ScreenSize.iphone4Height { //iPhone 4
             widthLogoConstraint.constant  = 70
-        } else if ScreenSize.currentHeight > ScreenSize.iphone5Heig {
+        } else if ScreenSize.currentHeight > ScreenSize.iphone5Height {
             widthLogoConstraint.constant  = 160
             bottomLogoConstraint.constant = 60
         }else {

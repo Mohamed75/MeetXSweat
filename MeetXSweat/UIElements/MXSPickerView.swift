@@ -9,7 +9,7 @@
 import UIKit
 import DrawerController
 
-private let kPickerViewScale        = (((ScreenSize.currentHeight/ScreenSize.iphone4Heigh)-1)*2)+1
+private let kPickerViewScale        = (((ScreenSize.currentHeight/ScreenSize.iphone4Height)-1)*2)+1
 private let kPickerViewScaleWidth   = (((ScreenSize.currentWidth/ScreenSize.iphone45Width)-1)*2)+1
 
 
@@ -24,7 +24,7 @@ class MXSPickerView {
         pickerView.delegate = controller as? UIPickerViewDelegate
         pickerView.showsSelectionIndicator = false
         
-        if !scale && ScreenSize.currentHeight == ScreenSize.iphone4Heigh {
+        if !scale && ScreenSize.currentHeight <= ScreenSize.iphone5Height {
             pickerView.backgroundColor = UIColor.whiteColor()
         }
         
@@ -77,7 +77,7 @@ class MXSPickerView {
         }
         else {
             var pickerViewHeight = pickerView.frame.size.height
-            if ScreenSize.currentHeight == ScreenSize.iphone4Heigh {
+            if ScreenSize.currentHeight == ScreenSize.iphone4Height {
                 pickerViewHeight = ScreenSize.currentHeight/2.4
             } else {
                 if pickerView.subviews.count > 2 { // make sure is done juste one time

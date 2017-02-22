@@ -66,7 +66,7 @@ class MXSAllLoginsViewController: MXSViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        if ScreenSize.currentHeight == ScreenSize.iphone4Heigh {
+        if ScreenSize.currentHeight == ScreenSize.iphone4Height {
             
             NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow), name:UIKeyboardWillShowNotification, object: self.view.window)
             NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide), name:UIKeyboardWillHideNotification, object: self.view.window)
@@ -83,7 +83,7 @@ class MXSAllLoginsViewController: MXSViewController {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
-        if ScreenSize.currentHeight == ScreenSize.iphone4Heigh {
+        if ScreenSize.currentHeight == ScreenSize.iphone4Height {
             
             NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: self.view.window)
             NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: self.view.window)

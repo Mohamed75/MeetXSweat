@@ -21,11 +21,11 @@ struct ScreenSize {
     static let currentHeight    = UIScreen.mainScreen().bounds.size.height
     static let currentWidth     = UIScreen.mainScreen().bounds.size.width
     
-    /// The iphone5 screen Heigh.
-    static let iphone4Heigh = CGFloat(480)
-    /// The iphone5 screen Heigh.
-    static let iphone5Heig = CGFloat(568)
-    /// The iphone6 screen Heigh.
+    /// The iphone5 screen Height.
+    static let iphone4Height = CGFloat(480)
+    /// The iphone5 screen Height.
+    static let iphone5Height = CGFloat(568)
+    /// The iphone6 screen Height.
     static let iphone6Height = CGFloat(667)
     
     /// The iphone4,5 screen Width.
@@ -129,7 +129,7 @@ func valueForIpadInt32(ipad: Int32, iphone: Int32) -> Int32 {
  */
 func valueForIphoneUp5(up5: CGFloat, lessOr5: CGFloat) -> CGFloat {
     
-    return ScreenSize.currentHeight > ScreenSize.iphone5Heig ? up5 : lessOr5
+    return ScreenSize.currentHeight > ScreenSize.iphone5Height ? up5 : lessOr5
 }
 
 

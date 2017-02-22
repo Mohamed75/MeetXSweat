@@ -48,7 +48,7 @@ enum Strings {
         static let map          = "MAP"
         static let rechercher   = "RECHERCHER"
         static let planning     = "PLANNING"
-        static let wellCome     = "BIENVENUE"
+        static let wellComme     = "BIENVENUE"
         static let tuttorial    = "TUTTORIAL"
         
         static let sportsParticipants = "PARTICIPANTS"

@@ -49,15 +49,22 @@
                                     <action selector="jobButtonClicked:" destination="g80-vI-A1c" eventType="touchUpInside" id="UwZ-9V-4Xg"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FgL-Is-kKy">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UvL-Xv-rel">
                                 <rect key="frame" x="196" y="340" width="210" height="35"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <connections>
+                                    <action selector="domaineButtonClcked:" destination="g80-vI-A1c" eventType="touchUpInside" id="tEw-bu-85Q"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FgL-Is-kKy">
+                                <rect key="frame" x="196" y="385" width="210" height="35"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <connections>
                                     <action selector="sportButtonClicked:" destination="g80-vI-A1c" eventType="touchUpInside" id="O1B-dm-6MX"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lsM-7z-RHB">
-                                <rect key="frame" x="196" y="385" width="210" height="35"/>
+                                <rect key="frame" x="196" y="430" width="210" height="35"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <state key="normal" title="LET'S GO!"/>
                                 <connections>
@@ -80,21 +87,26 @@
                             <constraint firstItem="rAL-8P-V5r" firstAttribute="centerY" secondItem="KH5-ja-Shi" secondAttribute="centerY" constant="1" id="5St-wb-wEy"/>
                             <constraint firstItem="jHn-jK-FoW" firstAttribute="top" secondItem="7wP-Qa-RXh" secondAttribute="bottom" constant="60" id="69w-AG-Dsi"/>
                             <constraint firstItem="jHn-jK-FoW" firstAttribute="centerX" secondItem="dZC-pX-eEF" secondAttribute="centerX" id="9Jl-kC-5JH"/>
+                            <constraint firstItem="UvL-Xv-rel" firstAttribute="height" secondItem="lca-Ii-znG" secondAttribute="height" id="DJn-9h-6cR"/>
+                            <constraint firstItem="UvL-Xv-rel" firstAttribute="top" secondItem="lca-Ii-znG" secondAttribute="bottom" constant="10" id="FtN-kM-mkl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="7wP-Qa-RXh" secondAttribute="trailing" constant="-20" id="NAg-Vy-a6x"/>
                             <constraint firstItem="lca-Ii-znG" firstAttribute="centerX" secondItem="jHn-jK-FoW" secondAttribute="centerX" id="YkZ-R5-68Z"/>
+                            <constraint firstItem="UvL-Xv-rel" firstAttribute="centerX" secondItem="lca-Ii-znG" secondAttribute="centerX" id="ZH5-4h-Pxk"/>
                             <constraint firstItem="lsM-7z-RHB" firstAttribute="centerX" secondItem="FgL-Is-kKy" secondAttribute="centerX" id="biP-99-79r"/>
                             <constraint firstItem="7wP-Qa-RXh" firstAttribute="leading" secondItem="dZC-pX-eEF" secondAttribute="leadingMargin" constant="-20" id="fmL-Uu-L0P"/>
-                            <constraint firstItem="FgL-Is-kKy" firstAttribute="top" secondItem="lca-Ii-znG" secondAttribute="bottom" constant="10" id="gjr-ag-9kb"/>
                             <constraint firstItem="FgL-Is-kKy" firstAttribute="width" secondItem="lca-Ii-znG" secondAttribute="width" id="jdW-wt-fER"/>
                             <constraint firstItem="KH5-ja-Shi" firstAttribute="centerX" secondItem="dZC-pX-eEF" secondAttribute="centerX" id="jff-Qj-T3b"/>
                             <constraint firstItem="rAL-8P-V5r" firstAttribute="centerX" secondItem="KH5-ja-Shi" secondAttribute="centerX" id="lFQ-Br-rS3"/>
+                            <constraint firstItem="UvL-Xv-rel" firstAttribute="width" secondItem="lca-Ii-znG" secondAttribute="width" id="mr3-pa-WJ5"/>
                             <constraint firstItem="FgL-Is-kKy" firstAttribute="centerX" secondItem="lca-Ii-znG" secondAttribute="centerX" id="pOm-lq-dkd"/>
                             <constraint firstItem="KH5-ja-Shi" firstAttribute="top" secondItem="rZa-Wl-hes" secondAttribute="bottom" constant="44" id="pSY-Y7-rk1"/>
+                            <constraint firstItem="FgL-Is-kKy" firstAttribute="top" secondItem="UvL-Xv-rel" secondAttribute="bottom" constant="10" id="rKg-dq-9ID"/>
                             <constraint firstItem="lsM-7z-RHB" firstAttribute="top" secondItem="FgL-Is-kKy" secondAttribute="bottom" constant="10" id="ry6-5m-Omp"/>
                             <constraint firstItem="lsM-7z-RHB" firstAttribute="width" secondItem="FgL-Is-kKy" secondAttribute="width" id="z6g-HR-Lyz"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="domaineButton" destination="UvL-Xv-rel" id="rd2-mO-qGC"/>
                         <outlet property="jobButton" destination="lca-Ii-znG" id="ztw-So-BbP"/>
                         <outlet property="letsGoButton" destination="lsM-7z-RHB" id="SUO-6x-ugT"/>
                         <outlet property="nameLabel" destination="jHn-jK-FoW" id="6Vj-8n-qT2"/>

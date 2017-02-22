@@ -16,6 +16,7 @@ class Person: FireBaseObject {
     var lastName    = ""
     var email       = ""
     var profession  = ""
+    var domaine     = ""
     var sport       = ""
     var pictureUrl  = ""
     var gender      = ""
