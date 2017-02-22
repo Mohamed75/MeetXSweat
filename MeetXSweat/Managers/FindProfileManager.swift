@@ -28,6 +28,9 @@ class FindProfileManager {
             if person.profession == filter {
                 returnArray.append(person)
             }
+            if person.domaine == filter {
+                returnArray.append(person)
+            }
         }
         return returnArray
     }

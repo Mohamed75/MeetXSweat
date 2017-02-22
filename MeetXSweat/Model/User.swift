@@ -203,7 +203,7 @@ class User: Person {
         let object: Person = self
         if object.email.characters.count < 2 { // Should Not happen
             
-            MXSViewController.getInformationPopUp(Strings.Alert.enterEmailMessage, withCancelButton: false) { [weak self] (email) in
+            MXSViewController.showInformationPopUp(Strings.Alert.enterEmailMessage, withCancelButton: false) { [weak self] (email) in
                 
                 guard let this = self else {
                     return

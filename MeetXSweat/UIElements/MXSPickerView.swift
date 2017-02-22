@@ -31,8 +31,8 @@ class MXSPickerView {
         if (scale) {
             pickerView.transform = CGAffineTransformMakeScale(kPickerViewScale, kPickerViewScale)
         } else {
-            if kPickerViewScaleWidth != 0 {
-                pickerView.transform = CGAffineTransformMakeScale(kPickerViewScaleWidth, kPickerViewScaleWidth)
+            if kPickerViewScaleWidth != 0 && kPickerViewScaleWidth-0.15 > 1 {
+                pickerView.transform = CGAffineTransformMakeScale(kPickerViewScaleWidth-0.15, kPickerViewScaleWidth-0.15)
             }
         }
         

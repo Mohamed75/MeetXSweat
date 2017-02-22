@@ -82,8 +82,6 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        MXSPickerView.showPickerView(pickerView, controller: self, scale: false)
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -204,11 +202,28 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
             
             let tuttorialViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.wellCome, viewControllerId: Ressources.StoryBooardsIdentifiers.tuttorialId)
             self.navigationController?.viewControllers = [tuttorialViewController]
+            
+        } else {
+            MXSViewController.showInformatifPopUp("Veuillez choisir votre job, domaine, sport!")
+            MXSPickerView.showPickerView(pickerView, controller: self, scale: false)
         }
     }
     
     override func validatButtonClicked(sender: AnyObject) {
         MXSPickerView.subViewPanned(pickerView, controller: self)
+        
+        guard let job = jobButton.titleLabel?.text else {
+            return
+        }
+        guard let sport = sportButton.titleLabel?.text else {
+            return
+        }
+        guard let domaine = domaineButton.titleLabel?.text else {
+            return
+        }
+        if (job != jobButtonText && sport != sportButtonText && domaine != domaineButtonText) {
+            letsGoButtonClicked(letsGoButton)
+        }
     }
     
     

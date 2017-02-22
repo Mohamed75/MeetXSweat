@@ -71,7 +71,7 @@ class MXSViewController: UIViewController {
     
     
     
-    class func getInformationPopUp(title: String, withCancelButton: Bool, completion: (String) -> Void) {
+    class func showInformationPopUp(title: String, withCancelButton: Bool, completion: (String) -> Void) {
         
         var inputTextField: UITextField?
         

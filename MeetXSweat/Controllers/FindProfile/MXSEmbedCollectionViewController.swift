@@ -50,13 +50,13 @@ class MXSEmbedCollectionViewController: MXSViewController {
         case FindBy.Profile :
             if let personsCollectionViewController = self.childViewControllers[0] as? MXSPersonsCollectionViewController {
                 
-                personsCollectionViewController.persons = FindProfileManager.filterBy(FireBaseDataManager.sharedInstance.persons, filter: FindProfileManager.sharedInstance.profession)
-                
                 if !FindProfileManager.sharedInstance.domaine.isEmpty {
                     self.titleLabel.text = FindProfileManager.sharedInstance.domaine
+                    personsCollectionViewController.persons = FindProfileManager.filterBy(FireBaseDataManager.sharedInstance.persons, filter: FindProfileManager.sharedInstance.domaine)
                 }
                 if !FindProfileManager.sharedInstance.profession.isEmpty {
                     self.titleLabel.text = FindProfileManager.sharedInstance.profession
+                    personsCollectionViewController.persons = FindProfileManager.filterBy(FireBaseDataManager.sharedInstance.persons, filter: FindProfileManager.sharedInstance.profession)
                 }
                 self.title = Strings.NavigationTitle.profiles
             }
