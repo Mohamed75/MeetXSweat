@@ -30,7 +30,8 @@ class ConversationsDataManager {
         conversations = []
         conversationRef.removeAllObservers()
         conversationRef = FIRDatabase.database().reference().child("conversation-items")
-        conversationRef.observeEventType(.ChildAdded, withBlock: { [weak self] (snapshot) -> Void in
+        
+        let block: (FIRDataSnapshot) -> Void = { [weak self] (snapshot) in
             
             guard let this = self else {
                 return
@@ -39,7 +40,9 @@ class ConversationsDataManager {
             if conversation.isCurrentUserConversation() {
                 this.conversations.append(conversation)
             }
-        })
+        }
+        
+        conversationRef.observeEventType(.ChildAdded, withBlock: block)
     }
     
     func getConversationBetweenPersons(persons: [String]) -> Conversation? {

@@ -42,7 +42,8 @@ class Conversation: FireBaseObject {
             
             self.messages = []
             messagesQuery = conversationRef.child("messages")
-            messagesQuery!.queryLimitedToLast(100).observeEventType(.ChildAdded, withBlock: { [weak self] (snapshot) in
+            
+            let block: (FIRDataSnapshot) -> Void = { [weak self] (snapshot) in
                 
                 guard let this = self else {
                     return
@@ -51,7 +52,9 @@ class Conversation: FireBaseObject {
                 this.messages.append(message)
                 
                 completionHandler(messages: this.messages)
-            })
+            }
+            
+            messagesQuery!.queryLimitedToLast(100).observeEventType(.ChildAdded, withBlock: block)
         }
     }
     
@@ -111,18 +114,19 @@ class Conversation: FireBaseObject {
             userIsTypingRef.onDisconnectRemoveValue()
             usersTypingQuery = typingIndicatorRef.queryOrderedByValue().queryEqualToValue(true)
             
-            usersTypingQuery.observeEventType(.Value, withBlock: { [weak self] (data) in
-                
+            let block: (FIRDataSnapshot) -> Void = { [weak self] (snapshot) in
                 guard let this = self else {
                     return
                 }
                 // You're the only typing, don't show the indicator
-                if data.childrenCount == 1 && this.isTyping {
+                if snapshot.childrenCount == 1 && this.isTyping {
                     return
                 }
                 
-                completionHandler(isTyping: data.childrenCount > 0)
-            })
+                completionHandler(isTyping: snapshot.childrenCount > 0)
+            }
+            
+            usersTypingQuery.observeEventType(.Value, withBlock: block)
         }
     }
     

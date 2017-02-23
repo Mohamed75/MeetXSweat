@@ -22,6 +22,9 @@ private let faceBookApiKey  = getValueFromInfoPlist("FacebookAppID") as! String
 private let fbController    = "FBSDKContainerViewController"
 
 
+private let faceBookTypeId = ACAccountTypeIdentifierFacebook
+
+
 
 protocol LogInFBDelegate {
     func logInFBSuccess(data: NSDictionary?)
@@ -31,6 +34,8 @@ protocol LogInFBDelegate {
 class FaceBookHelper {
     
     static let sharedInstance = FaceBookHelper()
+    
+    
     
     
     class func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -44,18 +49,22 @@ class FaceBookHelper {
     }
     
     
-    // avoid multiple click on the login button
-    private var isLoginBlock = false
-    
     func logIn(delegate: LogInFBDelegate) {
         
         let options: [NSObject : AnyObject] = [ACFacebookAppIdKey: faceBookApiKey, ACFacebookPermissionsKey: permessionArray, ACFacebookAudienceKey:ACFacebookAudienceFriends]
         
-        let accountStore = ACAccountStore()
-        let facebookAccountType = accountStore.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierFacebook)
+        let facebookAccountType = ACAccountStore().accountTypeWithAccountTypeIdentifier(faceBookTypeId)
+        ACAccountStore().requestAccessToAccountsWithType(facebookAccountType, options: options, completion: logInblock(delegate))
+    }
+    
+    
+    
+    // avoid multiple click on the login button
+    private var isLoginBlocked = false
+    
+    private func logInblock(delegate: LogInFBDelegate) -> ACAccountStoreRequestAccessCompletionHandler {
         
-        
-        accountStore.requestAccessToAccountsWithType(facebookAccountType, options: options) { [weak self] (granted, error) -> Void in
+        return { [weak self] (granted, error) -> Void in
             
             guard let this = self else {
                 return
@@ -63,58 +72,70 @@ class FaceBookHelper {
             
             if granted
             {
-                let accounts = accountStore.accountsWithAccountType(facebookAccountType)
+                let facebookAccountType = ACAccountStore().accountTypeWithAccountTypeIdentifier(faceBookTypeId)
+                let accounts = ACAccountStore().accountsWithAccountType(facebookAccountType)
                 if let facebookAccount = accounts.last as? ACAccount {
                     this.getUserInfo(facebookAccount.credential.oauthToken!, delegate: delegate)
                 }
             }
             else
             {
-                if this.isLoginBlock == false {
+                if this.isLoginBlocked == false {
                     this.faceBookWebLogin(delegate)
                     // For first launch sometimes the loginWebView dont pop up, so this code force the loginWebview
-                    this.isLoginBlock = true
+                    this.isLoginBlocked = true
                     NSThread.sleepForTimeInterval(1.5)
                     if getVisibleViewController().classForCoder.description() != fbController {
                         this.faceBookWebLogin(delegate)
                         NSLog("#faceBookWebLogin")
                     }
-                    this.isLoginBlock = false
+                    this.isLoginBlocked = false
                 }
             }
         }
     }
     
-    func faceBookWebLogin(delegate: LogInFBDelegate) {
+    
+    // MARK: *** webLogIn ***
+    
+    private func webLogInBlock(delegate: LogInFBDelegate) -> FBSDKLoginManagerRequestTokenHandler {
         
-        dispatch_later(0.1) {
+        return { [weak self] (result: FBSDKLoginManagerLoginResult!, error: NSError!) in
             
-            FBSDKLoginManager().logInWithReadPermissions(permessionArray, fromViewController: getVisibleViewController()) { [weak self] (result: FBSDKLoginManagerLoginResult!, error: NSError!) in
+            if ((error) != nil) {
+                NSLog("Facebook web signIn Process error")
+                delegate.logInFBSuccess(nil)
+            } else if (result.isCancelled) {
+                NSLog("Facebook web signIn Cancelled")
+                delegate.logInFBSuccess(nil)
+            } else {
+                NSLog("Facebook web signIn Logged in")
                 
-                if ((error) != nil) {
-                    NSLog("Facebook web signIn Process error")
-                    delegate.logInFBSuccess(nil)
-                } else if (result.isCancelled) {
-                    NSLog("Facebook web signIn Cancelled")
-                    delegate.logInFBSuccess(nil)
-                } else {
-                    NSLog("Facebook web signIn Logged in")
-                    
-                    if (FBSDKAccessToken.currentAccessToken() != nil) {
-                        guard let this = self else {
-                            return
-                        }
-                        this.getUserInfo(FBSDKAccessToken.currentAccessToken().tokenString, delegate: delegate)
+                if (FBSDKAccessToken.currentAccessToken() != nil) {
+                    guard let this = self else {
+                        return
                     }
-                    
+                    this.getUserInfo(FBSDKAccessToken.currentAccessToken().tokenString, delegate: delegate)
                 }
             }
         }
     }
     
+    private func faceBookWebLogin(delegate: LogInFBDelegate) {
+        
+        dispatch_later(0.1) { [weak self] in
+            
+            guard let this = self else {
+                return
+            }
+            FBSDKLoginManager().logInWithReadPermissions(permessionArray, fromViewController: getVisibleViewController(), handler: this.webLogInBlock(delegate))
+        }
+    }
     
     
-    func getUserInfo(token: String, delegate: LogInFBDelegate) {
+    // MARK: *** UserInfo ***
+    
+    private func getUserInfo(token: String, delegate: LogInFBDelegate) {
         
         let getUserInfoParameters = ["fields" : parametersField, "access_token" : token]
         let postRequest = SLRequest(forServiceType: SLServiceTypeFacebook,
@@ -122,10 +143,10 @@ class FaceBookHelper {
                                     URL: getUserInfoUrl,
                                     parameters: getUserInfoParameters)
         
-        postRequest.performRequestWithHandler( { (responseData: NSData!, urlResponse: NSHTTPURLResponse!, error: NSError!) -> Void in
+        let block = { (responseData: NSData!, urlResponse: NSHTTPURLResponse!, error: NSError!) -> Void in
             
             if (error == nil) {
-             
+                
                 do {
                     let JSON = try NSJSONSerialization.JSONObjectWithData(responseData, options:NSJSONReadingOptions(rawValue: 0))
                     guard let JSONDictionary: NSDictionary = JSON as? NSDictionary else {
@@ -139,7 +160,8 @@ class FaceBookHelper {
                 }
             }
             
-        })
+        }
+        postRequest.performRequestWithHandler(block)
     }
     
     

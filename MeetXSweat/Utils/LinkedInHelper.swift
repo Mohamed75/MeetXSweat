@@ -19,10 +19,13 @@ private let closeString             = "Close"
 
 
 
+
+
 protocol LogInLKDelegate {
     func logInLKSuccess(data: NSDictionary?)
 }
 
+//, failUserInfoBlock failure: ((NSError!) -> Void)!
 
 class LiknedInHelper {
     
@@ -30,23 +33,25 @@ class LiknedInHelper {
     
     class func logIn(delegate: LogInLKDelegate) {
         
-        let linkedIn = LinkedInHelper.sharedInstance()
-        
-        linkedIn.cancelButtonText = closeString
-    
         let permissions = [Permissions.BasicProfile.rawValue, Permissions.EmailAddress.rawValue, Permissions.Share.rawValue, Permissions.CompanyAdmin.rawValue]
         
+        let linkedIn = LinkedInHelper.sharedInstance()
+        linkedIn.cancelButtonText = closeString
         linkedIn.showActivityIndicator = true
-        linkedIn.requestMeWithSenderViewController(getVisibleViewController(), clientId: LINKEDIN_CLIENT_ID, clientSecret: LINKEDIN_CLIENT_SECRET, redirectUrl: REDIRECT_URL, permissions: permissions, state: DEFAULT_STATE, successUserInfo: { (userInfo) in
+        
+        let successBlock: ([NSObject : AnyObject]!) -> Void = { (userInfo) in
             
-                delegate.logInLKSuccess(userInfo)
-                linkedIn.showActivityIndicator = false
+            delegate.logInLKSuccess(userInfo)
+            linkedIn.showActivityIndicator = false
             
-            }) { (error) in
-                NSLog("linkedIn logIn error : %@", error.userInfo.description)
-                delegate.logInLKSuccess(nil)
-                linkedIn.showActivityIndicator = false
         }
+        
+        let failerBlock: ((NSError!) -> Void) = { (error) in
+            NSLog("linkedIn logIn error : %@", error.userInfo.description)
+            delegate.logInLKSuccess(nil)
+            linkedIn.showActivityIndicator = false
+        }
+        linkedIn.requestMeWithSenderViewController(getVisibleViewController(), clientId: LINKEDIN_CLIENT_ID, clientSecret: LINKEDIN_CLIENT_SECRET, redirectUrl: REDIRECT_URL, permissions: permissions, state: DEFAULT_STATE, successUserInfo: successBlock, failUserInfoBlock: failerBlock)
     
     }
     

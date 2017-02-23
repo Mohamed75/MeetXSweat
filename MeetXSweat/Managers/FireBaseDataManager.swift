@@ -18,6 +18,13 @@ class FireBaseDataManager {
     var events: [Event]     = []
     var persons: [Person]   = []
     
+    init() {
+        
+        FIRDatabase.database().reference().keepSynced(true)
+        loadData()
+    }
+    
+    
     private var _sports: [String] = []
     var sports: [String] {
         get {
@@ -61,48 +68,34 @@ class FireBaseDataManager {
     }
     
     
-    init() {
-        
-        FIRDatabase.database().reference().keepSynced(true)
-        loadData()
-    }
     
-    var eventRef    = FIRDatabaseReference()
-    var personRef   = FIRDatabaseReference()
-    var sportRef    = FIRDatabaseReference()
-    var professionRef = FIRDatabaseReference()
-    var domaineRef  = FIRDatabaseReference()
     
-    func loadData() {
+    private func _eventBlock() -> (FIRDataSnapshot) -> Void {
         
-        events = []
-        eventRef.removeAllObservers()
-        eventRef = FIRDatabase.database().reference().child("event-items")
-        eventRef.observeEventType(.ChildAdded, withBlock: { [weak self] (snapshot) -> Void in
+        return { [weak self] (snapshot) in
             
             guard let this = self else {
                 return
             }
             let event = Event(snapshot: snapshot)
             this.events.append(event)
-        })
+        }
+    }
+    
+    private func _personBlock() -> (FIRDataSnapshot) -> Void {
         
-        
-        persons = []
-        personRef.removeAllObservers()
-        personRef = FIRDatabase.database().reference().child("person-items")
-        personRef.observeEventType(.ChildAdded, withBlock: { [weak self] (snapshot) -> Void in
+        return { [weak self] (snapshot) -> Void in
             
             guard let this = self else {
                 return
             }
             this.persons.append(Person(snapshot: snapshot))
-        })
+        }
+    }
+    
+    private func _sportBlock() -> (FIRDataSnapshot) -> Void {
         
-        _sports = []
-        sportRef.removeAllObservers()
-        sportRef = FIRDatabase.database().reference().child("sport-items")
-        sportRef.observeEventType(.ChildAdded, withBlock: { [weak self] (snapshot) -> Void in
+        return { [weak self] (snapshot) -> Void in
             
             guard let this = self else {
                 return
@@ -111,12 +104,12 @@ class FireBaseDataManager {
                 this._sports.append(sport)
                 NSNotificationCenter.defaultCenter().postNotificationName(Constants.FBNotificationName.sports, object: nil)
             }
-        })
+        }
+    }
+    
+    private func _professionBlock() -> (FIRDataSnapshot) -> Void {
         
-        _professions = []
-        professionRef.removeAllObservers()
-        professionRef = FIRDatabase.database().reference().child("profession-items")
-        professionRef.observeEventType(.ChildAdded, withBlock: { [weak self] (snapshot) -> Void in
+        return { [weak self] (snapshot) -> Void in
             
             guard let this = self else {
                 return
@@ -125,12 +118,12 @@ class FireBaseDataManager {
                 this._professions.append(profession)
                 NSNotificationCenter.defaultCenter().postNotificationName(Constants.FBNotificationName.professions, object: nil)
             }
-        })
+        }
+    }
+    
+    private func _domaineBlock() -> (FIRDataSnapshot) -> Void {
         
-        _domaines = []
-        domaineRef.removeAllObservers()
-        domaineRef = FIRDatabase.database().reference().child("domaine-items")
-        domaineRef.observeEventType(.ChildAdded, withBlock: { [weak self] (snapshot) -> Void in
+        return { [weak self] (snapshot) -> Void in
             
             guard let this = self else {
                 return
@@ -139,7 +132,42 @@ class FireBaseDataManager {
                 this._domaines.append(domaine)
                 NSNotificationCenter.defaultCenter().postNotificationName(Constants.FBNotificationName.domaines, object: nil)
             }
-        })
+        }
+    }
+    
+    private var _eventRef    = FIRDatabaseReference()
+    private var _personRef   = FIRDatabaseReference()
+    private var _sportRef    = FIRDatabaseReference()
+    private var _professionRef = FIRDatabaseReference()
+    private var _domaineRef  = FIRDatabaseReference()
+    
+    func loadData() {
+        
+        events = []
+        _eventRef.removeAllObservers()
+        _eventRef = FIRDatabase.database().reference().child("event-items")
+        _eventRef.observeEventType(.ChildAdded, withBlock: _eventBlock())
+        
+        
+        persons = []
+        _personRef.removeAllObservers()
+        _personRef = FIRDatabase.database().reference().child("person-items")
+        _personRef.observeEventType(.ChildAdded, withBlock: _personBlock())
+        
+        _sports = []
+        _sportRef.removeAllObservers()
+        _sportRef = FIRDatabase.database().reference().child("sport-items")
+        _sportRef.observeEventType(.ChildAdded, withBlock: _sportBlock())
+        
+        _professions = []
+        _professionRef.removeAllObservers()
+        _professionRef = FIRDatabase.database().reference().child("profession-items")
+        _professionRef.observeEventType(.ChildAdded, withBlock: _professionBlock())
+        
+        _domaines = []
+        _domaineRef.removeAllObservers()
+        _domaineRef = FIRDatabase.database().reference().child("domaine-items")
+        _domaineRef.observeEventType(.ChildAdded, withBlock: _domaineBlock())
     }
     
     

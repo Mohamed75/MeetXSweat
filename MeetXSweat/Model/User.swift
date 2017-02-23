@@ -10,6 +10,8 @@ import Firebase
 
 
 
+typealias CompletionSuccessBlock = (success: Bool) -> Void
+
 
 
 class User: Person {
@@ -21,7 +23,7 @@ class User: Person {
     
     
     
-    func initFromFBData(data: NSDictionary, completion:((success: Bool)->Void)) {
+    func initFromFBData(data: NSDictionary, completion: CompletionSuccessBlock) {
         
         name = data["first_name"] as! String
         if let alastName = data["last_name"] {
@@ -56,7 +58,7 @@ class User: Person {
     }
     
     
-    func initFromTWData(data: NSDictionary, completion:((success: Bool)->Void)) {
+    func initFromTWData(data: NSDictionary, completion: CompletionSuccessBlock) {
         
         if let fullName = data["name"] as? String  {
             let nameArray = fullName.componentsSeparatedByString(" ")
@@ -89,7 +91,7 @@ class User: Person {
         saveCustomObject(completion)
     }
     
-    func initFromLKData(data: NSDictionary, completion:((success: Bool)->Void)) {
+    func initFromLKData(data: NSDictionary, completion: CompletionSuccessBlock) {
         
         name = data["firstName"] as! String
         if let alastName = data["lastName"] {
@@ -120,7 +122,7 @@ class User: Person {
     }
     
     
-    func initFromGoogleData(data: NSDictionary, completion:((success: Bool)->Void)) {
+    func initFromGoogleData(data: NSDictionary, completion: CompletionSuccessBlock) {
         
         name = data["given_name"] as! String
         if let alastName = data["family_name"] {
@@ -144,7 +146,7 @@ class User: Person {
     }
     
     
-    func createFromEmailData(email: String, password: String, name: String, lastName: String, completion:((success: Bool)->Void)) {
+    func createFromEmailData(email: String, password: String, name: String, lastName: String, completion: CompletionSuccessBlock) {
         
         FIRAuth.auth()?.createUserWithEmail(email, password: password) { [weak self] (user, error) in
             
@@ -173,7 +175,7 @@ class User: Person {
         }
     }
     
-    func initFromEmailData(email: String, password: String, completion:((success: Bool)->Void)) {
+    func initFromEmailData(email: String, password: String, completion: CompletionSuccessBlock) {
      
         FIRAuth.auth()?.signInWithEmail(email, password: password, completion: { [weak self] (user, error) in
             
@@ -198,7 +200,7 @@ class User: Person {
     
    
     // Called when create an new account or logIn
-    private func saveCustomObject(completion:((success: Bool)->Void))
+    private func saveCustomObject(completion: CompletionSuccessBlock)
     {
         let object: Person = self
         if object.email.characters.count < 2 { // Should Not happen
@@ -229,8 +231,7 @@ class User: Person {
                 guard let this = self else {
                     return
                 }
-                this.updatePersonOnDataBase({ (done) in
-                })
+                this.updatePersonOnDataBase(nil)
                 completion(success: true)
             })
         }
@@ -247,7 +248,7 @@ class User: Person {
     }
     
     
-    func logOut(completion:((done: Bool)->Void)) {
+    func logOut(completion: CompletionDoneBlock) {
         
         User.currentUser.isConnected = false
         User.currentUser.updatePersonOnDataBase({ (done) in

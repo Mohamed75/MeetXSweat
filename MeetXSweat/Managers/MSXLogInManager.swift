@@ -55,7 +55,8 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
             return
         }
         MXSActivityIndicator.startAnimatingInView(getAppDelegateWindow())
-        User.currentUser.initFromFBData(aData, completion: { [weak self] (done) in
+        
+        let block: CompletionSuccessBlock = { [weak self] (done) in
             
             guard let this = self else {
                 return
@@ -65,7 +66,8 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
             } else {
                 MXSActivityIndicator.stopAnimating()
             }
-        })
+        }
+        User.currentUser.initFromFBData(aData, completion: block)
         NSLog("facebook login success: %@", User.currentUser.allParams())
     }
     
@@ -75,7 +77,8 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
             MSXLogInManager.endLogin(self.controller)
             return
         }
-        User.currentUser.initFromTWData(aData, completion: { [weak self] (done) in
+        
+        let block: CompletionSuccessBlock = { [weak self] (done) in
             
             guard let this = self else {
                 return
@@ -85,7 +88,8 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
             } else {
                 MXSActivityIndicator.stopAnimating()
             }
-        })
+        }
+        User.currentUser.initFromTWData(aData, completion: block)
         NSLog("twitter login success: %@", User.currentUser.allParams())
     }
     
@@ -95,7 +99,8 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
             MSXLogInManager.endLogin(self.controller)
             return
         }
-        User.currentUser.initFromLKData(aData, completion: { [weak self] (done) in
+        
+        let block: CompletionSuccessBlock = { [weak self] (done) in
             
             guard let this = self else {
                 return
@@ -105,7 +110,8 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
             } else {
                 MXSActivityIndicator.stopAnimating()
             }
-        })
+        }
+        User.currentUser.initFromLKData(aData, completion: block)
         NSLog("linkedIn login success: %@", User.currentUser.allParams())
     }
     
@@ -115,17 +121,19 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
             MSXLogInManager.endLogin(self.controller)
             return
         }
-        User.currentUser.initFromGoogleData(aData, completion: { [weak self] (done) in
+        
+        let block: CompletionSuccessBlock = { [weak self] (done) in
             
             guard let this = self else {
                 return
             }
             if done {
-               MSXLogInManager.endLogin(this.controller)
+                MSXLogInManager.endLogin(this.controller)
             } else {
                 MXSActivityIndicator.stopAnimating()
             }
-        })
+        }
+        User.currentUser.initFromGoogleData(aData, completion: block)
         NSLog("google login success: %@", User.currentUser.allParams())
     }
     

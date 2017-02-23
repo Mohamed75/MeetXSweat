@@ -31,17 +31,17 @@ class ChatViewController: JSQMessagesViewController {
     
     var conversation: Conversation?
     
-    var theMessages = [JSQMessage]()
+    private var _theMessages = [JSQMessage]()
   
-    var outgoingBubbleImageView: JSQMessagesBubbleImage!
-    var incomingBubbleImageView: JSQMessagesBubbleImage!
+    private var _outgoingBubbleImageView: JSQMessagesBubbleImage!
+    private var _incomingBubbleImageView: JSQMessagesBubbleImage!
   
     
     private func setupBubbles() {
         
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
-        outgoingBubbleImageView = bubbleImageFactory.outgoingMessagesBubbleImageWithColor(Constants.MainColor.kSpecialColor)
-        incomingBubbleImageView = bubbleImageFactory.incomingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleLightGrayColor())
+        _outgoingBubbleImageView = bubbleImageFactory.outgoingMessagesBubbleImageWithColor(Constants.MainColor.kSpecialColor)
+        _incomingBubbleImageView = bubbleImageFactory.incomingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleLightGrayColor())
     }
     
     override func viewDidLoad() {
@@ -63,66 +63,77 @@ class ChatViewController: JSQMessagesViewController {
         inputToolbar.contentView.rightBarButtonItem.setImage(UIImage(named: Ressources.Images.sendMessage), forState: .Normal)
         inputToolbar.contentView.rightBarButtonItemWidth = inputToolbar.contentView.rightBarButtonItem.frame.size.height
     }
+    
+    
+    private func _messagesBlock() -> (messages: [Message]) -> Void {
+        
+        return { [weak self] (messages) in
+            
+            guard let this = self else {
+                return
+            }
+            var allMessages = [JSQMessage]()
+            for message in messages {
+                allMessages.append(message.toJSQMessage())
+            }
+            this._theMessages = allMessages
+            this.finishReceivingMessage()
+        }
+    }
+    
+    private func _typingBlock() -> (isTyping: Bool) -> Void {
+        
+        return { [weak self] (isTyping) in
+            
+            guard let this = self else {
+                return
+            }
+            this.showTypingIndicator = isTyping
+            this.scrollToBottomAnimated(true)
+        }
+    }
   
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        if let aConversation = conversation {
-            
-            aConversation.observeMessages( { [weak self] (messages) in
-                
-                guard let this = self else {
-                    return
-                }
-                var allMessages = [JSQMessage]()
-                for message in messages {
-                    allMessages.append(message.toJSQMessage())
-                }
-                this.theMessages = allMessages
-                this.finishReceivingMessage()
-            })
-            
-            aConversation.observeTyping(senderId) { [weak self] (isTyping) in
-                
-                guard let this = self else {
-                    return
-                }
-                this.showTypingIndicator = isTyping
-                this.scrollToBottomAnimated(true)
-            }
+        guard let aConversation = conversation else {
+            return
         }
+        aConversation.observeMessages(_messagesBlock())
+        aConversation.observeTyping(senderId, completionHandler: _typingBlock())
     }
   
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         
-        if let aConversation = conversation {
-            aConversation.removeObservers()
+        guard let aConversation = conversation else {
+            return
         }
+        aConversation.removeObservers()
     }
     
   
     override func collectionView(collectionView: JSQMessagesCollectionView!, messageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageData! {
-        return theMessages[indexPath.item]
+        return _theMessages[indexPath.item]
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return theMessages.count
+        return _theMessages.count
     }
   
     override func collectionView(collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageBubbleImageDataSource! {
-        let message = theMessages[indexPath.item] // 1
+        let message = _theMessages[indexPath.item] // 1
         if message.senderId == senderId { // 2
-            return outgoingBubbleImageView
+            return _outgoingBubbleImageView
         } else { // 3
-            return incomingBubbleImageView
+            return _incomingBubbleImageView
         }
     }
   
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = super.collectionView(collectionView, cellForItemAtIndexPath: indexPath) as! JSQMessagesCollectionViewCell
         
-        let message = theMessages[indexPath.item]
+        let message = _theMessages[indexPath.item]
         
         if message.senderId == senderId { // 1
             cell.textView!.textColor = UIColor.whiteColor() // 2
@@ -145,23 +156,20 @@ class ChatViewController: JSQMessagesViewController {
     override func textViewDidChange(textView: UITextView) {
         super.textViewDidChange(textView)
         // If the text is not empty, the user is typing
-        if let aConversation = conversation {
-            aConversation.isTyping = textView.text != ""
+        guard let aConversation = conversation else {
+            return
         }
+        aConversation.isTyping = textView.text != ""
     }
   
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
         
         if let aConversation = conversation {
             aConversation.addMessage(text, senderId: senderId, controller: self)
-        }
-        JSQSystemSoundPlayer.jsq_playMessageSentSound()
-        
-        finishSendingMessage()
-        
-        if let aConversation = conversation {
             aConversation.isTyping = false
         }
+        JSQSystemSoundPlayer.jsq_playMessageSentSound()
+        finishSendingMessage()
     }
   
 }

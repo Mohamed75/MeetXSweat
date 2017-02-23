@@ -182,15 +182,10 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
     
     @IBAction func letsGoButtonClicked(sender: AnyObject) {
         
-        guard let job = jobButton.titleLabel?.text else {
+        guard let job = jobButton.titleLabel?.text, let sport = sportButton.titleLabel?.text, let domaine = domaineButton.titleLabel?.text else {
             return
         }
-        guard let sport = sportButton.titleLabel?.text else {
-            return
-        }
-        guard let domaine = domaineButton.titleLabel?.text else {
-            return
-        }
+        
         if (job != jobButtonText && sport != sportButtonText && domaine != domaineButtonText) {
         
             User.currentUser.profession = job

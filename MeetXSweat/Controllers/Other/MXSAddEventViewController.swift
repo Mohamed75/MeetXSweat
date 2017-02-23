@@ -20,7 +20,7 @@ class MXSAddEventViewController: MXSViewController,  UIPickerViewDataSource, UIP
     private let datePickerView  = UIDatePicker()
     private let sportPickerView = UIPickerView()
     
-    private let dateFormatter = NSDateFormatter()
+    private let dateFormatter   = NSDateFormatter()
     
     private let emptyDateTextField  = UITextField()
     private let emptySportTextField = UITextField()

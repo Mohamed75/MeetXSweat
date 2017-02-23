@@ -25,13 +25,14 @@ protocol LogInTWDelegate {
 class TwitterHelper {
     
     class func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) {
+        
         Fabric.with([Crashlytics.self, Twitter.self])
     }
     
     
     class func logIn(delegate: LogInTWDelegate) {
         
-        Twitter.sharedInstance().logInWithCompletion { session, error in
+        let block: TWTRLogInCompletion = { session, error in
             if (session != nil) {
                 print("Twitter signed in as \(session!.userName)")
                 getUserInfo(delegate)
@@ -40,10 +41,11 @@ class TwitterHelper {
                 delegate.logInTWSuccess(nil)
             }
         }
+        Twitter.sharedInstance().logInWithCompletion(block)
     }
     
     
-    class func getUserInfo(delegate: LogInTWDelegate) {
+    private class func getUserInfo(delegate: LogInTWDelegate) {
         
         let client = TWTRAPIClient.clientWithCurrentUser()
         let request = client.URLRequestWithMethod("GET",
@@ -51,8 +53,8 @@ class TwitterHelper {
                                                   parameters: ["user_id": client.userID!],
                                                   error: nil)
         
-        client.sendTwitterRequest(request) { response, data, connectionError in
-        
+        let block: TWTRNetworkCompletion = { response, data, connectionError in
+            
             if (connectionError == nil) {
                 
                 do {
@@ -68,6 +70,7 @@ class TwitterHelper {
                 }
             }
         }
+        client.sendTwitterRequest(request, completion: block)
         
         /* needs Twitter permission
         client.requestEmailForCurrentUser { (result, error) in

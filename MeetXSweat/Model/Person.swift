@@ -10,6 +10,10 @@ import Foundation
 import Firebase
 
 
+typealias CompletionDoneBlock = (done: Bool) -> Void
+
+
+
 class Person: FireBaseObject {
     
     var name        = ""
@@ -37,28 +41,31 @@ class Person: FireBaseObject {
         super.init(coder: aDecoder)
     }
     
-    func createPersonOnDataBase(completion:((done: Bool)->Void)) {
+    func createPersonOnDataBase(completion: CompletionDoneBlock) {
         
         let personRef = FIRDatabase.database().reference().child("person-items")
-        let handle = personRef.queryOrderedByChild("email").queryEqualToValue("\(email)")
-            .observeEventType(.Value, withBlock: { [weak self] snapshot in
+        
+        let block: (FIRDataSnapshot) -> Void = { [weak self] snapshot in
+            
+            guard let this = self else {
+                return
+            }
+            if ( snapshot.value is NSNull ) {
+                // save user
+                this.ref = personRef.childByAutoId()
+                this.ref!.setValue(this.asJson())
+                this.saveToNSUserDefaults()
+                completion(done: true)
                 
-                guard let this = self else {
-                    return
-                }
-                if ( snapshot.value is NSNull ) {
-                    // save user
-                    this.ref = personRef.childByAutoId()
-                    this.ref!.setValue(this.asJson())
-                    this.saveToNSUserDefaults()
-                    completion(done: true)
-                    
-                } else {
-                    print("user already exist")
-                    this.updateCurrentPersonFromDB(snapshot)
-                    completion(done: true)
-                }
-        })
+            } else {
+                print("user already exist")
+                this.updateCurrentPersonFromDB(snapshot)
+                completion(done: true)
+            }
+        }
+        
+        let handle = personRef.queryOrderedByChild("email").queryEqualToValue("\(email)")
+            .observeEventType(.Value, withBlock: block)
         personRef.removeObserverWithHandle(handle)
     }
     
@@ -74,7 +81,7 @@ class Person: FireBaseObject {
         }
     }
     
-    func updatePersonOnDataBase(completion:((done: Bool)->Void)) {
+    func updatePersonOnDataBase(completion: CompletionDoneBlock?) {
         
         saveToNSUserDefaults()
         
@@ -85,22 +92,28 @@ class Person: FireBaseObject {
         } else {
             
             let personRef = FIRDatabase.database().reference().child("person-items")
-            let handle = personRef.queryOrderedByChild("email").queryEqualToValue("\(email)")
-                .observeEventType(.Value, withBlock: { [weak self] snapshot in
+            
+            let block: (FIRDataSnapshot) -> Void = { [weak self] snapshot in
+                
+                guard let this = self else {
+                    return
+                }
+                if !( snapshot.value is NSNull ) {
                     
-                    guard let this = self else {
-                        return
-                    }
-                    if !( snapshot.value is NSNull ) {
-                      
-                        print("user finded")
-                        for child in snapshot.children {
-                            this.ref = child.ref
-                            this.ref!.updateChildValues(this.asJson())
-                            completion(done: true)
+                    print("user finded")
+                    for child in snapshot.children {
+                        this.ref = child.ref
+                        this.ref!.updateChildValues(this.asJson())
+                        guard let aCompletion = completion else {
+                            return
                         }
+                        aCompletion(done: true)
                     }
-            })
+                }
+            }
+        
+            let handle = personRef.queryOrderedByChild("email").queryEqualToValue("\(email)")
+                .observeEventType(.Value, withBlock: block)
             personRef.removeObserverWithHandle(handle)
         }
     }
@@ -118,17 +131,21 @@ class Person: FireBaseObject {
             else {
                 
                 let personRef = FIRDatabase.database().reference().child("person-items")
-                let handle = personRef.queryOrderedByChild("email").queryEqualToValue("\(this.email)")
-                    .observeEventType(.Value, withBlock: { snapshot in
-                        if !( snapshot.value is NSNull ) {
-                            
-                            print("user finded")
-                            for child in snapshot.children {
-                                this.ref = child.ref
-                                this.ref!.updateChildValues(["pictureUrl": url])
-                            }
+                
+                let block: (FIRDataSnapshot) -> Void  = { snapshot in
+                    
+                    if !( snapshot.value is NSNull ) {
+                        
+                        print("user finded")
+                        for child in snapshot.children {
+                            this.ref = child.ref
+                            this.ref!.updateChildValues(["pictureUrl": url])
                         }
-                })
+                    }
+                }
+                
+                let handle = personRef.queryOrderedByChild("email").queryEqualToValue("\(this.email)")
+                    .observeEventType(.Value, withBlock: block)
                 personRef.removeObserverWithHandle(handle)
             }
         })

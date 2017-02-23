@@ -12,28 +12,34 @@ private let rotationRightInfiniKey  = "rotationRightInfini"
 private let zPath                   = "transform.rotation.z"
 private let fullRotation = Float(2*M_PI)
 
+private let angle = 180.0
+
+
+typealias EffectBlock = (UIView, Bool -> Void) -> ()
+typealias FlipBlock = (() -> Void)
+
+
 
 class AnimationClass {
     
-    class func BounceEffect() -> (UIView, Bool -> Void) -> () {
-        return {
-            view, completion in
+    class func BounceEffect() -> EffectBlock {
+        return { view, completion in
             view.transform = CGAffineTransformMakeScale(0.5, 0.5)
             
-            UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.1, options: UIViewAnimationOptions.BeginFromCurrentState, animations: {
+            let animationBlock = {
                 view.transform = CGAffineTransformMakeScale(1, 1)
-                }, completion: completion)
+            }
+            UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.1, options: UIViewAnimationOptions.BeginFromCurrentState, animations: animationBlock, completion: completion)
         }
     }
     
-    class func FadeOutEffect() -> (UIView, Bool -> Void) -> () {
-        return {
-            view, completion in
+    class func FadeOutEffect() -> EffectBlock {
+        return { view, completion in
             
-            UIView.animateWithDuration(0.6, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options: [], animations: {
+            let animationBlock = {
                 view.alpha = 0
-            },
-            completion: completion)
+            }
+            UIView.animateWithDuration(0.6, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options: [], animations: animationBlock, completion: completion)
         }
     }
     
@@ -46,16 +52,20 @@ class AnimationClass {
         return transform
     }
     
-    class func flipAnimation(view: UIView, completion: (() -> Void)?) {
+    class func flipAnimation(view: UIView, completion: FlipBlock?) {
         
-        let angle = 180.0
         view.layer.transform = get3DTransformation(angle)
         
-        UIView.animateWithDuration(1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .TransitionNone, animations: { () -> Void in
+        let animationBlock = {
             view.layer.transform = CATransform3DIdentity
-            }) { (finished) -> Void in
-                completion?()
         }
+        let endBlock: (Bool -> Void) = { (finished) -> Void in
+            guard let aCompletion = completion else {
+                return
+            }
+            aCompletion()
+        }
+        UIView.animateWithDuration(1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .TransitionNone, animations: animationBlock, completion: endBlock)
     }
     
     

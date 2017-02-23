@@ -44,7 +44,8 @@ extension UINavigationController {
             
             if self.viewControllers.count > 0 {
                 
-                dispatch_async(dispatch_get_main_queue()){ [weak self] in
+                let block = { [weak self] in
+                    
                     guard let this = self else {
                         return
                     }
@@ -94,13 +95,16 @@ extension UINavigationController {
                     
                     UIApplication.sharedApplication().statusBarStyle = .LightContent
                 }
+                
+                dispatch_async(dispatch_get_main_queue(), block)
             }
             
         } else {
             
             if self.viewControllers.count > 0 {
                 
-                dispatch_async(dispatch_get_main_queue()){ [weak self] in
+                let block = { [weak self] in
+                    
                     guard let this = self else {
                         return
                     }
@@ -112,7 +116,9 @@ extension UINavigationController {
                     
                     this.evo_drawerController!.closeDrawerGestureModeMask = CloseDrawerGestureMode.PanningCenterView
                 }
+                dispatch_async(dispatch_get_main_queue(), block)
             }
+            
         }
         
         super.viewDidLoad()

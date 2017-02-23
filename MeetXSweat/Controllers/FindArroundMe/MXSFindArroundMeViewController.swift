@@ -36,7 +36,7 @@ class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
         
         MXSActivityIndicator.startAnimating()
         
-        dispatch_later(after) { [weak self] in
+        let block = { [weak self] in
             
             guard let this = self else {
                 return
@@ -57,7 +57,9 @@ class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
             }
             MXSActivityIndicator.stopAnimating()
         }
+        dispatch_later(after, closure: block)
     }
+    
     
     override func viewDidLoad() {
         
@@ -171,7 +173,7 @@ class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
         }
         
         let eventViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.event, viewControllerId: Ressources.StoryBooardsIdentifiers.eventId) as! MXSEventViewController
-        eventViewController.event = self.events[view.tag]
+        eventViewController.event = events[view.tag]
         self.navigationController?.pushViewController(eventViewController, animated: true)
     }
 }

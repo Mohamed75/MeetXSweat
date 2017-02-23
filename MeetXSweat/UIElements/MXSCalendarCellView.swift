@@ -90,8 +90,7 @@ class MXSCalendarCellView: JTAppleDayCellView {
         if cellState.isSelected == true {
             if selectedView.hidden == true {
                 configueViewIntoBubbleView(cellState)
-                selectedView.animateWithBounceEffect(withCompletionHandler: {
-                })
+                selectedView.animateWithBounceEffect(withCompletionHandler: nil)
             }
         } else {
             configueViewIntoBubbleView(cellState, animateDeselection: true)
@@ -153,16 +152,16 @@ class MXSCalendarCellView: JTAppleDayCellView {
 
 class AnimationView: UIView {
     
-    func animateWithFlipEffect(withCompletionHandler completionHandler:(()->Void)?) {
+    func animateWithFlipEffect(withCompletionHandler completionHandler: FlipBlock?) {
         AnimationClass.flipAnimation(self, completion: completionHandler)
     }
-    func animateWithBounceEffect(withCompletionHandler completionHandler:(()->Void)?) {
+    func animateWithBounceEffect(withCompletionHandler completionHandler: FlipBlock?) {
         let viewAnimation = AnimationClass.BounceEffect()
         viewAnimation(self){ _ in
             completionHandler?()
         }
     }
-    func animateWithFadeEffect(withCompletionHandler completionHandler:(()->Void)?) {
+    func animateWithFadeEffect(withCompletionHandler completionHandler: FlipBlock?) {
         let viewAnimation = AnimationClass.FadeOutEffect()
         viewAnimation(self) { _ in
             completionHandler?()

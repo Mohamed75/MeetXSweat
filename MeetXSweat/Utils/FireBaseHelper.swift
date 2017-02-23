@@ -20,13 +20,14 @@ class FireBaseHelper {
         // Create a reference to the file you want to upload
         let riversRef = FIRStorage.storage().reference().child("images").child(fileName + ".png")
         
-        // Upload the file to the path "images/rivers.jpg"
-        riversRef.putData(data, metadata: nil) { (metadata, error) in
+        let block: ((FIRStorageMetadata?, NSError?) -> Void) = { (metadata, error) in
             guard let metadata = metadata else {
                 // Uh-oh, an error occurred!
                 return
             }
             completion(url: metadata.downloadURL()!.absoluteString)
         }
+            
+        riversRef.putData(data, metadata: nil, completion: block)
     }
 }

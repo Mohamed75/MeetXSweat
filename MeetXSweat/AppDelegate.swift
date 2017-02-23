@@ -11,7 +11,13 @@ import Firebase
 import DrawerController
 
 
-
+private let FIRSignInblock: FIRAuthResultCallback = { (user, error) in
+    if (error != nil) {
+        NSLog("signInAnonymously error")
+    } else {
+        NSLog("signInAnonymously succes")
+    }
+}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -41,14 +47,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #else
             FIRApp.configure()
         #endif
+        
         FIRDatabase.database().persistenceEnabled = true
-        FIRAuth.auth()?.signInAnonymouslyWithCompletion({ (user, error) in
-            if (error != nil) {
-                NSLog("signInAnonymously error")
-            } else {
-               NSLog("signInAnonymously succes") 
-            }
-        })
+        FIRAuth.auth()?.signInAnonymouslyWithCompletion(FIRSignInblock)
         
         TwitterHelper.application(application, didFinishLaunchingWithOptions: launchOptions)
         
