@@ -62,17 +62,8 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
         
         MXSPickerView.initPickerView(pickerView, controller: self, scale: false)
         
-        userImageView.image = UIImage(named: Ressources.Images.userSansPhoto)
-        if !User.currentUser.pictureUrl.isEmpty {
-            userImageView.af_setImageWithURL(
-                NSURL(string: User.currentUser.pictureUrl)!,
-                placeholderImage: nil,
-                filter: nil,
-                imageTransition: .None
-            )
-            userImageView.layer.cornerRadius = userImageView.frame.width/2
-            userImageView.clipsToBounds = true
-        } 
+        UserViewModel.setUserImage(userImageView, person: User.currentUser)
+        
         Utils.addTapGestureToView(userImageView, target: self, selectorString: "userImageViewClicked")   
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Constants.FBNotificationSelector.sports, name: Constants.FBNotificationName.sports, object: nil)

@@ -42,19 +42,8 @@ class MXSConversationsCollectionViewController: UICollectionViewController {
         }
         
         
-        
         cell.layoutIfNeeded()
-        cell.imageView.image = UIImage(named: Ressources.Images.userSansPhoto)
-        if !imagePerson.pictureUrl.isEmpty {
-            cell.imageView.af_setImageWithURL(
-                NSURL(string: imagePerson.pictureUrl)!,
-                placeholderImage: nil,
-                filter: nil,
-                imageTransition: .None
-            )
-            cell.imageView.layer.cornerRadius = cell.imageView.frame.width/2
-            cell.imageView.clipsToBounds = true
-        }
+        UserViewModel.setUserImage(cell.imageView, person: imagePerson)
         
         
         let string = NSMutableAttributedString(string: text)

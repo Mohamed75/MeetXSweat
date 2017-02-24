@@ -49,17 +49,7 @@ class MXSProfileViewController: MXSViewController, UIImagePickerControllerDelega
         
         self.title = Strings.NavigationTitle.profile
         
-        imageView.image = UIImage(named: Ressources.Images.userSansPhoto)
-        if !User.currentUser.pictureUrl.isEmpty {
-            imageView.af_setImageWithURL(
-                NSURL(string: person.pictureUrl)!,
-                placeholderImage: nil,
-                filter: nil,
-                imageTransition: .None
-            )
-            imageView.layer.cornerRadius = imageView.frame.width/2
-            imageView.clipsToBounds = true
-        }
+        UserViewModel.setUserImage(imageView, person: person)
         
         if editable {
             Utils.addTapGestureToView(imageView, target: self, selectorString: "userImageViewClicked")

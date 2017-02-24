@@ -88,6 +88,10 @@ class Person: FireBaseObject {
         if let aRef = ref {
             
             aRef.updateChildValues(asJson())
+            guard let aCompletion = completion else {
+                return
+            }
+            aCompletion(done: true)
             
         } else {
             

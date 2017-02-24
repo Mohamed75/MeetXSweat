@@ -26,6 +26,8 @@ enum Ressources {
         static let glBtn    = "GLButton"
         static let userSansPhoto    = "UserSansPhoto"
         static let sendMessage = "SendMessage"
+        static let topMap   = "TopMap"
+        static let userPhoto = "UserPhoto"
     }
     
     struct SportsImages {

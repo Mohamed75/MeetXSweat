@@ -61,16 +61,7 @@ class MXSPersonsCollectionViewController: UICollectionViewController {
             userImageView.tag = 33
             cell.imageView.addSubview(userImageView)
             
-            if !person.pictureUrl.isEmpty {
-                userImageView.af_setImageWithURL(
-                    NSURL(string: person.pictureUrl)!,
-                    placeholderImage: nil,
-                    filter: nil,
-                    imageTransition: .None
-                )
-                userImageView.layer.cornerRadius = userImageView.frame.width/2
-                userImageView.clipsToBounds = true
-            }
+            UserViewModel.setUserImage(cell.imageView, person: person)
         }
         
         cell.layer.borderWidth = 1

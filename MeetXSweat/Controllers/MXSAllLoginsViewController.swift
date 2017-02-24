@@ -44,7 +44,7 @@ class MXSAllLoginsViewController: MXSViewController {
         self.evo_drawerController!.openDrawerGestureModeMask = []
         googleButton.setBackgroundImage(UIImage(named: Ressources.Images.glBtn), forState: .Normal)
         
-        
+        UIApplication.sharedApplication().statusBarStyle = .Default
         
         userNameTextField.attributedPlaceholder = NSAttributedString(string: Strings.Account.email, attributes:placeHolderAttributes)
         userNameTextField.returnKeyType = .Next
