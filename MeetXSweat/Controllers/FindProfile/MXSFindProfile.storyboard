@@ -155,7 +155,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="541" height="138"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UserSansPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="eEI-9y-3Mr">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UserPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="eEI-9y-3Mr">
                                             <rect key="frame" x="33" y="8" width="122" height="122"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="eEI-9y-3Mr" secondAttribute="height" multiplier="1:1" id="fCc-2Q-CFa"/>
@@ -198,6 +198,6 @@
     </scenes>
     <resources>
         <image name="FindUser" width="60" height="30"/>
-        <image name="UserSansPhoto" width="67" height="67"/>
+        <image name="UserPhoto" width="95" height="95"/>
     </resources>
 </document>

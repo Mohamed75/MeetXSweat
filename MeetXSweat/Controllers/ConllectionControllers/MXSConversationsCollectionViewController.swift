@@ -43,7 +43,12 @@ class MXSConversationsCollectionViewController: UICollectionViewController {
         
         
         cell.layoutIfNeeded()
-        UserViewModel.setUserImage(cell.imageView, person: imagePerson)
+        
+        let userImageView = UIImageView(frame: CGRect(x: 9, y: 9, width: cell.imageView.frame.size.width-18, height: cell.imageView.frame.size.height-18))
+        userImageView.tag = 33
+        cell.imageView.addSubview(userImageView)
+        
+        UserViewModel.setUserImage(userImageView, person: imagePerson)
         
         
         let string = NSMutableAttributedString(string: text)

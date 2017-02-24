@@ -57,11 +57,11 @@ class MXSPersonsCollectionViewController: UICollectionViewController {
                 existingUserImageView.removeFromSuperview()
             }
             
-            let userImageView = UIImageView(frame: CGRect(x: 3, y: 2.5, width: cell.imageView.frame.size.width-6, height: cell.imageView.frame.size.height-6))
+            let userImageView = UIImageView(frame: CGRect(x: 9, y: 9, width: cell.imageView.frame.size.width-18, height: cell.imageView.frame.size.height-18))
             userImageView.tag = 33
             cell.imageView.addSubview(userImageView)
             
-            UserViewModel.setUserImage(cell.imageView, person: person)
+            UserViewModel.setUserImage(userImageView, person: person)
         }
         
         cell.layer.borderWidth = 1
