@@ -127,7 +127,7 @@ class MXSEventViewController: MXSViewController {
         minuteLabel.textColor = Constants.MainColor.kSpecialColor
         secondLabel.textColor = Constants.MainColor.kSpecialColor
         
-        self.title = Strings.NavigationTitle.event
+        title = Strings.NavigationTitle.event
             
         topView.layer.borderColor = Constants.MainColor.kSpecialColor.CGColor
         topView.layer.borderWidth = 1
@@ -143,11 +143,11 @@ class MXSEventViewController: MXSViewController {
         updateParticipantsButtonText()
         updateInscriptionButton()
         
-        let dateArray = self.event.date.componentsSeparatedByString(" - ")
-        var text = dateArray[0]
-        text = text + "       " + self.event.sport + "\n"
+        let dateArray = event.date.componentsSeparatedByString(" - ")
+        var text = dateArray.first
+        text = text! + "       " + event.sport + "\n"
         if dateArray.count > 1 {
-            text = text + dateArray[1]
+            text = text! + dateArray[1]
         }
         
         addOverlay()
@@ -157,13 +157,13 @@ class MXSEventViewController: MXSViewController {
             let myPlaceMark = MKPointAnnotation()
             myPlaceMark.coordinate  = coordinate
             myPlaceMark.title       = event.name
-            self.mapView.addAnnotation(myPlaceMark)
+            mapView.addAnnotation(myPlaceMark)
             
         } else {
-            self.event.adress = self.event.adress
+            event.adress = event.adress
         }
         
-        if self.tabBarController?.selectedIndex == 0 {
+        if tabBarController?.selectedIndex == 0 {
             participantsButton.hidden = true
         }
     }
@@ -256,14 +256,14 @@ class MXSEventViewController: MXSViewController {
         if let viewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findProfile, viewControllerId: Ressources.StoryBooardsIdentifiers.embedProfilesId) as? MXSEmbedCollectionViewController
         {
             viewController.title = Strings.NavigationTitle.sportsParticipants
-            self.navigationController?.pushViewController(viewController, animated: false)
+            navigationController?.pushViewController(viewController, animated: false)
             
             
             dispatch_later(0.1, closure: { [weak self] in
                 guard let this = self else {
                     return
                 }
-                if let personsCollectionViewController = viewController.childViewControllers[0] as? MXSPersonsCollectionViewController {
+                if let personsCollectionViewController = viewController.childViewControllers.first as? MXSPersonsCollectionViewController {
                     viewController.titleLabel.text = this.event.sport.uppercaseString
                     if let jour = this.event.getJour(), heure = this.event.getHeure() {
                         viewController.titleLabel.text = this.event.sport.uppercaseString + " - " + jour + " - " + heure
@@ -277,7 +277,7 @@ class MXSEventViewController: MXSViewController {
     
     @IBAction func inscriptionButtonClicked(sender: AnyObject) {
         event.addCurrentUserToEvent()
-        if self.tabBarController?.selectedIndex != 0 {
+        if tabBarController?.selectedIndex != 0 {
             participantsButtonClicked(NSObject())
         }
         updateParticipantsButtonText()

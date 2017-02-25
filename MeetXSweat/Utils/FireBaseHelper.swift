@@ -14,8 +14,8 @@ class FireBaseHelper {
     
     class func saveImage(image: UIImage, fileName: String, completion:((url: String)->Void)) {
         
-        var data = NSData()
-        data = UIImageJPEGRepresentation(image, 0.8)!
+        var data =  NSData()
+        data        = UIImageJPEGRepresentation(image, 0.8)!
         
         // Create a reference to the file you want to upload
         let riversRef = FIRStorage.storage().reference().child("images").child(fileName + ".png")

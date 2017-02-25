@@ -67,7 +67,7 @@ class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
         
         addBarButtonItem()
         
-        self.title = Strings.NavigationTitle.map
+        title = Strings.NavigationTitle.map
 
         addOverlay()
         addEvents(4.0)

@@ -49,7 +49,7 @@ class FireBaseDataManager {
             }
         }
         set {
-            self._professions = newValue
+            _professions = newValue
         }
     }
     
@@ -63,7 +63,7 @@ class FireBaseDataManager {
             }
         }
         set {
-            self._domaines = newValue
+            _domaines = newValue
         }
     }
     
@@ -170,6 +170,15 @@ class FireBaseDataManager {
         _domaineRef.observeEventType(.ChildAdded, withBlock: _domaineBlock())
     }
     
+    
+    class func updateCurrentUserInPersons() {
+        
+        for person in FireBaseDataManager.sharedInstance.persons {
+            if person.email == User.currentUser.email {
+                User.currentUser.copyToPerson(person)
+            }
+        }
+    }
     
 }
 

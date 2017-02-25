@@ -22,10 +22,10 @@ class FindDateManager {
         var returnArray: [Event] = []
         for event in FireBaseDataManager.sharedInstance.events {
             for date in dates {
-                let eventDate = event.date.componentsSeparatedByString(" - ")[0]
+                let eventDate = event.date.componentsSeparatedByString(" - ").first
                 
                 var selectedDate = MXSCalendarViewController.formatter.stringFromDate(date as! NSDate)
-                selectedDate = selectedDate.componentsSeparatedByString(" - ")[0]
+                selectedDate = selectedDate.componentsSeparatedByString(" - ").first!
                 
                 if eventDate == selectedDate {
                     returnArray.append(event)

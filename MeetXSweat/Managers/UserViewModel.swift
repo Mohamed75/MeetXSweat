@@ -11,7 +11,8 @@ import UIKit
 
 class UserViewModel {
     
-    class func setUserImage(imageView: UIImageView, person: Person) {
+    
+    class func setUserImageView(imageView: UIImageView, person: Person) {
         
         imageView.image = UIImage(named: Ressources.Images.userSansPhoto)
         if !person.pictureUrl.isEmpty {

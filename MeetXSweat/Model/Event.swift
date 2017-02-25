@@ -36,7 +36,7 @@ class Event: FireBaseObject {
                         guard let this = self else {
                             return
                         }
-                        let coordinate = MKPlacemark(placemark: placemarks[0]).coordinate
+                        let coordinate  = MKPlacemark(placemark: placemarks.first!).coordinate
                         this.coordinate = String(coordinate.latitude) + "," + String(coordinate.longitude)
                         this.updateCoordinateEvent()
                     }

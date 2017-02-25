@@ -117,7 +117,7 @@ class MXSAddEventViewController: MXSViewController,  UIPickerViewDataSource, UIP
             return false
         case self.sportTextField:
             if sportTextField.text == "" {
-                sportTextField.text = sports[0]
+                sportTextField.text = sports.first
             }
             emptySportTextField.becomeFirstResponder()
             return false

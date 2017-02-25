@@ -21,10 +21,10 @@ class MXSFindSportViewController: MXSViewController {
         
         super.viewDidLoad()
         
-        self.addBarButtonItem()
-        self.addValiderButton()
+        addBarButtonItem()
+        addValiderButton()
         
-        self.title = Strings.NavigationTitle.sports
+        title = Strings.NavigationTitle.sports
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -34,7 +34,7 @@ class MXSFindSportViewController: MXSViewController {
     }
     
     override func refreshView() {
-        if let sportsCollectionViewController = self.childViewControllers[0] as? MXSSportsCollectionViewController {
+        if let sportsCollectionViewController = childViewControllers.first as? MXSSportsCollectionViewController {
             sportsCollectionViewController.collectionView?.reloadData()
         }
     }
@@ -45,7 +45,7 @@ class MXSFindSportViewController: MXSViewController {
     
     @IBAction func validerButtonClicked(sender: AnyObject) {
         
-        if let sportsCollectionViewController = self.childViewControllers[0] as? MXSSportsCollectionViewController {
+        if let sportsCollectionViewController = childViewControllers.first as? MXSSportsCollectionViewController {
             sportsCollectionViewController.validateSelections()
         }
     }

@@ -51,7 +51,7 @@ class MXSProfileViewController: MXSViewController, UIImagePickerControllerDelega
         
         self.title = Strings.NavigationTitle.profile
         
-        UserViewModel.setUserImage(imageView, person: person)
+        UserViewModel.setUserImageView(imageView, person: person)
         
         if editable {
             addBarButtonItem()
@@ -62,7 +62,7 @@ class MXSProfileViewController: MXSViewController, UIImagePickerControllerDelega
             descriptionButton.hidden    = true
         }
         
-        if let eventsCollectionViewController = childViewControllers[0] as? MXSEventsCollectionViewController {
+        if let eventsCollectionViewController = childViewControllers.first as? MXSEventsCollectionViewController {
             
             eventsCollectionViewController.events = person.getEvents()
             eventsCollectionViewController.fromProfileViewController = true
@@ -84,6 +84,18 @@ class MXSProfileViewController: MXSViewController, UIImagePickerControllerDelega
         
         
         descriptionLabel.text = person.personDescription
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        if editable {
+            
+            if let image = imageView.image where updateUserImage {
+                User.currentUser.setUserImage(image)
+                updateUserImage = false
+            }
+        }
     }
     
     func userImageViewClicked() {
@@ -159,8 +171,7 @@ class MXSProfileViewController: MXSViewController, UIImagePickerControllerDelega
         }
         conversation.persons = between
         chatViewController.conversation = conversation
-        self.navigationController?.pushViewController(chatViewController, animated: true)
-        //self.presentViewController(chatViewController, animated: true, completion: nil)
+        navigationController?.pushViewController(chatViewController, animated: true)
     }
     
     @IBAction func professionButtonClicked(sender: AnyObject) {

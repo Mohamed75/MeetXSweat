@@ -61,7 +61,7 @@ class MXSPersonsCollectionViewController: UICollectionViewController {
             userImageView.tag = 33
             cell.imageView.addSubview(userImageView)
             
-            UserViewModel.setUserImage(userImageView, person: person)
+            UserViewModel.setUserImageView(userImageView, person: person)
         }
         
         cell.layer.borderWidth = 1

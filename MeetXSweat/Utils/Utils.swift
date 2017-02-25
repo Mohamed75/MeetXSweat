@@ -10,7 +10,7 @@ import UIKit
 
 
 // MARK: - *** Global Constants ***
-let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! as String
 
 
 /**

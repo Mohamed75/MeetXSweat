@@ -62,7 +62,7 @@ class User: Person {
         
         if let fullName = data["name"] as? String  {
             let nameArray = fullName.componentsSeparatedByString(" ")
-            name = nameArray[0]
+            name = nameArray.first!
             if nameArray.count > 1 {
                 lastName = nameArray[1]
             }
@@ -213,8 +213,7 @@ class User: Person {
                 if email.isValidEmail {
                     this.email = email
                     object.createPersonOnDataBase({ (done) in
-                        this.updatePersonOnDataBase({ (done) in
-                        })
+                        this.updatePersonOnDataBase(nil)
                         completion(success: true)
                     })
                 }else {
@@ -252,13 +251,14 @@ class User: Person {
         
         User.currentUser.isConnected = false
         User.currentUser.updatePersonOnDataBase({ (done) in
-            User.currentUser.pictureUrl = ""
+            
             User.currentUser.name       = ""
             User.currentUser.lastName   = ""
             User.currentUser.email      = ""
             User.currentUser.profession = ""
             User.currentUser.domaine    = ""
             User.currentUser.sport      = ""
+            User.currentUser.pictureUrl = ""
             User.currentUser.gender     = ""
             User.currentUser.birthday   = ""
             User.currentUser.adress     = ""
@@ -266,5 +266,21 @@ class User: Person {
             User.currentUser.saveToNSUserDefaults()
             completion(done: done)
         })
+    }
+    
+    
+    func copyToPerson(person: Person) {
+        
+        person.name     = User.currentUser.name
+        person.lastName = User.currentUser.lastName
+        person.email    = User.currentUser.email
+        person.profession = User.currentUser.profession
+        person.domaine  = User.currentUser.domaine
+        person.sport    = User.currentUser.sport
+        person.pictureUrl = User.currentUser.pictureUrl
+        person.gender   = User.currentUser.gender
+        person.birthday = User.currentUser.birthday
+        person.adress   = User.currentUser.adress
+        person.personDescription = User.currentUser.personDescription
     }
 }

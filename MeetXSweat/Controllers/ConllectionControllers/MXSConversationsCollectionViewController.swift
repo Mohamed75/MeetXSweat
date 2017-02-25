@@ -48,7 +48,7 @@ class MXSConversationsCollectionViewController: UICollectionViewController {
         userImageView.tag = 33
         cell.imageView.addSubview(userImageView)
         
-        UserViewModel.setUserImage(userImageView, person: imagePerson)
+        UserViewModel.setUserImageView(userImageView, person: imagePerson)
         
         
         let string = NSMutableAttributedString(string: text)

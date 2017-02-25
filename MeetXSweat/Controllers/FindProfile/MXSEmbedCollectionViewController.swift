@@ -19,46 +19,46 @@ class MXSEmbedCollectionViewController: MXSViewController {
         
         super.viewDidLoad()
         
-        self.titleLabel.backgroundColor = Constants.MainColor.kSpecialColor
+        titleLabel.backgroundColor = Constants.MainColor.kSpecialColor
         
         switch MSXFindManager.sharedInstance.findBy {
             
         case FindBy.Sport :
-            if let eventsCollectionViewController = self.childViewControllers[0] as? MXSEventsCollectionViewController {
+            if let eventsCollectionViewController = childViewControllers.first as? MXSEventsCollectionViewController {
                 
                 eventsCollectionViewController.events = FindSportManager.filterEventsBySports(FindSportManager.sharedInstance.sports)
                 
-                self.titleLabel.text = Strings.LabelTitel.sports
+                titleLabel.text = Strings.LabelTitel.sports
                 for sport in FindSportManager.sharedInstance.sports {
-                    self.titleLabel.text = self.titleLabel.text! + " " + (sport as! String).uppercaseString
+                    titleLabel.text = titleLabel.text! + " " + (sport as! String).uppercaseString
                 }
                 
                 if eventsCollectionViewController.fromProfileViewController {
                 } else {
-                    self.title = Strings.NavigationTitle.events
+                    title = Strings.NavigationTitle.events
                 }
             }
             break
           
         case FindBy.Date :
-            if let eventsCollectionViewController = self.childViewControllers[0] as? MXSEventsCollectionViewController {
+            if let eventsCollectionViewController = childViewControllers.first as? MXSEventsCollectionViewController {
                 
                 eventsCollectionViewController.events = FindDateManager.filterEventsByDates(FindDateManager.sharedInstance.dates)
             }
             break
         
         case FindBy.Profile :
-            if let personsCollectionViewController = self.childViewControllers[0] as? MXSPersonsCollectionViewController {
+            if let personsCollectionViewController = childViewControllers.first as? MXSPersonsCollectionViewController {
                 
                 if !FindProfileManager.sharedInstance.domaine.isEmpty {
-                    self.titleLabel.text = FindProfileManager.sharedInstance.domaine
+                    titleLabel.text = FindProfileManager.sharedInstance.domaine
                     personsCollectionViewController.persons = FindProfileManager.filterBy(FireBaseDataManager.sharedInstance.persons, filter: FindProfileManager.sharedInstance.domaine)
                 }
                 if !FindProfileManager.sharedInstance.profession.isEmpty {
-                    self.titleLabel.text = FindProfileManager.sharedInstance.profession
+                    titleLabel.text = FindProfileManager.sharedInstance.profession
                     personsCollectionViewController.persons = FindProfileManager.filterBy(FireBaseDataManager.sharedInstance.persons, filter: FindProfileManager.sharedInstance.profession)
                 }
-                self.title = Strings.NavigationTitle.profiles
+                title = Strings.NavigationTitle.profiles
             }
             break
             

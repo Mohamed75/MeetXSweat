@@ -96,7 +96,13 @@ class MXSMenuViewController: UITableViewController {
             guard let this = self else {
                 return
             }
-            this.mainNavigationController.viewControllers?.first?.viewWillAppear(false)
+            if let firstNavigationController = this.mainNavigationController.viewControllers?.first as? UINavigationController {
+                firstNavigationController.viewWillAppear(false)
+                
+                if let currentNavigationController = this.mainNavigationController.viewControllers?[this.mainNavigationController.selectedIndex] as? UINavigationController {
+                    currentNavigationController.visibleViewController?.viewWillAppear(false)
+                }
+            }
         }
     }
     
@@ -116,7 +122,7 @@ class MXSMenuViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        UserViewModel.setUserImage(imageView, person: User.currentUser)
+        UserViewModel.setUserImageView(imageView, person: User.currentUser)
     }
     
     

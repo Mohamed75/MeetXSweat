@@ -37,6 +37,7 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
     static let sharedInstance = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findProfile, viewControllerId: Ressources.StoryBooardsIdentifiers.findProfileId)
     
     
+    
     func customLabel(label: UILabel) {
         
         label.layer.borderColor = Constants.MainColor.kSpecialColor.CGColor
@@ -103,9 +104,12 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
     
     override func refreshView() {
         
-        dispatch_later(0.01) {
-            self.selectMetierLabel()
-            self.pickerView.reloadAllComponents()
+        dispatch_later(0.01) { [weak self] in
+            guard let this = self else {
+                return
+            }
+            this.selectMetierLabel()
+            this.pickerView.reloadAllComponents()
         }
     }
     
@@ -211,6 +215,7 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
     }
     
     override func validatButtonClicked(sender: AnyObject) {
+        
         if !savedMetier.isEmpty || !savedDomaine.isEmpty {
             if !editable {
                 validerButton.sendActionsForControlEvents(.TouchUpInside)

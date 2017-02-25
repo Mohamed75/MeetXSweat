@@ -41,6 +41,7 @@ class Person: FireBaseObject {
         super.init(coder: aDecoder)
     }
     
+    // create or update current user
     func createPersonOnDataBase(completion: CompletionDoneBlock) {
         
         let personRef = FIRDatabase.database().reference().child("person-items")
@@ -69,7 +70,7 @@ class Person: FireBaseObject {
         personRef.removeObserverWithHandle(handle)
     }
     
-    
+    // update current user from FireBase
     private func updateCurrentPersonFromDB(snapshot: FIRDataSnapshot) {
         
         for child in snapshot.children {
@@ -81,9 +82,11 @@ class Person: FireBaseObject {
         }
     }
     
+    // update current user on FireBase
     func updatePersonOnDataBase(completion: CompletionDoneBlock?) {
         
         saveToNSUserDefaults()
+        FireBaseDataManager.updateCurrentUserInPersons()
         
         if let aRef = ref {
             
@@ -104,7 +107,7 @@ class Person: FireBaseObject {
                 }
                 if !( snapshot.value is NSNull ) {
                     
-                    print("user finded")
+                    print("user update")
                     for child in snapshot.children {
                         this.ref = child.ref
                         this.ref!.updateChildValues(this.asJson())
@@ -120,8 +123,10 @@ class Person: FireBaseObject {
                 .observeEventType(.Value, withBlock: block)
             personRef.removeObserverWithHandle(handle)
         }
+        
     }
     
+    // set current user image
     func setUserImage(image: UIImage) {
         
         FireBaseHelper.saveImage(image, fileName: email, completion:  { [weak self] url in
@@ -131,6 +136,9 @@ class Person: FireBaseObject {
             }
             if let aRef = this.ref {
                 aRef.updateChildValues(["pictureUrl": url])
+                this.pictureUrl = url
+                this.saveToNSUserDefaults()
+                FireBaseDataManager.updateCurrentUserInPersons()
             }
             else {
                 
@@ -140,10 +148,13 @@ class Person: FireBaseObject {
                     
                     if !( snapshot.value is NSNull ) {
                         
-                        print("user finded")
+                        print("user image update")
                         for child in snapshot.children {
                             this.ref = child.ref
                             this.ref!.updateChildValues(["pictureUrl": url])
+                            this.pictureUrl = url
+                            this.saveToNSUserDefaults()
+                            FireBaseDataManager.updateCurrentUserInPersons()
                         }
                     }
                 }

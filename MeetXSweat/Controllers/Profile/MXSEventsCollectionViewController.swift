@@ -134,8 +134,8 @@ class MXSEventsCollectionViewController: UICollectionViewController {
             if indexPath.section > 0 {
              
                 let eventViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.event, viewControllerId: Ressources.StoryBooardsIdentifiers.eventId) as! MXSEventViewController
-                eventViewController.event = self.events[indexPath.section-1]
-                self.navigationController?.pushViewController(eventViewController, animated: true)
+                eventViewController.event = events[indexPath.section-1]
+                navigationController?.pushViewController(eventViewController, animated: true)
             }
         }
     }
@@ -145,12 +145,12 @@ class MXSEventsCollectionViewController: UICollectionViewController {
     }
     
     internal override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return self.events.count+1
+        return events.count+1
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
-        return CGSize(width: self.view.frame.size.width, height: 60)
+        return CGSize(width: view.frame.size.width, height: 60)
     }
     
 }

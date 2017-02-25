@@ -26,7 +26,7 @@ class JSONFile {
     static func writeToPlist() {
         
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as NSArray
-        let documentDirectory = paths[0] as! String
+        let documentDirectory = paths.firstObject as! String
         let path = documentDirectory+("myData.plist")
         let fileManager = NSFileManager.defaultManager()
         if (!(fileManager.fileExistsAtPath(path)))
@@ -47,7 +47,7 @@ class JSONFile {
     // Nothing with json
     class func myloadData() {
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as NSArray
-        let documentDirectory = paths[0] as! String
+        let documentDirectory = paths.firstObject as! String
         let path = documentDirectory+("myData.plist")
         
         let resultDictionary = NSMutableDictionary(contentsOfFile: path)

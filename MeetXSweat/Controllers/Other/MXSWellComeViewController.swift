@@ -62,7 +62,7 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
         
         MXSPickerView.initPickerView(pickerView, controller: self, scale: false)
         
-        UserViewModel.setUserImage(userImageView, person: User.currentUser)
+        UserViewModel.setUserImageView(userImageView, person: User.currentUser)
         
         Utils.addTapGestureToView(userImageView, target: self, selectorString: "userImageViewClicked")   
         
