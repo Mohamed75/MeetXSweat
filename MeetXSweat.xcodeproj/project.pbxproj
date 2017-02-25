@@ -731,7 +731,10 @@
 						DevelopmentTeam = G728K2KM26;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
-								enabled = 1;
+								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 0;
 							};
 						};
 					};
@@ -744,8 +747,12 @@
 						TestTargetID = D926BA9B1D8D6A6400E3878C;
 					};
 					D949BB051E5C872A00BCF3A0 = {
+						DevelopmentTeam = G728K2KM26;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+							com.apple.Push = {
 								enabled = 0;
 							};
 						};
@@ -1296,7 +1303,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MeetXSweat.MeetXSweat;
 				PRODUCT_NAME = MeetXSweat;
-				PROVISIONING_PROFILE = "955ac5e8-528d-46d1-b328-a5cd473bb4bd";
+				PROVISIONING_PROFILE = "6e945147-ce82-4709-bfad-660b541019c3";
 				SWIFT_OBJC_BRIDGING_HEADER = "MeetXSweat/MeetXSweat-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1321,7 +1328,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MeetXSweat.MeetXSweat;
 				PRODUCT_NAME = MeetXSweat;
-				PROVISIONING_PROFILE = "955ac5e8-528d-46d1-b328-a5cd473bb4bd";
+				PROVISIONING_PROFILE = "6e945147-ce82-4709-bfad-660b541019c3";
 				SWIFT_OBJC_BRIDGING_HEADER = "MeetXSweat/MeetXSweat-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

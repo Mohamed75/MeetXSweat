@@ -36,6 +36,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window!.rootViewController = drawerController
         self.window!.makeKeyAndVisible()
     }
+    
+    
+    func __initPushNotification() {
+        
+        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+        UIApplication.sharedApplication().registerForRemoteNotifications()
+    }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -54,8 +62,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         TwitterHelper.application(application, didFinishLaunchingWithOptions: launchOptions)
         
         __initTheDrawerController()
-        
-        
+        //__initPushNotification()
+    
         return FaceBookHelper.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
