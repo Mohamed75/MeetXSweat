@@ -12,7 +12,7 @@ import UIKit
 
 class MXSEventsCollectionViewController: UICollectionViewController {
     
-    var events: [Event]!
+    var events = FireBaseDataManager.sharedInstance.events
     var fromProfileViewController = false
     
     
@@ -23,6 +23,9 @@ class MXSEventsCollectionViewController: UICollectionViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        if parentViewController?.title == Strings.NavigationTitle.sweatWorking {
+            events = FindSportManager.filterEventsByCurrentUser()
+        }
         collectionView?.reloadData()
     }
     

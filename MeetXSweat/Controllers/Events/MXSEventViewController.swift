@@ -169,12 +169,12 @@ class MXSEventViewController: MXSViewController {
     }
     
     func updateParticipantsButtonText() {
-        participantsButton.setTitle(String(self.event.persons.count) + " PARTICIPANTS", forState: .Normal)
+        participantsButton.setTitle(String(event.persons.count) + " PARTICIPANTS", forState: .Normal)
     }
     
     func updateInscriptionButton() {
         
-        if self.event.isCurrentPersonAlreadyIn() {
+        if event.isCurrentPersonAlreadyIn() {
             inscriptionButton.enabled = false
             inscriptionButton.alpha = 0.4
         }
@@ -193,10 +193,10 @@ class MXSEventViewController: MXSViewController {
     
     func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
         
-        var region: MKCoordinateRegion = self.mapView.region
+        var region: MKCoordinateRegion = mapView.region
         region.center = (userLocation.location?.coordinate)!
         region.span = MKCoordinateSpanMake(0.4, 0.4)
-        self.mapView.setRegion(region, animated: false)
+        mapView.setRegion(region, animated: false)
         
         GPSLocationManager.sharedInstance.userLocation = userLocation.location
     }

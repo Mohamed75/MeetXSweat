@@ -184,7 +184,10 @@ class MXSMenuViewController: UITableViewController {
             evo_drawerController!.centerViewController = UINavigationController(rootViewController: conversationsViewController)
             break
         case 1:
-            
+            if let viewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findSport, viewControllerId: Ressources.StoryBooardsIdentifiers.embedSportsId) as? MXSEmbedCollectionViewController {
+                viewController.isSweatWorking = true
+                evo_drawerController!.centerViewController = UINavigationController(rootViewController: viewController)
+            }
             break
         case kMenuItemsTitle.count-1: // last
             User.currentUser.logOut({ [weak self] (done) in

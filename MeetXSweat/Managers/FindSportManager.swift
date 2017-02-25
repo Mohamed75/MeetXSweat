@@ -31,4 +31,14 @@ class FindSportManager {
         return returnArray
     }
 
+    class func filterEventsByCurrentUser() -> [Event] {
+        
+        var returnArray: [Event] = []
+        for event in FireBaseDataManager.sharedInstance.events {
+            if event.isCurrentPersonAlreadyIn() {
+                returnArray.append(event)
+            }
+        }
+        return returnArray
+    }
 }

@@ -101,10 +101,10 @@ class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
     
     func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
         
-        var region: MKCoordinateRegion = self.mapView.region
+        var region: MKCoordinateRegion = mapView.region
         region.center = (userLocation.location?.coordinate)!
         region.span = MKCoordinateSpanMake(0.4, 0.4)
-        self.mapView.setRegion(region, animated: false)
+        mapView.setRegion(region, animated: false)
         
         GPSLocationManager.sharedInstance.userLocation = userLocation.location
     }
@@ -138,7 +138,7 @@ class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
             }
             if let index = Int(subTitle!) {
                 aPinView.tag = index
-                let event = self.events[aPinView.tag]
+                let event = events[aPinView.tag]
                 if let image = UIImage(named: event.sport.lowercaseString+"PinBlanc") {
                     aPinView.image = image
                 }
@@ -174,7 +174,7 @@ class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
         
         let eventViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.event, viewControllerId: Ressources.StoryBooardsIdentifiers.eventId) as! MXSEventViewController
         eventViewController.event = events[view.tag]
-        self.navigationController?.pushViewController(eventViewController, animated: true)
+        navigationController?.pushViewController(eventViewController, animated: true)
     }
 }
 

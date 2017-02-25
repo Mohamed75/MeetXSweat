@@ -14,12 +14,22 @@ class MXSEmbedCollectionViewController: MXSViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     
+    var isSweatWorking = false
+    
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         titleLabel.backgroundColor = Constants.MainColor.kSpecialColor
+        
+        if isSweatWorking {
+            
+            title = Strings.NavigationTitle.sweatWorking
+            titleLabel.text = "Vos sweatworkings"
+            addBarButtonItem()
+            return
+        }
         
         switch MSXFindManager.sharedInstance.findBy {
             

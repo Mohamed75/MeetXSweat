@@ -58,7 +58,8 @@ enum Strings {
         static let profile      = "PROFILE"
         
         static let conversations = "CONVERSATIONS"
-        static let messages     = "MESSAGES"
+        static let messages      = "MESSAGES"
+        static let sweatWorking  = "SWEATWORKING"
     }
 }
 

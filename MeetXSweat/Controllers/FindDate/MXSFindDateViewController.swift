@@ -31,7 +31,7 @@ class MXSFindDateViewController: MXSCalendarViewController {
         addBarButtonItem()
         addValiderButton()
         
-        self.title = Strings.NavigationTitle.planning
+        title = Strings.NavigationTitle.planning
         
         titleLabel.text = Strings.Calendar.titleText
         titleLabel.textColor = UIColor.whiteColor()
@@ -56,9 +56,9 @@ class MXSFindDateViewController: MXSCalendarViewController {
         calendarView.reloadData()
         
         let currentDate = calendarView.currentCalendarDateSegment()
-        self.setupViewsOfCalendar(currentDate.dateRange.start, endDate: currentDate.dateRange.end)
+        setupViewsOfCalendar(currentDate.dateRange.start, endDate: currentDate.dateRange.end)
         
-        self.automaticallyAdjustsScrollViewInsets = false
+        automaticallyAdjustsScrollViewInsets = false
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -70,7 +70,7 @@ class MXSFindDateViewController: MXSCalendarViewController {
     override func refreshView() {
         
         let currentDate = calendarView.currentCalendarDateSegment()
-        self.setupViewsOfCalendar(currentDate.dateRange.start, endDate: currentDate.dateRange.end)
+        setupViewsOfCalendar(currentDate.dateRange.start, endDate: currentDate.dateRange.end)
         calendarView.reloadData()
     }
     
@@ -80,7 +80,7 @@ class MXSFindDateViewController: MXSCalendarViewController {
         FindDateManager.sharedInstance.dates = calendarView.selectedDates
         
         let viewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findSport, viewControllerId: Ressources.StoryBooardsIdentifiers.embedSportsId)
-        self.navigationController?.pushViewController(viewController, animated: true)
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     
@@ -93,16 +93,24 @@ class MXSFindDateViewController: MXSCalendarViewController {
     
     
     @IBAction func next(sender: UIButton) {
-        self.calendarView.scrollToNextSegment() {
-            let currentSegmentDates = self.calendarView.currentCalendarDateSegment()
-            self.setupViewsOfCalendar(currentSegmentDates.dateRange.start, endDate: currentSegmentDates.dateRange.end)
+        calendarView.scrollToNextSegment() { [weak self] in
+            
+            guard let this = self else {
+                return
+            }
+            let currentSegmentDates = this.calendarView.currentCalendarDateSegment()
+            this.setupViewsOfCalendar(currentSegmentDates.dateRange.start, endDate: currentSegmentDates.dateRange.end)
         }
     }
     
     @IBAction func previous(sender: UIButton) {
-        self.calendarView.scrollToPreviousSegment() {
-            let currentSegmentDates = self.calendarView.currentCalendarDateSegment()
-            self.setupViewsOfCalendar(currentSegmentDates.dateRange.start, endDate: currentSegmentDates.dateRange.end)
+        calendarView.scrollToPreviousSegment() { [weak self] in
+            
+            guard let this = self else {
+                return
+            }
+            let currentSegmentDates = this.calendarView.currentCalendarDateSegment()
+            this.setupViewsOfCalendar(currentSegmentDates.dateRange.start, endDate: currentSegmentDates.dateRange.end)
         }
     }
 
