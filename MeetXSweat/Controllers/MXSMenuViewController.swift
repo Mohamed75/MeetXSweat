@@ -183,12 +183,18 @@ class MXSMenuViewController: UITableViewController {
             let conversationsViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.conversation, viewControllerId: Ressources.StoryBooardsIdentifiers.conversationId)
             evo_drawerController!.centerViewController = UINavigationController(rootViewController: conversationsViewController)
             break
+            
         case 1:
             if let viewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findSport, viewControllerId: Ressources.StoryBooardsIdentifiers.embedSportsId) as? MXSEmbedCollectionViewController {
                 viewController.isSweatWorking = true
                 evo_drawerController!.centerViewController = UINavigationController(rootViewController: viewController)
             }
             break
+            
+        case 2:
+            share()
+            break
+            
         case kMenuItemsTitle.count-1: // last
             User.currentUser.logOut({ [weak self] (done) in
                 
@@ -202,6 +208,7 @@ class MXSMenuViewController: UITableViewController {
             })
             
             break
+            
         default:
             break
         }
@@ -214,5 +221,19 @@ class MXSMenuViewController: UITableViewController {
         if scrollView.contentOffset.y < 0 {
             scrollView.contentOffset = CGPoint(x: 0, y: 0)
         }
+    }
+    
+    
+    func share() {
+        
+        let myWebsite   = NSURL(string: "http://meetxsweat.com")
+        let imgShare    = UIImage(named: "Logo")!
+        let textToShare = "Pouvoir allier vie professionnelle et activité physique est une nécessité pour quiconque souhaite conserver un esprit sain dans un corps sain."
+        
+        let shareItems: [AnyObject] = [textToShare, imgShare, myWebsite!]
+        
+        let activityViewController = UIActivityViewController(activityItems: shareItems, applicationActivities: nil)
+        activityViewController.excludedActivityTypes = [UIActivityTypePrint, UIActivityTypePostToWeibo, UIActivityTypeCopyToPasteboard, UIActivityTypeAddToReadingList, UIActivityTypePostToVimeo, UIActivityTypeAssignToContact, UIActivityTypeSaveToCameraRoll]
+        presentViewController(activityViewController, animated: true, completion: nil)
     }
 }
