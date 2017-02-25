@@ -25,19 +25,24 @@ class MXSMenuViewController: UITableViewController {
     
     var mainNavigationController: UITabBarController!
     
-    var imageView: UIImageView!
+    var userView: UIImageView!
+    
+    
     
     func customSectionHeader(pView: UIView) {
         
-        Utils.addTapGestureToView(pView, target: self, selectorString: "sectionHeaderClicked")
+        for v in pView.subviews {
+            v.removeFromSuperview()
+        }
         
         let userPhoto = UIImageView(frame: CGRect(x: 0, y: 20, width: 80, height: 80))
         userPhoto.image = UIImage(named: Ressources.Images.userPhoto)
         userPhoto.center.x = pView.center.x
         pView.addSubview(userPhoto)
         
-        imageView = UIImageView(frame: CGRect(x: 15, y: 15, width: 50, height: 50))
+        let imageView = UIImageView(frame: CGRect(x: 15, y: 15, width: 50, height: 50))
         userPhoto.addSubview(imageView)
+        UserViewModel.setUserImageView(imageView, person: User.currentUser)
         
         let person = User.currentUser
         
@@ -122,7 +127,7 @@ class MXSMenuViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        UserViewModel.setUserImageView(imageView, person: User.currentUser)
+        customSectionHeader(userView)
     }
     
     
@@ -139,9 +144,10 @@ class MXSMenuViewController: UITableViewController {
         if section == 0 {
             let sectionHeader = UIView(frame: CGRect(x: 0, y: 0, width: imageWidth, height: imageHeight+20))
             sectionHeader.backgroundColor = UIColor.blackColor()
-            let userView = UIImageView(frame: CGRect(x: 0, y: 20, width: imageWidth, height: imageHeight))
+            userView = UIImageView(frame: CGRect(x: 0, y: 20, width: imageWidth, height: imageHeight))
             userView.image = UIImage(named: Ressources.Images.topMap)
             sectionHeader.addSubview(userView)
+            Utils.addTapGestureToView(userView, target: self, selectorString: "sectionHeaderClicked")
             customSectionHeader(userView)
             return sectionHeader
         }

@@ -193,10 +193,10 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
             })
             
             let tuttorialViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.wellCome, viewControllerId: Ressources.StoryBooardsIdentifiers.tuttorialId)
-            self.navigationController?.viewControllers = [tuttorialViewController]
+            navigationController?.viewControllers = [tuttorialViewController]
             
         } else {
-            MXSViewController.showInformatifPopUp("Veuillez choisir votre job, domaine, sport!")
+            MXSViewController.showInformatifPopUp("Veuillez choisir votre job, domaine et sport!")
             MXSPickerView.showPickerView(pickerView, controller: self, scale: false)
         }
     }
