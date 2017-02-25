@@ -36,6 +36,16 @@ enum Ressources {
         static let starUnSelected   = "starClear"
     }
     
+    struct MenuImages {
+        
+        static let adduser  = "adduser"
+        static let info     = "info"
+        static let loupe    = "loupe"
+        static let messages = "messages"
+        static let modifier = "modifier"
+        static let reglage  = "reglage"
+    }
+    
     /**
      *  A struct of constants about the StoryBoards.
      */
@@ -68,6 +78,7 @@ enum Ressources {
         // Profile StoryBoard
         static let profileId        = "MXSProfileViewController"
         static let embedProfilesId  = "MXSEmbedProfilesCollectionViewController"
+        static let ProfileDescriptionId  = "MXSProfileDescriptionViewController"
         
         // WellCome StoryBoard
         static let wellComeId       = "MXSWellComeViewController"
@@ -104,8 +115,7 @@ enum Ressources {
         static let sport        = "MXSSportCollectionCell"
         static let conversation = "MXSConversationCollectionCell"
         static let tuttorial    = "MXSTuttorialCollectionCell"
-        
-        static let menu         = "MXSMenuTableViewCell"
+        static let menu         = "MXSMenuCellView"
     }
     
     struct MapPinIdentifier {

@@ -20,6 +20,10 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
     
     @IBOutlet weak var validerButton: UIButton!
     
+    @IBOutlet weak var findUserImageView: UIImageView!
+    
+    
+    var editable: Bool = false
     
     
     private var savedDomaine = ""
@@ -45,14 +49,19 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
         
         super.viewDidLoad()
         
-        addBarButtonItem()
+        if !editable {
+            addBarButtonItem()
+            title = Strings.NavigationTitle.rechercher
+        } else {
+            titleLabel.hidden = true
+            findUserImageView.hidden = true
+        }
         addValiderButton()
-        
-        self.title = Strings.NavigationTitle.rechercher
         
         titleLabel.textColor = Constants.MainColor.kSpecialColor
         titleLabel.layer.borderColor = Constants.MainColor.kSpecialColor.CGColor
         titleLabel.layer.borderWidth = 1
+        
         
         customLabel(metierLabel)
         Utils.addTapGestureToView(metierLabel, target: self, selectorString: "selectMetierLabel")
@@ -63,8 +72,13 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
         
         MXSPickerView.initPickerView(pickerView, controller: self, scale: true)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Constants.FBNotificationSelector.domaines, name: Constants.FBNotificationName.domaines, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Constants.FBNotificationSelector.professions, name: Constants.FBNotificationName.professions, object: nil)
+        if !editable {
+            
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: Constants.FBNotificationSelector.domaines, name: Constants.FBNotificationName.domaines, object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: Constants.FBNotificationSelector.professions, name: Constants.FBNotificationName.professions, object: nil)
+        } else {
+            refreshView()
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -104,7 +118,10 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
         domaineLabel.backgroundColor = UIColor.whiteColor()
         
         dataArray = FireBaseDataManager.sharedInstance.professions
-        if self.navigationController?.visibleViewController == self  && self.tabBarController?.selectedIndex == 0 {
+        if navigationController?.visibleViewController == self  && tabBarController?.selectedIndex == 0 {
+            MXSPickerView.showPickerView(pickerView, controller: self, scale: true)
+        }
+        if editable {
             MXSPickerView.showPickerView(pickerView, controller: self, scale: true)
         }
     }
@@ -118,7 +135,10 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
         metierLabel.backgroundColor = UIColor.whiteColor()
         
         dataArray = FireBaseDataManager.sharedInstance.domaines
-        if self.navigationController?.visibleViewController == self && self.tabBarController?.selectedIndex == 0 {
+        if navigationController?.visibleViewController == self && tabBarController?.selectedIndex == 0 {
+            MXSPickerView.showPickerView(pickerView, controller: self, scale: true)
+        }
+        if editable {
             MXSPickerView.showPickerView(pickerView, controller: self, scale: true)
         }
     }
@@ -192,7 +212,19 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
     
     override func validatButtonClicked(sender: AnyObject) {
         if !savedMetier.isEmpty || !savedDomaine.isEmpty {
-            validerButton.sendActionsForControlEvents(.TouchUpInside)
+            if !editable {
+                validerButton.sendActionsForControlEvents(.TouchUpInside)
+            } else {
+                
+                if !savedMetier.isEmpty {
+                    User.currentUser.profession = savedMetier
+                }
+                if !savedDomaine.isEmpty  {
+                    User.currentUser.domaine = savedDomaine
+                }
+                User.currentUser.updatePersonOnDataBase(nil)
+                navigationController?.popViewControllerAnimated(true)
+            }
         }
     }
     

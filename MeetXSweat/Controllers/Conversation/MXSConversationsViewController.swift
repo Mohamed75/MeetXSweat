@@ -18,19 +18,19 @@ class MXSConversationsViewController: MXSViewController {
         
         super.viewDidLoad()
         
-        self.title = Strings.NavigationTitle.conversations
+        title = Strings.NavigationTitle.conversations
         
-        self.titleLabel.backgroundColor = Constants.MainColor.kSpecialColor
+        titleLabel.backgroundColor = Constants.MainColor.kSpecialColor
         
-        let conversationsCollectionViewController = self.childViewControllers.first as? MXSConversationsCollectionViewController
+        let conversationsCollectionViewController = childViewControllers.first as? MXSConversationsCollectionViewController
         conversationsCollectionViewController?.conversations = ConversationsDataManager.sharedInstance.conversations
         
-        self.addBarButtonItem()
+        addBarButtonItem()
     }
     
     override func refreshView() {
         
-        if let conversationsCollectionViewController = self.childViewControllers.first as? MXSConversationsCollectionViewController {
+        if let conversationsCollectionViewController = childViewControllers.first as? MXSConversationsCollectionViewController {
             conversationsCollectionViewController.conversations = ConversationsDataManager.sharedInstance.conversations
             conversationsCollectionViewController.collectionView?.reloadData()
         }

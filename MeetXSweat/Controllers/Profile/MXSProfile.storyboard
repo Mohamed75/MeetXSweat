@@ -4,6 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Profile View Controller-->
@@ -65,6 +66,28 @@
                                     <action selector="contacterButtonClicked:" destination="8FQ-vv-FF8" eventType="touchUpInside" id="r3E-lQ-qlP"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wx8-3t-sb3">
+                                <rect key="frame" x="341" y="248" width="17" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Wx8-3t-sb3" secondAttribute="height" multiplier="1:1" id="YvZ-Cv-uxE"/>
+                                    <constraint firstAttribute="height" constant="17" id="uet-jT-cPO"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="crayon"/>
+                                <connections>
+                                    <action selector="professionButtonClicked:" destination="8FQ-vv-FF8" eventType="touchUpInside" id="D2x-hc-4O2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Oi-cm-rt6">
+                                <rect key="frame" x="341" y="283.5" width="17" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="8Oi-cm-rt6" secondAttribute="height" multiplier="1:1" id="Hqb-FY-YNl"/>
+                                    <constraint firstAttribute="height" constant="17" id="Woj-ni-8jT"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="crayon"/>
+                                <connections>
+                                    <action selector="descriptionButtonClicked:" destination="8FQ-vv-FF8" eventType="touchUpInside" id="n0K-oc-IE8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -72,6 +95,7 @@
                             <constraint firstItem="7Dx-Vy-X9M" firstAttribute="centerY" secondItem="J73-h0-RtU" secondAttribute="centerY" constant="1" id="6TJ-ZM-3lf"/>
                             <constraint firstItem="7Dx-Vy-X9M" firstAttribute="centerX" secondItem="J73-h0-RtU" secondAttribute="centerX" id="Bh7-OQ-olq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="awL-xZ-jYc" secondAttribute="trailing" constant="-20" id="EXq-9W-ran"/>
+                            <constraint firstItem="8Oi-cm-rt6" firstAttribute="leading" secondItem="DPK-dQ-Pvv" secondAttribute="trailing" constant="20" id="F5H-kM-aYO"/>
                             <constraint firstItem="jRy-RI-Eq2" firstAttribute="top" secondItem="awL-xZ-jYc" secondAttribute="bottom" constant="50" id="H8D-6V-Kax"/>
                             <constraint firstItem="awL-xZ-jYc" firstAttribute="width" secondItem="awL-xZ-jYc" secondAttribute="height" multiplier="62:18" id="Hfj-Lv-2dB"/>
                             <constraint firstItem="4UA-tR-16g" firstAttribute="top" secondItem="PED-52-yHT" secondAttribute="bottom" constant="10" id="IR6-Bg-p8a"/>
@@ -83,23 +107,72 @@
                             <constraint firstItem="jRy-RI-Eq2" firstAttribute="centerX" secondItem="9KZ-bQ-Pzz" secondAttribute="centerX" id="TZx-0g-NVC"/>
                             <constraint firstItem="DPK-dQ-Pvv" firstAttribute="centerX" secondItem="9KZ-bQ-Pzz" secondAttribute="centerX" id="XjB-Oj-ccw"/>
                             <constraint firstItem="PED-52-yHT" firstAttribute="top" secondItem="I65-I4-SWS" secondAttribute="bottom" constant="10" id="d9n-gQ-Xcf"/>
+                            <constraint firstItem="Wx8-3t-sb3" firstAttribute="leading" secondItem="jRy-RI-Eq2" secondAttribute="trailing" constant="20" id="mn5-ir-iYq"/>
                             <constraint firstItem="awL-xZ-jYc" firstAttribute="leading" secondItem="9KZ-bQ-Pzz" secondAttribute="leadingMargin" constant="-20" id="mrK-ip-BR1"/>
                             <constraint firstItem="PED-52-yHT" firstAttribute="centerX" secondItem="9KZ-bQ-Pzz" secondAttribute="centerX" id="n3d-nf-IEj"/>
                             <constraint firstItem="DPK-dQ-Pvv" firstAttribute="top" secondItem="jRy-RI-Eq2" secondAttribute="bottom" constant="15" id="nX5-Uu-i2e"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Wx8-3t-sb3" secondAttribute="trailing" constant="50" id="swL-2Q-Hgx"/>
                             <constraint firstItem="I65-I4-SWS" firstAttribute="top" secondItem="DPK-dQ-Pvv" secondAttribute="bottom" constant="20" id="tL2-xr-V19"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8Oi-cm-rt6" secondAttribute="trailing" constant="50" id="tjD-jZ-Glg"/>
+                            <constraint firstItem="Wx8-3t-sb3" firstAttribute="bottom" secondItem="jRy-RI-Eq2" secondAttribute="bottom" id="uNp-xg-gWT"/>
                             <constraint firstItem="J73-h0-RtU" firstAttribute="top" secondItem="kdG-Lp-AGD" secondAttribute="bottom" constant="44" id="y4c-oG-yd5"/>
+                            <constraint firstItem="8Oi-cm-rt6" firstAttribute="bottom" secondItem="DPK-dQ-Pvv" secondAttribute="bottom" id="zV0-hz-X3b"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="swL-2Q-Hgx"/>
+                                <exclude reference="tjD-jZ-Glg"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="contactButton" destination="PED-52-yHT" id="Nds-rb-wPC"/>
+                        <outlet property="descriptionButton" destination="8Oi-cm-rt6" id="oOo-jf-Z0z"/>
                         <outlet property="descriptionLabel" destination="DPK-dQ-Pvv" id="FWB-BW-xoS"/>
                         <outlet property="imageView" destination="7Dx-Vy-X9M" id="dDG-5C-Ata"/>
                         <outlet property="nameLabel" destination="jRy-RI-Eq2" id="SQv-WE-XmP"/>
+                        <outlet property="professionButton" destination="Wx8-3t-sb3" id="Tyc-6E-2X0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lPj-dD-hqT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="259" y="348"/>
+        </scene>
+        <!--Profile Description View Controller-->
+        <scene sceneID="mhc-mc-f6D">
+            <objects>
+                <viewController storyboardIdentifier="MXSProfileDescriptionViewController" id="3xf-fy-uiP" customClass="MXSProfileDescriptionViewController" customModule="MeetXSweat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="E8v-of-5EO"/>
+                        <viewControllerLayoutGuide type="bottom" id="V8M-AL-jLG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Dx8-kH-aJM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mRz-eD-fAi">
+                                <rect key="frame" x="20" y="40" width="560" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mRz-eD-fAi" firstAttribute="height" secondItem="Dx8-kH-aJM" secondAttribute="height" multiplier="1:2" id="HF4-QA-sNk"/>
+                            <constraint firstItem="mRz-eD-fAi" firstAttribute="leading" secondItem="Dx8-kH-aJM" secondAttribute="leadingMargin" id="bV0-ES-lMT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mRz-eD-fAi" secondAttribute="trailing" id="fQu-Yd-fVp"/>
+                            <constraint firstItem="mRz-eD-fAi" firstAttribute="top" secondItem="E8v-of-5EO" secondAttribute="bottom" constant="20" id="roo-nF-mUK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="mRz-eD-fAi" id="d7h-MO-mRv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w69-IY-isN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="349" y="1057"/>
         </scene>
         <!--Events Collection View Controller-->
         <scene sceneID="me3-Go-R2Z">
@@ -166,5 +239,6 @@
     <resources>
         <image name="TopMap" width="310" height="90"/>
         <image name="UserPhoto" width="95" height="95"/>
+        <image name="crayon" width="7" height="7"/>
     </resources>
 </document>

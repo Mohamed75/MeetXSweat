@@ -46,6 +46,11 @@ class MXSPickerView {
             
             drawerController.gestureCompletionBlock = { (drawerController, gestureRecognizer) -> Void in
                 
+                let velocity = (gestureRecognizer as! UIPanGestureRecognizer).velocityInView(drawerController.view)
+                if fabs(velocity.y) > fabs(velocity.x) {
+                    return
+                }
+                
                 if let tabBarController = controller.tabBarController {
                     if tabBarController.selectedIndex != 0 {
                         return
@@ -69,7 +74,13 @@ class MXSPickerView {
     static func showPickerView(pickerView: UIPickerView, controller: UIViewController, scale: Bool) {
         
         emptyTextField.becomeFirstResponder()
-        controller.tabBarController?.view.addSubview(pickerView)
+        var editable = false
+        if let aTabBarController = controller.tabBarController {
+            aTabBarController.view.addSubview(pickerView)
+        } else {
+            controller.view.addSubview(pickerView)
+            editable = true
+        }
         
         let x = (ScreenSize.currentWidth-pickerView.frame.size.width)/2
         if (scale) {
@@ -88,9 +99,15 @@ class MXSPickerView {
         }
         
         if pickerView.subviews.count > 2 {
+            
             pickerView.subviews[2].removeFromSuperview()
             let selectorIndicator = pickerView.subviews[1]
-            selectorIndicator.frame = CGRect(x: x*(1/kPickerViewScale), y: selectorIndicator.frame.origin.y, width: pickerView.frame.size.width, height: 35)
+            
+            var specialHeight: CGFloat = 35
+            if editable {
+                specialHeight = 28
+            }
+            selectorIndicator.frame = CGRect(x: x*(1/kPickerViewScale), y: selectorIndicator.frame.origin.y, width: pickerView.frame.size.width, height: specialHeight)
             selectorIndicator.backgroundColor = Constants.MainColor.kSpecialColorClear
             pickerView.insertSubview(selectorIndicator, atIndex: 0)
         }

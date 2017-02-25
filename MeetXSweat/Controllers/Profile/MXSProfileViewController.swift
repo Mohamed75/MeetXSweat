@@ -39,6 +39,8 @@ class MXSProfileViewController: MXSViewController, UIImagePickerControllerDelega
     private var updateUserImage = false
     
     
+    @IBOutlet weak var professionButton: UIButton!
+    @IBOutlet weak var descriptionButton: UIButton!
     
     
     override func viewDidLoad() {
@@ -52,8 +54,24 @@ class MXSProfileViewController: MXSViewController, UIImagePickerControllerDelega
         UserViewModel.setUserImage(imageView, person: person)
         
         if editable {
+            addBarButtonItem()
             Utils.addTapGestureToView(imageView, target: self, selectorString: "userImageViewClicked")
+            contactButton.hidden = true
+        } else {
+            professionButton.hidden     = true
+            descriptionButton.hidden    = true
         }
+        
+        if let eventsCollectionViewController = childViewControllers[0] as? MXSEventsCollectionViewController {
+            
+            eventsCollectionViewController.events = person.getEvents()
+            eventsCollectionViewController.fromProfileViewController = true
+        }
+        contactButton.setTitleColor(Constants.MainColor.kSpecialColor, forState: .Normal)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
         let text = person.aFullName()
         let professionDomaine = person.professionDomaine()
@@ -66,13 +84,6 @@ class MXSProfileViewController: MXSViewController, UIImagePickerControllerDelega
         
         
         descriptionLabel.text = person.personDescription
-        
-        if let eventsCollectionViewController = childViewControllers[0] as? MXSEventsCollectionViewController {
-            
-            eventsCollectionViewController.events = person.getEvents()
-            eventsCollectionViewController.fromProfileViewController = true
-        }
-        contactButton.setTitleColor(Constants.MainColor.kSpecialColor, forState: .Normal)
     }
     
     func userImageViewClicked() {
@@ -150,5 +161,22 @@ class MXSProfileViewController: MXSViewController, UIImagePickerControllerDelega
         chatViewController.conversation = conversation
         self.navigationController?.pushViewController(chatViewController, animated: true)
         //self.presentViewController(chatViewController, animated: true, completion: nil)
+    }
+    
+    @IBAction func professionButtonClicked(sender: AnyObject) {
+        
+        if let profileDescrtiptionViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findProfile, viewControllerId: Ressources.StoryBooardsIdentifiers.findProfileId) as? MXSFindProfileViewController {
+            profileDescrtiptionViewController.editable = true
+            navigationController?.pushViewController(profileDescrtiptionViewController, animated: true)
+        }
+    }
+    
+    
+    @IBAction func descriptionButtonClicked(sender: AnyObject) {
+        
+        if let profileDescrtiptionViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.profile, viewControllerId: Ressources.StoryBooardsIdentifiers.ProfileDescriptionId) as? MXSProfileDescriptionViewController {
+            profileDescrtiptionViewController.person = person
+            navigationController?.pushViewController(profileDescrtiptionViewController, animated: true)
+        }
     }
 }

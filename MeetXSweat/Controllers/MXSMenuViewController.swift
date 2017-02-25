@@ -10,46 +10,107 @@ import UIKit
 import DrawerController
 
 
-private let kMenuItemsTitle = ["Home", "Messages", "Log out"]
-
+private let kMenuItemsTitle = ["Mes messages", "Mes sweatworking", "Invitez des amis","Log out"]
+private let kMenuItemsDesc  = ["Je construis mon réseau", "Mon historique d'activité", "J'élargie mon perimetre", "Je me déconnecte"]
+private let kMenuItemsImage = ["messages", "loupe", "adduser"]
 
 private let imageWidth  = (ScreenSize.currentWidth > ScreenSize.iphone6Width) ? ScreenSize.currentWidth-130 : (ScreenSize.currentWidth == ScreenSize.iphone6Width) ? ScreenSize.currentWidth-90 : ScreenSize.currentWidth-40
-private let imageHeight: CGFloat = 170.0
+private let imageHeight: CGFloat = 180.0
+
+
 
 
 
 class MXSMenuViewController: UITableViewController {
     
     var mainNavigationController: UITabBarController!
-    var conversationsNavigationController: UINavigationController!
-    
     
     var imageView: UIImageView!
     
-    func customSectionHeader(view: UIView) {
+    func customSectionHeader(pView: UIView) {
+        
+        Utils.addTapGestureToView(pView, target: self, selectorString: "sectionHeaderClicked")
         
         let userPhoto = UIImageView(frame: CGRect(x: 0, y: 20, width: 80, height: 80))
         userPhoto.image = UIImage(named: Ressources.Images.userPhoto)
-        userPhoto.center.x = view.center.x
-        view.addSubview(userPhoto)
+        userPhoto.center.x = pView.center.x
+        pView.addSubview(userPhoto)
         
         imageView = UIImageView(frame: CGRect(x: 15, y: 15, width: 50, height: 50))
         userPhoto.addSubview(imageView)
+        
+        let person = User.currentUser
+        
+        let nameLabel = UILabel(frame: CGRect(x: 0, y: 110, width: 200, height: 30))
+        nameLabel.backgroundColor = UIColor.whiteColor()
+        nameLabel.textAlignment = .Center
+        pView.addSubview(nameLabel)
+        nameLabel.text = " " + person.aFullName()
+        nameLabel.font = UIFont.boldSystemFontOfSize(17)
+        nameLabel.textColor = Constants.MainColor.kSpecialColor
+        nameLabel.sizeToFit()
+        nameLabel.frame.size.width += 20
+        nameLabel.center.x = pView.center.x
+        nameLabel.layer.cornerRadius = 5
+        nameLabel.clipsToBounds = true
+        
+        
+        
+        let professionLabel = UILabel(frame: CGRect(x: 0, y: nameLabel.frame.origin.y+30, width: 200, height: 30))
+        professionLabel.backgroundColor = UIColor.whiteColor()
+        professionLabel.textAlignment = .Center
+        pView.addSubview(professionLabel)
+        professionLabel.text = " " + person.professionDomaine()
+        professionLabel.font = UIFont.systemFontOfSize(16)
+        professionLabel.textColor = Constants.MainColor.kDefaultTextColor
+        professionLabel.sizeToFit()
+        professionLabel.frame.size.width += 20
+        professionLabel.center.x = pView.center.x
+        professionLabel.layer.cornerRadius = 5
+        professionLabel.clipsToBounds = true
+        
+        let profileButton = UIButton(frame: CGRect(x: imageWidth-55, y: 5, width: 40, height: 40))
+        profileButton.addTarget(self, action: #selector(profileButtonClicked), forControlEvents: .TouchUpInside)
+        profileButton.setImage(UIImage(named: Ressources.MenuImages.modifier), forState: .Normal)
+        profileButton.backgroundColor = UIColor.whiteColor()
+        profileButton.layer.cornerRadius = 20
+        profileButton.clipsToBounds = true
+        pView.addSubview(profileButton)
     }
     
+    func profileButtonClicked(sender: AnyObject) {
+        
+        let profileViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.profile, viewControllerId: Ressources.StoryBooardsIdentifiers.profileId) as! MXSProfileViewController
+        profileViewController.person = User.currentUser
+        profileViewController.editable = true
+        evo_drawerController!.centerViewController = UINavigationController(rootViewController: profileViewController)
+        
+        evo_drawerController?.closeDrawerAnimated(true, completion: nil)
+    }
+    
+    func sectionHeaderClicked() {
+        evo_drawerController!.centerViewController = mainNavigationController
+        evo_drawerController?.closeDrawerAnimated(true, completion: nil)
+        dispatch_later(0.1) { [weak self] in
+            
+            guard let this = self else {
+                return
+            }
+            this.mainNavigationController.viewControllers?.first?.viewWillAppear(false)
+        }
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.separatorStyle    = UITableViewCellSeparatorStyle.None
-    
+        tableView.registerNib(UINib(nibName: "MXSMenuCellView", bundle: nil), forCellReuseIdentifier: Ressources.CellReuseIdentifier.menu)
+        
+        
         view.backgroundColor        = Constants.MainColor.kBackGroundColor
         
         mainNavigationController    = evo_drawerController!.centerViewController as! UITabBarController
-        
-        let conversationsViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.conversation, viewControllerId: Ressources.StoryBooardsIdentifiers.conversationId)
-        conversationsNavigationController = UINavigationController(rootViewController: conversationsViewController)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -62,7 +123,7 @@ class MXSMenuViewController: UITableViewController {
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
         if section == 0 {
-            return imageHeight
+            return imageHeight+20
         }
         return 0
     }
@@ -87,33 +148,39 @@ class MXSMenuViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCellWithIdentifier(Ressources.CellReuseIdentifier.menu)
+        var cell = tableView.dequeueReusableCellWithIdentifier(Ressources.CellReuseIdentifier.menu) as? MXSMenuCellView
         if cell == nil {
-            cell = UITableViewCell(style: .Default, reuseIdentifier: Ressources.CellReuseIdentifier.menu)
+            cell = MXSMenuCellView(style: .Default, reuseIdentifier: Ressources.CellReuseIdentifier.menu)
         }
-        cell?.textLabel?.text = kMenuItemsTitle[indexPath.row]
-        cell?.backgroundColor = Constants.MainColor.kBackGroundColor
-        cell?.textLabel?.textColor = Constants.MainColor.kDefaultTextColor
+        cell?.selectionStyle    = .None
+        cell?.titleLabel.text   = kMenuItemsTitle[indexPath.row]
+        if indexPath.row < kMenuItemsImage.count {
+            cell?.myImageView.image = UIImage(named: kMenuItemsImage[indexPath.row])
+        }
+        cell?.backgroundColor       = Constants.MainColor.kBackGroundColor
+        cell?.titleLabel.textColor  = Constants.MainColor.kSpecialColor
+        if indexPath.row < kMenuItemsDesc.count {
+            cell?.descriptionLabel.text = kMenuItemsDesc[indexPath.row]
+        }
+        
         return cell!
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 100
+        return 80
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         switch indexPath.row {
         case 0:
-            evo_drawerController!.centerViewController = mainNavigationController
+            let conversationsViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.conversation, viewControllerId: Ressources.StoryBooardsIdentifiers.conversationId)
+            evo_drawerController!.centerViewController = UINavigationController(rootViewController: conversationsViewController)
             break
         case 1:
-            evo_drawerController!.centerViewController = conversationsNavigationController
-            if let conversationVC = conversationsNavigationController.viewControllers.first as? MXSViewController {
-                conversationVC.refreshView()
-            }
+            
             break
-        case 2:
+        case kMenuItemsTitle.count-1: // last
             User.currentUser.logOut({ [weak self] (done) in
                 
                 guard let this = self else {
