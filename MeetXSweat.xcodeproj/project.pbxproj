@@ -1281,8 +1281,8 @@
 			baseConfigurationReference = FD9164CA102020F4D5ED2DE5 /* Pods-MeetXSweat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Mohamed boumansour (G728K2KM26)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mohamed boumansour (G728K2KM26)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1296,7 +1296,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MeetXSweat.MeetXSweat;
 				PRODUCT_NAME = MeetXSweat;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "955ac5e8-528d-46d1-b328-a5cd473bb4bd";
 				SWIFT_OBJC_BRIDGING_HEADER = "MeetXSweat/MeetXSweat-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1307,8 +1307,8 @@
 			baseConfigurationReference = 31432F17C675D4F9FF0518AF /* Pods-MeetXSweat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Mohamed boumansour (G728K2KM26)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mohamed boumansour (G728K2KM26)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1321,7 +1321,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MeetXSweat.MeetXSweat;
 				PRODUCT_NAME = MeetXSweat;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "955ac5e8-528d-46d1-b328-a5cd473bb4bd";
 				SWIFT_OBJC_BRIDGING_HEADER = "MeetXSweat/MeetXSweat-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1380,8 +1380,8 @@
 			baseConfigurationReference = B3B786CFF81DADC6EBBEA894 /* Pods-MeetXSweatProd.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Mohamed boumansour (G728K2KM26)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mohamed boumansour (G728K2KM26)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1401,7 +1401,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) -DPROD";
 				PRODUCT_BUNDLE_IDENTIFIER = com.meetxsweat.meetxsweat;
 				PRODUCT_NAME = MeetXSweat;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "770efafa-cbe1-4e10-a8d4-cc939b8bce1e";
 				SWIFT_OBJC_BRIDGING_HEADER = "MeetXSweat/MeetXSweat-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1412,8 +1412,8 @@
 			baseConfigurationReference = 1A5D3A7424A337CE14A9730B /* Pods-MeetXSweatProd.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Mohamed boumansour (G728K2KM26)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mohamed boumansour (G728K2KM26)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1432,7 +1432,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) -DPROD";
 				PRODUCT_BUNDLE_IDENTIFIER = com.meetxsweat.meetxsweat;
 				PRODUCT_NAME = MeetXSweat;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "770efafa-cbe1-4e10-a8d4-cc939b8bce1e";
 				SWIFT_OBJC_BRIDGING_HEADER = "MeetXSweat/MeetXSweat-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
