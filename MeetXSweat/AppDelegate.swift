@@ -29,12 +29,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      **/
     func __initTheDrawerController() {
         
-        let center = self.window?.rootViewController;
+        let center = window?.rootViewController;
         
         let drawerController = DrawerController(centerViewController: center!, leftDrawerViewController: MXSMenuViewController())
         drawerController.closeDrawerGestureModeMask = CloseDrawerGestureMode.panningCenterView
-        self.window!.rootViewController = drawerController
-        self.window!.makeKeyAndVisible()
+        window!.rootViewController = drawerController
+        window!.makeKeyAndVisible()
     }
     
     
@@ -49,9 +49,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         #if PROD
-            let filePath = NSBundle.mainBundle().pathForResource("GoogleServiceProd-Info", ofType: "plist")
+            let filePath = Bundle.main.path(forResource: "GoogleServiceProd-Info", ofType: "plist")
             let options = FIROptions(contentsOfFile: filePath)
-            FIRApp.configureWithOptions(options)
+            FIRApp.configure(with: options!)
         #else
             FIRApp.configure()
         #endif
