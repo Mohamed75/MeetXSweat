@@ -26,9 +26,9 @@ class MXSViewController: UIViewController {
         */
         super.viewDidLoad()
         
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
-        self.view.backgroundColor = Constants.MainColor.kBackGroundColor
+        view.backgroundColor = Constants.MainColor.kBackGroundColor
     }
     
     func addBarButtonItem() {
@@ -51,11 +51,11 @@ class MXSViewController: UIViewController {
     
     func togleMenuButton() {
         
-        if self.evo_drawerController!.openSide == .none {
+        if evo_drawerController!.openSide == .none {
             
-            self.evo_drawerController?.openDrawerSide(DrawerSide.left, animated: true, completion: nil)
+            evo_drawerController?.openDrawerSide(DrawerSide.left, animated: true, completion: nil)
         } else {
-            self.evo_drawerController?.closeDrawer(animated: true, completion: nil)
+            evo_drawerController?.closeDrawer(animated: true, completion: nil)
         }
     }
     
@@ -65,7 +65,7 @@ class MXSViewController: UIViewController {
     
     func endEditing() {
         
-        self.view.endEditing(true)
+        view.endEditing(true)
     }
     
     
@@ -138,7 +138,7 @@ class MXSViewController: UIViewController {
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
             let addEventViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.main, viewControllerId: Ressources.StoryBooardsIdentifiers.addEvent)
-            self.evo_drawerController!.present(addEventViewController, animated: true, completion: nil)
+            evo_drawerController!.present(addEventViewController, animated: true, completion: nil)
         }
     }
 }
