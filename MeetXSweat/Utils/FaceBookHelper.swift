@@ -73,7 +73,7 @@ class FaceBookHelper {
             guard let this = self else {
                 return
             }
-            //NSInvalidArgumentException
+            
             if granted
             {
                 let accounts = ACAccountStore().accounts(with: facebookAccountType)
@@ -100,7 +100,12 @@ class FaceBookHelper {
     
     func logIn(_ delegate: LogInFBDelegate) {
         
-        if let systemVersion = Double(UIDevice.current.systemVersion) {
+        var systemVersion = UIDevice.current.systemVersion
+        let systemVersions = systemVersion.components(separatedBy: ".")
+        if systemVersions.count > 2 {
+            systemVersion = systemVersions.first! + "." + systemVersions[1]
+        }
+        if let systemVersion = Float(systemVersion) {
         
             if systemVersion > 10.0 {
                 ACAccountStore().requestAccessToAccounts(with: facebookAccountType, options: nil, completion: logInblock(delegate))
