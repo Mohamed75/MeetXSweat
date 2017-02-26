@@ -20,7 +20,7 @@ private let getUserInfoUrl  = URL(string: "https://graph.facebook.com/me")
 // initialisation
 private let permessionArray = ["public_profile", "email", "user_friends", "user_about_me"]
 private let faceBookApiKey  = getValueFromInfoPlist("FacebookAppID") as! String
-private let options = [ACFacebookAppIdKey: faceBookApiKey, ACFacebookPermissionsKey: permessionArray, ACFacebookAudienceKey:ACFacebookAudienceFriends] as [AnyHashable : Any]
+private let fbOptions = [ACFacebookAppIdKey: faceBookApiKey, ACFacebookPermissionsKey: permessionArray] as [AnyHashable : Any]
 
 
 private let faceBookTypeId = ACAccountTypeIdentifierFacebook
@@ -35,6 +35,8 @@ private let fbController    = "FBSDKContainerViewController"
 protocol LogInFBDelegate {
     func logInFBSuccess(_ data: NSDictionary?)
 }
+
+
 
 
 class FaceBookHelper {
@@ -71,10 +73,9 @@ class FaceBookHelper {
             guard let this = self else {
                 return
             }
-            
+            //NSInvalidArgumentException
             if granted
             {
-                let facebookAccountType = ACAccountStore().accountType(withAccountTypeIdentifier: faceBookTypeId)
                 let accounts = ACAccountStore().accounts(with: facebookAccountType)
                 if let facebookAccount = accounts?.last as? ACAccount {
                     FaceBookHelper.getUserInfo(facebookAccount.credential.oauthToken!, delegate: delegate)
@@ -99,7 +100,14 @@ class FaceBookHelper {
     
     func logIn(_ delegate: LogInFBDelegate) {
         
-        ACAccountStore().requestAccessToAccounts(with: facebookAccountType, options: nil, completion: logInblock(delegate))
+        if let systemVersion = Double(UIDevice.current.systemVersion) {
+        
+            if systemVersion > 10.0 {
+                ACAccountStore().requestAccessToAccounts(with: facebookAccountType, options: nil, completion: logInblock(delegate))
+            } else {
+                ACAccountStore().requestAccessToAccounts(with: facebookAccountType, options: fbOptions, completion: logInblock(delegate))
+            }
+        }
     }
     
     
