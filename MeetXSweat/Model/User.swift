@@ -10,7 +10,7 @@ import Firebase
 
 
 
-typealias CompletionSuccessBlock = (success: Bool) -> Void
+typealias CompletionSuccessBlock = (_ success: Bool) -> Void
 
 
 
@@ -23,7 +23,7 @@ class User: Person {
     
     
     
-    func initFromFBData(data: NSDictionary, completion: CompletionSuccessBlock) {
+    func initFromFBData(_ data: NSDictionary, completion: @escaping CompletionSuccessBlock) {
         
         name = data["first_name"] as! String
         if let alastName = data["last_name"] {
@@ -33,11 +33,11 @@ class User: Person {
             email = anemail as! String
         }
         
-        if let data3 = data["picture"] {
+        if let data3 = data["picture"] as? NSDictionary {
         
-            if let data2 = data3["data"] {
+            if let data2 = data3["data"] as? NSDictionary {
                 
-                if let url = data2!["url"] {
+                if let url = data2["url"] {
                     pictureUrl = url as! String
                 }
             }
@@ -58,10 +58,10 @@ class User: Person {
     }
     
     
-    func initFromTWData(data: NSDictionary, completion: CompletionSuccessBlock) {
+    func initFromTWData(_ data: NSDictionary, completion: @escaping CompletionSuccessBlock) {
         
         if let fullName = data["name"] as? String  {
-            let nameArray = fullName.componentsSeparatedByString(" ")
+            let nameArray = fullName.components(separatedBy: " ")
             name = nameArray.first!
             if nameArray.count > 1 {
                 lastName = nameArray[1]
@@ -91,7 +91,7 @@ class User: Person {
         saveCustomObject(completion)
     }
     
-    func initFromLKData(data: NSDictionary, completion: CompletionSuccessBlock) {
+    func initFromLKData(_ data: NSDictionary, completion: @escaping CompletionSuccessBlock) {
         
         name = data["firstName"] as! String
         if let alastName = data["lastName"] {
@@ -106,11 +106,11 @@ class User: Person {
             pictureUrl = apictureUrl as! String
         }
         
-        if let data3 = data["positions"] {
+        if let data3 = data["positions"] as? NSDictionary {
          
-            if let dataValues = data3["values"] {
-                if let job = dataValues?.firstObject {
-                    if let work = job!["title"] {
+            if let dataValues = data3["values"] as? NSArray {
+                if let job = dataValues.firstObject as? NSDictionary {
+                    if let work = job["title"] {
                         profession = work as! String
                     }
                 }
@@ -122,7 +122,7 @@ class User: Person {
     }
     
     
-    func initFromGoogleData(data: NSDictionary, completion: CompletionSuccessBlock) {
+    func initFromGoogleData(_ data: NSDictionary, completion: @escaping CompletionSuccessBlock) {
         
         name = data["given_name"] as! String
         if let alastName = data["family_name"] {
@@ -146,18 +146,20 @@ class User: Person {
     }
     
     
-    func createFromEmailData(email: String, password: String, name: String, lastName: String, completion: CompletionSuccessBlock) {
+    func createFromEmailData(_ email: String, password: String, name: String, lastName: String, completion: @escaping CompletionSuccessBlock) {
         
-        FIRAuth.auth()?.createUserWithEmail(email, password: password) { [weak self] (user, error) in
+        FIRAuth.auth()?.createUser(withEmail: email, password: password) { [weak self] (user, error) in
             
             if (error != nil) {
                 
-                switch error!.code {
+                switch error!._code {
                 case 17008:
                     MXSViewController.showInformatifPopUp(Strings.Alert.wrongEmailMesssage)
+                    completion(false)
                 default:
                     if let errorString = error?.localizedDescription {
                         MXSViewController.showInformatifPopUp(errorString)
+                        completion(false)
                     }
                 }
                 
@@ -175,15 +177,15 @@ class User: Person {
         }
     }
     
-    func initFromEmailData(email: String, password: String, completion: CompletionSuccessBlock) {
+    func initFromEmailData(_ email: String, password: String, completion: @escaping CompletionSuccessBlock) {
      
-        FIRAuth.auth()?.signInWithEmail(email, password: password, completion: { [weak self] (user, error) in
+        FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { [weak self] (user, error) in
             
             if (error != nil) {
                 
                 if let errorString = error?.localizedDescription {
                     MXSViewController.showInformatifPopUp(errorString)
-                    completion(success: false)
+                    completion(false)
                 }
                 
             } else {
@@ -200,7 +202,7 @@ class User: Person {
     
    
     // Called when create an new account or logIn
-    private func saveCustomObject(completion: CompletionSuccessBlock)
+    fileprivate func saveCustomObject(_ completion: @escaping CompletionSuccessBlock)
     {
         let object: Person = self
         if object.email.characters.count < 2 { // Should Not happen
@@ -214,7 +216,7 @@ class User: Person {
                     this.email = email
                     object.createPersonOnDataBase({ (done) in
                         this.updatePersonOnDataBase(nil)
-                        completion(success: true)
+                        completion(true)
                     })
                 }else {
                     if let aUser = object as? User {
@@ -231,14 +233,14 @@ class User: Person {
                     return
                 }
                 this.updatePersonOnDataBase(nil)
-                completion(success: true)
+                completion(true)
             })
         }
     }
     
     class func loadCustomObject() -> User
     {
-        let className = FireBaseObject.className(String(self))
+        let className = FireBaseObject.className(String(describing: self))
         if let user = FireBaseObject.loadCustomObjectClassName(className) {
             return user as! User
         } else {
@@ -247,7 +249,7 @@ class User: Person {
     }
     
     
-    func logOut(completion: CompletionDoneBlock) {
+    func logOut(_ completion: @escaping CompletionDoneBlock) {
         
         User.currentUser.isConnected = false
         User.currentUser.updatePersonOnDataBase({ (done) in
@@ -264,12 +266,12 @@ class User: Person {
             User.currentUser.adress     = ""
             User.currentUser.personDescription = ""
             User.currentUser.saveToNSUserDefaults()
-            completion(done: done)
+            completion(done)
         })
     }
     
     
-    func copyToPerson(person: Person) {
+    func copyToPerson(_ person: Person) {
         
         person.name     = User.currentUser.name
         person.lastName = User.currentUser.lastName

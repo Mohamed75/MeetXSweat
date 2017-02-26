@@ -10,47 +10,65 @@ import UIKit
 import JTAppleCalendar
 
 
+private let daySeconds: Double = 24*60*60
+
+
 class MXSCalendarViewController: MXSViewController, JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate  {
     
-    static let formatter = NSDateFormatter()
-    let testCalendar: NSCalendar! = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
+    static let formatter = DateFormatter()
+    var testCalendar = Calendar(identifier: Calendar.Identifier.gregorian)
     
     
-    func configureCalendar(calendar: JTAppleCalendarView) -> (startDate: NSDate, endDate: NSDate, numberOfRows: Int, calendar: NSCalendar) {
+    
+    func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
         
-        testCalendar.timeZone = NSTimeZone(abbreviation: "GMT")!
+        testCalendar.timeZone = TimeZone(abbreviation: "GMT")!
         MXSCalendarViewController.formatter.dateFormat = kDateFormat
         
-        let firstDate = NSDate()
-        let secondDate = firstDate.dateByAddingTimeInterval(12*31*24*60*60)
+        let firstDate = Date()
+        let secondDate = firstDate.addingTimeInterval(12*31*daySeconds) // one year
         let numberOfRows = 6
-        let aCalendar = NSCalendar.currentCalendar() // Properly configure your calendar to your time zone here
+        let aCalendar = Calendar.current // Properly configure your calendar to your time zone here
         
-        return (startDate: firstDate, endDate: secondDate, numberOfRows: numberOfRows, calendar: aCalendar)
+        return ConfigurationParameters(startDate: firstDate,
+                                       endDate: secondDate,
+                                       numberOfRows: numberOfRows,
+                                       calendar: aCalendar,
+                                       generateInDates: .forAllMonths,
+                                       generateOutDates: .tillEndOfGrid,
+                                       firstDayOfWeek: .monday,
+                                       hasStrictBoundaries: true)
     }
     
-    func calendar(calendar: JTAppleCalendarView, isAboutToDisplayCell cell: JTAppleDayCellView, date: NSDate, cellState: CellState) {
+    func setupViewsOfCalendar(from visibleDates: DateSegmentInfo) {
+        
+    }
+
+
+    
+    
+    
+    
+    
+    func calendar(_ calendar: JTAppleCalendarView, willDisplayCell cell: JTAppleDayCellView, date: Date, cellState: CellState) {
+        
         (cell as! MXSCalendarCellView).setupCellBeforeDisplay(cellState, date: date)
     }
     
-    func calendar(calendar: JTAppleCalendarView, didScrollToDateSegmentStartingWithdate startDate: NSDate, endingWithDate endDate: NSDate) {
-        setupViewsOfCalendar(startDate, endDate: endDate)
+    func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
+        setupViewsOfCalendar(from: visibleDates)
     }
     
-    func setupViewsOfCalendar(startDate: NSDate, endDate: NSDate) {
-        
-    }
-    
-    func calendar(calendar: JTAppleCalendarView, didDeselectDate date: NSDate, cell: JTAppleDayCellView?, cellState: CellState) {
+    func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleDayCellView?, cellState: CellState) {
         (cell as! MXSCalendarCellView).cellSelectionChanged(cellState)
     }
     
-    func calendar(calendar: JTAppleCalendarView, didSelectDate date: NSDate, cell: JTAppleDayCellView?, cellState: CellState) {
+    func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleDayCellView?, cellState: CellState) {
         (cell as? MXSCalendarCellView)?.cellSelectionChanged(cellState)
     }
     
-    func calendar(calendar: JTAppleCalendarView, isAboutToResetCell cell: JTAppleDayCellView) {
-        (cell as? MXSCalendarCellView)?.selectedView.hidden = true
+    func calendar(_ calendar: JTAppleCalendarView, willResetCell cell: JTAppleDayCellView) {
+        (cell as? MXSCalendarCellView)?.selectedView.isHidden = true
     }
     
 }

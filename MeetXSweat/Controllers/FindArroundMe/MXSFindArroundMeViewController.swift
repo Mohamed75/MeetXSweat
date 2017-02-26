@@ -27,14 +27,15 @@ class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
     
     func addOverlay() {
         
-        let overlay = MKTileOverlay(URLTemplate: Constants.URL.mapTemplate)
+        let overlay = MKTileOverlay(urlTemplate: Constants.URL.mapTemplate)
         overlay.canReplaceMapContent = true
-        mapView.addOverlay(overlay, level: .AboveLabels)
+        mapView.add(overlay, level: .aboveLabels)
     }
     
-    func addEvents(after: Double) {
+    func addEvents(_ after: Double) {
         
         MXSActivityIndicator.startAnimating()
+        events = FireBaseDataManager.sharedInstance.events
         
         let block = { [weak self] in
             
@@ -73,13 +74,13 @@ class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
         addEvents(4.0)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        MSXFindManager.sharedInstance.findBy = FindBy.ArroundMe
+        MSXFindManager.sharedInstance.findBy = FindBy.arroundMe
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         MXSActivityIndicator.stopAnimating()
         super.viewWillDisappear(animated)
     }
@@ -91,7 +92,7 @@ class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
     
     // Mark: --- MapView ---
     
-    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         guard let tileOverlay = overlay as? MKTileOverlay else {
             return MKOverlayRenderer()
         }
@@ -99,7 +100,7 @@ class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
         return MKTileOverlayRenderer(tileOverlay: tileOverlay)
     }
     
-    func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         
         var region: MKCoordinateRegion = mapView.region
         region.center = (userLocation.location?.coordinate)!
@@ -109,13 +110,13 @@ class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
         GPSLocationManager.sharedInstance.userLocation = userLocation.location
     }
     
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         guard !(annotation is MKUserLocation) else {
             return nil
         }
         
-        var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(Ressources.MapPinIdentifier.eventsId)
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: Ressources.MapPinIdentifier.eventsId)
         if pinView == nil {
             pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: Ressources.MapPinIdentifier.eventsId)
         }
@@ -123,13 +124,13 @@ class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
             pinView!.annotation = annotation
         }
         
-        pinView!.transform = CGAffineTransformMakeScale(1.5, 1.5)
+        pinView!.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
         
         if let aPinView = pinView {
             
             aPinView.canShowCallout = true
-            aPinView.enabled = true
-            let button = UIButton(type: UIButtonType.DetailDisclosure)
+            aPinView.isEnabled = true
+            let button = UIButton(type: UIButtonType.detailDisclosure)
             button.tintColor = Constants.MainColor.kSpecialColor
             aPinView.rightCalloutAccessoryView = button
             
@@ -139,7 +140,7 @@ class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
             if let index = Int(subTitle!) {
                 aPinView.tag = index
                 let event = events[aPinView.tag]
-                if let image = UIImage(named: event.sport.lowercaseString+"PinBlanc") {
+                if let image = UIImage(named: event.sport.lowercased()+"PinBlanc") {
                     aPinView.image = image
                 }
             }
@@ -150,25 +151,25 @@ class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
     }
     
     
-    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         print("Annotation selected")
         let event = self.events[view.tag]
-        if let image = UIImage(named: event.sport.lowercaseString+"Pin") {
+        if let image = UIImage(named: event.sport.lowercased()+"Pin") {
             view.image = image
         }
     }
     
-    func mapView(mapView: MKMapView, didDeselectAnnotationView view: MKAnnotationView) {
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         print("Annotation unselected")
         let event = self.events[view.tag]
-        if let image = UIImage(named: event.sport.lowercaseString+"PinBlanc") {
+        if let image = UIImage(named: event.sport.lowercased()+"PinBlanc") {
             view.image = image
         }
     }
     
-    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
-        if view.isKindOfClass(MKUserLocation) {
+        if view.isKind(of: MKUserLocation.self) {
             return
         }
         
@@ -181,9 +182,9 @@ class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
 
 extension MKAnnotationView {
     
-    public override func layoutSubviews () {
+    open override func layoutSubviews () {
         
-        if (!selected) {
+        if (!isSelected) {
             return
         }
         super.layoutSubviews()
@@ -192,7 +193,7 @@ extension MKAnnotationView {
         }
     }
     
-    func searchViewHierarchy(aPinView: UIView) {
+    func searchViewHierarchy(_ aPinView: UIView) {
         
         for subView in aPinView.subviews {
             if (subView is UILabel) {

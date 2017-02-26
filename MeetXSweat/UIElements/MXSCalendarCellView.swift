@@ -20,19 +20,19 @@ class MXSCalendarCellView: JTAppleDayCellView {
     @IBOutlet weak var imageViewConstraint: NSLayoutConstraint!
     
     
-    private var normalDayCellColor      = UIColor.whiteColor()
-    private var previousDayCellColor    = UIColor(red: 0, green: 0, blue: 0, alpha: 0.05)
-    private var perviousMonthTextColor  = UIColor.blackColor()
+    fileprivate var normalDayCellColor      = UIColor.white
+    fileprivate var previousDayCellColor    = UIColor(red: 0, green: 0, blue: 0, alpha: 0.05)
+    fileprivate var perviousMonthTextColor  = UIColor.black
     
     @IBInspectable var todayColor: UIColor!
     
     lazy var todayDate : String = {
         [weak self] in
-        let aString = self!.c.stringFromDate(NSDate())
+        let aString = self!.c.string(from: Date())
         return aString
         }()
-    lazy var c : NSDateFormatter = {
-        let f = NSDateFormatter()
+    lazy var c : DateFormatter = {
+        let f = DateFormatter()
         f.dateFormat = kCalendarCellDateFormat
         
         return f
@@ -40,18 +40,18 @@ class MXSCalendarCellView: JTAppleDayCellView {
     
     
     // This function was added by me
-    private func myCutoms(cellState: CellState, date: NSDate) {
-        if cellState.dateBelongsTo != .ThisMonth {
+    fileprivate func myCutoms(_ cellState: CellState, date: Date) {
+        if cellState.dateBelongsTo != .thisMonth {
             self.backgroundColor = previousDayCellColor
         }
         
-        selectedView.hidden = true
+        selectedView.isHidden = true
         selectedView.layer.cornerRadius = 0
-        if (c.stringFromDate(date) == todayDate) {
+        if (c.string(from: date) == todayDate) {
             selectedView.layoutIfNeeded()
             selectedView.layer.cornerRadius = selectedView.frame.size.width / 2
-            dayLabel.textColor = UIColor.whiteColor()
-            selectedView.hidden = false
+            dayLabel.textColor = UIColor.white
+            selectedView.isHidden = false
             selectedView.backgroundColor = Constants.MainColor.kSpecialColor
         }
         
@@ -60,16 +60,16 @@ class MXSCalendarCellView: JTAppleDayCellView {
         }
     }
     
-    func setupCellBeforeDisplay(cellState: CellState, date: NSDate) {
+    func setupCellBeforeDisplay(_ cellState: CellState, date: Date) {
         
-        todayColor = UIColor.whiteColor()
+        todayColor = UIColor.white
         
         dayLabel.text =  cellState.text
         
         configureTextColor(cellState)
         
         // Setup Cell Background color
-        self.backgroundColor = c.stringFromDate(date) == todayDate ? todayColor : normalDayCellColor
+        self.backgroundColor = c.string(from: date) == todayDate ? todayColor : normalDayCellColor
         
         myCutoms(cellState, date: date)
         
@@ -86,9 +86,9 @@ class MXSCalendarCellView: JTAppleDayCellView {
     }
     
     
-    func cellSelectionChanged(cellState: CellState) {
+    func cellSelectionChanged(_ cellState: CellState) {
         if cellState.isSelected == true {
-            if selectedView.hidden == true {
+            if selectedView.isHidden == true {
                 configueViewIntoBubbleView(cellState)
                 selectedView.animateWithBounceEffect(withCompletionHandler: nil)
             }
@@ -97,36 +97,36 @@ class MXSCalendarCellView: JTAppleDayCellView {
         }
     }
     
-    private func configureTextColor(cellState: CellState) {
-        if cellState.dateBelongsTo == .ThisMonth {
-            dayLabel.textColor = UIColor.blackColor()
+    fileprivate func configureTextColor(_ cellState: CellState) {
+        if cellState.dateBelongsTo == .thisMonth {
+            dayLabel.textColor = UIColor.black
         } else {
             dayLabel.textColor = perviousMonthTextColor
         }
     }
     
-    private func configureVisibility(cellState: CellState) {
+    fileprivate func configureVisibility(_ cellState: CellState) {
         if
-            cellState.dateBelongsTo == .ThisMonth ||
-                cellState.dateBelongsTo == .PreviousMonthWithinBoundary ||
-                cellState.dateBelongsTo == .FollowingMonthWithinBoundary {
-            self.hidden = false
+            cellState.dateBelongsTo == .thisMonth ||
+                cellState.dateBelongsTo == .previousMonthWithinBoundary ||
+                cellState.dateBelongsTo == .followingMonthWithinBoundary {
+            self.isHidden = false
         } else {
-            self.hidden = false
+            self.isHidden = false
         }
         
     }
     
-    private func configueViewIntoBubbleView(cellState: CellState, animateDeselection: Bool = false) {
+    fileprivate func configueViewIntoBubbleView(_ cellState: CellState, animateDeselection: Bool = false) {
         if cellState.isSelected {
             //self.selectedView.layer.cornerRadius =  self.selectedView.frame.width  / 2
             //self.selectedView.hidden = false
             configureTextColor(cellState)
             
-            if !self.selectedView.hidden == false {
+            if !self.selectedView.isHidden == false {
                 self.imageView.image = UIImage(named: Ressources.SportsImages.starSelected)
             } else {
-                dayLabel.textColor = UIColor.whiteColor()
+                dayLabel.textColor = UIColor.white
             }
             
         } else {

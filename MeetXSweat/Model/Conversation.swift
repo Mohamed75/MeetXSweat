@@ -36,7 +36,7 @@ class Conversation: FireBaseObject {
     }
     
     var messagesQuery: FIRDatabaseReference?
-    func observeMessages(completionHandler:((messages: [Message])->Void)) {
+    func observeMessages(_ completionHandler:@escaping ((_ messages: [Message])->Void)) {
         
         if let conversationRef = ref {
             
@@ -51,10 +51,10 @@ class Conversation: FireBaseObject {
                 let message = Message(snapshot: snapshot)
                 this.messages.append(message)
                 
-                completionHandler(messages: this.messages)
+                completionHandler(this.messages)
             }
             
-            messagesQuery!.queryLimitedToLast(100).observeEventType(.ChildAdded, withBlock: block)
+            messagesQuery!.queryLimited(toLast: 100).observe(.childAdded, with: block)
         }
     }
     
@@ -65,7 +65,7 @@ class Conversation: FireBaseObject {
         }
     }
     
-    func addMessage(text: String, senderId: String, controller: ChatViewController?) {
+    func addMessage(_ text: String, senderId: String, controller: ChatViewController?) {
         
         if let conversationRef = ref { // add message to current conversation
             
@@ -92,7 +92,7 @@ class Conversation: FireBaseObject {
     
     var userIsTypingRef: FIRDatabaseReference!
     var usersTypingQuery: FIRDatabaseQuery!
-    private var localTyping = false
+    fileprivate var localTyping = false
     var isTyping: Bool {
         get {
             return localTyping
@@ -105,14 +105,14 @@ class Conversation: FireBaseObject {
         }
     }
     
-    func observeTyping(senderId: String, completionHandler:((isTyping: Bool)->Void)) {
+    func observeTyping(_ senderId: String, completionHandler:@escaping ((_ isTyping: Bool)->Void)) {
         
         if let conversationRef = ref {
         
             let typingIndicatorRef = conversationRef.child("typingIndicator")
             userIsTypingRef = typingIndicatorRef.child(senderId)
             userIsTypingRef.onDisconnectRemoveValue()
-            usersTypingQuery = typingIndicatorRef.queryOrderedByValue().queryEqualToValue(true)
+            usersTypingQuery = typingIndicatorRef.queryOrderedByValue().queryEqual(toValue: true)
             
             let block: (FIRDataSnapshot) -> Void = { [weak self] (snapshot) in
                 guard let this = self else {
@@ -123,10 +123,10 @@ class Conversation: FireBaseObject {
                     return
                 }
                 
-                completionHandler(isTyping: snapshot.childrenCount > 0)
+                completionHandler(snapshot.childrenCount > 0)
             }
             
-            usersTypingQuery.observeEventType(.Value, withBlock: block)
+            usersTypingQuery.observe(.value, with: block)
         }
     }
     

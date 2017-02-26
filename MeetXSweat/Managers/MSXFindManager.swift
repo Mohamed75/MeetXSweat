@@ -11,10 +11,10 @@ import MapKit
 
 
 enum FindBy: Int {
-    case Profile
-    case Sport
-    case Date
-    case ArroundMe
+    case profile
+    case sport
+    case date
+    case arroundMe
 }
 
 
@@ -26,6 +26,6 @@ class MSXFindManager {
     var findBy: FindBy
     
     init() {
-        findBy = FindBy.Sport
+        findBy = FindBy.sport
     }
 }

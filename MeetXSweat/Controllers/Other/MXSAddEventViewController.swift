@@ -17,15 +17,15 @@ class MXSAddEventViewController: MXSViewController,  UIPickerViewDataSource, UIP
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var sportTextField: UITextField!
     
-    private let datePickerView  = UIDatePicker()
-    private let sportPickerView = UIPickerView()
+    fileprivate let datePickerView  = UIDatePicker()
+    fileprivate let sportPickerView = UIPickerView()
     
-    private let dateFormatter   = NSDateFormatter()
+    fileprivate let dateFormatter   = DateFormatter()
     
-    private let emptyDateTextField  = UITextField()
-    private let emptySportTextField = UITextField()
+    fileprivate let emptyDateTextField  = UITextField()
+    fileprivate let emptySportTextField = UITextField()
     
-    private var sports = FireBaseDataManager.sharedInstance.sports
+    fileprivate var sports = FireBaseDataManager.sharedInstance.sports
     
     
     override func viewDidLoad() {
@@ -42,8 +42,8 @@ class MXSAddEventViewController: MXSViewController,  UIPickerViewDataSource, UIP
         
         dateFormatter.dateFormat = kDateFormat
         
-        datePickerView.minimumDate = NSDate()
-        datePickerView.addTarget(self, action: #selector(MXSAddEventViewController.datePickerValueChanged), forControlEvents: UIControlEvents.ValueChanged)
+        datePickerView.minimumDate = Date()
+        datePickerView.addTarget(self, action: #selector(MXSAddEventViewController.datePickerValueChanged), for: UIControlEvents.valueChanged)
         dateTextField.delegate = self
         
         sportPickerView.delegate    = self
@@ -71,7 +71,7 @@ class MXSAddEventViewController: MXSViewController,  UIPickerViewDataSource, UIP
     }
     
     
-    @IBAction func validerButtonClicked(sender: AnyObject) {
+    @IBAction func validerButtonClicked(_ sender: AnyObject) {
         
         var isAllFieldsFull = true
         if self.nameTextField.text?.characters.count == 0 {
@@ -96,23 +96,23 @@ class MXSAddEventViewController: MXSViewController,  UIPickerViewDataSource, UIP
         }
         
         creatEvent()
-        self.dismissViewControllerAnimated(false, completion: nil)
+        self.dismiss(animated: false, completion: nil)
     }
     
-    @IBAction func closeButtonClicked(sender: AnyObject) {
-        self.dismissViewControllerAnimated(false, completion: nil)
+    @IBAction func closeButtonClicked(_ sender: AnyObject) {
+        self.dismiss(animated: false, completion: nil)
     }
     
-    func datePickerValueChanged(sender:UIDatePicker) {
+    func datePickerValueChanged(_ sender:UIDatePicker) {
         
-        self.dateTextField.text = dateFormatter.stringFromDate(datePickerView.date)
+        self.dateTextField.text = dateFormatter.string(from: datePickerView.date)
     }
     
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         
         switch textField {
         case self.dateTextField:
-            dateTextField.text = dateFormatter.stringFromDate(datePickerView.date)
+            dateTextField.text = dateFormatter.string(from: datePickerView.date)
             emptyDateTextField.becomeFirstResponder()
             return false
         case self.sportTextField:
@@ -128,19 +128,19 @@ class MXSAddEventViewController: MXSViewController,  UIPickerViewDataSource, UIP
     }
     
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return sports.count
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return sports[row]
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         sportTextField.text = sports[row]
     }
 }

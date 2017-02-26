@@ -27,13 +27,13 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
     @IBOutlet weak var letsGoButton: UIButton!
     
     
-    private var dataArray       = FireBaseDataManager.sharedInstance.professions
-    private var selectedButton  = 1 // 1 profession, 2 sport, 3 domaine
-    private let pickerView      = UIPickerView()
+    fileprivate var dataArray       = FireBaseDataManager.sharedInstance.professions
+    fileprivate var selectedButton  = 1 // 1 profession, 2 sport, 3 domaine
+    fileprivate let pickerView      = UIPickerView()
     
     
-    private let imagePicker = UIImagePickerController()
-    private var updateUserImage = false
+    fileprivate let imagePicker = UIImagePickerController()
+    fileprivate var updateUserImage = false
     
     
     
@@ -53,11 +53,11 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
         Utils.addTapGestureToView(view, target: self, selectorString: Constants.SelectorsString.valider)
         
         MXSViewController.customButton(jobButton)
-        jobButton.setTitle(jobButtonText, forState: .Normal)
+        jobButton.setTitle(jobButtonText, for: UIControlState())
         MXSViewController.customButton(domaineButton)
-        domaineButton.setTitle(domaineButtonText, forState: .Normal)
+        domaineButton.setTitle(domaineButtonText, for: UIControlState())
         MXSViewController.customButton(sportButton)
-        sportButton.setTitle(sportButtonText, forState: .Normal)
+        sportButton.setTitle(sportButtonText, for: UIControlState())
         MXSViewController.customButton(letsGoButton)
         
         MXSPickerView.initPickerView(pickerView, controller: self, scale: false)
@@ -66,64 +66,64 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
         
         Utils.addTapGestureToView(userImageView, target: self, selectorString: "userImageViewClicked")   
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Constants.FBNotificationSelector.sports, name: Constants.FBNotificationName.sports, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Constants.FBNotificationSelector.professions, name: Constants.FBNotificationName.professions, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Constants.FBNotificationSelector.domaines, name: Constants.FBNotificationName.domaines, object: nil)
+        NotificationCenter.default.addObserver(self, selector: Constants.FBNotificationSelector.sports, name: NSNotification.Name(rawValue: Constants.FBNotificationName.sports), object: nil)
+        NotificationCenter.default.addObserver(self, selector: Constants.FBNotificationSelector.professions, name: NSNotification.Name(rawValue: Constants.FBNotificationName.professions), object: nil)
+        NotificationCenter.default.addObserver(self, selector: Constants.FBNotificationSelector.domaines, name: NSNotification.Name(rawValue: Constants.FBNotificationName.domaines), object: nil)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         MXSPickerView.subViewPanned(pickerView, controller: self)
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: Constants.FBNotificationName.sports, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: Constants.FBNotificationName.professions, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: Constants.FBNotificationName.domaines, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: Constants.FBNotificationName.sports), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: Constants.FBNotificationName.professions), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: Constants.FBNotificationName.domaines), object: nil)
     }
     
     func userImageViewClicked() {
         
-        let actionSheet = UIAlertController(title: "Image Source", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let actionSheet = UIAlertController(title: "Image Source", message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
         
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
         
-        actionSheet.addAction(UIAlertAction(title: "Camera", style: UIAlertActionStyle.Default, handler: { [weak self] action -> Void in
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: UIAlertActionStyle.default, handler: { [weak self] action -> Void in
             guard let this = self else {
                 return
             }
             this.promptForCamera()
         }))
-        actionSheet.addAction(UIAlertAction(title: "Photo Roll", style: UIAlertActionStyle.Default, handler: { [weak self] action -> Void in
+        actionSheet.addAction(UIAlertAction(title: "Photo Roll", style: UIAlertActionStyle.default, handler: { [weak self] action -> Void in
             guard let this = self else {
                 return
             }
             this.promptForPhotoRoll()
         }))
         
-        self.presentViewController(actionSheet, animated: true, completion: nil)
+        self.present(actionSheet, animated: true, completion: nil)
     }
     
     
     func promptForPhotoRoll() {
         
         imagePicker.allowsEditing = false
-        imagePicker.sourceType = .PhotoLibrary
+        imagePicker.sourceType = .photoLibrary
         
-        presentViewController(imagePicker, animated: true, completion: nil)
+        present(imagePicker, animated: true, completion: nil)
     }
     
     func promptForCamera() {
         
         imagePicker.allowsEditing = false
-        imagePicker.sourceType = .Camera
+        imagePicker.sourceType = .camera
         
-        presentViewController(imagePicker, animated: true, completion: nil)
+        present(imagePicker, animated: true, completion: nil)
     }
     
     // Mark: --- Notifications Observer ---
@@ -150,28 +150,28 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
     
     // Mark: --- Button Clicked ---
     
-    @IBAction func jobButtonClicked(sender: AnyObject) {
+    @IBAction func jobButtonClicked(_ sender: AnyObject) {
         
         selectedButton  = 1
         dataArray = FireBaseDataManager.sharedInstance.professions
         MXSPickerView.showPickerView(pickerView, controller: self, scale: false)
     }
     
-    @IBAction func domaineButtonClcked(sender: AnyObject) {
+    @IBAction func domaineButtonClcked(_ sender: AnyObject) {
         
         selectedButton  = 3
         dataArray = FireBaseDataManager.sharedInstance.domaines
         MXSPickerView.showPickerView(pickerView, controller: self, scale: false)
     }
     
-    @IBAction func sportButtonClicked(sender: AnyObject) {
+    @IBAction func sportButtonClicked(_ sender: AnyObject) {
         
         selectedButton  = 2
         dataArray = FireBaseDataManager.sharedInstance.sports
         MXSPickerView.showPickerView(pickerView, controller: self, scale: false)
     }
     
-    @IBAction func letsGoButtonClicked(sender: AnyObject) {
+    @IBAction func letsGoButtonClicked(_ sender: AnyObject) {
         
         guard let job = jobButton.titleLabel?.text, let sport = sportButton.titleLabel?.text, let domaine = domaineButton.titleLabel?.text else {
             return
@@ -187,7 +187,7 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
                 guard let this = self else {
                     return
                 }
-                if let image = this.userImageView.image where this.updateUserImage {
+                if let image = this.userImageView.image, this.updateUserImage {
                     User.currentUser.setUserImage(image)
                 }
             })
@@ -201,7 +201,7 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
         }
     }
     
-    override func validatButtonClicked(sender: AnyObject) {
+    override func validatButtonClicked(_ sender: AnyObject) {
         MXSPickerView.subViewPanned(pickerView, controller: self)
         
         guard let job = jobButton.titleLabel?.text else {
@@ -221,49 +221,52 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
     
     // Mark: --- ImagePickerController ---
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            userImageView.contentMode = .ScaleAspectFit
+            userImageView.contentMode = .scaleAspectFit
             userImageView.image = pickedImage
             updateUserImage = true
         }
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        dismissViewControllerAnimated(true, completion: nil)
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
     
     
     // Mark: --- PickerView ---
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return dataArray.count
     }
     
     
-    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         
-        let string = dataArray[row]
-        return NSAttributedString(string: string, attributes: [NSForegroundColorAttributeName:UIColor.blackColor()])
+        if row < dataArray.count {
+            let string = dataArray[row]
+            return NSAttributedString(string: string, attributes: [NSForegroundColorAttributeName:UIColor.black])
+        }
+        return nil
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch selectedButton {
         case 1:
-            jobButton.setTitle(dataArray[row], forState: .Normal)
+            jobButton.setTitle(dataArray[row], for: UIControlState())
             break
         case 2:
-            sportButton.setTitle(dataArray[row], forState: .Normal)
+            sportButton.setTitle(dataArray[row], for: UIControlState())
             break
         case 3:
-            domaineButton.setTitle(dataArray[row], forState: .Normal)
+            domaineButton.setTitle(dataArray[row], for: UIControlState())
             break
         default:
             break

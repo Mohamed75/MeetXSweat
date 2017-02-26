@@ -10,7 +10,7 @@ import Foundation
 import Firebase
 
 
-typealias CompletionDoneBlock = (done: Bool) -> Void
+typealias CompletionDoneBlock = (_ done: Bool) -> Void
 
 
 
@@ -42,7 +42,7 @@ class Person: FireBaseObject {
     }
     
     // create or update current user
-    func createPersonOnDataBase(completion: CompletionDoneBlock) {
+    func createPersonOnDataBase(_ completion: @escaping CompletionDoneBlock) {
         
         let personRef = FIRDatabase.database().reference().child("person-items")
         
@@ -56,26 +56,26 @@ class Person: FireBaseObject {
                 this.ref = personRef.childByAutoId()
                 this.ref!.setValue(this.asJson())
                 this.saveToNSUserDefaults()
-                completion(done: true)
+                completion(true)
                 
             } else {
                 print("user already exist")
                 this.updateCurrentPersonFromDB(snapshot)
-                completion(done: true)
+                completion(true)
             }
         }
         
-        let handle = personRef.queryOrderedByChild("email").queryEqualToValue("\(email)")
-            .observeEventType(.Value, withBlock: block)
-        personRef.removeObserverWithHandle(handle)
+        let handle = personRef.queryOrdered(byChild: "email").queryEqual(toValue: "\(email)")
+            .observe(.value, with: block)
+        personRef.removeObserver(withHandle: handle)
     }
     
     // update current user from FireBase
-    private func updateCurrentPersonFromDB(snapshot: FIRDataSnapshot) {
+    fileprivate func updateCurrentPersonFromDB(_ snapshot: FIRDataSnapshot) {
         
         for child in snapshot.children {
             let snapUser = User(snapshot: child as! FIRDataSnapshot)
-            ref = child.ref
+            ref = (child as AnyObject).ref
             copyFromJson(snapUser.asJson())
             User.currentUser.isConnected = true
             saveToNSUserDefaults()
@@ -83,7 +83,7 @@ class Person: FireBaseObject {
     }
     
     // update current user on FireBase
-    func updatePersonOnDataBase(completion: CompletionDoneBlock?) {
+    func updatePersonOnDataBase(_ completion: CompletionDoneBlock?) {
         
         saveToNSUserDefaults()
         FireBaseDataManager.updateCurrentUserInPersons()
@@ -94,7 +94,7 @@ class Person: FireBaseObject {
             guard let aCompletion = completion else {
                 return
             }
-            aCompletion(done: true)
+            aCompletion(true)
             
         } else {
             
@@ -109,25 +109,25 @@ class Person: FireBaseObject {
                     
                     print("user update")
                     for child in snapshot.children {
-                        this.ref = child.ref
+                        this.ref = (child as AnyObject).ref
                         this.ref!.updateChildValues(this.asJson())
                         guard let aCompletion = completion else {
                             return
                         }
-                        aCompletion(done: true)
+                        aCompletion(true)
                     }
                 }
             }
         
-            let handle = personRef.queryOrderedByChild("email").queryEqualToValue("\(email)")
-                .observeEventType(.Value, withBlock: block)
-            personRef.removeObserverWithHandle(handle)
+            let handle = personRef.queryOrdered(byChild: "email").queryEqual(toValue: "\(email)")
+                .observe(.value, with: block)
+            personRef.removeObserver(withHandle: handle)
         }
         
     }
     
     // set current user image
-    func setUserImage(image: UIImage) {
+    func setUserImage(_ image: UIImage) {
         
         FireBaseHelper.saveImage(image, fileName: email, completion:  { [weak self] url in
             
@@ -150,7 +150,7 @@ class Person: FireBaseObject {
                         
                         print("user image update")
                         for child in snapshot.children {
-                            this.ref = child.ref
+                            this.ref = (child as AnyObject).ref
                             this.ref!.updateChildValues(["pictureUrl": url])
                             this.pictureUrl = url
                             this.saveToNSUserDefaults()
@@ -159,9 +159,9 @@ class Person: FireBaseObject {
                     }
                 }
                 
-                let handle = personRef.queryOrderedByChild("email").queryEqualToValue("\(this.email)")
-                    .observeEventType(.Value, withBlock: block)
-                personRef.removeObserverWithHandle(handle)
+                let handle = personRef.queryOrdered(byChild: "email").queryEqual(toValue: "\(this.email)")
+                    .observe(.value, with: block)
+                personRef.removeObserver(withHandle: handle)
             }
         })
         
@@ -178,8 +178,8 @@ class Person: FireBaseObject {
     // email withoutSpecialCharacters
     func getEmailAsId() -> String {
         
-        var returnString = email.stringByReplacingOccurrencesOfString("@", withString: "")
-        returnString = returnString.stringByReplacingOccurrencesOfString(".", withString: "")
+        var returnString = email.replacingOccurrences(of: "@", with: "")
+        returnString = returnString.replacingOccurrences(of: ".", with: "")
         return returnString
     }
     

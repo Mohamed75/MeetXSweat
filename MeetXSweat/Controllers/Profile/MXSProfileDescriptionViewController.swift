@@ -26,10 +26,12 @@ class MXSProfileDescriptionViewController: MXSViewController {
     }
     
     
-    override func validatButtonClicked(sender: AnyObject) {
+    override func validatButtonClicked(_ sender: AnyObject) {
         
         person.personDescription = textView.text
         person.updatePersonOnDataBase(nil)
-        navigationController?.popViewControllerAnimated(true)
+        if let navigationController = navigationController {
+            navigationController.popViewController(animated: true)
+        }
     }
 }

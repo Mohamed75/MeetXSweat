@@ -15,28 +15,28 @@ import DrawerController
 extension UINavigationController {
 
     
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         
-        self.navigationBar.backIndicatorImage = UIImage(named: Ressources.Images.back)?.imageWithRenderingMode(.AlwaysOriginal)
-        self.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: Ressources.Images.back)?.imageWithRenderingMode(.AlwaysOriginal)
+        self.navigationBar.backIndicatorImage = UIImage(named: Ressources.Images.back)?.withRenderingMode(.alwaysOriginal)
+        self.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: Ressources.Images.back)?.withRenderingMode(.alwaysOriginal)
         
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:Constants.MainColor.kBackGroundColor]
         
         self.view.backgroundColor = Constants.MainColor.kBackGroundColor
         
         self.navigationBar.barTintColor = Constants.MainColor.kNavigationBarColor
-        self.navigationBar.translucent = false
+        self.navigationBar.isTranslucent = false
         
         if let aTabBarController = self.tabBarController {
             
             for tab in aTabBarController.tabBar.items!
             {
-                tab.image = tab.image!.imageWithRenderingMode(.AlwaysOriginal)
-                tab.selectedImage = tab.selectedImage!.imageWithRenderingMode(.AlwaysOriginal)
+                tab.image = tab.image!.withRenderingMode(.alwaysOriginal)
+                tab.selectedImage = tab.selectedImage!.withRenderingMode(.alwaysOriginal)
             }
             
-            UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName:Constants.MainColor.kSpecialColor], forState: .Selected)
-            UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName:Constants.MainColor.kSpecialColorClear], forState: .Normal)
+            UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName:Constants.MainColor.kSpecialColor], for: .selected)
+            UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName:Constants.MainColor.kSpecialColorClear], for: UIControlState())
         }
         
         let user = User.currentUser
@@ -50,7 +50,7 @@ extension UINavigationController {
                         return
                     }
                     
-                    if let dico = NSUserDefaults.standardUserDefaults().objectForKey("FirstTime") as? NSDictionary where (dico[user.email] as? String) == "false" {
+                    if let dico = UserDefaults.standard.object(forKey: "FirstTime") as? NSDictionary, (dico[user.email] as? String) == "false" {
                         
                         NSLog("Alleready wellcomed")
                     } else {
@@ -58,10 +58,10 @@ extension UINavigationController {
                         let wellComeViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.wellCome, viewControllerId: Ressources.StoryBooardsIdentifiers.wellComeId)
                         this.viewControllers = [wellComeViewController]
                         
-                        this.navigationBarHidden = false
-                        this.tabBarController?.tabBar.hidden = true
+                        this.isNavigationBarHidden = false
+                        this.tabBarController?.tabBar.isHidden = true
                         
-                        UIApplication.sharedApplication().statusBarStyle = .LightContent
+                        UIApplication.shared.statusBarStyle = .lightContent
                         
                         return
                     }
@@ -88,15 +88,15 @@ extension UINavigationController {
                         this.tabBarController?.selectedIndex = 1
                     }
                     
-                    this.navigationBarHidden = false
-                    this.tabBarController?.tabBar.hidden = false
+                    this.isNavigationBarHidden = false
+                    this.tabBarController?.tabBar.isHidden = false
                     
-                    this.evo_drawerController!.openDrawerGestureModeMask = OpenDrawerGestureMode.PanningCenterView
+                    this.evo_drawerController!.openDrawerGestureModeMask = OpenDrawerGestureMode.panningCenterView
                     
-                    UIApplication.sharedApplication().statusBarStyle = .LightContent
+                    UIApplication.shared.statusBarStyle = .lightContent
                 }
                 
-                dispatch_async(dispatch_get_main_queue(), block)
+                DispatchQueue.main.async(execute: block)
             }
             
         } else {
@@ -111,12 +111,12 @@ extension UINavigationController {
                     let allLoginsViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.main, viewControllerId: Ressources.StoryBooardsIdentifiers.logInId)
                     this.viewControllers = [allLoginsViewController]
                     
-                    this.navigationBarHidden = true
-                    this.tabBarController?.tabBar.hidden = true
+                    this.isNavigationBarHidden = true
+                    this.tabBarController?.tabBar.isHidden = true
                     
-                    this.evo_drawerController!.closeDrawerGestureModeMask = CloseDrawerGestureMode.PanningCenterView
+                    this.evo_drawerController!.closeDrawerGestureModeMask = CloseDrawerGestureMode.panningCenterView
                 }
-                dispatch_async(dispatch_get_main_queue(), block)
+                DispatchQueue.main.async(execute: block)
             }
             
         }
@@ -125,24 +125,24 @@ extension UINavigationController {
     }
     
     
-    override public func viewWillAppear(animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if let firstViewController = self.viewControllers.first as? MXSViewController {
             
             if firstViewController is MXSFindProfileViewController {
-                MSXFindManager.sharedInstance.findBy = FindBy.Profile
+                MSXFindManager.sharedInstance.findBy = FindBy.profile
             }
             if firstViewController is MXSFindSportViewController {
-                MSXFindManager.sharedInstance.findBy = FindBy.Sport
+                MSXFindManager.sharedInstance.findBy = FindBy.sport
             }
             if firstViewController is MXSFindDateViewController {
-                MSXFindManager.sharedInstance.findBy = FindBy.Date
+                MSXFindManager.sharedInstance.findBy = FindBy.date
             }
             if firstViewController is MXSFindArroundMeViewController {
-                MSXFindManager.sharedInstance.findBy = FindBy.ArroundMe
+                MSXFindManager.sharedInstance.findBy = FindBy.arroundMe
             }
-            if firstViewController.isViewLoaded() {
+            if firstViewController.isViewLoaded {
                firstViewController.refreshView()
             }
         }
@@ -150,7 +150,7 @@ extension UINavigationController {
     
     
     func getPreviousViewController() -> UIViewController {
-        if let indexCurrentViewController = self.viewControllers.indexOf(self.visibleViewController!) {
+        if let indexCurrentViewController = self.viewControllers.index(of: self.visibleViewController!) {
             return self.viewControllers[indexCurrentViewController-1]
         }
         return UIViewController()

@@ -50,7 +50,7 @@ class MXSEventViewController: MXSViewController {
     func timeLeft() {
         
         MXSCalendarViewController.formatter.dateFormat = kDateFormat
-        if let timeLeft = MXSCalendarViewController.formatter.dateFromString(event.date)?.timeIntervalSinceNow {
+        if let timeLeft = MXSCalendarViewController.formatter.date(from: event.date)?.timeIntervalSinceNow {
         
             let joures = Int(timeLeft/daySeconds)
             jourLabel.text  = String(joures)
@@ -70,7 +70,7 @@ class MXSEventViewController: MXSViewController {
                 minuteLabel.text = " " + String(minutes)
             }
             
-            let seconds = Int(timeLeft%minuteSeconds)
+            let seconds = Int(timeLeft.truncatingRemainder(dividingBy: minuteSeconds))
             secondLabel.text = String(seconds)
             if seconds < 10 {
                 secondLabel.text = " " + String(seconds)
@@ -88,9 +88,9 @@ class MXSEventViewController: MXSViewController {
     
     func addOverlay() {
         
-        let overlay = MKTileOverlay(URLTemplate: Constants.URL.mapTemplate)
+        let overlay = MKTileOverlay(urlTemplate: Constants.URL.mapTemplate)
         overlay.canReplaceMapContent = true
-        mapView.addOverlay(overlay, level: .AboveLabels)
+        mapView.add(overlay, level: .aboveLabels)
     }
     
     override func viewDidLoad() {
@@ -98,7 +98,7 @@ class MXSEventViewController: MXSViewController {
         super.viewDidLoad()
         
         if ScreenSize.currentWidth < ScreenSize.iphone6Width {
-            self.sportLabel.hidden = true
+            self.sportLabel.isHidden = true
         } else {
             if ScreenSize.currentWidth == ScreenSize.iphone6Width {
                 stackWidthConstraint.constant = -54
@@ -107,7 +107,7 @@ class MXSEventViewController: MXSViewController {
             }
         }
         
-        if let jour = event.getJour(), heure = event.getHeure() {
+        if let jour = event.getJour(), let heure = event.getHeure() {
             dateLabel.text = jour
             heurLabel.text = heure
             timeLeft()
@@ -129,21 +129,21 @@ class MXSEventViewController: MXSViewController {
         
         title = Strings.NavigationTitle.event
             
-        topView.layer.borderColor = Constants.MainColor.kSpecialColor.CGColor
+        topView.layer.borderColor = Constants.MainColor.kSpecialColor.cgColor
         topView.layer.borderWidth = 1
         
-        inscriptionButton.layer.borderColor = Constants.MainColor.kSpecialColor.CGColor
+        inscriptionButton.layer.borderColor = Constants.MainColor.kSpecialColor.cgColor
         inscriptionButton.layer.borderWidth = 1
-        inscriptionButton.setTitleColor(Constants.MainColor.kSpecialColor, forState: .Normal)
+        inscriptionButton.setTitleColor(Constants.MainColor.kSpecialColor, for: UIControlState())
         
-        participantsButton.layer.borderColor = Constants.MainColor.kSpecialColor.CGColor
+        participantsButton.layer.borderColor = Constants.MainColor.kSpecialColor.cgColor
         participantsButton.layer.borderWidth = 1
-        participantsButton.setTitleColor(Constants.MainColor.kSpecialColor, forState: .Normal)
+        participantsButton.setTitleColor(Constants.MainColor.kSpecialColor, for: UIControlState())
         
         updateParticipantsButtonText()
         updateInscriptionButton()
         
-        let dateArray = event.date.componentsSeparatedByString(" - ")
+        let dateArray = event.date.components(separatedBy: " - ")
         var text = dateArray.first
         text = text! + "       " + event.sport + "\n"
         if dateArray.count > 1 {
@@ -164,18 +164,18 @@ class MXSEventViewController: MXSViewController {
         }
         
         if tabBarController?.selectedIndex == 0 {
-            participantsButton.hidden = true
+            participantsButton.isHidden = true
         }
     }
     
     func updateParticipantsButtonText() {
-        participantsButton.setTitle(String(event.persons.count) + " PARTICIPANTS", forState: .Normal)
+        participantsButton.setTitle(String(event.persons.count) + " PARTICIPANTS", for: UIControlState())
     }
     
     func updateInscriptionButton() {
         
         if event.isCurrentPersonAlreadyIn() {
-            inscriptionButton.enabled = false
+            inscriptionButton.isEnabled = false
             inscriptionButton.alpha = 0.4
         }
     }
@@ -183,7 +183,7 @@ class MXSEventViewController: MXSViewController {
     
     // Mark: --- MapView ---
     
-    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+    func mapView(_ mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
         guard let tileOverlay = overlay as? MKTileOverlay else {
             return MKOverlayRenderer()
         }
@@ -191,7 +191,7 @@ class MXSEventViewController: MXSViewController {
         return MKTileOverlayRenderer(tileOverlay: tileOverlay)
     }
     
-    func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
+    func mapView(_ mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
         
         var region: MKCoordinateRegion = mapView.region
         region.center = (userLocation.location?.coordinate)!
@@ -201,16 +201,16 @@ class MXSEventViewController: MXSViewController {
         GPSLocationManager.sharedInstance.userLocation = userLocation.location
     }
     
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(_ mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
         guard !(annotation is MKUserLocation) else {
             return nil
         }
         
-        var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(Ressources.MapPinIdentifier.eventId)
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: Ressources.MapPinIdentifier.eventId)
         if pinView == nil {
             pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: Ressources.MapPinIdentifier.eventId)
-            pinView!.transform = CGAffineTransformMakeScale(1.5, 1.5)
+            pinView!.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
         }
         else {
             pinView!.annotation = annotation
@@ -219,12 +219,12 @@ class MXSEventViewController: MXSViewController {
         if let aPinView = pinView {
             
             aPinView.canShowCallout = true
-            aPinView.enabled = true
-            let button = UIButton(type: UIButtonType.DetailDisclosure)
+            aPinView.isEnabled = true
+            let button = UIButton(type: UIButtonType.detailDisclosure)
             button.tintColor = Constants.MainColor.kSpecialColor
             aPinView.rightCalloutAccessoryView = button
             
-            if let image = UIImage(named: event.sport.lowercaseString+"PinBlanc") {
+            if let image = UIImage(named: event.sport.lowercased()+"PinBlanc") {
                 aPinView.image = image
             }
         }
@@ -233,21 +233,21 @@ class MXSEventViewController: MXSViewController {
     }
     
     
-    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+    func mapView(_ mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
         print("Annotation selected")
-        if let image = UIImage(named: event.sport.lowercaseString+"Pin") {
+        if let image = UIImage(named: event.sport.lowercased()+"Pin") {
             view.image = image
         }
     }
     
-    func mapView(mapView: MKMapView, didDeselectAnnotationView view: MKAnnotationView) {
+    func mapView(_ mapView: MKMapView, didDeselectAnnotationView view: MKAnnotationView) {
         print("Annotation unselected")
-        if let image = UIImage(named: event.sport.lowercaseString+"PinBlanc") {
+        if let image = UIImage(named: event.sport.lowercased()+"PinBlanc") {
             view.image = image
         }
     }
     
-    @IBAction func participantsButtonClicked(sender: AnyObject) {
+    @IBAction func participantsButtonClicked(_ sender: AnyObject) {
         
         if event.persons.count <= 0 {
             return
@@ -264,9 +264,9 @@ class MXSEventViewController: MXSViewController {
                     return
                 }
                 if let personsCollectionViewController = viewController.childViewControllers.first as? MXSPersonsCollectionViewController {
-                    viewController.titleLabel.text = this.event.sport.uppercaseString
-                    if let jour = this.event.getJour(), heure = this.event.getHeure() {
-                        viewController.titleLabel.text = this.event.sport.uppercaseString + " - " + jour + " - " + heure
+                    viewController.titleLabel.text = this.event.sport.uppercased()
+                    if let jour = this.event.getJour(), let heure = this.event.getHeure() {
+                        viewController.titleLabel.text = this.event.sport.uppercased() + " - " + jour + " - " + heure
                     }
                     personsCollectionViewController.persons = this.event.getFullPersons()
                     personsCollectionViewController.collectionView?.reloadData()
@@ -275,7 +275,7 @@ class MXSEventViewController: MXSViewController {
         }
     }
     
-    @IBAction func inscriptionButtonClicked(sender: AnyObject) {
+    @IBAction func inscriptionButtonClicked(_ sender: AnyObject) {
         event.addCurrentUserToEvent()
         if tabBarController?.selectedIndex != 0 {
             participantsButtonClicked(NSObject())

@@ -31,17 +31,17 @@ class ChatViewController: JSQMessagesViewController {
     
     var conversation: Conversation?
     
-    private var _theMessages = [JSQMessage]()
+    fileprivate var _theMessages = [JSQMessage]()
   
-    private var _outgoingBubbleImageView: JSQMessagesBubbleImage!
-    private var _incomingBubbleImageView: JSQMessagesBubbleImage!
+    fileprivate var _outgoingBubbleImageView: JSQMessagesBubbleImage!
+    fileprivate var _incomingBubbleImageView: JSQMessagesBubbleImage!
   
     
-    private func setupBubbles() {
+    fileprivate func setupBubbles() {
         
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
-        _outgoingBubbleImageView = bubbleImageFactory.outgoingMessagesBubbleImageWithColor(Constants.MainColor.kSpecialColor)
-        _incomingBubbleImageView = bubbleImageFactory.incomingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleLightGrayColor())
+        _outgoingBubbleImageView = bubbleImageFactory?.outgoingMessagesBubbleImage(with: Constants.MainColor.kSpecialColor)
+        _incomingBubbleImageView = bubbleImageFactory?.incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
     }
     
     override func viewDidLoad() {
@@ -55,17 +55,17 @@ class ChatViewController: JSQMessagesViewController {
         self.title = Strings.NavigationTitle.messages
         
         // No avatars
-        collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSizeZero
-        collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero
+        collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
+        collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         
-        inputToolbar.barTintColor    = UIColor.blackColor()
-        inputToolbar.backgroundColor = UIColor.blackColor()
-        inputToolbar.contentView.rightBarButtonItem.setImage(UIImage(named: Ressources.Images.sendMessage), forState: .Normal)
+        inputToolbar.barTintColor    = UIColor.black
+        inputToolbar.backgroundColor = UIColor.black
+        inputToolbar.contentView.rightBarButtonItem.setImage(UIImage(named: Ressources.Images.sendMessage), for: UIControlState())
         inputToolbar.contentView.rightBarButtonItemWidth = inputToolbar.contentView.rightBarButtonItem.frame.size.height
     }
     
     
-    private func _messagesBlock() -> (messages: [Message]) -> Void {
+    fileprivate func _messagesBlock() -> (_ messages: [Message]) -> Void {
         
         return { [weak self] (messages) in
             
@@ -81,7 +81,7 @@ class ChatViewController: JSQMessagesViewController {
         }
     }
     
-    private func _typingBlock() -> (isTyping: Bool) -> Void {
+    fileprivate func _typingBlock() -> (_ isTyping: Bool) -> Void {
         
         return { [weak self] (isTyping) in
             
@@ -89,11 +89,11 @@ class ChatViewController: JSQMessagesViewController {
                 return
             }
             this.showTypingIndicator = isTyping
-            this.scrollToBottomAnimated(true)
+            this.scrollToBottom(animated: true)
         }
     }
   
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         guard let aConversation = conversation else {
@@ -103,7 +103,7 @@ class ChatViewController: JSQMessagesViewController {
         aConversation.observeTyping(senderId, completionHandler: _typingBlock())
     }
   
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
         guard let aConversation = conversation else {
@@ -113,15 +113,15 @@ class ChatViewController: JSQMessagesViewController {
     }
     
   
-    override func collectionView(collectionView: JSQMessagesCollectionView!, messageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageData! {
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
         return _theMessages[indexPath.item]
     }
     
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return _theMessages.count
     }
   
-    override func collectionView(collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageBubbleImageDataSource! {
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
         let message = _theMessages[indexPath.item] // 1
         if message.senderId == senderId { // 2
             return _outgoingBubbleImageView
@@ -130,21 +130,21 @@ class ChatViewController: JSQMessagesViewController {
         }
     }
   
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = super.collectionView(collectionView, cellForItemAtIndexPath: indexPath) as! JSQMessagesCollectionViewCell
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
         
         let message = _theMessages[indexPath.item]
         
         if message.senderId == senderId { // 1
-            cell.textView!.textColor = UIColor.whiteColor() // 2
+            cell.textView!.textColor = UIColor.white // 2
         } else {
-            cell.textView!.textColor = UIColor.blackColor() // 3
+            cell.textView!.textColor = UIColor.black // 3
         }
         
         return cell
     }
   
-    override func collectionView(collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
         return nil
     }
   
@@ -153,7 +153,7 @@ class ChatViewController: JSQMessagesViewController {
   
   
   
-    override func textViewDidChange(textView: UITextView) {
+    override func textViewDidChange(_ textView: UITextView) {
         super.textViewDidChange(textView)
         // If the text is not empty, the user is typing
         guard let aConversation = conversation else {
@@ -162,7 +162,7 @@ class ChatViewController: JSQMessagesViewController {
         aConversation.isTyping = textView.text != ""
     }
   
-    override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
+    override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         
         if let aConversation = conversation {
             aConversation.addMessage(text, senderId: senderId, controller: self)

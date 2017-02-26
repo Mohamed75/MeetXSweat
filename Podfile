@@ -5,9 +5,9 @@ use_frameworks!
 inhibit_all_warnings!
 
 # List of dependencies for the application
-pod 'FacebookCore'
-pod 'FacebookLogin'
-pod 'FacebookShare'
+pod 'FBSDKCoreKit', '~> 4.15.1'
+pod 'FBSDKLoginKit', '~> 4.15.1'
+pod 'FBSDKShareKit', '~> 4.15.1'
 
 
 pod 'Fabric'
@@ -19,19 +19,19 @@ pod 'LinkedinIOSHelper'
 
 pod 'Google/SignIn'
 
-pod 'Alamofire'
-pod 'AlamofireImage'
+pod 'Alamofire', '~> 4.3'
+pod 'AlamofireImage', '~> 3.1'
 
 
 pod 'DLRadioButton', '~> 1.4'
-pod 'JTAppleCalendar'
+pod 'JTAppleCalendar', '~> 6.0'
 
 pod 'Firebase/Core'
 pod 'Firebase/Database'
 pod 'Firebase/Auth'
 pod 'Firebase/Storage'
 
-pod 'DrawerController', '~> 1.0'
+pod 'DrawerController', '~> 3.1'
 
 pod 'JSQMessagesViewController'
 

@@ -20,7 +20,7 @@ class MXSConversationCollectionCell: UICollectionViewCell {
         
         let lineView = UIView(frame: CGRect(x: 0, y: self.frame.size.height-2, width: self.frame.size.width, height: 2))
         lineView.tag = 22
-        lineView.backgroundColor = UIColor.blackColor()
+        lineView.backgroundColor = UIColor.black
         self.addSubview(lineView)
     }
     

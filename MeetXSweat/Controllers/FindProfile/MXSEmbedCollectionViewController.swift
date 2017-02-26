@@ -33,14 +33,14 @@ class MXSEmbedCollectionViewController: MXSViewController {
         
         switch MSXFindManager.sharedInstance.findBy {
             
-        case FindBy.Sport :
+        case FindBy.sport :
             if let eventsCollectionViewController = childViewControllers.first as? MXSEventsCollectionViewController {
                 
                 eventsCollectionViewController.events = FindSportManager.filterEventsBySports(FindSportManager.sharedInstance.sports)
                 
                 titleLabel.text = Strings.LabelTitel.sports
                 for sport in FindSportManager.sharedInstance.sports {
-                    titleLabel.text = titleLabel.text! + " " + (sport as! String).uppercaseString
+                    titleLabel.text = titleLabel.text! + " " + (sport as! String).uppercased()
                 }
                 
                 if eventsCollectionViewController.fromProfileViewController {
@@ -50,14 +50,14 @@ class MXSEmbedCollectionViewController: MXSViewController {
             }
             break
           
-        case FindBy.Date :
+        case FindBy.date :
             if let eventsCollectionViewController = childViewControllers.first as? MXSEventsCollectionViewController {
                 
                 eventsCollectionViewController.events = FindDateManager.filterEventsByDates(FindDateManager.sharedInstance.dates)
             }
             break
         
-        case FindBy.Profile :
+        case FindBy.profile :
             if let personsCollectionViewController = childViewControllers.first as? MXSPersonsCollectionViewController {
                 
                 if !FindProfileManager.sharedInstance.domaine.isEmpty {

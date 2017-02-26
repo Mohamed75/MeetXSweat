@@ -20,17 +20,17 @@ class MXSEventsCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if parentViewController?.title == Strings.NavigationTitle.sweatWorking {
+        if parent?.title == Strings.NavigationTitle.sweatWorking {
             events = FindSportManager.filterEventsByCurrentUser()
         }
         collectionView?.reloadData()
     }
     
     
-    func customizeFirstCell(cell: UICollectionViewCell) {
+    func customizeFirstCell(_ cell: UICollectionViewCell) {
         
         let eventImageView = UIImageView(frame: CGRect(x: 35, y: 15, width: 30, height: 30))
         eventImageView.image = UIImage(named: "EventIcon")
@@ -73,12 +73,12 @@ class MXSEventsCollectionViewController: UICollectionViewController {
         cell.addSubview(sportImageView)
     }
     
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Ressources.CellReuseIdentifier.event, forIndexPath: indexPath) as! MXSEventsCollectionCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Ressources.CellReuseIdentifier.event, for: indexPath) as! MXSEventsCollectionCell
         
         cell.layer.borderWidth = 1
-        cell.layer.borderColor = UIColor.blackColor().CGColor
+        cell.layer.borderColor = UIColor.black.cgColor
         
         for v in cell.subviews {
             if v.tag > 32 && v.tag < 38 {
@@ -95,7 +95,7 @@ class MXSEventsCollectionViewController: UICollectionViewController {
         
         let event = self.events[indexPath.section-1]
         var text = ""
-        if let jour = event.getJour(), heure = event.getHeure() {
+        if let jour = event.getJour(), let heure = event.getHeure() {
             text = jour + "     " + heure
         }
         
@@ -125,14 +125,14 @@ class MXSEventsCollectionViewController: UICollectionViewController {
         }
         
         cell.label.text         = text
-        cell.imageView.image    = UIImage(named: event.sport.lowercaseString)
+        cell.imageView.image    = UIImage(named: event.sport.lowercased())
         
         return cell
     }
     
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if MSXFindManager.sharedInstance.findBy == FindBy.Profile || !fromProfileViewController {
+        if MSXFindManager.sharedInstance.findBy == FindBy.profile || !fromProfileViewController {
             
             if indexPath.section > 0 {
              
@@ -143,15 +143,15 @@ class MXSEventsCollectionViewController: UICollectionViewController {
         }
     }
     
-    internal override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    internal override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
     }
     
-    internal override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    internal override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return events.count+1
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         
         return CGSize(width: view.frame.size.width, height: 60)
     }

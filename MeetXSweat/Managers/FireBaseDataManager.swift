@@ -21,11 +21,10 @@ class FireBaseDataManager {
     init() {
         
         FIRDatabase.database().reference().keepSynced(true)
-        loadData()
     }
     
     
-    private var _sports: [String] = []
+    fileprivate var _sports: [String] = []
     var sports: [String] {
         get {
             if _sports.isEmpty {
@@ -39,7 +38,7 @@ class FireBaseDataManager {
         }
     }
     
-    private var _professions: [String] = []
+    fileprivate var _professions: [String] = []
     var professions: [String] {
         get {
             if _professions.isEmpty {
@@ -53,7 +52,7 @@ class FireBaseDataManager {
         }
     }
     
-    private var _domaines: [String] = []
+    fileprivate var _domaines: [String] = []
     var domaines: [String] {
         get {
             if _domaines.isEmpty {
@@ -70,7 +69,7 @@ class FireBaseDataManager {
     
     
     
-    private func _eventBlock() -> (FIRDataSnapshot) -> Void {
+    fileprivate func _eventBlock() -> (FIRDataSnapshot) -> Void {
         
         return { [weak self] (snapshot) in
             
@@ -82,7 +81,7 @@ class FireBaseDataManager {
         }
     }
     
-    private func _personBlock() -> (FIRDataSnapshot) -> Void {
+    fileprivate func _personBlock() -> (FIRDataSnapshot) -> Void {
         
         return { [weak self] (snapshot) -> Void in
             
@@ -93,81 +92,82 @@ class FireBaseDataManager {
         }
     }
     
-    private func _sportBlock() -> (FIRDataSnapshot) -> Void {
+    fileprivate func _sportBlock() -> (FIRDataSnapshot) -> Void {
         
         return { [weak self] (snapshot) -> Void in
             
             guard let this = self else {
                 return
             }
-            if let sport = snapshot.value!["name"] as? String {
+            if let dict = snapshot.value as? NSDictionary, let sport = dict["name"] as? String {
                 this._sports.append(sport)
-                NSNotificationCenter.defaultCenter().postNotificationName(Constants.FBNotificationName.sports, object: nil)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: Constants.FBNotificationName.sports), object: nil)
+            }else {
             }
         }
     }
     
-    private func _professionBlock() -> (FIRDataSnapshot) -> Void {
+    fileprivate func _professionBlock() -> (FIRDataSnapshot) -> Void {
         
         return { [weak self] (snapshot) -> Void in
             
             guard let this = self else {
                 return
             }
-            if let profession = snapshot.value!["name"] as? String {
+            if let dict = snapshot.value as? NSDictionary, let profession = dict["name"] as? String {
                 this._professions.append(profession)
-                NSNotificationCenter.defaultCenter().postNotificationName(Constants.FBNotificationName.professions, object: nil)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: Constants.FBNotificationName.professions), object: nil)
             }
         }
     }
     
-    private func _domaineBlock() -> (FIRDataSnapshot) -> Void {
+    fileprivate func _domaineBlock() -> (FIRDataSnapshot) -> Void {
         
         return { [weak self] (snapshot) -> Void in
             
             guard let this = self else {
                 return
             }
-            if let domaine = snapshot.value!["name"] as? String {
+            if let dict = snapshot.value as? NSDictionary, let domaine = dict["name"] as? String {
                 this._domaines.append(domaine)
-                NSNotificationCenter.defaultCenter().postNotificationName(Constants.FBNotificationName.domaines, object: nil)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: Constants.FBNotificationName.domaines), object: nil)
             }
         }
     }
     
-    private var _eventRef    = FIRDatabaseReference()
-    private var _personRef   = FIRDatabaseReference()
-    private var _sportRef    = FIRDatabaseReference()
-    private var _professionRef = FIRDatabaseReference()
-    private var _domaineRef  = FIRDatabaseReference()
+    fileprivate var _eventRef    = FIRDatabaseReference()
+    fileprivate var _personRef   = FIRDatabaseReference()
+    fileprivate var _sportRef    = FIRDatabaseReference()
+    fileprivate var _professionRef = FIRDatabaseReference()
+    fileprivate var _domaineRef  = FIRDatabaseReference()
     
     func loadData() {
         
         events = []
         _eventRef.removeAllObservers()
         _eventRef = FIRDatabase.database().reference().child("event-items")
-        _eventRef.observeEventType(.ChildAdded, withBlock: _eventBlock())
+        _eventRef.observe(.childAdded, with: _eventBlock())
         
         
         persons = []
         _personRef.removeAllObservers()
         _personRef = FIRDatabase.database().reference().child("person-items")
-        _personRef.observeEventType(.ChildAdded, withBlock: _personBlock())
+        _personRef.observe(.childAdded, with: _personBlock())
         
         _sports = []
         _sportRef.removeAllObservers()
         _sportRef = FIRDatabase.database().reference().child("sport-items")
-        _sportRef.observeEventType(.ChildAdded, withBlock: _sportBlock())
+        _sportRef.observe(.childAdded, with: _sportBlock())
         
         _professions = []
         _professionRef.removeAllObservers()
         _professionRef = FIRDatabase.database().reference().child("profession-items")
-        _professionRef.observeEventType(.ChildAdded, withBlock: _professionBlock())
+        _professionRef.observe(.childAdded, with: _professionBlock())
         
         _domaines = []
         _domaineRef.removeAllObservers()
         _domaineRef = FIRDatabase.database().reference().child("domaine-items")
-        _domaineRef.observeEventType(.ChildAdded, withBlock: _domaineBlock())
+        _domaineRef.observe(.childAdded, with: _domaineBlock())
     }
     
     

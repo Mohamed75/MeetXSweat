@@ -10,7 +10,7 @@ import UIKit
 import Fabric
 import Crashlytics
 import TwitterKit
-import Twitter
+
 
 
 private let getUserInfoUrlString    = "https://api.twitter.com/1.1/users/show.json"
@@ -18,19 +18,19 @@ private let getUserInfoUrlString    = "https://api.twitter.com/1.1/users/show.js
 
 
 protocol LogInTWDelegate {
-    func logInTWSuccess(data: NSDictionary?)
+    func logInTWSuccess(_ data: NSDictionary?)
 }
 
 
 class TwitterHelper {
     
-    class func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) {
+    class func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [AnyHashable: Any]?) {
         
         Fabric.with([Crashlytics.self, Twitter.self])
     }
     
     
-    class func logIn(delegate: LogInTWDelegate) {
+    class func logIn(_ delegate: LogInTWDelegate) {
         
         let block: TWTRLogInCompletion = { session, error in
             if (session != nil) {
@@ -41,15 +41,15 @@ class TwitterHelper {
                 delegate.logInTWSuccess(nil)
             }
         }
-        Twitter.sharedInstance().logInWithCompletion(block)
+        Twitter.sharedInstance().logIn(completion: block)
     }
     
     
-    private class func getUserInfo(delegate: LogInTWDelegate) {
+    fileprivate class func getUserInfo(_ delegate: LogInTWDelegate) {
         
-        let client = TWTRAPIClient.clientWithCurrentUser()
-        let request = client.URLRequestWithMethod("GET",
-                                                  URL: getUserInfoUrlString,
+        let client  = TWTRAPIClient.withCurrentUser()
+        let request = client.urlRequest(withMethod: "GET",
+                                                  url: getUserInfoUrlString,
                                                   parameters: ["user_id": client.userID!],
                                                   error: nil)
         
@@ -58,7 +58,7 @@ class TwitterHelper {
             if (connectionError == nil) {
                 
                 do {
-                    let JSON = try NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions(rawValue: 0))
+                    let JSON = try JSONSerialization.jsonObject(with: data!, options:JSONSerialization.ReadingOptions(rawValue: 0))
                     guard let JSONDictionary: NSDictionary = JSON as? NSDictionary else {
                         return
                     }

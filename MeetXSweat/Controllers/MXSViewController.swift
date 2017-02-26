@@ -26,36 +26,36 @@ class MXSViewController: UIViewController {
         */
         super.viewDidLoad()
         
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         self.view.backgroundColor = Constants.MainColor.kBackGroundColor
     }
     
     func addBarButtonItem() {
         
-        navigationItem.leftBarButtonItem = DrawerBarButtonItem(target: self, action: #selector(togleMenuButton), menuIconColor: UIColor.whiteColor())
+        navigationItem.leftBarButtonItem = DrawerBarButtonItem(target: self, action: #selector(togleMenuButton), menuIconColor: UIColor.white)
     }
     
     func addValiderButton() {
         
-        let validatButton = UIButton(type: .Custom)
-        validatButton.addTarget(self, action: NSSelectorFromString(Constants.SelectorsString.valider), forControlEvents: .TouchUpInside)
-        validatButton.setBackgroundImage(UIImage(named: Ressources.Images.valider), forState: .Normal)
-        validatButton.frame = CGRectMake(0 , 0, 30, 30)
+        let validatButton = UIButton(type: .custom)
+        validatButton.addTarget(self, action: NSSelectorFromString(Constants.SelectorsString.valider), for: .touchUpInside)
+        validatButton.setBackgroundImage(UIImage(named: Ressources.Images.valider), for: UIControlState())
+        validatButton.frame = CGRect(x: 0 , y: 0, width: 30, height: 30)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: validatButton)
     }
     
-    func validatButtonClicked(sender: AnyObject) {
+    func validatButtonClicked(_ sender: AnyObject) {
         
     }
     
     func togleMenuButton() {
         
-        if self.evo_drawerController!.openSide == .None {
+        if self.evo_drawerController!.openSide == .none {
             
-            self.evo_drawerController?.openDrawerSide(DrawerSide.Left, animated: true, completion: nil)
+            self.evo_drawerController?.openDrawerSide(DrawerSide.left, animated: true, completion: nil)
         } else {
-            self.evo_drawerController?.closeDrawerAnimated(true, completion: nil)
+            self.evo_drawerController?.closeDrawer(animated: true, completion: nil)
         }
     }
     
@@ -71,74 +71,74 @@ class MXSViewController: UIViewController {
     
     
     
-    class func showInformationPopUp(title: String, withCancelButton: Bool, completion: (String) -> Void) {
+    class func showInformationPopUp(_ title: String, withCancelButton: Bool, completion: @escaping (String) -> Void) {
         
         var inputTextField: UITextField?
         
-        let actionSheetController: UIAlertController = UIAlertController(title: title, message: "", preferredStyle: .Alert)
+        let actionSheetController: UIAlertController = UIAlertController(title: title, message: "", preferredStyle: .alert)
         
         if withCancelButton {
-            let cancelAction: UIAlertAction = UIAlertAction(title: Strings.Alert.cancel, style: .Cancel) { action -> Void in
+            let cancelAction: UIAlertAction = UIAlertAction(title: Strings.Alert.cancel, style: .cancel) { action -> Void in
             }
             actionSheetController.addAction(cancelAction)
         }
         
-        let nextAction: UIAlertAction = UIAlertAction(title: Strings.Alert.ok, style: .Default) { action -> Void in
+        let nextAction: UIAlertAction = UIAlertAction(title: Strings.Alert.ok, style: .default) { action -> Void in
             completion((inputTextField?.text)!)
         }
         actionSheetController.addAction(nextAction)
         
-        actionSheetController.addTextFieldWithConfigurationHandler { textField -> Void in
+        actionSheetController.addTextField { textField -> Void in
             inputTextField = textField
         }
         
-        getVisibleViewController().presentViewController(actionSheetController, animated: true, completion: nil)
+        getVisibleViewController().present(actionSheetController, animated: true, completion: nil)
     }
     
     
     
-    class func showInformatifPopUp(message: String) {
+    class func showInformatifPopUp(_ message: String) {
         
-        let alertController = UIAlertController(title: "", message: message, preferredStyle: .Alert)
+        let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
         
-        let okAction = UIAlertAction(title: Strings.Alert.ok, style: .Default, handler: { (UIAlertAction) in
-            getVisibleViewController().dismissViewControllerAnimated(true, completion:nil)
+        let okAction = UIAlertAction(title: Strings.Alert.ok, style: .default, handler: { (UIAlertAction) in
+            getVisibleViewController().dismiss(animated: true, completion:nil)
         })
         alertController.addAction(okAction)
         
-        getVisibleViewController().presentViewController(alertController, animated: true, completion: nil)
+        getVisibleViewController().present(alertController, animated: true, completion: nil)
     }
     
     
     
     // MARK: --- Others ---
     
-    class func customButton(button: UIButton) {
+    class func customButton(_ button: UIButton) {
         
         button.backgroundColor = Constants.MainColor.kSpecialColor
-        button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        button.setTitleColor(UIColor.white, for: UIControlState())
         button.layer.cornerRadius = 5
     }
     
-    class func underLineView(view: UIView) {
+    class func underLineView(_ view: UIView) {
     
         let line = UIView(frame: CGRect(x: 0, y: view.frame.size.height-1, width: view.frame.size.width, height: 1))
-        line.backgroundColor = UIColor.blackColor()
+        line.backgroundColor = UIColor.black
         view.addSubview(line)
     }
     
     
     // MARK: --- Shake Device ---
     
-    override func canBecomeFirstResponder() -> Bool {
+    override var canBecomeFirstResponder : Bool {
         return true
     }
     
     // Show the AddEventViewController when the device is shaked
-    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
-        if motion == .MotionShake {
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        if motion == .motionShake {
             let addEventViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.main, viewControllerId: Ressources.StoryBooardsIdentifiers.addEvent)
-            self.evo_drawerController!.presentViewController(addEventViewController, animated: true, completion: nil)
+            self.evo_drawerController!.present(addEventViewController, animated: true, completion: nil)
         }
     }
 }

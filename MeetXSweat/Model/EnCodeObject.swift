@@ -18,30 +18,30 @@ class EnCodeObject: NSObject, NSCoding {
         
         var returnArray = [String]()
         for keyName in self.propertyNames() {
-            if (respondsToSelector(NSSelectorFromString(keyName))) {
+            if (responds(to: NSSelectorFromString(keyName))) {
                 returnArray.append(keyName)
             }
         }
         return returnArray
     }
     
-    func typeOfProperty (name: String) -> String? {
+    func typeOfProperty (_ name: String) -> String? {
         
         if let returnString = getTypeOfProperty(name) {
-            if returnString.containsString("Optional<Array<") {
-                return returnString.stringByReplacingOccurrencesOfString("Optional<Array<", withString: "").stringByReplacingOccurrencesOfString(">", withString: "")
+            if returnString.contains("Optional<Array<") {
+                return returnString.replacingOccurrences(of: "Optional<Array<", with: "").replacingOccurrences(of: ">", with: "")
             }
-            return returnString.stringByReplacingOccurrencesOfString("Array<", withString: "").stringByReplacingOccurrencesOfString(">", withString: "")
+            return returnString.replacingOccurrences(of: "Array<", with: "").replacingOccurrences(of: ">", with: "")
         }
         return nil
     }
     
     // To save
-    func encodeWithCoder(aCoder: NSCoder) {
+    func encode(with aCoder: NSCoder) {
         
         for keyName in properties() {
             if keyName != "ref" {
-                aCoder.encodeObject(valueForKey(keyName), forKey: keyName)
+                aCoder.encode(value(forKey: keyName), forKey: keyName)
             }
         }
     }
@@ -52,7 +52,7 @@ class EnCodeObject: NSObject, NSCoding {
         super.init()
         
         for keyName in properties() {
-            setValue(aDecoder.decodeObjectForKey(keyName), forKey: keyName)
+            setValue(aDecoder.decodeObject(forKey: keyName), forKey: keyName)
         }
     }
     
@@ -62,14 +62,14 @@ class EnCodeObject: NSObject, NSCoding {
     
     func saveToNSUserDefaults() {
         
-        let myEncodedObject = NSKeyedArchiver.archivedDataWithRootObject(self)
-        NSUserDefaults.standardUserDefaults().setObject(myEncodedObject, forKey:self.classForCoder.description())
+        let myEncodedObject = NSKeyedArchiver.archivedData(withRootObject: self)
+        UserDefaults.standard.set(myEncodedObject, forKey:self.classForCoder.description())
     }
     
-    class func loadCustomObjectClassName(value: String) -> AnyObject?
+    class func loadCustomObjectClassName(_ value: String) -> AnyObject?
     {
-        if let myEncodedObject = NSUserDefaults.standardUserDefaults().objectForKey(value) as? NSData {
-            return NSKeyedUnarchiver.unarchiveObjectWithData(myEncodedObject)
+        if let myEncodedObject = UserDefaults.standard.object(forKey: value) as? Data {
+            return NSKeyedUnarchiver.unarchiveObject(with: myEncodedObject) as AnyObject?
         }
         return nil
     }
@@ -82,19 +82,19 @@ class EnCodeObject: NSObject, NSCoding {
 extension EnCodeObject {
     
     // Returns the property type
-    private func getTypeOfProperty (name: String) -> String? {
+    fileprivate func getTypeOfProperty (_ name: String) -> String? {
         
         var type: Mirror = Mirror(reflecting: self)
         
         for child in type.children {
             if child.label! == name {
-                return String(child.value.dynamicType)
+                return String(describing: type(of: (child.value) as AnyObject))
             }
         }
-        while let parent = type.superclassMirror() {
+        while let parent = type.superclassMirror {
             for child in parent.children {
                 if child.label! == name {
-                    return String(child.value.dynamicType)
+                    return String(describing: type(of: (child.value) as AnyObject))
                 }
             }
             type = parent
@@ -103,7 +103,7 @@ extension EnCodeObject {
     }
     
     // Returns the properties names
-    private func propertyNames() -> Array<String> {
+    fileprivate func propertyNames() -> Array<String> {
         
         var klass: AnyClass = object_getClass(self)
         var results: Array<String> = []
@@ -115,10 +115,10 @@ extension EnCodeObject {
             // iterate each objc_property_t struct
             for i: UInt32 in 0...count-1 {
                 
-                let cname = property_getName(properties[Int(i)])
+                let cname = property_getName(properties?[Int(i)])
                 // covert the c string into a Swift string
-                let name = String.fromCString(cname)
-                results.append(name!);
+                let name = String(cString: cname!)
+                results.append(name);
             }
         }
         
@@ -130,10 +130,10 @@ extension EnCodeObject {
             if superCount > 0 {
                 for i: UInt32 in 0...superCount-1 {
                     
-                    let cname = property_getName(superProperties[Int(i)])
+                    let cname = property_getName(superProperties?[Int(i)])
                     // covert the c string into a Swift string
-                    let name = String.fromCString(cname)
-                    results.append(name!);
+                    let name = String(cString: cname!)
+                    results.append(name);
                 }
             }
         }

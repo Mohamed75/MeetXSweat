@@ -19,7 +19,7 @@ class FindProfileManager {
     static let sharedInstance = FindProfileManager()
     
     
-    class func filterBy(persons: [Person], filter: String) -> [Person] {
+    class func filterBy(_ persons: [Person], filter: String) -> [Person] {
         
         var returnArray: [Person] = []
         

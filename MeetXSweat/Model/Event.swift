@@ -32,7 +32,7 @@ class Event: FireBaseObject {
                 
                 let completionHandler = { [weak self] (placemarks: [CLPlacemark]?, error: NSError?) -> Void in
                     
-                    if let placemarks = placemarks where placemarks.count > 0 {
+                    if let placemarks = placemarks, placemarks.count > 0 {
                         guard let this = self else {
                             return
                         }
@@ -41,7 +41,7 @@ class Event: FireBaseObject {
                         this.updateCoordinateEvent()
                     }
                 }
-                CLGeocoder().geocodeAddressString(adress!, completionHandler: completionHandler)
+                CLGeocoder().geocodeAddressString(adress!, completionHandler: completionHandler as! CLGeocodeCompletionHandler)
             }
         }
     }
@@ -49,7 +49,7 @@ class Event: FireBaseObject {
     
     func getCoordinate() -> CLLocationCoordinate2D? {
         
-        let coordinates = coordinate.componentsSeparatedByString(",")
+        let coordinates = coordinate.components(separatedBy: ",")
         if coordinates.count > 1 {
             if let latitude    = Double(coordinates.first!), let longitude   = Double(coordinates.last!) {
                 return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
@@ -60,9 +60,9 @@ class Event: FireBaseObject {
     
     func getJour() -> String? {
         if date.characters.count > 1 {
-            let array = date.componentsSeparatedByString(" - ")
+            let array = date.components(separatedBy: " - ")
             if let jour = array.first {
-                return jour.stringByReplacingOccurrencesOfString(" ", withString: "/")
+                return jour.replacingOccurrences(of: " ", with: "/")
             }
         }
         return ""
@@ -70,9 +70,9 @@ class Event: FireBaseObject {
 
     func getHeure() -> String? {
         if date.characters.count > 1 {
-            let array = date.componentsSeparatedByString(" - ")
+            let array = date.components(separatedBy: " - ")
             if let heure = array.last {
-                return heure.stringByReplacingOccurrencesOfString(":", withString: "H")
+                return heure.replacingOccurrences(of: ":", with: "H")
             }
         }
         return ""
@@ -115,7 +115,7 @@ class Event: FireBaseObject {
     func addPersonsObserver() {
         
         if let aRef = self.ref {
-            aRef.child("persons").observeEventType(.ChildAdded, withBlock: { [weak self] snapshot in
+            aRef.child("persons").observe(.childAdded, with: { [weak self] snapshot in
                 
                 guard let this = self else {
                     return

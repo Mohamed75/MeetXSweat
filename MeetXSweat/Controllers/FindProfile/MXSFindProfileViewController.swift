@@ -26,21 +26,21 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
     var editable: Bool = false
     
     
-    private var savedDomaine = ""
-    private var savedMetier  = ""
+    fileprivate var savedDomaine = ""
+    fileprivate var savedMetier  = ""
     
-    private var dataArray       = FireBaseDataManager.sharedInstance.domaines
-    private var selectedLabel   = 1
-    private let pickerView      = UIPickerView()
+    fileprivate var dataArray       = FireBaseDataManager.sharedInstance.domaines
+    fileprivate var selectedLabel   = 1
+    fileprivate let pickerView      = UIPickerView()
     
     
     static let sharedInstance = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findProfile, viewControllerId: Ressources.StoryBooardsIdentifiers.findProfileId)
     
     
     
-    func customLabel(label: UILabel) {
+    func customLabel(_ label: UILabel) {
         
-        label.layer.borderColor = Constants.MainColor.kSpecialColor.CGColor
+        label.layer.borderColor = Constants.MainColor.kSpecialColor.cgColor
         label.layer.borderWidth = 1
         label.layer.cornerRadius = 4
         label.clipsToBounds = true
@@ -54,13 +54,13 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
             addBarButtonItem()
             title = Strings.NavigationTitle.rechercher
         } else {
-            titleLabel.hidden = true
-            findUserImageView.hidden = true
+            titleLabel.isHidden = true
+            findUserImageView.isHidden = true
         }
         addValiderButton()
         
         titleLabel.textColor = Constants.MainColor.kSpecialColor
-        titleLabel.layer.borderColor = Constants.MainColor.kSpecialColor.CGColor
+        titleLabel.layer.borderColor = Constants.MainColor.kSpecialColor.cgColor
         titleLabel.layer.borderWidth = 1
         
         
@@ -75,31 +75,31 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
         
         if !editable {
             
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: Constants.FBNotificationSelector.domaines, name: Constants.FBNotificationName.domaines, object: nil)
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: Constants.FBNotificationSelector.professions, name: Constants.FBNotificationName.professions, object: nil)
+            NotificationCenter.default.addObserver(self, selector: Constants.FBNotificationSelector.domaines, name: NSNotification.Name(rawValue: Constants.FBNotificationName.domaines), object: nil)
+            NotificationCenter.default.addObserver(self, selector: Constants.FBNotificationSelector.professions, name: NSNotification.Name(rawValue: Constants.FBNotificationName.professions), object: nil)
         } else {
             refreshView()
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         savedMetier  = ""
         savedDomaine = ""
-        MSXFindManager.sharedInstance.findBy = FindBy.Profile
+        MSXFindManager.sharedInstance.findBy = FindBy.profile
         selectMetierLabel()
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         MXSPickerView.subViewPanned(pickerView, controller: self)
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: Constants.FBNotificationName.domaines, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: Constants.FBNotificationName.professions, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: Constants.FBNotificationName.domaines), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: Constants.FBNotificationName.professions), object: nil)
     }
     
     override func refreshView() {
@@ -115,11 +115,11 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
     
     func selectMetierLabel() {
         
-        metierLabel.textColor = UIColor.whiteColor()
+        metierLabel.textColor = UIColor.white
         metierLabel.backgroundColor = Constants.MainColor.kSpecialColor
         selectedLabel = 1
         domaineLabel.textColor = Constants.MainColor.kSpecialColor
-        domaineLabel.backgroundColor = UIColor.whiteColor()
+        domaineLabel.backgroundColor = UIColor.white
         
         dataArray = FireBaseDataManager.sharedInstance.professions
         if navigationController?.visibleViewController == self  && tabBarController?.selectedIndex == 0 {
@@ -132,11 +132,11 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
     
     func selectDomaineLabel() {
         
-        domaineLabel.textColor = UIColor.whiteColor()
+        domaineLabel.textColor = UIColor.white
         domaineLabel.backgroundColor = Constants.MainColor.kSpecialColor
         selectedLabel = 2
         metierLabel.textColor = Constants.MainColor.kSpecialColor
-        metierLabel.backgroundColor = UIColor.whiteColor()
+        metierLabel.backgroundColor = UIColor.white
         
         dataArray = FireBaseDataManager.sharedInstance.domaines
         if navigationController?.visibleViewController == self && tabBarController?.selectedIndex == 0 {
@@ -151,7 +151,7 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
     
     override func togleMenuButton() {
         
-        if self.evo_drawerController!.openSide == .None {
+        if self.evo_drawerController!.openSide == .none {
             MXSPickerView.subViewPanned(pickerView, controller: self)
         } else {
             dispatch_later(0.2, closure: { [weak self] in
@@ -185,22 +185,22 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
     
     // Mark: --- PickerView ---
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
 
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return dataArray.count
     }
     
     
-    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         
         let string = dataArray[row]
-        return NSAttributedString(string: string, attributes: [NSForegroundColorAttributeName:UIColor.blackColor()])
+        return NSAttributedString(string: string, attributes: [NSForegroundColorAttributeName:UIColor.black])
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch selectedLabel {
         case 1:
             savedMetier = dataArray[row]
@@ -214,11 +214,11 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
         pickerView.reloadAllComponents()
     }
     
-    override func validatButtonClicked(sender: AnyObject) {
+    override func validatButtonClicked(_ sender: AnyObject) {
         
         if !savedMetier.isEmpty || !savedDomaine.isEmpty {
             if !editable {
-                validerButton.sendActionsForControlEvents(.TouchUpInside)
+                validerButton.sendActions(for: .touchUpInside)
             } else {
                 
                 if !savedMetier.isEmpty {
@@ -228,12 +228,14 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
                     User.currentUser.domaine = savedDomaine
                 }
                 User.currentUser.updatePersonOnDataBase(nil)
-                navigationController?.popViewControllerAnimated(true)
+                if let navigationController = navigationController {
+                    navigationController.popViewController(animated: true)
+                }
             }
         }
     }
     
-    @IBAction func validerButtonClicked(sender: AnyObject) {
+    @IBAction func validerButtonClicked(_ sender: AnyObject) {
         
         if selectedLabel == 1 {
             FindProfileManager.sharedInstance.profession = savedMetier

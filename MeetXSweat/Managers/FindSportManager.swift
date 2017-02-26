@@ -18,12 +18,12 @@ class FindSportManager {
     static let sharedInstance = FindSportManager()
     
     
-    class func filterEventsBySports(sports: [AnyObject]) -> [Event] {
+    class func filterEventsBySports(_ sports: [AnyObject]) -> [Event] {
     
         var returnArray: [Event] = []
         for event in FireBaseDataManager.sharedInstance.events {
             for sport in sports {
-                if event.sport == sport as? String || event.sport == (sport as? String)?.uppercaseString {
+                if event.sport == sport as? String || event.sport == (sport as? String)?.uppercased() {
                     returnArray.append(event)
                 }
             }

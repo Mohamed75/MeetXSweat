@@ -32,7 +32,7 @@ class FireBaseObject: EnCodeObject {
         for (key, value) in dictionary {
             let keyName = key
             
-            if (respondsToSelector(NSSelectorFromString(keyName))) {
+            if (responds(to: NSSelectorFromString(keyName))) {
                 setValue(value, forKey: keyName)
             }
         }
@@ -44,16 +44,14 @@ class FireBaseObject: EnCodeObject {
         
         for keyName in properties() {
             
-            if let value = snapshot.value![keyName] {
-                if let aValue = value {
+            if let dic = snapshot.value as? NSDictionary, let value = dic[keyName] {
                     
-                    if aValue.isKindOfClass(NSArray) && (aValue as! NSArray).count > 0 {
-                        
-                        let array = createArrayObjectForProperty(keyName, array: (value as! NSArray) as Array)
-                        setValue(array, forKey: keyName)
-                    } else {
-                        setValue(aValue, forKey: keyName)
-                    }
+                if value is NSArray && (value as! NSArray).count > 0 {
+                    
+                    let array = createArrayObjectForProperty(keyName, array: (value as! NSArray) as Array)
+                    setValue(array, forKey: keyName)
+                } else {
+                    setValue(value, forKey: keyName)
                 }
             }
         }
@@ -61,12 +59,12 @@ class FireBaseObject: EnCodeObject {
     }
     
     
-    func copyFromJson(dictionary: [String : AnyObject]) {
+    func copyFromJson(_ dictionary: [String : AnyObject]) {
         
         for (key, value) in dictionary {
             let keyName = key
             
-            if (respondsToSelector(NSSelectorFromString(keyName))) {
+            if (responds(to: NSSelectorFromString(keyName))) {
                 setValue(value, forKey: keyName)
             }
         }
@@ -79,8 +77,8 @@ class FireBaseObject: EnCodeObject {
         
         var basicInfo = ""
         for keyName in properties() {
-            if (respondsToSelector(NSSelectorFromString(keyName))) {
-                basicInfo = basicInfo + " " + String(valueForKey(keyName))
+            if (responds(to: NSSelectorFromString(keyName))) {
+                basicInfo = basicInfo + " " + String(describing: value(forKey: keyName))
             }
         }
         return basicInfo
@@ -88,7 +86,7 @@ class FireBaseObject: EnCodeObject {
     
     
     // used only by the init snapshot
-    private func createArrayObjectForProperty(propety: String, array: [AnyObject]) -> [AnyObject] {
+    fileprivate func createArrayObjectForProperty(_ propety: String, array: [AnyObject]) -> [AnyObject] {
         
         var returnArray: [AnyObject] = []
         if let className = typeOfProperty(propety) {
@@ -101,7 +99,7 @@ class FireBaseObject: EnCodeObject {
                         
                         for (key, v) in (object as! [String: AnyObject]) {
                             
-                            if clazz.respondsToSelector(NSSelectorFromString(key)) {
+                            if clazz.responds(to: NSSelectorFromString(key)) {
                                 clazz.setValue(v, forKey: key)
                             }
                         }
@@ -128,13 +126,13 @@ class FireBaseObject: EnCodeObject {
         var json = [String: AnyObject]()
         for keyName in properties() {
             
-            if (keyName != "ref" && respondsToSelector(NSSelectorFromString(keyName))) {
+            if (keyName != "ref" && responds(to: NSSelectorFromString(keyName))) {
                 
-                if let value = valueForKey(keyName) {
-                    if value.isKindOfClass(NSArray) && (value as! NSArray).count > 0 {
-                        json[keyName] = arrayAsJson(value)
+                if let value = value(forKey: keyName) {
+                    if value is NSArray && (value as! NSArray).count > 0 {
+                        json[keyName] = arrayAsJson(value as AnyObject)
                     } else {
-                        json[keyName] = value
+                        json[keyName] = value as AnyObject?
                     }
                 }
             }
@@ -143,15 +141,15 @@ class FireBaseObject: EnCodeObject {
     }
     // return json array
     // value is an array wich could have simple type as String or complexe object
-    func arrayAsJson(value: AnyObject) -> AnyObject {
+    func arrayAsJson(_ value: AnyObject) -> AnyObject {
         
         let firstElement = (value as! NSArray).firstObject as! NSObject
-        if firstElement.isKindOfClass(FireBaseObject) {
+        if firstElement.isKind(of: FireBaseObject.self) {
             var jsonArray: [AnyObject] = []
             for elemnt: FireBaseObject in (value as! [FireBaseObject]) {
-                jsonArray.append(elemnt.asJson())
+                jsonArray.append(elemnt.asJson() as AnyObject)
             }
-            return jsonArray
+            return jsonArray as AnyObject
         }
         else {
             return value
@@ -166,14 +164,14 @@ class FireBaseObject: EnCodeObject {
 extension FireBaseObject {
     
     // get Object from a defined class in the project
-    class func fromClassName(className : String) -> NSObject? {
+    class func fromClassName(_ className : String) -> NSObject? {
         if let aClass      = NSClassFromString(FireBaseObject.className(className)) as? NSObject.Type {
             return aClass.init()
         }
         return nil
     }
     
-    class func className(className : String) -> String {
-        return NSBundle.mainBundle().infoDictionary!["CFBundleName"] as! String + "." + className
+    class func className(_ className : String) -> String {
+        return Bundle.main.infoDictionary!["CFBundleName"] as! String + "." + className
     }
 }

@@ -13,16 +13,16 @@ import DLRadioButton
 
 private let numberOffCell = 3
 
-private let cellWidth   = (UIScreen.mainScreen().bounds.width/3)-4
+private let cellWidth   = (UIScreen.main.bounds.width/3)-4
 private let cellHeight  = cellWidth*1.16
 
 
 
 class MXSSportsCollectionViewController: UICollectionViewController {
 
-    private var allSelectedRadioButtonsIndexs = [Int]()
+    fileprivate var allSelectedRadioButtonsIndexs = [Int]()
     
-    private var sports = FireBaseDataManager.sharedInstance.sports
+    var sports = FireBaseDataManager.sharedInstance.sports
     
     
     override func viewDidLoad() {
@@ -30,24 +30,24 @@ class MXSSportsCollectionViewController: UICollectionViewController {
         
         (self.collectionViewLayout as! UICollectionViewFlowLayout).minimumInteritemSpacing = 0
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Constants.FBNotificationSelector.sports, name: Constants.FBNotificationName.sports, object: nil)
+        NotificationCenter.default.addObserver(self, selector: Constants.FBNotificationSelector.sports, name: NSNotification.Name(rawValue: Constants.FBNotificationName.sports), object: nil)
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: Constants.FBNotificationName.sports, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: Constants.FBNotificationName.sports), object: nil)
     }
     
     // Mark: --- Notifications Observer ---
     func selectorSportUpdated() {
         sports = FireBaseDataManager.sharedInstance.sports
-        self.collectionView?.reloadData()
+        collectionView?.reloadData()
     }
     
     
     // Mark: --- collectionView Delegate ---
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Ressources.CellReuseIdentifier.sport, forIndexPath: indexPath) as! MXSSportCollectionCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Ressources.CellReuseIdentifier.sport, for: indexPath) as! MXSSportCollectionCell
         
         let index = (indexPath.section*numberOffCell)+indexPath.row
         /*
@@ -66,7 +66,7 @@ class MXSSportsCollectionViewController: UICollectionViewController {
         cell.initCell()
         if sports.count > (indexPath.section*numberOffCell)+indexPath.row {
             let sportName = sports[index]
-            cell.sportImageView.image   = UIImage(named: sportName.lowercaseString)
+            cell.sportImageView.image   = UIImage(named: sportName.lowercased())
             cell.sportLabel.text        = sportName
         }
         if allSelectedRadioButtonsIndexs.contains(index) {
@@ -77,7 +77,7 @@ class MXSSportsCollectionViewController: UICollectionViewController {
     }
     
     
-    override internal func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if sports.count%numberOffCell > 0 {
             if section == sports.count/numberOffCell {
                 return 1
@@ -86,22 +86,22 @@ class MXSSportsCollectionViewController: UICollectionViewController {
         return numberOffCell
     }
     
-    override internal func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    override internal func numberOfSections(in collectionView: UICollectionView) -> Int {
         
         return (sports.count/numberOffCell)+(sports.count%numberOffCell)
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         
         return CGSize(width: cellWidth, height: cellHeight)
     }
     
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
        
         let index = (indexPath.section*numberOffCell)+indexPath.row
         if allSelectedRadioButtonsIndexs.contains(index) {
-            if let indexArray = allSelectedRadioButtonsIndexs.indexOf(index) {
-                allSelectedRadioButtonsIndexs.removeAtIndex(indexArray)
+            if let indexArray = allSelectedRadioButtonsIndexs.index(of: index) {
+                allSelectedRadioButtonsIndexs.remove(at: indexArray)
             }
         } else {
             allSelectedRadioButtonsIndexs.append(index)
@@ -128,6 +128,6 @@ class MXSSportsCollectionViewController: UICollectionViewController {
         for i in self.allSelectedRadioButtonsIndexs {
             sportsArray.append(sports[i])
         }
-        FindSportManager.sharedInstance.sports = sportsArray
+        FindSportManager.sharedInstance.sports = sportsArray as [AnyObject]
     }
 }

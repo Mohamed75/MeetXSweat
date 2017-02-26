@@ -29,7 +29,7 @@ class MXSMenuViewController: UITableViewController {
     
     
     
-    func customSectionHeader(pView: UIView) {
+    func customSectionHeader(_ pView: UIView) {
         
         for v in pView.subviews {
             v.removeFromSuperview()
@@ -47,11 +47,11 @@ class MXSMenuViewController: UITableViewController {
         let person = User.currentUser
         
         let nameLabel = UILabel(frame: CGRect(x: 0, y: 110, width: 200, height: 30))
-        nameLabel.backgroundColor = UIColor.whiteColor()
-        nameLabel.textAlignment = .Center
+        nameLabel.backgroundColor = UIColor.white
+        nameLabel.textAlignment = .center
         pView.addSubview(nameLabel)
         nameLabel.text = " " + person.aFullName()
-        nameLabel.font = UIFont.boldSystemFontOfSize(17)
+        nameLabel.font = UIFont.boldSystemFont(ofSize: 17)
         nameLabel.textColor = Constants.MainColor.kSpecialColor
         nameLabel.sizeToFit()
         nameLabel.frame.size.width += 20
@@ -62,11 +62,11 @@ class MXSMenuViewController: UITableViewController {
         
         
         let professionLabel = UILabel(frame: CGRect(x: 0, y: nameLabel.frame.origin.y+30, width: 200, height: 30))
-        professionLabel.backgroundColor = UIColor.whiteColor()
-        professionLabel.textAlignment = .Center
+        professionLabel.backgroundColor = UIColor.white
+        professionLabel.textAlignment = .center
         pView.addSubview(professionLabel)
         professionLabel.text = " " + person.professionDomaine()
-        professionLabel.font = UIFont.systemFontOfSize(16)
+        professionLabel.font = UIFont.systemFont(ofSize: 16)
         professionLabel.textColor = Constants.MainColor.kDefaultTextColor
         professionLabel.sizeToFit()
         professionLabel.frame.size.width += 20
@@ -75,27 +75,27 @@ class MXSMenuViewController: UITableViewController {
         professionLabel.clipsToBounds = true
         
         let profileButton = UIButton(frame: CGRect(x: imageWidth-55, y: 5, width: 40, height: 40))
-        profileButton.addTarget(self, action: #selector(profileButtonClicked), forControlEvents: .TouchUpInside)
-        profileButton.setImage(UIImage(named: Ressources.MenuImages.modifier), forState: .Normal)
-        profileButton.backgroundColor = UIColor.whiteColor()
+        profileButton.addTarget(self, action: #selector(profileButtonClicked), for: .touchUpInside)
+        profileButton.setImage(UIImage(named: Ressources.MenuImages.modifier), for: UIControlState())
+        profileButton.backgroundColor = UIColor.white
         profileButton.layer.cornerRadius = 20
         profileButton.clipsToBounds = true
         pView.addSubview(profileButton)
     }
     
-    func profileButtonClicked(sender: AnyObject) {
+    func profileButtonClicked(_ sender: AnyObject) {
         
         let profileViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.profile, viewControllerId: Ressources.StoryBooardsIdentifiers.profileId) as! MXSProfileViewController
         profileViewController.person = User.currentUser
         profileViewController.editable = true
         evo_drawerController!.centerViewController = UINavigationController(rootViewController: profileViewController)
         
-        evo_drawerController?.closeDrawerAnimated(true, completion: nil)
+        evo_drawerController?.closeDrawer(animated: true, completion: nil)
     }
     
     func sectionHeaderClicked() {
         evo_drawerController!.centerViewController = mainNavigationController
-        evo_drawerController?.closeDrawerAnimated(true, completion: nil)
+        evo_drawerController?.closeDrawer(animated: true, completion: nil)
         dispatch_later(0.1) { [weak self] in
             
             guard let this = self else {
@@ -115,8 +115,8 @@ class MXSMenuViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.separatorStyle    = UITableViewCellSeparatorStyle.None
-        tableView.registerNib(UINib(nibName: "MXSMenuCellView", bundle: nil), forCellReuseIdentifier: Ressources.CellReuseIdentifier.menu)
+        tableView.separatorStyle    = UITableViewCellSeparatorStyle.none
+        tableView.register(UINib(nibName: "MXSMenuCellView", bundle: nil), forCellReuseIdentifier: Ressources.CellReuseIdentifier.menu)
         
         
         view.backgroundColor        = Constants.MainColor.kBackGroundColor
@@ -124,14 +124,14 @@ class MXSMenuViewController: UITableViewController {
         mainNavigationController    = evo_drawerController!.centerViewController as! UITabBarController
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         customSectionHeader(userView)
     }
     
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
         if section == 0 {
             return imageHeight+20
@@ -139,11 +139,11 @@ class MXSMenuViewController: UITableViewController {
         return 0
     }
     
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         if section == 0 {
             let sectionHeader = UIView(frame: CGRect(x: 0, y: 0, width: imageWidth, height: imageHeight+20))
-            sectionHeader.backgroundColor = UIColor.blackColor()
+            sectionHeader.backgroundColor = UIColor.black
             userView = UIImageView(frame: CGRect(x: 0, y: 20, width: imageWidth, height: imageHeight))
             userView.image = UIImage(named: Ressources.Images.topMap)
             sectionHeader.addSubview(userView)
@@ -154,17 +154,17 @@ class MXSMenuViewController: UITableViewController {
         return nil
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return kMenuItemsTitle.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCellWithIdentifier(Ressources.CellReuseIdentifier.menu) as? MXSMenuCellView
+        var cell = tableView.dequeueReusableCell(withIdentifier: Ressources.CellReuseIdentifier.menu) as? MXSMenuCellView
         if cell == nil {
-            cell = MXSMenuCellView(style: .Default, reuseIdentifier: Ressources.CellReuseIdentifier.menu)
+            cell = MXSMenuCellView(style: .default, reuseIdentifier: Ressources.CellReuseIdentifier.menu)
         }
-        cell?.selectionStyle    = .None
+        cell?.selectionStyle    = .none
         cell?.titleLabel.text   = kMenuItemsTitle[indexPath.row]
         if indexPath.row < kMenuItemsImage.count {
             cell?.myImageView.image = UIImage(named: kMenuItemsImage[indexPath.row])
@@ -178,11 +178,11 @@ class MXSMenuViewController: UITableViewController {
         return cell!
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         switch indexPath.row {
         case 0:
@@ -218,11 +218,11 @@ class MXSMenuViewController: UITableViewController {
         default:
             break
         }
-        evo_drawerController?.closeDrawerAnimated(true, completion: nil)
+        evo_drawerController?.closeDrawer(animated:true, completion: nil)
     }
     
     
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         if scrollView.contentOffset.y < 0 {
             scrollView.contentOffset = CGPoint(x: 0, y: 0)
@@ -232,14 +232,14 @@ class MXSMenuViewController: UITableViewController {
     
     func share() {
         
-        let myWebsite   = NSURL(string: "http://meetxsweat.com")
+        let myWebsite   = URL(string: "http://meetxsweat.com")
         let imgShare    = UIImage(named: "Logo")!
         let textToShare = "Pouvoir allier vie professionnelle et activité physique est une nécessité pour quiconque souhaite conserver un esprit sain dans un corps sain."
         
-        let shareItems: [AnyObject] = [textToShare, imgShare, myWebsite!]
+        let shareItems: [AnyObject] = [textToShare as AnyObject, imgShare, myWebsite! as AnyObject]
         
         let activityViewController = UIActivityViewController(activityItems: shareItems, applicationActivities: nil)
-        activityViewController.excludedActivityTypes = [UIActivityTypePrint, UIActivityTypePostToWeibo, UIActivityTypeCopyToPasteboard, UIActivityTypeAddToReadingList, UIActivityTypePostToVimeo, UIActivityTypeAssignToContact, UIActivityTypeSaveToCameraRoll]
-        presentViewController(activityViewController, animated: true, completion: nil)
+        activityViewController.excludedActivityTypes = [UIActivityType.print, UIActivityType.postToWeibo, UIActivityType.copyToPasteboard, UIActivityType.addToReadingList, UIActivityType.postToVimeo, UIActivityType.assignToContact, UIActivityType.saveToCameraRoll]
+        present(activityViewController, animated: true, completion: nil)
     }
 }

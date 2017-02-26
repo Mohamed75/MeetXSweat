@@ -15,38 +15,38 @@ private let kPickerViewScaleWidth   = (((ScreenSize.currentWidth/ScreenSize.ipho
 
 class MXSPickerView {
     
-    static private let emptyTextField = UITextField()
+    static fileprivate let emptyTextField = UITextField()
     
     
-    static func initPickerView(pickerView: UIPickerView, controller: UIViewController, scale: Bool) {
+    static func initPickerView(_ pickerView: UIPickerView, controller: UIViewController, scale: Bool) {
     
         emptyTextField.inputView = pickerView
         pickerView.delegate = controller as? UIPickerViewDelegate
         pickerView.showsSelectionIndicator = false
         
         if !scale && ScreenSize.currentHeight <= ScreenSize.iphone5Height {
-            pickerView.backgroundColor = UIColor.whiteColor()
+            pickerView.backgroundColor = UIColor.white
         }
         
         if (scale) {
-            pickerView.transform = CGAffineTransformMakeScale(kPickerViewScale, kPickerViewScale)
+            pickerView.transform = CGAffineTransform(scaleX: kPickerViewScale, y: kPickerViewScale)
         } else {
             if kPickerViewScaleWidth != 0 && kPickerViewScaleWidth-0.15 > 1 {
-                pickerView.transform = CGAffineTransformMakeScale(kPickerViewScaleWidth-0.15, kPickerViewScaleWidth-0.15)
+                pickerView.transform = CGAffineTransform(scaleX: kPickerViewScaleWidth-0.15, y: kPickerViewScaleWidth-0.15)
             }
         }
         
         if let drawerController = getAppDelegateWindow().rootViewController as? DrawerController {
             
              drawerController.drawerVisualStateBlock = { (drawerController, gestureRecognizer, value) -> Void in
-                if drawerController.openSide == .Left {
+                if drawerController.openSide == .left {
                     subViewPanned(pickerView, controller: controller)
                 }
              }
             
             drawerController.gestureCompletionBlock = { (drawerController, gestureRecognizer) -> Void in
                 
-                let velocity = (gestureRecognizer as! UIPanGestureRecognizer).velocityInView(drawerController.view)
+                let velocity = (gestureRecognizer as! UIPanGestureRecognizer).velocity(in: drawerController.view)
                 if fabs(velocity.y) > fabs(velocity.x) {
                     return
                 }
@@ -61,7 +61,7 @@ class MXSPickerView {
                         }
                     }
                 }
-                if drawerController.openSide == .None {
+                if drawerController.openSide == .none {
                     showPickerView(pickerView, controller: controller, scale: scale)
                 } else {
                     subViewPanned(pickerView, controller: controller)
@@ -71,7 +71,7 @@ class MXSPickerView {
     }
     
     
-    static func showPickerView(pickerView: UIPickerView, controller: UIViewController, scale: Bool) {
+    static func showPickerView(_ pickerView: UIPickerView, controller: UIViewController, scale: Bool) {
         
         emptyTextField.becomeFirstResponder()
         var editable = false
@@ -84,7 +84,7 @@ class MXSPickerView {
         
         let x = (ScreenSize.currentWidth-pickerView.frame.size.width)/2
         if (scale) {
-            pickerView.frame = CGRectMake(x, ScreenSize.currentHeight - pickerView.frame.size.height - 50, pickerView.frame.size.width, pickerView.frame.size.height)
+            pickerView.frame = CGRect(x: x, y: ScreenSize.currentHeight - pickerView.frame.size.height - 50, width: pickerView.frame.size.width, height: pickerView.frame.size.height)
         }
         else {
             var pickerViewHeight = pickerView.frame.size.height
@@ -95,7 +95,7 @@ class MXSPickerView {
                     pickerViewHeight = pickerViewHeight - 14
                 }
             }
-            pickerView.frame = CGRectMake(x, ScreenSize.currentHeight - pickerViewHeight + 20, pickerView.frame.size.width, pickerViewHeight)
+            pickerView.frame = CGRect(x: x, y: ScreenSize.currentHeight - pickerViewHeight + 20, width: pickerView.frame.size.width, height: pickerViewHeight)
         }
         
         if pickerView.subviews.count > 2 {
@@ -109,14 +109,14 @@ class MXSPickerView {
             }
             selectorIndicator.frame = CGRect(x: x*(1/kPickerViewScale), y: selectorIndicator.frame.origin.y, width: pickerView.frame.size.width, height: specialHeight)
             selectorIndicator.backgroundColor = Constants.MainColor.kSpecialColorClear
-            pickerView.insertSubview(selectorIndicator, atIndex: 0)
+            pickerView.insertSubview(selectorIndicator, at: 0)
         }
         
         pickerView.selectRow(2, inComponent: 0, animated: false)
         pickerView.reloadAllComponents()
     }
 
-    static func subViewPanned(pickerView: UIPickerView, controller: UIViewController) {
+    static func subViewPanned(_ pickerView: UIPickerView, controller: UIViewController) {
         pickerView.removeFromSuperview()
         controller.view.endEditing(true)
     }

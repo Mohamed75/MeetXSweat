@@ -15,7 +15,7 @@ private let fullRotation = Float(2*M_PI)
 private let angle = 180.0
 
 
-typealias EffectBlock = (UIView, Bool -> Void) -> ()
+typealias EffectBlock = (UIView, ((Bool) -> Swift.Void)? ) -> ()
 typealias FlipBlock = (() -> Void)
 
 
@@ -24,12 +24,12 @@ class AnimationClass {
     
     class func BounceEffect() -> EffectBlock {
         return { view, completion in
-            view.transform = CGAffineTransformMakeScale(0.5, 0.5)
+            view.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
             
             let animationBlock = {
-                view.transform = CGAffineTransformMakeScale(1, 1)
+                view.transform = CGAffineTransform(scaleX: 1, y: 1)
             }
-            UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.1, options: UIViewAnimationOptions.BeginFromCurrentState, animations: animationBlock, completion: completion)
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.1, options: UIViewAnimationOptions.beginFromCurrentState, animations: animationBlock, completion: completion)
         }
     }
     
@@ -39,11 +39,11 @@ class AnimationClass {
             let animationBlock = {
                 view.alpha = 0
             }
-            UIView.animateWithDuration(0.6, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options: [], animations: animationBlock, completion: completion)
+            UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options: [], animations: animationBlock, completion: completion)
         }
     }
     
-    private class func get3DTransformation(angle: Double) -> CATransform3D {
+    fileprivate class func get3DTransformation(_ angle: Double) -> CATransform3D {
         
         var transform = CATransform3DIdentity
         transform.m34 = -1.0 / 500.0
@@ -52,33 +52,33 @@ class AnimationClass {
         return transform
     }
     
-    class func flipAnimation(view: UIView, completion: FlipBlock?) {
+    class func flipAnimation(_ view: UIView, completion: FlipBlock?) {
         
         view.layer.transform = get3DTransformation(angle)
         
         let animationBlock = {
             view.layer.transform = CATransform3DIdentity
         }
-        let endBlock: (Bool -> Void) = { (finished) -> Void in
+        let endBlock: ((Bool) -> Void) = { (finished) -> Void in
             guard let aCompletion = completion else {
                 return
             }
             aCompletion()
         }
-        UIView.animateWithDuration(1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .TransitionNone, animations: animationBlock, completion: endBlock)
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: UIViewAnimationOptions(), animations: animationBlock, completion: endBlock)
     }
     
     
-    class func rotateImageToRightInfinie(view: UIView, speed: Float) {
+    class func rotateImageToRightInfinie(_ view: UIView, speed: Float) {
         
-        if view.layer.animationForKey(rotationRightInfiniKey) != nil {
+        if view.layer.animation(forKey: rotationRightInfiniKey) != nil {
             return
         }
         let rotationAnimation = CABasicAnimation(keyPath:zPath)
-        rotationAnimation.toValue   = NSNumber(float: fullRotation)
+        rotationAnimation.toValue   = NSNumber(value: fullRotation as Float)
         rotationAnimation.speed     = speed
         rotationAnimation.repeatCount = Float.infinity
         
-        view.layer.addAnimation(rotationAnimation, forKey:rotationRightInfiniKey)
+        view.layer.add(rotationAnimation, forKey:rotationRightInfiniKey)
     }
 }

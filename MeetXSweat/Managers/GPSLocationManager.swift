@@ -7,6 +7,30 @@
 //
 
 import MapKit
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l >= r
+  default:
+    return !(lhs < rhs)
+  }
+}
+
 
 
 class GPSLocationManager: UIViewController, CLLocationManagerDelegate {
@@ -16,29 +40,29 @@ class GPSLocationManager: UIViewController, CLLocationManagerDelegate {
     var userLocation: CLLocation?
     
     
-    private var locationManager: CLLocationManager?
+    fileprivate var locationManager: CLLocationManager?
     
     func startUserLocation() {
         
         self.locationManager = CLLocationManager()
         self.locationManager!.delegate = self
-        if (Float(UIDevice.currentDevice().systemVersion) >= 8) {
+        if (Float(UIDevice.current.systemVersion) >= 8) {
             self.locationManager!.requestWhenInUseAuthorization()
         }
         self.locationManager?.startUpdatingLocation()
     }
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         userLocation = locations.first
     }
     
-    class func getDistanceFor(coordinate: CLLocationCoordinate2D) -> Double {
+    class func getDistanceFor(_ coordinate: CLLocationCoordinate2D) -> Double {
         
         guard let location = GPSLocationManager.sharedInstance.userLocation else {
             return -1
         }
-        let distance = location.distanceFromLocation(CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude))
+        let distance = location.distance(from: CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude))
         return distance
     }
 }

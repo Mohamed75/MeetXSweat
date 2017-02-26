@@ -29,25 +29,26 @@ class MXSCreateAccountViewController: MXSViewController {
     @IBOutlet weak var cancelButton:    UIButton!
     
     
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         
         famillyNameTextField.attributedPlaceholder = NSAttributedString(string: Strings.Account.name, attributes:placeHolderAttributes)
-        famillyNameTextField.returnKeyType = .Next
+        famillyNameTextField.returnKeyType = .next
         MXSViewController.underLineView(famillyNameTextField)
         
         lastNameTextField.attributedPlaceholder = NSAttributedString(string: Strings.Account.lastName, attributes:placeHolderAttributes)
-        lastNameTextField.returnKeyType = .Next
+        lastNameTextField.returnKeyType = .next
         MXSViewController.underLineView(lastNameTextField)
         
         emailTextField.attributedPlaceholder = NSAttributedString(string: Strings.Account.email, attributes:placeHolderAttributes)
-        emailTextField.returnKeyType = .Next
+        emailTextField.returnKeyType = .next
         MXSViewController.underLineView(emailTextField)
         
         passWordTextField.attributedPlaceholder = NSAttributedString(string: Strings.Account.password, attributes:placeHolderAttributes)
-        passWordTextField.returnKeyType = .Done
+        passWordTextField.returnKeyType = .done
         MXSViewController.underLineView(passWordTextField)
         
         
@@ -74,29 +75,29 @@ class MXSCreateAccountViewController: MXSViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func vailderButtonClicked(sender: AnyObject) {
+    @IBAction func vailderButtonClicked(_ sender: AnyObject) {
         
-        guard let name = famillyNameTextField.text where name.characters.count > 0 else {
+        guard let name = famillyNameTextField.text, name.characters.count > 0 else {
             MXSViewController.showInformatifPopUp(Strings.Alert.fillAllFieldsMessage)
             return
         }
         
-        guard let lastName = lastNameTextField.text where lastName.characters.count > 0 else {
+        guard let lastName = lastNameTextField.text, lastName.characters.count > 0 else {
             MXSViewController.showInformatifPopUp(Strings.Alert.fillAllFieldsMessage)
             return
         }
         
-        guard let email = emailTextField.text where email.characters.count > 0 else {
+        guard let email = emailTextField.text, email.characters.count > 0 else {
             MXSViewController.showInformatifPopUp(Strings.Alert.fillAllFieldsMessage)
             return
         }
         
-        guard let password = passWordTextField.text where password.characters.count > 0 else {
+        guard let password = passWordTextField.text, password.characters.count > 0 else {
             MXSViewController.showInformatifPopUp(Strings.Alert.fillAllFieldsMessage)
             return
         }
         
-        guard let emailValidation = emailTextField.text where emailValidation.isValidEmail else {
+        guard let emailValidation = emailTextField.text, emailValidation.isValidEmail else {
             MXSViewController.showInformatifPopUp(Strings.Alert.wrongEmailMesssage)
             return
         }
@@ -116,19 +117,19 @@ class MXSCreateAccountViewController: MXSViewController {
         NSLog("email account created success: %@", User.currentUser.allParams())
     }
     
-    @IBAction func annulerButtonClicked(sender: AnyObject) {
+    @IBAction func annulerButtonClicked(_ sender: AnyObject) {
         
-        self.navigationController?.popViewControllerAnimated(true)
+        if let navigationController = navigationController {
+            navigationController.popViewController(animated: true)
+        }
     }
     
     
     // MARK: --- TextFields Delegate ---
     
-    func textFieldShouldReturn(textField: UITextField!) -> Bool {   //delegate method
+    func textFieldShouldReturn(_ textField: UITextField!) -> Bool {   //delegate method
         
         switch textField {
-        /*case userNameTextField:
-            famillyNameTextField.becomeFirstResponder()*/
         case famillyNameTextField:
             lastNameTextField.becomeFirstResponder()
         case lastNameTextField:

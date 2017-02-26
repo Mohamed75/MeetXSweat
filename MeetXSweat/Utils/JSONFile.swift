@@ -12,11 +12,11 @@ import Foundation
 class JSONFile {
     
     
-    static func jsonDataFromFile(file: String) -> String {
+    static func jsonDataFromFile(_ file: String) -> String {
         
-        if let path = NSBundle(forClass: JSONFile.self).pathForResource(file, ofType: "json") {
-            if let jsonData = NSData(contentsOfFile: path) {
-                return String(data: jsonData, encoding: NSUTF8StringEncoding)!
+        if let path = Bundle(for: JSONFile.self).path(forResource: file, ofType: "json") {
+            if let jsonData = try? Data(contentsOf: URL(fileURLWithPath: path)) {
+                return String(data: jsonData, encoding: String.Encoding.utf8)!
             }
         }
         return ""
@@ -25,28 +25,28 @@ class JSONFile {
     // Nothing with json
     static func writeToPlist() {
         
-        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as NSArray
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
         let documentDirectory = paths.firstObject as! String
         let path = documentDirectory+("myData.plist")
-        let fileManager = NSFileManager.defaultManager()
-        if (!(fileManager.fileExistsAtPath(path)))
+        let fileManager = FileManager.default
+        if (!(fileManager.fileExists(atPath: path)))
         {
-            let bundle : NSString = NSBundle.mainBundle().pathForResource("MyData", ofType: "plist")!
+            let bundle : NSString = Bundle.main.path(forResource: "MyData", ofType: "plist")! as NSString
             do {
-                try fileManager.copyItemAtPath(bundle as String, toPath: path)
+                try fileManager.copyItem(atPath: bundle as String, toPath: path)
             } catch {
                 print(error)
             }
         }
         
-        let bytes = NSKeyedArchiver.archivedDataWithRootObject(self)
-        if !bytes.writeToFile(path, atomically: true) {
+        let bytes = NSKeyedArchiver.archivedData(withRootObject: self)
+        if !((try? bytes.write(to: URL(fileURLWithPath: path), options: [.atomic])) != nil) {
             print("succes writing plist")
         }
     }
     // Nothing with json
     class func myloadData() {
-        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as NSArray
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
         let documentDirectory = paths.firstObject as! String
         let path = documentDirectory+("myData.plist")
         

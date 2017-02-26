@@ -16,6 +16,8 @@ import JTAppleCalendar
 
 class MXSFindDateViewController: MXSCalendarViewController {
     
+
+    
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
@@ -34,7 +36,7 @@ class MXSFindDateViewController: MXSCalendarViewController {
         title = Strings.NavigationTitle.planning
         
         titleLabel.text = Strings.Calendar.titleText
-        titleLabel.textColor = UIColor.whiteColor()
+        titleLabel.textColor = UIColor.white
         titleLabel.backgroundColor = Constants.MainColor.kSpecialColor
         
         let topLine = UIView(frame: CGRect(x: 10, y: titleLabel.frame.size.height+15, width: view.frame.size.width-20, height: 1))
@@ -49,68 +51,73 @@ class MXSFindDateViewController: MXSCalendarViewController {
         
         calendarView.dataSource = self
         calendarView.delegate   = self
-        calendarView.registerCellViewXib(fileName: Ressources.Xibs.calendarCellView)
-        calendarView.firstDayOfWeek = .Monday
+        calendarView.registerCellViewXib(file: Ressources.Xibs.calendarCellView)
         calendarView.cellInset  = CGPoint(x: 0, y: 0)
         calendarView.allowsMultipleSelection = true
         calendarView.reloadData()
         
-        let currentDate = calendarView.currentCalendarDateSegment()
-        setupViewsOfCalendar(currentDate.dateRange.start, endDate: currentDate.dateRange.end)
+        calendarView.visibleDates { (visibleDates: DateSegmentInfo) in
+            self.setupViewsOfCalendar(from: visibleDates)
+        }
         
         automaticallyAdjustsScrollViewInsets = false
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
-        MSXFindManager.sharedInstance.findBy = FindBy.Date
+        MSXFindManager.sharedInstance.findBy = FindBy.date
     }
     
     override func refreshView() {
         
-        let currentDate = calendarView.currentCalendarDateSegment()
-        setupViewsOfCalendar(currentDate.dateRange.start, endDate: currentDate.dateRange.end)
+        calendarView.visibleDates { (visibleDates: DateSegmentInfo) in
+            self.setupViewsOfCalendar(from: visibleDates)
+        }
         calendarView.reloadData()
     }
     
     
-    override func validatButtonClicked(sender: AnyObject) {
+    override func validatButtonClicked(_ sender: AnyObject) {
         
-        FindDateManager.sharedInstance.dates = calendarView.selectedDates
+        FindDateManager.sharedInstance.dates = calendarView.selectedDates as [AnyObject]
         
         let viewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findSport, viewControllerId: Ressources.StoryBooardsIdentifiers.embedSportsId)
         navigationController?.pushViewController(viewController, animated: true)
     }
     
     
-    override func setupViewsOfCalendar(startDate: NSDate, endDate: NSDate) {
-        let month = testCalendar.component(NSCalendarUnit.Month, fromDate: startDate)
-        let monthName = NSDateFormatter().monthSymbols[(month) % 12] // 0 indexed array
-        let year = NSCalendar.currentCalendar().component(NSCalendarUnit.Year, fromDate: startDate)
+    override func setupViewsOfCalendar(from visibleDates: DateSegmentInfo) {
+        guard let startDate = visibleDates.monthDates.first else {
+            return
+        }
+        let month       = testCalendar.dateComponents([.month], from: startDate).month!
+        let monthName   = DateFormatter().monthSymbols[(month) % 12] // 0 indexed array
+        let year        = testCalendar.component(.year, from: startDate)
         monthLabel.text = monthName + " " + String(year)
     }
     
-    
-    @IBAction func next(sender: UIButton) {
-        calendarView.scrollToNextSegment() { [weak self] in
+    @IBAction func next(_ sender: UIButton) {
+        calendarView.scrollToSegment(.next) { [weak self] in
             
             guard let this = self else {
                 return
             }
-            let currentSegmentDates = this.calendarView.currentCalendarDateSegment()
-            this.setupViewsOfCalendar(currentSegmentDates.dateRange.start, endDate: currentSegmentDates.dateRange.end)
+            this.calendarView.visibleDates({ (visibleDates: DateSegmentInfo) in
+                this.setupViewsOfCalendar(from: visibleDates)
+            })
         }
     }
     
-    @IBAction func previous(sender: UIButton) {
-        calendarView.scrollToPreviousSegment() { [weak self] in
+    @IBAction func previous(_ sender: UIButton) {
+        calendarView.scrollToSegment(.previous) { [weak self] in
             
             guard let this = self else {
                 return
             }
-            let currentSegmentDates = this.calendarView.currentCalendarDateSegment()
-            this.setupViewsOfCalendar(currentSegmentDates.dateRange.start, endDate: currentSegmentDates.dateRange.end)
+            this.calendarView.visibleDates({ (visibleDates: DateSegmentInfo) in
+                this.setupViewsOfCalendar(from: visibleDates)
+            })
         }
     }
 

@@ -10,7 +10,7 @@ import UIKit
 
 
 // MARK: - *** Global Constants ***
-let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! as String
+let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first! as String
 
 
 /**
@@ -18,8 +18,8 @@ let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .Use
  */
 struct ScreenSize {
     /// The current device screen Heigh.
-    static let currentHeight    = UIScreen.mainScreen().bounds.size.height
-    static let currentWidth     = UIScreen.mainScreen().bounds.size.width
+    static let currentHeight    = UIScreen.main.bounds.size.height
+    static let currentWidth     = UIScreen.main.bounds.size.width
     
     /// The iphone5 screen Height.
     static let iphone4Height = CGFloat(480)
@@ -43,11 +43,10 @@ struct ScreenSize {
  - parameter delay:   seconds to add.
  - parameter closure: A block to be Schedule.
  */
-func dispatch_later(delay: Double, closure:()->()) {
+func dispatch_later(_ delay: Double, closure:@escaping ()->()) {
     
-    dispatch_after(
-        dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))),
-        dispatch_get_main_queue(), closure)
+    DispatchQueue.main.asyncAfter(
+        deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
 }
 
 /**
@@ -56,7 +55,7 @@ func dispatch_later(delay: Double, closure:()->()) {
  - returns: The key Window.
  */
 func getAppDelegateWindow() -> UIWindow {
-    return UIApplication.sharedApplication().keyWindow!
+    return UIApplication.shared.keyWindow!
 }
 
 /**
@@ -75,9 +74,9 @@ func getVisibleViewController() -> UIViewController {
  
  - returns: info plist value.
  */
-func getValueFromInfoPlist(key: String) -> AnyObject {
+func getValueFromInfoPlist(_ key: String) -> AnyObject {
     
-    return (NSBundle.mainBundle().objectForInfoDictionaryKey(key))!
+    return (Bundle.main.object(forInfoDictionaryKey: key))! as AnyObject
 }
 
 /**
@@ -88,9 +87,9 @@ func getValueFromInfoPlist(key: String) -> AnyObject {
  
  - returns: The iPad value if current device is an ipad otherwise iPhone value.
  */
-func valueForIpad(ipad: CGFloat, iphone: CGFloat) -> CGFloat {
+func valueForIpad(_ ipad: CGFloat, iphone: CGFloat) -> CGFloat {
     
-    return UIDevice.currentDevice().userInterfaceIdiom == .Pad ? ipad : iphone
+    return UIDevice.current.userInterfaceIdiom == .pad ? ipad : iphone
 }
 
 /**
@@ -101,9 +100,9 @@ func valueForIpad(ipad: CGFloat, iphone: CGFloat) -> CGFloat {
  
  - returns: The iPad value if current device is an ipad otherwise iPhone value.
  */
-func valueForIpadString(ipad: String, iphone: String) -> String {
+func valueForIpadString(_ ipad: String, iphone: String) -> String {
     
-    return UIDevice.currentDevice().userInterfaceIdiom == .Pad ? ipad : iphone
+    return UIDevice.current.userInterfaceIdiom == .pad ? ipad : iphone
 }
 
 /**
@@ -114,9 +113,9 @@ func valueForIpadString(ipad: String, iphone: String) -> String {
  
  - returns: The iPad value if current device is an ipad otherwise iPhone value.
  */
-func valueForIpadInt32(ipad: Int32, iphone: Int32) -> Int32 {
+func valueForIpadInt32(_ ipad: Int32, iphone: Int32) -> Int32 {
     
-    return UIDevice.currentDevice().userInterfaceIdiom == .Pad ? ipad : iphone
+    return UIDevice.current.userInterfaceIdiom == .pad ? ipad : iphone
 }
 
 /**
@@ -127,7 +126,7 @@ func valueForIpadInt32(ipad: Int32, iphone: Int32) -> Int32 {
  
  - returns: The up5 value if current device Screen width is biger than iPhone 5 otherwise lessOr5 value.
  */
-func valueForIphoneUp5(up5: CGFloat, lessOr5: CGFloat) -> CGFloat {
+func valueForIphoneUp5(_ up5: CGFloat, lessOr5: CGFloat) -> CGFloat {
     
     return ScreenSize.currentHeight > ScreenSize.iphone5Height ? up5 : lessOr5
 }
@@ -149,7 +148,7 @@ extension UIWindow {
      
      - returns: the last viewController.
      */
-    private static func getVisibleViewControllerFrom(viewController: UIViewController?) -> UIViewController? {
+    fileprivate static func getVisibleViewControllerFrom(_ viewController: UIViewController?) -> UIViewController? {
         if let nc = viewController as? UINavigationController {
             return UIWindow.getVisibleViewControllerFrom(nc.visibleViewController)
         } else if let tc = viewController as? UITabBarController {
@@ -184,7 +183,7 @@ public extension UIImage {
         UIRectFill(rect)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        self.init(CGImage: image.CGImage!)
+        self.init(cgImage: (image?.cgImage!)!)
     }
     
     /**
@@ -194,13 +193,13 @@ public extension UIImage {
      
      - returns: return new image resized.
      */
-    func scaleImage(newSize: CGSize) -> UIImage {
+    func scaleImage(_ newSize: CGSize) -> UIImage {
         
         UIGraphicsBeginImageContextWithOptions(newSize, false, 0)
-        self.drawInRect(CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
+        self.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return newImage
+        return newImage!
     }
     
 }
@@ -210,20 +209,20 @@ public extension UIImage {
 extension UIColor {
     
     /// Get the red value of a color.
-    var red: CGFloat {
-        return CGColorGetComponents(self.CGColor)[0]
+    var aRed: CGFloat {
+        return self.cgColor.components![0]
     }
     /// Get the green value of a color.
     var green: CGFloat {
-        return CGColorGetComponents(self.CGColor)[1]
+        return self.cgColor.components![1]
     }
     /// Get the blue value of a color.
     var blue: CGFloat {
-        return CGColorGetComponents(self.CGColor)[2]
+        return self.cgColor.components![2]
     }
     /// Get the alpha value of a color.
     var alpha: CGFloat {
-        return CGColorGetComponents(self.CGColor)[3]
+        return self.cgColor.components![3]
     }
 }
 
@@ -236,7 +235,7 @@ extension String {
     var isValidEmail: Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,20}"
         let emailTest  = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailTest.evaluateWithObject(self)
+        return emailTest.evaluate(with: self)
     }
 }
 
@@ -260,7 +259,7 @@ class Utils {
      - returns: true if the current device is an iPad otherwise false.
      */
     class func isIpad() -> Bool {
-        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Pad
+        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad
     }
  
     
@@ -271,13 +270,13 @@ class Utils {
      
      - returns: an image of the view.
      */
-    class func screenShotMethod(view: UIView) -> UIImage {
+    class func screenShotMethod(_ view: UIView) -> UIImage {
         //Create the UIImage
         UIGraphicsBeginImageContextWithOptions(view.frame.size, false, 0)
-        view.layer.presentationLayer()!.renderInContext(UIGraphicsGetCurrentContext()!)
+        view.layer.presentation()!.render(in: UIGraphicsGetCurrentContext()!)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return image
+        return image!
     }
     
     /**
@@ -287,11 +286,11 @@ class Utils {
      - parameter skipBackup:          true to skip saving files.
      - parameter fileOrDirectoryPath: directory path of the files to skip from saving.
      */
-    class func skipBackup(skipBackup: Bool, fileOrDirectoryPath: String) {
+    class func skipBackup(_ skipBackup: Bool, fileOrDirectoryPath: String) {
         
-        let url = NSURL(fileURLWithPath:fileOrDirectoryPath)
+        let url = URL(fileURLWithPath:fileOrDirectoryPath)
         do {
-            try url.setResourceValue(skipBackup, forKey: NSURLIsExcludedFromBackupKey)
+            try (url as NSURL).setResourceValue(skipBackup, forKey: URLResourceKey.isExcludedFromBackupKey)
             
         } catch {
             
@@ -307,7 +306,7 @@ class Utils {
      
      - returns: an array off all animation images.
      */
-    class func loadAnimeImages(name: String, startIndex: Int, endIndex: Int) -> [CGImage] {
+    class func loadAnimeImages(_ name: String, startIndex: Int, endIndex: Int) -> [CGImage] {
     
         var array = [CGImage]()
         for index in startIndex ..< endIndex {
@@ -315,7 +314,7 @@ class Utils {
             if index > 9 {
                 imageName = String(format: "%@0%@", name, String(index))
             }
-            array.append(UIImage(named:imageName)!.CGImage!)
+            array.append(UIImage(named:imageName)!.cgImage!)
         }
         return array
     }
@@ -325,12 +324,12 @@ class Utils {
      
      - parameter view: a view to wich a gradient will be add.
      */
-    class func initGradient(view: UIView, startColor: UIColor, endColor: UIColor) {
+    class func initGradient(_ view: UIView, startColor: UIColor, endColor: UIColor) {
         
         let gradientLayer: CAGradientLayer = CAGradientLayer()
         gradientLayer.frame     = view.bounds
-        gradientLayer.colors    = [startColor.CGColor, endColor.CGColor]
-        view.layer.insertSublayer(gradientLayer, atIndex: 0)
+        gradientLayer.colors    = [startColor.cgColor, endColor.cgColor]
+        view.layer.insertSublayer(gradientLayer, at: 0)
     }
     
     /**
@@ -340,11 +339,11 @@ class Utils {
      */
     class func isRunningUnitTests() -> Bool {
     
-        let env = NSProcessInfo.processInfo().environment
+        let env = ProcessInfo.processInfo.environment
         
         // Library tests
         if let envValue: String = env["XCTestConfigurationFilePath"] {
-            if envValue.rangeOfString("xctest") != nil {
+            if envValue.range(of: "xctest") != nil {
                 return true
             }
         }
@@ -353,26 +352,26 @@ class Utils {
     }
     
     
-    class func makeHttpsUrlFromString(urlString: String) -> String {
+    class func makeHttpsUrlFromString(_ urlString: String) -> String {
         
-        if urlString.componentsSeparatedByString("https").count < 2 {
+        if urlString.components(separatedBy: "https").count < 2 {
             
-            let index: String.Index = urlString.startIndex.advancedBy(4)
-            let urlStringWithoutSchem = urlString.substringFromIndex(index)
+            let index: String.Index = urlString.characters.index(urlString.startIndex, offsetBy: 4)
+            let urlStringWithoutSchem = urlString.substring(from: index)
             return "https"+urlStringWithoutSchem
         }
         return urlString
     }
     
     
-    class func addTapGestureToView(view: UIView, target: AnyObject, selectorString: String) {
+    class func addTapGestureToView(_ view: UIView, target: AnyObject, selectorString: String) {
     
         let tapGesture = UITapGestureRecognizer(target: target, action: NSSelectorFromString(selectorString))
-        view.userInteractionEnabled = true
+        view.isUserInteractionEnabled = true
         view.addGestureRecognizer(tapGesture)
     }
     
-    class func loadViewControllerFromStoryBoard(stroyBoard: String, viewControllerId: String) -> UIViewController {
-        return UIStoryboard(name: stroyBoard, bundle: nil).instantiateViewControllerWithIdentifier(viewControllerId)
+    class func loadViewControllerFromStoryBoard(_ stroyBoard: String, viewControllerId: String) -> UIViewController {
+        return UIStoryboard(name: stroyBoard, bundle: nil).instantiateViewController(withIdentifier: viewControllerId)
     }
 }

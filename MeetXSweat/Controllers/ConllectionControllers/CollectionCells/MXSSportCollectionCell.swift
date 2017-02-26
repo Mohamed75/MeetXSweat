@@ -10,7 +10,6 @@ import UIKit
 import DLRadioButton
 
 
-private let radioButtonColor = UIColor.redColor()
 
 
 class MXSSportCollectionCell: UICollectionViewCell {
@@ -18,7 +17,7 @@ class MXSSportCollectionCell: UICollectionViewCell {
     /*
     @IBOutlet weak var radioButton: DLRadioButton!
     
-    
+    private let radioButtonColor = UIColor.red
     func initColors() {
         
         radioButton.iconColor = radioButtonColor
@@ -55,13 +54,13 @@ class MXSSportCollectionCell: UICollectionViewCell {
     @IBOutlet weak var sportLabel: UILabel!
     
     
-    private let yMargin = CGFloat(3)
-    private let xMargin = CGFloat(3)
+    fileprivate let yMargin = CGFloat(3)
+    fileprivate let xMargin = CGFloat(3)
     
     func initCell() {
         
         let borderView = UIView(frame: CGRect(x: xMargin, y: yMargin, width: self.frame.size.width-(2*xMargin), height: self.frame.size.height-(2*yMargin)))
-        borderView.layer.borderColor    = Constants.MainColor.kSpecialColor.CGColor
+        borderView.layer.borderColor    = Constants.MainColor.kSpecialColor.cgColor
         borderView.layer.borderWidth    = 1
         borderView.layer.cornerRadius   = 5
         self.addSubview(borderView)

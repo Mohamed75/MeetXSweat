@@ -22,7 +22,7 @@ private let closeString             = "Close"
 
 
 protocol LogInLKDelegate {
-    func logInLKSuccess(data: NSDictionary?)
+    func logInLKSuccess(_ data: NSDictionary?)
 }
 
 //, failUserInfoBlock failure: ((NSError!) -> Void)!
@@ -31,28 +31,33 @@ class LiknedInHelper {
     
     
     
-    class func logIn(delegate: LogInLKDelegate) {
+    class func logIn(_ delegate: LogInLKDelegate) {
         
         let permissions = [Permissions.BasicProfile.rawValue, Permissions.EmailAddress.rawValue, Permissions.Share.rawValue, Permissions.CompanyAdmin.rawValue]
         
-        let linkedIn = LinkedInHelper.sharedInstance()
-        linkedIn.cancelButtonText = closeString
-        linkedIn.showActivityIndicator = true
+        if let linkedIn = LinkedInHelper.sharedInstance() {
         
-        let successBlock: ([NSObject : AnyObject]!) -> Void = { (userInfo) in
+            linkedIn.cancelButtonText = closeString
+            linkedIn.showActivityIndicator = true
             
-            delegate.logInLKSuccess(userInfo)
-            linkedIn.showActivityIndicator = false
             
+            let successBlock: ([AnyHashable: Any]?) -> Void = { (userInfo) in
+                
+                delegate.logInLKSuccess(userInfo as NSDictionary?)
+                linkedIn.showActivityIndicator = false
+                
+            }
+            
+            let failerBlock: ((Error?) -> Void) = { (error) in
+                if let aError = error {
+                    NSLog("linkedIn logIn error : %@", aError._userInfo.debugDescription)
+                }
+                delegate.logInLKSuccess(nil)
+                linkedIn.showActivityIndicator = false
+            }
+            
+            linkedIn.requestMeWithSenderViewController(getVisibleViewController(), clientId: LINKEDIN_CLIENT_ID, clientSecret: LINKEDIN_CLIENT_SECRET, redirectUrl: REDIRECT_URL, permissions: permissions, state: DEFAULT_STATE, successUserInfo: successBlock, failUserInfoBlock: failerBlock)
         }
-        
-        let failerBlock: ((NSError!) -> Void) = { (error) in
-            NSLog("linkedIn logIn error : %@", error.userInfo.description)
-            delegate.logInLKSuccess(nil)
-            linkedIn.showActivityIndicator = false
-        }
-        linkedIn.requestMeWithSenderViewController(getVisibleViewController(), clientId: LINKEDIN_CLIENT_ID, clientSecret: LINKEDIN_CLIENT_SECRET, redirectUrl: REDIRECT_URL, permissions: permissions, state: DEFAULT_STATE, successUserInfo: successBlock, failUserInfoBlock: failerBlock)
-    
     }
     
     

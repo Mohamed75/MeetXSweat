@@ -42,10 +42,10 @@ class ConversationsDataManager {
             }
         }
         
-        conversationRef.observeEventType(.ChildAdded, withBlock: block)
+        conversationRef.observe(.childAdded, with: block)
     }
     
-    func getConversationBetweenPersons(persons: [String]) -> Conversation? {
+    func getConversationBetweenPersons(_ persons: [String]) -> Conversation? {
         
         for conversation in conversations {
             var existingPersonNumber = 0

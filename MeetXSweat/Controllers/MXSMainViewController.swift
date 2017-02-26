@@ -20,10 +20,8 @@ class MXSMainViewController: MXSViewController {
         
         super.viewDidLoad()
         
-        FireBaseDataManager.sharedInstance
-        ConversationsDataManager.sharedInstance
-        
-        MSXFindManager.sharedInstance
+        FireBaseDataManager.sharedInstance.loadData()
+        ConversationsDataManager.sharedInstance.loadData()
     }
     
     

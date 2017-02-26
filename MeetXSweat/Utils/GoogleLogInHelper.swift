@@ -15,7 +15,7 @@ private let getUserInfoUrlString = "https://www.googleapis.com/oauth2/v3/userinf
 
 
 protocol LogInGoogleDelegate {
-    func logInGoogleSuccess(data: NSDictionary?)
+    func logInGoogleSuccess(_ data: NSDictionary?)
 }
 
 
@@ -23,24 +23,23 @@ class GoogleLogInHelper: NSObject, GIDSignInDelegate, GIDSignInUIDelegate {
     
     static let sharedInstance = GoogleLogInHelper()
     
-    private var controllerDelegate: LogInGoogleDelegate!
+    fileprivate var controllerDelegate: LogInGoogleDelegate!
     
     
     
-    class func application(application: UIApplication, openURL url: NSURL, options: [String: AnyObject]) -> Bool {
-        return GIDSignIn.sharedInstance().handleURL(url,
-                                                    sourceApplication: options[UIApplicationOpenURLOptionsSourceApplicationKey] as? String,
-                                                    annotation: options[UIApplicationOpenURLOptionsAnnotationKey])
+    class func application(_ application: UIApplication, openURL url: URL, options: [String: AnyObject]) -> Bool {
+        
+        return GIDSignIn.sharedInstance().handle(url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication._rawValue as String] as! String!, annotation: options[UIApplicationOpenURLOptionsKey.annotation._rawValue as String])
     }
     
-    class func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-        return GIDSignIn.sharedInstance().handleURL(url,
+    class func application(_ application: UIApplication, openURL url: URL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        return GIDSignIn.sharedInstance().handle(url,
                                                     sourceApplication: sourceApplication,
                                                     annotation: annotation)
     }
     
     
-    private func initConfig() {
+    fileprivate func initConfig() {
         
         // Initialize sign-in
         var configureError: NSError?
@@ -52,7 +51,7 @@ class GoogleLogInHelper: NSObject, GIDSignInDelegate, GIDSignInUIDelegate {
     }
     
     
-    func logIn(delegate: LogInGoogleDelegate) {
+    func logIn(_ delegate: LogInGoogleDelegate) {
         
         initConfig()
         controllerDelegate = delegate
@@ -61,17 +60,17 @@ class GoogleLogInHelper: NSObject, GIDSignInDelegate, GIDSignInUIDelegate {
     
     
     
-    @objc func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError!) {
+    @objc func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if (error == nil) {
             
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-            let url = NSURL(string: getUserInfoUrlString+user.authentication.accessToken)
-            let session = NSURLSession.sharedSession()
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            let url = URL(string: getUserInfoUrlString+user.authentication.accessToken)
+            let session = URLSession.shared
             
-            let block: (NSData?, NSURLResponse?, NSError?) -> Void = { [weak self] (data, response, error) -> Void in
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            let block: (Data?, URLResponse?, Error?) -> Void = { [weak self] (data, response, error) -> Void in
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 do {
-                    let userData = try NSJSONSerialization.JSONObjectWithData(data!, options:[])
+                    let userData = try JSONSerialization.jsonObject(with: data!, options:[])
                     
                     guard let JSONDictionary: NSDictionary = userData as? NSDictionary else {
                         return
@@ -85,7 +84,7 @@ class GoogleLogInHelper: NSObject, GIDSignInDelegate, GIDSignInUIDelegate {
                     NSLog("Google LogIn Account Information could not be loaded")
                 }
             }
-            session.dataTaskWithURL(url!, completionHandler: block).resume()
+            session.dataTask(with: url!, completionHandler: block).resume()
         }
         else {
             print("google logIn \(error.localizedDescription)")
@@ -94,25 +93,25 @@ class GoogleLogInHelper: NSObject, GIDSignInDelegate, GIDSignInUIDelegate {
     }
     
     
-    @objc func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!,
-                withError error: NSError!) {
+    @objc internal func sign(_ signIn: GIDSignIn!, didDisconnectWith user:GIDGoogleUser!,
+                withError error: Error!) {
     }
     
     
     // Mark: UIDelegate
     
-    func signInWillDispatch(signIn: GIDSignIn!, error: NSError!) {
+    internal func sign(inWillDispatch signIn: GIDSignIn!, error: Error!) {
     }
     
     // Present a view that prompts the user to sign in with Google
-    func signIn(signIn: GIDSignIn!,
-                presentViewController viewController: UIViewController!) {
-        getVisibleViewController().presentViewController(viewController, animated: true, completion: nil)
+    internal func sign(_ signIn: GIDSignIn!,
+                present viewController: UIViewController!) {
+        getVisibleViewController().present(viewController, animated: true, completion: nil)
     }
     
     // Dismiss the "Sign in with Google" view
-    func signIn(signIn: GIDSignIn!,
-                dismissViewController viewController: UIViewController!) {
-        getVisibleViewController().dismissViewControllerAnimated(true, completion: nil)
+    internal func sign(_ signIn: GIDSignIn!,
+                dismiss viewController: UIViewController!) {
+        getVisibleViewController().dismiss(animated: true, completion: nil)
     }
 }

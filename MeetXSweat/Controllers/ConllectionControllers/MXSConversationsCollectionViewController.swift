@@ -10,7 +10,7 @@ import UIKit
 
 private let nameAttributes = [
     NSForegroundColorAttributeName: Constants.MainColor.kSpecialColor,
-    NSFontAttributeName : UIFont.boldSystemFontOfSize(17)
+    NSFontAttributeName : UIFont.boldSystemFont(ofSize: 17)
 ]
 
 
@@ -19,9 +19,9 @@ class MXSConversationsCollectionViewController: UICollectionViewController {
     var conversations: [Conversation]!
     
     
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Ressources.CellReuseIdentifier.conversation, forIndexPath: indexPath) as! MXSConversationCollectionCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Ressources.CellReuseIdentifier.conversation, for: indexPath) as! MXSConversationCollectionCell
         
         var imagePerson = Person()
         let conversation = conversations[indexPath.section]
@@ -56,27 +56,27 @@ class MXSConversationsCollectionViewController: UICollectionViewController {
         cell.label.attributedText = string
         
         cell.layer.borderWidth = 1
-        cell.layer.borderColor = UIColor.blackColor().CGColor
+        cell.layer.borderColor = UIColor.black.cgColor
         
         return cell
     }
     
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let chatViewController = ChatViewController()
         chatViewController.conversation = conversations[indexPath.section]
         navigationController?.pushViewController(chatViewController, animated: true)
     }
     
-    internal override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    internal override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
     }
     
-    internal override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    internal override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return self.conversations.count
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         
         return CGSize(width: self.view.frame.size.width, height: 60)
     }

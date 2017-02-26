@@ -11,7 +11,7 @@ import AlamofireImage
 
 
 let placeHolderAttributes = [
-    NSForegroundColorAttributeName: UIColor.blackColor(),
+    NSForegroundColorAttributeName: UIColor.black,
     //NSFontAttributeName : UIFont(name: "Roboto-Bold", size: 17)! // Note the !
 ]
 
@@ -28,13 +28,13 @@ class MXSAllLoginsViewController: MXSViewController {
     @IBOutlet weak var textFieldsView: UIView!
     @IBOutlet weak var textFieldsViewTopConstraint: NSLayoutConstraint!
     
-    private var saveIniTextFieldsViewTopConstraint: CGFloat!
+    fileprivate var saveIniTextFieldsViewTopConstraint: CGFloat!
     
     
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passWordTextField: UITextField!
     
-    private var savedTabBarController: UITabBarController!
+    fileprivate var savedTabBarController: UITabBarController!
     
     
     override func viewDidLoad() {
@@ -42,34 +42,34 @@ class MXSAllLoginsViewController: MXSViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.evo_drawerController!.openDrawerGestureModeMask = []
-        googleButton.setBackgroundImage(UIImage(named: Ressources.Images.glBtn), forState: .Normal)
+        googleButton.setBackgroundImage(UIImage(named: Ressources.Images.glBtn), for: UIControlState())
         
-        UIApplication.sharedApplication().statusBarStyle = .Default
+        UIApplication.shared.statusBarStyle = .default
         
         userNameTextField.attributedPlaceholder = NSAttributedString(string: Strings.Account.email, attributes:placeHolderAttributes)
-        userNameTextField.returnKeyType = .Next
+        userNameTextField.returnKeyType = .next
         MXSViewController.underLineView(userNameTextField)
         
         passWordTextField.attributedPlaceholder = NSAttributedString(string: Strings.Account.password, attributes:placeHolderAttributes)
-        passWordTextField.returnKeyType = .Done
+        passWordTextField.returnKeyType = .done
         MXSViewController.underLineView(passWordTextField)
         
         Utils.addTapGestureToView(view, target: self, selectorString: kEndEditingSelectorString)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         saveIniTextFieldsViewTopConstraint = textFieldsViewTopConstraint.constant
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if ScreenSize.currentHeight == ScreenSize.iphone4Height {
             
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow), name:UIKeyboardWillShowNotification, object: self.view.window)
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide), name:UIKeyboardWillHideNotification, object: self.view.window)
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: self.view.window)
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: self.view.window)
         }
         
         savedTabBarController = self.tabBarController
@@ -80,13 +80,13 @@ class MXSAllLoginsViewController: MXSViewController {
         }
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         if ScreenSize.currentHeight == ScreenSize.iphone4Height {
             
-            NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: self.view.window)
-            NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: self.view.window)
+            NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: self.view.window)
+            NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: self.view.window)
         }
         
         if (savedTabBarController != nil) {
@@ -105,7 +105,7 @@ class MXSAllLoginsViewController: MXSViewController {
     
     // MARK: --- Show/Hide keyboard ---
     
-    func keyboardWillHide(sender: NSNotification) {
+    func keyboardWillHide(_ sender: Notification) {
         
         if self.view.frame.origin.y < 0 {
             self.view.frame.origin.y += 50
@@ -113,15 +113,15 @@ class MXSAllLoginsViewController: MXSViewController {
         }
     }
     
-    func keyboardWillShow(sender: NSNotification) {
-        let userInfo: [NSObject : AnyObject] = sender.userInfo!
+    func keyboardWillShow(_ sender: Notification) {
+        let userInfo: [AnyHashable: Any] = sender.userInfo!
         
-        let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
-        let offset: CGSize = userInfo[UIKeyboardFrameEndUserInfoKey]!.CGRectValue.size
+        let keyboardSize: CGSize = (userInfo[UIKeyboardFrameBeginUserInfoKey]! as AnyObject).cgRectValue.size
+        let offset: CGSize = (userInfo[UIKeyboardFrameEndUserInfoKey]! as AnyObject).cgRectValue.size
         
         if keyboardSize.height == offset.height {
             if self.view.frame.origin.y == 0 {
-                UIView.animateWithDuration(0.1, animations: { [weak self] () -> Void in
+                UIView.animate(withDuration: 0.1, animations: { [weak self] () -> Void in
                     
                     guard let this = self else {
                         return
@@ -131,7 +131,7 @@ class MXSAllLoginsViewController: MXSViewController {
                 })
             }
         } else {
-            UIView.animateWithDuration(0.1, animations: { [weak self] () -> Void in
+            UIView.animate(withDuration: 0.1, animations: { [weak self] () -> Void in
                 
                 guard let this = self else {
                     return
@@ -145,14 +145,14 @@ class MXSAllLoginsViewController: MXSViewController {
     
     
     
-    @IBAction func loginButtonClicked(sender: AnyObject) {
+    @IBAction func loginButtonClicked(_ sender: AnyObject) {
         
-        guard let email = userNameTextField.text where email.characters.count > 0 else {
+        guard let email = userNameTextField.text, email.characters.count > 0 else {
             // alert
             return
         }
         
-        guard let password = passWordTextField.text where password.characters.count > 0 else {
+        guard let password = passWordTextField.text, password.characters.count > 0 else {
             // alert
             return
         }
@@ -175,7 +175,7 @@ class MXSAllLoginsViewController: MXSViewController {
     
     // MARK: --- TextFields Delegate ---
     
-    func textFieldShouldReturn(textField: UITextField!) -> Bool {   //delegate method
+    func textFieldShouldReturn(_ textField: UITextField!) -> Bool {   //delegate method
         
         if textField == userNameTextField {
             passWordTextField.becomeFirstResponder()
@@ -210,7 +210,7 @@ class MXSAllLoginsViewController: MXSViewController {
         MSXLogInManager.sharedInstance.logIn(.logInTypeGL, viewController: self)
     }
     
-    @IBAction func emailButtonClicked(sender: AnyObject) {
+    @IBAction func emailButtonClicked(_ sender: AnyObject) {
         
         let createAccountViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.main, viewControllerId: Ressources.StoryBooardsIdentifiers.createAccountId)
         self.navigationController?.pushViewController(createAccountViewController, animated: true)
