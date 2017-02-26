@@ -110,6 +110,9 @@ class MXSPickerView {
             selectorIndicator.frame = CGRect(x: x*(1/kPickerViewScale), y: selectorIndicator.frame.origin.y, width: pickerView.frame.size.width, height: specialHeight)
             selectorIndicator.backgroundColor = Constants.MainColor.kSpecialColorClear
             pickerView.insertSubview(selectorIndicator, at: 0)
+        } else {
+            let selectorIndicator = pickerView.subviews.first
+            selectorIndicator?.backgroundColor = Constants.MainColor.kSpecialColorClear
         }
         
         pickerView.selectRow(2, inComponent: 0, animated: false)

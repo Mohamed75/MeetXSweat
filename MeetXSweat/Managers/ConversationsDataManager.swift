@@ -20,7 +20,6 @@ class ConversationsDataManager {
     
     init() {
         
-        loadData()
     }
     
     var conversationRef = FIRDatabaseReference()
