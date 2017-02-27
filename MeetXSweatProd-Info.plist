@@ -23,7 +23,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb318222461866075</string>
+				<string>fb257911997980498</string>
 			</array>
 		</dict>
 		<dict>
@@ -63,7 +63,7 @@
 		</array>
 	</dict>
 	<key>FacebookAppID</key>
-	<string>318222461866075</string>
+	<string>257911997980498</string>
 	<key>FacebookDisplayName</key>
 	<string>MeetXSweat</string>
 	<key>LIAppId</key>
