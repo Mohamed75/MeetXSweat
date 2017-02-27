@@ -154,6 +154,7 @@
 		D998B5E51D97FFE000A045F4 /* EnCodeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D998B5E41D97FFE000A045F4 /* EnCodeObject.swift */; };
 		D9AAA2AB1D8F0F12004CE80C /* MXSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA2AA1D8F0F12004CE80C /* MXSViewController.swift */; };
 		D9AAA2AD1D8F1550004CE80C /* MXSMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA2AC1D8F1550004CE80C /* MXSMainViewController.swift */; };
+		D9B58B431E64C15200858C9B /* MenuIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D93AF0991E60DBE9004B5565 /* MenuIcons.xcassets */; };
 		D9B64CD91D9D6C28008C5D34 /* MXSMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64CD81D9D6C28008C5D34 /* MXSMenuViewController.swift */; };
 		D9B64D261DA3AA2D008C5D34 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64D211DA3AA2D008C5D34 /* DummyData.swift */; };
 		D9B64D271DA3AA2D008C5D34 /* FindDateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64D221DA3AA2D008C5D34 /* FindDateManager.swift */; };
@@ -840,6 +841,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D949BB481E5C872A00BCF3A0 /* MXSWellCome.storyboard in Resources */,
+				D9B58B431E64C15200858C9B /* MenuIcons.xcassets in Resources */,
 				D949BB661E5C92B700BCF3A0 /* GoogleServiceProd-Info.plist in Resources */,
 				D949BB491E5C872A00BCF3A0 /* UserProfile.xcassets in Resources */,
 				D949BB4A1E5C872A00BCF3A0 /* MXSCalendarCellView.xib in Resources */,
