@@ -178,7 +178,7 @@ class MXSProfileViewController: MXSViewController, UIImagePickerControllerDelega
         
         if let profileDescrtiptionViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findProfile, viewControllerId: Ressources.StoryBooardsIdentifiers.findProfileId) as? MXSFindProfileViewController {
             profileDescrtiptionViewController.editable = true
-            navigationController?.pushViewController(profileDescrtiptionViewController, animated: true)
+            navigationController?.pushViewController(profileDescrtiptionViewController, animated: false)
         }
     }
     

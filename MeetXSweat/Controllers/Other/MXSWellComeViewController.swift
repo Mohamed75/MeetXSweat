@@ -155,6 +155,7 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
         selectedButton  = 1
         dataArray = FireBaseDataManager.sharedInstance.professions
         MXSPickerView.showPickerView(pickerView, controller: self, scale: false)
+        MXSPickerView.showPickerView(pickerView, controller: self, scale: false)
     }
     
     @IBAction func domaineButtonClcked(_ sender: AnyObject) {
@@ -162,12 +163,14 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
         selectedButton  = 3
         dataArray = FireBaseDataManager.sharedInstance.domaines
         MXSPickerView.showPickerView(pickerView, controller: self, scale: false)
+        MXSPickerView.showPickerView(pickerView, controller: self, scale: false)
     }
     
     @IBAction func sportButtonClicked(_ sender: AnyObject) {
         
         selectedButton  = 2
         dataArray = FireBaseDataManager.sharedInstance.sports
+        MXSPickerView.showPickerView(pickerView, controller: self, scale: false)
         MXSPickerView.showPickerView(pickerView, controller: self, scale: false)
     }
     

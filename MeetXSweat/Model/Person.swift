@@ -27,6 +27,7 @@ class Person: FireBaseObject {
     var birthday    = ""
     var adress      = ""
     var personDescription = ""
+    var apnsToken   = ""
     
     
     override init() {
@@ -52,6 +53,10 @@ class Person: FireBaseObject {
                 return
             }
             if ( snapshot.value is NSNull ) {
+                
+                if let token = UserDefaults.standard.object(forKey: "apnsToken") as? String {
+                    this.apnsToken = token
+                }
                 // save user
                 this.ref = personRef.childByAutoId()
                 this.ref!.setValue(this.asJson())
@@ -70,7 +75,7 @@ class Person: FireBaseObject {
         personRef.removeObserver(withHandle: handle)
     }
     
-    // update current user from FireBase
+    // update current user from FireBase used only by createPersonOnDataBase()
     fileprivate func updateCurrentPersonFromDB(_ snapshot: FIRDataSnapshot) {
         
         for child in snapshot.children {
@@ -87,6 +92,10 @@ class Person: FireBaseObject {
         
         saveToNSUserDefaults()
         FireBaseDataManager.updateCurrentUserInPersons()
+        
+        if let token = UserDefaults.standard.object(forKey: "apnsToken") as? String {
+            apnsToken = token
+        }
         
         if let aRef = ref {
             

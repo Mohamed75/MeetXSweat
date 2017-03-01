@@ -374,4 +374,18 @@ class Utils {
     class func loadViewControllerFromStoryBoard(_ stroyBoard: String, viewControllerId: String) -> UIViewController {
         return UIStoryboard(name: stroyBoard, bundle: nil).instantiateViewController(withIdentifier: viewControllerId)
     }
+    
+    
+    class func isIOSVersionGReaterThan(version: Float) -> Bool {
+        
+        var systemVersion   = UIDevice.current.systemVersion
+        let systemVersions  = systemVersion.components(separatedBy: ".")
+        if systemVersions.count > 2 {
+            systemVersion = systemVersions.first! + "." + systemVersions[1]
+        }
+        if let systemVersion = Float(systemVersion), systemVersion > version {
+            return true
+        }
+        return false
+    }
 }

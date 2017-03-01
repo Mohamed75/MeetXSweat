@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import DrawerController
+import UserNotifications
 
 
 private let FIRSignInblock: FIRAuthResultCallback = { (user, error) in
@@ -38,11 +39,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     
-    func __initPushNotification() {
+    func __initPushNotification(application: UIApplication) {
         
-        let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-        UIApplication.shared.registerUserNotificationSettings(settings)
-        UIApplication.shared.registerForRemoteNotifications()
+        if #available(iOS 10, *) {
+            UNUserNotificationCenter.current().requestAuthorization(options:[.badge, .alert, .sound]){ (granted, error) in }
+            application.registerForRemoteNotifications()
+        } else {
+            UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil))
+            UIApplication.shared.registerForRemoteNotifications()
+            
+        }
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -62,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         TwitterHelper.application(application, didFinishLaunchingWithOptions: launchOptions)
         
         __initTheDrawerController()
-        //__initPushNotification()
+        __initPushNotification(application: application)
     
         return FaceBookHelper.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
@@ -103,6 +109,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        // Convert token to string
+        let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
+        UserDefaults.standard.set(deviceTokenString, forKey: "apnsToken")
+    }
+    
+    // Called when APNs failed to register the device for push notifications
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        // Print the error to console (you should alert the user that registration failed)
+        print("APNs registration failed: \(error)")
+    }
 
 }
 

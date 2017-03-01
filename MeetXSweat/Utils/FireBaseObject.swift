@@ -59,13 +59,15 @@ class FireBaseObject: EnCodeObject {
     }
     
     
-    func copyFromJson(_ dictionary: [String : AnyObject]) {
+    func copyFromJson(_ dictionary: [String : AnyObject?]) {
         
         for (key, value) in dictionary {
             let keyName = key
             
             if (responds(to: NSSelectorFromString(keyName))) {
-                setValue(value, forKey: keyName)
+                if let aValue = value {
+                    setValue(aValue, forKey: keyName)
+                }
             }
         }
     }
