@@ -21,7 +21,8 @@ private let FIRSignInblock: FIRAuthResultCallback = { (user, error) in
 }
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+
 
     var window: UIWindow?
 
@@ -39,16 +40,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     
-    func __initPushNotification(application: UIApplication) {
+    func __initPushNotification() {
         
         if #available(iOS 10, *) {
-            UNUserNotificationCenter.current().requestAuthorization(options:[.badge, .alert, .sound]){ (granted, error) in }
-            application.registerForRemoteNotifications()
+            UNUserNotificationCenter.current().requestAuthorization(options:[.badge, .alert, .sound]){ (granted, error) in
+                UNUserNotificationCenter.current().delegate = self
+            }
+            
         } else {
             UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil))
-            UIApplication.shared.registerForRemoteNotifications()
-            
         }
+        UIApplication.shared.registerForRemoteNotifications()
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -68,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         TwitterHelper.application(application, didFinishLaunchingWithOptions: launchOptions)
         
         __initTheDrawerController()
-        __initPushNotification(application: application)
+        __initPushNotification()
     
         return FaceBookHelper.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
@@ -121,6 +123,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         // Print the error to console (you should alert the user that registration failed)
         print("APNs registration failed: \(error)")
+    }
+    
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
+                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+        if (application.applicationState != .active) {
+            
+            completionHandler(UIBackgroundFetchResult.newData)
+            return
+        }
+        
+        if let aps = userInfo["aps"] as? NSDictionary {
+            if let alert = aps["alert"] as? String {
+                MXSViewController.showInformatifPopUp(alert)
+            }
+        }
+        
+        completionHandler(UIBackgroundFetchResult.newData)
     }
 
 }
