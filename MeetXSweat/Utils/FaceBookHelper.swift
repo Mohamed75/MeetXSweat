@@ -100,7 +100,7 @@ class FaceBookHelper {
     
     func logIn(_ delegate: LogInFBDelegate) {
         
-        if Utils.isIOSVersionGReaterThan(version: 10.0) {
+        if Utils.isIOSVersionGReaterThan(version: 9.9) {
             ACAccountStore().requestAccessToAccounts(with: facebookAccountType, options: nil, completion: logInblock(delegate))
         } else {
             ACAccountStore().requestAccessToAccounts(with: facebookAccountType, options: fbOptions, completion: logInblock(delegate))

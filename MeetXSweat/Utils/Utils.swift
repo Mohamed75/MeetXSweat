@@ -383,9 +383,12 @@ class Utils {
         if systemVersions.count > 2 {
             systemVersion = systemVersions.first! + "." + systemVersions[1]
         }
-        if let systemVersion = Float(systemVersion), systemVersion > version {
+        print(systemVersion)
+        if let aSystemVersion = Float(systemVersion), aSystemVersion > version {
+            print("true")
             return true
         }
+        print("false")
         return false
     }
 }

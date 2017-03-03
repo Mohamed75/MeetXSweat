@@ -79,12 +79,11 @@ class MXSPickerView {
     static func showPickerView(_ pickerView: UIPickerView, controller: UIViewController, scale: Bool) {
         
         emptyTextField.becomeFirstResponder()
-        var editable = false
+        
         if let aTabBarController = controller.tabBarController {
             aTabBarController.view.addSubview(pickerView)
         } else {
             controller.view.addSubview(pickerView)
-            editable = true
         }
         
         var pickerViewHeight = pickerView.frame.size.height
