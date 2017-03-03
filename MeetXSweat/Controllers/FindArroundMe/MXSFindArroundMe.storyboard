@@ -21,8 +21,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aFY-IT-iFW">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aFY-IT-iFW">
+                                <rect key="frame" x="-4" y="20" width="383" height="647"/>
                                 <connections>
                                     <outlet property="delegate" destination="dEl-km-Pzy" id="nIc-Qa-Mdd"/>
                                 </connections>

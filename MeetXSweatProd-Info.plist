@@ -94,6 +94,8 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>This application requires to acces your camera services to work</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This application requires location services to work</string>
 	<key>NSPhotoLibraryUsageDescription</key>
