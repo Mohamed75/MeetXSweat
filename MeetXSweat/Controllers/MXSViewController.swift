@@ -136,6 +136,7 @@ class MXSViewController: UIViewController {
     
     // Show the AddEventViewController when the device is shaked
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        
         if motion == .motionShake {
             let addEventViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.main, viewControllerId: Ressources.StoryBooardsIdentifiers.addEvent)
             evo_drawerController!.present(addEventViewController, animated: true, completion: nil)

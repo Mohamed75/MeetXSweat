@@ -112,7 +112,7 @@ class MXSPickerView {
             
             var specialHeight: CGFloat = 35
             if !scale {
-                if Utils.isIOSVersionGReaterThan(version: 10.0) {
+                if Utils.isIOSVersionGReaterThan(version: 9.9) {
                     specialHeight = 28
                 }
             }
