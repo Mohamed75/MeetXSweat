@@ -121,10 +121,11 @@ class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
             pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: Ressources.MapPinIdentifier.eventsId)
         }
         else {
-            pinView!.annotation = annotation
+            pinView?.annotation = annotation
         }
         
-        pinView!.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        pinView?.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        
         
         if let aPinView = pinView {
             
@@ -153,15 +154,18 @@ class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         print("Annotation selected")
-        let event = self.events[view.tag]
+        let event = events[view.tag]
         if let image = UIImage(named: event.sport.lowercased()+"Pin") {
             view.image = image
+        }
+        dispatch_later(0.01) {
+            view.searchViewHierarchy(view)
         }
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         print("Annotation unselected")
-        let event = self.events[view.tag]
+        let event = events[view.tag]
         if let image = UIImage(named: event.sport.lowercased()+"PinBlanc") {
             view.image = image
         }
@@ -189,7 +193,7 @@ extension MKAnnotationView {
         }
         super.layoutSubviews()
         for view in subviews {
-            searchViewHierarchy (view)
+            searchViewHierarchy(view)
         }
     }
     
@@ -199,7 +203,7 @@ extension MKAnnotationView {
             if (subView is UILabel) {
                 (subView as! UILabel).textColor = Constants.MainColor.kSpecialColor
             } else {
-                searchViewHierarchy (subView)
+                searchViewHierarchy(subView)
             }
         }
     }
