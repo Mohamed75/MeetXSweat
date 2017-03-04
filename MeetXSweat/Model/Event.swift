@@ -30,7 +30,7 @@ class Event: FireBaseObject {
             
             if coordinate.isEmpty {
                 
-                let completionHandler = { [weak self] (placemarks: [CLPlacemark]?, error: NSError?) -> Void in
+                let completionHandler: CLGeocodeCompletionHandler = { [weak self] (placemarks: [CLPlacemark]?, error: Error?) -> Swift.Void in
                     
                     if let placemarks = placemarks, placemarks.count > 0 {
                         guard let this = self else {
@@ -41,7 +41,9 @@ class Event: FireBaseObject {
                         this.updateCoordinateEvent()
                     }
                 }
-                CLGeocoder().geocodeAddressString(adress!, completionHandler: completionHandler as! CLGeocodeCompletionHandler)
+                if let anAdress = adress {
+                    CLGeocoder().geocodeAddressString(anAdress, completionHandler: completionHandler)
+                }
             }
         }
     }
