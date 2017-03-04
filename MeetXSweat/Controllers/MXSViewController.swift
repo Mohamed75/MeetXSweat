@@ -106,7 +106,10 @@ class MXSViewController: UIViewController {
         })
         alertController.addAction(okAction)
         
-        getVisibleViewController().present(alertController, animated: true, completion: nil)
+        let block = {
+            getVisibleViewController().present(alertController, animated: true, completion: nil)
+        }
+        DispatchQueue.main.async(execute: block)
     }
     
     
