@@ -91,7 +91,7 @@ class Conversation: FireBaseObject {
     
     
     var userIsTypingRef: FIRDatabaseReference!
-    var usersTypingQuery: FIRDatabaseQuery!
+    
     fileprivate var localTyping = false
     var isTyping: Bool {
         get {
@@ -112,7 +112,7 @@ class Conversation: FireBaseObject {
             let typingIndicatorRef = conversationRef.child("typingIndicator")
             userIsTypingRef = typingIndicatorRef.child(senderId)
             userIsTypingRef.onDisconnectRemoveValue()
-            usersTypingQuery = typingIndicatorRef.queryOrderedByValue().queryEqual(toValue: true)
+            let usersTypingQuery = typingIndicatorRef.queryOrderedByValue().queryEqual(toValue: true)
             
             let block: (FIRDataSnapshot) -> Void = { [weak self] (snapshot) in
                 guard let this = self else {
