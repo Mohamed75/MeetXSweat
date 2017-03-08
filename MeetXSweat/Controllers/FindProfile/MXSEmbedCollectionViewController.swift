@@ -26,7 +26,7 @@ class MXSEmbedCollectionViewController: MXSViewController {
         if isSweatWorking {
             
             title = Strings.NavigationTitle.sweatWorking
-            titleLabel.text = "Vos sweatworkings"
+            titleLabel.text = Strings.LabelTitel.lesSports
             addBarButtonItem()
             return
         }

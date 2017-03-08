@@ -40,6 +40,7 @@ enum Strings {
     
     struct LabelTitel {
         static let sports    = "TOUS LES PLANS"
+        static let lesSports    = "Vos sweatworkings"
     }
     
     struct NavigationTitle {
@@ -48,14 +49,14 @@ enum Strings {
         static let map          = "MAP"
         static let rechercher   = "RECHERCHER"
         static let planning     = "PLANNING"
-        static let wellComme     = "BIENVENUE"
-        static let tuttorial    = "TUTTORIAL"
+        static let wellComme    = "BIENVENUE"
+        static let tuttorial    = "TUTO"
         
         static let sportsParticipants = "PARTICIPANTS"
         static let profiles     = "PROFILES"
         static let events       = "VOS SPORTS"
         static let event        = "PRESENTATION DE L'EVENT"
-        static let profile      = "PROFILE"
+        static let profile      = "PROFIL"
         
         static let conversations = "CONVERSATIONS"
         static let messages      = "MESSAGES"
