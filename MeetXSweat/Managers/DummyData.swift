@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import Firebase
 
 
 
@@ -15,11 +15,11 @@ class DummyData {
     
     
     class func getDomaines() -> [String] {
-        return ["Informatique", "Medical", "Social", "bancaire", "Autre", "Autre2", "Autre3", "Autre4", "Autre5"]
+        return ["Architecture", "Agroalimentaire", "Automobile / Aéronotique", "BTP", "Commercial / Vente", "Communication", "Comptabilité & finance", "Conseil", "Création & spectacle", "Digital", "Evénementiel", "Immobilier", "Informatique", "Ingénieurie", "Juridique", "Marketing", "Qualité", "Recherche", "Ressources Humaines", "Restauration & hotellerie", "Santé", "Service clientèle", "Services administratifs", "Sport", "Stratégie & Management", "Télécom"]
     }
     
     class func getProfessions() -> [String] {
-        return ["Developer", "Project Manager", "Medecin", "Professeur"]
+        return ["Artisan", "Avocat", "Business manager", "Chef de projet", "Comédien", "Commercial", "Comptable", "Consultant", "Développeur", "Direction", "Entrepreneur", "Graphiste", "Ingénieur", "Journaliste", "Juriste", "Maitrise d'œuvre", "Maitrise d'ouvrage", "Photographe", "Réalisateur"]
     }
     
     class func getSports()  -> [String] {
@@ -31,5 +31,18 @@ class DummyData {
                 "Choisissez votre Sport et profitez en \n pour rencontrer des profils \n professionnels",
                 "Choisissez vos dates \n pour networker et s'entrainer",
                 "Trouvez les événements de sport et \n networking autour de vous!"]
+    }
+    
+    
+    class func uploadDomaines() {
+        
+        let domainestRef = FIRDatabase.database().reference().child("domaine-items")
+        domainestRef.setValue(self.getDomaines())
+    }
+    
+    class func uploadProfessions() {
+        
+        let domainestRef = FIRDatabase.database().reference().child("profession-items")
+        domainestRef.setValue(self.getProfessions())
     }
 }

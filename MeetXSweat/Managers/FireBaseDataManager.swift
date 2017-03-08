@@ -21,6 +21,8 @@ class FireBaseDataManager {
     init() {
         
         FIRDatabase.database().reference().keepSynced(true)
+        //DummyData.uploadDomaines()
+        //DummyData.uploadProfessions()
     }
     
     
