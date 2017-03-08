@@ -474,6 +474,7 @@
 		D926BAD11D8DA11F00E3878C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D959B3C91D92CF1600981105 /* FindSport */,
 				D9C0865F1E4DFC8100122030 /* Other */,
 				D9C086581E4DFBDA00122030 /* Conversation */,
 				D90AB57A1D9404FF003DCA75 /* CollectionControllers */,
@@ -481,7 +482,6 @@
 				D959B3E21D931FF300981105 /* Profile */,
 				D959B3C71D92CF1600981105 /* FindArroundMe */,
 				D959B3C81D92CF1600981105 /* FindDate */,
-				D959B3C91D92CF1600981105 /* FindSport */,
 				D959B3C61D92CF0C00981105 /* FindProfile */,
 				D9AAA2AA1D8F0F12004CE80C /* MXSViewController.swift */,
 				D959B3CC1D92D1DD00981105 /* MXSEmbedCollectionViewController.swift */,

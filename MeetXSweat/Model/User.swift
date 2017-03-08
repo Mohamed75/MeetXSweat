@@ -266,6 +266,18 @@ class User: Person {
             User.currentUser.adress     = ""
             User.currentUser.personDescription = ""
             User.currentUser.saveToNSUserDefaults()
+            
+            
+            FaceBookHelper.sharedInstance.logOut()
+            TwitterHelper.logOut()
+            GoogleLogInHelper.sharedInstance.logOut()
+            LiknedInHelper.logOut()
+            do {
+                try FIRAuth.auth()?.signOut()
+            } catch {
+            
+            }
+            
             completion(done)
         })
     }

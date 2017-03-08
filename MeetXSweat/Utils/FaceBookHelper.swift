@@ -107,7 +107,10 @@ class FaceBookHelper {
         }
     }
     
-    
+    func logOut() {
+        
+        FBSDKLoginManager().logOut()
+    }
     
     
     

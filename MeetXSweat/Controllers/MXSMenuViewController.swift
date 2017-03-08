@@ -232,11 +232,7 @@ class MXSMenuViewController: UITableViewController {
     
     func share() {
         
-        let myWebsite   = URL(string: "http://meetxsweat.com")
-        let imgShare    = UIImage(named: "Logo")!
-        let textToShare = "Pouvoir allier vie professionnelle et activité physique est une nécessité pour quiconque souhaite conserver un esprit sain dans un corps sain."
-        
-        let shareItems: [AnyObject] = [textToShare as AnyObject, imgShare, myWebsite! as AnyObject]
+        let shareItems: [AnyObject] = [Constants.Sharings.textToShare as AnyObject, Constants.Sharings.imgShare, Constants.Sharings.websiteShare as AnyObject]
         
         let activityViewController = UIActivityViewController(activityItems: shareItems, applicationActivities: nil)
         activityViewController.excludedActivityTypes = [UIActivityType.print, UIActivityType.postToWeibo, UIActivityType.copyToPasteboard, UIActivityType.addToReadingList, UIActivityType.postToVimeo, UIActivityType.assignToContact, UIActivityType.saveToCameraRoll]

@@ -88,7 +88,7 @@ class MXSEventViewController: MXSViewController {
     
     func addOverlay() {
         
-        let overlay = MKTileOverlay(urlTemplate: Constants.URL.mapTemplate)
+        let overlay = MKTileOverlay(urlTemplate: Constants.URLS.mapTemplate)
         overlay.canReplaceMapContent = true
         mapView.add(overlay, level: .aboveLabels)
     }

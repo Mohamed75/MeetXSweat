@@ -45,6 +45,18 @@ class TwitterHelper {
     }
     
     
+    class func logOut() {
+        
+        let store = Twitter.sharedInstance().sessionStore
+        if let userID = store.session()?.userID {
+            store.logOutUserID(userID)
+        }
+        
+        if let userId = TWTRAPIClient.withCurrentUser().userID {
+            store.logOutUserID(userId)
+        }
+    }
+    
     fileprivate class func getUserInfo(_ delegate: LogInTWDelegate) {
         
         let client  = TWTRAPIClient.withCurrentUser()

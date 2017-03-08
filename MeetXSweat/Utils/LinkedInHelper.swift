@@ -45,7 +45,6 @@ class LiknedInHelper {
                 
                 delegate.logInLKSuccess(userInfo as NSDictionary?)
                 linkedIn.showActivityIndicator = false
-                
             }
             
             let failerBlock: ((Error?) -> Void) = { (error) in
@@ -60,5 +59,9 @@ class LiknedInHelper {
         }
     }
     
+    
+    class func logOut() {
+        LinkedInHelper.sharedInstance().logout()
+    }
     
 }

@@ -58,6 +58,10 @@ class GoogleLogInHelper: NSObject, GIDSignInDelegate, GIDSignInUIDelegate {
         GIDSignIn.sharedInstance().signIn()
     }
     
+    func logOut() {
+        GIDSignIn.sharedInstance().disconnect()
+    }
+    
     
     
     @objc func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
