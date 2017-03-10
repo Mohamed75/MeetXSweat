@@ -25,10 +25,10 @@ class MXSCalendarViewController: MXSViewController, JTAppleCalendarViewDataSourc
         testCalendar.timeZone = TimeZone(abbreviation: "GMT")!
         MXSCalendarViewController.formatter.dateFormat = kDateFormat
         
-        let firstDate = Date()
-        let secondDate = firstDate.addingTimeInterval(12*31*daySeconds) // one year
+        let firstDate   = Date()
+        let secondDate  = firstDate.addingTimeInterval(12*31*daySeconds) // one year
         let numberOfRows = 6
-        let aCalendar = Calendar.current // Properly configure your calendar to your time zone here
+        let aCalendar   = Calendar.current // Properly configure your calendar to your time zone here
         
         return ConfigurationParameters(startDate: firstDate,
                                        endDate: secondDate,

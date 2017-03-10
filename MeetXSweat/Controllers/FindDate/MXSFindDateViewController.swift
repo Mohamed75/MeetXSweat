@@ -80,7 +80,10 @@ class MXSFindDateViewController: MXSCalendarViewController {
     
     override func validatButtonClicked(_ sender: AnyObject) {
         
-        MXSFindManager.sharedInstance.dates = calendarView.selectedDates as [AnyObject]
+        var aDates = calendarView.selectedDates
+        aDates.append(Date())
+        
+        MXSFindManager.sharedInstance.dates = aDates as [AnyObject]
         
         let viewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findSport, viewControllerId: Ressources.StoryBooardsIdentifiers.embedSportsId)
         navigationController?.pushViewController(viewController, animated: true)
