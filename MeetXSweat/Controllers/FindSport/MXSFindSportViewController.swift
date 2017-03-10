@@ -30,7 +30,7 @@ class MXSFindSportViewController: MXSViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
-        MSXFindManager.sharedInstance.findBy = FindBy.sport
+        MXSFindManager.sharedInstance.findBy = FindBy.sport
     }
     
     override func refreshView() {

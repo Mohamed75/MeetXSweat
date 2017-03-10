@@ -69,11 +69,10 @@
 		D949BB161E5C872A00BCF3A0 /* LinkedInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB48121D8EB48000C12541 /* LinkedInHelper.swift */; };
 		D949BB171E5C872A00BCF3A0 /* MXSSportCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E461DA3FC840090A7A4 /* MXSSportCollectionCell.swift */; };
 		D949BB181E5C872A00BCF3A0 /* MXSTuttorialCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C0866A1E4E094500122030 /* MXSTuttorialCollectionCell.swift */; };
-		D949BB191E5C872A00BCF3A0 /* FindSportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64D241DA3AA2D008C5D34 /* FindSportManager.swift */; };
 		D949BB1A1E5C872A00BCF3A0 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64D2D1DA3AACF008C5D34 /* Conversation.swift */; };
 		D949BB1B1E5C872A00BCF3A0 /* MXSFindSportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5831D940CEA003DCA75 /* MXSFindSportViewController.swift */; };
 		D949BB1C1E5C872A00BCF3A0 /* MXSMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA2AC1D8F1550004CE80C /* MXSMainViewController.swift */; };
-		D949BB1D1E5C872A00BCF3A0 /* MSXFindManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086371E46698000122030 /* MSXFindManager.swift */; };
+		D949BB1D1E5C872A00BCF3A0 /* MXSFindManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086371E46698000122030 /* MXSFindManager.swift */; };
 		D949BB1E1E5C872A00BCF3A0 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64D211DA3AA2D008C5D34 /* DummyData.swift */; };
 		D949BB1F1E5C872A00BCF3A0 /* MXSFindArroundMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5871D940D18003DCA75 /* MXSFindArroundMeViewController.swift */; };
 		D949BB201E5C872A00BCF3A0 /* MXSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA2AA1D8F0F12004CE80C /* MXSViewController.swift */; };
@@ -98,17 +97,15 @@
 		D949BB331E5C872A00BCF3A0 /* MXSActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5AE1D96BE1E003DCA75 /* MXSActivityIndicator.swift */; };
 		D949BB341E5C872A00BCF3A0 /* TwitterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94C63E81D8E914F00ECD7FD /* TwitterHelper.swift */; };
 		D949BB351E5C872A00BCF3A0 /* MXSEventsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E431DA3FC840090A7A4 /* MXSEventsCollectionCell.swift */; };
-		D949BB361E5C872A00BCF3A0 /* MSXLogInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086351E464A1E00122030 /* MSXLogInManager.swift */; };
+		D949BB361E5C872A00BCF3A0 /* MXSLogInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086351E464A1E00122030 /* MXSLogInManager.swift */; };
 		D949BB371E5C872A00BCF3A0 /* FireBaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D907C5121E5A23CB009856E6 /* FireBaseHelper.swift */; };
 		D949BB381E5C872A00BCF3A0 /* MXSEventsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5761D93ED1C003DCA75 /* MXSEventsCollectionViewController.swift */; };
 		D949BB391E5C872A00BCF3A0 /* MXSCreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086611E4DFC8100122030 /* MXSCreateAccountViewController.swift */; };
 		D949BB3A1E5C872A00BCF3A0 /* MXSCalendarCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5A01D955F6F003DCA75 /* MXSCalendarCellView.swift */; };
 		D949BB3B1E5C872A00BCF3A0 /* MXSConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3DB1D9318E000981105 /* MXSConstants.swift */; };
 		D949BB3C1E5C872A00BCF3A0 /* MXSWellComeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086631E4DFC8100122030 /* MXSWellComeViewController.swift */; };
-		D949BB3D1E5C872A00BCF3A0 /* FindDateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64D221DA3AA2D008C5D34 /* FindDateManager.swift */; };
 		D949BB3E1E5C872A00BCF3A0 /* MXSSportsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB59C1D9523C0003DCA75 /* MXSSportsCollectionViewController.swift */; };
 		D949BB3F1E5C872A00BCF3A0 /* MXSMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64CD81D9D6C28008C5D34 /* MXSMenuViewController.swift */; };
-		D949BB401E5C872A00BCF3A0 /* FindProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64D231DA3AA2D008C5D34 /* FindProfileManager.swift */; };
 		D949BB411E5C872A00BCF3A0 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086591E4DFBDA00122030 /* ChatViewController.swift */; };
 		D949BB421E5C872A00BCF3A0 /* MXSFindProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3CA1D92D1D200981105 /* MXSFindProfileViewController.swift */; };
 		D949BB441E5C872A00BCF3A0 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D926BACD1D8D8C8600E3878C /* Social.framework */; };
@@ -158,16 +155,13 @@
 		D9B58B5C1E670FF200858C9B /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9B58B5B1E670FF200858C9B /* UserNotifications.framework */; };
 		D9B64CD91D9D6C28008C5D34 /* MXSMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64CD81D9D6C28008C5D34 /* MXSMenuViewController.swift */; };
 		D9B64D261DA3AA2D008C5D34 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64D211DA3AA2D008C5D34 /* DummyData.swift */; };
-		D9B64D271DA3AA2D008C5D34 /* FindDateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64D221DA3AA2D008C5D34 /* FindDateManager.swift */; };
-		D9B64D281DA3AA2D008C5D34 /* FindProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64D231DA3AA2D008C5D34 /* FindProfileManager.swift */; };
-		D9B64D291DA3AA2D008C5D34 /* FindSportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64D241DA3AA2D008C5D34 /* FindSportManager.swift */; };
 		D9B64D2A1DA3AA2D008C5D34 /* FireBaseDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64D251DA3AA2D008C5D34 /* FireBaseDataManager.swift */; };
 		D9B64D2C1DA3AA62008C5D34 /* ConversationsDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64D2B1DA3AA62008C5D34 /* ConversationsDataManager.swift */; };
 		D9B64D2E1DA3AACF008C5D34 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64D2D1DA3AACF008C5D34 /* Conversation.swift */; };
 		D9BB48131D8EB48000C12541 /* LinkedInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB48121D8EB48000C12541 /* LinkedInHelper.swift */; };
 		D9BB48251D8EF2E000C12541 /* GoogleLogInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB48241D8EF2E000C12541 /* GoogleLogInHelper.swift */; };
-		D9C086361E464A1E00122030 /* MSXLogInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086351E464A1E00122030 /* MSXLogInManager.swift */; };
-		D9C086381E46698000122030 /* MSXFindManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086371E46698000122030 /* MSXFindManager.swift */; };
+		D9C086361E464A1E00122030 /* MXSLogInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086351E464A1E00122030 /* MXSLogInManager.swift */; };
+		D9C086381E46698000122030 /* MXSFindManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086371E46698000122030 /* MXSFindManager.swift */; };
 		D9C0863C1E49DCEA00122030 /* TabBar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9C0863B1E49DCEA00122030 /* TabBar.xcassets */; };
 		D9C0863E1E49E73400122030 /* Sports.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9C0863D1E49E73400122030 /* Sports.xcassets */; };
 		D9C086401E4A19D500122030 /* MapIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9C0863F1E4A19D500122030 /* MapIcons.xcassets */; };
@@ -282,16 +276,13 @@
 		D9B58B5B1E670FF200858C9B /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		D9B64CD81D9D6C28008C5D34 /* MXSMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSMenuViewController.swift; sourceTree = "<group>"; };
 		D9B64D211DA3AA2D008C5D34 /* DummyData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
-		D9B64D221DA3AA2D008C5D34 /* FindDateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindDateManager.swift; sourceTree = "<group>"; };
-		D9B64D231DA3AA2D008C5D34 /* FindProfileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindProfileManager.swift; sourceTree = "<group>"; };
-		D9B64D241DA3AA2D008C5D34 /* FindSportManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindSportManager.swift; sourceTree = "<group>"; };
 		D9B64D251DA3AA2D008C5D34 /* FireBaseDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireBaseDataManager.swift; sourceTree = "<group>"; };
 		D9B64D2B1DA3AA62008C5D34 /* ConversationsDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationsDataManager.swift; sourceTree = "<group>"; };
 		D9B64D2D1DA3AACF008C5D34 /* Conversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 		D9BB48121D8EB48000C12541 /* LinkedInHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkedInHelper.swift; sourceTree = "<group>"; };
 		D9BB48241D8EF2E000C12541 /* GoogleLogInHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleLogInHelper.swift; sourceTree = "<group>"; };
-		D9C086351E464A1E00122030 /* MSXLogInManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSXLogInManager.swift; sourceTree = "<group>"; };
-		D9C086371E46698000122030 /* MSXFindManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSXFindManager.swift; sourceTree = "<group>"; };
+		D9C086351E464A1E00122030 /* MXSLogInManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSLogInManager.swift; sourceTree = "<group>"; };
+		D9C086371E46698000122030 /* MXSFindManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSFindManager.swift; sourceTree = "<group>"; };
 		D9C0863B1E49DCEA00122030 /* TabBar.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TabBar.xcassets; sourceTree = "<group>"; };
 		D9C0863D1E49E73400122030 /* Sports.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Sports.xcassets; sourceTree = "<group>"; };
 		D9C0863F1E4A19D500122030 /* MapIcons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MapIcons.xcassets; sourceTree = "<group>"; };
@@ -595,12 +586,9 @@
 			children = (
 				D9B64D211DA3AA2D008C5D34 /* DummyData.swift */,
 				D9B64D251DA3AA2D008C5D34 /* FireBaseDataManager.swift */,
-				D9C086371E46698000122030 /* MSXFindManager.swift */,
-				D9B64D221DA3AA2D008C5D34 /* FindDateManager.swift */,
-				D9B64D231DA3AA2D008C5D34 /* FindProfileManager.swift */,
-				D9B64D241DA3AA2D008C5D34 /* FindSportManager.swift */,
+				D9C086371E46698000122030 /* MXSFindManager.swift */,
 				D9B64D2B1DA3AA62008C5D34 /* ConversationsDataManager.swift */,
-				D9C086351E464A1E00122030 /* MSXLogInManager.swift */,
+				D9C086351E464A1E00122030 /* MXSLogInManager.swift */,
 				D963AE791E522C8000FF5B85 /* GPSLocationManager.swift */,
 				D93AF0921E60949D004B5565 /* UserViewModel.swift */,
 			);
@@ -1055,11 +1043,10 @@
 				D9BB48131D8EB48000C12541 /* LinkedInHelper.swift in Sources */,
 				D94A3E4A1DA3FC840090A7A4 /* MXSSportCollectionCell.swift in Sources */,
 				D9C0866B1E4E094500122030 /* MXSTuttorialCollectionCell.swift in Sources */,
-				D9B64D291DA3AA2D008C5D34 /* FindSportManager.swift in Sources */,
 				D9B64D2E1DA3AACF008C5D34 /* Conversation.swift in Sources */,
 				D90AB5841D940CEA003DCA75 /* MXSFindSportViewController.swift in Sources */,
 				D9AAA2AD1D8F1550004CE80C /* MXSMainViewController.swift in Sources */,
-				D9C086381E46698000122030 /* MSXFindManager.swift in Sources */,
+				D9C086381E46698000122030 /* MXSFindManager.swift in Sources */,
 				D9B64D261DA3AA2D008C5D34 /* DummyData.swift in Sources */,
 				D93AF0931E60949D004B5565 /* UserViewModel.swift in Sources */,
 				D90AB5881D940D18003DCA75 /* MXSFindArroundMeViewController.swift in Sources */,
@@ -1087,17 +1074,15 @@
 				D94C63E91D8E914F00ECD7FD /* TwitterHelper.swift in Sources */,
 				D949BB6B1E5CE03300BCF3A0 /* EventPersons.swift in Sources */,
 				D94A3E471DA3FC840090A7A4 /* MXSEventsCollectionCell.swift in Sources */,
-				D9C086361E464A1E00122030 /* MSXLogInManager.swift in Sources */,
+				D9C086361E464A1E00122030 /* MXSLogInManager.swift in Sources */,
 				D907C5131E5A23CB009856E6 /* FireBaseHelper.swift in Sources */,
 				D90AB5771D93ED1C003DCA75 /* MXSEventsCollectionViewController.swift in Sources */,
 				D9C086651E4DFC8100122030 /* MXSCreateAccountViewController.swift in Sources */,
 				D90AB5A11D955F6F003DCA75 /* MXSCalendarCellView.swift in Sources */,
 				D959B3DD1D9318E000981105 /* MXSConstants.swift in Sources */,
 				D9C086671E4DFC8100122030 /* MXSWellComeViewController.swift in Sources */,
-				D9B64D271DA3AA2D008C5D34 /* FindDateManager.swift in Sources */,
 				D90AB59D1D9523C0003DCA75 /* MXSSportsCollectionViewController.swift in Sources */,
 				D9B64CD91D9D6C28008C5D34 /* MXSMenuViewController.swift in Sources */,
-				D9B64D281DA3AA2D008C5D34 /* FindProfileManager.swift in Sources */,
 				D9C0865C1E4DFBDA00122030 /* ChatViewController.swift in Sources */,
 				D959B3CB1D92D1D200981105 /* MXSFindProfileViewController.swift in Sources */,
 			);
@@ -1142,11 +1127,10 @@
 				D949BB161E5C872A00BCF3A0 /* LinkedInHelper.swift in Sources */,
 				D949BB171E5C872A00BCF3A0 /* MXSSportCollectionCell.swift in Sources */,
 				D949BB181E5C872A00BCF3A0 /* MXSTuttorialCollectionCell.swift in Sources */,
-				D949BB191E5C872A00BCF3A0 /* FindSportManager.swift in Sources */,
 				D949BB1A1E5C872A00BCF3A0 /* Conversation.swift in Sources */,
 				D949BB1B1E5C872A00BCF3A0 /* MXSFindSportViewController.swift in Sources */,
 				D949BB1C1E5C872A00BCF3A0 /* MXSMainViewController.swift in Sources */,
-				D949BB1D1E5C872A00BCF3A0 /* MSXFindManager.swift in Sources */,
+				D949BB1D1E5C872A00BCF3A0 /* MXSFindManager.swift in Sources */,
 				D949BB1E1E5C872A00BCF3A0 /* DummyData.swift in Sources */,
 				D93AF0941E609599004B5565 /* UserViewModel.swift in Sources */,
 				D949BB1F1E5C872A00BCF3A0 /* MXSFindArroundMeViewController.swift in Sources */,
@@ -1173,17 +1157,15 @@
 				D949BB341E5C872A00BCF3A0 /* TwitterHelper.swift in Sources */,
 				D949BB6C1E5CE03300BCF3A0 /* EventPersons.swift in Sources */,
 				D949BB351E5C872A00BCF3A0 /* MXSEventsCollectionCell.swift in Sources */,
-				D949BB361E5C872A00BCF3A0 /* MSXLogInManager.swift in Sources */,
+				D949BB361E5C872A00BCF3A0 /* MXSLogInManager.swift in Sources */,
 				D949BB371E5C872A00BCF3A0 /* FireBaseHelper.swift in Sources */,
 				D949BB381E5C872A00BCF3A0 /* MXSEventsCollectionViewController.swift in Sources */,
 				D949BB391E5C872A00BCF3A0 /* MXSCreateAccountViewController.swift in Sources */,
 				D949BB3A1E5C872A00BCF3A0 /* MXSCalendarCellView.swift in Sources */,
 				D949BB3B1E5C872A00BCF3A0 /* MXSConstants.swift in Sources */,
 				D949BB3C1E5C872A00BCF3A0 /* MXSWellComeViewController.swift in Sources */,
-				D949BB3D1E5C872A00BCF3A0 /* FindDateManager.swift in Sources */,
 				D949BB3E1E5C872A00BCF3A0 /* MXSSportsCollectionViewController.swift in Sources */,
 				D949BB3F1E5C872A00BCF3A0 /* MXSMenuViewController.swift in Sources */,
-				D949BB401E5C872A00BCF3A0 /* FindProfileManager.swift in Sources */,
 				D949BB411E5C872A00BCF3A0 /* ChatViewController.swift in Sources */,
 				D949BB421E5C872A00BCF3A0 /* MXSFindProfileViewController.swift in Sources */,
 			);

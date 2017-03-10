@@ -24,7 +24,7 @@ class MXSEventsCollectionViewController: UICollectionViewController {
         super.viewWillAppear(animated)
         
         if parent?.title == Strings.NavigationTitle.sweatWorking {
-            events = FindSportManager.filterEventsByCurrentUser()
+            events = MXSFindManager.filterEventsByCurrentUser()
         }
         collectionView?.reloadData()
     }
@@ -132,7 +132,7 @@ class MXSEventsCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if MSXFindManager.sharedInstance.findBy == FindBy.profile || !fromProfileViewController {
+        if MXSFindManager.sharedInstance.findBy == FindBy.profile || !fromProfileViewController {
             
             if indexPath.section > 0 {
              

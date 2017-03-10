@@ -31,15 +31,15 @@ class MXSEmbedCollectionViewController: MXSViewController {
             return
         }
         
-        switch MSXFindManager.sharedInstance.findBy {
+        switch MXSFindManager.sharedInstance.findBy {
             
         case FindBy.sport :
             if let eventsCollectionViewController = childViewControllers.first as? MXSEventsCollectionViewController {
                 
-                eventsCollectionViewController.events = FindSportManager.filterEventsBySports(FindSportManager.sharedInstance.sports)
+                eventsCollectionViewController.events = MXSFindManager.filterEventsBySports()
                 
                 titleLabel.text = Strings.LabelTitel.sports
-                for sport in FindSportManager.sharedInstance.sports {
+                for sport in MXSFindManager.sharedInstance.sports {
                     titleLabel.text = titleLabel.text! + " " + (sport as! String).uppercased()
                 }
                 
@@ -53,21 +53,21 @@ class MXSEmbedCollectionViewController: MXSViewController {
         case FindBy.date :
             if let eventsCollectionViewController = childViewControllers.first as? MXSEventsCollectionViewController {
                 
-                eventsCollectionViewController.events = FindDateManager.filterEventsByDates(FindDateManager.sharedInstance.dates)
+                eventsCollectionViewController.events = MXSFindManager.filterEventsByDates()
             }
             break
         
         case FindBy.profile :
             if let personsCollectionViewController = childViewControllers.first as? MXSPersonsCollectionViewController {
                 
-                if !FindProfileManager.sharedInstance.domaine.isEmpty {
-                    titleLabel.text = FindProfileManager.sharedInstance.domaine
-                    personsCollectionViewController.persons = FindProfileManager.filterBy(FireBaseDataManager.sharedInstance.persons, filter: FindProfileManager.sharedInstance.domaine)
+                if !MXSFindManager.sharedInstance.domaine.isEmpty {
+                    titleLabel.text = MXSFindManager.sharedInstance.domaine
                 }
-                if !FindProfileManager.sharedInstance.profession.isEmpty {
-                    titleLabel.text = FindProfileManager.sharedInstance.profession
-                    personsCollectionViewController.persons = FindProfileManager.filterBy(FireBaseDataManager.sharedInstance.persons, filter: FindProfileManager.sharedInstance.profession)
+                if !MXSFindManager.sharedInstance.profession.isEmpty {
+                    titleLabel.text = MXSFindManager.sharedInstance.profession
+                    
                 }
+                personsCollectionViewController.persons = MXSFindManager.filterBy(FireBaseDataManager.sharedInstance.persons)
                 title = Strings.NavigationTitle.profiles
             }
             break

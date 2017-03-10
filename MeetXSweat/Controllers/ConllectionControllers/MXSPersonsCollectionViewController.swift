@@ -73,7 +73,7 @@ class MXSPersonsCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if MSXFindManager.sharedInstance.findBy == FindBy.profile {
+        if MXSFindManager.sharedInstance.findBy == FindBy.profile {
             
             let profileViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.profile, viewControllerId: Ressources.StoryBooardsIdentifiers.profileId) as! MXSProfileViewController
             if let persons = self.persons {

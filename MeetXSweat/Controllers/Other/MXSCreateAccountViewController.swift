@@ -109,7 +109,7 @@ class MXSCreateAccountViewController: MXSViewController {
                 return
             }
             if done {
-                MSXLogInManager.endLogin(this)
+                MXSLogInManager.endLogin(this)
             } else {
                 MXSActivityIndicator.stopAnimating()
             }

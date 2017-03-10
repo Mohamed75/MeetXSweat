@@ -77,7 +77,7 @@ class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        MSXFindManager.sharedInstance.findBy = FindBy.arroundMe
+        MXSFindManager.sharedInstance.findBy = FindBy.arroundMe
     }
     
     override func viewWillDisappear(_ animated: Bool) {

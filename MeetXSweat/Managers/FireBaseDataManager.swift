@@ -104,7 +104,6 @@ class FireBaseDataManager {
             if let dict = snapshot.value as? NSDictionary, let sport = dict["name"] as? String {
                 this._sports.append(sport)
                 NotificationCenter.default.post(name: Notification.Name(rawValue: Constants.FBNotificationName.sports), object: nil)
-            }else {
             }
         }
     }

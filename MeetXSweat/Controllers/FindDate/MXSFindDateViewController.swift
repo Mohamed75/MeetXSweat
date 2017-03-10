@@ -66,7 +66,7 @@ class MXSFindDateViewController: MXSCalendarViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
-        MSXFindManager.sharedInstance.findBy = FindBy.date
+        MXSFindManager.sharedInstance.findBy = FindBy.date
     }
     
     override func refreshView() {
@@ -80,7 +80,7 @@ class MXSFindDateViewController: MXSCalendarViewController {
     
     override func validatButtonClicked(_ sender: AnyObject) {
         
-        FindDateManager.sharedInstance.dates = calendarView.selectedDates as [AnyObject]
+        MXSFindManager.sharedInstance.dates = calendarView.selectedDates as [AnyObject]
         
         let viewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findSport, viewControllerId: Ressources.StoryBooardsIdentifiers.embedSportsId)
         navigationController?.pushViewController(viewController, animated: true)

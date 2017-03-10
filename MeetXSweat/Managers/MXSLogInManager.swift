@@ -19,10 +19,10 @@ enum LogInType {
 }
 
 
-class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInGoogleDelegate {
+class MXSLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInGoogleDelegate {
 
     
-    static let sharedInstance = MSXLogInManager()
+    static let sharedInstance = MXSLogInManager()
     
     fileprivate var controller: UIViewController!
     
@@ -52,7 +52,7 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
     func logInFBSuccess(_ data: NSDictionary?) {
         
         guard let aData = data else {
-            MSXLogInManager.endLogin(self.controller)
+            MXSLogInManager.endLogin(self.controller)
             return
         }
         MXSActivityIndicator.startAnimatingInView(getAppDelegateWindow())
@@ -63,7 +63,7 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
                 return
             }
             if done {
-                MSXLogInManager.endLogin(this.controller)
+                MXSLogInManager.endLogin(this.controller)
             } else {
                 MXSActivityIndicator.stopAnimating()
             }
@@ -75,7 +75,7 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
     func logInTWSuccess(_ data: NSDictionary?) {
         
         guard let aData = data else {
-            MSXLogInManager.endLogin(self.controller)
+            MXSLogInManager.endLogin(self.controller)
             return
         }
         
@@ -85,7 +85,7 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
                 return
             }
             if done {
-                MSXLogInManager.endLogin(this.controller)
+                MXSLogInManager.endLogin(this.controller)
             } else {
                 MXSActivityIndicator.stopAnimating()
             }
@@ -97,7 +97,7 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
     func logInLKSuccess(_ data: NSDictionary?) {
         
         guard let aData = data else {
-            MSXLogInManager.endLogin(self.controller)
+            MXSLogInManager.endLogin(self.controller)
             return
         }
         
@@ -107,7 +107,7 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
                 return
             }
             if done {
-                MSXLogInManager.endLogin(this.controller)
+                MXSLogInManager.endLogin(this.controller)
             } else {
                 MXSActivityIndicator.stopAnimating()
             }
@@ -120,7 +120,7 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
     func logInGoogleSuccess(_ data: NSDictionary?) {
         
         guard let aData = data else {
-            MSXLogInManager.endLogin(self.controller)
+            MXSLogInManager.endLogin(self.controller)
             return
         }
         
@@ -130,7 +130,7 @@ class MSXLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
                 return
             }
             if done {
-                MSXLogInManager.endLogin(this.controller)
+                MXSLogInManager.endLogin(this.controller)
             } else {
                 MXSActivityIndicator.stopAnimating()
             }

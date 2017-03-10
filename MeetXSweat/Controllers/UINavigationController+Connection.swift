@@ -131,16 +131,16 @@ extension UINavigationController {
         if let firstViewController = self.viewControllers.first as? MXSViewController {
             
             if firstViewController is MXSFindProfileViewController {
-                MSXFindManager.sharedInstance.findBy = FindBy.profile
+                MXSFindManager.sharedInstance.findBy = FindBy.profile
             }
             if firstViewController is MXSFindSportViewController {
-                MSXFindManager.sharedInstance.findBy = FindBy.sport
+                MXSFindManager.sharedInstance.findBy = FindBy.sport
             }
             if firstViewController is MXSFindDateViewController {
-                MSXFindManager.sharedInstance.findBy = FindBy.date
+                MXSFindManager.sharedInstance.findBy = FindBy.date
             }
             if firstViewController is MXSFindArroundMeViewController {
-                MSXFindManager.sharedInstance.findBy = FindBy.arroundMe
+                MXSFindManager.sharedInstance.findBy = FindBy.arroundMe
             }
             if firstViewController.isViewLoaded {
                firstViewController.refreshView()

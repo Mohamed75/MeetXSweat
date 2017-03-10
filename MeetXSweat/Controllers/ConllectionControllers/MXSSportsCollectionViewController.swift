@@ -128,6 +128,6 @@ class MXSSportsCollectionViewController: UICollectionViewController {
         for i in self.allSelectedRadioButtonsIndexs {
             sportsArray.append(sports[i])
         }
-        FindSportManager.sharedInstance.sports = sportsArray as [AnyObject]
+        MXSFindManager.sharedInstance.sports = sportsArray as [AnyObject]
     }
 }

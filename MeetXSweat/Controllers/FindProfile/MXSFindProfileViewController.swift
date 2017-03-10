@@ -87,7 +87,7 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
         
         savedMetier  = ""
         savedDomaine = ""
-        MSXFindManager.sharedInstance.findBy = FindBy.profile
+        MXSFindManager.sharedInstance.findBy = FindBy.profile
         selectMetierLabel()
     }
     
@@ -238,11 +238,11 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
     @IBAction func validerButtonClicked(_ sender: AnyObject) {
         
         if selectedLabel == 1 {
-            FindProfileManager.sharedInstance.profession = savedMetier
-            FindProfileManager.sharedInstance.domaine = ""
+            MXSFindManager.sharedInstance.profession = savedMetier
+            MXSFindManager.sharedInstance.domaine = ""
         } else {
-            FindProfileManager.sharedInstance.profession = ""
-            FindProfileManager.sharedInstance.domaine = savedDomaine
+            MXSFindManager.sharedInstance.profession = ""
+            MXSFindManager.sharedInstance.domaine = savedDomaine
         }
     }
     

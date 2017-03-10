@@ -164,7 +164,7 @@ class MXSAllLoginsViewController: MXSViewController {
                 return
             }
             if done {
-                MSXLogInManager.endLogin(this)
+                MXSLogInManager.endLogin(this)
             } else {
                 MXSActivityIndicator.stopAnimating()
             }
@@ -192,22 +192,22 @@ class MXSAllLoginsViewController: MXSViewController {
     
     @IBAction func faceBookLoginButtonClicked() {
         
-        MSXLogInManager.sharedInstance.logIn(.logInTypeFB, viewController: self)
+        MXSLogInManager.sharedInstance.logIn(.logInTypeFB, viewController: self)
     }
     
     @IBAction func twitterLoginButtonClicked() {
         
-        MSXLogInManager.sharedInstance.logIn(.logInTypeTW, viewController: self)
+        MXSLogInManager.sharedInstance.logIn(.logInTypeTW, viewController: self)
     }
     
     @IBAction func linkedInLoginButtonClicked() {
         
-        MSXLogInManager.sharedInstance.logIn(.logInTypeLK, viewController: self)
+        MXSLogInManager.sharedInstance.logIn(.logInTypeLK, viewController: self)
     }
     
     @IBAction func googleLoginButtonClicked() {
         
-        MSXLogInManager.sharedInstance.logIn(.logInTypeGL, viewController: self)
+        MXSLogInManager.sharedInstance.logIn(.logInTypeGL, viewController: self)
     }
     
     @IBAction func emailButtonClicked(_ sender: AnyObject) {
