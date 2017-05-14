@@ -10,7 +10,7 @@ import UIKit
 
 private let rotationRightInfiniKey  = "rotationRightInfini"
 private let zPath                   = "transform.rotation.z"
-private let fullRotation = Float(2*M_PI)
+private let fullRotation = Float(2*Double.pi)
 
 private let angle = 180.0
 
@@ -47,7 +47,7 @@ class AnimationClass {
         
         var transform = CATransform3DIdentity
         transform.m34 = -1.0 / 500.0
-        transform = CATransform3DRotate(transform, CGFloat(angle * M_PI / 180.0), 0, 1, 0.0)
+        transform = CATransform3DRotate(transform, CGFloat(angle * Double.pi / 180.0), 0, 1, 0.0)
         
         return transform
     }

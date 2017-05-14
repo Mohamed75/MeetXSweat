@@ -51,7 +51,7 @@ class JSONFile {
         let path = documentDirectory+("myData.plist")
         
         let resultDictionary = NSMutableDictionary(contentsOfFile: path)
-        print("load myData.plist is ->\(resultDictionary?.description)")
+        print("load myData.plist is ->\(String(describing: resultDictionary?.description))")
         
         let myDict = NSDictionary(contentsOfFile: path)
         for dtaa in myDict! {
