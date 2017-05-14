@@ -7,13 +7,15 @@
 //
 
 import UIKit
-
-private let jobButtonText   = "MON JOB"
-private let domaineButtonText = "MON DOMAINE"
-private let sportButtonText = "MES SPORTS"
+import PickerView
 
 
-class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate {
+private let jobButtonText       = "MON JOB"
+private let domaineButtonText   = "MON DOMAINE"
+private let sportButtonText     = "MES SPORTS"
+
+
+class MXSWellComeViewController: MXSViewController, PickerViewDataSource, PickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate {
     
     
     @IBOutlet weak var userImageView: UIImageView!
@@ -26,16 +28,33 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
     @IBOutlet weak var sportButton: UIButton!
     @IBOutlet weak var letsGoButton: UIButton!
     
+    @IBOutlet weak var pickerView: PickerView!
+    @IBOutlet weak var pickerViewTopLayout: NSLayoutConstraint!
+    
     
     fileprivate var dataArray       = FireBaseDataManager.sharedInstance.professions
     fileprivate var selectedButton  = 1 // 1 profession, 2 sport, 3 domaine
-    fileprivate let pickerView      = UIPickerView()
     
     
-    fileprivate let imagePicker = UIImagePickerController()
+    fileprivate let imagePicker     = UIImagePickerController()
     fileprivate var updateUserImage = false
     
     
+    
+    
+    func customPickerView() {
+       
+        pickerView.dataSource   = self
+        pickerView.delegate     = self
+        pickerView.scrollingStyle = .infinite
+        pickerView.selectionStyle = .overlay
+        pickerView.selectionOverlay.backgroundColor = Constants.MainColor.kSpecialColorClear
+        pickerView.selectionOverlay.alpha = 1
+        
+        if ScreenSize.currentHeight == ScreenSize.iphone4Height {
+            pickerViewTopLayout.constant = -80
+        }
+    }
     
     override func viewDidLoad() {
      
@@ -60,7 +79,7 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
         sportButton.setTitle(sportButtonText, for: UIControlState())
         MXSViewController.customButton(letsGoButton)
         
-        MXSPickerView.initPickerView(pickerView, controller: self, scale: false)
+        customPickerView()
         
         UserViewModel.setUserImageView(userImageView, person: User.currentUser)
         
@@ -69,6 +88,7 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
         NotificationCenter.default.addObserver(self, selector: Constants.FBNotificationSelector.sports, name: NSNotification.Name(rawValue: Constants.FBNotificationName.sports), object: nil)
         NotificationCenter.default.addObserver(self, selector: Constants.FBNotificationSelector.professions, name: NSNotification.Name(rawValue: Constants.FBNotificationName.professions), object: nil)
         NotificationCenter.default.addObserver(self, selector: Constants.FBNotificationSelector.domaines, name: NSNotification.Name(rawValue: Constants.FBNotificationName.domaines), object: nil)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -77,8 +97,6 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        MXSPickerView.subViewPanned(pickerView, controller: self)
     }
     
     deinit {
@@ -154,24 +172,24 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
         
         selectedButton  = 1
         dataArray = FireBaseDataManager.sharedInstance.professions
-        MXSPickerView.showPickerView(pickerView, controller: self, scale: false)
-        MXSPickerView.showPickerView(pickerView, controller: self, scale: false)
+        pickerView.isHidden = false
+        pickerView.reloadPickerView()
     }
     
     @IBAction func domaineButtonClcked(_ sender: AnyObject) {
         
         selectedButton  = 3
         dataArray = FireBaseDataManager.sharedInstance.domaines
-        MXSPickerView.showPickerView(pickerView, controller: self, scale: false)
-        MXSPickerView.showPickerView(pickerView, controller: self, scale: false)
+        pickerView.isHidden = false
+        pickerView.reloadPickerView()
     }
     
     @IBAction func sportButtonClicked(_ sender: AnyObject) {
         
         selectedButton  = 2
         dataArray = FireBaseDataManager.sharedInstance.sports
-        MXSPickerView.showPickerView(pickerView, controller: self, scale: false)
-        MXSPickerView.showPickerView(pickerView, controller: self, scale: false)
+        pickerView.isHidden = false
+        pickerView.reloadPickerView()
     }
     
     @IBAction func letsGoButtonClicked(_ sender: AnyObject) {
@@ -195,17 +213,23 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
                 }
             })
             
+            var frame = tabBarController?.view.frame
+            frame?.size.height -= 50
+            tabBarController?.view.frame = frame!
+            
             let tuttorialViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.wellCome, viewControllerId: Ressources.StoryBooardsIdentifiers.tuttorialId)
             navigationController?.viewControllers = [tuttorialViewController]
             
         } else {
             MXSViewController.showInformatifPopUp("Veuillez choisir votre job, domaine et sport!")
-            MXSPickerView.showPickerView(pickerView, controller: self, scale: false)
+            pickerView.isHidden = false
         }
     }
     
     override func validatButtonClicked(_ sender: AnyObject) {
-        MXSPickerView.subViewPanned(pickerView, controller: self)
+        
+        pickerView.isHidden = true
+        view.endEditing(true)
         
         guard let job = jobButton.titleLabel?.text else {
             return
@@ -242,39 +266,51 @@ class MXSWellComeViewController: MXSViewController, UIPickerViewDataSource, UIPi
     
     // Mark: --- PickerView ---
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerViewNumberOfRows(_ pickerView: PickerView) -> Int {
         return dataArray.count
     }
     
-    
-    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        
-        if row < dataArray.count {
-            let string = dataArray[row]
-            return NSAttributedString(string: string, attributes: [NSForegroundColorAttributeName:UIColor.black])
-        }
-        return nil
+    func pickerView(_ pickerView: PickerView, titleForRow row: Int, index: Int) -> String {
+        let item = dataArray[index]
+        return item
     }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerViewHeightForRows(_ pickerView: PickerView) -> CGFloat {
+        
+        if ScreenSize.currentHeight == ScreenSize.iphone4Height {
+            return 40
+        }
+        return 45.0
+    }
+    
+    func pickerView(_ pickerView: PickerView, styleForLabel label: UILabel, highlighted: Bool) {
+        
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 22)
+        
+        if highlighted {
+            label.textColor = .black
+        } else {
+            label.textColor = .lightGray
+        }
+    }
+    
+    func pickerView(_ pickerView: PickerView, didSelectRow row: Int, index: Int) {
+        
         switch selectedButton {
         case 1:
-            jobButton.setTitle(dataArray[row], for: UIControlState())
+            jobButton.setTitle(dataArray[index], for: UIControlState())
             break
         case 2:
-            sportButton.setTitle(dataArray[row], for: UIControlState())
+            sportButton.setTitle(dataArray[index], for: UIControlState())
             break
         case 3:
-            domaineButton.setTitle(dataArray[row], for: UIControlState())
+            domaineButton.setTitle(dataArray[index], for: UIControlState())
             break
         default:
             break
         }
-        pickerView.reloadAllComponents()
+        pickerView.reloadPickerView()
     }
     
 }

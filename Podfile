@@ -36,6 +36,8 @@ pod 'DrawerController', '~> 3.1'
 
 pod 'JSQMessagesViewController'
 
+pod 'PickerView'
+
 
 
 target 'MeetXSweat' do

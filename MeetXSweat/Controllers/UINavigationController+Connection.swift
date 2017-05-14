@@ -63,6 +63,11 @@ extension UINavigationController {
                         
                         UIApplication.shared.statusBarStyle = .lightContent
                         
+                        var frame = this.tabBarController?.view.frame
+                        frame?.size.height += 50
+                        this.tabBarController?.view.frame = frame!
+
+                        
                         return
                     }
                     

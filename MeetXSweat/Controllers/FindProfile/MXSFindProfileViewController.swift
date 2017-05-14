@@ -7,11 +7,11 @@
 //
 
 import UIKit
+import PickerView
 
 
 
-
-class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class MXSFindProfileViewController: MXSViewController, PickerViewDataSource, PickerViewDelegate {
     
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -29,9 +29,12 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
     fileprivate var savedDomaine = ""
     fileprivate var savedMetier  = ""
     
+    @IBOutlet weak var pickerView: PickerView!
+    @IBOutlet weak var pickerViewTopLayout: NSLayoutConstraint!
+    @IBOutlet weak var pickerViewBottomLayout: NSLayoutConstraint!
+    
     fileprivate var dataArray       = FireBaseDataManager.sharedInstance.domaines
     fileprivate var selectedLabel   = 1
-    fileprivate let pickerView      = UIPickerView()
     
     
     static let sharedInstance = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findProfile, viewControllerId: Ressources.StoryBooardsIdentifiers.findProfileId)
@@ -44,6 +47,21 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
         label.layer.borderWidth = 1
         label.layer.cornerRadius = 4
         label.clipsToBounds = true
+    }
+    
+    func customPickerView() {
+        
+        pickerView.dataSource   = self
+        pickerView.delegate     = self
+        pickerView.scrollingStyle = .infinite
+        pickerView.selectionStyle = .overlay
+        pickerView.selectionOverlay.backgroundColor = Constants.MainColor.kSpecialColorClear
+        pickerView.selectionOverlay.alpha = 1
+        
+        if ScreenSize.currentHeight == ScreenSize.iphone4Height {
+            pickerViewTopLayout.constant = 20
+            pickerViewBottomLayout.constant = 20
+        }
     }
     
     override func viewDidLoad() {
@@ -71,7 +89,7 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
         Utils.addTapGestureToView(domaineLabel, target: self, selectorString: "selectDomaineLabel")
         
         
-        MXSPickerView.initPickerView(pickerView, controller: self, scale: true)
+        customPickerView()
         
         if !editable {
             
@@ -93,8 +111,6 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        MXSPickerView.subViewPanned(pickerView, controller: self)
     }
     
     deinit {
@@ -109,7 +125,7 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
                 return
             }
             this.selectMetierLabel()
-            this.pickerView.reloadAllComponents()
+            this.pickerView.reloadPickerView()
         }
     }
     
@@ -122,12 +138,7 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
         domaineLabel.backgroundColor = UIColor.white
         
         dataArray = FireBaseDataManager.sharedInstance.professions
-        if navigationController?.visibleViewController == self  && tabBarController?.selectedIndex == 0 {
-            MXSPickerView.showPickerView(pickerView, controller: self, scale: true)
-        }
-        if editable {
-            MXSPickerView.showPickerView(pickerView, controller: self, scale: true)
-        }
+        pickerView.reloadPickerView()
     }
     
     func selectDomaineLabel() {
@@ -139,31 +150,9 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
         metierLabel.backgroundColor = UIColor.white
         
         dataArray = FireBaseDataManager.sharedInstance.domaines
-        if navigationController?.visibleViewController == self && tabBarController?.selectedIndex == 0 {
-            MXSPickerView.showPickerView(pickerView, controller: self, scale: true)
-        }
-        if editable {
-            MXSPickerView.showPickerView(pickerView, controller: self, scale: true)
-        }
+        pickerView.reloadPickerView()
     }
     
-    
-    
-    override func togleMenuButton() {
-        
-        if self.evo_drawerController!.openSide == .none {
-            MXSPickerView.subViewPanned(pickerView, controller: self)
-        } else {
-            dispatch_later(0.2, closure: { [weak self] in
-                guard let this = self else {
-                    return
-                }
-                MXSPickerView.showPickerView(this.pickerView, controller: this, scale: true)
-            })
-        }
-        
-        super.togleMenuButton()
-    }
     
     
     // Mark: --- Notifications Observer ---
@@ -182,37 +171,6 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
         }
     }
     
-    
-    // Mark: --- PickerView ---
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return dataArray.count
-    }
-    
-    
-    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        
-        let string = dataArray[row]
-        return NSAttributedString(string: string, attributes: [NSForegroundColorAttributeName:UIColor.black])
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        switch selectedLabel {
-        case 1:
-            savedMetier = dataArray[row]
-            break
-        case 2:
-            savedDomaine = dataArray[row]
-            break
-        default:
-            break
-        }
-        pickerView.reloadAllComponents()
-    }
     
     override func validatButtonClicked(_ sender: AnyObject) {
         
@@ -244,6 +202,54 @@ class MXSFindProfileViewController: MXSViewController, UIPickerViewDataSource, U
             MXSFindManager.sharedInstance.profession = ""
             MXSFindManager.sharedInstance.domaine = savedDomaine
         }
+    }
+    
+    
+    
+    // Mark: --- PickerView ---
+    
+    func pickerViewNumberOfRows(_ pickerView: PickerView) -> Int {
+        return dataArray.count
+    }
+    
+    func pickerView(_ pickerView: PickerView, titleForRow row: Int, index: Int) -> String {
+        let item = dataArray[index]
+        return item
+    }
+    
+    func pickerViewHeightForRows(_ pickerView: PickerView) -> CGFloat {
+        
+        if ScreenSize.currentHeight == ScreenSize.iphone4Height {
+            return 40
+        }
+        return 45.0
+    }
+    
+    func pickerView(_ pickerView: PickerView, styleForLabel label: UILabel, highlighted: Bool) {
+        
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 22)
+        
+        if highlighted {
+            label.textColor = .black
+        } else {
+            label.textColor = .lightGray
+        }
+    }
+    
+    func pickerView(_ pickerView: PickerView, didSelectRow row: Int, index: Int) {
+        
+        switch selectedLabel {
+        case 1:
+            savedMetier = dataArray[index]
+            break
+        case 2:
+            savedDomaine = dataArray[index]
+            break
+        default:
+            break
+        }
+        pickerView.reloadPickerView()
     }
     
 }

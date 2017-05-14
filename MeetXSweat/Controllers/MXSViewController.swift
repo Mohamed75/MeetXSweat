@@ -18,12 +18,7 @@ class MXSViewController: UIViewController {
     
     
     override func viewDidLoad() {
-        /*
-        let imageView = UIImageView(image: UIImage(named: Ressources.Images.mxslogo))
-        imageView.frame = CGRect(x: 0, y: 20, width: 40, height: 40)
-        imageView.contentMode = .ScaleAspectFit
-        navigationItem.titleView = imageView
-        */
+
         super.viewDidLoad()
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
