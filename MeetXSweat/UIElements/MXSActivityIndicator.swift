@@ -53,6 +53,7 @@ class MXSActivityIndicator: UIView {
     class func stopAnimating() {
         
         let block = {
+            sharedInstance.layer.removeAllAnimations()
             sharedInstance.removeFromSuperview()
         }
         DispatchQueue.main.async(execute: block)

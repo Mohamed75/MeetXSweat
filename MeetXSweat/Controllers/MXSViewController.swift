@@ -17,6 +17,11 @@ import DrawerController
 class MXSViewController: UIViewController {
     
     
+    fileprivate var savedTabBarController: UITabBarController!
+    
+    var isTabBarEtendedView: Bool = false
+    
+    
     override func viewDidLoad() {
 
         super.viewDidLoad()
@@ -25,6 +30,35 @@ class MXSViewController: UIViewController {
         
         view.backgroundColor = Constants.MainColor.kBackGroundColor
     }
+    
+    // Increase the view height when the tabBar is hidden
+    private func shouldIncreaseFrameHeight() -> Bool {
+        
+        return savedTabBarController.view.frame.size.height < (UIScreen.main.bounds.size.height + Constants.tabBarHeight)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        savedTabBarController = self.tabBarController
+        if (savedTabBarController != nil && isTabBarEtendedView && shouldIncreaseFrameHeight()) {
+            var frame = savedTabBarController.view.frame
+            frame.size.height += Constants.tabBarHeight
+            savedTabBarController.view.frame = frame
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if (savedTabBarController != nil && isTabBarEtendedView) {
+            var frame = savedTabBarController.view.frame
+            frame.size.height -= Constants.tabBarHeight
+            savedTabBarController.view.frame = frame
+            savedTabBarController = nil
+        }
+    }
+    
     
     func addBarButtonItem() {
         

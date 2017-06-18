@@ -10,10 +10,8 @@ import UIKit
 import AlamofireImage
 
 
-let placeHolderAttributes = [
-    NSForegroundColorAttributeName: UIColor.black,
-    //NSFontAttributeName : UIFont(name: "Roboto-Bold", size: 17)! // Note the !
-]
+
+
 
 
 class MXSAllLoginsViewController: MXSViewController {
@@ -34,8 +32,7 @@ class MXSAllLoginsViewController: MXSViewController {
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passWordTextField: UITextField!
     
-    fileprivate var savedTabBarController: UITabBarController!
-    
+
     
     override func viewDidLoad() {
         
@@ -44,17 +41,18 @@ class MXSAllLoginsViewController: MXSViewController {
         self.evo_drawerController!.openDrawerGestureModeMask = []
         googleButton.setBackgroundImage(UIImage(named: Ressources.Images.glBtn), for: UIControlState())
         
-        UIApplication.shared.statusBarStyle = .default
         
-        userNameTextField.attributedPlaceholder = NSAttributedString(string: Strings.Account.email, attributes:placeHolderAttributes)
+        userNameTextField.attributedPlaceholder = NSAttributedString(string: Strings.Account.email, attributes:Constants.placeHolderAttributes)
         userNameTextField.returnKeyType = .next
         MXSViewController.underLineView(userNameTextField)
         
-        passWordTextField.attributedPlaceholder = NSAttributedString(string: Strings.Account.password, attributes:placeHolderAttributes)
+        passWordTextField.attributedPlaceholder = NSAttributedString(string: Strings.Account.password, attributes:Constants.placeHolderAttributes)
         passWordTextField.returnKeyType = .done
         MXSViewController.underLineView(passWordTextField)
         
         Utils.addTapGestureToView(view, target: self, selectorString: kEndEditingSelectorString)
+        
+        isTabBarEtendedView = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -71,13 +69,6 @@ class MXSAllLoginsViewController: MXSViewController {
             NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: self.view.window)
             NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: self.view.window)
         }
-        
-        savedTabBarController = self.tabBarController
-        if (savedTabBarController != nil) {
-            var frame = savedTabBarController.view.frame
-            frame.size.height += 50
-            savedTabBarController.view.frame = frame
-        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -87,13 +78,6 @@ class MXSAllLoginsViewController: MXSViewController {
             
             NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: self.view.window)
             NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: self.view.window)
-        }
-        
-        if (savedTabBarController != nil) {
-            var frame = savedTabBarController.view.frame
-            frame.size.height -= 50
-            savedTabBarController.view.frame = frame
-            savedTabBarController = nil
         }
     }
     
@@ -108,7 +92,7 @@ class MXSAllLoginsViewController: MXSViewController {
     func keyboardWillHide(_ sender: Notification) {
         
         if self.view.frame.origin.y < 0 {
-            self.view.frame.origin.y += 50
+            self.view.frame.origin.y += Constants.tabBarHeight
             self.textFieldsViewTopConstraint.constant += 30
         }
     }
@@ -126,7 +110,7 @@ class MXSAllLoginsViewController: MXSViewController {
                     guard let this = self else {
                         return
                     }
-                    this.view.frame.origin.y -= 50
+                    this.view.frame.origin.y -= Constants.tabBarHeight
                     this.textFieldsViewTopConstraint.constant -= 30
                 })
             }
@@ -136,7 +120,7 @@ class MXSAllLoginsViewController: MXSViewController {
                 guard let this = self else {
                     return
                 }
-                this.view.frame.origin.y += 50 - offset.height
+                this.view.frame.origin.y += Constants.tabBarHeight - offset.height
                 this.textFieldsViewTopConstraint.constant += 30 - offset.height
             })
         }

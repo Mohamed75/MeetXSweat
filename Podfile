@@ -17,7 +17,7 @@ pod 'TwitterKit'
 
 pod 'LinkedinIOSHelper'
 
-pod 'Google/SignIn'
+pod 'GoogleSignIn'
 
 pod 'Alamofire', '~> 4.3'
 pod 'AlamofireImage', '~> 3.1'

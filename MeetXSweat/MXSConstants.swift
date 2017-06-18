@@ -68,5 +68,12 @@ enum Constants {
     }
     
     static let mToKm       = 1000.0
+    
+    static let placeHolderAttributes = [
+        NSForegroundColorAttributeName: UIColor.black,
+        //NSFontAttributeName : UIFont(name: "Roboto-Bold", size: 17)! // Note the !
+    ]
+    
+    static let tabBarHeight: CGFloat = 50
 }
 

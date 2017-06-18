@@ -39,6 +39,8 @@
 		D926BADC1D8DAF3900E3878C /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = D926BADB1D8DAF3900E3878C /* Person.swift */; };
 		D926BAE01D8DBC5100E3878C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D926BADF1D8DBC5100E3878C /* User.swift */; };
 		D926BAE21D8DD5CB00E3878C /* UINavigationController+Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D926BAE11D8DD5CB00E3878C /* UINavigationController+Connection.swift */; };
+		D92BAF331EF6BB010035CA8C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D92BAF321EF6BB010035CA8C /* AdSupport.framework */; };
+		D92BAF341EF6BB080035CA8C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D92BAF321EF6BB010035CA8C /* AdSupport.framework */; };
 		D93AF0931E60949D004B5565 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93AF0921E60949D004B5565 /* UserViewModel.swift */; };
 		D93AF0941E609599004B5565 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93AF0921E60949D004B5565 /* UserViewModel.swift */; };
 		D93AF0961E60D8B4004B5565 /* MXSMenuCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D93AF0951E60D8B4004B5565 /* MXSMenuCellView.xib */; };
@@ -237,6 +239,7 @@
 		D926BADB1D8DAF3900E3878C /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		D926BADF1D8DBC5100E3878C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D926BAE11D8DD5CB00E3878C /* UINavigationController+Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Connection.swift"; sourceTree = "<group>"; };
+		D92BAF321EF6BB010035CA8C /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		D93AF0921E60949D004B5565 /* UserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		D93AF0951E60D8B4004B5565 /* MXSMenuCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MXSMenuCellView.xib; sourceTree = "<group>"; };
 		D93AF0971E60D8F6004B5565 /* MXSMenuCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSMenuCellView.swift; sourceTree = "<group>"; };
@@ -305,6 +308,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D92BAF331EF6BB010035CA8C /* AdSupport.framework in Frameworks */,
 				D926BACE1D8D8C8600E3878C /* Social.framework in Frameworks */,
 				26168A058FAF4B8C39C1342F /* Pods_MeetXSweat.framework in Frameworks */,
 			);
@@ -329,6 +333,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D92BAF341EF6BB080035CA8C /* AdSupport.framework in Frameworks */,
 				D9B58B5C1E670FF200858C9B /* UserNotifications.framework in Frameworks */,
 				D949BB441E5C872A00BCF3A0 /* Social.framework in Frameworks */,
 				D949BB461E5C872A00BCF3A0 /* Pods_MeetXSweat.framework in Frameworks */,
@@ -355,6 +360,7 @@
 		BE7C0B832DB5C6689A2CC7E2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D92BAF321EF6BB010035CA8C /* AdSupport.framework */,
 				D9B58B5B1E670FF200858C9B /* UserNotifications.framework */,
 				D926BACD1D8D8C8600E3878C /* Social.framework */,
 				2994B391032B351D94FC1B09 /* Pods_MeetXSweat.framework */,
@@ -730,7 +736,7 @@
 								enabled = 0;
 							};
 							com.apple.Push = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -1287,6 +1293,7 @@
 			baseConfigurationReference = FD9164CA102020F4D5ED2DE5 /* Pods-MeetXSweat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MeetXSweat.entitlements;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1316,6 +1323,7 @@
 			baseConfigurationReference = 31432F17C675D4F9FF0518AF /* Pods-MeetXSweat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MeetXSweat.entitlements;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
@@ -1395,7 +1403,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B3B786CFF81DADC6EBBEA894 /* Pods-MeetXSweatProd.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MeetXSweat.entitlements;
 				CODE_SIGN_IDENTITY = "";
@@ -1432,7 +1439,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1A5D3A7424A337CE14A9730B /* Pods-MeetXSweatProd.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MeetXSweat.entitlements;
 				CODE_SIGN_IDENTITY = "";

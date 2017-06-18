@@ -29,7 +29,7 @@ class MXSLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
     
     func logIn(_ logInType: LogInType, viewController: UIViewController) {
         
-        controller = viewController
+        self.controller = viewController
         
         MXSActivityIndicator.startAnimating()
         
@@ -143,6 +143,7 @@ class MXSLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
         
         MXSActivityIndicator.stopAnimating()
         viewController.navigationController?.viewDidLoad()
+        viewController.viewWillAppear(false)
         ConversationsDataManager.sharedInstance.loadData()
     }
 }

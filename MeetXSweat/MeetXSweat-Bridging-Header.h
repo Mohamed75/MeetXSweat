@@ -9,5 +9,4 @@
 #ifndef MeetXSweat_Bridging_Header_h
 #define MeetXSweat_Bridging_Header_h
 
-
 #endif /* MeetXSweat_Bridging_Header_h */

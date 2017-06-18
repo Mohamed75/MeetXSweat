@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>MEETXSWEAT</string>
+	<string>MEETXSWEAT Dev</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -68,6 +68,8 @@
 	<string>318222461866075</string>
 	<key>FacebookDisplayName</key>
 	<string>MeetXSweat</string>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
 	<key>LIAppId</key>
 	<string>4581553</string>
 	<key>LSApplicationQueriesSchemes</key>
@@ -119,7 +121,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
 </dict>
 </plist>

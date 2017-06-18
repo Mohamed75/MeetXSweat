@@ -14,7 +14,7 @@ class MXSTuttorialViewController: MXSViewController, UICollectionViewDelegate, U
     
     fileprivate var tuttorials = DummyData.getTuttorials()
     
-    fileprivate var savedTabBarController: UITabBarController!
+    
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -45,31 +45,9 @@ class MXSTuttorialViewController: MXSViewController, UICollectionViewDelegate, U
         
         addValiderButton()
         setupPageControl()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
-        savedTabBarController = self.tabBarController
-        if (savedTabBarController != nil) {
-            var frame = savedTabBarController.view.frame
-            frame.size.height += 50
-            savedTabBarController.view.frame = frame
-        }
+        isTabBarEtendedView = true
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        if (savedTabBarController != nil) {
-            var frame = savedTabBarController.view.frame
-            frame.size.height -= 50
-            savedTabBarController.view.frame = frame
-            savedTabBarController = nil
-        }
-    }
-    
-    
     
     
     override func validatButtonClicked(_ sender: AnyObject) {

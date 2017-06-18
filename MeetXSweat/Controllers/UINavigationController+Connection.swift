@@ -61,18 +61,14 @@ extension UINavigationController {
                         this.isNavigationBarHidden = false
                         this.tabBarController?.tabBar.isHidden = true
                         
-                        UIApplication.shared.statusBarStyle = .lightContent
-                        
                         var frame = this.tabBarController?.view.frame
-                        frame?.size.height += 50
+                        frame?.size.height += Constants.tabBarHeight
                         this.tabBarController?.view.frame = frame!
 
-                        
                         return
                     }
                     
                     
-                    //this.viewControllers = [MXSHomeViewController.sharedInstance]
                     let index = this.tabBarController!.selectedIndex
                     switch index {
                         
@@ -97,8 +93,6 @@ extension UINavigationController {
                     this.tabBarController?.tabBar.isHidden = false
                     
                     this.evo_drawerController!.openDrawerGestureModeMask = OpenDrawerGestureMode.panningCenterView
-                    
-                    UIApplication.shared.statusBarStyle = .lightContent
                 }
                 
                 DispatchQueue.main.async(execute: block)
@@ -159,5 +153,9 @@ extension UINavigationController {
             return self.viewControllers[indexCurrentViewController-1]
         }
         return UIViewController()
+    }
+    
+    override open var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 }

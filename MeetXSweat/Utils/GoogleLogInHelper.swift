@@ -7,12 +7,17 @@
 //
 
 import Foundation
-import Google
 import GoogleSignIn
 
 
 private let getUserInfoUrlString = "https://www.googleapis.com/oauth2/v3/userinfo?access_token="
 
+#if PROD
+private let googleClientId  = "696269792910-a8vvnf1a8tpvm99nontm9239agil6b12.apps.googleusercontent.com"
+#else
+private let googleClientId  = "507333318603-1qfm75lhj9v05ledk92a6dtnnsdp8imc.apps.googleusercontent.com"
+#endif
+    
 
 protocol LogInGoogleDelegate {
     func logInGoogleSuccess(_ data: NSDictionary?)
@@ -42,10 +47,7 @@ class GoogleLogInHelper: NSObject, GIDSignInDelegate, GIDSignInUIDelegate {
     fileprivate func initConfig() {
         
         // Initialize sign-in
-        var configureError: NSError?
-        GGLContext.sharedInstance().configureWithError(&configureError)
-        assert(configureError == nil, "Error configuring Google services: \(String(describing: configureError))")
-        
+        GIDSignIn.sharedInstance().clientID     = googleClientId
         GIDSignIn.sharedInstance().delegate     = self
         GIDSignIn.sharedInstance().uiDelegate   = self
     }
@@ -65,6 +67,7 @@ class GoogleLogInHelper: NSObject, GIDSignInDelegate, GIDSignInUIDelegate {
     
     
     @objc func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        
         if (error == nil) {
             
             UIApplication.shared.isNetworkActivityIndicatorVisible = true

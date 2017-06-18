@@ -35,19 +35,19 @@ class MXSCreateAccountViewController: MXSViewController {
         super.viewDidLoad()
         
         
-        famillyNameTextField.attributedPlaceholder = NSAttributedString(string: Strings.Account.name, attributes:placeHolderAttributes)
+        famillyNameTextField.attributedPlaceholder = NSAttributedString(string: Strings.Account.name, attributes:Constants.placeHolderAttributes)
         famillyNameTextField.returnKeyType = .next
         MXSViewController.underLineView(famillyNameTextField)
         
-        lastNameTextField.attributedPlaceholder = NSAttributedString(string: Strings.Account.lastName, attributes:placeHolderAttributes)
+        lastNameTextField.attributedPlaceholder = NSAttributedString(string: Strings.Account.lastName, attributes:Constants.placeHolderAttributes)
         lastNameTextField.returnKeyType = .next
         MXSViewController.underLineView(lastNameTextField)
         
-        emailTextField.attributedPlaceholder = NSAttributedString(string: Strings.Account.email, attributes:placeHolderAttributes)
+        emailTextField.attributedPlaceholder = NSAttributedString(string: Strings.Account.email, attributes:Constants.placeHolderAttributes)
         emailTextField.returnKeyType = .next
         MXSViewController.underLineView(emailTextField)
         
-        passWordTextField.attributedPlaceholder = NSAttributedString(string: Strings.Account.password, attributes:placeHolderAttributes)
+        passWordTextField.attributedPlaceholder = NSAttributedString(string: Strings.Account.password, attributes:Constants.placeHolderAttributes)
         passWordTextField.returnKeyType = .done
         MXSViewController.underLineView(passWordTextField)
         
