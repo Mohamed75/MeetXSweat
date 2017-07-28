@@ -8,6 +8,13 @@
 
 import UIKit
 
+
+/**
+ *  This class was designed and implemented to provide a Person CollectionCell.
+ 
+ - superClass:  UICollectionViewCell.
+ */
+
 class MXSPersonCollectionCell: UICollectionViewCell {
     
     @IBOutlet internal weak var imageView: UIImageView!

@@ -9,6 +9,12 @@
 import UIKit
 
 
+/**
+ *  This class was designed and implemented to provide a Tuttorial CollectionCell.
+ 
+ - superClass:  UICollectionViewCell.
+ */
+
 class MXSTuttorialCollectionCell: UICollectionViewCell {
     
     

@@ -58,7 +58,7 @@
 		D949BB091E5C872A00BCF3A0 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = D926BADB1D8DAF3900E3878C /* Person.swift */; };
 		D949BB0A1E5C872A00BCF3A0 /* MXSConversationsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E401DA3FB1B0090A7A4 /* MXSConversationsCollectionViewController.swift */; };
 		D949BB0B1E5C872A00BCF3A0 /* MXSStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3D71D93185000981105 /* MXSStrings.swift */; };
-		D949BB0C1E5C872A00BCF3A0 /* MXSEmbedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3CC1D92D1DD00981105 /* MXSEmbedCollectionViewController.swift */; };
+		D949BB0C1E5C872A00BCF3A0 /* MXSFindCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3CC1D92D1DD00981105 /* MXSFindCollectionViewController.swift */; };
 		D949BB0D1E5C872A00BCF3A0 /* FireBaseDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64D251DA3AA2D008C5D34 /* FireBaseDataManager.swift */; };
 		D949BB0E1E5C872A00BCF3A0 /* MXSAddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086601E4DFC8100122030 /* MXSAddEventViewController.swift */; };
 		D949BB0F1E5C872A00BCF3A0 /* GoogleLogInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB48241D8EF2E000C12541 /* GoogleLogInHelper.swift */; };
@@ -73,7 +73,6 @@
 		D949BB181E5C872A00BCF3A0 /* MXSTuttorialCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C0866A1E4E094500122030 /* MXSTuttorialCollectionCell.swift */; };
 		D949BB1A1E5C872A00BCF3A0 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64D2D1DA3AACF008C5D34 /* Conversation.swift */; };
 		D949BB1B1E5C872A00BCF3A0 /* MXSFindSportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5831D940CEA003DCA75 /* MXSFindSportViewController.swift */; };
-		D949BB1C1E5C872A00BCF3A0 /* MXSMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA2AC1D8F1550004CE80C /* MXSMainViewController.swift */; };
 		D949BB1D1E5C872A00BCF3A0 /* MXSFindManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C086371E46698000122030 /* MXSFindManager.swift */; };
 		D949BB1E1E5C872A00BCF3A0 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64D211DA3AA2D008C5D34 /* DummyData.swift */; };
 		D949BB1F1E5C872A00BCF3A0 /* MXSFindArroundMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5871D940D18003DCA75 /* MXSFindArroundMeViewController.swift */; };
@@ -140,7 +139,7 @@
 		D94C63E91D8E914F00ECD7FD /* TwitterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94C63E81D8E914F00ECD7FD /* TwitterHelper.swift */; };
 		D959581B1DA57F2500481167 /* FireBaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959581A1DA57F2500481167 /* FireBaseObject.swift */; };
 		D959B3CB1D92D1D200981105 /* MXSFindProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3CA1D92D1D200981105 /* MXSFindProfileViewController.swift */; };
-		D959B3CD1D92D1DD00981105 /* MXSEmbedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3CC1D92D1DD00981105 /* MXSEmbedCollectionViewController.swift */; };
+		D959B3CD1D92D1DD00981105 /* MXSFindCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3CC1D92D1DD00981105 /* MXSFindCollectionViewController.swift */; };
 		D959B3D11D92D24500981105 /* MXSFindProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D959B3D01D92D24500981105 /* MXSFindProfile.storyboard */; };
 		D959B3D81D93185000981105 /* MXSStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3D71D93185000981105 /* MXSStrings.swift */; };
 		D959B3DD1D9318E000981105 /* MXSConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3DB1D9318E000981105 /* MXSConstants.swift */; };
@@ -151,7 +150,6 @@
 		D998B5DC1D96E63400A045F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D998B5DB1D96E63400A045F4 /* GoogleService-Info.plist */; };
 		D998B5E51D97FFE000A045F4 /* EnCodeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D998B5E41D97FFE000A045F4 /* EnCodeObject.swift */; };
 		D9AAA2AB1D8F0F12004CE80C /* MXSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA2AA1D8F0F12004CE80C /* MXSViewController.swift */; };
-		D9AAA2AD1D8F1550004CE80C /* MXSMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA2AC1D8F1550004CE80C /* MXSMainViewController.swift */; };
 		D9B58B431E64C15200858C9B /* MenuIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D93AF0991E60DBE9004B5565 /* MenuIcons.xcassets */; };
 		D9B58B5C1E670FF200858C9B /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9B58B5B1E670FF200858C9B /* UserNotifications.framework */; };
 		D9B64CD91D9D6C28008C5D34 /* MXSMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64CD81D9D6C28008C5D34 /* MXSMenuViewController.swift */; };
@@ -262,7 +260,7 @@
 		D94C63E81D8E914F00ECD7FD /* TwitterHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterHelper.swift; sourceTree = "<group>"; };
 		D959581A1DA57F2500481167 /* FireBaseObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireBaseObject.swift; sourceTree = "<group>"; };
 		D959B3CA1D92D1D200981105 /* MXSFindProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSFindProfileViewController.swift; sourceTree = "<group>"; };
-		D959B3CC1D92D1DD00981105 /* MXSEmbedCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MXSEmbedCollectionViewController.swift; path = FindProfile/MXSEmbedCollectionViewController.swift; sourceTree = "<group>"; };
+		D959B3CC1D92D1DD00981105 /* MXSFindCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MXSFindCollectionViewController.swift; path = FindProfile/MXSFindCollectionViewController.swift; sourceTree = "<group>"; };
 		D959B3D01D92D24500981105 /* MXSFindProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MXSFindProfile.storyboard; sourceTree = "<group>"; };
 		D959B3D71D93185000981105 /* MXSStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSStrings.swift; sourceTree = "<group>"; };
 		D959B3DB1D9318E000981105 /* MXSConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSConstants.swift; sourceTree = "<group>"; };
@@ -273,7 +271,6 @@
 		D998B5DB1D96E63400A045F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D998B5E41D97FFE000A045F4 /* EnCodeObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnCodeObject.swift; path = ../Model/EnCodeObject.swift; sourceTree = "<group>"; };
 		D9AAA2AA1D8F0F12004CE80C /* MXSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSViewController.swift; sourceTree = "<group>"; };
-		D9AAA2AC1D8F1550004CE80C /* MXSMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSMainViewController.swift; sourceTree = "<group>"; };
 		D9B58B5B1E670FF200858C9B /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		D9B64CD81D9D6C28008C5D34 /* MXSMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSMenuViewController.swift; sourceTree = "<group>"; };
 		D9B64D211DA3AA2D008C5D34 /* DummyData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
@@ -478,10 +475,9 @@
 				D959B3C81D92CF1600981105 /* FindDate */,
 				D959B3C61D92CF0C00981105 /* FindProfile */,
 				D9AAA2AA1D8F0F12004CE80C /* MXSViewController.swift */,
-				D959B3CC1D92D1DD00981105 /* MXSEmbedCollectionViewController.swift */,
+				D959B3CC1D92D1DD00981105 /* MXSFindCollectionViewController.swift */,
 				D926BAE11D8DD5CB00E3878C /* UINavigationController+Connection.swift */,
 				D926BAD21D8DA11F00E3878C /* MXSAllLoginsViewController.swift */,
-				D9AAA2AC1D8F1550004CE80C /* MXSMainViewController.swift */,
 				D9B64CD81D9D6C28008C5D34 /* MXSMenuViewController.swift */,
 			);
 			path = Controllers;
@@ -496,9 +492,9 @@
 				D94C63E51D8DE4BB00ECD7FD /* FaceBookHelper.swift */,
 				D94C63E81D8E914F00ECD7FD /* TwitterHelper.swift */,
 				D9BB48121D8EB48000C12541 /* LinkedInHelper.swift */,
+				D9BB48241D8EF2E000C12541 /* GoogleLogInHelper.swift */,
 				D998B5E41D97FFE000A045F4 /* EnCodeObject.swift */,
 				D959581A1DA57F2500481167 /* FireBaseObject.swift */,
-				D9BB48241D8EF2E000C12541 /* GoogleLogInHelper.swift */,
 				D9C086481E4A37AA00122030 /* JSONFile.swift */,
 				D907C5121E5A23CB009856E6 /* FireBaseHelper.swift */,
 			);
@@ -1031,7 +1027,7 @@
 				D926BADC1D8DAF3900E3878C /* Person.swift in Sources */,
 				D94A3E411DA3FB1B0090A7A4 /* MXSConversationsCollectionViewController.swift in Sources */,
 				D959B3D81D93185000981105 /* MXSStrings.swift in Sources */,
-				D959B3CD1D92D1DD00981105 /* MXSEmbedCollectionViewController.swift in Sources */,
+				D959B3CD1D92D1DD00981105 /* MXSFindCollectionViewController.swift in Sources */,
 				D9B64D2A1DA3AA2D008C5D34 /* FireBaseDataManager.swift in Sources */,
 				D9C086641E4DFC8100122030 /* MXSAddEventViewController.swift in Sources */,
 				D9BB48251D8EF2E000C12541 /* GoogleLogInHelper.swift in Sources */,
@@ -1047,7 +1043,6 @@
 				D9C0866B1E4E094500122030 /* MXSTuttorialCollectionCell.swift in Sources */,
 				D9B64D2E1DA3AACF008C5D34 /* Conversation.swift in Sources */,
 				D90AB5841D940CEA003DCA75 /* MXSFindSportViewController.swift in Sources */,
-				D9AAA2AD1D8F1550004CE80C /* MXSMainViewController.swift in Sources */,
 				D9C086381E46698000122030 /* MXSFindManager.swift in Sources */,
 				D9B64D261DA3AA2D008C5D34 /* DummyData.swift in Sources */,
 				D93AF0931E60949D004B5565 /* UserViewModel.swift in Sources */,
@@ -1113,7 +1108,7 @@
 				D949BB091E5C872A00BCF3A0 /* Person.swift in Sources */,
 				D949BB0A1E5C872A00BCF3A0 /* MXSConversationsCollectionViewController.swift in Sources */,
 				D949BB0B1E5C872A00BCF3A0 /* MXSStrings.swift in Sources */,
-				D949BB0C1E5C872A00BCF3A0 /* MXSEmbedCollectionViewController.swift in Sources */,
+				D949BB0C1E5C872A00BCF3A0 /* MXSFindCollectionViewController.swift in Sources */,
 				D949BB0D1E5C872A00BCF3A0 /* FireBaseDataManager.swift in Sources */,
 				D949BB0E1E5C872A00BCF3A0 /* MXSAddEventViewController.swift in Sources */,
 				D949BB0F1E5C872A00BCF3A0 /* GoogleLogInHelper.swift in Sources */,
@@ -1130,7 +1125,6 @@
 				D949BB181E5C872A00BCF3A0 /* MXSTuttorialCollectionCell.swift in Sources */,
 				D949BB1A1E5C872A00BCF3A0 /* Conversation.swift in Sources */,
 				D949BB1B1E5C872A00BCF3A0 /* MXSFindSportViewController.swift in Sources */,
-				D949BB1C1E5C872A00BCF3A0 /* MXSMainViewController.swift in Sources */,
 				D949BB1D1E5C872A00BCF3A0 /* MXSFindManager.swift in Sources */,
 				D949BB1E1E5C872A00BCF3A0 /* DummyData.swift in Sources */,
 				D93AF0941E609599004B5565 /* UserViewModel.swift in Sources */,

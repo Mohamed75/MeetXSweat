@@ -9,6 +9,12 @@
 import UIKit
 
 
+/**
+ *  This class was designed and implemented to provide a Tuttorial ViewController with a ContainerView of a CollectionView.
+ 
+ - superClass:  MXSViewController.
+ */
+
 class MXSTuttorialViewController: MXSViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     
@@ -38,6 +44,8 @@ class MXSTuttorialViewController: MXSViewController, UICollectionViewDelegate, U
         pageControl.transform = CGAffineTransform(scaleX: 1.7, y: 1.7)
     }
     
+    // Mark: ---  View lifecycle ---
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,21 +58,27 @@ class MXSTuttorialViewController: MXSViewController, UICollectionViewDelegate, U
     }
     
     
+    // Mark: --- NavigationBar Button Actions ---
+    
     override func validatButtonClicked(_ sender: AnyObject) {
         
         UserDefaults.standard.set([User.currentUser.email: "false"], forKey: "FirstTime")
         self.navigationController?.viewDidLoad()
     }
     
+    // Mark: --- ScrollView Delegate ---
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
         pageControl.currentPage = Int(pageNumber)
     }
     
-    
-    
-    // MARK: --- collectionView ---
+}
+
+
+// MARK: --- collectionView Delegate ---
+
+extension MXSTuttorialViewController {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
@@ -91,5 +105,4 @@ class MXSTuttorialViewController: MXSViewController, UICollectionViewDelegate, U
         
         return CGSize(width: collectionView.frame.size.width, height: collectionView.frame.size.height)
     }
-    
 }

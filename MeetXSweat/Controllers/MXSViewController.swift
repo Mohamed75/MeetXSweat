@@ -13,14 +13,25 @@ import DrawerController
 
 
 
+/**
+ *  This class was designed and implemented to provide a custom ViewController, with a custom the navigation bar, resizable view depending on if the tab bar is shown or not, show popIn, handel device shake event.
+ 
+ - superClass:  UIViewController.
+ - classdesign  Inheritance.
+ - helps        ViewController.
+ - helper       Utils.
+ */
 
 class MXSViewController: UIViewController {
     
     
     fileprivate var savedTabBarController: UITabBarController!
     
+    // A property to know that the view has to be extended as the tabbar is hidden
     var isTabBarEtendedView: Bool = false
     
+    
+    // Mark: ---  View lifecycle ---
     
     override func viewDidLoad() {
 
@@ -31,8 +42,8 @@ class MXSViewController: UIViewController {
         view.backgroundColor = Constants.MainColor.kBackGroundColor
     }
     
-    // Increase the view height when the tabBar is hidden
-    private func shouldIncreaseFrameHeight() -> Bool {
+    // To know if the view has allready been extended
+    private func isIncreasedFrameHeight() -> Bool {
         
         return savedTabBarController.view.frame.size.height < (UIScreen.main.bounds.size.height + Constants.tabBarHeight)
     }
@@ -41,7 +52,7 @@ class MXSViewController: UIViewController {
         super.viewWillAppear(animated)
         
         savedTabBarController = self.tabBarController
-        if (savedTabBarController != nil && isTabBarEtendedView && shouldIncreaseFrameHeight()) {
+        if (savedTabBarController != nil && isTabBarEtendedView && isIncreasedFrameHeight()) {
             var frame = savedTabBarController.view.frame
             frame.size.height += Constants.tabBarHeight
             savedTabBarController.view.frame = frame
@@ -60,12 +71,14 @@ class MXSViewController: UIViewController {
     }
     
     
-    func addBarButtonItem() {
+    // Mark: --- SetUp subView ---
+    
+    internal func addBarButtonItem() {
         
         navigationItem.leftBarButtonItem = DrawerBarButtonItem(target: self, action: #selector(togleMenuButton), menuIconColor: UIColor.white)
     }
     
-    func addValiderButton() {
+    internal func addValiderButton() {
         
         let validatButton = UIButton(type: .custom)
         validatButton.addTarget(self, action: NSSelectorFromString(Constants.SelectorsString.valider), for: .touchUpInside)
@@ -73,6 +86,9 @@ class MXSViewController: UIViewController {
         validatButton.frame = CGRect(x: 0 , y: 0, width: 30, height: 30)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: validatButton)
     }
+    
+    
+    // Mark: --- NavigationBar Button Actions ---
     
     func validatButtonClicked(_ sender: AnyObject) {
         
@@ -88,17 +104,36 @@ class MXSViewController: UIViewController {
         }
     }
     
-    func refreshView() {
+    internal func refreshView() {
         
     }
     
-    func endEditing() {
+    private func endEditing() {
         
         view.endEditing(true)
     }
     
     
+    // MARK: --- Shake Device ---
     
+    override var canBecomeFirstResponder : Bool {
+        return true
+    }
+    
+    // Show the AddEventViewController when the device is shaked
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        
+        if motion == .motionShake {
+            let addEventViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.main, viewControllerId: Ressources.StoryBooardsIdentifiers.addEvent)
+            evo_drawerController!.present(addEventViewController, animated: true, completion: nil)
+        }
+    }
+}
+
+
+extension MXSViewController {
+    
+    // MARK: --- Show PopIn ---
     
     class func showInformationPopUp(_ title: String, withCancelButton: Bool, completion: @escaping (String) -> Void) {
         
@@ -153,25 +188,10 @@ class MXSViewController: UIViewController {
     }
     
     class func underLineView(_ view: UIView) {
-    
+        
         let line = UIView(frame: CGRect(x: 0, y: view.frame.size.height-1, width: view.frame.size.width, height: 1))
         line.backgroundColor = UIColor.black
         view.addSubview(line)
     }
     
-    
-    // MARK: --- Shake Device ---
-    
-    override var canBecomeFirstResponder : Bool {
-        return true
-    }
-    
-    // Show the AddEventViewController when the device is shaked
-    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
-        
-        if motion == .motionShake {
-            let addEventViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.main, viewControllerId: Ressources.StoryBooardsIdentifiers.addEvent)
-            evo_drawerController!.present(addEventViewController, animated: true, completion: nil)
-        }
-    }
 }

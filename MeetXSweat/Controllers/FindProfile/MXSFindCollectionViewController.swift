@@ -1,5 +1,5 @@
 //
-//  MXSEmbedCollectionViewController.swift
+//  MXSFindCollectionViewController.swift
 //  MeetXSweat
 //
 //  Created by Mohamed BOUMANSOUR on 9/21/16.
@@ -8,14 +8,24 @@
 
 import UIKit
 
+/**
+ *  This class was designed and implemented to provide a standar ViewController with only a title label and a ContainerView of a CollectionView to show the Events/Profiles finded.
+ 
+ - superClass:  MXSViewController.
+ - classdesign  Inheritance.
+ - coclass      MXSFindManager.
+ */
 
-class MXSEmbedCollectionViewController: MXSViewController {
+class MXSFindCollectionViewController: MXSViewController {
     
     
     @IBOutlet weak var titleLabel: UILabel!
     
+    // A property to know that we need to cutomize litle bit the view
     var isSweatWorking = false
     
+    
+    // Mark: ---  View lifecycle ---
     
     override func viewDidLoad() {
         

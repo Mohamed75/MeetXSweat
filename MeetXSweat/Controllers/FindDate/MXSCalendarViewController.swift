@@ -9,24 +9,34 @@
 import UIKit
 import JTAppleCalendar
 
+// A number of seconds by day
+private let kDaySeconds: Double = 24*60*60
+private let kYearSeconds: Double = 12*31*kDaySeconds
 
-private let daySeconds: Double = 24*60*60
 
+/**
+ *  This class was designed and implemented to provide a Calendar ViewController.
+ 
+ - superClass:  MXSViewController.
+ - coclass      MXSCalendarCellView.
+ */
 
 class MXSCalendarViewController: MXSViewController, JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate  {
     
     static let formatter = DateFormatter()
-    var testCalendar = Calendar(identifier: Calendar.Identifier.gregorian)
+    var setUpCalendar = Calendar(identifier: Calendar.Identifier.gregorian)
     
     
+    
+    // Mark: --- SetUp ---
     
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
         
-        testCalendar.timeZone = TimeZone(abbreviation: "GMT")!
+        setUpCalendar.timeZone = TimeZone(abbreviation: "GMT")!
         MXSCalendarViewController.formatter.dateFormat = kDateFormat
         
         let firstDate   = Date()
-        let secondDate  = firstDate.addingTimeInterval(12*31*daySeconds) // one year
+        let secondDate  = firstDate.addingTimeInterval(kYearSeconds) // one year
         let numberOfRows = 6
         let aCalendar   = Calendar.current // Properly configure your calendar to your time zone here
         
@@ -43,12 +53,12 @@ class MXSCalendarViewController: MXSViewController, JTAppleCalendarViewDataSourc
     func setupViewsOfCalendar(from visibleDates: DateSegmentInfo) {
         
     }
+}
 
 
-    
-    
-    
-    
+// Mark: --- JTAppleCalendarView Delegate ---
+
+extension MXSCalendarViewController {
     
     func calendar(_ calendar: JTAppleCalendarView, willDisplayCell cell: JTAppleDayCellView, date: Date, cellState: CellState) {
         
@@ -70,5 +80,4 @@ class MXSCalendarViewController: MXSViewController, JTAppleCalendarViewDataSourc
     func calendar(_ calendar: JTAppleCalendarView, willResetCell cell: JTAppleDayCellView) {
         (cell as? MXSCalendarCellView)?.selectedView.isHidden = true
     }
-    
 }

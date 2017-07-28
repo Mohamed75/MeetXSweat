@@ -15,6 +15,15 @@ private let domaineButtonText   = "MON DOMAINE"
 private let sportButtonText     = "MES SPORTS"
 
 
+/**
+ *  This class was designed and implemented to provide a WellCome ViewController where you need to enter your Profession, Profession Type and Sport.
+ 
+ - superClass:  MXSViewController.
+ - classdesign  Observer.
+ - coclass      UserViewModel.
+ - helper       Utils.
+ */
+
 class MXSWellComeViewController: MXSViewController, PickerViewDataSource, PickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate {
     
     
@@ -55,6 +64,9 @@ class MXSWellComeViewController: MXSViewController, PickerViewDataSource, Picker
             pickerViewTopLayout.constant = -80
         }
     }
+    
+    
+    // Mark: ---  View lifecycle ---
     
     override func viewDidLoad() {
      
@@ -98,6 +110,8 @@ class MXSWellComeViewController: MXSViewController, PickerViewDataSource, Picker
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     }
+    
+    // Mark: ---  DeInitialization ---
     
     deinit {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: Constants.FBNotificationName.sports), object: nil)
@@ -226,6 +240,8 @@ class MXSWellComeViewController: MXSViewController, PickerViewDataSource, Picker
         }
     }
     
+    // Mark: --- NavigationBar Button Actions ---
+    
     override func validatButtonClicked(_ sender: AnyObject) {
         
         pickerView.isHidden = true
@@ -263,8 +279,12 @@ class MXSWellComeViewController: MXSViewController, PickerViewDataSource, Picker
         dismiss(animated: true, completion: nil)
     }
     
-    
-    // Mark: --- PickerView ---
+}
+
+
+// Mark: --- PickerView Delegate ---
+
+extension MXSWellComeViewController {
     
     func pickerViewNumberOfRows(_ pickerView: PickerView) -> Int {
         return dataArray.count
@@ -312,5 +332,4 @@ class MXSWellComeViewController: MXSViewController, PickerViewDataSource, Picker
         }
         pickerView.reloadPickerView()
     }
-    
 }

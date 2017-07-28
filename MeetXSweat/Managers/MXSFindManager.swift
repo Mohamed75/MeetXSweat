@@ -10,10 +10,16 @@ import Foundation
 import MapKit
 
 
+
+/// Possible values of the property findBy.
 enum FindBy: Int {
+    /// A profile findBy.
     case profile
+    /// A sport findBy.
     case sport
+    /// A date findBy.
     case date
+    /// An arroundMe findBy.
     case arroundMe
 }
 

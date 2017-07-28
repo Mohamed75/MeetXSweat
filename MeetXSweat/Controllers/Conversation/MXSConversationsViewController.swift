@@ -9,6 +9,12 @@
 import UIKit
 
 
+/**
+ *  This class was designed and implemented to provide a Conversations ViewController with a ContainerView of a CollectionView.
+ 
+ - superClass:  MXSViewController.
+ */
+
 class MXSConversationsViewController: MXSViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -22,8 +28,10 @@ class MXSConversationsViewController: MXSViewController {
         
         titleLabel.backgroundColor = Constants.MainColor.kSpecialColor
         
-        let conversationsCollectionViewController = childViewControllers.first as? MXSConversationsCollectionViewController
-        conversationsCollectionViewController?.conversations = ConversationsDataManager.sharedInstance.conversations
+        if let conversationsCollectionViewController = childViewControllers.first as? MXSConversationsCollectionViewController {
+            conversationsCollectionViewController.conversations = ConversationsDataManager.sharedInstance.conversations
+        }
+        
         
         addBarButtonItem()
     }

@@ -8,13 +8,20 @@
 
 import UIKit
 
+/**
+ *  This class was designed and implemented to provide a Profile Description ViewController.
+ 
+ - superClass:  MXSViewController.
+ */
 
 class MXSProfileDescriptionViewController: MXSViewController {
     
     @IBOutlet weak var textView: UITextView!
     
-    var person: Person!
+    internal var person: Person!
     
+    
+    // Mark: ---  View lifecycle ---
     
     override func viewDidLoad() {
         
@@ -25,6 +32,8 @@ class MXSProfileDescriptionViewController: MXSViewController {
         textView.text = person.personDescription
     }
     
+    
+    // Mark: --- NavigationBar Button Actions ---
     
     override func validatButtonClicked(_ sender: AnyObject) {
         

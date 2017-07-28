@@ -12,7 +12,14 @@ import AlamofireImage
 
 
 
-
+/**
+ *  This class was designed and implemented to setUp an allLoginsViewController.
+ 
+ - superClass:  MXSViewController.
+ - classdesign  Inheritance.
+ - coclass      MXSLogInManager.
+ - helper       Utils.
+ */
 
 class MXSAllLoginsViewController: MXSViewController {
 
@@ -33,6 +40,7 @@ class MXSAllLoginsViewController: MXSViewController {
     @IBOutlet weak var passWordTextField: UITextField!
     
 
+    // Mark: ---  View lifecycle ---
     
     override func viewDidLoad() {
         
@@ -127,7 +135,7 @@ class MXSAllLoginsViewController: MXSViewController {
     }
     
     
-    
+    // Mark: --- Buttons Actions ---
     
     @IBAction func loginButtonClicked(_ sender: AnyObject) {
         

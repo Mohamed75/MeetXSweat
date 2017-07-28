@@ -12,11 +12,15 @@ import JTAppleCalendar
 
 
 
-
+/**
+ *  This class was designed and implemented to provide a ViewController to find events by date.
+ 
+ - superClass:  MXSCalendarViewController.
+ - coclass      MXSFindManager.
+ */
 
 class MXSFindDateViewController: MXSCalendarViewController {
     
-
     
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var monthLabel: UILabel!
@@ -25,6 +29,7 @@ class MXSFindDateViewController: MXSCalendarViewController {
     @IBOutlet weak var stackView: UIStackView!
     
     
+    // Mark: ---  View lifecycle ---
     
     override func viewDidLoad() {
         
@@ -77,6 +82,7 @@ class MXSFindDateViewController: MXSCalendarViewController {
         calendarView.reloadData()
     }
     
+    // Mark: --- NavigationBar Button Actions ---
     
     override func validatButtonClicked(_ sender: AnyObject) {
         
@@ -90,15 +96,20 @@ class MXSFindDateViewController: MXSCalendarViewController {
     }
     
     
+    // Mark: --- setup Calendar Views ---
+    
     override func setupViewsOfCalendar(from visibleDates: DateSegmentInfo) {
         guard let startDate = visibleDates.monthDates.first else {
             return
         }
-        let month       = testCalendar.dateComponents([.month], from: startDate).month!
+        let month       = setUpCalendar.dateComponents([.month], from: startDate).month!
         let monthName   = DateFormatter().monthSymbols[(month) % 12] // 0 indexed array
-        let year        = testCalendar.component(.year, from: startDate)
+        let year        = setUpCalendar.component(.year, from: startDate)
         monthLabel.text = monthName + " " + String(year)
     }
+    
+    
+    // Mark: --- Button Actions ---
     
     @IBAction func next(_ sender: UIButton) {
         calendarView.scrollToSegment(.next) { [weak self] in

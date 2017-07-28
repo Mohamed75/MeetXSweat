@@ -102,12 +102,18 @@ enum Ressources {
     }
     
     
+    /**
+     *  A struct of constants about Xibs.
+     */
     struct Xibs {
         
         static let calendarCellView = "MXSCalendarCellView"
     }
     
     
+    /**
+     *  A struct of constants about the Cells Identifiers.
+     */
     struct CellReuseIdentifier {
         
         static let event        = "MXSEventsCollectionCell"
@@ -118,6 +124,9 @@ enum Ressources {
         static let menu         = "MXSMenuCellView"
     }
     
+    /**
+     *  A struct of constants about Map Pin Identifiers.
+     */
     struct MapPinIdentifier {
         static let eventsId     = "MXSPlaceMarkEvents"
         static let eventId      = "MXSPlaceMarkEvent"

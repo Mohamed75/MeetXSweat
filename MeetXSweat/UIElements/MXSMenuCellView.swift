@@ -9,6 +9,12 @@
 import UIKit
 
 
+/**
+ *  This class was designed and implemented to provide a Menu TableViewCell.
+ 
+ - superClass:  UITableViewCell.
+ */
+
 class MXSMenuCellView: UITableViewCell {
 
     @IBOutlet internal weak var myImageView: UIImageView!

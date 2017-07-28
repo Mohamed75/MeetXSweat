@@ -13,6 +13,9 @@ import Firebase
 typealias CompletionDoneBlock = (_ done: Bool) -> Void
 
 
+/**
+ *  This class was designed and implemented to provide a model representation of a Person.
+ */
 
 class Person: FireBaseObject {
     
@@ -30,6 +33,8 @@ class Person: FireBaseObject {
     var apnsToken   = ""
     
     
+    // Mark: --- Initialisation ---
+    
     override init() {
         super.init()
     }
@@ -42,7 +47,9 @@ class Person: FireBaseObject {
         super.init(coder: aDecoder)
     }
     
-    // create or update current user
+    // Mark: --- Get, Save and update data to firebase ---
+    
+    // Create or update current user
     func createPersonOnDataBase(_ completion: @escaping CompletionDoneBlock) {
         
         let personRef = FIRDatabase.database().reference().child("person-items")
@@ -75,7 +82,7 @@ class Person: FireBaseObject {
         personRef.removeObserver(withHandle: handle)
     }
     
-    // update current user from FireBase used only by createPersonOnDataBase()
+    // Update current user from FireBase used only by createPersonOnDataBase()
     fileprivate func updateCurrentPersonFromDB(_ snapshot: FIRDataSnapshot) {
         
         for child in snapshot.children {
@@ -87,7 +94,7 @@ class Person: FireBaseObject {
         }
     }
     
-    // update current user on FireBase
+    // Update current user on FireBase
     func updatePersonOnDataBase(_ completion: CompletionDoneBlock?) {
         
         saveToNSUserDefaults()
@@ -135,7 +142,7 @@ class Person: FireBaseObject {
         
     }
     
-    // set current user image
+    // Set current user image
     func setUserImage(_ image: UIImage) {
         
         FireBaseHelper.saveImage(image, fileName: email, completion:  { [weak self] url in
@@ -174,7 +181,6 @@ class Person: FireBaseObject {
             }
         })
         
-        
     }
     
     
@@ -184,7 +190,9 @@ class Person: FireBaseObject {
     }
     
     
-    // email withoutSpecialCharacters
+    // Mark: --- Get Informations  ---
+    
+    // Email withoutSpecialCharacters
     func getEmailAsId() -> String {
         
         var returnString = email.replacingOccurrences(of: "@", with: "")

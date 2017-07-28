@@ -10,11 +10,16 @@ import UIKit
 import GoogleSignIn
 
 
+
+/// Possible values of the property logInType.
 enum LogInType {
-    
+    /// A facebook logIn.
     case logInTypeFB
+    /// A twitter logIn.
     case logInTypeTW
+    /// A linkIn logIn.
     case logInTypeLK
+    /// A google logIn.
     case logInTypeGL
 }
 

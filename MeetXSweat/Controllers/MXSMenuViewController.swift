@@ -19,17 +19,26 @@ private let imageHeight: CGFloat = 180.0
 
 
 
-
+/**
+ *  This class was designed and implemented to provide an UITableViewController Left Menu.
+ 
+ - superClass:  UITableViewController.
+ - classdesign  Inheritance.
+ - coclass      DrawerController, UserViewModel.
+ - helper       Utils.
+ */
 
 class MXSMenuViewController: UITableViewController {
     
-    var mainNavigationController: UITabBarController!
+    internal var mainNavigationController: UITabBarController!
     
-    var userView: UIImageView!
+    internal var userView: UIImageView!
     
     
     
-    func customSectionHeader(_ pView: UIView) {
+    // Mark: --- SetUp subView ---
+    
+    internal func customSectionHeader(_ pView: UIView) {
         
         for v in pView.subviews {
             v.removeFromSuperview()
@@ -83,34 +92,9 @@ class MXSMenuViewController: UITableViewController {
         pView.addSubview(profileButton)
     }
     
-    func profileButtonClicked(_ sender: AnyObject) {
-        
-        let profileViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.profile, viewControllerId: Ressources.StoryBooardsIdentifiers.profileId) as! MXSProfileViewController
-        profileViewController.person = User.currentUser
-        profileViewController.editable = true
-        evo_drawerController!.centerViewController = UINavigationController(rootViewController: profileViewController)
-        
-        evo_drawerController?.closeDrawer(animated: true, completion: nil)
-    }
     
-    func sectionHeaderClicked() {
-        evo_drawerController!.centerViewController = mainNavigationController
-        evo_drawerController?.closeDrawer(animated: true, completion: nil)
-        dispatch_later(0.1) { [weak self] in
-            
-            guard let this = self else {
-                return
-            }
-            if let firstNavigationController = this.mainNavigationController.viewControllers?.first as? UINavigationController {
-                firstNavigationController.viewWillAppear(false)
-                
-                if let currentNavigationController = this.mainNavigationController.viewControllers?[this.mainNavigationController.selectedIndex] as? UINavigationController {
-                    currentNavigationController.visibleViewController?.viewWillAppear(false)
-                }
-            }
-        }
-    }
     
+    // Mark: ---  View lifecycle ---
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,6 +114,54 @@ class MXSMenuViewController: UITableViewController {
         customSectionHeader(userView)
     }
     
+    
+    
+    // Mark: --- Buttons Actions ---
+    
+    internal func profileButtonClicked(_ sender: AnyObject) {
+        
+        let profileViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.profile, viewControllerId: Ressources.StoryBooardsIdentifiers.profileId) as! MXSProfileViewController
+        profileViewController.person = User.currentUser
+        profileViewController.editable = true
+        evo_drawerController!.centerViewController = UINavigationController(rootViewController: profileViewController)
+        
+        evo_drawerController?.closeDrawer(animated: true, completion: nil)
+    }
+    
+    internal func sectionHeaderClicked() {
+        evo_drawerController!.centerViewController = mainNavigationController
+        evo_drawerController?.closeDrawer(animated: true, completion: nil)
+        dispatch_later(0.1) { [weak self] in
+            
+            guard let this = self else {
+                return
+            }
+            if let firstNavigationController = this.mainNavigationController.viewControllers?.first as? UINavigationController {
+                firstNavigationController.viewWillAppear(false)
+                
+                if let currentNavigationController = this.mainNavigationController.viewControllers?[this.mainNavigationController.selectedIndex] as? UINavigationController {
+                    currentNavigationController.visibleViewController?.viewWillAppear(false)
+                }
+            }
+        }
+    }
+    
+    
+    // Mark: --- UIScrollView Delegate ---
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        if scrollView.contentOffset.y < 0 {
+            scrollView.contentOffset = CGPoint(x: 0, y: 0)
+        }
+    }
+    
+}
+
+
+// Mark: --- UITableView Delegate ---
+
+extension MXSMenuViewController {
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
@@ -191,7 +223,7 @@ class MXSMenuViewController: UITableViewController {
             break
             
         case 1:
-            if let viewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findSport, viewControllerId: Ressources.StoryBooardsIdentifiers.embedSportsId) as? MXSEmbedCollectionViewController {
+            if let viewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findSport, viewControllerId: Ressources.StoryBooardsIdentifiers.embedSportsId) as? MXSFindCollectionViewController {
                 viewController.isSweatWorking = true
                 evo_drawerController!.centerViewController = UINavigationController(rootViewController: viewController)
             }
@@ -221,21 +253,10 @@ class MXSMenuViewController: UITableViewController {
         evo_drawerController?.closeDrawer(animated:true, completion: nil)
     }
     
-    
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    private func share() {
         
-        if scrollView.contentOffset.y < 0 {
-            scrollView.contentOffset = CGPoint(x: 0, y: 0)
-        }
-    }
-    
-    
-    func share() {
+        let shareItems: [Any] = [Constants.Sharings.textToShare, Constants.Sharings.imgShare, Constants.Sharings.websiteShare]
         
-        let shareItems: [AnyObject] = [Constants.Sharings.textToShare as AnyObject, Constants.Sharings.imgShare, Constants.Sharings.websiteShare as AnyObject]
-        
-        let activityViewController = UIActivityViewController(activityItems: shareItems, applicationActivities: nil)
-        activityViewController.excludedActivityTypes = [UIActivityType.print, UIActivityType.postToWeibo, UIActivityType.copyToPasteboard, UIActivityType.addToReadingList, UIActivityType.postToVimeo, UIActivityType.assignToContact, UIActivityType.saveToCameraRoll]
-        present(activityViewController, animated: true, completion: nil)
+        Utils.sharing(shareItems: shareItems, onController: self)
     }
 }

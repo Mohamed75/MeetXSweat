@@ -14,10 +14,20 @@ private let nameAttributes = [
 ]
 
 
+/**
+ *  This class was designed and implemented to provide a Sport CollectionViewController.
+ 
+ - superClass:  UICollectionViewController.
+ - coclass      MXSFindManager, UserViewModel.
+ - helper       Utils.
+ */
+
 class MXSConversationsCollectionViewController: UICollectionViewController {
     
-    var conversations: [Conversation]!
+    internal var conversations: [Conversation]!
     
+    
+    // Mark: --- CollectionView Delegate ---
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         

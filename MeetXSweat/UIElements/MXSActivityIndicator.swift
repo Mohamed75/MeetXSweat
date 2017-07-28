@@ -14,10 +14,21 @@ private let height: CGFloat = 60
 private let animationSpeed: Float  = 0.3
 
 
+/**
+ *  This class was designed and implemented to provide a ActivityIndicator view.
+ 
+ - superClass:  UIView.
+ - classdesign  Singleton.
+ - helper       AnimationClass.
+ */
+
 class MXSActivityIndicator: UIView {
 
     static let sharedInstance = MXSActivityIndicator(frame: CGRect(x: 0, y: 0, width: width, height: height))
     //var imageView: UIImageView!
+    
+    
+    // Mark: ---  Initialization ---
     
     override init(frame: CGRect) {
         
@@ -31,6 +42,8 @@ class MXSActivityIndicator: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // Mark: ---  Start/Stop Animation ---
     
     class func startAnimating() {
         

@@ -20,16 +20,21 @@ private let closeString             = "Close"
 
 
 
-
 protocol LogInLKDelegate {
     func logInLKSuccess(_ data: NSDictionary?)
 }
 
-//, failUserInfoBlock failure: ((NSError!) -> Void)!
+
+/**
+ *  This class was designed and implemented to provide LinkedIn logIn helper.
+ It help the user to connect trought LinkedIn and gather its data
+ 
+ - classdesign  Helper.
+ */
 
 class LiknedInHelper {
     
-    
+    // Mark: ---  LogIn/LogOut ---
     
     class func logIn(_ delegate: LogInLKDelegate) {
         
@@ -61,6 +66,7 @@ class LiknedInHelper {
     
     
     class func logOut() {
+        
         LinkedInHelper.sharedInstance().logout()
     }
     

@@ -13,6 +13,9 @@ import Firebase
 typealias CompletionSuccessBlock = (_ success: Bool) -> Void
 
 
+/**
+ *  This class was designed and implemented to inHerite from Person Model to set the object with the data.
+ */
 
 class User: Person {
     
@@ -22,6 +25,7 @@ class User: Person {
     static let currentUser = User.loadCustomObject()
     
     
+    // Mark: --- SetUp ---
     
     func initFromFBData(_ data: NSDictionary, completion: @escaping CompletionSuccessBlock) {
         
@@ -146,6 +150,8 @@ class User: Person {
     }
     
     
+    // Mark: --- SetUp from fireBase ---
+    
     func createFromEmailData(_ email: String, password: String, name: String, lastName: String, completion: @escaping CompletionSuccessBlock) {
         
         FIRAuth.auth()?.createUser(withEmail: email, password: password) { [weak self] (user, error) in
@@ -200,7 +206,8 @@ class User: Person {
         })
     }
     
-   
+    // Mark: --- Get, Save and update data to firebase ---
+    
     // Called when create an new account or logIn
     fileprivate func saveCustomObject(_ completion: @escaping CompletionSuccessBlock)
     {
@@ -249,6 +256,8 @@ class User: Person {
     }
     
     
+    // Mark: --- LogOut ---
+    
     func logOut(_ completion: @escaping CompletionDoneBlock) {
         
         User.currentUser.isConnected = false
@@ -282,6 +291,8 @@ class User: Person {
         })
     }
     
+    
+    // Mark: --- Copy ---
     
     func copyToPerson(_ person: Person) {
         

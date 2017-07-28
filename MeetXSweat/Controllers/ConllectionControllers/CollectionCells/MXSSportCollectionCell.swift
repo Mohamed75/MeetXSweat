@@ -11,6 +11,11 @@ import DLRadioButton
 
 
 
+/**
+ *  This class was designed and implemented to provide a Sport CollectionCell.
+ 
+ - superClass:  UICollectionViewCell.
+ */
 
 class MXSSportCollectionCell: UICollectionViewCell {
     

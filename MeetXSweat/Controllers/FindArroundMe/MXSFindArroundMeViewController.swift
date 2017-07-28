@@ -13,26 +13,32 @@ import MapKit
 
 
 
-
+/**
+ *  This class was designed and implemented to provide a ViewController to find Events arround Current Location.
+ 
+ - superClass:  MXSViewController.
+ - classdesign  Inheritance.
+ - coclass      MKMapView.
+ */
 
 class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
     
     
     @IBOutlet weak var mapView: MKMapView!
     
+    internal var events = FireBaseDataManager.sharedInstance.events
     
     
-    var events = FireBaseDataManager.sharedInstance.events
+    // Mark: ---  Others ---
     
-    
-    func addOverlay() {
+    private func addOverlay() {
         
         let overlay = MKTileOverlay(urlTemplate: Constants.URLS.mapTemplate)
         overlay.canReplaceMapContent = true
         mapView.add(overlay, level: .aboveLabels)
     }
     
-    func addEvents(_ after: Double) {
+    private func addEvents(_ after: Double) {
         
         MXSActivityIndicator.startAnimating()
         events = FireBaseDataManager.sharedInstance.events
@@ -62,6 +68,8 @@ class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
     }
     
     
+    // Mark: ---  View lifecycle ---
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -89,8 +97,12 @@ class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
         addEvents(1.0)
     }
     
-    
-    // Mark: --- MapView ---
+}
+
+
+// Mark: --- MapView Delegate ---
+
+extension MXSFindArroundMeViewController {
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         guard let tileOverlay = overlay as? MKTileOverlay else {
@@ -183,6 +195,8 @@ class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
     }
 }
 
+
+// Mark: --- Custom MKAnnotationView ---
 
 extension MKAnnotationView {
     

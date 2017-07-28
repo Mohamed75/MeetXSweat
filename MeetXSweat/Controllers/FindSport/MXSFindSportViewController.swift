@@ -10,6 +10,13 @@ import UIKit
 import DLRadioButton
 
 
+/**
+ *  This class was designed and implemented to provide a ViewController to find Sports/Events.
+ 
+ - superClass:  MXSViewController.
+ - classdesign  Inheritance.
+ - coclass      MXSFindManager.
+ */
 
 class MXSFindSportViewController: MXSViewController {
     
@@ -25,6 +32,9 @@ class MXSFindSportViewController: MXSViewController {
         addValiderButton()
         
         title = Strings.NavigationTitle.sports
+        
+        FireBaseDataManager.sharedInstance.loadData()
+        ConversationsDataManager.sharedInstance.loadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {

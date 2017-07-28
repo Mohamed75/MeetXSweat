@@ -26,6 +26,12 @@ import JSQMessagesViewController
 
 
 
+/**
+ *  This class was designed and implemented to provide a Chat ViewController where you can read and send a messages.
+ 
+ - superClass:  JSQMessagesViewController.
+ */
+
 class ChatViewController: JSQMessagesViewController {
   
     
@@ -43,6 +49,9 @@ class ChatViewController: JSQMessagesViewController {
         _outgoingBubbleImageView = bubbleImageFactory?.outgoingMessagesBubbleImage(with: Constants.MainColor.kSpecialColor)
         _incomingBubbleImageView = bubbleImageFactory?.incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
     }
+    
+    
+    // Mark: ---  View lifecycle ---
     
     override func viewDidLoad() {
         
@@ -63,7 +72,28 @@ class ChatViewController: JSQMessagesViewController {
         inputToolbar.contentView.rightBarButtonItem.setImage(UIImage(named: Ressources.Images.sendMessage), for: UIControlState())
         inputToolbar.contentView.rightBarButtonItemWidth = inputToolbar.contentView.rightBarButtonItem.frame.size.height
     }
+  
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        guard let aConversation = conversation else {
+            return
+        }
+        aConversation.observeMessages(_messagesBlock())
+        aConversation.observeTyping(senderId, completionHandler: _typingBlock())
+    }
+  
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        guard let aConversation = conversation else {
+            return
+        }
+        aConversation.removeObservers()
+    }
     
+  
+    // Mark: --- FireBase Messages Observer ---
     
     fileprivate func _messagesBlock() -> (_ messages: [Message]) -> Void {
         
@@ -93,65 +123,6 @@ class ChatViewController: JSQMessagesViewController {
         }
     }
   
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        guard let aConversation = conversation else {
-            return
-        }
-        aConversation.observeMessages(_messagesBlock())
-        aConversation.observeTyping(senderId, completionHandler: _typingBlock())
-    }
-  
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        guard let aConversation = conversation else {
-            return
-        }
-        aConversation.removeObservers()
-    }
-    
-  
-    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
-        return _theMessages[indexPath.item]
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return _theMessages.count
-    }
-  
-    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
-        let message = _theMessages[indexPath.item] // 1
-        if message.senderId == senderId { // 2
-            return _outgoingBubbleImageView
-        } else { // 3
-            return _incomingBubbleImageView
-        }
-    }
-  
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
-        
-        let message = _theMessages[indexPath.item]
-        
-        if message.senderId == senderId { // 1
-            cell.textView!.textColor = UIColor.white // 2
-        } else {
-            cell.textView!.textColor = UIColor.black // 3
-        }
-        
-        return cell
-    }
-  
-    override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
-        return nil
-    }
-  
-  
-  
-  
-  
   
     override func textViewDidChange(_ textView: UITextView) {
         super.textViewDidChange(textView)
@@ -172,4 +143,45 @@ class ChatViewController: JSQMessagesViewController {
         finishSendingMessage()
     }
   
+}
+
+
+// Mark: --- CollectionView Delegate ---
+
+extension ChatViewController {
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
+        return _theMessages[indexPath.item]
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return _theMessages.count
+    }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
+        let message = _theMessages[indexPath.item] // 1
+        if message.senderId == senderId { // 2
+            return _outgoingBubbleImageView
+        } else { // 3
+            return _incomingBubbleImageView
+        }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
+        
+        let message = _theMessages[indexPath.item]
+        
+        if message.senderId == senderId { // 1
+            cell.textView!.textColor = UIColor.white // 2
+        } else {
+            cell.textView!.textColor = UIColor.black // 3
+        }
+        
+        return cell
+    }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
+        return nil
+    }
 }

@@ -10,6 +10,12 @@ import UIKit
 import JTAppleCalendar
 
 
+/**
+ *  This class was designed and implemented to provide a Calender CellView
+ 
+ - superClass:  JTAppleDayCellView.
+ */
+
 class MXSCalendarCellView: JTAppleDayCellView {
     
     @IBOutlet var selectedView: AnimationView!

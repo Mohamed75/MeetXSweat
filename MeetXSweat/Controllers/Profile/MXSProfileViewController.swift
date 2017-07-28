@@ -19,8 +19,17 @@ private let professionAttributes = [
     NSFontAttributeName : UIFont.systemFont(ofSize: 16)
 ]
 
+private let kAlertTitle        = "Image Source"
+private let kAlertButtonTitle  = "Cancel"
+private let kAlertButtonTitle2 = "Camera"
+private let kAlertButtonTitle3 = "Photo Roll"
 
-
+/**
+ *  This class was designed and implemented to setUp a Profile ViewController.
+ 
+ - superClass:  MXSViewController.
+ - helper       Utils.
+ */
 
 class MXSProfileViewController: MXSViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate {
 
@@ -32,8 +41,8 @@ class MXSProfileViewController: MXSViewController, UIImagePickerControllerDelega
     
     @IBOutlet weak var contactButton: UIButton!
     
-    var person: Person!
-    var editable: Bool = false
+    internal var person: Person!
+    internal var editable: Bool = false
     
     fileprivate let imagePicker = UIImagePickerController()
     fileprivate var updateUserImage = false
@@ -42,6 +51,9 @@ class MXSProfileViewController: MXSViewController, UIImagePickerControllerDelega
     @IBOutlet weak var professionButton: UIButton!
     @IBOutlet weak var descriptionButton: UIButton!
     
+    
+    
+    // Mark: ---  View lifecycle ---
     
     override func viewDidLoad() {
         
@@ -98,30 +110,8 @@ class MXSProfileViewController: MXSViewController, UIImagePickerControllerDelega
         }
     }
     
-    func userImageViewClicked() {
-        
-        let actionSheet = UIAlertController(title: "Image Source", message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
-        
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
-        
-        actionSheet.addAction(UIAlertAction(title: "Camera", style: UIAlertActionStyle.default, handler: { [weak self] action -> Void in
-            guard let this = self else {
-                return
-            }
-            this.promptForCamera()
-        }))
-        actionSheet.addAction(UIAlertAction(title: "Photo Roll", style: UIAlertActionStyle.default, handler: { [weak self] action -> Void in
-            guard let this = self else {
-                return
-            }
-            this.promptForPhotoRoll()
-        }))
-        
-        self.present(actionSheet, animated: true, completion: nil)
-    }
     
-    
-    func promptForPhotoRoll() {
+    private func promptForPhotoRoll() {
         
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
@@ -129,7 +119,7 @@ class MXSProfileViewController: MXSViewController, UIImagePickerControllerDelega
         present(imagePicker, animated: true, completion: nil)
     }
     
-    func promptForCamera() {
+    private func promptForCamera() {
         
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .camera
@@ -154,6 +144,31 @@ class MXSProfileViewController: MXSViewController, UIImagePickerControllerDelega
         dismiss(animated: true, completion: nil)
     }
     
+    
+    // Mark: --- Button Actions ---
+    
+    
+    internal func userImageViewClicked() {
+        
+        let actionSheet = UIAlertController(title: kAlertTitle, message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+        actionSheet.addAction(UIAlertAction(title: kAlertButtonTitle, style: UIAlertActionStyle.cancel, handler: nil))
+        
+        actionSheet.addAction(UIAlertAction(title: kAlertButtonTitle2, style: UIAlertActionStyle.default, handler: { [weak self] action -> Void in
+            guard let this = self else {
+                return
+            }
+            this.promptForCamera()
+        }))
+        actionSheet.addAction(UIAlertAction(title: kAlertButtonTitle3, style: UIAlertActionStyle.default, handler: { [weak self] action -> Void in
+            guard let this = self else {
+                return
+            }
+            this.promptForPhotoRoll()
+        }))
+        
+        self.present(actionSheet, animated: true, completion: nil)
+    }
     
     
     @IBAction func contacterButtonClicked(_ sender: AnyObject) {

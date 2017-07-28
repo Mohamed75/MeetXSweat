@@ -17,10 +17,18 @@ private let hours       = 24
 
 
 
+/**
+ *  This class was designed and implemented to provide an Event ViewController.
+ 
+ - superClass:  MXSViewController.
+ - classdesign  Inheritance.
+ - coclass      MXSCalendarViewController.
+ - helper       Utils.
+ */
 
 class MXSEventViewController: MXSViewController {
     
-    var event: Event!
+    internal var event: Event!
     
     
     @IBOutlet weak var topView: UIView!
@@ -47,7 +55,7 @@ class MXSEventViewController: MXSViewController {
     
     
     
-    func timeLeft() {
+    private func timeLeft() {
         
         MXSCalendarViewController.formatter.dateFormat = kDateFormat
         if let timeLeft = MXSCalendarViewController.formatter.date(from: event.date)?.timeIntervalSinceNow {
@@ -86,12 +94,15 @@ class MXSEventViewController: MXSViewController {
     }
     
     
-    func addOverlay() {
+    private func addOverlay() {
         
         let overlay = MKTileOverlay(urlTemplate: Constants.URLS.mapTemplate)
         overlay.canReplaceMapContent = true
         mapView.add(overlay, level: .aboveLabels)
     }
+    
+    
+    // Mark: ---  View lifecycle ---
     
     override func viewDidLoad() {
         
@@ -168,11 +179,11 @@ class MXSEventViewController: MXSViewController {
         }
     }
     
-    func updateParticipantsButtonText() {
+    private func updateParticipantsButtonText() {
         participantsButton.setTitle(String(event.persons.count) + " PARTICIPANTS", for: UIControlState())
     }
     
-    func updateInscriptionButton() {
+    private func updateInscriptionButton() {
         
         if event.isCurrentPersonAlreadyIn() {
             inscriptionButton.isEnabled = false
@@ -181,7 +192,50 @@ class MXSEventViewController: MXSViewController {
     }
     
     
-    // Mark: --- MapView ---
+    // Mark: --- Button Actions ---
+    
+    @IBAction func participantsButtonClicked(_ sender: AnyObject) {
+        
+        if event.persons.count <= 0 {
+            return
+        }
+        
+        if let viewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findProfile, viewControllerId: Ressources.StoryBooardsIdentifiers.embedProfilesId) as? MXSFindCollectionViewController
+        {
+            viewController.title = Strings.NavigationTitle.sportsParticipants
+            navigationController?.pushViewController(viewController, animated: false)
+            
+            
+            dispatch_later(0.1, closure: { [weak self] in
+                guard let this = self else {
+                    return
+                }
+                if let personsCollectionViewController = viewController.childViewControllers.first as? MXSPersonsCollectionViewController {
+                    viewController.titleLabel.text = this.event.sport.uppercased()
+                    if let jour = this.event.getJour(), let heure = this.event.getHeure() {
+                        viewController.titleLabel.text = this.event.sport.uppercased() + " - " + jour + " - " + heure
+                    }
+                    personsCollectionViewController.persons = this.event.getFullPersons()
+                    personsCollectionViewController.collectionView?.reloadData()
+                }
+            })
+        }
+    }
+    
+    @IBAction func inscriptionButtonClicked(_ sender: AnyObject) {
+        event.addCurrentUserToEvent()
+        if tabBarController?.selectedIndex != 0 {
+            participantsButtonClicked(NSObject())
+        }
+        updateParticipantsButtonText()
+        updateInscriptionButton()
+    }
+}
+
+
+ // Mark: --- MapView Delegate ---
+
+extension MXSEventViewController {
     
     func mapView(_ mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
         guard let tileOverlay = overlay as? MKTileOverlay else {
@@ -245,42 +299,5 @@ class MXSEventViewController: MXSViewController {
         if let image = UIImage(named: event.sport.lowercased()+"PinBlanc") {
             view.image = image
         }
-    }
-    
-    @IBAction func participantsButtonClicked(_ sender: AnyObject) {
-        
-        if event.persons.count <= 0 {
-            return
-        }
-        
-        if let viewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findProfile, viewControllerId: Ressources.StoryBooardsIdentifiers.embedProfilesId) as? MXSEmbedCollectionViewController
-        {
-            viewController.title = Strings.NavigationTitle.sportsParticipants
-            navigationController?.pushViewController(viewController, animated: false)
-            
-            
-            dispatch_later(0.1, closure: { [weak self] in
-                guard let this = self else {
-                    return
-                }
-                if let personsCollectionViewController = viewController.childViewControllers.first as? MXSPersonsCollectionViewController {
-                    viewController.titleLabel.text = this.event.sport.uppercased()
-                    if let jour = this.event.getJour(), let heure = this.event.getHeure() {
-                        viewController.titleLabel.text = this.event.sport.uppercased() + " - " + jour + " - " + heure
-                    }
-                    personsCollectionViewController.persons = this.event.getFullPersons()
-                    personsCollectionViewController.collectionView?.reloadData()
-                }
-            })
-        }
-    }
-    
-    @IBAction func inscriptionButtonClicked(_ sender: AnyObject) {
-        event.addCurrentUserToEvent()
-        if tabBarController?.selectedIndex != 0 {
-            participantsButtonClicked(NSObject())
-        }
-        updateParticipantsButtonText()
-        updateInscriptionButton()
     }
 }

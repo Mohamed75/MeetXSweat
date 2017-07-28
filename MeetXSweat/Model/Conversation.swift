@@ -11,12 +11,17 @@ import Firebase
 import JSQMessagesViewController
 
 
+/**
+ *  This class was designed and implemented to provide a model representation of a Conversation.
+ */
+
 class Conversation: FireBaseObject {
 
     var persons: [String] = []
     var messages: [Message] = []
     
     
+    // Mark: --- Initialisation ---
     
     override init() {
         super.init()
@@ -29,6 +34,9 @@ class Conversation: FireBaseObject {
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
+    
+    // Mark: --- Get, Save and update data to firebase ---
     
     func getFullPersons() -> [Person] {
         EventPersons.fetchPersons(persons)
@@ -129,6 +137,9 @@ class Conversation: FireBaseObject {
             usersTypingQuery.observe(.value, with: block)
         }
     }
+    
+    
+    // Mark: --- Get Informations  ---
     
     func isCurrentUserConversation() -> Bool {
         

@@ -9,6 +9,7 @@
 import Foundation
 
 
+/// A list of different kind of strings.
 enum Strings {
     
     struct Calendar {

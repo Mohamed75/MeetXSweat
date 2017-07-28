@@ -10,10 +10,12 @@ import UIKit
 import DrawerController
 
 
-/** This extension will replace the MWSMainViewController by MXSHomeViewController or MXSAllLoginsViewController at the start app depending of the user is connected or not
+/** This extension will replace the default MXSViewController by MXSHomeViewController or MXSAllLoginsViewController at the start app depending of the user is connected or not
  **/
 extension UINavigationController {
 
+    
+    // Mark: ---  View lifecycle ---
     
     open override func viewDidLoad() {
         
@@ -147,6 +149,7 @@ extension UINavigationController {
         }
     }
     
+    // Mark: ---  Others ---
     
     func getPreviousViewController() -> UIViewController {
         if let indexCurrentViewController = self.viewControllers.index(of: self.visibleViewController!) {

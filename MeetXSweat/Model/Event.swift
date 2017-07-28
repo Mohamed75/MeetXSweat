@@ -12,6 +12,10 @@ import Firebase
 
 
 
+/**
+ *  This class was designed and implemented to provide a model representation of an Event.
+ */
+
 class Event: FireBaseObject {
 
     var name    = ""
@@ -49,49 +53,9 @@ class Event: FireBaseObject {
     }
     
     
-    func getCoordinate() -> CLLocationCoordinate2D? {
-        
-        let coordinates = coordinate.components(separatedBy: ",")
-        if coordinates.count > 1 {
-            if let latitude    = Double(coordinates.first!), let longitude   = Double(coordinates.last!) {
-                return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-            }
-        }
-        return nil
-    }
     
-    func getJour() -> String? {
-        if date.characters.count > 1 {
-            let array = date.components(separatedBy: " - ")
-            if let jour = array.first {
-                return jour.replacingOccurrences(of: " ", with: "/")
-            }
-        }
-        return ""
-    }
-
-    func getHeure() -> String? {
-        if date.characters.count > 1 {
-            let array = date.components(separatedBy: " - ")
-            if let heure = array.last {
-                return heure.replacingOccurrences(of: ":", with: "H")
-            }
-        }
-        return ""
-    }
     
-    func isCurrentPersonAlreadyIn() -> Bool {
-        
-        if persons.count <= 0  {
-            return false
-        }
-        for person in persons {
-            if person == User.currentUser.email {
-                return true
-            }
-        }
-        return false
-    }
+    // Mark: --- Initialisation ---
     
     override init() {
         super.init()
@@ -107,6 +71,8 @@ class Event: FireBaseObject {
         super.init(coder: aDecoder)
     }
     
+    
+    // Mark: --- Get, Save and update data to firebase ---
     
     func getFullPersons() -> [Person] {
         EventPersons.fetchPersons(persons)
@@ -155,6 +121,53 @@ class Event: FireBaseObject {
         let eventRef = FIRDatabase.database().reference().child("event-items")
         ref = eventRef.childByAutoId()
         ref!.setValue(asJson())
+    }
+    
+    
+    // Mark: --- Get Informations  ---
+    
+    func getCoordinate() -> CLLocationCoordinate2D? {
+        
+        let coordinates = coordinate.components(separatedBy: ",")
+        if coordinates.count > 1 {
+            if let latitude    = Double(coordinates.first!), let longitude   = Double(coordinates.last!) {
+                return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            }
+        }
+        return nil
+    }
+    
+    func getJour() -> String? {
+        if date.characters.count > 1 {
+            let array = date.components(separatedBy: " - ")
+            if let jour = array.first {
+                return jour.replacingOccurrences(of: " ", with: "/")
+            }
+        }
+        return ""
+    }
+    
+    func getHeure() -> String? {
+        if date.characters.count > 1 {
+            let array = date.components(separatedBy: " - ")
+            if let heure = array.last {
+                return heure.replacingOccurrences(of: ":", with: "H")
+            }
+        }
+        return ""
+    }
+    
+    func isCurrentPersonAlreadyIn() -> Bool {
+        
+        if persons.count <= 0  {
+            return false
+        }
+        for person in persons {
+            if person == User.currentUser.email {
+                return true
+            }
+        }
+        return false
     }
 
 }

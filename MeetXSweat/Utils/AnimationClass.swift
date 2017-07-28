@@ -19,6 +19,11 @@ typealias EffectBlock = (UIView, ((Bool) -> Swift.Void)? ) -> ()
 typealias FlipBlock = (() -> Void)
 
 
+/**
+ *  This class was designed and implemented to provide animations helper.
+ 
+ - classdesign  Helper.
+ */
 
 class AnimationClass {
     

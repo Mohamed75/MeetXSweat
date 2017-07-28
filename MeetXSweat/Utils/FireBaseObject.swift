@@ -10,10 +10,18 @@ import Foundation
 import Firebase
 
 
+/**
+ *  This class was designed and implemented to provide a FireBase Object to generate easly a Json from firebase Object and firebase Object from a Json.
+ 
+ - superClass:  EnCodeObject.
+ */
 
 class FireBaseObject: EnCodeObject {
     
     var ref: FIRDatabaseReference?
+    
+    
+    // Mark: ---  Initialization ---
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -58,6 +66,7 @@ class FireBaseObject: EnCodeObject {
         ref = snapshot.ref
     }
     
+    // Mark: ---  Copy ---
     
     func copyFromJson(_ dictionary: [String : AnyObject?]) {
         
@@ -73,7 +82,7 @@ class FireBaseObject: EnCodeObject {
     }
     
     /*
-     return all properties value as string
+     Return all properties value as string
      */
     func allParams() -> String {
         
@@ -87,8 +96,8 @@ class FireBaseObject: EnCodeObject {
     }
     
     
-    // used only by the init snapshot
-    fileprivate func createArrayObjectForProperty(_ propety: String, array: [AnyObject]) -> [AnyObject] {
+    // Used only by the init snapshot
+    private func createArrayObjectForProperty(_ propety: String, array: [AnyObject]) -> [AnyObject] {
         
         var returnArray: [AnyObject] = []
         if let className = typeOfProperty(propety) {
@@ -121,7 +130,7 @@ class FireBaseObject: EnCodeObject {
     }
     
     /*
-     return the current object as json dictionarry
+     Return the current object as json dictionarry
      */
     func asJson() -> [String: AnyObject] {
         
@@ -141,9 +150,12 @@ class FireBaseObject: EnCodeObject {
         }
         return json
     }
-    // return json array
-    // value is an array wich could have simple type as String or complexe object
-    func arrayAsJson(_ value: AnyObject) -> AnyObject {
+    
+    /**
+     Return json array
+     Value is an array wich could have simple type as String or complexe object
+     */
+    private func arrayAsJson(_ value: AnyObject) -> AnyObject {
         
         let firstElement = (value as! NSArray).firstObject as! NSObject
         if firstElement.isKind(of: FireBaseObject.self) {
@@ -165,7 +177,7 @@ class FireBaseObject: EnCodeObject {
 
 extension FireBaseObject {
     
-    // get Object from a defined class in the project
+    // Get Object from a defined class in the project
     class func fromClassName(_ className : String) -> NSObject? {
         if let aClass      = NSClassFromString(FireBaseObject.className(className)) as? NSObject.Type {
             return aClass.init()

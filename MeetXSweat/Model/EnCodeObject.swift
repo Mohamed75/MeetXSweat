@@ -9,12 +9,19 @@
 import Foundation
 
 
+/**
+ *  This class was designed and implemented to provide an automatique object encoder to save data to UserDefaults.
+ 
+ - coclass      NSCoding.
+ */
 
 class EnCodeObject: NSObject, NSCoding {
     
     
     
-    func properties() -> [String] {
+    // Mark: ---  Handel object properties ---
+    
+    internal func properties() -> [String] {
         
         var returnArray = [String]()
         for keyName in self.propertyNames() {
@@ -25,7 +32,7 @@ class EnCodeObject: NSObject, NSCoding {
         return returnArray
     }
     
-    func typeOfProperty (_ name: String) -> String? {
+    internal func typeOfProperty (_ name: String) -> String? {
         
         if let returnString = getTypeOfProperty(name) {
             if returnString.contains("Optional<Array<") {
@@ -35,6 +42,8 @@ class EnCodeObject: NSObject, NSCoding {
         }
         return nil
     }
+    
+    // Mark: ---  Encode/Decode ---
     
     // To save
     func encode(with aCoder: NSCoder) {
@@ -56,17 +65,22 @@ class EnCodeObject: NSObject, NSCoding {
         }
     }
     
+    // Mark: ---  Initialization ---
+    
     override init() {
         super.init()
     }
     
-    func saveToNSUserDefaults() {
+    
+    // Mark: ---  Save/Load UserDefaults ---
+    
+    internal func saveToNSUserDefaults() {
         
         let myEncodedObject = NSKeyedArchiver.archivedData(withRootObject: self)
         UserDefaults.standard.set(myEncodedObject, forKey:self.classForCoder.description())
     }
     
-    class func loadCustomObjectClassName(_ value: String) -> AnyObject?
+    internal class func loadCustomObjectClassName(_ value: String) -> AnyObject?
     {
         if let myEncodedObject = UserDefaults.standard.object(forKey: value) as? Data {
             return NSKeyedUnarchiver.unarchiveObject(with: myEncodedObject) as AnyObject?
@@ -76,9 +90,10 @@ class EnCodeObject: NSObject, NSCoding {
 }
 
 
+// Mark: ---  Private Methodes ---
 
 // Retrieves an array of property names found on the current object
-// using Objective-C runtime functions for introspection:
+// Using Objective-C runtime functions for introspection:
 extension EnCodeObject {
     
     // Returns the property type
@@ -108,7 +123,7 @@ extension EnCodeObject {
         var klass: AnyClass = object_getClass(self)
         var results: Array<String> = []
         
-        // get the attributes of the current class
+        // Get the attributes of the current class
         var count: UInt32 = 0
         let properties = class_copyPropertyList(klass, &count)
         if count > 0 {
@@ -122,7 +137,7 @@ extension EnCodeObject {
             }
         }
         
-        // get the attributes of the super class if its not the NSObject
+        // Get the attributes of the super class if its not the NSObject
         while klass.superclass() != NSObject().classForCoder {
             klass = klass.superclass()!
             var superCount: UInt32 = 0
@@ -138,7 +153,7 @@ extension EnCodeObject {
             }
         }
         
-        // release objc_property_t structs
+        // Release objc_property_t structs
         free(properties);
         
         return results;

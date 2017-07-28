@@ -10,11 +10,17 @@ import UIKit
 import FirebaseStorage
 
 
+/**
+ *  This class was designed and implemented to provide a fireBase helper.
+ 
+ - classdesign  Helper.
+ */
+
 class FireBaseHelper {
     
     class func saveImage(_ image: UIImage, fileName: String, completion:@escaping ((_ url: String)->Void)) {
         
-        var data    =  Data()
+        var data    = Data()
         data        = UIImageJPEGRepresentation(image, 0.8)!
         
         // Create a reference to the file you want to upload

@@ -21,18 +21,28 @@ private let professionAttributes = [
 ]
 
 
+
+/**
+ *  This class was designed and implemented to provide a Person CollectionViewController.
+ 
+ - superClass:  UICollectionViewController.
+ - coclass      MXSFindManager, UserViewModel.
+ - helper       Utils.
+ */
+
 class MXSPersonsCollectionViewController: UICollectionViewController {
     
-    var persons: [Person]?
+    internal var persons: [Person]?
     
     
+    // Mark: ---  View lifecycle ---
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     
-    
+    // Mark: --- CollectionView Delegate ---
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         

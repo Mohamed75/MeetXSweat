@@ -22,13 +22,23 @@ protocol LogInTWDelegate {
 }
 
 
+/**
+ *  This class was designed and implemented to provide Twitter logIn helper.
+ It help the user to connect trought Twitter and gather its data
+ 
+ - classdesign  Helper.
+ */
+
 class TwitterHelper {
+    
+    // Mark: --- UIApplication ---
     
     class func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [AnyHashable: Any]?) {
         
         Fabric.with([Crashlytics.self, Twitter.self])
     }
     
+    // Mark: ---  LogIn/LogOut ---
     
     class func logIn(_ delegate: LogInTWDelegate) {
         
@@ -56,6 +66,8 @@ class TwitterHelper {
             store.logOutUserID(userId)
         }
     }
+    
+    // MARK: --- Get User Info ---
     
     fileprivate class func getUserInfo(_ delegate: LogInTWDelegate) {
         

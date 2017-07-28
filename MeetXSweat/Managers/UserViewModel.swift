@@ -9,6 +9,11 @@
 import UIKit
 
 
+
+/**
+ *  This class was designed and implemented to provide a simple way to set a data to a view.
+ */
+
 class UserViewModel {
     
     

@@ -8,6 +8,12 @@
 
 import UIKit
 
+/**
+ *  This class was designed and implemented to provide a Create Event/Sport ViewController.
+ 
+ - superClass:  MXSViewController.
+ - helper       Utils.
+ */
 
 class MXSAddEventViewController: MXSViewController,  UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
     
@@ -27,6 +33,8 @@ class MXSAddEventViewController: MXSViewController,  UIPickerViewDataSource, UIP
     
     fileprivate var sports = FireBaseDataManager.sharedInstance.sports
     
+    
+    // Mark: ---  View lifecycle ---
     
     override func viewDidLoad() {
         
@@ -50,6 +58,8 @@ class MXSAddEventViewController: MXSViewController,  UIPickerViewDataSource, UIP
         sportTextField.delegate     = self
     }
     
+    // Mark: --- FireBase Save Event ---
+    
     func creatEvent() {
         
         let event = Event()
@@ -70,6 +80,7 @@ class MXSAddEventViewController: MXSViewController,  UIPickerViewDataSource, UIP
         event.saveEventToDataBase()
     }
     
+    // Mark: --- Button Actions ---
     
     @IBAction func validerButtonClicked(_ sender: AnyObject) {
         
@@ -126,7 +137,12 @@ class MXSAddEventViewController: MXSViewController,  UIPickerViewDataSource, UIP
         }
         return true
     }
-    
+}
+
+
+// Mark: --- pickerView Delegate ---
+
+extension MXSAddEventViewController {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1

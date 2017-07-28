@@ -10,7 +10,12 @@ import UIKit
 import AlamofireImage
 
 
-
+/**
+ *  This class was designed and implemented to provide a Create Account ViewController.
+ 
+ - superClass:  MXSViewController.
+ - helper       Utils.
+ */
 
 class MXSCreateAccountViewController: MXSViewController {
     
@@ -29,6 +34,7 @@ class MXSCreateAccountViewController: MXSViewController {
     @IBOutlet weak var cancelButton:    UIButton!
     
     
+    // Mark: ---  View lifecycle ---
     
     override func viewDidLoad() {
         
@@ -74,6 +80,8 @@ class MXSCreateAccountViewController: MXSViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // Mark: --- Button Actions ---
     
     @IBAction func vailderButtonClicked(_ sender: AnyObject) {
         

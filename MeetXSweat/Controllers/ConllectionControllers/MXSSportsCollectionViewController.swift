@@ -17,13 +17,22 @@ private let cellWidth   = (UIScreen.main.bounds.width/3)-4
 private let cellHeight  = cellWidth*1.16
 
 
+/**
+ *  This class was designed and implemented to provide a Sport CollectionViewController.
+ 
+ - superClass:  UICollectionViewController.
+ - coclass      MXSFindManager.
+ - helper       Utils.
+ */
 
 class MXSSportsCollectionViewController: UICollectionViewController {
 
     fileprivate var allSelectedRadioButtonsIndexs = [Int]()
     
-    var sports = FireBaseDataManager.sharedInstance.sports
+    internal var sports = FireBaseDataManager.sharedInstance.sports
     
+    
+    // Mark: ---  View lifecycle ---
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,31 +46,62 @@ class MXSSportsCollectionViewController: UICollectionViewController {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: Constants.FBNotificationName.sports), object: nil)
     }
     
+    
     // Mark: --- Notifications Observer ---
+    
     func selectorSportUpdated() {
         sports = FireBaseDataManager.sharedInstance.sports
         collectionView?.reloadData()
     }
     
     
-    // Mark: --- collectionView Delegate ---
+    
+    
+    /*
+    func radioButtonSelected(radioButton : DLRadioButton) {
+        
+        if radioButton.selected {
+            allSelectedRadioButtonsIndexs.append(radioButton.tag)
+        }
+        else {
+            if let index = allSelectedRadioButtonsIndexs.indexOf(radioButton.tag) {
+                allSelectedRadioButtonsIndexs.removeAtIndex(index)
+            }
+        }
+    }*/
+    
+    func validateSelections() {
+        
+        var sportsArray = [String]()
+        for i in self.allSelectedRadioButtonsIndexs {
+            sportsArray.append(sports[i])
+        }
+        MXSFindManager.sharedInstance.sports = sportsArray as [AnyObject]
+    }
+}
+
+
+// Mark: --- CollectionView Delegate ---
+
+extension MXSSportsCollectionViewController {
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Ressources.CellReuseIdentifier.sport, for: indexPath) as! MXSSportCollectionCell
         
         let index = (indexPath.section*numberOffCell)+indexPath.row
         /*
-        cell.initColors()
-        if sports.count > (indexPath.section*2)+indexPath.row {
-            cell.radioButton.setTitle(sports[index], forState: .Normal)
-            cell.radioButton.setTitleColor(kDefaultTextColor, forState: .Normal)
-        }
-        cell.radioButton.tag = index
-        if allSelectedRadioButtonsIndexs.contains(index) {
-            cell.radioButton.selected = true
-        }
-        cell.radioButton.addTarget(self, action: #selector(MXSSportsCollectionViewController.radioButtonSelected), forControlEvents: UIControlEvents.TouchUpInside);
-        cell.backgroundColor = kBackGroundColor*/
+         cell.initColors()
+         if sports.count > (indexPath.section*2)+indexPath.row {
+         cell.radioButton.setTitle(sports[index], forState: .Normal)
+         cell.radioButton.setTitleColor(kDefaultTextColor, forState: .Normal)
+         }
+         cell.radioButton.tag = index
+         if allSelectedRadioButtonsIndexs.contains(index) {
+         cell.radioButton.selected = true
+         }
+         cell.radioButton.addTarget(self, action: #selector(MXSSportsCollectionViewController.radioButtonSelected), forControlEvents: UIControlEvents.TouchUpInside);
+         cell.backgroundColor = kBackGroundColor*/
         
         cell.initCell()
         if sports.count > (indexPath.section*numberOffCell)+indexPath.row {
@@ -97,7 +137,7 @@ class MXSSportsCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       
+        
         let index = (indexPath.section*numberOffCell)+indexPath.row
         if allSelectedRadioButtonsIndexs.contains(index) {
             if let indexArray = allSelectedRadioButtonsIndexs.index(of: index) {
@@ -107,27 +147,5 @@ class MXSSportsCollectionViewController: UICollectionViewController {
             allSelectedRadioButtonsIndexs.append(index)
         }
         self.collectionView?.reloadData()
-    }
-    
-    /*
-    func radioButtonSelected(radioButton : DLRadioButton) {
-        
-        if radioButton.selected {
-            allSelectedRadioButtonsIndexs.append(radioButton.tag)
-        }
-        else {
-            if let index = allSelectedRadioButtonsIndexs.indexOf(radioButton.tag) {
-                allSelectedRadioButtonsIndexs.removeAtIndex(index)
-            }
-        }
-    }*/
-    
-    func validateSelections() {
-        
-        var sportsArray = [String]()
-        for i in self.allSelectedRadioButtonsIndexs {
-            sportsArray.append(sports[i])
-        }
-        MXSFindManager.sharedInstance.sports = sportsArray as [AnyObject]
     }
 }

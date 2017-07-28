@@ -10,6 +10,12 @@
 import UIKit
 
 
+/**
+ *  This class was designed and implemented to provide a Event CollectionCell.
+ 
+ - superClass:  UICollectionViewCell.
+ */
+
 class MXSEventsCollectionCell: UICollectionViewCell {
     
     

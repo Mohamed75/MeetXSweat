@@ -24,6 +24,14 @@ protocol LogInGoogleDelegate {
 }
 
 
+/**
+ *  This class was designed and implemented to provide Google logIn helper.
+ It help the user to connect trought Google and gather its data
+ 
+ - classdesign  Helper.
+ - classdesign  Singleton, Delegate.
+ */
+
 class GoogleLogInHelper: NSObject, GIDSignInDelegate, GIDSignInUIDelegate {
     
     static let sharedInstance = GoogleLogInHelper()
@@ -31,6 +39,8 @@ class GoogleLogInHelper: NSObject, GIDSignInDelegate, GIDSignInUIDelegate {
     fileprivate var controllerDelegate: LogInGoogleDelegate!
     
     
+    
+    // Mark: --- UIApplication ---
     
     class func application(_ application: UIApplication, openURL url: URL, options: [String: AnyObject]) -> Bool {
         
@@ -43,6 +53,7 @@ class GoogleLogInHelper: NSObject, GIDSignInDelegate, GIDSignInUIDelegate {
                                                     annotation: annotation)
     }
     
+    // Mark: ---  Initialization ---
     
     fileprivate func initConfig() {
         
@@ -52,6 +63,8 @@ class GoogleLogInHelper: NSObject, GIDSignInDelegate, GIDSignInUIDelegate {
         GIDSignIn.sharedInstance().uiDelegate   = self
     }
     
+    
+    // Mark: ---  LogIn/LogOut ---
     
     func logIn(_ delegate: LogInGoogleDelegate) {
         
@@ -65,6 +78,7 @@ class GoogleLogInHelper: NSObject, GIDSignInDelegate, GIDSignInUIDelegate {
     }
     
     
+    // Mark: --- GIDSignIn Delegate ---
     
     @objc func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         
@@ -105,7 +119,7 @@ class GoogleLogInHelper: NSObject, GIDSignInDelegate, GIDSignInUIDelegate {
     }
     
     
-    // Mark: UIDelegate
+    // Mark: --- UIDelegate ---
     
     internal func sign(inWillDispatch signIn: GIDSignIn!, error: Error!) {
     }

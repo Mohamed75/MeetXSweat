@@ -10,8 +10,19 @@ import UIKit
 import PickerView
 
 
+/**
+ *  This class was designed and implemented to provide a ViewController to find Persons by their Profession or Profession Type.
+ 
+ - superClass:  MXSViewController.
+ - classdesign  Inheritance.
+ - coclass      MXSFindManager, FireBaseDataManager.
+ - helper       Utils.
+ */
 
 class MXSFindProfileViewController: MXSViewController, PickerViewDataSource, PickerViewDelegate {
+    
+    // A property to setUp the viewController as user profile gettering data or findby viewController
+    var editable: Bool = false
     
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -22,47 +33,32 @@ class MXSFindProfileViewController: MXSViewController, PickerViewDataSource, Pic
     
     @IBOutlet weak var findUserImageView: UIImageView!
     
-    
-    var editable: Bool = false
-    
+    // A property to save the selecetd label (domaine or metier)
+    fileprivate var selectedLabel   = 1
     
     fileprivate var savedDomaine = ""
     fileprivate var savedMetier  = ""
+    
+    
     
     @IBOutlet weak var pickerView: PickerView!
     @IBOutlet weak var pickerViewTopLayout: NSLayoutConstraint!
     @IBOutlet weak var pickerViewBottomLayout: NSLayoutConstraint!
     
+    // The pickerView data source
     fileprivate var dataArray       = FireBaseDataManager.sharedInstance.domaines
-    fileprivate var selectedLabel   = 1
     
     
+    
+    // Mark: ---  Initialization ---
+    
+    // The MXSFindProfileViewController shared instance
     static let sharedInstance = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findProfile, viewControllerId: Ressources.StoryBooardsIdentifiers.findProfileId)
     
     
     
-    func customLabel(_ label: UILabel) {
-        
-        label.layer.borderColor = Constants.MainColor.kSpecialColor.cgColor
-        label.layer.borderWidth = 1
-        label.layer.cornerRadius = 4
-        label.clipsToBounds = true
-    }
     
-    func customPickerView() {
-        
-        pickerView.dataSource   = self
-        pickerView.delegate     = self
-        pickerView.scrollingStyle = .infinite
-        pickerView.selectionStyle = .overlay
-        pickerView.selectionOverlay.backgroundColor = Constants.MainColor.kSpecialColorClear
-        pickerView.selectionOverlay.alpha = 1
-        
-        if ScreenSize.currentHeight == ScreenSize.iphone4Height {
-            pickerViewTopLayout.constant = 20
-            pickerViewBottomLayout.constant = 20
-        }
-    }
+    // Mark: ---  View lifecycle ---
     
     override func viewDidLoad() {
         
@@ -113,6 +109,9 @@ class MXSFindProfileViewController: MXSViewController, PickerViewDataSource, Pic
         super.viewWillDisappear(animated)
     }
     
+    
+    // Mark: ---  DeInitialization ---
+    
     deinit {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: Constants.FBNotificationName.domaines), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: Constants.FBNotificationName.professions), object: nil)
@@ -129,7 +128,35 @@ class MXSFindProfileViewController: MXSViewController, PickerViewDataSource, Pic
         }
     }
     
-    func selectMetierLabel() {
+    // Mark: --- SetUp subView ---
+    
+    private func customLabel(_ label: UILabel) {
+        
+        label.layer.borderColor = Constants.MainColor.kSpecialColor.cgColor
+        label.layer.borderWidth = 1
+        label.layer.cornerRadius = 4
+        label.clipsToBounds = true
+    }
+    
+    private func customPickerView() {
+        
+        pickerView.dataSource   = self
+        pickerView.delegate     = self
+        pickerView.scrollingStyle = .infinite
+        pickerView.selectionStyle = .overlay
+        pickerView.selectionOverlay.backgroundColor = Constants.MainColor.kSpecialColorClear
+        pickerView.selectionOverlay.alpha = 1
+        
+        if ScreenSize.currentHeight == ScreenSize.iphone4Height {
+            pickerViewTopLayout.constant = 20
+            pickerViewBottomLayout.constant = 20
+        }
+    }
+    
+    
+    // Mark: --- Labels Actions ---
+    
+    internal func selectMetierLabel() {
         
         metierLabel.textColor = UIColor.white
         metierLabel.backgroundColor = Constants.MainColor.kSpecialColor
@@ -141,7 +168,7 @@ class MXSFindProfileViewController: MXSViewController, PickerViewDataSource, Pic
         pickerView.reloadPickerView()
     }
     
-    func selectDomaineLabel() {
+    internal func selectDomaineLabel() {
         
         domaineLabel.textColor = UIColor.white
         domaineLabel.backgroundColor = Constants.MainColor.kSpecialColor
@@ -157,20 +184,22 @@ class MXSFindProfileViewController: MXSViewController, PickerViewDataSource, Pic
     
     // Mark: --- Notifications Observer ---
     
-    func selectorDomaineUpdated() {
+    internal func selectorDomaineUpdated() {
         
         if selectedLabel == 2 {
             selectDomaineLabel()
         }
     }
     
-    func selectorProfessionUpdated() {
+    internal func selectorProfessionUpdated() {
         
         if selectedLabel == 1 {
             selectMetierLabel()
         }
     }
     
+    
+    // Mark: --- NavigationBar Button Actions ---
     
     override func validatButtonClicked(_ sender: AnyObject) {
         
@@ -204,20 +233,23 @@ class MXSFindProfileViewController: MXSViewController, PickerViewDataSource, Pic
         }
     }
     
+}
+
+
+// Mark: --- PickerView Delegate ---
+
+extension MXSFindProfileViewController {
     
-    
-    // Mark: --- PickerView ---
-    
-    func pickerViewNumberOfRows(_ pickerView: PickerView) -> Int {
+    internal func pickerViewNumberOfRows(_ pickerView: PickerView) -> Int {
         return dataArray.count
     }
     
-    func pickerView(_ pickerView: PickerView, titleForRow row: Int, index: Int) -> String {
+    internal func pickerView(_ pickerView: PickerView, titleForRow row: Int, index: Int) -> String {
         let item = dataArray[index]
         return item
     }
     
-    func pickerViewHeightForRows(_ pickerView: PickerView) -> CGFloat {
+    internal func pickerViewHeightForRows(_ pickerView: PickerView) -> CGFloat {
         
         if ScreenSize.currentHeight == ScreenSize.iphone4Height {
             return 40
@@ -225,7 +257,7 @@ class MXSFindProfileViewController: MXSViewController, PickerViewDataSource, Pic
         return 45.0
     }
     
-    func pickerView(_ pickerView: PickerView, styleForLabel label: UILabel, highlighted: Bool) {
+    internal func pickerView(_ pickerView: PickerView, styleForLabel label: UILabel, highlighted: Bool) {
         
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 22)
@@ -237,7 +269,7 @@ class MXSFindProfileViewController: MXSViewController, PickerViewDataSource, Pic
         }
     }
     
-    func pickerView(_ pickerView: PickerView, didSelectRow row: Int, index: Int) {
+    internal func pickerView(_ pickerView: PickerView, didSelectRow row: Int, index: Int) {
         
         switch selectedLabel {
         case 1:
@@ -251,5 +283,4 @@ class MXSFindProfileViewController: MXSViewController, PickerViewDataSource, Pic
         }
         pickerView.reloadPickerView()
     }
-    
 }

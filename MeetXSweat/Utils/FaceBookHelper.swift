@@ -38,6 +38,13 @@ protocol LogInFBDelegate {
 
 
 
+/**
+ *  This class was designed and implemented to provide FaceBook logIn helper.
+ It help the user to connect trought FaceBook and gather its data
+ 
+ - classdesign  Helper.
+ - classdesign  Singleton.
+ */
 
 class FaceBookHelper {
     
@@ -45,6 +52,7 @@ class FaceBookHelper {
     
     
     
+    // Mark: --- UIApplication ---
     
     class func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [AnyHashable: Any]?) -> Bool {
         
@@ -60,10 +68,10 @@ class FaceBookHelper {
     
     
     
-    // MARK: *** Log In ***
+    // Mark: ---  LogIn/LogOut ---
     
     
-    // avoid multiple click on the login button
+    // Avoid multiple click on the login button
     fileprivate var isLoginBlocked = false
     
     fileprivate func logInblock(_ delegate: LogInFBDelegate) -> ACAccountStoreRequestAccessCompletionHandler {
@@ -100,7 +108,7 @@ class FaceBookHelper {
     
     func logIn(_ delegate: LogInFBDelegate) {
         
-        if Utils.isIOSVersionGReaterThan(version: 9.9) {
+        if isIOSVersionGReaterThan(version: 9.9) {
             ACAccountStore().requestAccessToAccounts(with: facebookAccountType, options: nil, completion: logInblock(delegate))
         } else {
             ACAccountStore().requestAccessToAccounts(with: facebookAccountType, options: fbOptions, completion: logInblock(delegate))
@@ -115,7 +123,7 @@ class FaceBookHelper {
     
     
     
-    // MARK: *** webLogIn ***
+    // MARK: --- webLogIn ---
     
     fileprivate class func faceBookWebLogin(_ delegate: LogInFBDelegate) {
         
@@ -142,7 +150,7 @@ class FaceBookHelper {
     }
     
     
-    // MARK: *** User Info ***
+    // MARK: --- Get User Info ---
     
     fileprivate class func getUserInfo(_ token: String, delegate: LogInFBDelegate) {
         

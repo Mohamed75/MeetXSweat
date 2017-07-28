@@ -131,6 +131,29 @@ func valueForIphoneUp5(_ up5: CGFloat, lessOr5: CGFloat) -> CGFloat {
     return ScreenSize.currentHeight > ScreenSize.iphone5Height ? up5 : lessOr5
 }
 
+/**
+ A simple way to know if the system verion is greater the a given version.
+ 
+ - version: a given version value.
+ 
+ - returns: true if the system version is greater the a given version, otherwise false.
+ */
+func isIOSVersionGReaterThan(version: Float) -> Bool {
+    
+    var systemVersion   = UIDevice.current.systemVersion
+    let systemVersions  = systemVersion.components(separatedBy: ".")
+    if systemVersions.count > 2 {
+        systemVersion = systemVersions.first! + "." + systemVersions[1]
+    }
+    print(systemVersion)
+    if let aSystemVersion = Float(systemVersion), aSystemVersion > version {
+        print("true")
+        return true
+    }
+    print("false")
+    return false
+}
+
 
 // MARK: - *** Add more methodes to UIWindow class.
 extension UIWindow {
@@ -351,7 +374,11 @@ class Utils {
         return false
     }
     
-    
+    /**
+     Replace http with https for string url.
+     
+     - returns: an https string url.
+     */
     class func makeHttpsUrlFromString(_ urlString: String) -> String {
         
         if urlString.components(separatedBy: "https").count < 2 {
@@ -363,7 +390,9 @@ class Utils {
         return urlString
     }
     
-    
+    /**
+     Add a tapGestureRecognizer to a view.
+     */
     class func addTapGestureToView(_ view: UIView, target: AnyObject, selectorString: String) {
     
         let tapGesture = UITapGestureRecognizer(target: target, action: NSSelectorFromString(selectorString))
@@ -371,24 +400,63 @@ class Utils {
         view.addGestureRecognizer(tapGesture)
     }
     
+    /**
+     Load a viewController from a story board.
+     
+     - returns: the viewController.
+     */
     class func loadViewControllerFromStoryBoard(_ stroyBoard: String, viewControllerId: String) -> UIViewController {
         return UIStoryboard(name: stroyBoard, bundle: nil).instantiateViewController(withIdentifier: viewControllerId)
     }
     
     
-    class func isIOSVersionGReaterThan(version: Float) -> Bool {
+    
+    
+    /**
+     Show a social ActivityViewController on top of the current ViewController.
+     */
+    class func sharing(shareItems: [Any], onController: UIViewController) {
         
-        var systemVersion   = UIDevice.current.systemVersion
-        let systemVersions  = systemVersion.components(separatedBy: ".")
-        if systemVersions.count > 2 {
-            systemVersion = systemVersions.first! + "." + systemVersions[1]
+        let activityViewController = UIActivityViewController(activityItems: shareItems, applicationActivities: nil)
+        activityViewController.excludedActivityTypes = [UIActivityType.print, UIActivityType.postToWeibo, UIActivityType.copyToPasteboard, UIActivityType.addToReadingList, UIActivityType.postToVimeo, UIActivityType.assignToContact, UIActivityType.saveToCameraRoll]
+        onController.present(activityViewController, animated: true, completion: nil)
+    }
+    
+    // Wrtite to plist
+    static func writeToPlist() {
+        
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
+        let documentDirectory = paths.firstObject as! String
+        let path = documentDirectory+("myData.plist")
+        let fileManager = FileManager.default
+        if (!(fileManager.fileExists(atPath: path)))
+        {
+            let bundle : NSString = Bundle.main.path(forResource: "MyData", ofType: "plist")! as NSString
+            do {
+                try fileManager.copyItem(atPath: bundle as String, toPath: path)
+            } catch {
+                print(error)
+            }
         }
-        print(systemVersion)
-        if let aSystemVersion = Float(systemVersion), aSystemVersion > version {
-            print("true")
-            return true
+        
+        let bytes = NSKeyedArchiver.archivedData(withRootObject: self)
+        if !((try? bytes.write(to: URL(fileURLWithPath: path), options: [.atomic])) != nil) {
+            print("succes writing plist")
         }
-        print("false")
-        return false
+    }
+    
+    // Load from plist
+    class func myloadData() {
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
+        let documentDirectory = paths.firstObject as! String
+        let path = documentDirectory+("myData.plist")
+        
+        let resultDictionary = NSMutableDictionary(contentsOfFile: path)
+        print("load myData.plist is ->\(String(describing: resultDictionary?.description))")
+        
+        let myDict = NSDictionary(contentsOfFile: path)
+        for dtaa in myDict! {
+            print(dtaa)
+        }
     }
 }

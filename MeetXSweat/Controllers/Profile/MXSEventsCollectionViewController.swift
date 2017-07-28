@@ -9,12 +9,21 @@
 import UIKit
 
 
+/**
+ *  This class was designed and implemented to provide an Event CollectionViewController.
+ 
+ - superClass:  UICollectionViewController.
+ - coclass      MXSFindManager.
+ - helper       Utils, FireBaseDataManager.
+ */
 
 class MXSEventsCollectionViewController: UICollectionViewController {
     
-    var events = FireBaseDataManager.sharedInstance.events
-    var fromProfileViewController = false
+    internal var events = FireBaseDataManager.sharedInstance.events
+    internal var fromProfileViewController = false
     
+    
+    // Mark: ---  View lifecycle ---
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,50 +37,12 @@ class MXSEventsCollectionViewController: UICollectionViewController {
         }
         collectionView?.reloadData()
     }
-    
-    
-    func customizeFirstCell(_ cell: UICollectionViewCell) {
-        
-        let eventImageView = UIImageView(frame: CGRect(x: 35, y: 15, width: 30, height: 30))
-        eventImageView.image = UIImage(named: "EventIcon")
-        eventImageView.tag = 33
-        cell.addSubview(eventImageView)
-        
-        let clockImageView = UIImageView(frame: CGRect(x: 117, y: 15, width: 30, height: 30))
-        clockImageView.image = UIImage(named: "Clock")
-        clockImageView.tag = 34
-        cell.addSubview(clockImageView)
-        
-        var xParticip = 170
-        var xMap = 215
-        if ScreenSize.currentWidth > ScreenSize.iphone6Width {
-            xParticip = 195
-            xMap = 260
-        }
-        if ScreenSize.currentWidth == ScreenSize.iphone6Width {
-            xParticip = 180
-            xMap = 235
-        }
-        let participantImageView = UIImageView(frame: CGRect(x: xParticip, y: 15, width: 30, height: 30))
-        participantImageView.image = UIImage(named: "Participants")
-        participantImageView.tag = 35
-        cell.addSubview(participantImageView)
-        
-        
-        let mapView = UIImageView(frame: CGRect(x: xMap, y: 15, width: 30, height: 30))
-        mapView.image = UIImage(named: "MapIcon")
-        mapView.tag = 36
-        cell.addSubview(mapView)
-        
-        var xSport = self.view.frame.size.width - 50
-        if ScreenSize.currentWidth >= ScreenSize.iphone6Width {
-            xSport = self.view.frame.size.width - 60
-        }
-        let sportImageView = UIImageView(frame: CGRect(x: xSport, y: 15, width: 30, height: 30))
-        sportImageView.image = UIImage(named: "SportIcon")
-        sportImageView.tag = 37
-        cell.addSubview(sportImageView)
-    }
+}
+
+
+// Mark: --- CollectionView Delegate ---
+
+extension MXSEventsCollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
@@ -135,7 +106,7 @@ class MXSEventsCollectionViewController: UICollectionViewController {
         if MXSFindManager.sharedInstance.findBy == FindBy.profile || !fromProfileViewController {
             
             if indexPath.section > 0 {
-             
+                
                 let eventViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.event, viewControllerId: Ressources.StoryBooardsIdentifiers.eventId) as! MXSEventViewController
                 eventViewController.event = events[indexPath.section-1]
                 navigationController?.pushViewController(eventViewController, animated: true)
@@ -156,4 +127,50 @@ class MXSEventsCollectionViewController: UICollectionViewController {
         return CGSize(width: view.frame.size.width, height: 60)
     }
     
+    
+    
+    // Mark: --- Private Methode ---
+    
+    private func customizeFirstCell(_ cell: UICollectionViewCell) {
+        
+        let eventImageView = UIImageView(frame: CGRect(x: 35, y: 15, width: 30, height: 30))
+        eventImageView.image = UIImage(named: "EventIcon")
+        eventImageView.tag = 33
+        cell.addSubview(eventImageView)
+        
+        let clockImageView = UIImageView(frame: CGRect(x: 117, y: 15, width: 30, height: 30))
+        clockImageView.image = UIImage(named: "Clock")
+        clockImageView.tag = 34
+        cell.addSubview(clockImageView)
+        
+        var xParticip = 170
+        var xMap = 215
+        if ScreenSize.currentWidth > ScreenSize.iphone6Width {
+            xParticip = 195
+            xMap = 260
+        }
+        if ScreenSize.currentWidth == ScreenSize.iphone6Width {
+            xParticip = 180
+            xMap = 235
+        }
+        let participantImageView = UIImageView(frame: CGRect(x: xParticip, y: 15, width: 30, height: 30))
+        participantImageView.image = UIImage(named: "Participants")
+        participantImageView.tag = 35
+        cell.addSubview(participantImageView)
+        
+        
+        let mapView = UIImageView(frame: CGRect(x: xMap, y: 15, width: 30, height: 30))
+        mapView.image = UIImage(named: "MapIcon")
+        mapView.tag = 36
+        cell.addSubview(mapView)
+        
+        var xSport = self.view.frame.size.width - 50
+        if ScreenSize.currentWidth >= ScreenSize.iphone6Width {
+            xSport = self.view.frame.size.width - 60
+        }
+        let sportImageView = UIImageView(frame: CGRect(x: xSport, y: 15, width: 30, height: 30))
+        sportImageView.image = UIImage(named: "SportIcon")
+        sportImageView.tag = 37
+        cell.addSubview(sportImageView)
+    }
 }
