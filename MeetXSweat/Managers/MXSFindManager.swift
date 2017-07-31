@@ -50,6 +50,7 @@ class MXSFindManager {
         
         var returnArray: [Event] = []
         for event in FireBaseDataManager.sharedInstance.events {
+            
             for date in sharedInstance.dates {
                 let eventDate = event.date.components(separatedBy: " - ").first
                 

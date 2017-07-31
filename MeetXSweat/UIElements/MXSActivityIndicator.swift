@@ -8,10 +8,10 @@
 
 import UIKit
 
-private let width: CGFloat  = 60
-private let height: CGFloat = 60
+private let kWidth: CGFloat  = 60
+private let kHeight: CGFloat = 60
 
-private let animationSpeed: Float  = 0.3
+private let kAnimationSpeed: Float  = 0.3
 
 
 /**
@@ -24,7 +24,7 @@ private let animationSpeed: Float  = 0.3
 
 class MXSActivityIndicator: UIView {
 
-    static let sharedInstance = MXSActivityIndicator(frame: CGRect(x: 0, y: 0, width: width, height: height))
+    static let sharedInstance = MXSActivityIndicator(frame: CGRect(x: 0, y: 0, width: kWidth, height: kHeight))
     //var imageView: UIImageView!
     
     
@@ -49,7 +49,7 @@ class MXSActivityIndicator: UIView {
         
         let animationBlock = {
             getVisibleViewController().view.addSubview(sharedInstance)
-            AnimationClass.rotateImageToRightInfinie(sharedInstance, speed: animationSpeed)
+            AnimationClass.rotateImageToRightInfinie(sharedInstance, speed: kAnimationSpeed)
         }
         DispatchQueue.main.async(execute: animationBlock)
     }
@@ -58,7 +58,7 @@ class MXSActivityIndicator: UIView {
         
         let animationBlock = {
             view.addSubview(sharedInstance)
-            AnimationClass.rotateImageToRightInfinie(sharedInstance, speed: animationSpeed)
+            AnimationClass.rotateImageToRightInfinie(sharedInstance, speed: kAnimationSpeed)
         }
         DispatchQueue.main.async(execute: animationBlock)
     }

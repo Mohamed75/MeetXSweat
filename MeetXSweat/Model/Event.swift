@@ -32,7 +32,7 @@ class Event: FireBaseObject {
     var adress: String? {
         didSet {
             
-            if coordinate.isEmpty {
+            if coordinate.isEmpty, let anAdress = adress  {
                 
                 let completionHandler: CLGeocodeCompletionHandler = { [weak self] (placemarks: [CLPlacemark]?, error: Error?) -> Swift.Void in
                     
@@ -45,9 +45,7 @@ class Event: FireBaseObject {
                         this.updateCoordinateEvent()
                     }
                 }
-                if let anAdress = adress {
-                    CLGeocoder().geocodeAddressString(anAdress, completionHandler: completionHandler)
-                }
+                CLGeocoder().geocodeAddressString(anAdress, completionHandler: completionHandler)
             }
         }
     }
@@ -83,7 +81,8 @@ class Event: FireBaseObject {
     func addPersonsObserver() {
         
         if let aRef = self.ref {
-            aRef.child("persons").observe(.childAdded, with: { [weak self] snapshot in
+            
+            let block: (FIRDataSnapshot) -> Swift.Void = { [weak self] snapshot in
                 
                 guard let this = self else {
                     return
@@ -93,7 +92,8 @@ class Event: FireBaseObject {
                         this.persons.append(person)
                     }
                 }
-            })
+            }
+            aRef.child("persons").observe(.childAdded, with: block)
         }
     }
     

@@ -8,11 +8,11 @@
 
 import UIKit
 
-private let rotationRightInfiniKey  = "rotationRightInfini"
-private let zPath                   = "transform.rotation.z"
-private let fullRotation = Float(2*Double.pi)
+private let kRotationRightInfiniKey  = "rotationRightInfini"
+private let kZPath                   = "transform.rotation.z"
+private let kFullRotation = Float(2*Double.pi)
 
-private let angle = 180.0
+private let kAngle = 180.0
 
 
 typealias EffectBlock = (UIView, ((Bool) -> Swift.Void)? ) -> ()
@@ -59,7 +59,7 @@ class AnimationClass {
     
     class func flipAnimation(_ view: UIView, completion: FlipBlock?) {
         
-        view.layer.transform = get3DTransformation(angle)
+        view.layer.transform = get3DTransformation(kAngle)
         
         let animationBlock = {
             view.layer.transform = CATransform3DIdentity
@@ -76,14 +76,14 @@ class AnimationClass {
     
     class func rotateImageToRightInfinie(_ view: UIView, speed: Float) {
         
-        if view.layer.animation(forKey: rotationRightInfiniKey) != nil {
+        if view.layer.animation(forKey: kRotationRightInfiniKey) != nil {
             return
         }
-        let rotationAnimation = CABasicAnimation(keyPath:zPath)
-        rotationAnimation.toValue   = NSNumber(value: fullRotation as Float)
+        let rotationAnimation = CABasicAnimation(keyPath:kZPath)
+        rotationAnimation.toValue   = NSNumber(value: kFullRotation as Float)
         rotationAnimation.speed     = speed
         rotationAnimation.repeatCount = Float.infinity
         
-        view.layer.add(rotationAnimation, forKey:rotationRightInfiniKey)
+        view.layer.add(rotationAnimation, forKey:kRotationRightInfiniKey)
     }
 }

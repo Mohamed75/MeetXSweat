@@ -154,7 +154,7 @@ class User: Person {
     
     func createFromEmailData(_ email: String, password: String, name: String, lastName: String, completion: @escaping CompletionSuccessBlock) {
         
-        FIRAuth.auth()?.createUser(withEmail: email, password: password) { [weak self] (user, error) in
+        let completion: FirebaseAuth.FIRAuthResultCallback = { [weak self] (user, error) in
             
             if (error != nil) {
                 
@@ -181,11 +181,12 @@ class User: Person {
                 this.saveCustomObject(completion)
             }
         }
+        FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: completion)
     }
     
     func initFromEmailData(_ email: String, password: String, completion: @escaping CompletionSuccessBlock) {
      
-        FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { [weak self] (user, error) in
+        let completion: FirebaseAuth.FIRAuthResultCallback = { [weak self] (user, error) in
             
             if (error != nil) {
                 
@@ -203,7 +204,9 @@ class User: Person {
                 this.isConnected = true
                 this.saveCustomObject(completion)
             }
-        })
+        }
+        
+        FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: completion)
     }
     
     // Mark: --- Get, Save and update data to firebase ---
@@ -211,37 +214,37 @@ class User: Person {
     // Called when create an new account or logIn
     fileprivate func saveCustomObject(_ completion: @escaping CompletionSuccessBlock)
     {
+        let finalizeBlock: CompletionDoneBlock = { [weak self] (done) in
+            
+            guard let this = self else {
+                return
+            }
+            this.updatePersonOnDataBase(nil)
+            completion(true)
+        }
+        
         let object: Person = self
         if object.email.characters.count < 2 { // Should Not happen
             
-            MXSViewController.showInformationPopUp(Strings.Alert.enterEmailMessage, withCancelButton: false) { [weak self] (email) in
+            let popUpCompletion: (String) -> Void = { [weak self] (email) in
                 
                 guard let this = self else {
                     return
                 }
                 if email.isValidEmail {
                     this.email = email
-                    object.createPersonOnDataBase({ (done) in
-                        this.updatePersonOnDataBase(nil)
-                        completion(true)
-                    })
+                    object.createPersonOnDataBase(finalizeBlock)
                 }else {
                     if let aUser = object as? User {
                         aUser.saveCustomObject(completion)
                     }
                 }
             }
+            MXSViewController.showInformationPopUp(Strings.Alert.enterEmailMessage, withCancelButton: false, completion: popUpCompletion)
             
         } else {
             
-            object.createPersonOnDataBase({ [weak self] (done) in
-                
-                guard let this = self else {
-                    return
-                }
-                this.updatePersonOnDataBase(nil)
-                completion(true)
-            })
+            object.createPersonOnDataBase(finalizeBlock)
         }
     }
     
@@ -261,7 +264,7 @@ class User: Person {
     func logOut(_ completion: @escaping CompletionDoneBlock) {
         
         User.currentUser.isConnected = false
-        User.currentUser.updatePersonOnDataBase({ (done) in
+        let updateBlock: CompletionDoneBlock = { (done) in
             
             User.currentUser.name       = ""
             User.currentUser.lastName   = ""
@@ -284,11 +287,12 @@ class User: Person {
             do {
                 try FIRAuth.auth()?.signOut()
             } catch {
-            
+                
             }
             
             completion(done)
-        })
+        }
+        User.currentUser.updatePersonOnDataBase(updateBlock)
     }
     
     

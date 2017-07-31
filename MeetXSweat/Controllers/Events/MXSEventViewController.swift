@@ -10,10 +10,10 @@ import UIKit
 import MapKit
 
 
-private let daySeconds  = 86400.0
-private let hourSeconds = 3600.0
-private let minuteSeconds = 60.0
-private let hours       = 24
+private let kDaySeconds  = 86400.0
+private let kHourSeconds = 3600.0
+private let kMinuteSeconds = 60.0
+private let kHours       = 24
 
 
 
@@ -60,25 +60,25 @@ class MXSEventViewController: MXSViewController {
         MXSCalendarViewController.formatter.dateFormat = kDateFormat
         if let timeLeft = MXSCalendarViewController.formatter.date(from: event.date)?.timeIntervalSinceNow {
         
-            let joures = Int(timeLeft/daySeconds)
+            let joures = Int(timeLeft/kDaySeconds)
             jourLabel.text  = String(joures)
             if joures < 10 {
                 jourLabel.text = " " + String(joures)
             }
             
-            let houres = Int(timeLeft/hourSeconds)%hours
+            let houres = Int(timeLeft/kHourSeconds)%kHours
             hourLabel.text  = String(houres)
             if houres < 10 {
                 hourLabel.text = " " + String(houres)
             }
             
-            let minutes = Int(timeLeft/minuteSeconds)%Int(minuteSeconds)
+            let minutes = Int(timeLeft/kMinuteSeconds)%Int(kMinuteSeconds)
             minuteLabel.text = String(minutes)
             if minutes < 10 {
                 minuteLabel.text = " " + String(minutes)
             }
             
-            let seconds = Int(timeLeft.truncatingRemainder(dividingBy: minuteSeconds))
+            let seconds = Int(timeLeft.truncatingRemainder(dividingBy: kMinuteSeconds))
             secondLabel.text = String(seconds)
             if seconds < 10 {
                 secondLabel.text = " " + String(seconds)

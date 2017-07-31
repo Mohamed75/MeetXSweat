@@ -10,16 +10,17 @@ import UIKit
 
 
 
-private let nameAttributes = [
+private let kNameAttributes = [
     NSForegroundColorAttributeName: Constants.MainColor.kSpecialColor,
     NSFontAttributeName : UIFont.boldSystemFont(ofSize: 15)
 ]
 
-private let professionAttributes = [
+private let kProfessionAttributes = [
     NSForegroundColorAttributeName: UIColor.black,
     NSFontAttributeName : UIFont.systemFont(ofSize: 14)
 ]
 
+private let kCollectionViewCellHeigh: CGFloat = 60
 
 
 /**
@@ -55,9 +56,9 @@ class MXSPersonsCollectionViewController: UICollectionViewController {
             let text = person.aFullName()
             let professionDomaine = person.professionDomaine()
             let string = NSMutableAttributedString(string: text + "\n" + professionDomaine)
-            string.addAttributes(nameAttributes, range: NSRange(location: 0, length: text.characters.count))
+            string.addAttributes(kNameAttributes, range: NSRange(location: 0, length: text.characters.count))
             if !professionDomaine.isEmpty {
-                string.addAttributes(professionAttributes, range: NSRange(location: text.characters.count, length: professionDomaine.characters.count))
+                string.addAttributes(kProfessionAttributes, range: NSRange(location: text.characters.count, length: professionDomaine.characters.count))
             }
             cell.label.attributedText = string
             
@@ -106,7 +107,7 @@ class MXSPersonsCollectionViewController: UICollectionViewController {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: self.view.frame.size.width, height: 60)
+        return CGSize(width: self.view.frame.size.width, height: kCollectionViewCellHeigh)
     }
     
 }

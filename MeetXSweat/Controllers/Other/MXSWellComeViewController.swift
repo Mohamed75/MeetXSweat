@@ -10,9 +10,19 @@ import UIKit
 import PickerView
 
 
-private let jobButtonText       = "MON JOB"
-private let domaineButtonText   = "MON DOMAINE"
-private let sportButtonText     = "MES SPORTS"
+private let kJobButtonText       = "MON JOB"
+private let kDomaineButtonText   = "MON DOMAINE"
+private let kSportButtonText     = "MES SPORTS"
+
+
+private let kAlertTitle     = "Image Source"
+private let kAlertButton1   = "Cancel"
+private let kAlertButton2   = "Camera"
+private let kAlertButton3   = "Photo Roll"
+
+
+private let kPopUpMessage   = "Veuillez choisir votre job, domaine et sport!"
+
 
 
 /**
@@ -84,11 +94,11 @@ class MXSWellComeViewController: MXSViewController, PickerViewDataSource, Picker
         Utils.addTapGestureToView(view, target: self, selectorString: Constants.SelectorsString.valider)
         
         MXSViewController.customButton(jobButton)
-        jobButton.setTitle(jobButtonText, for: UIControlState())
+        jobButton.setTitle(kJobButtonText, for: UIControlState())
         MXSViewController.customButton(domaineButton)
-        domaineButton.setTitle(domaineButtonText, for: UIControlState())
+        domaineButton.setTitle(kDomaineButtonText, for: UIControlState())
         MXSViewController.customButton(sportButton)
-        sportButton.setTitle(sportButtonText, for: UIControlState())
+        sportButton.setTitle(kSportButtonText, for: UIControlState())
         MXSViewController.customButton(letsGoButton)
         
         customPickerView()
@@ -121,17 +131,17 @@ class MXSWellComeViewController: MXSViewController, PickerViewDataSource, Picker
     
     func userImageViewClicked() {
         
-        let actionSheet = UIAlertController(title: "Image Source", message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let actionSheet = UIAlertController(title: kAlertTitle, message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
         
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+        actionSheet.addAction(UIAlertAction(title: kAlertButton1, style: UIAlertActionStyle.cancel, handler: nil))
         
-        actionSheet.addAction(UIAlertAction(title: "Camera", style: UIAlertActionStyle.default, handler: { [weak self] action -> Void in
+        actionSheet.addAction(UIAlertAction(title: kAlertButton2, style: UIAlertActionStyle.default, handler: { [weak self] action -> Void in
             guard let this = self else {
                 return
             }
             this.promptForCamera()
         }))
-        actionSheet.addAction(UIAlertAction(title: "Photo Roll", style: UIAlertActionStyle.default, handler: { [weak self] action -> Void in
+        actionSheet.addAction(UIAlertAction(title: kAlertButton3, style: UIAlertActionStyle.default, handler: { [weak self] action -> Void in
             guard let this = self else {
                 return
             }
@@ -212,7 +222,7 @@ class MXSWellComeViewController: MXSViewController, PickerViewDataSource, Picker
             return
         }
         
-        if (job != jobButtonText && sport != sportButtonText && domaine != domaineButtonText) {
+        if (job != kJobButtonText && sport != kSportButtonText && domaine != kDomaineButtonText) {
         
             User.currentUser.profession = job
             User.currentUser.sport      = sport
@@ -235,7 +245,7 @@ class MXSWellComeViewController: MXSViewController, PickerViewDataSource, Picker
             navigationController?.viewControllers = [tuttorialViewController]
             
         } else {
-            MXSViewController.showInformatifPopUp("Veuillez choisir votre job, domaine et sport!")
+            MXSViewController.showInformatifPopUp(kPopUpMessage)
             pickerView.isHidden = false
         }
     }
@@ -256,7 +266,7 @@ class MXSWellComeViewController: MXSViewController, PickerViewDataSource, Picker
         guard let domaine = domaineButton.titleLabel?.text else {
             return
         }
-        if (job != jobButtonText && sport != sportButtonText && domaine != domaineButtonText) {
+        if (job != kJobButtonText && sport != kSportButtonText && domaine != kDomaineButtonText) {
             letsGoButtonClicked(letsGoButton)
         }
     }

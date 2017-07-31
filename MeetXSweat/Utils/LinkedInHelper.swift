@@ -15,7 +15,7 @@ private let LINKEDIN_CLIENT_SECRET  = "1zoGBnvBMm69ufL7"
 private let REDIRECT_URL            = "https://www.meetxsweat.com/sample"
 private let DEFAULT_STATE           = "DCEEFWF45453sdffef424"
 
-private let closeString             = "Close"
+private let kCloseString            = "Close"
 
 
 
@@ -42,7 +42,7 @@ class LiknedInHelper {
         
         if let linkedIn = LinkedInHelper.sharedInstance() {
         
-            linkedIn.cancelButtonText = closeString
+            linkedIn.cancelButtonText = kCloseString
             linkedIn.showActivityIndicator = true
             
             

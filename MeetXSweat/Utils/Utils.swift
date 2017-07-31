@@ -459,4 +459,19 @@ class Utils {
             print(dtaa)
         }
     }
+    
+    class func saveDeviceTokenInUserDefault(deviceToken: Data) {
+        
+        // Convert token to string
+        let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
+        UserDefaults.standard.set(deviceTokenString, forKey: "apnsToken")
+    }
+    
+    class func getDeviceTokenFromUserDefault() -> String {
+        
+        guard let token = UserDefaults.standard.object(forKey: "apnsToken") as? String else {
+            return ""
+        }
+        return token
+    }
 }

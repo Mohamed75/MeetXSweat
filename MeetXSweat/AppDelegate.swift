@@ -113,9 +113,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        // Convert token to string
-        let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
-        UserDefaults.standard.set(deviceTokenString, forKey: "apnsToken")
+        
+        Utils.saveDeviceTokenInUserDefault(deviceToken: deviceToken)
     }
     
     // Called when APNs failed to register the device for push notifications

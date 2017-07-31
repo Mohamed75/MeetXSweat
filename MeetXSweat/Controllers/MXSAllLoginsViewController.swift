@@ -150,7 +150,7 @@ class MXSAllLoginsViewController: MXSViewController {
         }
         
         MXSActivityIndicator.startAnimating()
-        User.currentUser.initFromEmailData(email, password: password, completion: { [weak self] (done) in
+        let completion: CompletionSuccessBlock = { [weak self] (done) in
             
             guard let this = self else {
                 return
@@ -160,7 +160,8 @@ class MXSAllLoginsViewController: MXSViewController {
             } else {
                 MXSActivityIndicator.stopAnimating()
             }
-        })
+        }
+        User.currentUser.initFromEmailData(email, password: password, completion: completion)
         NSLog("email account created success: %@", User.currentUser.allParams())
     }
     

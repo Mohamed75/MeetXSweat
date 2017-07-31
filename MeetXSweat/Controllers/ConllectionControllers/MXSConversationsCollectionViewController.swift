@@ -8,11 +8,12 @@
 
 import UIKit
 
-private let nameAttributes = [
+private let kNameAttributes = [
     NSForegroundColorAttributeName: Constants.MainColor.kSpecialColor,
     NSFontAttributeName : UIFont.boldSystemFont(ofSize: 17)
 ]
 
+private let kCollectionViewCellHeigh: CGFloat = 60
 
 /**
  *  This class was designed and implemented to provide a Sport CollectionViewController.
@@ -62,7 +63,7 @@ class MXSConversationsCollectionViewController: UICollectionViewController {
         
         
         let string = NSMutableAttributedString(string: text)
-        string.addAttributes(nameAttributes, range: NSRange(location: 0, length: text.characters.count))
+        string.addAttributes(kNameAttributes, range: NSRange(location: 0, length: text.characters.count))
         cell.label.attributedText = string
         
         cell.layer.borderWidth = 1
@@ -88,7 +89,7 @@ class MXSConversationsCollectionViewController: UICollectionViewController {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: self.view.frame.size.width, height: 60)
+        return CGSize(width: self.view.frame.size.width, height: kCollectionViewCellHeigh)
     }
     
 }

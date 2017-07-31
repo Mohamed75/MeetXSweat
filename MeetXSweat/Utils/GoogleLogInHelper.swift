@@ -10,12 +10,12 @@ import Foundation
 import GoogleSignIn
 
 
-private let getUserInfoUrlString = "https://www.googleapis.com/oauth2/v3/userinfo?access_token="
+private let kGetUserInfoUrlString = "https://www.googleapis.com/oauth2/v3/userinfo?access_token="
 
 #if PROD
-private let googleClientId  = "696269792910-a8vvnf1a8tpvm99nontm9239agil6b12.apps.googleusercontent.com"
+private let GOOGLE_CCLIENT_ID  = "696269792910-a8vvnf1a8tpvm99nontm9239agil6b12.apps.googleusercontent.com"
 #else
-private let googleClientId  = "507333318603-1qfm75lhj9v05ledk92a6dtnnsdp8imc.apps.googleusercontent.com"
+private let GOOGLE_CCLIENT_ID  = "507333318603-1qfm75lhj9v05ledk92a6dtnnsdp8imc.apps.googleusercontent.com"
 #endif
     
 
@@ -58,7 +58,7 @@ class GoogleLogInHelper: NSObject, GIDSignInDelegate, GIDSignInUIDelegate {
     fileprivate func initConfig() {
         
         // Initialize sign-in
-        GIDSignIn.sharedInstance().clientID     = googleClientId
+        GIDSignIn.sharedInstance().clientID     = GOOGLE_CCLIENT_ID
         GIDSignIn.sharedInstance().delegate     = self
         GIDSignIn.sharedInstance().uiDelegate   = self
     }
@@ -85,7 +85,7 @@ class GoogleLogInHelper: NSObject, GIDSignInDelegate, GIDSignInUIDelegate {
         if (error == nil) {
             
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
-            let url = URL(string: getUserInfoUrlString+user.authentication.accessToken)
+            let url = URL(string: kGetUserInfoUrlString+user.authentication.accessToken)
             let session = URLSession.shared
             
             let block: (Data?, URLResponse?, Error?) -> Void = { [weak self] (data, response, error) -> Void in

@@ -14,22 +14,21 @@ import FBSDKLoginKit
 import Social
 
 // userInfo request
-private let parametersField = "picture, email, first_name, last_name, gender, birthday, work"
-private let getUserInfoUrl  = URL(string: "https://graph.facebook.com/me")
+private let kParametersField = "picture, email, first_name, last_name, gender, birthday, work"
+private let kGetUserInfoUrl  = URL(string: "https://graph.facebook.com/me")
 
 // initialisation
-private let permessionArray = ["public_profile", "email", "user_friends", "user_about_me"]
-private let faceBookApiKey  = getValueFromInfoPlist("FacebookAppID") as! String
-private let fbOptions = [ACFacebookAppIdKey: faceBookApiKey, ACFacebookPermissionsKey: permessionArray] as [AnyHashable : Any]
+private let kPermessionArray = ["public_profile", "email", "user_friends", "user_about_me"]
+private let kFBApiKey  = getValueFromInfoPlist("FacebookAppID") as! String
+private let kFBOptions = [ACFacebookAppIdKey: kFBApiKey, ACFacebookPermissionsKey: kPermessionArray] as [AnyHashable : Any]
 
 
-private let faceBookTypeId = ACAccountTypeIdentifierFacebook
-private let facebookAccountType = ACAccountStore().accountType(withAccountTypeIdentifier: faceBookTypeId)
+private let kFBAccountType = ACAccountStore().accountType(withAccountTypeIdentifier: ACAccountTypeIdentifierFacebook)
 
 
 
 
-private let fbController    = "FBSDKContainerViewController"
+private let kFBControllerClassName    = "FBSDKContainerViewController"
 
 
 protocol LogInFBDelegate {
@@ -84,7 +83,7 @@ class FaceBookHelper {
             
             if granted
             {
-                let accounts = ACAccountStore().accounts(with: facebookAccountType)
+                let accounts = ACAccountStore().accounts(with: kFBAccountType)
                 if let facebookAccount = accounts?.last as? ACAccount {
                     FaceBookHelper.getUserInfo(facebookAccount.credential.oauthToken!, delegate: delegate)
                 }
@@ -96,7 +95,7 @@ class FaceBookHelper {
                     // For first launch sometimes the loginWebView dont pop up, so this code force the loginWebview
                     this.isLoginBlocked = true
                     Thread.sleep(forTimeInterval: 1.5)
-                    if getVisibleViewController().classForCoder.description() != fbController {
+                    if getVisibleViewController().classForCoder.description() != kFBControllerClassName {
                         FaceBookHelper.faceBookWebLogin(delegate)
                         NSLog("#faceBookWebLogin")
                     }
@@ -109,9 +108,9 @@ class FaceBookHelper {
     func logIn(_ delegate: LogInFBDelegate) {
         
         if isIOSVersionGReaterThan(version: 9.9) {
-            ACAccountStore().requestAccessToAccounts(with: facebookAccountType, options: nil, completion: logInblock(delegate))
+            ACAccountStore().requestAccessToAccounts(with: kFBAccountType, options: nil, completion: logInblock(delegate))
         } else {
-            ACAccountStore().requestAccessToAccounts(with: facebookAccountType, options: fbOptions, completion: logInblock(delegate))
+            ACAccountStore().requestAccessToAccounts(with: kFBAccountType, options: kFBOptions, completion: logInblock(delegate))
         }
     }
     
@@ -145,7 +144,7 @@ class FaceBookHelper {
         }
         
         dispatch_later(0.1) {
-            FBSDKLoginManager().logIn(withReadPermissions: permessionArray, from: getVisibleViewController(), handler: webLogInBlock)
+            FBSDKLoginManager().logIn(withReadPermissions: kPermessionArray, from: getVisibleViewController(), handler: webLogInBlock)
         }
     }
     
@@ -154,10 +153,10 @@ class FaceBookHelper {
     
     fileprivate class func getUserInfo(_ token: String, delegate: LogInFBDelegate) {
         
-        let getUserInfoParameters = ["fields" : parametersField, "access_token" : token]
+        let getUserInfoParameters = ["fields" : kParametersField, "access_token" : token]
         let postRequest = SLRequest(forServiceType: SLServiceTypeFacebook,
                                     requestMethod: SLRequestMethod.GET,
-                                    url: getUserInfoUrl,
+                                    url: kGetUserInfoUrl,
                                     parameters: getUserInfoParameters)
         
         postRequest?.perform(handler:  { (responseData, urlResponse, error) in

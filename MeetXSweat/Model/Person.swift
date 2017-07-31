@@ -59,18 +59,20 @@ class Person: FireBaseObject {
             guard let this = self else {
                 return
             }
+            // First time
             if ( snapshot.value is NSNull ) {
                 
-                if let token = UserDefaults.standard.object(forKey: "apnsToken") as? String {
-                    this.apnsToken = token
-                }
+                this.apnsToken = Utils.getDeviceTokenFromUserDefault()
+                
                 // save user
                 this.ref = personRef.childByAutoId()
-                this.ref!.setValue(this.asJson())
-                this.saveToNSUserDefaults()
-                completion(true)
+                if let aRef = this.ref {
+                    aRef.setValue(this.asJson())
+                    this.saveToNSUserDefaults()
+                    completion(true)
+                }
                 
-            } else {
+            } else { // Person already exist on firebase
                 print("user already exist")
                 this.updateCurrentPersonFromDB(snapshot)
                 completion(true)
@@ -145,7 +147,7 @@ class Person: FireBaseObject {
     // Set current user image
     func setUserImage(_ image: UIImage) {
         
-        FireBaseHelper.saveImage(image, fileName: email, completion:  { [weak self] url in
+        let completion: ((_ url: String)->Void) = { [weak self] url in
             
             guard let this = self else {
                 return
@@ -179,8 +181,9 @@ class Person: FireBaseObject {
                     .observe(.value, with: block)
                 personRef.removeObserver(withHandle: handle)
             }
-        })
+        }
         
+        FireBaseHelper.saveImage(image, fileName: email, completion: completion)
     }
     
     

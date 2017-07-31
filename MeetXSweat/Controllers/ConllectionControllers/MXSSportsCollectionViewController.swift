@@ -11,10 +11,10 @@ import DLRadioButton
 
 
 
-private let numberOffCell = 3
+private let kNumberOffCell = 3
 
-private let cellWidth   = (UIScreen.main.bounds.width/3)-4
-private let cellHeight  = cellWidth*1.16
+private let kCellWidth   = (UIScreen.main.bounds.width/3)-4
+private let kCellHeight  = kCellWidth*1.16
 
 
 /**
@@ -89,7 +89,7 @@ extension MXSSportsCollectionViewController {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Ressources.CellReuseIdentifier.sport, for: indexPath) as! MXSSportCollectionCell
         
-        let index = (indexPath.section*numberOffCell)+indexPath.row
+        let index = (indexPath.section*kNumberOffCell)+indexPath.row
         /*
          cell.initColors()
          if sports.count > (indexPath.section*2)+indexPath.row {
@@ -104,7 +104,7 @@ extension MXSSportsCollectionViewController {
          cell.backgroundColor = kBackGroundColor*/
         
         cell.initCell()
-        if sports.count > (indexPath.section*numberOffCell)+indexPath.row {
+        if sports.count > (indexPath.section*kNumberOffCell)+indexPath.row {
             let sportName = sports[index]
             cell.sportImageView.image   = UIImage(named: sportName.lowercased())
             cell.sportLabel.text        = sportName
@@ -118,27 +118,27 @@ extension MXSSportsCollectionViewController {
     
     
     override internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if sports.count%numberOffCell > 0 {
-            if section == sports.count/numberOffCell {
+        if sports.count%kNumberOffCell > 0 {
+            if section == sports.count/kNumberOffCell {
                 return 1
             }
         }
-        return numberOffCell
+        return kNumberOffCell
     }
     
     override internal func numberOfSections(in collectionView: UICollectionView) -> Int {
         
-        return (sports.count/numberOffCell)+(sports.count%numberOffCell)
+        return (sports.count/kNumberOffCell)+(sports.count%kNumberOffCell)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: cellWidth, height: cellHeight)
+        return CGSize(width: kCellWidth, height: kCellHeight)
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let index = (indexPath.section*numberOffCell)+indexPath.row
+        let index = (indexPath.section*kNumberOffCell)+indexPath.row
         if allSelectedRadioButtonsIndexs.contains(index) {
             if let indexArray = allSelectedRadioButtonsIndexs.index(of: index) {
                 allSelectedRadioButtonsIndexs.remove(at: indexArray)

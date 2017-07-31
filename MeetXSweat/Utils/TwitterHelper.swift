@@ -13,7 +13,7 @@ import TwitterKit
 
 
 
-private let getUserInfoUrlString    = "https://api.twitter.com/1.1/users/show.json"
+private let kGetUserInfoUrlString    = "https://api.twitter.com/1.1/users/show.json"
 
 
 
@@ -73,7 +73,7 @@ class TwitterHelper {
         
         let client  = TWTRAPIClient.withCurrentUser()
         let request = client.urlRequest(withMethod: "GET",
-                                                  url: getUserInfoUrlString,
+                                                  url: kGetUserInfoUrlString,
                                                   parameters: ["user_id": client.userID!],
                                                   error: nil)
         

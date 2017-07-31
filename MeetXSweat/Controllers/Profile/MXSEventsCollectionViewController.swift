@@ -8,6 +8,7 @@
 
 import UIKit
 
+private let kCollectionViewCellHeigh: CGFloat = 60
 
 /**
  *  This class was designed and implemented to provide an Event CollectionViewController.
@@ -124,7 +125,7 @@ extension MXSEventsCollectionViewController {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: view.frame.size.width, height: 60)
+        return CGSize(width: view.frame.size.width, height: kCollectionViewCellHeigh)
     }
     
     

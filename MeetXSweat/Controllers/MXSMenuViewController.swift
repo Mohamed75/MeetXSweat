@@ -14,8 +14,8 @@ private let kMenuItemsTitle = ["Mes messages", "Mes sweatworking", "Invitez des 
 private let kMenuItemsDesc  = ["Je construis mon réseau", "Mon historique d'activité", "J'élargie mon perimetre", "Je me déconnecte"]
 private let kMenuItemsImage = ["messages", "loupe", "adduser"]
 
-private let imageWidth  = (ScreenSize.currentWidth > ScreenSize.iphone6Width) ? ScreenSize.currentWidth-130 : (ScreenSize.currentWidth == ScreenSize.iphone6Width) ? ScreenSize.currentWidth-90 : ScreenSize.currentWidth-40
-private let imageHeight: CGFloat = 180.0
+private let kImageWidth  = (ScreenSize.currentWidth > ScreenSize.iphone6Width) ? ScreenSize.currentWidth-130 : (ScreenSize.currentWidth == ScreenSize.iphone6Width) ? ScreenSize.currentWidth-90 : ScreenSize.currentWidth-40
+private let kImageHeight: CGFloat = 180.0
 
 
 
@@ -83,7 +83,7 @@ class MXSMenuViewController: UITableViewController {
         professionLabel.layer.cornerRadius = 5
         professionLabel.clipsToBounds = true
         
-        let profileButton = UIButton(frame: CGRect(x: imageWidth-55, y: 5, width: 40, height: 40))
+        let profileButton = UIButton(frame: CGRect(x: kImageWidth-55, y: 5, width: 40, height: 40))
         profileButton.addTarget(self, action: #selector(profileButtonClicked), for: .touchUpInside)
         profileButton.setImage(UIImage(named: Ressources.MenuImages.modifier), for: UIControlState())
         profileButton.backgroundColor = UIColor.white
@@ -131,7 +131,7 @@ class MXSMenuViewController: UITableViewController {
     internal func sectionHeaderClicked() {
         evo_drawerController!.centerViewController = mainNavigationController
         evo_drawerController?.closeDrawer(animated: true, completion: nil)
-        dispatch_later(0.1) { [weak self] in
+        let closure = { [weak self] in
             
             guard let this = self else {
                 return
@@ -144,6 +144,7 @@ class MXSMenuViewController: UITableViewController {
                 }
             }
         }
+        dispatch_later(0.1, closure: closure)
     }
     
     
@@ -166,7 +167,7 @@ extension MXSMenuViewController {
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
         if section == 0 {
-            return imageHeight+20
+            return kImageHeight+20
         }
         return 0
     }
@@ -174,9 +175,9 @@ extension MXSMenuViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         if section == 0 {
-            let sectionHeader = UIView(frame: CGRect(x: 0, y: 0, width: imageWidth, height: imageHeight+20))
+            let sectionHeader = UIView(frame: CGRect(x: 0, y: 0, width: kImageWidth, height: kImageHeight+20))
             sectionHeader.backgroundColor = UIColor.black
-            userView = UIImageView(frame: CGRect(x: 0, y: 20, width: imageWidth, height: imageHeight))
+            userView = UIImageView(frame: CGRect(x: 0, y: 20, width: kImageWidth, height: kImageHeight))
             userView.image = UIImage(named: Ressources.Images.topMap)
             sectionHeader.addSubview(userView)
             Utils.addTapGestureToView(userView, target: self, selectorString: "sectionHeaderClicked")
