@@ -154,7 +154,7 @@ class User: Person {
     
     func createFromEmailData(_ email: String, password: String, name: String, lastName: String, completion: @escaping CompletionSuccessBlock) {
         
-        let completion: FirebaseAuth.FIRAuthResultCallback = { [weak self] (user, error) in
+        let completion: FirebaseAuth.AuthResultCallback = { [weak self] (user, error) in
             
             if (error != nil) {
                 
@@ -181,12 +181,12 @@ class User: Person {
                 this.saveCustomObject(completion)
             }
         }
-        FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: completion)
+        Auth.auth().createUser(withEmail: email, password: password, completion: completion)
     }
     
     func initFromEmailData(_ email: String, password: String, completion: @escaping CompletionSuccessBlock) {
      
-        let completion: FirebaseAuth.FIRAuthResultCallback = { [weak self] (user, error) in
+        let completion: FirebaseAuth.AuthResultCallback = { [weak self] (user, error) in
             
             if (error != nil) {
                 
@@ -206,7 +206,7 @@ class User: Person {
             }
         }
         
-        FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: completion)
+        Auth.auth().signIn(withEmail: email, password: password, completion: completion)
     }
     
     // Mark: --- Get, Save and update data to firebase ---
@@ -285,7 +285,7 @@ class User: Person {
             GoogleLogInHelper.sharedInstance.logOut()
             LiknedInHelper.logOut()
             do {
-                try FIRAuth.auth()?.signOut()
+                try Auth.auth().signOut()
             } catch {
                 
             }

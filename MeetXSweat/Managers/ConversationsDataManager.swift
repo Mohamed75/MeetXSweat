@@ -22,15 +22,15 @@ class ConversationsDataManager {
         
     }
     
-    var conversationRef = FIRDatabaseReference()
+    var conversationRef = DatabaseReference()
     
     func loadData() {
         
         conversations = []
         conversationRef.removeAllObservers()
-        conversationRef = FIRDatabase.database().reference().child("conversation-items")
+        conversationRef = Database.database().reference().child("conversation-items")
         
-        let block: (FIRDataSnapshot) -> Void = { [weak self] (snapshot) in
+        let block: (DataSnapshot) -> Void = { [weak self] (snapshot) in
             
             guard let this = self else {
                 return

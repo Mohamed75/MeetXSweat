@@ -59,7 +59,7 @@ class Event: FireBaseObject {
         super.init()
     }
     
-    override init(snapshot: FIRDataSnapshot) {
+    override init(snapshot: DataSnapshot) {
         
         super.init(snapshot: snapshot)
         addPersonsObserver()
@@ -82,7 +82,7 @@ class Event: FireBaseObject {
         
         if let aRef = self.ref {
             
-            let block: (FIRDataSnapshot) -> Swift.Void = { [weak self] snapshot in
+            let block: (DataSnapshot) -> Swift.Void = { [weak self] snapshot in
                 
                 guard let this = self else {
                     return
@@ -118,7 +118,7 @@ class Event: FireBaseObject {
     
     func saveEventToDataBase() {
         
-        let eventRef = FIRDatabase.database().reference().child("event-items")
+        let eventRef = Database.database().reference().child("event-items")
         ref = eventRef.childByAutoId()
         ref!.setValue(asJson())
     }

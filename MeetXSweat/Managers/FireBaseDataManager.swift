@@ -20,7 +20,7 @@ class FireBaseDataManager {
     
     init() {
         
-        FIRDatabase.database().reference().keepSynced(true)
+        Database.database().reference().keepSynced(true)
         //DummyData.uploadDomaines()
         //DummyData.uploadProfessions()
     }
@@ -71,7 +71,7 @@ class FireBaseDataManager {
     
     
     
-    fileprivate func _eventBlock() -> (FIRDataSnapshot) -> Void {
+    fileprivate func _eventBlock() -> (DataSnapshot) -> Void {
         
         return { [weak self] (snapshot) in
             
@@ -83,7 +83,7 @@ class FireBaseDataManager {
         }
     }
     
-    fileprivate func _personBlock() -> (FIRDataSnapshot) -> Void {
+    fileprivate func _personBlock() -> (DataSnapshot) -> Void {
         
         return { [weak self] (snapshot) -> Void in
             
@@ -94,7 +94,7 @@ class FireBaseDataManager {
         }
     }
     
-    fileprivate func _sportBlock() -> (FIRDataSnapshot) -> Void {
+    fileprivate func _sportBlock() -> (DataSnapshot) -> Void {
         
         return { [weak self] (snapshot) -> Void in
             
@@ -108,7 +108,7 @@ class FireBaseDataManager {
         }
     }
     
-    fileprivate func _professionBlock() -> (FIRDataSnapshot) -> Void {
+    fileprivate func _professionBlock() -> (DataSnapshot) -> Void {
         
         return { [weak self] (snapshot) -> Void in
             
@@ -122,7 +122,7 @@ class FireBaseDataManager {
         }
     }
     
-    fileprivate func _domaineBlock() -> (FIRDataSnapshot) -> Void {
+    fileprivate func _domaineBlock() -> (DataSnapshot) -> Void {
         
         return { [weak self] (snapshot) -> Void in
             
@@ -136,38 +136,38 @@ class FireBaseDataManager {
         }
     }
     
-    fileprivate var _eventRef    = FIRDatabaseReference()
-    fileprivate var _personRef   = FIRDatabaseReference()
-    fileprivate var _sportRef    = FIRDatabaseReference()
-    fileprivate var _professionRef = FIRDatabaseReference()
-    fileprivate var _domaineRef  = FIRDatabaseReference()
+    fileprivate var _eventRef    = DatabaseReference()
+    fileprivate var _personRef   = DatabaseReference()
+    fileprivate var _sportRef    = DatabaseReference()
+    fileprivate var _professionRef = DatabaseReference()
+    fileprivate var _domaineRef  = DatabaseReference()
     
     func loadData() {
         
         events = []
         _eventRef.removeAllObservers()
-        _eventRef = FIRDatabase.database().reference().child("event-items")
+        _eventRef = Database.database().reference().child("event-items")
         _eventRef.observe(.childAdded, with: _eventBlock())
         
         
         persons = []
         _personRef.removeAllObservers()
-        _personRef = FIRDatabase.database().reference().child("person-items")
+        _personRef = Database.database().reference().child("person-items")
         _personRef.observe(.childAdded, with: _personBlock())
         
         _sports = []
         _sportRef.removeAllObservers()
-        _sportRef = FIRDatabase.database().reference().child("sport-items")
+        _sportRef = Database.database().reference().child("sport-items")
         _sportRef.observe(.childAdded, with: _sportBlock())
         
         _professions = []
         _professionRef.removeAllObservers()
-        _professionRef = FIRDatabase.database().reference().child("profession-items")
+        _professionRef = Database.database().reference().child("profession-items")
         _professionRef.observe(.childAdded, with: _professionBlock())
         
         _domaines = []
         _domaineRef.removeAllObservers()
-        _domaineRef = FIRDatabase.database().reference().child("domaine-items")
+        _domaineRef = Database.database().reference().child("domaine-items")
         _domaineRef.observe(.childAdded, with: _domaineBlock())
     }
     

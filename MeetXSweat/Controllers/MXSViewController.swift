@@ -108,7 +108,7 @@ class MXSViewController: UIViewController {
         
     }
     
-    private func endEditing() {
+    internal func endEditing() {
         
         view.endEditing(true)
     }

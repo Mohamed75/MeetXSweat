@@ -18,7 +18,7 @@ import Firebase
 
 class FireBaseObject: EnCodeObject {
     
-    var ref: FIRDatabaseReference?
+    var ref: DatabaseReference?
     
     
     // Mark: ---  Initialization ---
@@ -46,7 +46,7 @@ class FireBaseObject: EnCodeObject {
         }
     }
     
-    init(snapshot: FIRDataSnapshot) {
+    init(snapshot: DataSnapshot) {
         
         super.init()
         

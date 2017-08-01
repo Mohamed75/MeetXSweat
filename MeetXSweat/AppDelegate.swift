@@ -7,18 +7,12 @@
 //
 
 import UIKit
-import Firebase
+
 import DrawerController
 import UserNotifications
 
 
-private let FIRSignInblock: FIRAuthResultCallback = { (user, error) in
-    if (error != nil) {
-        NSLog("signInAnonymously error")
-    } else {
-        NSLog("signInAnonymously succes")
-    }
-}
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -55,16 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        #if PROD
-            let filePath = Bundle.main.path(forResource: "GoogleServiceProd-Info", ofType: "plist")
-            let options = FIROptions(contentsOfFile: filePath)
-            FIRApp.configure(with: options!)
-        #else
-            FIRApp.configure()
-        #endif
-        
-        FIRDatabase.database().persistenceEnabled = true
-        FIRAuth.auth()?.signInAnonymously(completion: FIRSignInblock)
+        FireBaseHelper.setUp()
         
         TwitterHelper.application(application, didFinishLaunchingWithOptions: launchOptions)
         

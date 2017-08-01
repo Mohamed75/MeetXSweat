@@ -10,6 +10,12 @@ import Foundation
 import Firebase
 
 
+
+private let kFIRPersonChildKey  = "person-items"
+private let kFIREmailKey        = "email"
+private let kFIRPictureUrlKey   = "pictureUrl"
+
+
 typealias CompletionDoneBlock = (_ done: Bool) -> Void
 
 
@@ -39,7 +45,7 @@ class Person: FireBaseObject {
         super.init()
     }
     
-    override init(snapshot: FIRDataSnapshot) {
+    override init(snapshot: DataSnapshot) {
         super.init(snapshot: snapshot)
     }
     
@@ -49,12 +55,13 @@ class Person: FireBaseObject {
     
     // Mark: --- Get, Save and update data to firebase ---
     
-    // Create or update current user
+    // Create or update current user if the user already exist on firebase but not on the app yet
+    private var handle: DatabaseHandle!
     func createPersonOnDataBase(_ completion: @escaping CompletionDoneBlock) {
         
-        let personRef = FIRDatabase.database().reference().child("person-items")
+        let personRef = Database.database().reference().child(kFIRPersonChildKey)
         
-        let block: (FIRDataSnapshot) -> Void = { [weak self] snapshot in
+        let block: (DataSnapshot) -> Void = { [weak self] snapshot in
             
             guard let this = self else {
                 return
@@ -77,18 +84,18 @@ class Person: FireBaseObject {
                 this.updateCurrentPersonFromDB(snapshot)
                 completion(true)
             }
+            personRef.removeObserver(withHandle: this.handle)
         }
         
-        let handle = personRef.queryOrdered(byChild: "email").queryEqual(toValue: "\(email)")
+        handle = personRef.queryOrdered(byChild: kFIREmailKey).queryEqual(toValue: "\(email)")
             .observe(.value, with: block)
-        personRef.removeObserver(withHandle: handle)
     }
     
     // Update current user from FireBase used only by createPersonOnDataBase()
-    fileprivate func updateCurrentPersonFromDB(_ snapshot: FIRDataSnapshot) {
+    fileprivate func updateCurrentPersonFromDB(_ snapshot: DataSnapshot) {
         
         for child in snapshot.children {
-            let snapUser = User(snapshot: child as! FIRDataSnapshot)
+            let snapUser = User(snapshot: child as! DataSnapshot)
             ref = (child as AnyObject).ref
             copyFromJson(snapUser.asJson())
             User.currentUser.isConnected = true
@@ -96,15 +103,13 @@ class Person: FireBaseObject {
         }
     }
     
-    // Update current user on FireBase
+    // Update current user with the new data collected on FireBase
     func updatePersonOnDataBase(_ completion: CompletionDoneBlock?) {
         
         saveToNSUserDefaults()
         FireBaseDataManager.updateCurrentUserInPersons()
         
-        if let token = UserDefaults.standard.object(forKey: "apnsToken") as? String {
-            apnsToken = token
-        }
+        apnsToken = Utils.getDeviceTokenFromUserDefault()
         
         if let aRef = ref {
             
@@ -116,9 +121,9 @@ class Person: FireBaseObject {
             
         } else {
             
-            let personRef = FIRDatabase.database().reference().child("person-items")
+            let personRef = Database.database().reference().child(kFIRPersonChildKey)
             
-            let block: (FIRDataSnapshot) -> Void = { [weak self] snapshot in
+            let block: (DataSnapshot) -> Void = { [weak self] snapshot in
                 
                 guard let this = self else {
                     return
@@ -137,7 +142,7 @@ class Person: FireBaseObject {
                 }
             }
         
-            let handle = personRef.queryOrdered(byChild: "email").queryEqual(toValue: "\(email)")
+            let handle = personRef.queryOrdered(byChild: kFIREmailKey).queryEqual(toValue: "\(email)")
                 .observe(.value, with: block)
             personRef.removeObserver(withHandle: handle)
         }
@@ -153,23 +158,23 @@ class Person: FireBaseObject {
                 return
             }
             if let aRef = this.ref {
-                aRef.updateChildValues(["pictureUrl": url])
+                aRef.updateChildValues([kFIRPictureUrlKey: url])
                 this.pictureUrl = url
                 this.saveToNSUserDefaults()
                 FireBaseDataManager.updateCurrentUserInPersons()
             }
             else {
                 
-                let personRef = FIRDatabase.database().reference().child("person-items")
+                let personRef = Database.database().reference().child(kFIRPersonChildKey)
                 
-                let block: (FIRDataSnapshot) -> Void  = { snapshot in
+                let block: (DataSnapshot) -> Void  = { snapshot in
                     
                     if !( snapshot.value is NSNull ) {
                         
                         print("user image update")
                         for child in snapshot.children {
                             this.ref = (child as AnyObject).ref
-                            this.ref!.updateChildValues(["pictureUrl": url])
+                            this.ref!.updateChildValues([kFIRPictureUrlKey: url])
                             this.pictureUrl = url
                             this.saveToNSUserDefaults()
                             FireBaseDataManager.updateCurrentUserInPersons()
@@ -177,7 +182,7 @@ class Person: FireBaseObject {
                     }
                 }
                 
-                let handle = personRef.queryOrdered(byChild: "email").queryEqual(toValue: "\(this.email)")
+                let handle = personRef.queryOrdered(byChild: kFIREmailKey).queryEqual(toValue: "\(this.email)")
                     .observe(.value, with: block)
                 personRef.removeObserver(withHandle: handle)
             }

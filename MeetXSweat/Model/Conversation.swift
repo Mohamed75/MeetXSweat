@@ -27,7 +27,7 @@ class Conversation: FireBaseObject {
         super.init()
     }
     
-    override init(snapshot: FIRDataSnapshot) {
+    override init(snapshot: DataSnapshot) {
         super.init(snapshot: snapshot)
     }
     
@@ -43,7 +43,7 @@ class Conversation: FireBaseObject {
         return EventPersons.sharedInstance.persons
     }
     
-    var messagesQuery: FIRDatabaseReference?
+    private var messagesQuery: DatabaseReference?
     func observeMessages(_ completionHandler:@escaping ((_ messages: [Message])->Void)) {
         
         if let conversationRef = ref {
@@ -51,7 +51,7 @@ class Conversation: FireBaseObject {
             self.messages = []
             messagesQuery = conversationRef.child("messages")
             
-            let block: (FIRDataSnapshot) -> Void = { [weak self] (snapshot) in
+            let block: (DataSnapshot) -> Void = { [weak self] (snapshot) in
                 
                 guard let this = self else {
                     return
@@ -85,7 +85,7 @@ class Conversation: FireBaseObject {
             
         } else { // create conversation if doesn't exist
             
-            let conversationRef = FIRDatabase.database().reference().child("conversation-items")
+            let conversationRef = Database.database().reference().child("conversation-items")
             let aRef = conversationRef.childByAutoId()
             aRef.setValue(asJson())
             ref = aRef
@@ -98,7 +98,7 @@ class Conversation: FireBaseObject {
     
     
     
-    var userIsTypingRef: FIRDatabaseReference!
+    var userIsTypingRef: DatabaseReference!
     
     fileprivate var localTyping = false
     var isTyping: Bool {
@@ -122,7 +122,7 @@ class Conversation: FireBaseObject {
             userIsTypingRef.onDisconnectRemoveValue()
             let usersTypingQuery = typingIndicatorRef.queryOrderedByValue().queryEqual(toValue: true)
             
-            let block: (FIRDataSnapshot) -> Void = { [weak self] (snapshot) in
+            let block: (DataSnapshot) -> Void = { [weak self] (snapshot) in
                 guard let this = self else {
                     return
                 }

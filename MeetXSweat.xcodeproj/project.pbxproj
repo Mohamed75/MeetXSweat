@@ -28,6 +28,14 @@
 		D90AB5A31D9562E1003DCA75 /* MXSCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5A21D9562E1003DCA75 /* MXSCalendarViewController.swift */; };
 		D90AB5A51D957AE6003DCA75 /* AnimationClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5A41D957AE6003DCA75 /* AnimationClass.swift */; };
 		D90AB5AF1D96BE1E003DCA75 /* MXSActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90AB5AE1D96BE1E003DCA75 /* MXSActivityIndicator.swift */; };
+		D921ACD21F30992600982564 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D921ACCE1F30986900982564 /* Alamofire.framework */; };
+		D921ACD31F30994D00982564 /* MapIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9C0863F1E4A19D500122030 /* MapIcons.xcassets */; };
+		D921ACD41F30994D00982564 /* MenuIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D93AF0991E60DBE9004B5565 /* MenuIcons.xcassets */; };
+		D921ACD61F309A6C00982564 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D921ACD51F309A6C00982564 /* AlamofireImage.framework */; };
+		D921ACDA1F309DF600982564 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D921ACCE1F30986900982564 /* Alamofire.framework */; };
+		D921ACDB1F309DF600982564 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D921ACCE1F30986900982564 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D921ACDD1F309E2D00982564 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D921ACCE1F30986900982564 /* Alamofire.framework */; };
+		D921ACDE1F309E2D00982564 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D921ACCE1F30986900982564 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D926BAA01D8D6A6400E3878C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D926BA9F1D8D6A6400E3878C /* AppDelegate.swift */; };
 		D926BAA71D8D6A6400E3878C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D926BAA61D8D6A6400E3878C /* Assets.xcassets */; };
 		D926BAAA1D8D6A6400E3878C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D926BAA81D8D6A6400E3878C /* LaunchScreen.storyboard */; };
@@ -135,6 +143,8 @@
 		D94A3E491DA3FC840090A7A4 /* MXSPersonCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E451DA3FC840090A7A4 /* MXSPersonCollectionCell.swift */; };
 		D94A3E4A1DA3FC840090A7A4 /* MXSSportCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E461DA3FC840090A7A4 /* MXSSportCollectionCell.swift */; };
 		D94A3E4C1DA3FCEF0090A7A4 /* MXSConversationCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A3E4B1DA3FCEF0090A7A4 /* MXSConversationCollectionCell.swift */; };
+		D94BC54D1F2F376600995E20 /* PersonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94BC54C1F2F376600995E20 /* PersonTests.swift */; };
+		D94BC5501F2F642900995E20 /* TotoPerson.json in Resources */ = {isa = PBXBuildFile; fileRef = D94BC54F1F2F642900995E20 /* TotoPerson.json */; };
 		D94C63E61D8DE4BB00ECD7FD /* FaceBookHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94C63E51D8DE4BB00ECD7FD /* FaceBookHelper.swift */; };
 		D94C63E91D8E914F00ECD7FD /* TwitterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94C63E81D8E914F00ECD7FD /* TwitterHelper.swift */; };
 		D959581B1DA57F2500481167 /* FireBaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959581A1DA57F2500481167 /* FireBaseObject.swift */; };
@@ -178,6 +188,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D921ACB11F2F739100982564 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D926BA941D8D6A6400E3878C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D949BB051E5C872A00BCF3A0;
+			remoteInfo = MeetXSweatProd;
+		};
 		D926BAB11D8D6A6400E3878C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D926BA941D8D6A6400E3878C /* Project object */;
@@ -193,6 +210,31 @@
 			remoteInfo = MeetXSweat;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D921ACDC1F309DF600982564 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D921ACDB1F309DF600982564 /* Alamofire.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D921ACDF1F309E2D00982564 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D921ACDE1F309E2D00982564 /* Alamofire.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		187326795C00B62EA5F40D4B /* Pods-MeetXSweatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetXSweatTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeetXSweatTests/Pods-MeetXSweatTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -220,6 +262,17 @@
 		D90AB5A21D9562E1003DCA75 /* MXSCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSCalendarViewController.swift; sourceTree = "<group>"; };
 		D90AB5A41D957AE6003DCA75 /* AnimationClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationClass.swift; sourceTree = "<group>"; };
 		D90AB5AE1D96BE1E003DCA75 /* MXSActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSActivityIndicator.swift; sourceTree = "<group>"; };
+		D921ACAC1F2F69A200982564 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Pods/FirebaseInstanceID/Frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
+		D921ACB41F2F752C00982564 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
+		D921ACB61F2F752C00982564 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseInstanceID.framework; sourceTree = "<group>"; };
+		D921ACB71F2F752C00982564 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D921ACBC1F3081A700982564 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
+		D921ACBE1F3081B300982564 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Pods/FirebaseCore/Frameworks/FirebaseCore.framework; sourceTree = "<group>"; };
+		D921ACC01F3081C100982564 /* FirebaseDatabase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseDatabase.framework; path = Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework; sourceTree = "<group>"; };
+		D921ACC21F3081D000982564 /* FirebaseStorage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseStorage.framework; path = Pods/FirebaseStorage/Frameworks/FirebaseStorage.framework; sourceTree = "<group>"; };
+		D921ACC41F3081DA00982564 /* FirebaseMessaging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseMessaging.framework; path = Pods/FirebaseMessaging/Frameworks/FirebaseMessaging.framework; sourceTree = "<group>"; };
+		D921ACCE1F30986900982564 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../Library/Developer/Xcode/DerivedData/MeetXSweat-dzxolhyrhyrsoscjofqqaizocujz/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
+		D921ACD51F309A6C00982564 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = "../Library/Developer/Xcode/DerivedData/MeetXSweat-dzxolhyrhyrsoscjofqqaizocujz/Build/Products/Debug-iphonesimulator/AlamofireImage/AlamofireImage.framework"; sourceTree = "<group>"; };
 		D926BA9C1D8D6A6400E3878C /* MeetXSweat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetXSweat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D926BA9F1D8D6A6400E3878C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D926BAA61D8D6A6400E3878C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -255,6 +308,8 @@
 		D94A3E451DA3FC840090A7A4 /* MXSPersonCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSPersonCollectionCell.swift; sourceTree = "<group>"; };
 		D94A3E461DA3FC840090A7A4 /* MXSSportCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSSportCollectionCell.swift; sourceTree = "<group>"; };
 		D94A3E4B1DA3FCEF0090A7A4 /* MXSConversationCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSConversationCollectionCell.swift; sourceTree = "<group>"; };
+		D94BC54C1F2F376600995E20 /* PersonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonTests.swift; sourceTree = "<group>"; };
+		D94BC54F1F2F642900995E20 /* TotoPerson.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TotoPerson.json; sourceTree = "<group>"; };
 		D94C63E51D8DE4BB00ECD7FD /* FaceBookHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceBookHelper.swift; sourceTree = "<group>"; };
 		D94C63E71D8DE88A00ECD7FD /* MeetXSweat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MeetXSweat-Bridging-Header.h"; sourceTree = "<group>"; };
 		D94C63E81D8E914F00ECD7FD /* TwitterHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterHelper.swift; sourceTree = "<group>"; };
@@ -308,6 +363,7 @@
 				D92BAF331EF6BB010035CA8C /* AdSupport.framework in Frameworks */,
 				D926BACE1D8D8C8600E3878C /* Social.framework in Frameworks */,
 				26168A058FAF4B8C39C1342F /* Pods_MeetXSweat.framework in Frameworks */,
+				D921ACDA1F309DF600982564 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +371,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D921ACD61F309A6C00982564 /* AlamofireImage.framework in Frameworks */,
+				D921ACD21F30992600982564 /* Alamofire.framework in Frameworks */,
 				1E73987874C73DEE6D84DFE3 /* Pods_MeetXSweatTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -331,6 +389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D92BAF341EF6BB080035CA8C /* AdSupport.framework in Frameworks */,
+				D921ACDD1F309E2D00982564 /* Alamofire.framework in Frameworks */,
 				D9B58B5C1E670FF200858C9B /* UserNotifications.framework in Frameworks */,
 				D949BB441E5C872A00BCF3A0 /* Social.framework in Frameworks */,
 				D949BB461E5C872A00BCF3A0 /* Pods_MeetXSweat.framework in Frameworks */,
@@ -357,6 +416,15 @@
 		BE7C0B832DB5C6689A2CC7E2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D921ACD51F309A6C00982564 /* AlamofireImage.framework */,
+				D921ACCE1F30986900982564 /* Alamofire.framework */,
+				D921ACC41F3081DA00982564 /* FirebaseMessaging.framework */,
+				D921ACC21F3081D000982564 /* FirebaseStorage.framework */,
+				D921ACC01F3081C100982564 /* FirebaseDatabase.framework */,
+				D921ACBE1F3081B300982564 /* FirebaseCore.framework */,
+				D921ACBC1F3081A700982564 /* FirebaseAnalytics.framework */,
+				D921ACB31F2F752C00982564 /* FirebaseInstanceID */,
+				D921ACAC1F2F69A200982564 /* FirebaseInstanceID.framework */,
 				D92BAF321EF6BB010035CA8C /* AdSupport.framework */,
 				D9B58B5B1E670FF200858C9B /* UserNotifications.framework */,
 				D926BACD1D8D8C8600E3878C /* Social.framework */,
@@ -388,6 +456,25 @@
 			);
 			name = CollectionControllers;
 			path = ConllectionControllers;
+			sourceTree = "<group>";
+		};
+		D921ACB31F2F752C00982564 /* FirebaseInstanceID */ = {
+			isa = PBXGroup;
+			children = (
+				D921ACB41F2F752C00982564 /* CHANGELOG.md */,
+				D921ACB51F2F752C00982564 /* Frameworks */,
+				D921ACB71F2F752C00982564 /* README.md */,
+			);
+			name = FirebaseInstanceID;
+			path = Pods/FirebaseInstanceID;
+			sourceTree = "<group>";
+		};
+		D921ACB51F2F752C00982564 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D921ACB61F2F752C00982564 /* FirebaseInstanceID.framework */,
+			);
+			path = Frameworks;
 			sourceTree = "<group>";
 		};
 		D926BA931D8D6A6400E3878C = {
@@ -447,8 +534,10 @@
 		D926BAB31D8D6A6400E3878C /* MeetXSweatTests */ = {
 			isa = PBXGroup;
 			children = (
+				D94BC5521F2F644400995E20 /* JsonMocks */,
 				D926BAB41D8D6A6400E3878C /* MeetXSweatTests.swift */,
 				D926BAB61D8D6A6400E3878C /* Info.plist */,
+				D94BC54C1F2F376600995E20 /* PersonTests.swift */,
 			);
 			path = MeetXSweatTests;
 			sourceTree = "<group>";
@@ -524,6 +613,14 @@
 				D9C0866A1E4E094500122030 /* MXSTuttorialCollectionCell.swift */,
 			);
 			path = CollectionCells;
+			sourceTree = "<group>";
+		};
+		D94BC5521F2F644400995E20 /* JsonMocks */ = {
+			isa = PBXGroup;
+			children = (
+				D94BC54F1F2F642900995E20 /* TotoPerson.json */,
+			);
+			name = JsonMocks;
 			sourceTree = "<group>";
 		};
 		D959B3C61D92CF0C00981105 /* FindProfile */ = {
@@ -642,6 +739,7 @@
 				C5B4144B16157C6FB5E34947 /* [CP] Embed Pods Frameworks */,
 				F198259677107E65EFFCBEE0 /* [CP] Copy Pods Resources */,
 				D9BB48091D8E93C100C12541 /* ShellScript */,
+				D921ACDC1F309DF600982564 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -667,6 +765,7 @@
 			);
 			dependencies = (
 				D926BAB21D8D6A6400E3878C /* PBXTargetDependency */,
+				D921ACB21F2F739100982564 /* PBXTargetDependency */,
 			);
 			name = MeetXSweatTests;
 			productName = MeetXSweatTests;
@@ -702,6 +801,7 @@
 				D949BB591E5C872A00BCF3A0 /* [CP] Embed Pods Frameworks */,
 				D949BB5A1E5C872A00BCF3A0 /* [CP] Copy Pods Resources */,
 				D949BB5B1E5C872A00BCF3A0 /* ShellScript */,
+				D921ACDF1F309E2D00982564 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -814,6 +914,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D921ACD31F30994D00982564 /* MapIcons.xcassets in Resources */,
+				D921ACD41F30994D00982564 /* MenuIcons.xcassets in Resources */,
+				D94BC5501F2F642900995E20 /* TotoPerson.json in Resources */,
 				D94575961E44932100AF37F2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1088,6 +1191,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D94BC54D1F2F376600995E20 /* PersonTests.swift in Sources */,
 				D926BAB51D8D6A6400E3878C /* MeetXSweatTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1168,6 +1272,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D921ACB21F2F739100982564 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D949BB051E5C872A00BCF3A0 /* MeetXSweatProd */;
+			targetProxy = D921ACB11F2F739100982564 /* PBXContainerItemProxy */;
+		};
 		D926BAB21D8D6A6400E3878C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D926BA9B1D8D6A6400E3878C /* MeetXSweat */;
@@ -1293,8 +1402,8 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
+					"$(inherited)/**",
+					"$(PROJECT_DIR)/**",
 					"$(PROJECT_DIR)/MeetXSweat",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
@@ -1306,6 +1415,7 @@
 				PRODUCT_NAME = MeetXSweat;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEV;
 				SWIFT_OBJC_BRIDGING_HEADER = "MeetXSweat/MeetXSweat-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1322,8 +1432,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
+					"$(inherited)/**",
+					"$(PROJECT_DIR)/**",
 					"$(PROJECT_DIR)/MeetXSweat",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
@@ -1335,6 +1445,7 @@
 				PRODUCT_NAME = MeetXSweat;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEV;
 				SWIFT_OBJC_BRIDGING_HEADER = "MeetXSweat/MeetXSweat-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1346,10 +1457,21 @@
 			baseConfigurationReference = F04A0BDA1CBA2F76A3C5E1B3 /* Pods-MeetXSweatTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/FirebaseInstanceID/Frameworks",
+					"$(PROJECT_DIR)/Pods/FirebaseAnalytics/Frameworks",
+					"$(PROJECT_DIR)/Pods/FirebaseCore/Frameworks",
+					"$(PROJECT_DIR)/Pods/FirebaseDatabase/Frameworks",
+					"$(PROJECT_DIR)/Pods/FirebaseStorage/Frameworks",
+					"$(PROJECT_DIR)/Pods/FirebaseMessaging/Frameworks",
+				);
 				INFOPLIST_FILE = MeetXSweatTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MeetXSweat.MeetXSweatTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = TEST;
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MeetXSweat.app/MeetXSweat";
 			};
@@ -1360,10 +1482,21 @@
 			baseConfigurationReference = 187326795C00B62EA5F40D4B /* Pods-MeetXSweatTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/FirebaseInstanceID/Frameworks",
+					"$(PROJECT_DIR)/Pods/FirebaseAnalytics/Frameworks",
+					"$(PROJECT_DIR)/Pods/FirebaseCore/Frameworks",
+					"$(PROJECT_DIR)/Pods/FirebaseDatabase/Frameworks",
+					"$(PROJECT_DIR)/Pods/FirebaseStorage/Frameworks",
+					"$(PROJECT_DIR)/Pods/FirebaseMessaging/Frameworks",
+				);
 				INFOPLIST_FILE = MeetXSweatTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MeetXSweat.MeetXSweatTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = TEST;
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MeetXSweat.app/MeetXSweat";
 			};
@@ -1407,6 +1540,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/MeetXSweat",
+					"$(PROJECT_DIR)/Pods/FirebaseInstanceID/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
@@ -1423,6 +1557,7 @@
 				PRODUCT_NAME = MeetXSweat;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = PROD;
 				SWIFT_OBJC_BRIDGING_HEADER = "MeetXSweat/MeetXSweat-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1442,6 +1577,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/MeetXSweat",
+					"$(PROJECT_DIR)/Pods/FirebaseInstanceID/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
@@ -1458,6 +1594,7 @@
 				PRODUCT_NAME = MeetXSweat;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = PROD;
 				SWIFT_OBJC_BRIDGING_HEADER = "MeetXSweat/MeetXSweat-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;

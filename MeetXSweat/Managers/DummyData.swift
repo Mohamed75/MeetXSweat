@@ -36,7 +36,7 @@ class DummyData {
     
     class func uploadDomaines() {
         
-        let domainesRef = FIRDatabase.database().reference().child("domaine-items")
+        let domainesRef = Database.database().reference().child("domaine-items")
         for domaine in DummyData.getDomaines() {
             let ref = domainesRef.childByAutoId()
             ref.setValue(domaine)
@@ -45,7 +45,7 @@ class DummyData {
     
     class func uploadProfessions() {
         
-        let professionsRef = FIRDatabase.database().reference().child("profession-items")
+        let professionsRef = Database.database().reference().child("profession-items")
         for profession in DummyData.getProfessions() {
             let ref = professionsRef.childByAutoId()
             ref.setValue(profession)

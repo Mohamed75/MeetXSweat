@@ -1,0 +1,15 @@
+{
+  "adress" : "",
+  "apnsToken" : "",
+  "birthday" : "",
+  "domaine" : "Service clientèle",
+  "email" : "toto@toto.fr",
+  "gender" : "",
+  "isConnected" : true,
+  "lastName" : "Tito",
+  "name" : "toto",
+  "personDescription" : "",
+  "pictureUrl" : "https://firebasestorage.googleapis.com/v0/b/firebase-meetxsweat.appspot.com/o/images%2Ftoto@toto.fr.png?alt=media&token=c271ec7a-ca37-486f-bf16-62a2c01c9b78",
+  "profession" : "Consultant",
+  "sport" : "Running"
+}

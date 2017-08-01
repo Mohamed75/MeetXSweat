@@ -147,7 +147,6 @@ class MXSProfileViewController: MXSViewController, UIImagePickerControllerDelega
     
     // Mark: --- Button Actions ---
     
-    
     internal func userImageViewClicked() {
         
         let actionSheet = UIAlertController(title: kAlertTitle, message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
