@@ -40,7 +40,7 @@ class GoogleLogInHelper: NSObject, GIDSignInDelegate, GIDSignInUIDelegate {
     
     
     
-    // Mark: --- UIApplication ---
+    // MARK: - *** UIApplication ***
     
     class func application(_ application: UIApplication, openURL url: URL, options: [String: AnyObject]) -> Bool {
         
@@ -53,7 +53,7 @@ class GoogleLogInHelper: NSObject, GIDSignInDelegate, GIDSignInUIDelegate {
                                                     annotation: annotation)
     }
     
-    // Mark: ---  Initialization ---
+    // MARK: - *** Initialization ***
     
     fileprivate func initConfig() {
         
@@ -64,7 +64,7 @@ class GoogleLogInHelper: NSObject, GIDSignInDelegate, GIDSignInUIDelegate {
     }
     
     
-    // Mark: ---  LogIn/LogOut ---
+    // MARK: - *** LogIn/LogOut ***
     
     func logIn(_ delegate: LogInGoogleDelegate) {
         
@@ -78,7 +78,7 @@ class GoogleLogInHelper: NSObject, GIDSignInDelegate, GIDSignInUIDelegate {
     }
     
     
-    // Mark: --- GIDSignIn Delegate ---
+    // MARK: - *** GIDSignIn Delegate ***
     
     @objc func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         
@@ -119,7 +119,7 @@ class GoogleLogInHelper: NSObject, GIDSignInDelegate, GIDSignInUIDelegate {
     }
     
     
-    // Mark: --- UIDelegate ---
+    // MARK: - *** UIDelegate ***
     
     internal func sign(inWillDispatch signIn: GIDSignIn!, error: Error!) {
     }

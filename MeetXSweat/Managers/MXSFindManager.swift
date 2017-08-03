@@ -44,7 +44,7 @@ class MXSFindManager {
     
     
     
-    // MARK: --- filtering events by dates ---
+    // MARK: - *** Filtering events by dates ***
     
     class func filterEventsByDates() -> [Event] {
         
@@ -66,7 +66,7 @@ class MXSFindManager {
     }
     
     
-    // MARK: --- Persons filtering ---
+    // MARK: - *** Persons filtering ***
     
     class func filterBy(_ persons: [Person]) -> [Person] {
         
@@ -85,7 +85,7 @@ class MXSFindManager {
     }
     
     
-    // MARK: --- filtering Events by sleceted Sports ---
+    // MARK: - *** Filtering Events by sleceted Sports ***
     
     class func filterEventsBySports() -> [Event] {
         

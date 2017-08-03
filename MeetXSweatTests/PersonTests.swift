@@ -15,7 +15,7 @@ private let kTestCreatePersonOnDataBasedExpectation = "CreatePersonOnDataBase ex
 private let kGetRewardSummaryDetailsTimeOut = 10.0
 private let kStubsHeader    = ["Content-Type":"application/json"]
 
-private let kPersonHostUrl  = "https://fir-meetxsweat.firebaseio.com/person-items"
+private let kPersonHostUrl  = "https://fir-meetxsweat.firebaseio.com/person-items/email:toto@toto.fr"
 
 
 private let kPersonJsonMockFile = "TotoPerson.json"

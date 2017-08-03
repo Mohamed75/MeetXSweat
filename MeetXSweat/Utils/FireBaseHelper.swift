@@ -30,7 +30,7 @@ class FireBaseHelper {
     
     class func setUp() {
         
-        if FireBaseHelper.isUnitTesting() {
+        if Utils.isUnitTesting() {
 
             let options = FirebaseOptions(googleAppID: "1:507333318603:ios:e2db90ecfa14c7a8",gcmSenderID: "507333318603")
             options.databaseURL = "https://fir-meetxsweat.firebaseio.com"
@@ -71,9 +71,5 @@ class FireBaseHelper {
         }
         
         riversRef.putData(data, metadata: nil, completion: block)
-    }
-    
-    class func isUnitTesting() -> Bool {
-        return ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
     }
 }

@@ -31,7 +31,7 @@ class MXSViewController: UIViewController {
     var isTabBarEtendedView: Bool = false
     
     
-    // Mark: ---  View lifecycle ---
+    // MARK: - *** View lifecycle ***
     
     override func viewDidLoad() {
 
@@ -71,7 +71,7 @@ class MXSViewController: UIViewController {
     }
     
     
-    // Mark: --- SetUp subView ---
+    // MARK: - *** SetUp subView ***
     
     internal func addBarButtonItem() {
         
@@ -88,7 +88,7 @@ class MXSViewController: UIViewController {
     }
     
     
-    // Mark: --- NavigationBar Button Actions ---
+    // MARK: - *** NavigationBar Button Actions ***
     
     func validatButtonClicked(_ sender: AnyObject) {
         
@@ -114,7 +114,7 @@ class MXSViewController: UIViewController {
     }
     
     
-    // MARK: --- Shake Device ---
+    // MARK: - *** Shake Device ***
     
     override var canBecomeFirstResponder : Bool {
         return true
@@ -133,7 +133,7 @@ class MXSViewController: UIViewController {
 
 extension MXSViewController {
     
-    // MARK: --- Show PopIn ---
+    // MARK: - *** Show PopIn ***
     
     class func showInformationPopUp(_ title: String, withCancelButton: Bool, completion: @escaping (String) -> Void) {
         
@@ -178,7 +178,7 @@ extension MXSViewController {
     
     
     
-    // MARK: --- Others ---
+    // MARK: - *** Others ***
     
     class func customButton(_ button: UIButton) {
         

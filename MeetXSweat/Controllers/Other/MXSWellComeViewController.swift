@@ -76,7 +76,7 @@ class MXSWellComeViewController: MXSViewController, PickerViewDataSource, Picker
     }
     
     
-    // Mark: ---  View lifecycle ---
+    // MARK: - *** View lifecycle ***
     
     override func viewDidLoad() {
      
@@ -121,7 +121,7 @@ class MXSWellComeViewController: MXSViewController, PickerViewDataSource, Picker
         super.viewWillDisappear(animated)
     }
     
-    // Mark: ---  DeInitialization ---
+    // MARK: - *** DeInitialization ***
     
     deinit {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: Constants.FBNotificationName.sports), object: nil)
@@ -168,7 +168,7 @@ class MXSWellComeViewController: MXSViewController, PickerViewDataSource, Picker
         present(imagePicker, animated: true, completion: nil)
     }
     
-    // Mark: --- Notifications Observer ---
+    // MARK: - *** Notifications Observer ***
     
     func selectorSportUpdated() {
         if selectedButton == 2 {
@@ -190,7 +190,7 @@ class MXSWellComeViewController: MXSViewController, PickerViewDataSource, Picker
         }
     }
     
-    // Mark: --- Button Clicked ---
+    // MARK: - *** Button Clicked ***
     
     @IBAction func jobButtonClicked(_ sender: AnyObject) {
         
@@ -250,7 +250,7 @@ class MXSWellComeViewController: MXSViewController, PickerViewDataSource, Picker
         }
     }
     
-    // Mark: --- NavigationBar Button Actions ---
+    // MARK: - *** NavigationBar Button Actions ***
     
     override func validatButtonClicked(_ sender: AnyObject) {
         
@@ -272,7 +272,7 @@ class MXSWellComeViewController: MXSViewController, PickerViewDataSource, Picker
     }
     
     
-    // Mark: --- ImagePickerController ---
+    // MARK: - *** ImagePickerController ***
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
@@ -292,7 +292,7 @@ class MXSWellComeViewController: MXSViewController, PickerViewDataSource, Picker
 }
 
 
-// Mark: --- PickerView Delegate ---
+// MARK: - *** PickerView Delegate ***
 
 extension MXSWellComeViewController {
     

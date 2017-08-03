@@ -53,7 +53,7 @@ class MXSProfileViewController: MXSViewController, UIImagePickerControllerDelega
     
     
     
-    // Mark: ---  View lifecycle ---
+    // MARK: - *** View lifecycle ***
     
     override func viewDidLoad() {
         
@@ -127,7 +127,7 @@ class MXSProfileViewController: MXSViewController, UIImagePickerControllerDelega
         present(imagePicker, animated: true, completion: nil)
     }
     
-    // Mark: --- ImagePickerController ---
+    // MARK: - *** ImagePickerController ***
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
@@ -145,7 +145,7 @@ class MXSProfileViewController: MXSViewController, UIImagePickerControllerDelega
     }
     
     
-    // Mark: --- Button Actions ---
+    // MARK: - *** Button Actions ***
     
     internal func userImageViewClicked() {
         

@@ -29,7 +29,7 @@ class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
     internal var events = FireBaseDataManager.sharedInstance.events
     
     
-    // Mark: ---  Others ---
+    // MARK: - *** Others ***
     
     private func addOverlay() {
         
@@ -68,7 +68,7 @@ class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
     }
     
     
-    // Mark: ---  View lifecycle ---
+    // MARK: - *** View lifecycle ***
     
     override func viewDidLoad() {
         
@@ -100,7 +100,7 @@ class  MXSFindArroundMeViewController: MXSViewController, MKMapViewDelegate {
 }
 
 
-// Mark: --- MapView Delegate ---
+// MARK: - *** MapView Delegate ***
 
 extension MXSFindArroundMeViewController {
     
@@ -196,7 +196,7 @@ extension MXSFindArroundMeViewController {
 }
 
 
-// Mark: --- Custom MKAnnotationView ---
+// MARK: - *** Custom MKAnnotationView ***
 
 extension MKAnnotationView {
     

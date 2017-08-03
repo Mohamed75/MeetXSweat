@@ -17,7 +17,7 @@ class Message: FireBaseObject {
     var senderId    = ""
 
     
-    // Mark: --- Initialisation ---
+    // MARK: - *** Initialisation ***
     
     override init() {
         super.init()
@@ -31,7 +31,7 @@ class Message: FireBaseObject {
         super.init(coder: aDecoder)
     }
     
-    // Mark: --- Get Informations  ---
+    // MARK: - *** Get Informations ***
     
     func toJSQMessage() -> JSQMessage {
         return JSQMessage(senderId: senderId, displayName: "", text: text)

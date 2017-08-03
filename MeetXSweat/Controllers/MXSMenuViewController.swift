@@ -36,7 +36,7 @@ class MXSMenuViewController: UITableViewController {
     
     
     
-    // Mark: --- SetUp subView ---
+    // MARK: - *** SetUp subView ***
     
     internal func customSectionHeader(_ pView: UIView) {
         
@@ -94,7 +94,7 @@ class MXSMenuViewController: UITableViewController {
     
     
     
-    // Mark: ---  View lifecycle ---
+    // MARK: - *** View lifecycle ***
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,7 +116,7 @@ class MXSMenuViewController: UITableViewController {
     
     
     
-    // Mark: --- Buttons Actions ---
+    // MARK: - *** Buttons Actions ***
     
     internal func profileButtonClicked(_ sender: AnyObject) {
         
@@ -148,7 +148,7 @@ class MXSMenuViewController: UITableViewController {
     }
     
     
-    // Mark: --- UIScrollView Delegate ---
+    // MARK: - *** UIScrollView Delegate ***
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
@@ -160,7 +160,7 @@ class MXSMenuViewController: UITableViewController {
 }
 
 
-// Mark: --- UITableView Delegate ---
+// MARK: - *** UITableView Delegate ***
 
 extension MXSMenuViewController {
     

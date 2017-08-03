@@ -44,7 +44,7 @@ class MXSTuttorialViewController: MXSViewController, UICollectionViewDelegate, U
         pageControl.transform = CGAffineTransform(scaleX: 1.7, y: 1.7)
     }
     
-    // Mark: ---  View lifecycle ---
+    // MARK: - *** View lifecycle ***
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +58,7 @@ class MXSTuttorialViewController: MXSViewController, UICollectionViewDelegate, U
     }
     
     
-    // Mark: --- NavigationBar Button Actions ---
+    // MARK: - *** NavigationBar Button Actions ***
     
     override func validatButtonClicked(_ sender: AnyObject) {
         
@@ -66,7 +66,7 @@ class MXSTuttorialViewController: MXSViewController, UICollectionViewDelegate, U
         self.navigationController?.viewDidLoad()
     }
     
-    // Mark: --- ScrollView Delegate ---
+    // MARK: - *** ScrollView Delegate ***
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
@@ -76,7 +76,7 @@ class MXSTuttorialViewController: MXSViewController, UICollectionViewDelegate, U
 }
 
 
-// MARK: --- collectionView Delegate ---
+// MARK: - *** CollectionView Delegate ***
 
 extension MXSTuttorialViewController {
     

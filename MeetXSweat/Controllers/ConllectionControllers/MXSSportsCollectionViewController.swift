@@ -32,7 +32,7 @@ class MXSSportsCollectionViewController: UICollectionViewController {
     internal var sports = FireBaseDataManager.sharedInstance.sports
     
     
-    // Mark: ---  View lifecycle ---
+    // MARK: - *** View lifecycle ***
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +47,7 @@ class MXSSportsCollectionViewController: UICollectionViewController {
     }
     
     
-    // Mark: --- Notifications Observer ---
+    // MARK: - *** Notifications Observer ***
     
     func selectorSportUpdated() {
         sports = FireBaseDataManager.sharedInstance.sports
@@ -81,7 +81,7 @@ class MXSSportsCollectionViewController: UICollectionViewController {
 }
 
 
-// Mark: --- CollectionView Delegate ---
+// MARK: - *** CollectionView Delegate ***
 
 extension MXSSportsCollectionViewController {
     

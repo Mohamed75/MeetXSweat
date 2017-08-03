@@ -19,7 +19,7 @@ class EnCodeObject: NSObject, NSCoding {
     
     
     
-    // Mark: ---  Handel object properties ---
+    // MARK: - *** Handel object properties ***
     
     internal func properties() -> [String] {
         
@@ -43,7 +43,7 @@ class EnCodeObject: NSObject, NSCoding {
         return nil
     }
     
-    // Mark: ---  Encode/Decode ---
+    // MARK: - *** Encode/Decode ***
     
     // To save
     func encode(with aCoder: NSCoder) {
@@ -65,14 +65,14 @@ class EnCodeObject: NSObject, NSCoding {
         }
     }
     
-    // Mark: ---  Initialization ---
+    // MARK: - *** Initialization ***
     
     override init() {
         super.init()
     }
     
     
-    // Mark: ---  Save/Load UserDefaults ---
+    // MARK: - *** Save/Load UserDefaults ***
     
     internal func saveToNSUserDefaults() {
         
@@ -90,7 +90,7 @@ class EnCodeObject: NSObject, NSCoding {
 }
 
 
-// Mark: ---  Private Methodes ---
+// MARK: - *** Private Methodes ***
 
 // Retrieves an array of property names found on the current object
 // Using Objective-C runtime functions for introspection:

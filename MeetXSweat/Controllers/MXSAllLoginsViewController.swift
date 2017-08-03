@@ -40,7 +40,7 @@ class MXSAllLoginsViewController: MXSViewController {
     @IBOutlet weak var passWordTextField: UITextField!
     
 
-    // Mark: ---  View lifecycle ---
+    // MARK: - *** View lifecycle ***
     
     override func viewDidLoad() {
         
@@ -95,7 +95,7 @@ class MXSAllLoginsViewController: MXSViewController {
     }
     
     
-    // MARK: --- Show/Hide keyboard ---
+    // MARK: - *** Show/Hide keyboard ***
     
     func keyboardWillHide(_ sender: Notification) {
         
@@ -135,7 +135,7 @@ class MXSAllLoginsViewController: MXSViewController {
     }
     
     
-    // Mark: --- Buttons Actions ---
+    // MARK: - *** Buttons Actions ***
     
     @IBAction func loginButtonClicked(_ sender: AnyObject) {
         
@@ -166,7 +166,7 @@ class MXSAllLoginsViewController: MXSViewController {
     }
     
     
-    // MARK: --- TextFields Delegate ---
+    // MARK: - *** TextFields Delegate ***
     
     func textFieldShouldReturn(_ textField: UITextField!) -> Bool {   //delegate method
         
@@ -181,7 +181,7 @@ class MXSAllLoginsViewController: MXSViewController {
     
     
     
-    // MARK: --- LogIn Buttons Clicked ---
+    // MARK: - *** LogIn Buttons Clicked ***
     
     @IBAction func faceBookLoginButtonClicked() {
         

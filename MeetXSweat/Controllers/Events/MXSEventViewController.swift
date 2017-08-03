@@ -102,7 +102,7 @@ class MXSEventViewController: MXSViewController {
     }
     
     
-    // Mark: ---  View lifecycle ---
+    // MARK: - *** View lifecycle ***
     
     override func viewDidLoad() {
         
@@ -192,7 +192,7 @@ class MXSEventViewController: MXSViewController {
     }
     
     
-    // Mark: --- Button Actions ---
+    // MARK: - *** Button Actions ***
     
     @IBAction func participantsButtonClicked(_ sender: AnyObject) {
         
@@ -233,7 +233,7 @@ class MXSEventViewController: MXSViewController {
 }
 
 
- // Mark: --- MapView Delegate ---
+// MARK: - ***  MapView Delegate ***
 
 extension MXSEventViewController {
     

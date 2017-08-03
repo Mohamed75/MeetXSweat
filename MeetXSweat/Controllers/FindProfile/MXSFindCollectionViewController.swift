@@ -25,7 +25,7 @@ class MXSFindCollectionViewController: MXSViewController {
     var isSweatWorking = false
     
     
-    // Mark: ---  View lifecycle ---
+    // MARK: - *** View lifecycle ***
     
     override func viewDidLoad() {
         

@@ -39,7 +39,7 @@ class Person: FireBaseObject {
     var apnsToken   = ""
     
     
-    // Mark: --- Initialisation ---
+    // MARK: - *** Initialisation ***
     
     override init() {
         super.init()
@@ -53,7 +53,7 @@ class Person: FireBaseObject {
         super.init(coder: aDecoder)
     }
     
-    // Mark: --- Get, Save and update data to firebase ---
+    // MARK: - *** Get, Save and update data to firebase ***
     
     // Create or update current user if the user already exist on firebase but not on the app yet
     private var handle: DatabaseHandle!
@@ -81,7 +81,7 @@ class Person: FireBaseObject {
                 
             } else { // Person already exist on firebase
                 print("user already exist")
-                this.updateCurrentPersonFromDB(snapshot)
+                this.loadCurrentPersonFromDB(snapshot)
                 completion(true)
             }
             personRef.removeObserver(withHandle: this.handle)
@@ -91,8 +91,8 @@ class Person: FireBaseObject {
             .observe(.value, with: block)
     }
     
-    // Update current user from FireBase used only by createPersonOnDataBase()
-    fileprivate func updateCurrentPersonFromDB(_ snapshot: DataSnapshot) {
+    // Load current user data from FireBase, used only by createPersonOnDataBase()
+    fileprivate func loadCurrentPersonFromDB(_ snapshot: DataSnapshot) {
         
         for child in snapshot.children {
             let snapUser = User(snapshot: child as! DataSnapshot)
@@ -198,7 +198,7 @@ class Person: FireBaseObject {
     }
     
     
-    // Mark: --- Get Informations  ---
+    // MARK: - *** Get Informations  ***
     
     // Email withoutSpecialCharacters
     func getEmailAsId() -> String {

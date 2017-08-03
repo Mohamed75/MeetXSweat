@@ -21,7 +21,7 @@ class MXSProfileDescriptionViewController: MXSViewController {
     internal var person: Person!
     
     
-    // Mark: ---  View lifecycle ---
+    // MARK: - *** View lifecycle ***
     
     override func viewDidLoad() {
         
@@ -33,7 +33,7 @@ class MXSProfileDescriptionViewController: MXSViewController {
     }
     
     
-    // Mark: --- NavigationBar Button Actions ---
+    // MARK: - *** NavigationBar Button Actions ***
     
     override func validatButtonClicked(_ sender: AnyObject) {
         

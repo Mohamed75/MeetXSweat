@@ -28,7 +28,7 @@ class MXSConversationsCollectionViewController: UICollectionViewController {
     internal var conversations: [Conversation]!
     
     
-    // Mark: --- CollectionView Delegate ---
+    // MARK: - *** CollectionView Delegate ***
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         

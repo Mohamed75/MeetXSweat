@@ -36,14 +36,14 @@ class MXSPersonsCollectionViewController: UICollectionViewController {
     internal var persons: [Person]?
     
     
-    // Mark: ---  View lifecycle ---
+    // MARK: - *** View lifecycle ***
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     
-    // Mark: --- CollectionView Delegate ---
+    // MARK: - *** CollectionView Delegate ***
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         

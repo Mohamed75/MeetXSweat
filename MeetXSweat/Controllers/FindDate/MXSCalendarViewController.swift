@@ -28,7 +28,7 @@ class MXSCalendarViewController: MXSViewController, JTAppleCalendarViewDataSourc
     
     
     
-    // Mark: --- SetUp ---
+    // MARK: - *** SetUp ***
     
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
         
@@ -56,7 +56,7 @@ class MXSCalendarViewController: MXSViewController, JTAppleCalendarViewDataSourc
 }
 
 
-// Mark: --- JTAppleCalendarView Delegate ---
+// MARK: - *** JTAppleCalendarView Delegate ***
 
 extension MXSCalendarViewController {
     

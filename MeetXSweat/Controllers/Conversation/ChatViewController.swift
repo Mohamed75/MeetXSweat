@@ -51,7 +51,7 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     
-    // Mark: ---  View lifecycle ---
+    // MARK: - *** View lifecycle ***
     
     override func viewDidLoad() {
         
@@ -93,7 +93,7 @@ class ChatViewController: JSQMessagesViewController {
     }
     
   
-    // Mark: --- FireBase Messages Observer ---
+    // MARK: - *** FireBase Messages Observer ***
     
     fileprivate func _messagesBlock() -> (_ messages: [Message]) -> Void {
         
@@ -146,7 +146,7 @@ class ChatViewController: JSQMessagesViewController {
 }
 
 
-// Mark: --- CollectionView Delegate ---
+// MARK: - *** CollectionView Delegate ***
 
 extension ChatViewController {
     

@@ -34,7 +34,7 @@ class MXSAddEventViewController: MXSViewController,  UIPickerViewDataSource, UIP
     fileprivate var sports = FireBaseDataManager.sharedInstance.sports
     
     
-    // Mark: ---  View lifecycle ---
+    // MARK: - *** View lifecycle ***
     
     override func viewDidLoad() {
         
@@ -58,7 +58,7 @@ class MXSAddEventViewController: MXSViewController,  UIPickerViewDataSource, UIP
         sportTextField.delegate     = self
     }
     
-    // Mark: --- FireBase Save Event ---
+    // MARK: - *** FireBase Save Event ***
     
     func creatEvent() {
         
@@ -80,7 +80,7 @@ class MXSAddEventViewController: MXSViewController,  UIPickerViewDataSource, UIP
         event.saveEventToDataBase()
     }
     
-    // Mark: --- Button Actions ---
+    // MARK: - *** Button Actions ***
     
     @IBAction func validerButtonClicked(_ sender: AnyObject) {
         
@@ -140,7 +140,7 @@ class MXSAddEventViewController: MXSViewController,  UIPickerViewDataSource, UIP
 }
 
 
-// Mark: --- pickerView Delegate ---
+// MARK: - *** PickerView Delegate ***
 
 extension MXSAddEventViewController {
     

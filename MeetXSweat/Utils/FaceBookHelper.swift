@@ -51,7 +51,7 @@ class FaceBookHelper {
     
     
     
-    // Mark: --- UIApplication ---
+    // MARK: - *** UIApplication ***
     
     class func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [AnyHashable: Any]?) -> Bool {
         
@@ -67,7 +67,7 @@ class FaceBookHelper {
     
     
     
-    // Mark: ---  LogIn/LogOut ---
+    // MARK: - *** LogIn/LogOut ***
     
     
     // Avoid multiple click on the login button
@@ -122,7 +122,7 @@ class FaceBookHelper {
     
     
     
-    // MARK: --- webLogIn ---
+    // MARK: - *** WebLogIn ***
     
     fileprivate class func faceBookWebLogin(_ delegate: LogInFBDelegate) {
         
@@ -149,7 +149,7 @@ class FaceBookHelper {
     }
     
     
-    // MARK: --- Get User Info ---
+    // MARK: - *** Get User Info ***
     
     fileprivate class func getUserInfo(_ token: String, delegate: LogInFBDelegate) {
         

@@ -25,7 +25,7 @@ class User: Person {
     static let currentUser = User.loadCustomObject()
     
     
-    // Mark: --- SetUp ---
+    // MARK: - *** SetUp ***
     
     func initFromFBData(_ data: NSDictionary, completion: @escaping CompletionSuccessBlock) {
         
@@ -150,7 +150,7 @@ class User: Person {
     }
     
     
-    // Mark: --- SetUp from fireBase ---
+    // MARK: - *** SetUp from fireBase ***
     
     func createFromEmailData(_ email: String, password: String, name: String, lastName: String, completion: @escaping CompletionSuccessBlock) {
         
@@ -209,7 +209,7 @@ class User: Person {
         Auth.auth().signIn(withEmail: email, password: password, completion: completion)
     }
     
-    // Mark: --- Get, Save and update data to firebase ---
+    // MARK: - *** Get, Save and update data to firebase ***
     
     // Called when create an new account or logIn
     fileprivate func saveCustomObject(_ completion: @escaping CompletionSuccessBlock)
@@ -259,7 +259,7 @@ class User: Person {
     }
     
     
-    // Mark: --- LogOut ---
+    // MARK: - *** LogOut ***
     
     func logOut(_ completion: @escaping CompletionDoneBlock) {
         
@@ -296,7 +296,7 @@ class User: Person {
     }
     
     
-    // Mark: --- Copy ---
+    // MARK: - ***  Copy ***
     
     func copyToPerson(_ person: Person) {
         

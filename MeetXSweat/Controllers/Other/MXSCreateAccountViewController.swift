@@ -34,7 +34,7 @@ class MXSCreateAccountViewController: MXSViewController {
     @IBOutlet weak var cancelButton:    UIButton!
     
     
-    // Mark: ---  View lifecycle ---
+    // MARK: - *** View lifecycle ***
     
     override func viewDidLoad() {
         
@@ -81,7 +81,7 @@ class MXSCreateAccountViewController: MXSViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // Mark: --- Button Actions ---
+    // MARK: - *** Button Actions ***
     
     @IBAction func vailderButtonClicked(_ sender: AnyObject) {
         
@@ -135,7 +135,7 @@ class MXSCreateAccountViewController: MXSViewController {
     }
     
     
-    // MARK: --- TextFields Delegate ---
+    // MARK: - *** TextFields Delegate ***
     
     func textFieldShouldReturn(_ textField: UITextField!) -> Bool {   //delegate method
         

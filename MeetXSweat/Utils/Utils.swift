@@ -474,4 +474,8 @@ class Utils {
         }
         return token
     }
+    
+    class func isUnitTesting() -> Bool {
+        return ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
+    }
 }

@@ -31,11 +31,11 @@
 		D921ACD21F30992600982564 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D921ACCE1F30986900982564 /* Alamofire.framework */; };
 		D921ACD31F30994D00982564 /* MapIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9C0863F1E4A19D500122030 /* MapIcons.xcassets */; };
 		D921ACD41F30994D00982564 /* MenuIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D93AF0991E60DBE9004B5565 /* MenuIcons.xcassets */; };
-		D921ACD61F309A6C00982564 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D921ACD51F309A6C00982564 /* AlamofireImage.framework */; };
-		D921ACDA1F309DF600982564 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D921ACCE1F30986900982564 /* Alamofire.framework */; };
-		D921ACDB1F309DF600982564 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D921ACCE1F30986900982564 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D921ACDD1F309E2D00982564 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D921ACCE1F30986900982564 /* Alamofire.framework */; };
-		D921ACDE1F309E2D00982564 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D921ACCE1F30986900982564 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D921ACE41F30B03200982564 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D921ACCE1F30986900982564 /* Alamofire.framework */; };
+		D921ACE51F30B03200982564 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D921ACCE1F30986900982564 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D921ACE71F30B03D00982564 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D921ACCE1F30986900982564 /* Alamofire.framework */; };
+		D921ACE81F30B03D00982564 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D921ACCE1F30986900982564 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D921ACF81F30B90A00982564 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D921ACF71F30B90A00982564 /* Twitter.framework */; };
 		D926BAA01D8D6A6400E3878C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D926BA9F1D8D6A6400E3878C /* AppDelegate.swift */; };
 		D926BAA71D8D6A6400E3878C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D926BAA61D8D6A6400E3878C /* Assets.xcassets */; };
 		D926BAAA1D8D6A6400E3878C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D926BAA81D8D6A6400E3878C /* LaunchScreen.storyboard */; };
@@ -212,24 +212,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		D921ACDC1F309DF600982564 /* Embed Frameworks */ = {
+		D921ACE61F30B03200982564 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D921ACDB1F309DF600982564 /* Alamofire.framework in Embed Frameworks */,
+				D921ACE51F30B03200982564 /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D921ACDF1F309E2D00982564 /* Embed Frameworks */ = {
+		D921ACE91F30B03D00982564 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D921ACDE1F309E2D00982564 /* Alamofire.framework in Embed Frameworks */,
+				D921ACE81F30B03D00982564 /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -273,6 +273,7 @@
 		D921ACC41F3081DA00982564 /* FirebaseMessaging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseMessaging.framework; path = Pods/FirebaseMessaging/Frameworks/FirebaseMessaging.framework; sourceTree = "<group>"; };
 		D921ACCE1F30986900982564 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../Library/Developer/Xcode/DerivedData/MeetXSweat-dzxolhyrhyrsoscjofqqaizocujz/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		D921ACD51F309A6C00982564 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = "../Library/Developer/Xcode/DerivedData/MeetXSweat-dzxolhyrhyrsoscjofqqaizocujz/Build/Products/Debug-iphonesimulator/AlamofireImage/AlamofireImage.framework"; sourceTree = "<group>"; };
+		D921ACF71F30B90A00982564 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		D926BA9C1D8D6A6400E3878C /* MeetXSweat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetXSweat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D926BA9F1D8D6A6400E3878C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D926BAA61D8D6A6400E3878C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -363,7 +364,7 @@
 				D92BAF331EF6BB010035CA8C /* AdSupport.framework in Frameworks */,
 				D926BACE1D8D8C8600E3878C /* Social.framework in Frameworks */,
 				26168A058FAF4B8C39C1342F /* Pods_MeetXSweat.framework in Frameworks */,
-				D921ACDA1F309DF600982564 /* Alamofire.framework in Frameworks */,
+				D921ACE41F30B03200982564 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,7 +372,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D921ACD61F309A6C00982564 /* AlamofireImage.framework in Frameworks */,
+				D921ACF81F30B90A00982564 /* Twitter.framework in Frameworks */,
 				D921ACD21F30992600982564 /* Alamofire.framework in Frameworks */,
 				1E73987874C73DEE6D84DFE3 /* Pods_MeetXSweatTests.framework in Frameworks */,
 			);
@@ -389,7 +390,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D92BAF341EF6BB080035CA8C /* AdSupport.framework in Frameworks */,
-				D921ACDD1F309E2D00982564 /* Alamofire.framework in Frameworks */,
+				D921ACE71F30B03D00982564 /* Alamofire.framework in Frameworks */,
 				D9B58B5C1E670FF200858C9B /* UserNotifications.framework in Frameworks */,
 				D949BB441E5C872A00BCF3A0 /* Social.framework in Frameworks */,
 				D949BB461E5C872A00BCF3A0 /* Pods_MeetXSweat.framework in Frameworks */,
@@ -416,6 +417,7 @@
 		BE7C0B832DB5C6689A2CC7E2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D921ACF71F30B90A00982564 /* Twitter.framework */,
 				D921ACD51F309A6C00982564 /* AlamofireImage.framework */,
 				D921ACCE1F30986900982564 /* Alamofire.framework */,
 				D921ACC41F3081DA00982564 /* FirebaseMessaging.framework */,
@@ -739,7 +741,7 @@
 				C5B4144B16157C6FB5E34947 /* [CP] Embed Pods Frameworks */,
 				F198259677107E65EFFCBEE0 /* [CP] Copy Pods Resources */,
 				D9BB48091D8E93C100C12541 /* ShellScript */,
-				D921ACDC1F309DF600982564 /* Embed Frameworks */,
+				D921ACE61F30B03200982564 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -801,7 +803,7 @@
 				D949BB591E5C872A00BCF3A0 /* [CP] Embed Pods Frameworks */,
 				D949BB5A1E5C872A00BCF3A0 /* [CP] Copy Pods Resources */,
 				D949BB5B1E5C872A00BCF3A0 /* ShellScript */,
-				D921ACDF1F309E2D00982564 /* Embed Frameworks */,
+				D921ACE91F30B03D00982564 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1402,8 +1404,8 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)/**",
-					"$(PROJECT_DIR)/**",
+					"$(inherited)",
+					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/MeetXSweat",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
@@ -1432,8 +1434,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)/**",
-					"$(PROJECT_DIR)/**",
+					"$(inherited)",
+					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/MeetXSweat",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;

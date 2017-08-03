@@ -15,7 +15,7 @@ import DrawerController
 extension UINavigationController {
 
     
-    // Mark: ---  View lifecycle ---
+    // MARK: - *** View lifecycle ***
     
     open override func viewDidLoad() {
         
@@ -149,7 +149,7 @@ extension UINavigationController {
         }
     }
     
-    // Mark: ---  Others ---
+    // MARK: - *** Others ***
     
     func getPreviousViewController() -> UIViewController {
         if let indexCurrentViewController = self.viewControllers.index(of: self.visibleViewController!) {

@@ -21,7 +21,7 @@ class FireBaseObject: EnCodeObject {
     var ref: DatabaseReference?
     
     
-    // Mark: ---  Initialization ---
+    // MARK: - *** Initialization ***
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -66,7 +66,7 @@ class FireBaseObject: EnCodeObject {
         ref = snapshot.ref
     }
     
-    // Mark: ---  Copy ---
+    // MARK: - *** Copy ***
     
     func copyFromJson(_ dictionary: [String : AnyObject?]) {
         

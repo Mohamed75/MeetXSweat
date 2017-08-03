@@ -24,7 +24,7 @@ class MXSEventsCollectionViewController: UICollectionViewController {
     internal var fromProfileViewController = false
     
     
-    // Mark: ---  View lifecycle ---
+    // MARK: - *** View lifecycle ***
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +41,7 @@ class MXSEventsCollectionViewController: UICollectionViewController {
 }
 
 
-// Mark: --- CollectionView Delegate ---
+// MARK: - *** CollectionView Delegate ***
 
 extension MXSEventsCollectionViewController {
     
@@ -130,7 +130,7 @@ extension MXSEventsCollectionViewController {
     
     
     
-    // Mark: --- Private Methode ---
+    // MARK: - *** Private Methode ***
     
     private func customizeFirstCell(_ cell: UICollectionViewCell) {
         

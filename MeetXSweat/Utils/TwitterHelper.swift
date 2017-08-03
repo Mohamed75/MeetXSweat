@@ -31,14 +31,16 @@ protocol LogInTWDelegate {
 
 class TwitterHelper {
     
-    // Mark: --- UIApplication ---
+    // MARK: - *** UIApplication ***
     
     class func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [AnyHashable: Any]?) {
         
-        Fabric.with([Crashlytics.self, Twitter.self])
+        if !Utils.isUnitTesting() {
+            Fabric.with([Crashlytics.self, Twitter.self])
+        }
     }
     
-    // Mark: ---  LogIn/LogOut ---
+    // MARK: - *** LogIn/LogOut ***
     
     class func logIn(_ delegate: LogInTWDelegate) {
         
@@ -67,7 +69,7 @@ class TwitterHelper {
         }
     }
     
-    // MARK: --- Get User Info ---
+    // MARK: - *** Get User Info ***
     
     fileprivate class func getUserInfo(_ delegate: LogInTWDelegate) {
         

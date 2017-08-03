@@ -29,7 +29,7 @@ class MXSFindDateViewController: MXSCalendarViewController {
     @IBOutlet weak var stackView: UIStackView!
     
     
-    // Mark: ---  View lifecycle ---
+    // MARK: - *** View lifecycle ***
     
     override func viewDidLoad() {
         
@@ -82,7 +82,7 @@ class MXSFindDateViewController: MXSCalendarViewController {
         calendarView.reloadData()
     }
     
-    // Mark: --- NavigationBar Button Actions ---
+    // MARK: - *** NavigationBar Button Actions ***
     
     override func validatButtonClicked(_ sender: AnyObject) {
         
@@ -96,7 +96,7 @@ class MXSFindDateViewController: MXSCalendarViewController {
     }
     
     
-    // Mark: --- setup Calendar Views ---
+    // MARK: - *** Setup Calendar Views ***
     
     override func setupViewsOfCalendar(from visibleDates: DateSegmentInfo) {
         guard let startDate = visibleDates.monthDates.first else {
@@ -109,7 +109,7 @@ class MXSFindDateViewController: MXSCalendarViewController {
     }
     
     
-    // Mark: --- Button Actions ---
+    // MARK: - *** Button Actions ***
     
     @IBAction func next(_ sender: UIButton) {
         calendarView.scrollToSegment(.next) { [weak self] in

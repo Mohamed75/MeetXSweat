@@ -25,10 +25,8 @@ private let kAnimationSpeed: Float  = 0.3
 class MXSActivityIndicator: UIView {
 
     static let sharedInstance = MXSActivityIndicator(frame: CGRect(x: 0, y: 0, width: kWidth, height: kHeight))
-    //var imageView: UIImageView!
     
-    
-    // Mark: ---  Initialization ---
+    // MARK: - *** Initialization ***
     
     override init(frame: CGRect) {
         
@@ -43,7 +41,7 @@ class MXSActivityIndicator: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // Mark: ---  Start/Stop Animation ---
+    // MARK: - *** Start/Stop Animation ***
     
     class func startAnimating() {
         

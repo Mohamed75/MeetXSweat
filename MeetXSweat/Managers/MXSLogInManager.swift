@@ -52,7 +52,8 @@ class MXSLogInManager: LogInFBDelegate, LogInTWDelegate, LogInLKDelegate, LogInG
         }
     }
     
-    // MARK: --- LogIn Helpers callBacks ---
+    
+    // MARK: - *** LogIn Helpers callBacks ***
     
     func logInFBSuccess(_ data: NSDictionary?) {
         

@@ -53,7 +53,7 @@ class Event: FireBaseObject {
     
     
     
-    // Mark: --- Initialisation ---
+    // MARK: - *** Initialisation ***
     
     override init() {
         super.init()
@@ -70,7 +70,7 @@ class Event: FireBaseObject {
     }
     
     
-    // Mark: --- Get, Save and update data to firebase ---
+    // MARK: - *** Get, Save and update data to firebase ***
     
     func getFullPersons() -> [Person] {
         EventPersons.fetchPersons(persons)
@@ -124,7 +124,7 @@ class Event: FireBaseObject {
     }
     
     
-    // Mark: --- Get Informations  ---
+    // MARK: - *** Get Informations ***
     
     func getCoordinate() -> CLLocationCoordinate2D? {
         

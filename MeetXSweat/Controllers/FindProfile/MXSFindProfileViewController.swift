@@ -50,7 +50,7 @@ class MXSFindProfileViewController: MXSViewController, PickerViewDataSource, Pic
     
     
     
-    // Mark: ---  Initialization ---
+    // MARK: - *** Initialization ***
     
     // The MXSFindProfileViewController shared instance
     static let sharedInstance = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findProfile, viewControllerId: Ressources.StoryBooardsIdentifiers.findProfileId)
@@ -58,7 +58,7 @@ class MXSFindProfileViewController: MXSViewController, PickerViewDataSource, Pic
     
     
     
-    // Mark: ---  View lifecycle ---
+    // MARK: - *** View lifecycle ***
     
     override func viewDidLoad() {
         
@@ -110,7 +110,7 @@ class MXSFindProfileViewController: MXSViewController, PickerViewDataSource, Pic
     }
     
     
-    // Mark: ---  DeInitialization ---
+    // MARK: - *** DeInitialization ***
     
     deinit {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: Constants.FBNotificationName.domaines), object: nil)
@@ -128,7 +128,7 @@ class MXSFindProfileViewController: MXSViewController, PickerViewDataSource, Pic
         }
     }
     
-    // Mark: --- SetUp subView ---
+    // MARK: - *** SetUp subView ***
     
     private func customLabel(_ label: UILabel) {
         
@@ -154,7 +154,7 @@ class MXSFindProfileViewController: MXSViewController, PickerViewDataSource, Pic
     }
     
     
-    // Mark: --- Labels Actions ---
+    // MARK: - *** Labels Actions ***
     
     internal func selectMetierLabel() {
         
@@ -182,7 +182,7 @@ class MXSFindProfileViewController: MXSViewController, PickerViewDataSource, Pic
     
     
     
-    // Mark: --- Notifications Observer ---
+    // MARK: - *** Notifications Observer ***
     
     internal func selectorDomaineUpdated() {
         
@@ -199,7 +199,7 @@ class MXSFindProfileViewController: MXSViewController, PickerViewDataSource, Pic
     }
     
     
-    // Mark: --- NavigationBar Button Actions ---
+    // MARK: - *** NavigationBar Button Actions ***
     
     override func validatButtonClicked(_ sender: AnyObject) {
         
@@ -236,7 +236,7 @@ class MXSFindProfileViewController: MXSViewController, PickerViewDataSource, Pic
 }
 
 
-// Mark: --- PickerView Delegate ---
+// MARK: - *** PickerView Delegate ***
 
 extension MXSFindProfileViewController {
     

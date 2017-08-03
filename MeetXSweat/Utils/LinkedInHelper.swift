@@ -34,7 +34,7 @@ protocol LogInLKDelegate {
 
 class LiknedInHelper {
     
-    // Mark: ---  LogIn/LogOut ---
+    // MARK: - *** LogIn/LogOut ***
     
     class func logIn(_ delegate: LogInLKDelegate) {
         
