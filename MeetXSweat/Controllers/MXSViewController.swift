@@ -190,7 +190,7 @@ extension MXSViewController {
     class func underLineView(_ view: UIView) {
         
         let line = UIView(frame: CGRect(x: 0, y: view.frame.size.height-1, width: view.frame.size.width, height: 1))
-        line.backgroundColor = UIColor.black
+        line.backgroundColor = Constants.MainColor.kTextFieldUnderLine
         view.addSubview(line)
     }
     

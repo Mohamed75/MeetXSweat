@@ -33,14 +33,14 @@ enum Strings {
     }
     
     struct Account {
-        static let email    = "Email"
+        static let email    = "E-mail"
         static let password = "Password"
         static let name     = "Nom"
         static let lastName = "Prénom"
     }
     
     struct LabelTitel {
-        static let sports    = "TOUS LES PLANS"
+        static let sports       = "TOUS LES PLANS"
         static let lesSports    = "Vos sweatworkings"
     }
     

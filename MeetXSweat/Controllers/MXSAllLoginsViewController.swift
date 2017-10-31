@@ -10,7 +10,7 @@ import UIKit
 import AlamofireImage
 
 
-
+private let kButtonCornerRadius: CGFloat = 3
 
 /**
  *  This class was designed and implemented to setUp an allLoginsViewController.
@@ -49,6 +49,14 @@ class MXSAllLoginsViewController: MXSViewController {
         self.evo_drawerController!.openDrawerGestureModeMask = []
         googleButton.setBackgroundImage(UIImage(named: Ressources.Images.glBtn), for: UIControlState())
         
+        faceBookButton.layer.cornerRadius = kButtonCornerRadius
+        faceBookButton.clipsToBounds = true
+        twitterButton.layer.cornerRadius = kButtonCornerRadius
+        twitterButton.clipsToBounds = true
+        googleButton.layer.cornerRadius = kButtonCornerRadius
+        googleButton.clipsToBounds = true
+        linkedInButton.layer.cornerRadius = kButtonCornerRadius
+        linkedInButton.clipsToBounds = true
         
         userNameTextField.attributedPlaceholder = NSAttributedString(string: Strings.Account.email, attributes:Constants.placeHolderAttributes)
         userNameTextField.returnKeyType = .next

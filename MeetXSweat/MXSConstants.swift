@@ -46,10 +46,11 @@ enum Constants {
      */
     struct MainColor {
         static let kNavigationBarColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1) // black
-        static let kBackGroundColor    = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1) //white
+        static let kBackGroundColor    = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1) // black
         static let kDefaultTextColor   = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1) // black
         static let kSpecialColor       = UIColor(red: 146/255, green: 39/255, blue: 143/255, alpha: 1)
         static let kSpecialColorClear  = UIColor(red: 146/255, green: 39/255, blue: 143/255, alpha: 0.9)
+        static let kTextFieldUnderLine = UIColor.white
     }
     
     /**
@@ -75,7 +76,7 @@ enum Constants {
      *  A struct of constants about a text attributes.
      */
     static let placeHolderAttributes = [
-        NSForegroundColorAttributeName: UIColor.black,
+        NSForegroundColorAttributeName: UIColor.white,
         //NSFontAttributeName : UIFont(name: "Roboto-Bold", size: 17)! // Note the !
     ]
     
