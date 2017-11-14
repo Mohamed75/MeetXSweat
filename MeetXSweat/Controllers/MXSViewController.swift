@@ -182,9 +182,11 @@ extension MXSViewController {
     
     class func customButton(_ button: UIButton) {
         
-        button.backgroundColor = Constants.MainColor.kSpecialColor
+        button.backgroundColor = Constants.MainColor.kBackGroundColor
         button.setTitleColor(UIColor.white, for: UIControlState())
         button.layer.cornerRadius = 5
+        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.borderWidth = 1
     }
     
     class func underLineView(_ view: UIView) {
@@ -192,6 +194,12 @@ extension MXSViewController {
         let line = UIView(frame: CGRect(x: 0, y: view.frame.size.height-1, width: view.frame.size.width, height: 1))
         line.backgroundColor = Constants.MainColor.kTextFieldUnderLine
         view.addSubview(line)
+    }
+    
+    
+    func exitViewController(animated: Bool)
+    {
+        _ = navigationController?.popViewController(animated: animated)
     }
     
 }

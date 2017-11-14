@@ -31,7 +31,7 @@ class MXSTuttorialViewController: MXSViewController, UICollectionViewDelegate, U
         
         pageControl.numberOfPages = tuttorials.count
         pageControl.translatesAutoresizingMaskIntoConstraints = false
-        pageControl.currentPageIndicatorTintColor = Constants.MainColor.kSpecialColor
+        pageControl.currentPageIndicatorTintColor = Constants.MainColor.kCustomBlueColor
         pageControl.pageIndicatorTintColor = UIColor.lightGray
         
         let leading = NSLayoutConstraint(item: pageControl, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0)
@@ -88,6 +88,12 @@ extension MXSTuttorialViewController {
         cell.label.text = tuttorials[indexPath.section]
         let imageName = String(format: "Tutto%d", indexPath.section)
         cell.imageView.image = UIImage(named: imageName)
+        
+        if indexPath.section == 0 {
+            cell.bottomImageView.image = nil
+            cell.titleLabel.text = "Vivez une nouvelle expérience"
+            cell.titleLabel.textColor = Constants.MainColor.kCustomBlueColor
+        }
         
         return cell
     }

@@ -82,6 +82,7 @@ enum Ressources {
         
         // WellCome StoryBoard
         static let wellComeId       = "MXSWellComeViewController"
+        static let wellComeJobId    = "MXSWellComeJobViewController"
         static let tuttorialId      = "MXSTuttorialViewController"
         
         // Events StoryBoard
@@ -122,6 +123,7 @@ enum Ressources {
         static let conversation = "MXSConversationCollectionCell"
         static let tuttorial    = "MXSTuttorialCollectionCell"
         static let menu         = "MXSMenuCellView"
+        static let job          = "MXSWellComeJobTableViewCell"
     }
     
     /**

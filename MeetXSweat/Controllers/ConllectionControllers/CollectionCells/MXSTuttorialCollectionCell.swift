@@ -19,13 +19,19 @@ class MXSTuttorialCollectionCell: UICollectionViewCell {
     
     
     @IBOutlet internal weak var imageView: UIImageView!
+    @IBOutlet internal weak var bottomImageView: UIImageView!
     @IBOutlet internal weak var label: UILabel!
-    
+    @IBOutlet internal weak var titleLabel: UILabel!
     
     func initCell() {
         
         self.label.numberOfLines = 0
-        self.label.textColor = Constants.MainColor.kSpecialColor
+        self.label.textColor = UIColor.white
+        self.label.font = UIFont.boldSystemFont(ofSize: 18)
+        
+        self.bottomImageView.image = UIImage(named: "TuttorialBottom")
+        self.titleLabel.text = ""
+        self.titleLabel.font = UIFont.boldSystemFont(ofSize: 22)
         
         self.viewWithTag(3)?.addSubview(self.label)
     }

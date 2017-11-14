@@ -58,6 +58,10 @@
 		D93AF09D1E60F1C6004B5565 /* MXSProfileDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93AF09B1E60F1C6004B5565 /* MXSProfileDescriptionViewController.swift */; };
 		D93AF09E1E60F1D7004B5565 /* MXSMenuCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D93AF0951E60D8B4004B5565 /* MXSMenuCellView.xib */; };
 		D93AF09F1E60F1DA004B5565 /* MXSMenuCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93AF0971E60D8F6004B5565 /* MXSMenuCellView.swift */; };
+		D940CD8D1FBB3CE400CEE48D /* MSXWellComeSportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D940CD8C1FBB3CE400CEE48D /* MSXWellComeSportViewController.swift */; };
+		D940CD8E1FBB3CE400CEE48D /* MSXWellComeSportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D940CD8C1FBB3CE400CEE48D /* MSXWellComeSportViewController.swift */; };
+		D940CD8F1FBB3CE400CEE48D /* MSXWellComeSportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D940CD8C1FBB3CE400CEE48D /* MSXWellComeSportViewController.swift */; };
+		D940CD901FBB3CE400CEE48D /* MSXWellComeSportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D940CD8C1FBB3CE400CEE48D /* MSXWellComeSportViewController.swift */; };
 		D942AD9C1E633E4C00E9FC0D /* paris.gpx in Resources */ = {isa = PBXBuildFile; fileRef = D942AD9B1E633E4C00E9FC0D /* paris.gpx */; };
 		D94575951E44932100AF37F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D94575941E44932100AF37F2 /* Main.storyboard */; };
 		D94575961E44932100AF37F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D94575941E44932100AF37F2 /* Main.storyboard */; };
@@ -157,6 +161,8 @@
 		D959B3E41D93200E00981105 /* MXSProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D959B3E31D93200E00981105 /* MXSProfileViewController.swift */; };
 		D959B3E61D93202200981105 /* MXSProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D959B3E51D93202200981105 /* MXSProfile.storyboard */; };
 		D963AE7A1E522C8000FF5B85 /* GPSLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D963AE791E522C8000FF5B85 /* GPSLocationManager.swift */; };
+		D98F8DB71FA8BF6B00E574D4 /* MXSWellComeJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98F8DB61FA8BF6B00E574D4 /* MXSWellComeJobViewController.swift */; };
+		D98F8DB81FA8BF6B00E574D4 /* MXSWellComeJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98F8DB61FA8BF6B00E574D4 /* MXSWellComeJobViewController.swift */; };
 		D998B5DC1D96E63400A045F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D998B5DB1D96E63400A045F4 /* GoogleService-Info.plist */; };
 		D998B5E51D97FFE000A045F4 /* EnCodeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D998B5E41D97FFE000A045F4 /* EnCodeObject.swift */; };
 		D9AAA2AB1D8F0F12004CE80C /* MXSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA2AA1D8F0F12004CE80C /* MXSViewController.swift */; };
@@ -297,6 +303,7 @@
 		D93AF0971E60D8F6004B5565 /* MXSMenuCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSMenuCellView.swift; sourceTree = "<group>"; };
 		D93AF0991E60DBE9004B5565 /* MenuIcons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MenuIcons.xcassets; sourceTree = "<group>"; };
 		D93AF09B1E60F1C6004B5565 /* MXSProfileDescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSProfileDescriptionViewController.swift; sourceTree = "<group>"; };
+		D940CD8C1FBB3CE400CEE48D /* MSXWellComeSportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSXWellComeSportViewController.swift; sourceTree = "<group>"; };
 		D942AD9B1E633E4C00E9FC0D /* paris.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = paris.gpx; sourceTree = "<group>"; };
 		D94575941E44932100AF37F2 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		D949BB5F1E5C872A00BCF3A0 /* MeetXSweat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetXSweat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -324,6 +331,7 @@
 		D959B3E31D93200E00981105 /* MXSProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSProfileViewController.swift; sourceTree = "<group>"; };
 		D959B3E51D93202200981105 /* MXSProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MXSProfile.storyboard; sourceTree = "<group>"; };
 		D963AE791E522C8000FF5B85 /* GPSLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPSLocationManager.swift; sourceTree = "<group>"; };
+		D98F8DB61FA8BF6B00E574D4 /* MXSWellComeJobViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSWellComeJobViewController.swift; sourceTree = "<group>"; };
 		D998B5DB1D96E63400A045F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D998B5E41D97FFE000A045F4 /* EnCodeObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnCodeObject.swift; path = ../Model/EnCodeObject.swift; sourceTree = "<group>"; };
 		D9AAA2AA1D8F0F12004CE80C /* MXSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSViewController.swift; sourceTree = "<group>"; };
@@ -722,6 +730,8 @@
 				D9C086611E4DFC8100122030 /* MXSCreateAccountViewController.swift */,
 				D9C086621E4DFC8100122030 /* MXSWellCome.storyboard */,
 				D9C086631E4DFC8100122030 /* MXSWellComeViewController.swift */,
+				D98F8DB61FA8BF6B00E574D4 /* MXSWellComeJobViewController.swift */,
+				D940CD8C1FBB3CE400CEE48D /* MSXWellComeSportViewController.swift */,
 				D9C086681E4E026800122030 /* MXSTuttorialViewController.swift */,
 			);
 			path = Other;
@@ -1284,11 +1294,13 @@
 				D926BAE01D8DBC5100E3878C /* User.swift in Sources */,
 				D9C086691E4E026800122030 /* MXSTuttorialViewController.swift in Sources */,
 				D9BB48131D8EB48000C12541 /* LinkedInHelper.swift in Sources */,
+				D98F8DB71FA8BF6B00E574D4 /* MXSWellComeJobViewController.swift in Sources */,
 				D94A3E4A1DA3FC840090A7A4 /* MXSSportCollectionCell.swift in Sources */,
 				D9C0866B1E4E094500122030 /* MXSTuttorialCollectionCell.swift in Sources */,
 				D9B64D2E1DA3AACF008C5D34 /* Conversation.swift in Sources */,
 				D90AB5841D940CEA003DCA75 /* MXSFindSportViewController.swift in Sources */,
 				D9C086381E46698000122030 /* MXSFindManager.swift in Sources */,
+				D940CD8D1FBB3CE400CEE48D /* MSXWellComeSportViewController.swift in Sources */,
 				D9B64D261DA3AA2D008C5D34 /* DummyData.swift in Sources */,
 				D93AF0931E60949D004B5565 /* UserViewModel.swift in Sources */,
 				D90AB5881D940D18003DCA75 /* MXSFindArroundMeViewController.swift in Sources */,
@@ -1334,6 +1346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D94BC54D1F2F376600995E20 /* PersonTests.swift in Sources */,
+				D940CD8F1FBB3CE400CEE48D /* MSXWellComeSportViewController.swift in Sources */,
 				D926BAB51D8D6A6400E3878C /* MeetXSweatTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1342,6 +1355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D940CD901FBB3CE400CEE48D /* MSXWellComeSportViewController.swift in Sources */,
 				D926BAC01D8D6A6400E3878C /* MeetXSweatUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1366,11 +1380,13 @@
 				D949BB131E5C872A00BCF3A0 /* MXSConversationCollectionCell.swift in Sources */,
 				D949BB141E5C872A00BCF3A0 /* User.swift in Sources */,
 				D949BB151E5C872A00BCF3A0 /* MXSTuttorialViewController.swift in Sources */,
+				D98F8DB81FA8BF6B00E574D4 /* MXSWellComeJobViewController.swift in Sources */,
 				D949BB161E5C872A00BCF3A0 /* LinkedInHelper.swift in Sources */,
 				D949BB171E5C872A00BCF3A0 /* MXSSportCollectionCell.swift in Sources */,
 				D949BB181E5C872A00BCF3A0 /* MXSTuttorialCollectionCell.swift in Sources */,
 				D949BB1A1E5C872A00BCF3A0 /* Conversation.swift in Sources */,
 				D949BB1B1E5C872A00BCF3A0 /* MXSFindSportViewController.swift in Sources */,
+				D940CD8E1FBB3CE400CEE48D /* MSXWellComeSportViewController.swift in Sources */,
 				D949BB1D1E5C872A00BCF3A0 /* MXSFindManager.swift in Sources */,
 				D949BB1E1E5C872A00BCF3A0 /* DummyData.swift in Sources */,
 				D93AF0941E609599004B5565 /* UserViewModel.swift in Sources */,
@@ -1551,7 +1567,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = MeetXSweat/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MeetXSweat.MeetXSweat;
 				PRODUCT_NAME = MeetXSweat;
@@ -1581,7 +1597,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = MeetXSweat/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MeetXSweat.MeetXSweat;
 				PRODUCT_NAME = MeetXSweat;

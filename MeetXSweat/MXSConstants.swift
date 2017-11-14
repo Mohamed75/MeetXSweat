@@ -37,6 +37,18 @@ enum Constants {
         static let professions  = NSSelectorFromString("selectorProfessionUpdated")
     }
     
+    
+    struct JobObserver {
+        static let notification       = "jobNotification"
+        static let selector           = NSSelectorFromString("setJobDomaine:")
+    }
+    
+    struct SportObserver {
+        static let notification       = "sportNotification"
+        static let selector           = NSSelectorFromString("setSport:")
+    }
+    
+    
     struct SelectorsString {
         static let valider      = "validatButtonClicked:"
     }
@@ -51,6 +63,15 @@ enum Constants {
         static let kSpecialColor       = UIColor(red: 146/255, green: 39/255, blue: 143/255, alpha: 1)
         static let kSpecialColorClear  = UIColor(red: 146/255, green: 39/255, blue: 143/255, alpha: 0.9)
         static let kTextFieldUnderLine = UIColor.white
+        static let kTabBarItemColor    = UIColor.white
+        static let kCustomBlueColor     = UIColor(red: 12/255, green: 124/255, blue: 172/255, alpha: 1)
+    }
+    
+    /**
+     *  A struct of constants about the main fonts.
+     */
+    struct Font {
+        static let kBoldFont = UIFont.boldSystemFont(ofSize: 18)
     }
     
     /**
@@ -70,7 +91,7 @@ enum Constants {
         static let imgShare     = UIImage(named: Ressources.Images.mxslogo)!
     }
     
-    static let mToKm       = 1000.0
+    
     
     /**
      *  A struct of constants about a text attributes.
@@ -80,6 +101,8 @@ enum Constants {
         //NSFontAttributeName : UIFont(name: "Roboto-Bold", size: 17)! // Note the !
     ]
     
+    
     static let tabBarHeight: CGFloat = 50
+    static let mToKm       = 1000.0
 }
 

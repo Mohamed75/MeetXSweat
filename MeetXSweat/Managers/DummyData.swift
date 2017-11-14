@@ -27,10 +27,9 @@ class DummyData {
     }
     
     class func getTuttorials()  -> [String] {
-        return ["Trouvez un profil professionnel et \n rencontrez le pendant un \n entrainement",
-                "Choisissez votre Sport et profitez en \n pour rencontrer des profils \n professionnels",
-                "Choisissez vos dates \n pour networker et s'entrainer",
-                "Trouvez les événements de sport et \n networking autour de vous!"]
+        return ["Rencontrer et échanger avec les profils \n professionnels qui vous intéressent \n lors de vos entrainements sportifs", "Découvrez les profils professionnels \n qui vous entourent lors de vos \n entrainements sportifs",
+                "Choisissez vos sport et découvrez \n la sélection d’entrainement \n proposé pour y rencontrer \n des profils professionnels",
+                "Indiquez vos dates de disponibilités \n et choisissez vos activités \n pour s’entrainer et networker"]
     }
     
     

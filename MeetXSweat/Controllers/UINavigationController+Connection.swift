@@ -19,16 +19,7 @@ extension UINavigationController {
     
     open override func viewDidLoad() {
         
-        self.navigationBar.backIndicatorImage = UIImage(named: Ressources.Images.back)?.withRenderingMode(.alwaysOriginal)
-        self.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: Ressources.Images.back)?.withRenderingMode(.alwaysOriginal)
-        
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:Constants.MainColor.kBackGroundColor]
-        
-        self.view.backgroundColor = Constants.MainColor.kBackGroundColor
-        
-        self.navigationBar.barTintColor = Constants.MainColor.kNavigationBarColor
-        self.navigationBar.isTranslucent = false
-        
+        // Custom TabBar item
         if let aTabBarController = self.tabBarController {
             
             for tab in aTabBarController.tabBar.items!
@@ -37,9 +28,23 @@ extension UINavigationController {
                 tab.selectedImage = tab.selectedImage!.withRenderingMode(.alwaysOriginal)
             }
             
-            UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName:Constants.MainColor.kSpecialColor], for: .selected)
-            UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName:Constants.MainColor.kSpecialColorClear], for: UIControlState())
+            UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName:Constants.MainColor.kCustomBlueColor], for: .selected)
+            UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName:Constants.MainColor.kTabBarItemColor], for: UIControlState())
         }
+        
+        // Custom View
+        self.view.backgroundColor = Constants.MainColor.kBackGroundColor
+        
+        // Custom NavigationBar
+        self.navigationBar.backIndicatorImage = UIImage(named: Ressources.Images.back)?.withRenderingMode(.alwaysOriginal)
+        self.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: Ressources.Images.back)?.withRenderingMode(.alwaysOriginal)
+        
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:Constants.MainColor.kTabBarItemColor]
+        
+        self.navigationBar.barTintColor = Constants.MainColor.kNavigationBarColor
+        self.navigationBar.isTranslucent = false
+        
+        
         
         let user = User.currentUser
         if user.isConnected {
