@@ -31,6 +31,11 @@ class MXSViewController: UIViewController {
     var isTabBarEtendedView: Bool = false
     
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    
     // MARK: - *** View lifecycle ***
     
     override func viewDidLoad() {
@@ -70,7 +75,7 @@ class MXSViewController: UIViewController {
         }
     }
     
-    
+   
     // MARK: - *** SetUp subView ***
     
     internal func addBarButtonItem() {

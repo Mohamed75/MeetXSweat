@@ -12,7 +12,7 @@ import DrawerController
 
 private let kMenuItemsTitle = ["Mes messages", "Mes sweatworking", "Invitez des amis","Log out"]
 private let kMenuItemsDesc  = ["Je construis mon réseau", "Mon historique d'activité", "J'élargie mon perimetre", "Je me déconnecte"]
-private let kMenuItemsImage = ["messages", "loupe", "adduser"]
+private let kMenuItemsImage = ["messages", "loupe", "adduser", "logout"]
 
 private let kImageWidth  = (ScreenSize.currentWidth > ScreenSize.iphone6Width) ? ScreenSize.currentWidth-130 : (ScreenSize.currentWidth == ScreenSize.iphone6Width) ? ScreenSize.currentWidth-90 : ScreenSize.currentWidth-40
 private let kImageHeight: CGFloat = 180.0
@@ -35,6 +35,10 @@ class MXSMenuViewController: UITableViewController {
     internal var userView: UIImageView!
     
     
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     // MARK: - *** SetUp subView ***
     
@@ -197,16 +201,16 @@ extension MXSMenuViewController {
         if cell == nil {
             cell = MXSMenuCellView(style: .default, reuseIdentifier: Ressources.CellReuseIdentifier.menu)
         }
-        cell?.selectionStyle    = .none
+        
         cell?.titleLabel.text   = kMenuItemsTitle[indexPath.row]
         if indexPath.row < kMenuItemsImage.count {
             cell?.myImageView.image = UIImage(named: kMenuItemsImage[indexPath.row])
         }
-        cell?.backgroundColor       = Constants.MainColor.kBackGroundColor
-        cell?.titleLabel.textColor  = Constants.MainColor.kSpecialColor
         if indexPath.row < kMenuItemsDesc.count {
             cell?.descriptionLabel.text = kMenuItemsDesc[indexPath.row]
         }
+        
+        cell?.backgroundColor       = Constants.MainColor.kBackGroundColor
         
         return cell!
     }
