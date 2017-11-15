@@ -24,7 +24,6 @@ pod 'Alamofire', '~> 4.3'
 pod 'AlamofireImage', '~> 3.1'
 
 
-pod 'DLRadioButton', '~> 1.4'
 pod 'JTAppleCalendar', '~> 6.0'
 
 

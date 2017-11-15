@@ -19,7 +19,7 @@ import UIKit
 class MXSFindCollectionViewController: MXSViewController {
     
     
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var topView: MXSTopView!
     
     // A property to know that we need to cutomize litle bit the view
     var isSweatWorking = false
@@ -31,12 +31,13 @@ class MXSFindCollectionViewController: MXSViewController {
         
         super.viewDidLoad()
         
-        titleLabel.backgroundColor = Constants.MainColor.kSpecialColor
+        self.view.backgroundColor = Constants.MainColor.kBackGroundColor
+        self.topView.draw(self.topView.frame)
         
         if isSweatWorking {
             
             title = Strings.NavigationTitle.sweatWorking
-            titleLabel.text = Strings.LabelTitel.lesSports
+            topView.topLabel.text = Strings.LabelTitel.lesSports
             addBarButtonItem()
             return
         }
@@ -48,9 +49,9 @@ class MXSFindCollectionViewController: MXSViewController {
                 
                 eventsCollectionViewController.events = MXSFindManager.filterEventsBySports()
                 
-                titleLabel.text = Strings.LabelTitel.sports
+                topView.topLabel.text = Strings.LabelTitel.sports
                 for sport in MXSFindManager.sharedInstance.sports {
-                    titleLabel.text = titleLabel.text! + " " + (sport as! String).uppercased()
+                    topView.topLabel.text = topView.topLabel.text! + " " + (sport as! String).uppercased()
                 }
                 
                 if eventsCollectionViewController.fromProfileViewController {
@@ -71,10 +72,10 @@ class MXSFindCollectionViewController: MXSViewController {
             if let personsCollectionViewController = childViewControllers.first as? MXSPersonsCollectionViewController {
                 
                 if !MXSFindManager.sharedInstance.domaine.isEmpty {
-                    titleLabel.text = MXSFindManager.sharedInstance.domaine
+                    topView.topLabel.text = MXSFindManager.sharedInstance.domaine
                 }
                 if !MXSFindManager.sharedInstance.profession.isEmpty {
-                    titleLabel.text = MXSFindManager.sharedInstance.profession
+                    topView.topLabel.text = MXSFindManager.sharedInstance.profession
                     
                 }
                 personsCollectionViewController.persons = MXSFindManager.filterBy(FireBaseDataManager.sharedInstance.persons)

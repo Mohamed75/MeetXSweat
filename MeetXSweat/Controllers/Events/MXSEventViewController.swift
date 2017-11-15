@@ -30,68 +30,20 @@ class MXSEventViewController: MXSViewController {
     
     internal var event: Event!
     
-    
-    @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var topView: MXSTopView!
+    @IBOutlet weak var eventIconView: UIView!
+    @IBOutlet weak var eventView: UIView!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var participantsButton: UIButton!
     @IBOutlet weak var inscriptionButton: UIButton!
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var heurLabel: UILabel!
+    @IBOutlet weak var participantsLabel: UILabel!
     @IBOutlet weak var mapLabel: UILabel!
     @IBOutlet weak var sportLabel: UILabel!
     
     
-    // stackView
-    @IBOutlet weak var jourLabel: UILabel!
-    @IBOutlet weak var hourLabel: UILabel!
-    @IBOutlet weak var minuteLabel: UILabel!
-    @IBOutlet weak var secondLabel: UILabel!
-    
-    @IBOutlet weak var stackView: UIStackView!
-    
-    
-    @IBOutlet weak var stackWidthConstraint: NSLayoutConstraint!
-    
-    
-    
-    private func timeLeft() {
-        
-        MXSCalendarViewController.formatter.dateFormat = kDateFormat
-        if let timeLeft = MXSCalendarViewController.formatter.date(from: event.date)?.timeIntervalSinceNow {
-        
-            let joures = Int(timeLeft/kDaySeconds)
-            jourLabel.text  = String(joures)
-            if joures < 10 {
-                jourLabel.text = " " + String(joures)
-            }
-            
-            let houres = Int(timeLeft/kHourSeconds)%kHours
-            hourLabel.text  = String(houres)
-            if houres < 10 {
-                hourLabel.text = " " + String(houres)
-            }
-            
-            let minutes = Int(timeLeft/kMinuteSeconds)%Int(kMinuteSeconds)
-            minuteLabel.text = String(minutes)
-            if minutes < 10 {
-                minuteLabel.text = " " + String(minutes)
-            }
-            
-            let seconds = Int(timeLeft.truncatingRemainder(dividingBy: kMinuteSeconds))
-            secondLabel.text = String(seconds)
-            if seconds < 10 {
-                secondLabel.text = " " + String(seconds)
-            }
-        }
-        
-        dispatch_later(1) { [weak self] in
-            guard let this = self else {
-                return
-            }
-            this.timeLeft()
-        }
-    }
     
     
     private func addOverlay() {
@@ -108,20 +60,15 @@ class MXSEventViewController: MXSViewController {
         
         super.viewDidLoad()
         
-        if ScreenSize.currentWidth < ScreenSize.iphone6Width {
-            self.sportLabel.isHidden = true
-        } else {
-            if ScreenSize.currentWidth == ScreenSize.iphone6Width {
-                stackWidthConstraint.constant = -54
-            } else {
-                stackWidthConstraint.constant = -90
-            }
-        }
+        self.topView.draw(self.topView.frame)
+        self.topView.topLabel.text = event.sport
+        
+        customizeEventCell(self.eventIconView)
+        
         
         if let jour = event.getJour(), let heure = event.getHeure() {
             dateLabel.text = jour
             heurLabel.text = heure
-            timeLeft()
         }
         
         if let coordinate = event.getCoordinate() {
@@ -133,25 +80,27 @@ class MXSEventViewController: MXSViewController {
         
         sportLabel.text = event.sport
         
-        jourLabel.textColor = Constants.MainColor.kSpecialColor
-        hourLabel.textColor = Constants.MainColor.kSpecialColor
-        minuteLabel.textColor = Constants.MainColor.kSpecialColor
-        secondLabel.textColor = Constants.MainColor.kSpecialColor
-        
         title = Strings.NavigationTitle.event
             
-        topView.layer.borderColor = Constants.MainColor.kSpecialColor.cgColor
-        topView.layer.borderWidth = 1
+        eventView.layer.borderColor = UIColor.white.cgColor
+        eventView.layer.borderWidth = 1
+        eventView.layer.cornerRadius = 5
         
-        inscriptionButton.layer.borderColor = Constants.MainColor.kSpecialColor.cgColor
+        inscriptionButton.layer.borderColor = UIColor.white.cgColor
         inscriptionButton.layer.borderWidth = 1
-        inscriptionButton.setTitleColor(Constants.MainColor.kSpecialColor, for: UIControlState())
+        inscriptionButton.layer.cornerRadius = 5
+        inscriptionButton.backgroundColor = Constants.MainColor.kCustomBlueColor
+        inscriptionButton.setTitleColor(UIColor.white, for: UIControlState())
+        inscriptionButton.setTitle("JE PARTICIPE A L'EVENT", for: UIControlState())
         
-        participantsButton.layer.borderColor = Constants.MainColor.kSpecialColor.cgColor
+        participantsButton.layer.borderColor = UIColor.white.cgColor
         participantsButton.layer.borderWidth = 1
-        participantsButton.setTitleColor(Constants.MainColor.kSpecialColor, for: UIControlState())
+        participantsButton.layer.cornerRadius = 5
+        participantsButton.backgroundColor = Constants.MainColor.kCustomBlueColor
+        participantsButton.setTitleColor(UIColor.white, for: UIControlState())
+        participantsButton.setTitle("VOIR LES PROFILS PRO", for: UIControlState())
         
-        updateParticipantsButtonText()
+        updateParticipantsLabelText()
         updateInscriptionButton()
         
         let dateArray = event.date.components(separatedBy: " - ")
@@ -177,10 +126,12 @@ class MXSEventViewController: MXSViewController {
         if tabBarController?.selectedIndex == 0 {
             participantsButton.isHidden = true
         }
+        
+        
     }
     
-    private func updateParticipantsButtonText() {
-        participantsButton.setTitle(String(event.persons.count) + " PARTICIPANTS", for: UIControlState())
+    private func updateParticipantsLabelText() {
+        participantsLabel.text = String(event.persons.count)
     }
     
     private func updateInscriptionButton() {
@@ -211,9 +162,9 @@ class MXSEventViewController: MXSViewController {
                     return
                 }
                 if let personsCollectionViewController = viewController.childViewControllers.first as? MXSPersonsCollectionViewController {
-                    viewController.titleLabel.text = this.event.sport.uppercased()
+                    viewController.topView.topLabel.text = this.event.sport.uppercased()
                     if let jour = this.event.getJour(), let heure = this.event.getHeure() {
-                        viewController.titleLabel.text = this.event.sport.uppercased() + " - " + jour + " - " + heure
+                        viewController.topView.topLabel.text = this.event.sport.uppercased() + " - " + jour + " - " + heure
                     }
                     personsCollectionViewController.persons = this.event.getFullPersons()
                     personsCollectionViewController.collectionView?.reloadData()
@@ -227,7 +178,7 @@ class MXSEventViewController: MXSViewController {
         if tabBarController?.selectedIndex != 0 {
             participantsButtonClicked(NSObject())
         }
-        updateParticipantsButtonText()
+        updateParticipantsLabelText()
         updateInscriptionButton()
     }
 }

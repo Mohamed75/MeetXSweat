@@ -7,14 +7,13 @@
 //
 
 import UIKit
-import DLRadioButton
 
 
 
 private let kNumberOffCell = 3
 
 private let kCellWidth   = (UIScreen.main.bounds.width/3)-4
-private let kCellHeight  = kCellWidth*1.16
+private let kCellHeight  = kCellWidth*1.30
 
 
 /**
@@ -37,6 +36,8 @@ class MXSSportsCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        collectionView?.backgroundColor = Constants.MainColor.kBackGroundColor
+        
         (self.collectionViewLayout as! UICollectionViewFlowLayout).minimumInteritemSpacing = 0
         
         NotificationCenter.default.addObserver(self, selector: Constants.FBNotificationSelector.sports, name: NSNotification.Name(rawValue: Constants.FBNotificationName.sports), object: nil)
@@ -54,21 +55,6 @@ class MXSSportsCollectionViewController: UICollectionViewController {
         collectionView?.reloadData()
     }
     
-    
-    
-    
-    /*
-    func radioButtonSelected(radioButton : DLRadioButton) {
-        
-        if radioButton.selected {
-            allSelectedRadioButtonsIndexs.append(radioButton.tag)
-        }
-        else {
-            if let index = allSelectedRadioButtonsIndexs.indexOf(radioButton.tag) {
-                allSelectedRadioButtonsIndexs.removeAtIndex(index)
-            }
-        }
-    }*/
     
     func validateSelections() {
         
@@ -90,20 +76,9 @@ extension MXSSportsCollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Ressources.CellReuseIdentifier.sport, for: indexPath) as! MXSSportCollectionCell
         
         let index = (indexPath.section*kNumberOffCell)+indexPath.row
-        /*
-         cell.initColors()
-         if sports.count > (indexPath.section*2)+indexPath.row {
-         cell.radioButton.setTitle(sports[index], forState: .Normal)
-         cell.radioButton.setTitleColor(kDefaultTextColor, forState: .Normal)
-         }
-         cell.radioButton.tag = index
-         if allSelectedRadioButtonsIndexs.contains(index) {
-         cell.radioButton.selected = true
-         }
-         cell.radioButton.addTarget(self, action: #selector(MXSSportsCollectionViewController.radioButtonSelected), forControlEvents: UIControlEvents.TouchUpInside);
-         cell.backgroundColor = kBackGroundColor*/
         
         cell.initCell()
+        
         if sports.count > (indexPath.section*kNumberOffCell)+indexPath.row {
             let sportName = sports[index]
             cell.sportImageView.image   = UIImage(named: sportName.lowercased())
@@ -111,6 +86,8 @@ extension MXSSportsCollectionViewController {
         }
         if allSelectedRadioButtonsIndexs.contains(index) {
             cell.cellSelected()
+            let sportName = sports[index]
+            cell.sportImageView.image   = UIImage(named: sportName.lowercased()+"-blanc")
         }
         
         return cell
@@ -118,9 +95,10 @@ extension MXSSportsCollectionViewController {
     
     
     override internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         if sports.count%kNumberOffCell > 0 {
             if section == sports.count/kNumberOffCell {
-                return 1
+                return sports.count%kNumberOffCell
             }
         }
         return kNumberOffCell
@@ -128,7 +106,8 @@ extension MXSSportsCollectionViewController {
     
     override internal func numberOfSections(in collectionView: UICollectionView) -> Int {
         
-        return (sports.count/kNumberOffCell)+(sports.count%kNumberOffCell)
+        let oneMoreSection = sports.count%kNumberOffCell > 0 ? 1 : 0
+        return (sports.count/kNumberOffCell)+oneMoreSection
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {

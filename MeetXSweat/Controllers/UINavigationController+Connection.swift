@@ -19,6 +19,8 @@ extension UINavigationController {
     
     open override func viewDidLoad() {
         
+        super.viewDidLoad()
+        
         // Custom TabBar item
         if let aTabBarController = self.tabBarController {
             
@@ -30,6 +32,10 @@ extension UINavigationController {
             
             UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName:Constants.MainColor.kCustomBlueColor], for: .selected)
             UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName:Constants.MainColor.kTabBarItemColor], for: UIControlState())
+            
+            let lineView = UIView(frame: CGRect(x: 0, y: 0, width: aTabBarController.tabBar.frame.size.width, height: 1))
+            lineView.backgroundColor = UIColor.white
+            aTabBarController.tabBar.addSubview(lineView)
         }
         
         // Custom View
@@ -127,7 +133,6 @@ extension UINavigationController {
             
         }
         
-        super.viewDidLoad()
     }
     
     

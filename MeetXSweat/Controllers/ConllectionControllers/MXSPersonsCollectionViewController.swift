@@ -40,6 +40,8 @@ class MXSPersonsCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        collectionView?.backgroundColor = Constants.MainColor.kBackGroundColor
     }
     
     
