@@ -163,6 +163,8 @@
 		D963AE7A1E522C8000FF5B85 /* GPSLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D963AE791E522C8000FF5B85 /* GPSLocationManager.swift */; };
 		D98F8DB71FA8BF6B00E574D4 /* MXSWellComeJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98F8DB61FA8BF6B00E574D4 /* MXSWellComeJobViewController.swift */; };
 		D98F8DB81FA8BF6B00E574D4 /* MXSWellComeJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98F8DB61FA8BF6B00E574D4 /* MXSWellComeJobViewController.swift */; };
+		D9988F9B1FBC4955001DF331 /* MXSTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9988F9A1FBC4955001DF331 /* MXSTopView.swift */; };
+		D9988F9C1FBC4955001DF331 /* MXSTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9988F9A1FBC4955001DF331 /* MXSTopView.swift */; };
 		D998B5DC1D96E63400A045F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D998B5DB1D96E63400A045F4 /* GoogleService-Info.plist */; };
 		D998B5E51D97FFE000A045F4 /* EnCodeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D998B5E41D97FFE000A045F4 /* EnCodeObject.swift */; };
 		D9AAA2AB1D8F0F12004CE80C /* MXSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA2AA1D8F0F12004CE80C /* MXSViewController.swift */; };
@@ -332,6 +334,7 @@
 		D959B3E51D93202200981105 /* MXSProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MXSProfile.storyboard; sourceTree = "<group>"; };
 		D963AE791E522C8000FF5B85 /* GPSLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPSLocationManager.swift; sourceTree = "<group>"; };
 		D98F8DB61FA8BF6B00E574D4 /* MXSWellComeJobViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSWellComeJobViewController.swift; sourceTree = "<group>"; };
+		D9988F9A1FBC4955001DF331 /* MXSTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSTopView.swift; sourceTree = "<group>"; };
 		D998B5DB1D96E63400A045F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D998B5E41D97FFE000A045F4 /* EnCodeObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnCodeObject.swift; path = ../Model/EnCodeObject.swift; sourceTree = "<group>"; };
 		D9AAA2AA1D8F0F12004CE80C /* MXSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSViewController.swift; sourceTree = "<group>"; };
@@ -709,6 +712,7 @@
 				D90AB5AE1D96BE1E003DCA75 /* MXSActivityIndicator.swift */,
 				D93AF0951E60D8B4004B5565 /* MXSMenuCellView.xib */,
 				D93AF0971E60D8F6004B5565 /* MXSMenuCellView.swift */,
+				D9988F9A1FBC4955001DF331 /* MXSTopView.swift */,
 			);
 			path = UIElements;
 			sourceTree = "<group>";
@@ -1311,6 +1315,7 @@
 				D9B64D2C1DA3AA62008C5D34 /* ConversationsDataManager.swift in Sources */,
 				D959B3E41D93200E00981105 /* MXSProfileViewController.swift in Sources */,
 				D94A3E3C1DA3E6220090A7A4 /* Message.swift in Sources */,
+				D9988F9B1FBC4955001DF331 /* MXSTopView.swift in Sources */,
 				D926BAD31D8DA11F00E3878C /* MXSAllLoginsViewController.swift in Sources */,
 				D94A3E491DA3FC840090A7A4 /* MXSPersonCollectionCell.swift in Sources */,
 				D90AB5A31D9562E1003DCA75 /* MXSCalendarViewController.swift in Sources */,
@@ -1397,6 +1402,7 @@
 				D949BB231E5C872A00BCF3A0 /* ConversationsDataManager.swift in Sources */,
 				D949BB241E5C872A00BCF3A0 /* MXSProfileViewController.swift in Sources */,
 				D949BB251E5C872A00BCF3A0 /* Message.swift in Sources */,
+				D9988F9C1FBC4955001DF331 /* MXSTopView.swift in Sources */,
 				D949BB261E5C872A00BCF3A0 /* MXSAllLoginsViewController.swift in Sources */,
 				D949BB271E5C872A00BCF3A0 /* MXSPersonCollectionCell.swift in Sources */,
 				D949BB291E5C872A00BCF3A0 /* MXSCalendarViewController.swift in Sources */,

@@ -42,7 +42,7 @@ class MXSViewController: UIViewController {
         view.backgroundColor = Constants.MainColor.kBackGroundColor
     }
     
-    // To know if the view has allready been extended
+    // To know if the view has already been extended
     private func isIncreasedFrameHeight() -> Bool {
         
         return savedTabBarController.view.frame.size.height < (UIScreen.main.bounds.size.height + Constants.tabBarHeight)

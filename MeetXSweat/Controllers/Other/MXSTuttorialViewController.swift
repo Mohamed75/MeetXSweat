@@ -51,7 +51,12 @@ class MXSTuttorialViewController: MXSViewController, UICollectionViewDelegate, U
         
         self.title = Strings.NavigationTitle.tuttorial
         
-        addValiderButton()
+        let validatButton = UIButton(type: .custom)
+        validatButton.addTarget(self, action: NSSelectorFromString(Constants.SelectorsString.valider), for: .touchUpInside)
+        validatButton.setTitle("Fermer", for: .normal)
+        validatButton.frame = CGRect(x: 0 , y: 0, width: 80, height: 30)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: validatButton)
+        
         setupPageControl()
         
         isTabBarEtendedView = true

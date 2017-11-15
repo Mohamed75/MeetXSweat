@@ -10,11 +10,15 @@ import UIKit
 import PickerView
 
 
+private let kTopTitleLabel = "QUEL SPORT PRATIQUEZ VOUS"
+
+
 class MSXWellComeSportViewController: MXSViewController, PickerViewDataSource, PickerViewDelegate {
 
     
     @IBOutlet weak var pickerView: PickerView!
-
+    @IBOutlet weak var topView: MXSTopView!
+    
     
     // The pickerView data source
     fileprivate var dataArray       = FireBaseDataManager.sharedInstance.sports
@@ -43,10 +47,19 @@ class MSXWellComeSportViewController: MXSViewController, PickerViewDataSource, P
         
         self.title = Strings.NavigationTitle.wellComme
         
+        self.topView.draw(self.topView.frame)
+        self.topView.topLabel.text = kTopTitleLabel
+        
         customPickerView()
         
         addValiderButton()
     }
+    /*
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.topView.topLabel.text = kTopTitleLabel
+    }*/
     
     
     override func validatButtonClicked(_ sender: AnyObject) {

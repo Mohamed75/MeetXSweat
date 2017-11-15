@@ -59,7 +59,7 @@ extension UINavigationController {
                     
                     if let dico = UserDefaults.standard.object(forKey: "FirstTime") as? NSDictionary, (dico[user.email] as? String) == "false" {
                         
-                        NSLog("Alleready wellcomed")
+                        NSLog("Already wellcomed")
                     } else {
                         
                         let wellComeViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.wellCome, viewControllerId: Ressources.StoryBooardsIdentifiers.wellComeId)
