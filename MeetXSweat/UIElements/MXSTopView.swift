@@ -35,15 +35,31 @@ class MXSTopView: UIView {
         
         self.addConstraints([topConstraint, centerConstraint, widthConstraint, aspectRatioConstraint])
         
+        
+        
         topLabel = UILabel(frame: CGRect(x: 0, y: 0, width: rect.size.width, height: 40))
         topLabel.textColor = UIColor.white
+        topLabel.textAlignment = .center
         self.addSubview(topLabel)
         topLabel.translatesAutoresizingMaskIntoConstraints = false
         
+        
         let topLabelConstraint = NSLayoutConstraint(item: topLabel, attribute: .top, relatedBy: .equal, toItem: imageView, attribute: .bottom, multiplier: 1, constant: kToptitleLabelConstraint)
         let centerLabelConstraint = NSLayoutConstraint(item: topLabel, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0)
+        let widthLabelConstraint = NSLayoutConstraint(item: topLabel, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 1, constant: 0)
         
-        self.addConstraints([topLabelConstraint, centerLabelConstraint])
+        self.addConstraints([topLabelConstraint, centerLabelConstraint, widthLabelConstraint])
+        
+        
+        let lineImage = UIImage(named:"blueLine")
+        
+        let topLineView = UIImageView(image: lineImage)
+        topLineView.frame = CGRect(x: 0, y: -10, width: topLabel.frame.size.width, height: 2)
+        topLabel.addSubview(topLineView)
+        
+        let topLineView2 = UIImageView(image: lineImage)
+        topLineView2.frame = CGRect(x: 0, y: 30, width: topLabel.frame.size.width, height: 2)
+        topLabel.addSubview(topLineView2)
     }
     
     

@@ -28,7 +28,7 @@ class UserViewModel {
                 filter: nil,
                 imageTransition: .noTransition
             )
-            imageView.layer.cornerRadius = imageView.frame.width/2
+            imageView.layer.cornerRadius = imageView.frame.width/2.3
             imageView.clipsToBounds = true
         }
     }

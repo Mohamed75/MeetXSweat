@@ -23,17 +23,20 @@ class MXSSportCollectionCell: UICollectionViewCell {
     @IBOutlet weak var sportLabel: UILabel!
     
     var borderView: UIView!
-    var lineView: UIView!
+    var lineView: UIImageView!
     
     fileprivate let yMargin = CGFloat(3)
     fileprivate let xMargin = CGFloat(3)
+    
     
     func initCell() {
         
         self.backgroundColor = Constants.MainColor.kBackGroundColor
         
+        let borderColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1)
+        
         borderView = UIView(frame: CGRect(x: xMargin, y: yMargin, width: self.frame.size.width-(2*xMargin), height: self.frame.size.height-(2*yMargin)))
-        borderView.layer.borderColor    = UIColor.white.cgColor
+        borderView.layer.borderColor    = borderColor.cgColor
         borderView.layer.borderWidth    = 1
         borderView.layer.cornerRadius   = 5
         self.insertSubview(borderView, at: 0)
@@ -41,8 +44,8 @@ class MXSSportCollectionCell: UICollectionViewCell {
         self.sportLabel.textColor = UIColor.white
         self.sportLabel.font = UIFont.boldSystemFont(ofSize: 17)
         
-        lineView = UIView(frame: CGRect(x: xMargin, y: self.frame.size.height-45, width: self.frame.size.width-(2*xMargin), height: 2))
-        lineView.backgroundColor = UIColor.white
+        lineView = UIImageView(frame: CGRect(x: xMargin, y: self.frame.size.height-45, width: self.frame.size.width-(2*xMargin), height: 2))
+        lineView.image = UIImage(named:"blueLine")
         self.addSubview(lineView)
     }
     

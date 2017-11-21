@@ -19,7 +19,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sX6-r4-sfo">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="sX6-r4-sfo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -39,7 +39,7 @@
                     <tabBarItem key="tabBarItem" title="Planning" image="dateClear" selectedImage="date" id="a6e-5F-9h6"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qvO-ae-VEs">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="qvO-ae-VEs">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -58,7 +58,7 @@
                     <tabBarItem key="tabBarItem" title="Map" image="mapClear" selectedImage="map" id="Bfh-r4-y0M"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="D36-9j-iZA">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="D36-9j-iZA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -98,7 +98,7 @@
                     <tabBarItem key="tabBarItem" title="Professionnel" image="proClear" selectedImage="pro" id="K7r-Tb-3nO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iyM-iY-3Ed">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="iyM-iY-3Ed">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>

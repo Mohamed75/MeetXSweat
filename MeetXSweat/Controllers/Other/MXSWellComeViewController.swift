@@ -79,7 +79,6 @@ class MXSWellComeViewController: MXSViewController, UINavigationControllerDelega
         jobButton.setTitle(kJobButtonText, for: UIControlState())
         MXSViewController.customButton(sportButton)
         sportButton.setTitle(kSportButtonText, for: UIControlState())
-        MXSViewController.customButton(letsGoButton)
         
         
         UserViewModel.setUserImageView(userImageView, person: User.currentUser)

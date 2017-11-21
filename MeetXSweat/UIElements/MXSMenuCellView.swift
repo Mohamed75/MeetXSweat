@@ -28,7 +28,7 @@ class MXSMenuCellView: UITableViewCell {
         self.selectionStyle    = .none
         
         self.titleLabel.textColor  = Constants.MainColor.kCustomBlueColor
-        self.titleLabel.font = Constants.Font.kBoldFont
+        self.titleLabel.font = Constants.Font.kBoldFontBig
         self.descriptionLabel.textColor = UIColor.white
     }
 }

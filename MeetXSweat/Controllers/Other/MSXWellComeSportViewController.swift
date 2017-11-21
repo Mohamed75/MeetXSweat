@@ -29,11 +29,13 @@ class MSXWellComeSportViewController: MXSViewController, PickerViewDataSource, P
     
     private func customPickerView() {
         
+        let overlayImage = UIImage(named:"blueLine")?.scaleImage(CGSize(width: self.view.frame.size.width, height: 40))
+        
         pickerView.dataSource   = self
         pickerView.delegate     = self
         pickerView.scrollingStyle = .infinite
         pickerView.selectionStyle = .overlay
-        pickerView.selectionOverlay.backgroundColor = Constants.MainColor.kCustomBlueColor
+        pickerView.selectionOverlay.backgroundColor = UIColor(patternImage: overlayImage!)
         pickerView.selectionOverlay.alpha = 0.5
         pickerView.backgroundColor = Constants.MainColor.kBackGroundColor
     }
@@ -54,12 +56,6 @@ class MSXWellComeSportViewController: MXSViewController, PickerViewDataSource, P
         
         addValiderButton()
     }
-    /*
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        self.topView.topLabel.text = kTopTitleLabel
-    }*/
     
     
     override func validatButtonClicked(_ sender: AnyObject) {

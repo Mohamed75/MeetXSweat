@@ -71,7 +71,8 @@ enum Constants {
      *  A struct of constants about the main fonts.
      */
     struct Font {
-        static let kBoldFont = UIFont.boldSystemFont(ofSize: 18)
+        static let kBoldFontBig = DeviceType.IS_IPHONE_5 ? UIFont.boldSystemFont(ofSize: 16) : UIFont.boldSystemFont(ofSize: 18)
+        static let kBoldFontMax = DeviceType.IS_IPHONE_5 ? UIFont.boldSystemFont(ofSize: 18) : UIFont.boldSystemFont(ofSize: 22)
     }
     
     /**

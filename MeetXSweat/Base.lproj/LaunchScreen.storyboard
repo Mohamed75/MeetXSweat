@@ -46,6 +46,18 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q7H-5K-ViI">
                                 <rect key="frame" x="16" y="334" width="343" height="333"/>
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blueLine" translatesAutoresizingMaskIntoConstraints="NO" id="6wa-tr-R0Y">
+                                        <rect key="frame" x="-20" y="30" width="383" height="2"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="HhM-A5-bG8"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blueLine" translatesAutoresizingMaskIntoConstraints="NO" id="4iQ-Im-5LA">
+                                        <rect key="frame" x="-20" y="123.5" width="383" height="2"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="11e-nH-ETy"/>
+                                        </constraints>
+                                    </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchTitle" translatesAutoresizingMaskIntoConstraints="NO" id="AzI-dk-QYX">
                                         <rect key="frame" x="30" y="50" width="283" height="53.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -57,7 +69,11 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="AzI-dk-QYX" secondAttribute="trailing" constant="30" id="4vF-uQ-2fI"/>
+                                    <constraint firstItem="4iQ-Im-5LA" firstAttribute="leading" secondItem="6wa-tr-R0Y" secondAttribute="leading" id="D64-xZ-ZD1"/>
+                                    <constraint firstItem="4iQ-Im-5LA" firstAttribute="trailing" secondItem="6wa-tr-R0Y" secondAttribute="trailing" id="L9A-Sv-cRW"/>
+                                    <constraint firstItem="6wa-tr-R0Y" firstAttribute="top" secondItem="AzI-dk-QYX" secondAttribute="top" constant="-20" id="ben-H9-iO3"/>
                                     <constraint firstItem="AzI-dk-QYX" firstAttribute="leading" secondItem="q7H-5K-ViI" secondAttribute="leading" constant="30" id="jdM-wo-NEw"/>
+                                    <constraint firstItem="4iQ-Im-5LA" firstAttribute="top" secondItem="AzI-dk-QYX" secondAttribute="bottom" constant="20" id="toP-eW-6Hu"/>
                                     <constraint firstItem="AzI-dk-QYX" firstAttribute="top" secondItem="q7H-5K-ViI" secondAttribute="top" constant="50" id="wYT-42-xEK"/>
                                 </constraints>
                             </view>
@@ -68,6 +84,8 @@
                             <constraint firstItem="iHf-dr-PN6" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="-20" id="76N-z8-knL"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="q7H-5K-ViI" secondAttribute="bottom" id="92W-qw-DYI"/>
                             <constraint firstAttribute="trailingMargin" secondItem="iHf-dr-PN6" secondAttribute="trailing" constant="-20" id="9Im-c8-pTW"/>
+                            <constraint firstItem="6wa-tr-R0Y" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-20" id="GDQ-JR-0cz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6wa-tr-R0Y" secondAttribute="trailing" constant="-20" id="GEK-0b-QYg"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Hn0-Q8-BRa" secondAttribute="trailing" id="Lva-eD-GLu"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="iHf-dr-PN6" secondAttribute="bottom" id="MgR-np-L6K"/>
                             <constraint firstItem="iHf-dr-PN6" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-20" id="RLQ-vS-kR6"/>
@@ -88,6 +106,7 @@
     <resources>
         <image name="LaunchTitle" width="190" height="36"/>
         <image name="Logo" width="150" height="150"/>
+        <image name="blueLine" width="451" height="2"/>
         <image name="launch" width="375" height="667"/>
     </resources>
 </document>

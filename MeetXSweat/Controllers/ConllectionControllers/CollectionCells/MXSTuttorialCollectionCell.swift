@@ -27,11 +27,11 @@ class MXSTuttorialCollectionCell: UICollectionViewCell {
         
         self.label.numberOfLines = 0
         self.label.textColor = UIColor.white
-        self.label.font = UIFont.boldSystemFont(ofSize: 18)
+        self.label.font = Constants.Font.kBoldFontBig
         
         self.bottomImageView.image = UIImage(named: "TuttorialBottom")
         self.titleLabel.text = ""
-        self.titleLabel.font = UIFont.boldSystemFont(ofSize: 22)
+        self.titleLabel.font = Constants.Font.kBoldFontMax
         
         self.viewWithTag(3)?.addSubview(self.label)
     }
