@@ -52,6 +52,7 @@ extension MXSEventsCollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Ressources.CellReuseIdentifier.event, for: indexPath) as! MXSEventsCollectionCell
         
         cell.backgroundColor = Constants.MainColor.kBackGroundColor
+        cell.prepareForReuse()
         
         cell.layer.borderWidth = 1
         cell.layer.borderColor = UIColor.white.cgColor
@@ -72,37 +73,8 @@ extension MXSEventsCollectionViewController {
         }
         
         let event = self.events[indexPath.section-1]
-        var text = ""
-        if let jour = event.getJour(), let heure = event.getHeure() {
-            text = jour + "     " + heure
-        }
         
-        
-        var mapSpace        = "    "
-        var personsSpace    = "      "
-        if ScreenSize.currentWidth > ScreenSize.iphone6Width {
-            mapSpace = mapSpace + "      "
-            personsSpace = personsSpace + "       "
-        }
-        if ScreenSize.currentWidth == ScreenSize.iphone6Width {
-            mapSpace = mapSpace + "   "
-            personsSpace = personsSpace + "   "
-        }
-        text = text + personsSpace + String(event.persons.count)
-        
-        if let coordinate = event.getCoordinate() {
-            let km = GPSLocationManager.getDistanceFor(coordinate)/Constants.mToKm
-            if km > 0 {
-                let distance  = String(format: "%.1fKM", km)
-                if distance.characters.count > 5 {
-                    text = text + mapSpace + distance
-                } else {
-                    text = text + mapSpace + " " + distance
-                }
-            }
-        }
-        
-        cell.label.text         = text
+        cell.label.text         = textForEventCell(event: event, isEventView: false)
         cell.label.textColor = UIColor.white
         cell.imageView.image    = UIImage(named: event.sport.lowercased())
         
@@ -139,6 +111,40 @@ extension MXSEventsCollectionViewController {
 
 // MARK: - *** Public Methode ***
 
+
+func textForEventCell(event: Event, isEventView: Bool) -> String {
+    
+    var text = ""
+    if let jour = event.getJour(), let heure = event.getHeure() {
+        text = isEventView ? jour + "        " + heure : jour + "     " + heure
+    }
+    
+    var mapSpace        = "    "
+    var personsSpace    = "      "
+    if ScreenSize.currentWidth > ScreenSize.iphone6Width {
+        mapSpace = mapSpace + "      "
+        personsSpace = personsSpace + "       "
+    }
+    if ScreenSize.currentWidth == ScreenSize.iphone6Width {
+        mapSpace = mapSpace + "   "
+        personsSpace = personsSpace + "   "
+    }
+    text = text + personsSpace + String(event.persons.count)
+    
+    if let coordinate = event.getCoordinate() {
+        let km = GPSLocationManager.getDistanceFor(coordinate)/Constants.mToKm
+        if km > 0 {
+            let distance  = String(format: "%.1fKM", km)
+            if distance.characters.count > 5 {
+                text = text + mapSpace + distance
+            } else {
+                text = text + mapSpace + " " + distance
+            }
+        }
+    }
+    return text
+}
+
 func customizeEventCell(_ view: UIView) {
     
     let eventImageView = UIImageView(frame: CGRect(x: 35, y: 15, width: 30, height: 30))
@@ -151,8 +157,8 @@ func customizeEventCell(_ view: UIView) {
     clockImageView.tag = 34
     view.addSubview(clockImageView)
     
-    var xParticip = 170
-    var xMap = 215
+    var xParticip: CGFloat = 170
+    var xMap: CGFloat = 215
     if ScreenSize.currentWidth > ScreenSize.iphone6Width {
         xParticip = 195
         xMap = 260
@@ -172,9 +178,9 @@ func customizeEventCell(_ view: UIView) {
     mapView.tag = 36
     view.addSubview(mapView)
     
-    var xSport = view.frame.size.width - 50
+    var xSport = xMap + mapView.frame.size.width + 20
     if ScreenSize.currentWidth >= ScreenSize.iphone6Width {
-        xSport = view.frame.size.width - 60
+        xSport = xSport + 20
     }
     let sportImageView = UIImageView(frame: CGRect(x: xSport, y: 15, width: 30, height: 30))
     sportImageView.image = UIImage(named: "SportIcon")

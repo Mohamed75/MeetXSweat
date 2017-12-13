@@ -21,11 +21,15 @@ class MXSEventsCollectionCell: UICollectionViewCell {
     
     @IBOutlet internal weak var imageView: UIImageView!
     @IBOutlet internal weak var label: UILabel!
-    
+    @IBOutlet internal weak var imageViewTraillingConstraint: NSLayoutConstraint!
     
     override func prepareForReuse() {
         
         self.label.text = ""
         super.prepareForReuse()
+        
+        if ScreenSize.currentWidth < ScreenSize.iphone6Width {
+            imageViewTraillingConstraint.constant = 15
+        }
     }
 }

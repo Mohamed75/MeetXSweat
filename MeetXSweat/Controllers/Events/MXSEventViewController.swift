@@ -10,11 +10,9 @@ import UIKit
 import MapKit
 
 
-private let kDaySeconds  = 86400.0
-private let kHourSeconds = 3600.0
-private let kMinuteSeconds = 60.0
-private let kHours       = 24
 
+private let kInscriptionButtonText  = "JE PARTICIPE A L'EVENT"
+private let kParticipantsButtonText = "VOIR LES PROFILS PRO"
 
 
 /**
@@ -37,12 +35,8 @@ class MXSEventViewController: MXSViewController {
     @IBOutlet weak var participantsButton: UIButton!
     @IBOutlet weak var inscriptionButton: UIButton!
     
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var heurLabel: UILabel!
-    @IBOutlet weak var participantsLabel: UILabel!
-    @IBOutlet weak var mapLabel: UILabel!
-    @IBOutlet weak var sportLabel: UILabel!
-    
+    @IBOutlet internal weak var topCellLabel: UILabel!
+    @IBOutlet internal weak var sportLabel: UILabel!
     
     
     
@@ -53,6 +47,16 @@ class MXSEventViewController: MXSViewController {
         mapView.add(overlay, level: .aboveLabels)
     }
     
+    private func customButton(button: UIButton, title: String) {
+        
+        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.borderWidth = 1
+        button.layer.cornerRadius = 5
+        button.backgroundColor = Constants.MainColor.kCustomBlueColor
+        button.setTitleColor(UIColor.white, for: UIControlState())
+        button.setTitle(title, for: UIControlState())
+    }
+    
     
     // MARK: - *** View lifecycle ***
     
@@ -60,55 +64,26 @@ class MXSEventViewController: MXSViewController {
         
         super.viewDidLoad()
         
+        title = Strings.NavigationTitle.event
+        
         self.topView.draw(self.topView.frame)
-        self.topView.topLabel.text = event.sport
+        self.topView.topLabel.text = self.event.sport
         
         customizeEventCell(self.eventIconView)
         
+        topCellLabel.textColor = UIColor.white
+        sportLabel.textColor = UIColor.white
         
-        if let jour = event.getJour(), let heure = event.getHeure() {
-            dateLabel.text = jour
-            heurLabel.text = heure
-        }
-        
-        if let coordinate = event.getCoordinate() {
-            let km = GPSLocationManager.getDistanceFor(coordinate)/Constants.mToKm
-            if km > 0 {
-                mapLabel.text = String(format: "%.1fKM", km)
-            }
-        }
-        
-        sportLabel.text = event.sport
-        
-        title = Strings.NavigationTitle.event
-            
         eventView.layer.borderColor = UIColor.white.cgColor
         eventView.layer.borderWidth = 1
         eventView.layer.cornerRadius = 5
         
-        inscriptionButton.layer.borderColor = UIColor.white.cgColor
-        inscriptionButton.layer.borderWidth = 1
-        inscriptionButton.layer.cornerRadius = 5
-        inscriptionButton.backgroundColor = Constants.MainColor.kCustomBlueColor
-        inscriptionButton.setTitleColor(UIColor.white, for: UIControlState())
-        inscriptionButton.setTitle("JE PARTICIPE A L'EVENT", for: UIControlState())
-        
-        participantsButton.layer.borderColor = UIColor.white.cgColor
-        participantsButton.layer.borderWidth = 1
-        participantsButton.layer.cornerRadius = 5
-        participantsButton.backgroundColor = Constants.MainColor.kCustomBlueColor
-        participantsButton.setTitleColor(UIColor.white, for: UIControlState())
-        participantsButton.setTitle("VOIR LES PROFILS PRO", for: UIControlState())
+        customButton(button: inscriptionButton, title: kInscriptionButtonText)
+        customButton(button: participantsButton, title: kParticipantsButtonText)
         
         updateParticipantsLabelText()
         updateInscriptionButton()
         
-        let dateArray = event.date.components(separatedBy: " - ")
-        var text = dateArray.first
-        text = text! + "       " + event.sport + "\n"
-        if dateArray.count > 1 {
-            text = text! + dateArray[1]
-        }
         
         addOverlay()
         
@@ -126,12 +101,20 @@ class MXSEventViewController: MXSViewController {
         if tabBarController?.selectedIndex == 0 {
             participantsButton.isHidden = true
         }
-        
-        
     }
     
     private func updateParticipantsLabelText() {
-        participantsLabel.text = String(event.persons.count)
+        
+        topCellLabel.text = "     " + textForEventCell(event: self.event, isEventView: true)
+
+        var sportName = event.sport
+        if sportName.characters.count < 5 {
+            sportName = sportName + "   "
+        }
+        if ScreenSize.currentWidth >= ScreenSize.iphone6Width {
+            sportName = sportName + "    "
+        }
+        sportLabel.text = sportName
     }
     
     private func updateInscriptionButton() {
@@ -162,9 +145,10 @@ class MXSEventViewController: MXSViewController {
                     return
                 }
                 if let personsCollectionViewController = viewController.childViewControllers.first as? MXSPersonsCollectionViewController {
+                    personsCollectionViewController.event = this.event
                     viewController.topView.topLabel.text = this.event.sport.uppercased()
                     if let jour = this.event.getJour(), let heure = this.event.getHeure() {
-                        viewController.topView.topLabel.text = this.event.sport.uppercased() + " - " + jour + " - " + heure
+                        viewController.topView.topLabel.text = jour + " à " + heure
                     }
                     personsCollectionViewController.persons = this.event.getFullPersons()
                     personsCollectionViewController.collectionView?.reloadData()
@@ -212,6 +196,12 @@ extension MXSEventViewController {
             return nil
         }
         
+        if let userLocation = GPSLocationManager.sharedInstance.userLocation {
+            guard !(annotation.coordinate.latitude == userLocation.coordinate.latitude && annotation.coordinate.longitude == userLocation.coordinate.longitude) else {
+                return nil
+            }
+        }
+        
         var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: Ressources.MapPinIdentifier.eventId)
         if pinView == nil {
             pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: Ressources.MapPinIdentifier.eventId)
@@ -226,7 +216,7 @@ extension MXSEventViewController {
             aPinView.canShowCallout = true
             aPinView.isEnabled = true
             let button = UIButton(type: UIButtonType.detailDisclosure)
-            button.tintColor = Constants.MainColor.kSpecialColor
+            button.tintColor = Constants.MainColor.kCustomBlueColor
             aPinView.rightCalloutAccessoryView = button
             
             if let image = UIImage(named: event.sport.lowercased()+"PinBlanc") {

@@ -34,7 +34,7 @@ private let kCollectionViewCellHeigh: CGFloat = 60
 class MXSPersonsCollectionViewController: UICollectionViewController {
     
     internal var persons: [Person]?
-    
+    var event: Event?
     
     // MARK: - *** View lifecycle ***
     

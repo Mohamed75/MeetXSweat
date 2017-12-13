@@ -168,6 +168,8 @@
 		D998B5DC1D96E63400A045F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D998B5DB1D96E63400A045F4 /* GoogleService-Info.plist */; };
 		D998B5E51D97FFE000A045F4 /* EnCodeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D998B5E41D97FFE000A045F4 /* EnCodeObject.swift */; };
 		D9AAA2AB1D8F0F12004CE80C /* MXSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA2AA1D8F0F12004CE80C /* MXSViewController.swift */; };
+		D9AAAC6D1FE134D300680A9C /* MKAnnotationViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAAC6C1FE134D300680A9C /* MKAnnotationViewExtension.swift */; };
+		D9AAAC6E1FE134D300680A9C /* MKAnnotationViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAAC6C1FE134D300680A9C /* MKAnnotationViewExtension.swift */; };
 		D9B58B431E64C15200858C9B /* MenuIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D93AF0991E60DBE9004B5565 /* MenuIcons.xcassets */; };
 		D9B58B5C1E670FF200858C9B /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9B58B5B1E670FF200858C9B /* UserNotifications.framework */; };
 		D9B64CD91D9D6C28008C5D34 /* MXSMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B64CD81D9D6C28008C5D34 /* MXSMenuViewController.swift */; };
@@ -338,6 +340,7 @@
 		D998B5DB1D96E63400A045F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D998B5E41D97FFE000A045F4 /* EnCodeObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnCodeObject.swift; path = ../Model/EnCodeObject.swift; sourceTree = "<group>"; };
 		D9AAA2AA1D8F0F12004CE80C /* MXSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSViewController.swift; sourceTree = "<group>"; };
+		D9AAAC6C1FE134D300680A9C /* MKAnnotationViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKAnnotationViewExtension.swift; sourceTree = "<group>"; };
 		D9B58B5B1E670FF200858C9B /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		D9B64CD81D9D6C28008C5D34 /* MXSMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSMenuViewController.swift; sourceTree = "<group>"; };
 		D9B64D211DA3AA2D008C5D34 /* DummyData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
@@ -588,7 +591,7 @@
 		D926BAD41D8DA12800E3878C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				D998B5E11D97F06B00A045F4 /* Extensions */,
+				D9AAAC6B1FE134C200680A9C /* Extensions */,
 				D90AB5A41D957AE6003DCA75 /* AnimationClass.swift */,
 				D926BAD71D8DA92400E3878C /* Utils.swift */,
 				D94C63E51D8DE4BB00ECD7FD /* FaceBookHelper.swift */,
@@ -683,9 +686,10 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
-		D998B5E11D97F06B00A045F4 /* Extensions */ = {
+		D9AAAC6B1FE134C200680A9C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				D9AAAC6C1FE134D300680A9C /* MKAnnotationViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1302,6 +1306,7 @@
 				D9B64D261DA3AA2D008C5D34 /* DummyData.swift in Sources */,
 				D93AF0931E60949D004B5565 /* UserViewModel.swift in Sources */,
 				D90AB5881D940D18003DCA75 /* MXSFindArroundMeViewController.swift in Sources */,
+				D9AAAC6D1FE134D300680A9C /* MKAnnotationViewExtension.swift in Sources */,
 				D93AF09C1E60F1C6004B5565 /* MXSProfileDescriptionViewController.swift in Sources */,
 				D9AAA2AB1D8F0F12004CE80C /* MXSViewController.swift in Sources */,
 				D94C63E61D8DE4BB00ECD7FD /* FaceBookHelper.swift in Sources */,
@@ -1389,6 +1394,7 @@
 				D949BB1D1E5C872A00BCF3A0 /* MXSFindManager.swift in Sources */,
 				D949BB1E1E5C872A00BCF3A0 /* DummyData.swift in Sources */,
 				D93AF0941E609599004B5565 /* UserViewModel.swift in Sources */,
+				D9AAAC6E1FE134D300680A9C /* MKAnnotationViewExtension.swift in Sources */,
 				D949BB1F1E5C872A00BCF3A0 /* MXSFindArroundMeViewController.swift in Sources */,
 				D949BB201E5C872A00BCF3A0 /* MXSViewController.swift in Sources */,
 				D949BB211E5C872A00BCF3A0 /* FaceBookHelper.swift in Sources */,
