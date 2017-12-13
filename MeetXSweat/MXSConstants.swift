@@ -105,5 +105,10 @@ enum Constants {
     
     static let tabBarHeight: CGFloat = 50
     static let mToKm       = 1000.0
+    
+    
+    struct Cell {
+        static let cornerRadius: CGFloat = 5
+    }
 }
 

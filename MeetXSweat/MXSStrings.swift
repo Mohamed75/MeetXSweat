@@ -13,7 +13,7 @@ import Foundation
 enum Strings {
     
     struct Calendar {
-        static let titleText = "SELECTIONNER MES DATES"
+        static let titleText = "SELECTIONNER TES DISPONIBILITES"
     }
     
     struct Home {

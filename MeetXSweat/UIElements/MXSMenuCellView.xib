@@ -20,27 +20,27 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hwJ-kg-Cda">
-                        <rect key="frame" x="18" y="192" width="40" height="40"/>
+                        <rect key="frame" x="18" y="197" width="35" height="35"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="40" id="2MN-JY-OuK"/>
+                            <constraint firstAttribute="height" constant="35" id="2MN-JY-OuK"/>
                             <constraint firstAttribute="width" secondItem="hwJ-kg-Cda" secondAttribute="height" multiplier="1:1" id="Z1x-yx-dWv"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b17-Cg-2HA">
-                        <rect key="frame" x="78" y="192" width="42" height="20"/>
+                        <rect key="frame" x="73" y="192" width="42" height="20"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ft-OP-R7g">
-                        <rect key="frame" x="78" y="217" width="42" height="18"/>
+                        <rect key="frame" x="73" y="217" width="42" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="b17-Cg-2HA" firstAttribute="top" secondItem="hwJ-kg-Cda" secondAttribute="top" id="PaX-U7-QrU"/>
+                    <constraint firstItem="b17-Cg-2HA" firstAttribute="top" secondItem="hwJ-kg-Cda" secondAttribute="top" constant="-5" id="PaX-U7-QrU"/>
                     <constraint firstItem="1Ft-OP-R7g" firstAttribute="top" secondItem="b17-Cg-2HA" secondAttribute="bottom" constant="5" id="Sed-rN-gty"/>
                     <constraint firstAttribute="bottomMargin" secondItem="hwJ-kg-Cda" secondAttribute="bottom" id="UrS-sp-7ZC"/>
                     <constraint firstItem="b17-Cg-2HA" firstAttribute="leading" secondItem="hwJ-kg-Cda" secondAttribute="trailing" constant="20" id="WGL-yk-JPH"/>

@@ -19,19 +19,19 @@ import PickerView
  - helper       Utils.
  */
 
+
 class MXSFindProfileViewController: MXSViewController, PickerViewDataSource, PickerViewDelegate {
     
     // A property to setUp the viewController as user profile gettering data or findby viewController
     var editable: Bool = false
     
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var topView: MXSTopView!
     
     @IBOutlet weak var metierLabel: UILabel!
     @IBOutlet weak var domaineLabel: UILabel!
     
     @IBOutlet weak var validerButton: UIButton!
     
-    @IBOutlet weak var findUserImageView: UIImageView!
     
     // A property to save the selecetd label (domaine or metier)
     fileprivate var selectedLabel   = 1
@@ -64,18 +64,14 @@ class MXSFindProfileViewController: MXSViewController, PickerViewDataSource, Pic
         
         super.viewDidLoad()
         
+        self.topView.topLabel.text   = "TROUVEZ DES PROFILS PRO"
+        self.topView.imageView.image = UIImage(named: "Participants")
+        
         if !editable {
             addBarButtonItem()
             title = Strings.NavigationTitle.rechercher
-        } else {
-            titleLabel.isHidden = true
-            findUserImageView.isHidden = true
         }
         addValiderButton()
-        
-        titleLabel.textColor = Constants.MainColor.kSpecialColor
-        titleLabel.layer.borderColor = Constants.MainColor.kSpecialColor.cgColor
-        titleLabel.layer.borderWidth = 1
         
         
         customLabel(metierLabel)
@@ -132,9 +128,9 @@ class MXSFindProfileViewController: MXSViewController, PickerViewDataSource, Pic
     
     private func customLabel(_ label: UILabel) {
         
-        label.layer.borderColor = Constants.MainColor.kSpecialColor.cgColor
-        label.layer.borderWidth = 1
-        label.layer.cornerRadius = 4
+        label.layer.borderColor     = Constants.MainColor.kSpecialColor.cgColor
+        label.layer.borderWidth     = 1
+        label.layer.cornerRadius    = Constants.Cell.cornerRadius
         label.clipsToBounds = true
     }
     

@@ -50,13 +50,7 @@ extension MXSEventsCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Ressources.CellReuseIdentifier.event, for: indexPath) as! MXSEventsCollectionCell
-        
-        cell.backgroundColor = Constants.MainColor.kBackGroundColor
         cell.prepareForReuse()
-        
-        cell.layer.borderWidth = 1
-        cell.layer.borderColor = UIColor.white.cgColor
-        cell.layer.cornerRadius = 5
         
         for v in cell.subviews {
             if v.tag > 32 && v.tag < 38 {

@@ -11,7 +11,6 @@ import JTAppleCalendar
 
 
 
-
 /**
  *  This class was designed and implemented to provide a ViewController to find events by date.
  
@@ -22,9 +21,11 @@ import JTAppleCalendar
 class MXSFindDateViewController: MXSCalendarViewController {
     
     
+    @IBOutlet weak var topView: MXSTopView!
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var monthLabel: UILabel!
-    @IBOutlet weak var titleLabel: UILabel!
+    
     
     @IBOutlet weak var stackView: UIStackView!
     
@@ -40,18 +41,24 @@ class MXSFindDateViewController: MXSCalendarViewController {
         
         title = Strings.NavigationTitle.planning
         
-        titleLabel.text = Strings.Calendar.titleText
-        titleLabel.textColor = UIColor.white
-        titleLabel.backgroundColor = Constants.MainColor.kSpecialColor
+        self.topView.topLabel.text = Strings.Calendar.titleText
+        self.topView.imageView.image = UIImage(named: "date")
+       
+        let lineImage = UIImage(named:"blueLine")
         
-        let topLine = UIView(frame: CGRect(x: 10, y: titleLabel.frame.size.height+15, width: view.frame.size.width-20, height: 1))
-        topLine.backgroundColor = Constants.MainColor.kSpecialColor
-        view.addSubview(topLine)
+        let topLineView = UIImageView(image: lineImage)
+        topLineView.frame = CGRect(x: 0, y: topView.frame.size.height+50, width: view.frame.size.width, height: 2)
+        view.addSubview(topLineView)
+        
+        let dateFormatter   = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "fr_FR")
+        dateFormatter.dateStyle = DateFormatter.Style.long
+        self.dateLabel.text = dateFormatter.string(from: Date())
         
         
-        let bottomLine = UIView(frame: CGRect(x: 7, y: stackView.frame.origin.y-1, width: view.frame.size.width-14, height: 1))
-        bottomLine.backgroundColor = Constants.MainColor.kSpecialColor
-        view.addSubview(bottomLine)
+        let bottomLineView = UIImageView(image: lineImage)
+        bottomLineView.frame = CGRect(x: 0, y: stackView.frame.size.height+3, width: view.frame.size.width, height: 2)
+        stackView.addSubview(bottomLineView)
         
         
         calendarView.dataSource = self

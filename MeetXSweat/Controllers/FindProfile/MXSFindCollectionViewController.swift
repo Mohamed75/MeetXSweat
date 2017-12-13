@@ -32,7 +32,6 @@ class MXSFindCollectionViewController: MXSViewController {
         super.viewDidLoad()
         
         self.view.backgroundColor = Constants.MainColor.kBackGroundColor
-        self.topView.draw(self.topView.frame)
         
         if isSweatWorking {
             
@@ -58,6 +57,15 @@ class MXSFindCollectionViewController: MXSViewController {
                 } else {
                     title = Strings.NavigationTitle.events
                 }
+                
+            } else if let personsCollectionViewController = childViewControllers.first as? MXSPersonsCollectionViewController {
+                
+                dispatch_later(0.1, closure: { [weak self] in
+                    guard let this = self else {
+                        return
+                    }
+                    this.customizeTopViewPersons(event: personsCollectionViewController.event!)
+                })
             }
             break
           
@@ -90,4 +98,23 @@ class MXSFindCollectionViewController: MXSViewController {
     }
     
     
+    func customizeTopViewPersons(event: Event) {
+        
+        let sportName = event.sport
+        self.topView.imageViewCenterConstraint.constant -= 60
+        self.topView.imageView.image = UIImage(named: sportName.lowercased())
+        self.topView.setNeedsLayout()
+        
+        let sportLabel = UILabel(frame: CGRect(x: self.topView.imageView.frame.origin.x-10, y: 13, width: self.topView.frame.size.width, height: 30))
+        sportLabel.textColor = Constants.MainColor.kCustomBlueColor
+        sportLabel.text = sportName
+        sportLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        self.topView.addSubview(sportLabel)
+        
+        let adressLabel = UILabel(frame: CGRect(x: self.topView.imageView.frame.origin.x-10, y: 35, width: self.topView.frame.size.width, height: 30))
+        adressLabel.textColor = UIColor.white
+        adressLabel.text = event.adress
+        adressLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        self.topView.addSubview(adressLabel)
+    }
 }

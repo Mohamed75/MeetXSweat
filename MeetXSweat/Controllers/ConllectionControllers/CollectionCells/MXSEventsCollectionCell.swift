@@ -28,8 +28,15 @@ class MXSEventsCollectionCell: UICollectionViewCell {
         self.label.text = ""
         super.prepareForReuse()
         
+        self.backgroundColor = Constants.MainColor.kBackGroundColor
+        
         if ScreenSize.currentWidth < ScreenSize.iphone6Width {
             imageViewTraillingConstraint.constant = 15
         }
+        
+        self.layer.borderWidth  = 1
+        self.layer.borderColor  = UIColor.white.cgColor
+        
+        self.layer.cornerRadius = Constants.Cell.cornerRadius
     }
 }

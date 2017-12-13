@@ -9,7 +9,7 @@
 import UIKit
 
 private let kNameAttributes = [
-    NSForegroundColorAttributeName: Constants.MainColor.kSpecialColor,
+    NSForegroundColorAttributeName: Constants.MainColor.kCustomBlueColor,
     NSFontAttributeName : UIFont.boldSystemFont(ofSize: 17)
 ]
 
@@ -33,6 +33,8 @@ class MXSConversationsCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Ressources.CellReuseIdentifier.conversation, for: indexPath) as! MXSConversationCollectionCell
+        
+        cell.prepareForReuse()
         
         var imagePerson = Person()
         let conversation = conversations[indexPath.section]
@@ -65,9 +67,6 @@ class MXSConversationsCollectionViewController: UICollectionViewController {
         let string = NSMutableAttributedString(string: text)
         string.addAttributes(kNameAttributes, range: NSRange(location: 0, length: text.characters.count))
         cell.label.attributedText = string
-        
-        cell.layer.borderWidth = 1
-        cell.layer.borderColor = UIColor.black.cgColor
         
         return cell
     }

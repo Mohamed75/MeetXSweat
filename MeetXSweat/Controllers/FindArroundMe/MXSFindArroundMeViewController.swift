@@ -144,7 +144,7 @@ extension MXSFindArroundMeViewController {
             aPinView.canShowCallout = true
             aPinView.isEnabled = true
             let button = UIButton(type: UIButtonType.detailDisclosure)
-            button.tintColor = Constants.MainColor.kSpecialColor
+            button.tintColor = Constants.MainColor.kCustomBlueColor
             aPinView.rightCalloutAccessoryView = button
             
             guard let subTitle = annotation.subtitle else {

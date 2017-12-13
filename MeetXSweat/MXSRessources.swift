@@ -30,11 +30,6 @@ enum Ressources {
         static let userPhoto    = "UserPhoto"
     }
     
-    struct SportsImages {
-        
-        static let starSelected     = "star"
-        static let starUnSelected   = "starClear"
-    }
     
     struct MenuImages {
         

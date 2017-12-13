@@ -9,6 +9,8 @@
 import UIKit
 
 
+private let kScale: CGFloat = 1.15
+private let kScaleCenter: CGFloat = 15
 
 /**
  *  This class was designed and implemented to provide a simple way to set a data to a view.
@@ -26,10 +28,23 @@ class UserViewModel {
                 URL(string: person.pictureUrl)!,
                 placeholderImage: nil,
                 filter: nil,
-                imageTransition: .noTransition
+                imageTransition: .noTransition,
+                completion: { response in
+                    
+                    guard (response.result.error == nil) else {
+                        return
+                    }
+                    
+                    imageView.center.x += (imageView.frame.size.width/kScaleCenter)+1
+                    imageView.center.y += (imageView.frame.size.height/kScaleCenter)+2
+                    
+                    imageView.frame.size.width /= kScale
+                    imageView.frame.size.height /= kScale
+                    
+                    imageView.layer.cornerRadius = imageView.frame.width/2
+                    imageView.clipsToBounds = true
+                }
             )
-            imageView.layer.cornerRadius = imageView.frame.width/2.3
-            imageView.clipsToBounds = true
         }
     }
     

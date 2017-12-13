@@ -26,9 +26,12 @@ class MXSCalendarCellView: JTAppleDayCellView {
     @IBOutlet weak var imageViewConstraint: NSLayoutConstraint!
     
     
-    fileprivate var normalDayCellColor      = UIColor.white
-    fileprivate var previousDayCellColor    = UIColor(red: 0, green: 0, blue: 0, alpha: 0.05)
-    fileprivate var perviousMonthTextColor  = UIColor.black
+    fileprivate var normalDayCellColor      = UIColor.black
+    fileprivate var kTodayColor             = UIColor.black
+    fileprivate var previousDayCellColor    = UIColor.darkGray
+    fileprivate var perviousMonthTextColor  = UIColor.white
+    fileprivate var dayLabelTextColor       = UIColor.white
+    fileprivate var selectedViewColor       = Constants.MainColor.kCustomBlueColor
     
     @IBInspectable var todayColor: UIColor!
     
@@ -56,9 +59,9 @@ class MXSCalendarCellView: JTAppleDayCellView {
         if (c.string(from: date) == todayDate) {
             selectedView.layoutIfNeeded()
             selectedView.layer.cornerRadius = selectedView.frame.size.width / 2
-            dayLabel.textColor = UIColor.white
+            dayLabel.textColor = dayLabelTextColor
             selectedView.isHidden = false
-            selectedView.backgroundColor = Constants.MainColor.kSpecialColor
+            selectedView.backgroundColor = selectedViewColor
         }
         
         if ScreenSize.currentWidth >= ScreenSize.iphone6Width {
@@ -68,7 +71,7 @@ class MXSCalendarCellView: JTAppleDayCellView {
     
     func setupCellBeforeDisplay(_ cellState: CellState, date: Date) {
         
-        todayColor = UIColor.white
+        todayColor = kTodayColor
         
         dayLabel.text =  cellState.text
         
@@ -105,7 +108,7 @@ class MXSCalendarCellView: JTAppleDayCellView {
     
     fileprivate func configureTextColor(_ cellState: CellState) {
         if cellState.dateBelongsTo == .thisMonth {
-            dayLabel.textColor = UIColor.black
+            dayLabel.textColor = dayLabelTextColor
         } else {
             dayLabel.textColor = perviousMonthTextColor
         }
@@ -130,9 +133,11 @@ class MXSCalendarCellView: JTAppleDayCellView {
             configureTextColor(cellState)
             
             if !self.selectedView.isHidden == false {
-                self.imageView.image = UIImage(named: Ressources.SportsImages.starSelected)
+                self.imageView.image = UIImage(color: selectedViewColor)
+                self.imageView.layer.cornerRadius = self.imageView.frame.width  / 2
+                self.imageView.clipsToBounds = true
             } else {
-                dayLabel.textColor = UIColor.white
+                dayLabel.textColor = dayLabelTextColor
             }
             
         } else {

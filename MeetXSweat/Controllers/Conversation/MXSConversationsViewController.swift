@@ -17,7 +17,38 @@ import UIKit
 
 class MXSConversationsViewController: MXSViewController {
     
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var topView: MXSTopView!
+    
+    
+    
+    func customizeTopViewPersons() {
+        
+        let person = User.currentUser
+        
+        self.topView.imageViewCenterConstraint.constant -= 100
+        UserViewModel.setUserImageView(self.topView.imageView, person: person)
+        self.topView.imageView.layer.cornerRadius = 20
+        self.topView.imageView.transform = CGAffineTransform(scaleX: 1.4, y: 1.4)
+        
+        let nameLabel = UILabel(frame: CGRect(x: self.topView.center.x-55, y: 13, width: self.topView.frame.size.width/1.7, height: 30))
+        nameLabel.textColor = Constants.MainColor.kCustomBlueColor
+        nameLabel.text = person.aFullName()
+        nameLabel.font = UIFont.systemFont(ofSize: 15)
+        self.topView.addSubview(nameLabel)
+        
+        let professionLabel = UILabel(frame: CGRect(x: self.topView.center.x-55, y: 35, width: self.topView.frame.size.width/1.7, height: 30))
+        professionLabel.textColor = UIColor.white
+        professionLabel.text = person.professionDomaine()
+        professionLabel.font = UIFont.systemFont(ofSize: 13)
+        self.topView.addSubview(professionLabel)
+        
+        let dateFormatter   = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "fr_FR")
+        dateFormatter.timeStyle = DateFormatter.Style.short
+        
+        self.topView.topLabel.text = "vu aujourd'hui à " + dateFormatter.string(from: Date())
+        self.topView.topLabel.font = UIFont.systemFont(ofSize: 15)
+    }
     
     
     override func viewDidLoad() {
@@ -26,7 +57,7 @@ class MXSConversationsViewController: MXSViewController {
         
         title = Strings.NavigationTitle.conversations
         
-        titleLabel.backgroundColor = Constants.MainColor.kSpecialColor
+        customizeTopViewPersons()
         
         if let conversationsCollectionViewController = childViewControllers.first as? MXSConversationsCollectionViewController {
             conversationsCollectionViewController.conversations = ConversationsDataManager.sharedInstance.conversations

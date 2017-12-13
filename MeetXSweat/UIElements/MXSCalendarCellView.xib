@@ -16,23 +16,23 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mbf-Ly-StP">
-                    <rect key="frame" x="294" y="588" width="12" height="12"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mbf-Ly-StP">
+                    <rect key="frame" x="183.5" y="659" width="8" height="8"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="12" id="3W4-F1-wAS"/>
-                        <constraint firstAttribute="width" secondItem="Mbf-Ly-StP" secondAttribute="height" multiplier="1:1" id="pfS-OD-sYB"/>
+                        <constraint firstAttribute="width" constant="8" id="3W4-F1-wAS"/>
+                        <constraint firstAttribute="width" secondItem="Mbf-Ly-StP" secondAttribute="height" id="pfS-OD-sYB"/>
                     </constraints>
                 </imageView>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UzI-aI-ZN5" customClass="AnimationView" customModule="MeetXSweat" customModuleProvider="target">
-                    <rect key="frame" x="90" y="90" width="420" height="420"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UzI-aI-ZN5" customClass="AnimationView" customModule="MeetXSweat" customModuleProvider="target">
+                    <rect key="frame" x="-46" y="100" width="467" height="467"/>
                     <color key="backgroundColor" red="1" green="0.83850819379172536" blue="0.16226617764962536" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="UzI-aI-ZN5" secondAttribute="height" multiplier="1:1" id="0b7-CR-eH3"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bup-vE-qqB">
-                    <rect key="frame" x="280" y="290" width="39.5" height="19.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bup-vE-qqB">
+                    <rect key="frame" x="170" y="325.5" width="35.5" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>

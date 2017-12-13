@@ -15,8 +15,8 @@ private let kMenuItemsDesc  = ["Je construis mon réseau", "Mon historique d'act
 private let kMenuItemsImage = ["messages", "loupe", "adduser", "logout"]
 
 private let kImageWidth  = (ScreenSize.currentWidth > ScreenSize.iphone6Width) ? ScreenSize.currentWidth-130 : (ScreenSize.currentWidth == ScreenSize.iphone6Width) ? ScreenSize.currentWidth-90 : ScreenSize.currentWidth-40
-private let kImageHeight: CGFloat = 180.0
-
+private let kMapImageHeight: CGFloat = 140.0
+private let kHeaderTableViewHeight: CGFloat = kMapImageHeight + 80
 
 
 /**
@@ -42,58 +42,51 @@ class MXSMenuViewController: UITableViewController {
     
     // MARK: - *** SetUp subView ***
     
-    internal func customSectionHeader(_ pView: UIView) {
+    internal func customSectionHeader(_ pView: UIView, _ superView: UIView) {
         
         for v in pView.subviews {
             v.removeFromSuperview()
         }
         
-        let userPhoto = UIImageView(frame: CGRect(x: 0, y: 20, width: 80, height: 80))
-        userPhoto.image = UIImage(named: Ressources.Images.userPhoto)
-        userPhoto.center.x = pView.center.x
-        pView.addSubview(userPhoto)
-        
-        let imageView = UIImageView(frame: CGRect(x: 15, y: 15, width: 50, height: 50))
-        userPhoto.addSubview(imageView)
+        let imageView = UserImageView.addImageView(frame: CGRect(x: 20, y: 40, width: 200, height: 200), toView: pView)
         UserViewModel.setUserImageView(imageView, person: User.currentUser)
-        
+        /*
         let person = User.currentUser
         
         let nameLabel = UILabel(frame: CGRect(x: 0, y: 110, width: 200, height: 30))
-        nameLabel.backgroundColor = UIColor.white
+        nameLabel.backgroundColor = UIColor.clear
         nameLabel.textAlignment = .center
         pView.addSubview(nameLabel)
         nameLabel.text = " " + person.aFullName()
         nameLabel.font = UIFont.boldSystemFont(ofSize: 17)
-        nameLabel.textColor = Constants.MainColor.kSpecialColor
+        nameLabel.textColor = UIColor.white
         nameLabel.sizeToFit()
         nameLabel.frame.size.width += 20
         nameLabel.center.x = pView.center.x
-        nameLabel.layer.cornerRadius = 5
+        nameLabel.layer.cornerRadius = Constants.Cell.cornerRadius
         nameLabel.clipsToBounds = true
         
         
         
-        let professionLabel = UILabel(frame: CGRect(x: 0, y: nameLabel.frame.origin.y+30, width: 200, height: 30))
-        professionLabel.backgroundColor = UIColor.white
+        let professionLabel = UILabel(frame: CGRect(x: -20, y: nameLabel.frame.origin.y+30, width: 240, height: 30))
+        professionLabel.backgroundColor = UIColor.clear
         professionLabel.textAlignment = .center
         pView.addSubview(professionLabel)
         professionLabel.text = " " + person.professionDomaine()
         professionLabel.font = UIFont.systemFont(ofSize: 16)
-        professionLabel.textColor = Constants.MainColor.kDefaultTextColor
-        professionLabel.sizeToFit()
-        professionLabel.frame.size.width += 20
+        professionLabel.textColor = UIColor.white
         professionLabel.center.x = pView.center.x
-        professionLabel.layer.cornerRadius = 5
+        professionLabel.layer.cornerRadius = Constants.Cell.cornerRadius
         professionLabel.clipsToBounds = true
-        
-        let profileButton = UIButton(frame: CGRect(x: kImageWidth-55, y: 5, width: 40, height: 40))
+        */
+        let profileButton = UIButton(frame: CGRect(x: kImageWidth-55, y: 30, width: 30, height: 30))
         profileButton.addTarget(self, action: #selector(profileButtonClicked), for: .touchUpInside)
-        profileButton.setImage(UIImage(named: Ressources.MenuImages.modifier), for: UIControlState())
-        profileButton.backgroundColor = UIColor.white
+        //profileButton.setImage(UIImage(named: Ressources.MenuImages.modifier), for: UIControlState())
+        profileButton.setBackgroundImage(UIImage(named: Ressources.MenuImages.modifier), for: UIControlState())
+        profileButton.backgroundColor = UIColor.clear
         profileButton.layer.cornerRadius = 20
         profileButton.clipsToBounds = true
-        pView.addSubview(profileButton)
+        superView.addSubview(profileButton)
     }
     
     
@@ -115,7 +108,7 @@ class MXSMenuViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        customSectionHeader(userView)
+        //customSectionHeader(userView)
     }
     
     
@@ -171,7 +164,7 @@ extension MXSMenuViewController {
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
         if section == 0 {
-            return kImageHeight+20
+            return kHeaderTableViewHeight
         }
         return 0
     }
@@ -179,13 +172,13 @@ extension MXSMenuViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         if section == 0 {
-            let sectionHeader = UIView(frame: CGRect(x: 0, y: 0, width: kImageWidth, height: kImageHeight+20))
+            let sectionHeader = UIView(frame: CGRect(x: 0, y: 0, width: kImageWidth, height: kHeaderTableViewHeight))
             sectionHeader.backgroundColor = UIColor.black
-            userView = UIImageView(frame: CGRect(x: 0, y: 20, width: kImageWidth, height: kImageHeight))
+            userView = UIImageView(frame: CGRect(x: 0, y: 20, width: kImageWidth, height: kMapImageHeight))
             userView.image = UIImage(named: Ressources.Images.topMap)
             sectionHeader.addSubview(userView)
-            Utils.addTapGestureToView(userView, target: self, selectorString: "sectionHeaderClicked")
-            customSectionHeader(userView)
+            Utils.addTapGestureToView(sectionHeader, target: self, selectorString: "sectionHeaderClicked")
+            customSectionHeader(userView, sectionHeader)
             return sectionHeader
         }
         return nil

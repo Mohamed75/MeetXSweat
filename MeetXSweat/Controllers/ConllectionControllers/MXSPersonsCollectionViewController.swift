@@ -11,12 +11,12 @@ import UIKit
 
 
 private let kNameAttributes = [
-    NSForegroundColorAttributeName: Constants.MainColor.kSpecialColor,
+    NSForegroundColorAttributeName: Constants.MainColor.kCustomBlueColor,
     NSFontAttributeName : UIFont.boldSystemFont(ofSize: 15)
 ]
 
 private let kProfessionAttributes = [
-    NSForegroundColorAttributeName: UIColor.black,
+    NSForegroundColorAttributeName: UIColor.white,
     NSFontAttributeName : UIFont.systemFont(ofSize: 14)
 ]
 
@@ -51,16 +51,18 @@ class MXSPersonsCollectionViewController: UICollectionViewController {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Ressources.CellReuseIdentifier.person, for: indexPath) as! MXSPersonCollectionCell
         
+        cell.prepareForReuse()
+        
         if let persons = self.persons {
             
             let person = persons[indexPath.section]
             
-            let text = person.aFullName()
+            let fullName = person.aFullName()
             let professionDomaine = person.professionDomaine()
-            let string = NSMutableAttributedString(string: text + "\n" + professionDomaine)
-            string.addAttributes(kNameAttributes, range: NSRange(location: 0, length: text.characters.count))
+            let string = NSMutableAttributedString(string: fullName + "\n" + professionDomaine)
+            string.addAttributes(kNameAttributes, range: NSRange(location: 0, length: fullName.characters.count))
             if !professionDomaine.isEmpty {
-                string.addAttributes(kProfessionAttributes, range: NSRange(location: text.characters.count, length: professionDomaine.characters.count))
+                string.addAttributes(kProfessionAttributes, range: NSRange(location: fullName.characters.count, length: professionDomaine.characters.count))
             }
             cell.label.attributedText = string
             
@@ -70,15 +72,12 @@ class MXSPersonsCollectionViewController: UICollectionViewController {
                 existingUserImageView.removeFromSuperview()
             }
             
-            let userImageView = UIImageView(frame: CGRect(x: 9, y: 9, width: cell.imageView.frame.size.width-18, height: cell.imageView.frame.size.height-18))
+            let userImageView = UIImageView(frame: CGRect(x: 10.3, y: 10.3, width: cell.imageView.frame.size.width/1.6, height: cell.imageView.frame.size.height/1.6))
             userImageView.tag = 33
             cell.imageView.addSubview(userImageView)
             
             UserViewModel.setUserImageView(userImageView, person: person)
         }
-        
-        cell.layer.borderWidth = 1
-        cell.layer.borderColor = UIColor.black.cgColor
         
         return cell
     }

@@ -189,7 +189,7 @@ extension MXSViewController {
         
         button.backgroundColor = Constants.MainColor.kBackGroundColor
         button.setTitleColor(UIColor.white, for: UIControlState())
-        button.layer.cornerRadius = 5
+        button.layer.cornerRadius = Constants.Cell.cornerRadius
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.borderWidth = 1
     }

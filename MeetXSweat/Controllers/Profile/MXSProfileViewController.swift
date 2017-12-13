@@ -10,12 +10,12 @@ import UIKit
 
 
 private let kNameAttributes = [
-    NSForegroundColorAttributeName: Constants.MainColor.kSpecialColor,
+    NSForegroundColorAttributeName: Constants.MainColor.kCustomBlueColor,
     NSFontAttributeName : UIFont.boldSystemFont(ofSize: 17)
 ]
 
 private let kProfessionAttributes = [
-    NSForegroundColorAttributeName: UIColor.black,
+    NSForegroundColorAttributeName: UIColor.white,
     NSFontAttributeName : UIFont.systemFont(ofSize: 16)
 ]
 
@@ -33,9 +33,8 @@ private let kAlertButtonTitle3 = "Photo Roll"
 
 class MXSProfileViewController: MXSViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate {
 
-
-    @IBOutlet weak var imageView: UIImageView!
-
+    var imageView: UIImageView!
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
@@ -63,6 +62,7 @@ class MXSProfileViewController: MXSViewController, UIImagePickerControllerDelega
         
         self.title = Strings.NavigationTitle.profile
         
+        imageView = UserImageView.addImageView(frame: CGRect(x: 20, y: 20, width: 160, height: 160), toView: self.view)
         UserViewModel.setUserImageView(imageView, person: person)
         
         if editable {
@@ -85,16 +85,19 @@ class MXSProfileViewController: MXSViewController, UIImagePickerControllerDelega
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let text = person.aFullName()
+        let name = person.aFullName()
         let professionDomaine = person.professionDomaine()
-        let string = NSMutableAttributedString(string: text + "\n" + professionDomaine)
-        string.addAttributes(kNameAttributes, range: NSRange(location: 0, length: text.characters.count))
+        let string = NSMutableAttributedString(string: name + "\n" + professionDomaine)
+        string.addAttributes(kNameAttributes, range: NSRange(location: 0, length: name.characters.count))
         if !professionDomaine.isEmpty {
-            string.addAttributes(kProfessionAttributes, range: NSRange(location: text.characters.count, length: professionDomaine.characters.count))
+            string.addAttributes(kProfessionAttributes, range: NSRange(location: name.characters.count, length: professionDomaine.characters.count))
         }
         nameLabel.attributedText = string
         
         
+        if person.personDescription == "" {
+            descriptionButton.isHidden = true
+        }
         descriptionLabel.text = person.personDescription
     }
     
@@ -191,6 +194,7 @@ class MXSProfileViewController: MXSViewController, UIImagePickerControllerDelega
     @IBAction func professionButtonClicked(_ sender: AnyObject) {
         
         if let profileDescrtiptionViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.findProfile, viewControllerId: Ressources.StoryBooardsIdentifiers.findProfileId) as? MXSFindProfileViewController {
+            
             profileDescrtiptionViewController.editable = true
             navigationController?.pushViewController(profileDescrtiptionViewController, animated: false)
         }

@@ -16,24 +16,38 @@ private let kToptitleLabelConstraint: CGFloat   = 30
 class MXSTopView: UIView {
 
     var imageView: UIImageView!
+    var imageViewCenterConstraint: NSLayoutConstraint!
     var topLabel: UILabel!
     
+    var isFirstLoad = true
     
     
     // MARK: - *** Initialization ***
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        draw(frame)
+    }
+    
+    
     override func draw(_ rect: CGRect) {
 
+        guard isFirstLoad else {
+            return
+        }
+        
+        isFirstLoad = false
+        
         imageView = UIImageView(image: UIImage(named: "SportIcon"))
         self.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         let topConstraint = NSLayoutConstraint(item: imageView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: kTopImageViewConstraint)
-        let centerConstraint = NSLayoutConstraint(item: imageView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0)
+        imageViewCenterConstraint = NSLayoutConstraint(item: imageView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0)
         let widthConstraint = NSLayoutConstraint(item: imageView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 40)
         let aspectRatioConstraint = NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal, toItem: imageView, attribute: .width, multiplier: 1.0 / 1.0, constant: 0)
         
-        self.addConstraints([topConstraint, centerConstraint, widthConstraint, aspectRatioConstraint])
+        self.addConstraints([topConstraint, imageViewCenterConstraint, widthConstraint, aspectRatioConstraint])
         
         
         

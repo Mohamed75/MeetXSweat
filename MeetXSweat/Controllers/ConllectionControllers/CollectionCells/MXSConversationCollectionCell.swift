@@ -26,5 +26,12 @@ class MXSConversationCollectionCell: UICollectionViewCell {
         
         self.label.text = ""
         super.prepareForReuse()
+        
+        self.backgroundColor = Constants.MainColor.kBackGroundColor
+        
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor.white.cgColor
+        
+        self.layer.cornerRadius = Constants.Cell.cornerRadius
     }
 }

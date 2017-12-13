@@ -49,9 +49,9 @@ class MXSEventViewController: MXSViewController {
     
     private func customButton(button: UIButton, title: String) {
         
-        button.layer.borderColor = UIColor.white.cgColor
-        button.layer.borderWidth = 1
-        button.layer.cornerRadius = 5
+        button.layer.borderColor    = UIColor.white.cgColor
+        button.layer.borderWidth    = 1
+        button.layer.cornerRadius   = Constants.Cell.cornerRadius
         button.backgroundColor = Constants.MainColor.kCustomBlueColor
         button.setTitleColor(UIColor.white, for: UIControlState())
         button.setTitle(title, for: UIControlState())
@@ -66,7 +66,6 @@ class MXSEventViewController: MXSViewController {
         
         title = Strings.NavigationTitle.event
         
-        self.topView.draw(self.topView.frame)
         self.topView.topLabel.text = self.event.sport
         
         customizeEventCell(self.eventIconView)
@@ -74,9 +73,9 @@ class MXSEventViewController: MXSViewController {
         topCellLabel.textColor = UIColor.white
         sportLabel.textColor = UIColor.white
         
-        eventView.layer.borderColor = UIColor.white.cgColor
-        eventView.layer.borderWidth = 1
-        eventView.layer.cornerRadius = 5
+        eventView.layer.borderColor     = UIColor.white.cgColor
+        eventView.layer.borderWidth     = 1
+        eventView.layer.cornerRadius    = Constants.Cell.cornerRadius
         
         customButton(button: inscriptionButton, title: kInscriptionButtonText)
         customButton(button: participantsButton, title: kParticipantsButtonText)

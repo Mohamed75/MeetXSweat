@@ -38,7 +38,7 @@ class MXSSportCollectionCell: UICollectionViewCell {
         borderView = UIView(frame: CGRect(x: xMargin, y: yMargin, width: self.frame.size.width-(2*xMargin), height: self.frame.size.height-(2*yMargin)))
         borderView.layer.borderColor    = borderColor.cgColor
         borderView.layer.borderWidth    = 1
-        borderView.layer.cornerRadius   = 5
+        borderView.layer.cornerRadius   = Constants.Cell.cornerRadius
         self.insertSubview(borderView, at: 0)
         
         self.sportLabel.textColor = UIColor.white

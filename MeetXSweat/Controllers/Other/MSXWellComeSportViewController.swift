@@ -49,7 +49,6 @@ class MSXWellComeSportViewController: MXSViewController, PickerViewDataSource, P
         
         self.title = Strings.NavigationTitle.wellComme
         
-        self.topView.draw(self.topView.frame)
         self.topView.topLabel.text = kTopTitleLabel
         
         customPickerView()
