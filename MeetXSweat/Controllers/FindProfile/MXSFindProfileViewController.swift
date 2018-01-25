@@ -128,7 +128,6 @@ class MXSFindProfileViewController: MXSViewController, PickerViewDataSource, Pic
     
     private func customLabel(_ label: UILabel) {
         
-        label.layer.borderColor     = Constants.MainColor.kSpecialColor.cgColor
         label.layer.borderWidth     = 1
         label.layer.cornerRadius    = Constants.Cell.cornerRadius
         label.clipsToBounds = true
@@ -136,12 +135,14 @@ class MXSFindProfileViewController: MXSViewController, PickerViewDataSource, Pic
     
     private func customPickerView() {
         
+        let overlayImage = Ressources.blueLineImage.scaleImage(CGSize(width: self.view.frame.size.width, height: 40))
+        
         pickerView.dataSource   = self
         pickerView.delegate     = self
         pickerView.scrollingStyle = .infinite
         pickerView.selectionStyle = .overlay
-        pickerView.selectionOverlay.backgroundColor = Constants.MainColor.kSpecialColorClear
-        pickerView.selectionOverlay.alpha = 1
+        pickerView.selectionOverlay.backgroundColor = UIColor(patternImage: overlayImage)
+        pickerView.selectionOverlay.alpha = 0.5
         
         if ScreenSize.currentHeight == ScreenSize.iphone4Height {
             pickerViewTopLayout.constant = 20
@@ -155,10 +156,11 @@ class MXSFindProfileViewController: MXSViewController, PickerViewDataSource, Pic
     internal func selectMetierLabel() {
         
         metierLabel.textColor = UIColor.white
-        metierLabel.backgroundColor = Constants.MainColor.kSpecialColor
+        metierLabel.backgroundColor = Constants.MainColor.kCustomBlueColor
         selectedLabel = 1
-        domaineLabel.textColor = Constants.MainColor.kSpecialColor
-        domaineLabel.backgroundColor = UIColor.white
+        domaineLabel.textColor = UIColor.white
+        domaineLabel.backgroundColor = UIColor.black
+        domaineLabel.layer.borderColor = UIColor.white.cgColor
         
         dataArray = FireBaseDataManager.sharedInstance.professions
         pickerView.reloadPickerView()
@@ -166,11 +168,12 @@ class MXSFindProfileViewController: MXSViewController, PickerViewDataSource, Pic
     
     internal func selectDomaineLabel() {
         
-        domaineLabel.textColor = UIColor.white
-        domaineLabel.backgroundColor = Constants.MainColor.kSpecialColor
+        metierLabel.textColor = UIColor.white
+        metierLabel.backgroundColor = UIColor.black
+        metierLabel.layer.borderColor = UIColor.white.cgColor
         selectedLabel = 2
-        metierLabel.textColor = Constants.MainColor.kSpecialColor
-        metierLabel.backgroundColor = UIColor.white
+        domaineLabel.textColor = UIColor.white
+        domaineLabel.backgroundColor = Constants.MainColor.kCustomBlueColor
         
         dataArray = FireBaseDataManager.sharedInstance.domaines
         pickerView.reloadPickerView()
@@ -258,11 +261,7 @@ extension MXSFindProfileViewController {
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 22)
         
-        if highlighted {
-            label.textColor = .black
-        } else {
-            label.textColor = .lightGray
-        }
+        label.textColor = .white
     }
     
     internal func pickerView(_ pickerView: PickerView, didSelectRow row: Int, index: Int) {

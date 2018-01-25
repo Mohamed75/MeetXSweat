@@ -29,13 +29,13 @@ class MSXWellComeSportViewController: MXSViewController, PickerViewDataSource, P
     
     private func customPickerView() {
         
-        let overlayImage = UIImage(named:"blueLine")?.scaleImage(CGSize(width: self.view.frame.size.width, height: 40))
+        let overlayImage = Ressources.blueLineImage.scaleImage(CGSize(width: self.view.frame.size.width, height: 40))
         
         pickerView.dataSource   = self
         pickerView.delegate     = self
         pickerView.scrollingStyle = .infinite
         pickerView.selectionStyle = .overlay
-        pickerView.selectionOverlay.backgroundColor = UIColor(patternImage: overlayImage!)
+        pickerView.selectionOverlay.backgroundColor = UIColor(patternImage: overlayImage)
         pickerView.selectionOverlay.alpha = 0.5
         pickerView.backgroundColor = Constants.MainColor.kBackGroundColor
     }

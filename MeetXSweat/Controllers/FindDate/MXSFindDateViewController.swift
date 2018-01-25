@@ -44,9 +44,9 @@ class MXSFindDateViewController: MXSCalendarViewController {
         self.topView.topLabel.text = Strings.Calendar.titleText
         self.topView.imageView.image = UIImage(named: "date")
        
-        let lineImage = UIImage(named:"blueLine")
         
-        let topLineView = UIImageView(image: lineImage)
+        
+        let topLineView = UIImageView(image: Ressources.blueLineImage)
         topLineView.frame = CGRect(x: 0, y: topView.frame.size.height+50, width: view.frame.size.width, height: 2)
         view.addSubview(topLineView)
         
@@ -56,7 +56,7 @@ class MXSFindDateViewController: MXSCalendarViewController {
         self.dateLabel.text = dateFormatter.string(from: Date())
         
         
-        let bottomLineView = UIImageView(image: lineImage)
+        let bottomLineView = UIImageView(image: Ressources.blueLineImage)
         bottomLineView.frame = CGRect(x: 0, y: stackView.frame.size.height+3, width: view.frame.size.width, height: 2)
         stackView.addSubview(bottomLineView)
         

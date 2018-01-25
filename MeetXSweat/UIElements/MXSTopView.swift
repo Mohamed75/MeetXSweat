@@ -65,7 +65,7 @@ class MXSTopView: UIView {
         self.addConstraints([topLabelConstraint, centerLabelConstraint, widthLabelConstraint])
         
         
-        let lineImage = UIImage(named:"blueLine")
+        let lineImage = Ressources.blueLineImage
         
         let topLineView = UIImageView(image: lineImage)
         topLineView.frame = CGRect(x: 0, y: -10, width: topLabel.frame.size.width, height: 2)

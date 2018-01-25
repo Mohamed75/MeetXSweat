@@ -35,6 +35,8 @@ class MXSEventViewController: MXSViewController {
     @IBOutlet weak var participantsButton: UIButton!
     @IBOutlet weak var inscriptionButton: UIButton!
     
+    @IBOutlet weak var participantsImageView: UIImageView!
+    
     @IBOutlet internal weak var topCellLabel: UILabel!
     @IBOutlet internal weak var sportLabel: UILabel!
     
@@ -99,6 +101,7 @@ class MXSEventViewController: MXSViewController {
         
         if tabBarController?.selectedIndex == 0 {
             participantsButton.isHidden = true
+            participantsImageView.isHidden = true
         }
     }
     
@@ -158,9 +161,9 @@ class MXSEventViewController: MXSViewController {
     
     @IBAction func inscriptionButtonClicked(_ sender: AnyObject) {
         event.addCurrentUserToEvent()
-        if tabBarController?.selectedIndex != 0 {
-            participantsButtonClicked(NSObject())
-        }
+        
+        // to be done
+        
         updateParticipantsLabelText()
         updateInscriptionButton()
     }

@@ -117,7 +117,7 @@ class FireBaseObject: EnCodeObject {
                         returnArray.append(clazz)
                     }
                     
-                } else {
+                } else if !(object is NSNull) {
                     returnArray.append(object)
                 }
             }

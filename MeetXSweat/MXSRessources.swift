@@ -6,7 +6,7 @@
 //  Copyright © 2016 Mohamed BOUMANSOUR. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 
 /// A list of different kind of ressources.
@@ -28,6 +28,7 @@ enum Ressources {
         static let sendMessage  = "SendMessage"
         static let topMap       = "TopMap"
         static let userPhoto    = "UserPhoto"
+        static let blueLine     = "BlueLine"
     }
     
     
@@ -128,4 +129,6 @@ enum Ressources {
         static let eventsId     = "MXSPlaceMarkEvents"
         static let eventId      = "MXSPlaceMarkEvent"
     }
+    
+    static let blueLineImage = UIImage(named: Ressources.Images.blueLine)!
 }

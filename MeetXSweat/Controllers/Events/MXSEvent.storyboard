@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16G1036" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="17C205" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -137,6 +137,7 @@
                         <outlet property="inscriptionButton" destination="ycQ-Ww-eCe" id="Xmq-UX-LJN"/>
                         <outlet property="mapView" destination="0Tk-hE-aZg" id="jtl-95-Sbn"/>
                         <outlet property="participantsButton" destination="7C1-Zj-zAn" id="G7z-gd-3vs"/>
+                        <outlet property="participantsImageView" destination="7VF-rA-3iA" id="aFd-QQ-3ZU"/>
                         <outlet property="sportLabel" destination="XzZ-6T-gul" id="EOq-M3-ulP"/>
                         <outlet property="topCellLabel" destination="rJI-W5-XsS" id="DGW-aC-EWO"/>
                         <outlet property="topView" destination="QGc-IM-IVG" id="VN7-WG-pIN"/>

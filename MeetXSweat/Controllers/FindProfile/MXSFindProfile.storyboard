@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16G1036" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="17C205" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -38,35 +38,34 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Par domaine" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="osX-cp-KDG">
-                                <rect key="frame" x="197.5" y="168" width="120" height="40"/>
+                                <rect key="frame" x="197.5" y="168" width="151.5" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Par métiers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihl-m2-WHk">
-                                <rect key="frame" x="57.5" y="168" width="120" height="40"/>
+                                <rect key="frame" x="26" y="168" width="151.5" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="nob-Ay-Yw8"/>
-                                    <constraint firstAttribute="width" constant="120" id="rSM-F9-V9D"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bDF-VM-dGv" customClass="PickerView" customModule="PickerView">
                                 <rect key="frame" x="-4" y="248" width="383" height="379"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="5WW-9K-mVo" secondAttribute="trailing" constant="-20" id="6fn-Ol-26t"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="osX-cp-KDG" secondAttribute="trailing" constant="10" id="96O-im-E4Z"/>
                             <constraint firstItem="9gV-yh-xgc" firstAttribute="centerX" secondItem="Y1E-r2-UX2" secondAttribute="centerX" id="AyW-lW-wVk"/>
                             <constraint firstItem="osX-cp-KDG" firstAttribute="height" secondItem="ihl-m2-WHk" secondAttribute="height" id="C0l-Pz-qT8"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ihl-m2-WHk" secondAttribute="trailing" constant="181.5" id="Cxf-xu-7Qi"/>
+                            <constraint firstItem="ihl-m2-WHk" firstAttribute="leading" secondItem="Y1E-r2-UX2" secondAttribute="leadingMargin" constant="10" id="FY8-Q9-tiC"/>
                             <constraint firstItem="osX-cp-KDG" firstAttribute="leading" secondItem="ihl-m2-WHk" secondAttribute="trailing" constant="20" id="KDg-Hp-Pqv"/>
                             <constraint firstItem="osX-cp-KDG" firstAttribute="top" secondItem="5WW-9K-mVo" secondAttribute="bottom" constant="20" id="Mwb-AE-Fyl"/>
                             <constraint firstItem="gKw-G1-g6o" firstAttribute="top" secondItem="9gV-yh-xgc" secondAttribute="bottom" constant="20" id="S6x-bH-5TM"/>
-                            <constraint firstItem="osX-cp-KDG" firstAttribute="leading" secondItem="Y1E-r2-UX2" secondAttribute="leadingMargin" constant="181.5" id="SdM-69-z7Z"/>
-                            <constraint firstItem="osX-cp-KDG" firstAttribute="width" secondItem="ihl-m2-WHk" secondAttribute="width" id="Yi3-gI-p2B"/>
+                            <constraint firstItem="ihl-m2-WHk" firstAttribute="width" secondItem="osX-cp-KDG" secondAttribute="width" id="XGN-Kl-31n"/>
                             <constraint firstItem="5WW-9K-mVo" firstAttribute="leading" secondItem="Y1E-r2-UX2" secondAttribute="leadingMargin" constant="-20" id="Zgf-vJ-sCa"/>
                             <constraint firstItem="osX-cp-KDG" firstAttribute="top" secondItem="ihl-m2-WHk" secondAttribute="top" id="dfn-1v-GIy"/>
                             <constraint firstItem="bDF-VM-dGv" firstAttribute="leading" secondItem="Y1E-r2-UX2" secondAttribute="leadingMargin" constant="-20" id="ehX-LT-8Qy"/>
@@ -139,7 +138,7 @@
         <scene sceneID="aNG-8V-kYt">
             <objects>
                 <collectionViewController id="kaf-rt-Bpn" customClass="MXSPersonsCollectionViewController" customModule="MeetXSweat" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="MvT-0t-0zj">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="MvT-0t-0zj">
                         <rect key="frame" x="0.0" y="0.0" width="363" height="499"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -164,7 +163,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRi-mA-7km">
-                                            <rect key="frame" x="180" y="58.5" width="343" height="21"/>
+                                            <rect key="frame" x="180" y="59" width="343" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>

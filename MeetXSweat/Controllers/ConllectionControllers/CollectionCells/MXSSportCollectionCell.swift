@@ -45,7 +45,7 @@ class MXSSportCollectionCell: UICollectionViewCell {
         self.sportLabel.font = UIFont.boldSystemFont(ofSize: 17)
         
         lineView = UIImageView(frame: CGRect(x: xMargin, y: self.frame.size.height-45, width: self.frame.size.width-(2*xMargin), height: 2))
-        lineView.image = UIImage(named:"blueLine")
+        lineView.image = Ressources.blueLineImage
         self.addSubview(lineView)
     }
     
