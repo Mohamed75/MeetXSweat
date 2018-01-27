@@ -83,6 +83,7 @@ enum Ressources {
         
         // Events StoryBoard
         static let eventId          = "MXSEventViewController"
+        static let eventValidationId = "MXSEventValidationViewController"
         
         // FindSport StoryBoard
         static let findSportId      = "MXSFindSportViewController"

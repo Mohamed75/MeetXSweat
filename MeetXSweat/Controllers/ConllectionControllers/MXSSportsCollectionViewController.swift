@@ -12,7 +12,7 @@ import UIKit
 
 private let kNumberOffCell = 3
 
-private let kCellWidth   = (UIScreen.main.bounds.width/3)-4
+private let kCellWidth   = (ScreenSize.currentWidth/3)-4
 private let kCellHeight  = kCellWidth*1.30
 
 

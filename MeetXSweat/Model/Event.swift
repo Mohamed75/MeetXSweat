@@ -28,6 +28,8 @@ class Event: FireBaseObject {
     var imageUrlString  = ""
     var coordinate      = ""
     
+    var organizerLink   = ""
+    var otherLink       = ""
     
     var adress: String? {
         didSet {

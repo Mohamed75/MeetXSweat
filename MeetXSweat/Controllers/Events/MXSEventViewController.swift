@@ -68,7 +68,7 @@ class MXSEventViewController: MXSViewController {
         
         title = Strings.NavigationTitle.event
         
-        self.topView.topLabel.text = self.event.sport
+        self.topView.topLabel.text = self.event.sport.uppercased()
         
         customizeEventCell(self.eventIconView)
         
@@ -162,7 +162,9 @@ class MXSEventViewController: MXSViewController {
     @IBAction func inscriptionButtonClicked(_ sender: AnyObject) {
         event.addCurrentUserToEvent()
         
-        // to be done
+        let eventValidationViewController = Utils.loadViewControllerFromStoryBoard(Ressources.StoryBooards.event, viewControllerId: Ressources.StoryBooardsIdentifiers.eventValidationId) as! MXSEventValidationViewController
+        eventValidationViewController.event = self.event
+        self.navigationController?.pushViewController(eventValidationViewController, animated: true)
         
         updateParticipantsLabelText()
         updateInscriptionButton()

@@ -167,6 +167,8 @@
 		D9988F9C1FBC4955001DF331 /* MXSTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9988F9A1FBC4955001DF331 /* MXSTopView.swift */; };
 		D998B5DC1D96E63400A045F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D998B5DB1D96E63400A045F4 /* GoogleService-Info.plist */; };
 		D998B5E51D97FFE000A045F4 /* EnCodeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D998B5E41D97FFE000A045F4 /* EnCodeObject.swift */; };
+		D99C7E2D201C7DED00B00579 /* MXSEventValidationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99C7E2C201C7DED00B00579 /* MXSEventValidationViewController.swift */; };
+		D99C7E2E201C829C00B00579 /* MXSEventValidationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99C7E2C201C7DED00B00579 /* MXSEventValidationViewController.swift */; };
 		D9AAA2AB1D8F0F12004CE80C /* MXSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA2AA1D8F0F12004CE80C /* MXSViewController.swift */; };
 		D9AAAC6D1FE134D300680A9C /* MKAnnotationViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAAC6C1FE134D300680A9C /* MKAnnotationViewExtension.swift */; };
 		D9AAAC6E1FE134D300680A9C /* MKAnnotationViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAAC6C1FE134D300680A9C /* MKAnnotationViewExtension.swift */; };
@@ -341,6 +343,7 @@
 		D9988F9A1FBC4955001DF331 /* MXSTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSTopView.swift; sourceTree = "<group>"; };
 		D998B5DB1D96E63400A045F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D998B5E41D97FFE000A045F4 /* EnCodeObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnCodeObject.swift; path = ../Model/EnCodeObject.swift; sourceTree = "<group>"; };
+		D99C7E2C201C7DED00B00579 /* MXSEventValidationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSEventValidationViewController.swift; sourceTree = "<group>"; };
 		D9AAA2AA1D8F0F12004CE80C /* MXSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSViewController.swift; sourceTree = "<group>"; };
 		D9AAAC6C1FE134D300680A9C /* MKAnnotationViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKAnnotationViewExtension.swift; sourceTree = "<group>"; };
 		D9AAAC6F1FE16DB500680A9C /* UserImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserImageView.swift; sourceTree = "<group>"; };
@@ -458,6 +461,7 @@
 			isa = PBXGroup;
 			children = (
 				D90AB5701D93E28F003DCA75 /* MXSEventViewController.swift */,
+				D99C7E2C201C7DED00B00579 /* MXSEventValidationViewController.swift */,
 				D90AB56E1D93E275003DCA75 /* MXSEvent.storyboard */,
 			);
 			name = Event;
@@ -764,6 +768,7 @@
 				F198259677107E65EFFCBEE0 /* [CP] Copy Pods Resources */,
 				D9BB48091D8E93C100C12541 /* ShellScript */,
 				D921ACE61F30B03200982564 /* Embed Frameworks */,
+				D99C7E31201C9D5A00B00579 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -826,6 +831,7 @@
 				D949BB5A1E5C872A00BCF3A0 /* [CP] Copy Pods Resources */,
 				D949BB5B1E5C872A00BCF3A0 /* ShellScript */,
 				D921ACE91F30B03D00982564 /* Embed Frameworks */,
+				D99C7E32201C9D6900B00579 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1245,6 +1251,32 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" 62977dc8c8f12b0dde348863eb757d3007e2c01a 61af0811c6d6d49ebc29aa3bd09db050f141c44afb916a7337abd8c2e8a2235c";
 		};
+		D99C7E31201C9D5A00B00579 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"FIXME:\"\nfind \"${SRCROOT}\" \\( -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"";
+		};
+		D99C7E32201C9D6900B00579 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"FIXME:\"\nfind \"${SRCROOT}\" \\( -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"";
+		};
 		D9BB48091D8E93C100C12541 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1289,6 +1321,7 @@
 				D94A3E411DA3FB1B0090A7A4 /* MXSConversationsCollectionViewController.swift in Sources */,
 				D959B3D81D93185000981105 /* MXSStrings.swift in Sources */,
 				D959B3CD1D92D1DD00981105 /* MXSFindCollectionViewController.swift in Sources */,
+				D99C7E2D201C7DED00B00579 /* MXSEventValidationViewController.swift in Sources */,
 				D9B64D2A1DA3AA2D008C5D34 /* FireBaseDataManager.swift in Sources */,
 				D9C086641E4DFC8100122030 /* MXSAddEventViewController.swift in Sources */,
 				D9BB48251D8EF2E000C12541 /* GoogleLogInHelper.swift in Sources */,
@@ -1378,6 +1411,7 @@
 				D949BB0A1E5C872A00BCF3A0 /* MXSConversationsCollectionViewController.swift in Sources */,
 				D949BB0B1E5C872A00BCF3A0 /* MXSStrings.swift in Sources */,
 				D949BB0C1E5C872A00BCF3A0 /* MXSFindCollectionViewController.swift in Sources */,
+				D99C7E2E201C829C00B00579 /* MXSEventValidationViewController.swift in Sources */,
 				D949BB0D1E5C872A00BCF3A0 /* FireBaseDataManager.swift in Sources */,
 				D949BB0E1E5C872A00BCF3A0 /* MXSAddEventViewController.swift in Sources */,
 				D949BB0F1E5C872A00BCF3A0 /* GoogleLogInHelper.swift in Sources */,

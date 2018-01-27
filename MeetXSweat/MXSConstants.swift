@@ -64,7 +64,7 @@ enum Constants {
         static let kSpecialColorClear  = UIColor(red: 146/255, green: 39/255, blue: 143/255, alpha: 0.9)
         static let kTextFieldUnderLine = UIColor.white
         static let kTabBarItemColor    = UIColor.white
-        static let kCustomBlueColor     = UIColor(red: 12/255, green: 124/255, blue: 172/255, alpha: 1)
+        static let kCustomBlueColor    = UIColor(red: 12/255, green: 124/255, blue: 172/255, alpha: 1)
     }
     
     /**

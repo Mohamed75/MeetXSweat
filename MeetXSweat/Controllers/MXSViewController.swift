@@ -50,7 +50,7 @@ class MXSViewController: UIViewController {
     // To know if the view has already been extended
     private func isIncreasedFrameHeight() -> Bool {
         
-        return savedTabBarController.view.frame.size.height < (UIScreen.main.bounds.size.height + Constants.tabBarHeight)
+        return savedTabBarController.view.frame.size.height < (ScreenSize.currentHeight + Constants.tabBarHeight)
     }
     
     override func viewWillAppear(_ animated: Bool) {

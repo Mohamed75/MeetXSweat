@@ -147,6 +147,61 @@
             </objects>
             <point key="canvasLocation" x="343.19999999999999" y="284.70764617691157"/>
         </scene>
+        <!--Event Validation View Controller-->
+        <scene sceneID="wxQ-0l-wrI">
+            <objects>
+                <viewController storyboardIdentifier="MXSEventValidationViewController" id="uj1-Ad-rOS" customClass="MXSEventValidationViewController" customModule="MeetXSweat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="K40-c9-fXb"/>
+                        <viewControllerLayoutGuide type="bottom" id="KSm-xx-sFg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gKR-zS-oMf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rc3-MY-MVP" customClass="MXSTopView" customModule="MeetXSweat" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="414" height="128"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="ssR-f5-jn7"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L2V-LE-qM4">
+                                <rect key="frame" x="20" y="158" width="374" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="LkX-e5-iTF"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vrY-ru-Xzx">
+                                <rect key="frame" x="20" y="218" width="374" height="508"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vrY-ru-Xzx" firstAttribute="leading" secondItem="L2V-LE-qM4" secondAttribute="leading" id="TB7-nz-bWK"/>
+                            <constraint firstItem="vrY-ru-Xzx" firstAttribute="trailing" secondItem="L2V-LE-qM4" secondAttribute="trailing" id="UGg-gd-x7h"/>
+                            <constraint firstItem="Rc3-MY-MVP" firstAttribute="top" secondItem="K40-c9-fXb" secondAttribute="bottom" id="UMa-FL-IlO"/>
+                            <constraint firstItem="vrY-ru-Xzx" firstAttribute="top" secondItem="L2V-LE-qM4" secondAttribute="bottom" constant="10" id="WTA-qX-MPg"/>
+                            <constraint firstItem="Rc3-MY-MVP" firstAttribute="leading" secondItem="gKR-zS-oMf" secondAttribute="leadingMargin" constant="-20" id="aLy-xe-50t"/>
+                            <constraint firstItem="L2V-LE-qM4" firstAttribute="top" secondItem="Rc3-MY-MVP" secondAttribute="bottom" constant="10" id="ejw-Hi-huw"/>
+                            <constraint firstItem="L2V-LE-qM4" firstAttribute="leading" secondItem="Rc3-MY-MVP" secondAttribute="leading" constant="20" id="j74-Uy-MBk"/>
+                            <constraint firstItem="KSm-xx-sFg" firstAttribute="top" secondItem="vrY-ru-Xzx" secondAttribute="bottom" constant="10" id="jhQ-eK-5xu"/>
+                            <constraint firstItem="L2V-LE-qM4" firstAttribute="trailing" secondItem="Rc3-MY-MVP" secondAttribute="trailing" constant="-20" id="oc1-uv-Aez"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Rc3-MY-MVP" secondAttribute="trailing" constant="-20" id="pjx-lZ-fq4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dataView" destination="vrY-ru-Xzx" id="nSM-SR-DIs"/>
+                        <outlet property="infoView" destination="L2V-LE-qM4" id="8ag-oj-JBP"/>
+                        <outlet property="topView" destination="Rc3-MY-MVP" id="cE8-2r-EUs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WyJ-8i-Xay" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1129" y="285"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Participants" width="15" height="15"/>
