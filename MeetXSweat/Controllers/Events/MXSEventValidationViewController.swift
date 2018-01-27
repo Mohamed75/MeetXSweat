@@ -112,7 +112,7 @@ class MXSEventValidationViewController: MXSViewController {
             return
         }
         
-        UIApplication.shared.open(url)
+        UIApplication.shared.openURL(url)
     }
     
     
@@ -122,7 +122,7 @@ class MXSEventValidationViewController: MXSViewController {
             return
         }
         
-        UIApplication.shared.open(url)
+        UIApplication.shared.openURL(url)
     }
     
 }

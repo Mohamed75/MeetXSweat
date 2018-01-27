@@ -1613,7 +1613,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = MeetXSweat/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MeetXSweat.MeetXSweat;
 				PRODUCT_NAME = MeetXSweat;
@@ -1643,7 +1643,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = MeetXSweat/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MeetXSweat.MeetXSweat;
 				PRODUCT_NAME = MeetXSweat;
@@ -1754,7 +1754,7 @@
 					"PROD=1",
 				);
 				INFOPLIST_FILE = "MeetXSweatProd-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) -DPROD";
 				PRODUCT_BUNDLE_IDENTIFIER = com.meetxsweat.meetxsweat;
@@ -1791,7 +1791,7 @@
 					"PROD=1",
 				);
 				INFOPLIST_FILE = "MeetXSweatProd-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) -DPROD";
 				PRODUCT_BUNDLE_IDENTIFIER = com.meetxsweat.meetxsweat;
